@@ -42,9 +42,17 @@
   .pv-logo code { font-size: .6875rem; word-break: break-all; }
   .pv-sub { margin-block: var(--gs-space-8) var(--gs-space-4); }
   .pv-sub:first-child { margin-block-start: 0; }
+  .pv-stack { display: grid; gap: var(--gs-space-7); }
+  /* The sticky toolbar sits over everything, so the focused skip link is lifted above it. */
+  body > .gs-skip-link { z-index: 401; }
+  /* The skip link as it looks when focused, shown in place for the States block. */
+  .pv-skip { position: relative; min-height: 3rem; }
+  .pv-skip .gs-skip-link { inset-inline-start: 0; top: 0; transform: none; }
 </style>
 </head>
 <body class="gs-type" data-gs-brand="gallery">
+
+<a class="gs-skip-link" href="#top">Skip to content</a>
 
 <div class="pv-toolbar" role="region" aria-label="Preview controls">
   <fieldset>
@@ -195,10 +203,10 @@
 </header>
 <div class="gs-container"><p class="pv-note">Menu labels are illustrative, taken from the live menu. A section with a dropdown is one button: click, tap, Enter or Space opens it, and the section&rsquo;s main page is the first link inside. About is a plain link. Everything works without JavaScript; the script adds Escape, outside click and closing when focus leaves. Narrow the window below 1200 px for the Menu drawer.</p></div>
 
-<main id="top">
+<main id="top" class="gs-main" tabindex="-1">
 
 <!-- ============ HERO (photo) ============ -->
-<section class="gs-section" aria-labelledby="hero-title" style="padding-block-start: var(--gs-space-6)">
+<section class="gs-section gs-section--lead" aria-labelledby="hero-title">
   <div class="gs-hero">
     <div class="gs-media gs-media--photo gs-hero__media" style="--gs-focal: 62% 40%">
       <img alt="Placeholder for an installation view" fetchpriority="high" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23ecebe8'/%3E%3Crect y='760' width='1600' height='240' fill='%23c9c3ba'/%3E%3Crect x='170' y='300' width='330' height='420' fill='%23fff'/%3E%3Crect x='195' y='325' width='280' height='370' fill='%235f6f63'/%3E%3Crect x='195' y='505' width='280' height='190' fill='%23b88a4e'/%3E%3Crect x='720' y='220' width='560' height='440' fill='%23fff'/%3E%3Crect x='750' y='250' width='500' height='380' fill='%2334424f'/%3E%3Ccircle cx='1000' cy='430' r='120' fill='%23d9b24c'/%3E%3Crect x='1380' y='360' width='150' height='200' fill='%23fff'/%3E%3Crect x='1395' y='375' width='120' height='170' fill='%23a3503c'/%3E%3C/svg%3E">
@@ -227,6 +235,7 @@
 
     <h3 class="gs-h3 pv-org">Surfaces</h3>
     <div class="pv-surfaces" id="surfaces"></div>
+    <p class="pv-note">Sections on paper are spaced with margins, which collapse: two in a row share one gap, as between the paper blocks on this page. Bands (tint, ink, accent) pad inside their colour instead (DESIGN.md §5.1).</p>
   </div>
 </section>
 
@@ -314,8 +323,12 @@
         <a class="gs-cta-link" href="#visit">Plan your visit</a>
         <a class="gs-cta-link gs-cta-link--more" href="#past">All past exhibitions</a>
       </div>
+      <div class="pv-state">
+        <h3 class="gs-h4">Skip link, focused</h3>
+        <p class="pv-skip"><span class="gs-skip-link" aria-hidden="true">Skip to content</span></p>
+      </div>
     </div>
-    <p class="pv-note">Only a link that leads to more of the same list gets the arrow. The error message names the fix; the field border and an icon mark it too, so colour is never the only signal. While a form submits, its button says so.</p>
+    <p class="pv-note">Only a link that leads to more of the same list gets the arrow. The error message names the fix; the field border and an icon mark it too, so colour is never the only signal. While a form submits, its button says so. The skip link is the first stop for keyboard users and stays hidden until focused: press Tab once at the top of this page to see the real one.</p>
   </div>
 </section>
 
@@ -325,6 +338,42 @@
     <div class="gs-section-head"><h2 class="gs-h2" id="shop-title">Limited editions</h2></div>
     <div class="gs-grid gs-grid--artworks" id="portfolios"></div>
     <p class="pv-note">Portfolio navigation: the one listing on the Shop landing page. Portfolio names and counts from the live store; images are placeholders.</p>
+  </div>
+</section>
+
+<!-- ============ FEATURE PANEL (index, page.shop: sections/gs-feature, gs-shop-feature) ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="feature-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="feature-title">Feature panel</h2></div>
+    <div class="pv-stack">
+      <div class="gs-feature gs-surface-tint">
+        <div class="gs-media gs-media--artwork gs-shape-md" id="feature-artwork"></div>
+        <div class="gs-feature__text">
+          <p class="gs-eyebrow">2026 Fall Portfolio</p>
+          <h3 class="gs-h2">Shop Limited Editions</h3>
+          <div class="gs-actions">
+            <a class="gs-button" href="#shop">View Shop</a>
+            <a class="gs-cta-link" href="#p">See the 2026 Fall Portfolio</a>
+          </div>
+        </div>
+      </div>
+      <div class="gs-feature gs-surface-accent">
+        <div class="gs-media gs-media--photo gs-shape-md" id="feature-photo"></div>
+        <div class="gs-feature__text">
+          <p class="gs-eyebrow">Smith Foundation</p>
+          <h3 class="gs-h2">Donations</h3>
+          <div class="gs-prose"><p>You can help ensure that children and youth continue to experience the joy, confidence, and curiosity that come from making and encountering art at the Gordon Smith Gallery and through Artists for Kids.</p></div>
+          <a class="gs-button" href="#donate">Donate Today</a>
+        </div>
+      </div>
+      <div class="gs-feature gs-surface-ink gs-feature--no-media">
+        <div class="gs-feature__text">
+          <h3 class="gs-h2">Smith Foundation Scholarships</h3>
+          <div class="gs-prose"><p>The Gordon and Marion Smith Foundation is pleased to offer three scholarships to graduating students from North Vancouver, West Vancouver and Vancouver, who have completed or are enrolled in Grade 12.</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="pv-note">One box in a paper section, one per section in the theme. Staff pick its surface: tint (the default), brand colour at most once per page, or ink. The first is the home page&rsquo;s Shop feature with its default wording: it always features the newest portfolio, with the portfolio&rsquo;s image or, as here, its first work whole on the mat. The other two use the wording of two cards on The Smith Foundation page. Without an image the text takes the full width; with nothing to show, the section renders nothing. Images are placeholders.</p>
   </div>
 </section>
 
@@ -347,6 +396,117 @@
   </div>
 </section>
 
+<!-- ============ ARTWORK DETAIL (product: sections/gs-artwork-detail, snippets/gs-artwork-label) ============ -->
+<div class="gs-container--wide gs-container">
+  <p class="pv-note pv-note--before">Artwork detail, the product page. Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store: its label, edition, size, price, three colour variants, the first paragraph of its description and its linked frame. Images are placeholders. The label is the page&rsquo;s H1 in the theme. The select appears only when a work has more than one variant. The frame offer sits in a panel on tint. No limited edition has a disclosure yet, so the one below shows the default label with stand-in text.</p>
+  <div class="gs-artwork">
+    <ul class="gs-artwork__media" id="artwork-media"></ul>
+    <div class="gs-artwork__info">
+      <h2 class="gs-artwork-label"><span class="gs-artwork-label__artist">Marlene Yuen</span> <cite>Short Gumboots</cite>, 2026</h2>
+      <div class="gs-card__meta">
+        <p class="gs-meta">One-colour serigraph</p>
+        <p class="gs-meta">3 Varied Editions of 10 each (Light, Medium, Dark)</p>
+        <p class="gs-meta">14.75" x 14.75"</p>
+      </div>
+      <p class="gs-price">$138</p>
+      <form class="gs-form" onsubmit="return false">
+        <div class="gs-field">
+          <label class="gs-field__label" for="pv-variant">Option</label>
+          <span class="gs-select-wrap">
+            <select class="gs-input gs-select" id="pv-variant" name="id">
+              <option value="light" selected>Light, $138</option>
+              <option value="medium">Medium, $138</option>
+              <option value="dark">Dark, $138</option>
+            </select>
+          </span>
+        </div>
+        <button class="gs-button" type="submit">Add to cart</button>
+      </form>
+      <div class="gs-prose gs-caption"><p><em>The first edition is archived in the Artists For Kids and the Gordon Smith Gallery Permanent Collection</em></p></div>
+      <div class="gs-prose"><p>Marlene Yuen&rsquo;s work explores place through history, memory, and community. Drawing from archival research and storytelling, she examines how places become sites of cultural exchange and collective belonging. Her serigraph, <em>Short Gumboots</em> (2026) originates from her installation, <em>Peace Together</em> (2024), which pays homage to the historic Hong Wo General Store in Steveston Village, founded in 1895 by Ling Lam.</p></div>
+      <section class="gs-panel gs-surface-tint" aria-labelledby="pv-frame">
+        <h3 class="gs-h4" id="pv-frame">Add a frame</h3>
+        <div class="gs-prose"><p>Museum-quality framing and service includes UV-protective glass and acid-free matting, keeping your fine art print vibrant and pristine for decades.<br>Framing by Artrageous Pictures and Framing North Shore</p></div>
+        <p><a class="gs-link" href="#x">Marlene Yuen Short Gumboots FRAME</a>, $258</p>
+        <form class="gs-form" onsubmit="return false">
+          <button class="gs-button gs-button--secondary" type="submit">Add frame to cart</button>
+        </form>
+      </section>
+      <details class="gs-disclosure">
+        <summary>Disclosure</summary>
+        <div class="gs-disclosure__body gs-prose"><p>Text from the product&rsquo;s disclosure entry goes here.</p></div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CART (cart: sections/gs-cart) ============ -->
+<section aria-labelledby="cart-title">
+  <div class="gs-container gs-lead-in">
+    <header class="gs-page-head">
+      <h2 class="gs-h1" id="cart-title">Cart</h2>
+    </header>
+  </div>
+  <div class="gs-section gs-surface-paper">
+    <div class="gs-container">
+      <form action="#cart" method="post" id="pv-cart" onsubmit="return false">
+        <ul class="gs-cart__items">
+          <li class="gs-cart__item">
+            <div class="gs-media gs-media--artwork gs-shape-sm" id="cart-thumb-1"></div>
+            <div class="gs-cart__details">
+              <h3 class="gs-cart__name">
+                <a class="gs-link" href="#x"><span class="gs-cart__label"><span class="gs-artwork-label__artist">Marlene Yuen</span> <cite>Short Gumboots</cite>, 2026</span></a>
+              </h3>
+              <p class="gs-meta">Light</p>
+              <p class="gs-artwork-tile__price">$138</p>
+            </div>
+            <div class="gs-cart__controls">
+              <div class="gs-field">
+                <label class="gs-field__label" for="pv-cart-qty-1">Quantity</label>
+                <input class="gs-input" id="pv-cart-qty-1" type="number" name="updates[]" value="1" min="0" inputmode="numeric">
+              </div>
+              <a class="gs-cta-link" href="#x">Remove<span class="gs-visually-hidden">: Marlene Yuen, Short Gumboots, 2026</span></a>
+            </div>
+          </li>
+          <li class="gs-cart__item">
+            <div class="gs-media gs-media--artwork gs-shape-sm" id="cart-thumb-2"></div>
+            <div class="gs-cart__details">
+              <h3 class="gs-cart__name">
+                <a class="gs-link" href="#x"><span class="gs-cart__label">Marlene Yuen Short Gumboots FRAME</span></a>
+              </h3>
+              <p class="gs-artwork-tile__price">$258</p>
+            </div>
+            <div class="gs-cart__controls">
+              <div class="gs-field">
+                <label class="gs-field__label" for="pv-cart-qty-2">Quantity</label>
+                <input class="gs-input" id="pv-cart-qty-2" type="number" name="updates[]" value="1" min="0" inputmode="numeric">
+              </div>
+              <a class="gs-cta-link" href="#x">Remove<span class="gs-visually-hidden">: Marlene Yuen Short Gumboots FRAME</span></a>
+            </div>
+          </li>
+        </ul>
+        <div class="gs-cart__foot">
+          <div>
+            <div class="gs-prose">
+              <ul><li>All sales are final</li><li>Shipping costs confirmed at checkout.</li></ul>
+              <p>By completing your purchase, you agree to our <a href="#x" title="Terms of Service and Privacy Policy">Terms of Service and Privacy Policy.</a></p>
+            </div>
+          </div>
+          <div class="gs-cart__summary">
+            <p class="gs-cart__subtotal">Subtotal: $396</p>
+            <p class="gs-meta">Taxes and shipping are calculated at checkout.</p>
+            <div class="gs-actions">
+              <button class="gs-button gs-button--secondary" type="submit" name="update">Update cart</button>
+              <button class="gs-button" type="submit" name="checkout">Check out</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <p class="pv-note">The print above, in its Light variant, with its frame. The frame has no label fields, so its product title shows instead, as for any product whose fields aren&rsquo;t filled yet. The sales policy is the cart&rsquo;s setting; three of its seven lines show here. The page header is a lead-in: it sets its own gap to the section after it (DESIGN.md §5.1). A plain form, so the cart works without JavaScript.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ ARTWORK HERO ============ -->
 <section class="gs-section gs-surface-paper" aria-labelledby="ahero-title">
   <div class="gs-hero gs-hero--artwork">
@@ -362,6 +522,52 @@
     </div>
   </div>
   <div class="gs-container"><p class="pv-note">Artwork hero: the key image is an artwork, so it shows whole and uncovered, with the title box beside it from 990 px and below it on phones. Placeholder image.</p></div>
+</section>
+
+<!-- ============ EXHIBITION DETAILS (metaobject/exhibition: sections/gs-exhibition-details) ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="details-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="details-title">About the exhibition</h2></div>
+    <dl class="gs-details">
+      <div class="gs-details__item">
+        <dt>Curator</dt>
+        <dd>Curated by Amelia Epp with support from the Artists For Kids team</dd>
+      </div>
+      <div class="gs-details__item">
+        <dt>Where</dt>
+        <dd>Main gallery and Mezzanine Gallery</dd>
+      </div>
+      <div class="gs-details__item">
+        <dt>Opening reception</dt>
+        <dd>
+          <p class="gs-status__dates"><time datetime="2026-09-25T18:00:00-07:00">Friday, September 25, 2026, 6 to 8 PM</time></p>
+          <p>Welcome ceremony at 7 PM</p>
+        </dd>
+      </div>
+      <div class="gs-details__item gs-details__item--wide">
+        <dt>Artists</dt>
+        <dd>
+          <ul class="gs-names">
+            <li>Kenojuak Ashevak</li><li>Sara-Jeanne Bourget</li><li>Victor Cicansky</li><li>Douglas Coupland</li><li>Christos Dikeakos</li><li>Stan Douglas</li><li>Sylvan Hamburger</li><li>Sesemiya</li><li>Roz Marshall</li><li>Michelle Sound</li><li>Brendan Tang</li><li>Marlene Yuen</li><li>Gu Xiong</li><li>Robert Young</li><li>T&amp;T Collective (Tyler Brett and Tony Romano)</li><li>Vancouver School Collective</li><li>Samuel Roy-Bois</li><li>Jack Shadbolt</li><li>Gordon Smith</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="gs-details__item gs-details__item--wide">
+        <dt>Events</dt>
+        <dd>
+          <ul class="gs-events">
+            <li class="gs-event">
+              <div class="gs-event__text">
+                <p class="gs-h4">Curatorial Tour</p>
+                <p class="gs-status__dates"><time datetime="2026-10-26T15:30:00-07:00">Monday, October 26, 2026, 3:30 to 4:30 PM</time></p>
+              </div>
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+    <p class="pv-note">An exhibition&rsquo;s facts, from <cite>Collect, Assemble, Gather</cite> on the live On Now page: curator credit, venue, opening reception, its 19 artists in the page&rsquo;s order, and the curatorial tour as a compact event. The venue and the reception note use the wording of the content-model proposal. The theme gives this list no visible heading; screen readers hear it as &ldquo;About the exhibition&rdquo;. With more than six names a list takes the full width and runs in columns. The reception shows until it has passed, and an empty field shows nothing.</p>
+  </div>
 </section>
 
 <!-- ============ GALLERY ============ -->
@@ -389,6 +595,86 @@
       <p>To learn more about FNESC and the First Peoples Principles of Learning, visit <a class="gs-link--external" href="https://www.fnesc.ca/">www.fnesc.ca<span class="gs-visually-hidden"> (external site)</span></a>.<span style="color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;"> This sentence carries the inline Poppins, grey and 13.5pt styling pasted into the live page; the prose styles neutralise it.</span></p>
     </div>
   </div>
+</section>
+
+<!-- ============ CARD GROUPS (page, page.programme: sections/gs-card-groups, snippets/gs-card) ============ -->
+<div class="gs-section gs-surface-paper">
+  <div class="gs-container">
+    <section class="gs-card-group" aria-labelledby="give-title">
+      <div class="gs-section-head"><h2 class="gs-h2" id="give-title">Ways To Give</h2></div>
+      <ul class="gs-grid gs-grid--cards">
+        <li><article class="gs-card gs-card--text">
+          <h3 class="gs-card__title">Online Form</h3>
+          <p class="gs-card__text">Donate directly through our website with the secure Blackbaud Etapestry form above. Your submission will be processed when you finalize your secure payment information.</p>
+        </article></li>
+        <li><article class="gs-card gs-card--text">
+          <h3 class="gs-card__title">Email</h3>
+          <p class="gs-card__text">To make a gift or for more information about the various giving options, email us as at admin@smithfoundation.ca</p>
+        </article></li>
+        <li><article class="gs-card gs-card--text">
+          <h3 class="gs-card__title">Mail</h3>
+          <p class="gs-card__text">Address:<br>The Gordon and Marion Smith Foundation for Young Artists<br>2121 Lonsdale Avenue, North Vancouver<br>British Columbia, Canada<br>V7M 2K6</p>
+        </article></li>
+        <li><article class="gs-card gs-card--text">
+          <h3 class="gs-card__title">Phone</h3>
+          <p class="gs-card__text">Contact us by telephone at 604-998-8563</p>
+        </article></li>
+      </ul>
+    </section>
+    <section class="gs-card-group" aria-labelledby="afk-cards-title">
+      <div class="gs-section-head"><h2 class="gs-h2" id="afk-cards-title">Artists for Kids</h2></div>
+      <ul class="gs-grid gs-grid--cards" id="afk-cards"></ul>
+    </section>
+    <p class="pv-note">Card groups, shown after a page&rsquo;s text. Staff don&rsquo;t choose a layout: a card with an image is an image card, one without is a text card under a rule. Ways To Give is the Donate page&rsquo;s group, word for word; its cards have no images or links. The second group is the six programmes on the Artists for Kids page, each linking to the Artists for Kids site. With no link label of its own, the whole card is the link, and its title carries the external arrow. On the store that group has no heading; the preview adds one so the headings stay in order. Images are placeholders.</p>
+  </div>
+</div>
+
+<!-- ============ EVENTS (page, page.programme: sections/gs-events, snippets/gs-event, gs-time-range) ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="events-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="events-title">Upcoming events</h2></div>
+    <ul class="gs-events" id="events"></ul>
+    <p class="pv-note">Upcoming events from four programme pages on the live store, in date order: title, time in the site&rsquo;s one format, place, a sentence, tickets. A blank place means the gallery; Explore + Create names its floor. With an image, the image sits beside the text from 750 px. No event on the store has a ticket link yet; La Modestine&rsquo;s shows the default label, as it will once tickets are on sale. An event drops off every list once it has ended. Images are placeholders.</p>
+  </div>
+</section>
+
+<!-- ============ SEARCH, RESULTS, PAGINATION (search: sections/gs-search, snippets/gs-pagination) ============ -->
+<section aria-labelledby="search-title">
+  <div class="gs-container gs-lead-in">
+    <header class="gs-page-head">
+      <h2 class="gs-h1" id="search-title">Search</h2>
+      <form class="gs-form-row" action="#search" method="get" role="search" onsubmit="return false">
+        <div class="gs-field">
+          <label class="gs-field__label" for="pv-search">Search the site</label>
+          <input class="gs-input" id="pv-search" type="search" name="q" value="smith" autocomplete="off">
+        </div>
+        <button class="gs-button" type="submit">Search</button>
+      </form>
+    </header>
+  </div>
+  <section class="gs-section gs-surface-paper" aria-labelledby="pv-search-summary">
+    <div class="gs-container">
+      <p class="gs-deck" id="pv-search-summary" role="status">39 results for &ldquo;smith&rdquo;</p>
+      <ul class="gs-results">
+        <li>
+          <h3 class="gs-h4"><a class="gs-link" href="#x">The Smith Foundation</a></h3>
+          <p class="gs-meta">The Gordon and Marion Smith Foundation for Young Artists The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from...</p>
+        </li>
+        <li>
+          <h3 class="gs-h4"><a class="gs-link" href="#x">Music At The Smith</a></h3>
+          <p class="gs-meta">Music At The Smith is a seasonal concert series dedicated to showcasing highly accomplished musical ensembles across a spectrum of genres, including jazz, folk, indie, classical, and world music. Set...</p>
+        </li>
+      </ul>
+      <nav aria-label="Pages">
+        <ul class="gs-pagination">
+          <li><span aria-current="page">1</span></li>
+          <li><a href="#x">2</a></li>
+          <li><a href="#x">Next</a></li>
+        </ul>
+      </nav>
+      <p class="pv-note">The live store&rsquo;s search for &ldquo;smith&rdquo; finds 39 results: two pages at 24 a page, so this is page one. Pages and articles list with their title and first 30 words, as here; limited editions in the results show as artwork tiles above the list, like the portfolio. Pagination is real links with the current page marked; a list of one page shows none.</p>
+    </div>
+  </section>
 </section>
 
 <!-- ============ NEWSLETTER ============ -->
@@ -556,6 +842,52 @@
     </article>`; }).join("");
 
   document.getElementById("artwork-hero-media").innerHTML = `<img src="${svg(700, 900, "<rect width='700' height='900' fill='#efe9df'/><rect x='80' y='80' width='540' height='740' fill='#2f4858'/><circle cx='350' cy='360' r='150' fill='#f2e3bc'/><rect x='80' y='640' width='540' height='180' fill='#c8553d'/>")}" alt="Placeholder for an artwork">`;
+
+  // Feature panels: the Shop feature's first work on the mat, and a photo.
+  document.getElementById("feature-artwork").innerHTML = `<img src="${svg(...art[1])}" alt="Placeholder for a work in the 2026 Fall Portfolio">`;
+  document.getElementById("feature-photo").innerHTML = `<img src="${photo(...tones[1])}" alt="Placeholder for a photo">`;
+
+  // Artwork detail: every image of the work, whole on the mat. The cart repeats the first as a thumbnail.
+  const frame = svg(600, 600, "<rect width='600' height='600' fill='#f4f1ea'/><rect x='90' y='90' width='420' height='420' fill='none' stroke='#231f20' stroke-width='36'/>");
+  document.getElementById("artwork-media").innerHTML = [art[2], art[0]].map(([w, h, b], i) => `
+    <li><div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(w, h, b)}" alt="Placeholder for ${i ? "a second view of " : ""}Short Gumboots by Marlene Yuen"></div></li>`).join("");
+  document.getElementById("cart-thumb-1").innerHTML = `<img src="${svg(...art[2])}" alt="">`;
+  document.getElementById("cart-thumb-2").innerHTML = `<img src="${frame}" alt="">`;
+
+  // Artists for Kids programmes (live store, Artists for Kids page): each card links off-site, with no label of its own.
+  const afk = [
+    ["After School Art Classes", "https://artistsforkids.sd44.ca/learn/after-school-art/"],
+    ["Artist In Residence Enrichment Workshops", "https://artistsforkids.sd44.ca/learn/artists-in-residence/"],
+    ["Spring and Summer Day Camps", "https://artistsforkids.sd44.ca/learn/spring--summer-day-camps/"],
+    ["Gallery Programs", "https://artistsforkids.sd44.ca/learn/gallery-program/"],
+    ["Paradise Valley Summer School of Visual Art Camp", "https://artistsforkids.sd44.ca/learn/paradise-valley-summer-camps/"],
+    ["Learning Kits and Outreach", "https://artistsforkids.sd44.ca/learn/learning-kits/"],
+  ];
+  document.getElementById("afk-cards").innerHTML = afk.map(([t, url], i) => `
+    <li><article class="gs-card">
+      <div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...tones[i % 3])}" alt=""></div>
+      <h3 class="gs-card__title"><a class="gs-link--external" href="${url}">${t}<span class="gs-visually-hidden"> (external site)</span></a></h3>
+    </article></li>`).join("");
+
+  // Upcoming events (live store programme pages): title, start, the time as gs-time-range writes it,
+  // place (blank means the gallery), summary, image tones, and whether to show a ticket link.
+  const events = [
+    ["Explore + Create", "2026-09-26T13:00:00-07:00", "Saturday, September 26, 2026, 1 to 3 PM", "Main floor", "Join us for an activity inspired by Brendan Tang's work, Manga Ormolu 2.0-R.", null, false],
+    ["Art In Good Company", "2026-10-08T14:30:00-07:00", "Thursday, October 8, 2026, 2:30 to 4 PM", "", "", tones[0], false],
+    ["La Modestine", "2026-11-07T13:00:00-08:00", "Saturday, November 7, 2026, 1 to 3 PM", "", "La Modestine is a chamber music ensemble formed in 2016 by west coast musicians with a love of playing music of the 17th and 18th centuries together.", tones[1], true],
+    ["Art Education, For Life: Reflections from Omer Arbel", "2026-11-26T18:30:00-08:00", "Thursday, November 26, 2026, 6:30 PM", "", "Omer Arbel is the co-founder and creative director of Bocci, and the founder of Omer Arbel Office (OAO).", tones[2], false],
+  ];
+  document.getElementById("events").innerHTML = events.map(([t, start, when, where, summary, img, tickets]) => `
+    <li class="gs-event${img ? " gs-event--media" : ""}">
+      ${img ? `<div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...img)}" alt=""></div>` : ""}
+      <div class="gs-event__text">
+        <h3 class="gs-h3">${t}</h3>
+        <p class="gs-status__dates"><time datetime="${start}">${when}</time></p>
+        ${where ? `<p class="gs-meta">${where}</p>` : ""}
+        ${summary ? `<p>${summary}</p>` : ""}
+        ${tickets ? `<a class="gs-cta-link" href="#tickets">Tickets</a>` : ""}
+      </div>
+    </li>`).join("");
 
   document.getElementById("install").innerHTML = tones.map((t, i) => `
     <li><figure class="gs-figure">
