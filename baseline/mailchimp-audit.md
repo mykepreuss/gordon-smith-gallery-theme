@@ -21,7 +21,7 @@ Do not build on the ScriptTag script (plan: "Do not build a new signup around Sc
 
 ## Still to verify
 
-- [x] `theme/config/settings_data.json`: app embeds present and enabled. Result: none (checked 2026-09-25 in the baseline pull).
+- [x] `baseline/theme/config/settings_data.json` (then `theme/`): app embeds present and enabled. Result: none (checked 2026-09-25 in the baseline pull).
 - [ ] Mailchimp for Shopify app settings: customer sync on, audience, consent mapping, double opt-in.
 - [ ] Whether any Mailchimp pop-up form is active through the ScriptTag today (if yes, it disappears on 2027-03-01).
 - [ ] Test signup to an approved test address reaches the audience with correct consent (plan verification rules).
