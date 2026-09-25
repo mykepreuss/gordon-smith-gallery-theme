@@ -1,0 +1,511 @@
+{
+ "captured_utc": "2026-09-25T19:24:58Z",
+ "pages": [
+  {
+   "page": "home",
+   "path": "/",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/",
+   "secs": 23.4
+  },
+  {
+   "page": "exhibitions-overview",
+   "path": "/pages/exhibitions-1",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/exhibitions-1",
+   "secs": 4.5
+  },
+  {
+   "page": "on-now",
+   "path": "/pages/on-now",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/on-now",
+   "secs": 4.5
+  },
+  {
+   "page": "past",
+   "path": "/pages/past-exhibitions",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/past-exhibitions",
+   "secs": 4.7
+  },
+  {
+   "page": "exhibition",
+   "path": "/pages/exhibition-one-hundred-artists-deep",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/exhibition-one-hundred-artists-deep",
+   "secs": 4.8
+  },
+  {
+   "page": "shop",
+   "path": "/pages/shop",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/shop",
+   "secs": 6.4
+  },
+  {
+   "page": "collections-list",
+   "path": "/collections",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/collections",
+   "secs": 4.4
+  },
+  {
+   "page": "portfolio",
+   "path": "/collections/2026-fall-portfolio",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/collections/2026-fall-portfolio",
+   "secs": 4.5
+  },
+  {
+   "page": "product",
+   "path": "/products/gordon-smith-pender-harbour-2006",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/products/gordon-smith-pender-harbour-2006",
+   "secs": 5.8
+  },
+  {
+   "page": "about",
+   "path": "/pages/about",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/about",
+   "secs": 7.2
+  },
+  {
+   "page": "artists-for-kids",
+   "path": "/pages/artists-for-kids",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/artists-for-kids",
+   "secs": 5.9
+  },
+  {
+   "page": "programs",
+   "path": "/pages/public-programs-1",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/public-programs-1",
+   "secs": 4.4
+  },
+  {
+   "page": "smith-foundation",
+   "path": "/pages/the-smith-foundation",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/the-smith-foundation",
+   "secs": 5.1
+  },
+  {
+   "page": "contact",
+   "path": "/pages/contact",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/contact",
+   "secs": 4.8
+  },
+  {
+   "page": "home",
+   "path": "/",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/",
+   "secs": 21.3
+  },
+  {
+   "page": "exhibitions-overview",
+   "path": "/pages/exhibitions-1",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/exhibitions-1",
+   "secs": 4.5
+  },
+  {
+   "page": "on-now",
+   "path": "/pages/on-now",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/on-now",
+   "secs": 4.5
+  },
+  {
+   "page": "upcoming",
+   "path": "/pages/upcoming-exhibitions",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/upcoming-exhibitions",
+   "secs": 4.6
+  },
+  {
+   "page": "past",
+   "path": "/pages/past-exhibitions",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/past-exhibitions",
+   "secs": 4.6
+  },
+  {
+   "page": "exhibition",
+   "path": "/pages/exhibition-one-hundred-artists-deep",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/exhibition-one-hundred-artists-deep",
+   "secs": 4.4
+  },
+  {
+   "page": "shop",
+   "path": "/pages/shop",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/shop",
+   "secs": 4.5
+  },
+  {
+   "page": "collections-list",
+   "path": "/collections",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/collections",
+   "secs": 4.2
+  },
+  {
+   "page": "portfolio",
+   "path": "/collections/2026-fall-portfolio",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/collections/2026-fall-portfolio",
+   "secs": 5.0
+  },
+  {
+   "page": "product",
+   "path": "/products/gordon-smith-pender-harbour-2006",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/products/gordon-smith-pender-harbour-2006",
+   "secs": 5.7
+  },
+  {
+   "page": "about",
+   "path": "/pages/about",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/about",
+   "secs": 4.5
+  },
+  {
+   "page": "artists-for-kids",
+   "path": "/pages/artists-for-kids",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/artists-for-kids",
+   "secs": 4.9
+  },
+  {
+   "page": "smith-foundation",
+   "path": "/pages/the-smith-foundation",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/the-smith-foundation",
+   "secs": 4.5
+  },
+  {
+   "page": "contact",
+   "path": "/pages/contact",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/contact",
+   "secs": 4.2
+  },
+  {
+   "page": "home",
+   "path": "/",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/",
+   "secs": 22.9
+  },
+  {
+   "page": "on-now",
+   "path": "/pages/on-now",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/on-now",
+   "secs": 4.4
+  },
+  {
+   "page": "upcoming",
+   "path": "/pages/upcoming-exhibitions",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/upcoming-exhibitions",
+   "secs": 5.3
+  },
+  {
+   "page": "shop",
+   "path": "/pages/shop",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/shop",
+   "secs": 4.8
+  },
+  {
+   "page": "collections-list",
+   "path": "/collections",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/collections",
+   "secs": 4.2
+  },
+  {
+   "page": "portfolio",
+   "path": "/collections/2026-fall-portfolio",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/collections/2026-fall-portfolio",
+   "secs": 4.2
+  },
+  {
+   "page": "product",
+   "path": "/products/gordon-smith-pender-harbour-2006",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/products/gordon-smith-pender-harbour-2006",
+   "secs": 4.6
+  },
+  {
+   "page": "about",
+   "path": "/pages/about",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/about",
+   "secs": 4.5
+  },
+  {
+   "page": "artists-for-kids",
+   "path": "/pages/artists-for-kids",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/artists-for-kids",
+   "secs": 4.5
+  },
+  {
+   "page": "programs",
+   "path": "/pages/public-programs-1",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/public-programs-1",
+   "secs": 4.0
+  },
+  {
+   "page": "smith-foundation",
+   "path": "/pages/the-smith-foundation",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/the-smith-foundation",
+   "secs": 4.5
+  },
+  {
+   "page": "contact",
+   "path": "/pages/contact",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/contact",
+   "secs": 4.1
+  },
+  {
+   "page": "upcoming",
+   "path": "/pages/upcoming-exhibitions",
+   "width": 1440,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/upcoming-exhibitions",
+   "note": "retried with wait_until=load"
+  },
+  {
+   "page": "programs",
+   "path": "/pages/public-programs-1",
+   "width": 768,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/public-programs-1",
+   "note": "retried with wait_until=load"
+  },
+  {
+   "page": "exhibitions-overview",
+   "path": "/pages/exhibitions-1",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/exhibitions-1",
+   "note": "retried with wait_until=load"
+  },
+  {
+   "page": "past",
+   "path": "/pages/past-exhibitions",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/past-exhibitions",
+   "note": "retried with wait_until=load"
+  },
+  {
+   "page": "exhibition",
+   "path": "/pages/exhibition-one-hundred-artists-deep",
+   "width": 390,
+   "status": 200,
+   "final_url": "https://gordonsmithgallery.com/pages/exhibition-one-hundred-artists-deep",
+   "note": "retried with wait_until=load"
+  }
+ ],
+ "navigation": {
+  "desktop_items": [
+   {
+    "label": "About",
+    "element": "summary (opens dropdown, not a link)",
+    "href": null,
+    "children": [
+     [
+      "About Us",
+      "/pages/about-us"
+     ],
+     [
+      "Contact",
+      "/pages/contact"
+     ],
+     [
+      "Volunteer",
+      "/pages/volunteer"
+     ],
+     [
+      "Permanent Collection",
+      "/pages/permanent-collection"
+     ],
+     [
+      "Plan Your Visit",
+      "/pages/plan-your-visit"
+     ]
+    ]
+   },
+   {
+    "label": "Exhibitions",
+    "element": "summary (opens dropdown, not a link)",
+    "href": null,
+    "children": [
+     [
+      "On Now",
+      "/pages/on-now"
+     ],
+     [
+      "Past Exhibitions",
+      "/pages/past-exhibitions"
+     ]
+    ]
+   },
+   {
+    "label": "Artists For Kids",
+    "element": "link",
+    "href": "/pages/artists-for-kids",
+    "children": [
+     [
+      "Artists For Kids",
+      "/pages/artists-for-kids"
+     ]
+    ]
+   },
+   {
+    "label": "Programs",
+    "element": "summary (opens dropdown, not a link)",
+    "href": null,
+    "children": [
+     [
+      "Public Programs",
+      "/pages/public-programs-1"
+     ],
+     [
+      "Speaker Series",
+      "/pages/speaker-series"
+     ],
+     [
+      "Music At The Smith",
+      "/pages/music-at-the-smith"
+     ],
+     [
+      "Explore + Create",
+      "/pages/explore-create"
+     ],
+     [
+      "Art In Good Company",
+      "/pages/art-in-good-company"
+     ]
+    ]
+   },
+   {
+    "label": "Smith Foundation",
+    "element": "summary (opens dropdown, not a link)",
+    "href": null,
+    "children": [
+     [
+      "Smith Foundation",
+      "/pages/the-smith-foundation"
+     ],
+     [
+      "Gordon and Marion",
+      "/pages/gordon-and-marion"
+     ],
+     [
+      "Donate",
+      "/pages/donate"
+     ]
+    ]
+   },
+   {
+    "label": "Shop",
+    "element": "summary (opens dropdown, not a link)",
+    "href": null,
+    "children": [
+     [
+      "Our Story",
+      "/pages/our-story"
+     ],
+     [
+      "2026 Fall Portfolio",
+      "/collections/2026-fall-portfolio"
+     ],
+     [
+      "2026 Spring Portfolio",
+      "/collections/2026-spring-portfolio"
+     ],
+     [
+      "2025 Fall Portfolio",
+      "https://ed35ee-ea.myshopify.com/collections/2025-fall-portfolio"
+     ],
+     [
+      "2025 Spring Portfolio",
+      "/collections/2025-spring-portfolio"
+     ],
+     [
+      "2024 Fall Portfolio",
+      "/collections/2024-fall-portfolio"
+     ],
+     [
+      "Artists",
+      "/pages/artists"
+     ]
+    ]
+   }
+  ],
+  "hover_opens_dropdowns": 0,
+  "computed_fonts": {
+   "body": "Assistant, sans-serif",
+   "h1": "Assistant, sans-serif",
+   "h2": "Assistant, sans-serif",
+   "nav": "Assistant, sans-serif",
+   "button": "Assistant, sans-serif"
+  }
+ }
+}
