@@ -6,13 +6,14 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 
 | # | Milestone (plan step) | Status | Evidence |
 | --- | --- | --- | --- |
-| 0 | Design specification (`design-system/`, v0.4.1) | Done, pending gallery approval of the structural parts | `design-system/DESIGN.md`, `design-system/preview.html` |
+| 0 | Design specification (`design-system/`, v0.4.2) | Done; structural parts approved 2026-09-25 (P-15) | `design-system/DESIGN.md`, `design-system/preview.html` |
 | 1 | Source of truth: Git repo, untouched live-theme baseline, records | Done 2026-09-25 | `BASELINE.md`, first theme commit |
 | 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | Done 2026-09-25, except Mailchimp app settings (need access) | `baseline/` |
-| 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Content model approved 2026-09-25 (all three parts); menu map, page types, editing model and contact placement still to approve | `proposals/`, shared doc, `DECISIONS.md` P-10 to P-12 |
-| 2 | Implementation on a feature branch, after structural approval | Not started (gated on 1b) | |
+| 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Approved 2026-09-25: content model parts 1 to 3, menu map and labels, page types, editing model, contact and newsletter placement. Content model parts 4 to 6 approved the same day (P-16) | `proposals/`, shared doc, `DECISIONS.md` P-10 to P-16 |
+| 1c | Content inventory of the current theme, for the new build | Done 2026-09-25 | `proposals/content-migration.md` |
+| 2 | Build the new theme on a feature branch (P-13), from Shopify's Skeleton theme (P-14) | Not started; unblocked. Moving to Claude Code on Michael's Mac (`CLAUDE.md`) | |
 | 3 | Pull request with code, register, proposed store changes, Theme Check | Not started | |
-| 4 | Unpublished review theme (duplicate of baseline), CLI pushes to its ID only | Not started | |
+| 4 | Unpublished review theme (the new theme uploaded unpublished), CLI pushes to its ID only | Not started | |
 | 5 | Verification: 1440 / 768 / 390, touch, keyboard, staff editing on two pages of one template, newsletter test | Not started | |
 | 6 | Release approval, publish, apply approved store changes, post-release check | Not started | |
 
@@ -24,10 +25,8 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 
 | Item | From | Blocks |
 | --- | --- | --- |
-| Approval of the menu map, page hierarchy, editor model and access placement | Gallery | Milestone 2 |
-| Menu labels, signup wording and destination, consent wording, contact emails, phone, hours, social URLs | Gallery | NAV-02, ACCESS-01 to ACCESS-04 |
+| Signup wording and destination, consent wording, contact emails, phone, hours, social URLs | Gallery | ACCESS-01 to ACCESS-04 |
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
-| Artists for Kids external site address and links (Q5) | Gallery | NAV-04 |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
 
 ## Limitation log (REUSE-04)

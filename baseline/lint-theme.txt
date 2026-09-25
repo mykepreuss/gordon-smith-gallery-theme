@@ -24,6 +24,8 @@ ERROR   templates/page.exhibitions-overview.json: not an approved template. Move
 ERROR   templates/page.explore-create.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
 ERROR   templates/page.gordon-and-marion.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
 ERROR   templates/page.music-at-the-smith.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.past-exhibitions.json: must start with hero or pageHead, starts with 'multicolumn'
+ERROR   templates/page.past-exhibitions.json: missing required pageHead section
 ERROR   templates/page.past-exhibitions.json: missing required switcher section
 ERROR   templates/page.permanent-collection.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
 ERROR   templates/page.plan-your-visit.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
@@ -238,4 +240,4 @@ WARNING templates/product.json: section 'disclosures' has type 'disclosures', wh
 WARNING templates/product.json: section 'featured_product_WwnK78' has type 'featured-product', which isn't in any sectionGroup
 WARNING templates/product.json: section 'blocks_7PUzNd' has type '_blocks', which isn't in any sectionGroup
 
-39 error(s), 200 warning(s)
+41 error(s), 200 warning(s)
