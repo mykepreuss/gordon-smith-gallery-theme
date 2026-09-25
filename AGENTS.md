@@ -14,7 +14,7 @@ Before any write to Shopify, recheck: store domain, live theme ID and role, the 
 
 ## Change surfaces (keep them separate)
 
-1. **Git** owns theme source (`theme/`), the design system (`design-system/`) and project records.
+1. **Git** owns theme source (`theme/`), the design system (`design-system/`) and project records. The site gets a new theme (P-13): once the build branch lands, `theme/` holds the new theme and `baseline/theme/` the untouched Colorblock theme, kept for reference and drift checks. Don't copy code or settings from the baseline; move content as `proposals/content-migration.md` sets out.
 2. **The unpublished review theme** owns preview-only code and settings.
 3. **Shopify Admin resources** (menus, pages, page fields, metaobjects, products, collections, Files, redirects) are shared by every theme. A preview theme does not sandbox them. Propose changes to them as files in Git (`proposals/`), and apply them only at an approved preview or release gate.
 4. **Installed apps** (Mailchimp) have their own settings and per-theme embeds.
@@ -23,7 +23,7 @@ Before any write to Shopify, recheck: store domain, live theme ID and role, the 
 
 - Theme reads: `shopify theme pull --store ed35ee-ea.myshopify.com --theme <id> --path theme`.
 - Theme writes: only `shopify theme push --theme <verified unpublished id> --strict`. Never use `--allow-live`, never `theme push --publish`, never `theme publish` without explicit release approval.
-- Theme Check: `shopify theme check --path theme` without auto-correct. Compare against `baseline/theme-check.json`; no new unexplained findings.
+- Theme Check: `shopify theme check --path theme` without auto-correct. The new theme has no errors; explain any warning in the pull request. `baseline/theme-check.json` records the old theme for comparison only.
 - Admin writes through the Shopify connector or Admin only for approved store-resource changes, with a before-snapshot in `baseline/` or the PR.
 
 ## Git
@@ -40,7 +40,7 @@ Before any write to Shopify, recheck: store domain, live theme ID and role, the 
 ## Design system
 
 - `design-system/DESIGN.md` is the design specification. Tokens in `design-system/tokens.css` are the only source of values; `gs-` code uses semantic tokens only.
-- Before a pull request run: `python3 design-system/scripts/check_contrast.py`, `python3 design-system/scripts/lint_theme.py theme/`, and `python3 design-system/scripts/tests/test_lint_theme.py`. Compare the linter against `baseline/lint-theme.txt`.
+- Before a pull request run: `python3 design-system/scripts/check_contrast.py`, `python3 design-system/scripts/lint_theme.py theme/`, and `python3 design-system/scripts/tests/test_lint_theme.py`. The new theme passes the linter with no errors; `baseline/lint-theme.txt` records the old theme.
 - The brand guide (`reference/GordonSmith-BrandGuide_sm.pdf`) is the source of truth for brand essence.
 
 ## Gallery-facing work

@@ -10,7 +10,7 @@ Model (DS-11): a section with pages under it is one button; its main page is the
 | --- | --- | --- | --- |
 | Exhibitions | Section | On now (`/pages/on-now`), Upcoming (`/pages/upcoming-exhibitions`), Past exhibitions (`/pages/past-exhibitions`) | Moves to the first place in the menu (P-09). Adds Upcoming (missing today). The Exhibitions overview page (`/pages/exhibitions-1`) leaves the menu and stays reachable from On now |
 | About | Section | About the gallery (`/pages/about` or `/pages/about-us`, one page, Q: which), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About and About Us: gallery decides whether they are one page |
-| Artists for Kids | Link | `/pages/artists-for-kids` | None, unless the external-site links move into the menu (Q5); then it becomes a section with "About Artists for Kids" first and the external links after it, each with the external cue |
+| Artists for Kids | Link | `/pages/artists-for-kids` | None. Approved 2026-09-25 as one link (P-15); the programme links to the Artists for Kids site stay on its page |
 | Programs | Section | Public programs (`/pages/public-programs-1`), Speaker series, Music at the Smith, Explore + Create, Art in Good Company | "Public Programs" no longer repeats the section, because the section itself is not a link |
 | Smith Foundation | Section | About the Foundation (`/pages/the-smith-foundation`), Gordon and Marion (`/pages/gordon-and-marion`), Donate (`/pages/donate`) | Renames the first item so it doesn't repeat the section |
 | Shop | Section | Limited editions (`/pages/shop`), 2026 Fall Portfolio, 2026 Spring Portfolio, 2025 Fall Portfolio, 2025 Spring Portfolio, 2024 Fall Portfolio, Our story (`/pages/our-story`), Artists (`/pages/artists`) | Leads to the Shop landing page instead of Shopify's `/collections` list. 2025 Fall Portfolio uses the relative `/collections/2025-fall-portfolio` instead of the absolute myshopify URL |
@@ -28,7 +28,7 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 ## 3. Template assignments (REUSE-01, DS-14)
 
-Moving pages from their one-off templates to the closed set in `design-system/DESIGN.md` §7.4 is a store-level release action (the Admin assignment list reads the live theme). Until then, new templates are previewed on the review theme with `?view=`. Full mapping: DESIGN.md §7.4.
+Moving pages from their one-off templates to the closed set in `design-system/DESIGN.md` §7.4 is a store-level release action (the Admin assignment list reads the live theme). Until then, new templates are previewed on the review theme with `?view=`. Full mapping: DESIGN.md §7.4. With the new theme (P-13) none of today's page templates exist after publishing, so every page's assignment is set at release by a script run straight after publishing, with a snapshot of today's assignments for rollback.
 
 ## 4. Field definitions (content model)
 
@@ -37,6 +37,7 @@ Moving pages from their one-off templates to the closed set in `design-system/DE
 1. Page fields (`custom.*`): hero image, hero is artwork, eyebrow, intro, programme, gallery images.
 2. Exhibition entries (metaobject `exhibition`, web pages at `/pages/exhibitions/<entry>`), with the fields revised from the review of content in use: dates and dates note, curator credit, artists and collection artists, venue, opening reception, events, key image and caption, summary, body, installation photos, credits, funder logos, programme.
 3. Product label fields (artist, title, year, medium, edition, dimensions, coming soon) and plain-text product titles.
+4. Proposed, not approved (P-16): card groups, events, page hero caption and call to action, collection photo credit, product availability note (content model parts 4 to 6).
 
 Creating definitions is additive and doesn't change what visitors see, but it is still a store-level change: create them when implementation starts, with Michael's go-ahead, and record each in the pull request. Exhibition entries are created as drafts.
 

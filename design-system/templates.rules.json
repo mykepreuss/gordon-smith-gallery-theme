@@ -48,9 +48,9 @@
       "maxPerGroup": { "listing": 1, "text": 1 }
     },
     "page.past-exhibitions": {
-      "purpose": "Past Exhibitions. Automatic list of past entries (DS-24) above the existing archive, which is preserved for the older exhibitions (EXH-03); the switcher is added and the shared styles apply.",
-      "legacy": true,
-      "require": ["switcher"]
+      "purpose": "Past Exhibitions: every past exhibition from entries, newest first (DS-24, DS-25), keeping each card's image, dates and title (EXH-03)",
+      "require": ["pageHead", "switcher", "listing"],
+      "maxPerGroup": { "listing": 2 }
     },
     "metaobject/exhibition": {
       "purpose": "A single exhibition, rendered from structured exhibition data (proposals/content-model.md)",

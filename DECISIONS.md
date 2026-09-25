@@ -11,7 +11,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | P-01 | The developer notes are the authoritative requirements; the brand guide and logo guide constrain visual work; the brand guide is the source of truth for brand essence | Decided by Michael, 2026-09-25 | `IMPLEMENTATION_PLAN.md`, `DESIGN.md` §12 |
 | P-02 | GitHub-first: theme source, register, proposed store changes, decisions and test evidence are reviewed in a private pull request before any release. Private repo `mykepreuss/gordon-smith-gallery-theme` | Decided by Michael, 2026-09-25 | `IMPLEMENTATION_PLAN.md` step 1, `AGENTS.md` |
 | P-03 | Nothing on the live store changes until explicit release approval. Read-only discovery only; preview work goes to one designated unpublished theme | Decided (plan) | `IMPLEMENTATION_PLAN.md`, `AGENTS.md` |
-| P-04 | Scope excludes platform replacement, a full rewrite, archive rebuild, rebranding, general copy rewriting, paid apps, checkout changes and new shop functionality | Decided (plan) | `IMPLEMENTATION_PLAN.md` "Inputs, exclusions, and known limits" |
+| P-04 | Scope excludes platform replacement, a full rewrite, archive rebuild, rebranding, general copy rewriting, paid apps, checkout changes and new shop functionality | Decided (plan); "a full rewrite" superseded by P-13, the rest stands | `IMPLEMENTATION_PLAN.md` "Inputs, exclusions, and known limits" |
 | P-05 | Exhibitions leads to On Now (first link in the Exhibitions dropdown); Upcoming and Past sit beside it; the Exhibitions overview page moves to a secondary pathway | Decided by Michael | `IMPLEMENTATION_PLAN.md` "Approved direction" |
 | P-06 | Shop leads to the Limited Editions landing page (not Shopify's `/collections` list), with one introduction and one portfolio navigation | Decided by Michael | `IMPLEMENTATION_PLAN.md` "Approved direction" |
 | P-07 | Newsletter band above the footer, Contact in the header utility row and footer, social links in the footer | Decided by Michael; gallery supplies values | `IMPLEMENTATION_PLAN.md`, `DESIGN.md` §6.1, §6.9, §6.10 |
@@ -20,6 +20,10 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | P-10 | Exhibition pages move to Exhibition entries at `/pages/exhibitions/<entry>`. The six old exhibition page addresses redirect to them; the old pages are hidden first, because redirects only work from addresses that no longer load | Approved 2026-09-25 (content model answer 2: "URLs can change, redirects would be a good idea") | `design-system/proposals/content-model.md` part 2, `proposals/store-changes.md` §5 |
 | P-11 | Exhibition entries include opening reception, curator and venue, plus the fields added after the review of content in use (dates note, collection artists, events, credits, funder logos, key image caption) | Reception, curator, venue: approved 2026-09-25 (answer 3). Fields from the review: Proposed | `design-system/proposals/content-model.md` part 2 |
 | P-12 | The gallery's admin account creates exhibition entries and fills page fields day to day | Approved 2026-09-25 (answer 4) | `design-system/proposals/content-model.md` part 2 |
+| P-13 | Build a new theme for the same store, as if starting from scratch today, instead of modifying the current theme. The developer notes, the approved decisions and `design-system/` drive it; the current theme is a reference for content and placement only. Still Shopify, same store, same products and pages | **Decided by Michael, 2026-09-25** | `IMPLEMENTATION_PLAN.md`, `proposals/content-migration.md` |
+| P-14 | The new theme starts from Shopify's Skeleton theme (MIT licence, released May 2025, what `shopify theme init` starts from), not Horizon or the current Colorblock theme. Reason: it's minimal and has no staff design controls to strip out, so the design system supplies the rest; Horizon would mean removing more than keeping | Recommended 2026-09-25; Michael to confirm | [Skeleton theme](https://github.com/Shopify/skeleton-theme), [changelog](https://shopify.dev/changelog/skeleton-theme-is-now-available) |
+| P-15 | The menu map and labels (approval doc section 1), page types (section 2) and contact and newsletter placement (section 4) | **Approved 2026-09-25** | Approval doc, `proposals/store-changes.md` |
+| P-16 | Content model parts 4 to 6: card groups, events (replacing the exhibition `events` field from P-11), hero caption, call to action, collection photo credit, product availability note | Proposed 2026-09-25; found by the content inventory | `design-system/proposals/content-model.md` parts 4 to 6 |
 
 ## Design system (`design-system/DESIGN.md` §12)
 
@@ -48,7 +52,9 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-21 | Box colour only for the brand's boxes; tints and rules for everything else (brand guide p.11) | **Decided by Michael, 2026-09-25** |
 | DS-22 | System error colour `#a3261b` (`#f28b82` on ink) | **Decided by Michael, 2026-09-25** |
 | DS-23 | Header not sticky | **Decided by Michael, 2026-09-25** |
-| DS-24 | Past Exhibitions lists past entries automatically above the existing archive | **Decided by Michael, 2026-09-25** |
+| DS-24 | Past Exhibitions lists past entries automatically above the existing archive | **Decided by Michael, 2026-09-25**; amended by DS-25 |
+| DS-25 | Past Exhibitions lists all 12 past exhibitions from entries. The six older ones (2020 to 2023) hold title, dates and image and don't link. Reason: the hand-built archive sections don't carry over to the new theme (P-13) | Proposed; follows from P-13 |
+| DS-26 | Up to two short announcements with links in the header, set in theme settings (kept from the current announcement bar) | Proposed |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.
 

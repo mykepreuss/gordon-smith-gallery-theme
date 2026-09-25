@@ -10,7 +10,7 @@ The site's inconsistency comes less from styling than from how pages are built: 
 2. **Exhibitions as structured entries.** An exhibition is entered once, as data: title, dates, curator, artists, venue, opening reception, key image, text, credits, installation photos. The On Now, Upcoming and Home lists build themselves from the dates, and every exhibition page uses the same design.
 3. **Artwork label fields on products.** Artist, title, year, medium and edition are stored as fields and shown as a museum label, instead of typing decorative Unicode letters into product titles.
 
-Each part can be approved on its own. Part 1 is the foundation for the page templates in DESIGN.md §7; parts 2 and 3 matter most for Exhibitions and the Shop.
+Each part can be approved on its own. Part 1 is the foundation for the page templates in DESIGN.md §7; parts 2 and 3 matter most for Exhibitions and the Shop. Parts 4 to 6 (card groups, events, smaller field additions) were added on 2026-09-25 for the new theme (P-13) and are still proposed.
 
 ## What we found
 
@@ -109,8 +109,8 @@ Opening reception, curator and venue are required parts of the model (gallery an
 
 ### Migration
 
-1. Create nine entries as drafts: the six exhibition pages, *Collect, Assemble, Gather* (from On Now), *Against the Latitude of "Progress"* (April 9 to June 19, 2027) and the fall 2027 exhibition (dates note only). Copy the text into the fields; pasted formatting stays behind.
-2. In the review theme, remove the six migrated exhibitions from the hand-built Past Exhibitions archive, because the automatic list shows them (DS-24). The older items stay as they are (EXH-03).
+1. Create the entries as drafts: the six exhibition pages, *Collect, Assemble, Gather* (from On Now), *Against the Latitude of "Progress"* (April 9 to June 19, 2027) and the fall 2027 exhibition (dates note only). With DS-25, also the six older shows from the Past Exhibitions archive (title, dates, image): 15 entries in all. Copy the text into the fields; pasted formatting stays behind.
+2. The new theme's Past Exhibitions page lists entries only (DS-25, proposed, following from the new theme in P-13). Without DS-25, the six older shows would need a hand-built section in the new theme.
 3. At release, in this order: set the entries to active, publish the theme, hide the six old exhibition pages, create the six redirects, then open each old address and check it lands on its entry. Clear the copy of the exhibition text from the On Now and Upcoming page bodies; it now lives in the entry.
 4. Rollback: republish the baseline theme, unhide the six pages, delete the six redirects.
 
@@ -148,6 +148,45 @@ Add to Products (namespace `custom`): `artist`, `artwork_title`, `year` (text, s
 
 This restructures information the store already has; it doesn't add shop functionality, so it stays inside the plan's scope. Updating the 21 Limited Edition products can be scripted through the Admin API once approved.
 
+## 4. Card groups (proposed)
+
+Status: **Proposed 2026-09-25**, needs approval. Found by the content inventory for the new theme (`proposals/content-migration.md`): 5 pages show grids of cards (image, title, short text, link), and the approved fields have no place for them.
+
+- **Card** entry: `image` (image), `title` (required), `text` (multi-line), `link` (link: label and address). External links get the external cue automatically.
+- **Card group** entry: `heading` (optional) and `cards` (list of cards, required).
+- **Page field** `custom.card_groups`: list of card groups, shown in order after the page body.
+
+In use for: About (the three organisations), Artists for Kids (6 programmes on its own site), Public Programs (4 programmes), The Smith Foundation (5 ways to take part, and the 14-person board), Donate (4 ways to give). Staff don't choose a layout: cards with images show as image cards, cards without as text cards (DESIGN.md §6.5).
+
+## 5. Events (proposed)
+
+Status: **Proposed 2026-09-25**, needs approval. Four programme pages list dated events typed into their templates, and the current exhibition lists a curatorial tour; nothing removes them once they've passed.
+
+**Event** entry, no page of its own:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `title` | Single line text | Required |
+| `starts` | Date and time | Required |
+| `ends` | Date and time | |
+| `location` | Single line text | Blank means the gallery, e.g. "Main floor" |
+| `summary` | Multi-line text | |
+| `image` | Image | |
+| `tickets` | Link | Label and address, e.g. "Buy tickets". Until tickets are on sale, say so in the summary |
+| `programme_page` | Page | The programme page it belongs to (Explore + Create, Music at the Smith...) |
+| `exhibition` | Exhibition entry | For tours and talks tied to an exhibition |
+
+Each programme page lists its upcoming events; the Upcoming Events page lists all of them; an exhibition page lists its own. An event drops off every list once it has ended. This **replaces the approved exhibition field `events`** (P-11): one place for all events instead of a rich text field on exhibitions.
+
+## 6. Smaller field additions (proposed)
+
+| Where | Field | Type | Why |
+| --- | --- | --- | --- |
+| Pages | `custom.hero_caption` | Single line text | Photo credits under heroes ("Photo by Khim Mata Hipol") on 6 pages |
+| Pages | `custom.cta` | Link | One call to action per page: Artists For Kids website, Browse the collection, Volunteer form, Year in review |
+| Collections | `custom.photo_credit` | Single line text | "Photography by Rachel Topham" on portfolio pages |
+| Products | `custom.availability_note` | Single line text | Shown with `coming_soon`, e.g. "Available September 25 at noon (PT)" |
+
 ## Answers, 2026-09-25
 
 1. All three parts are approved (DS-14, DS-15, DS-16).
@@ -162,6 +201,45 @@ This restructures information the store already has; it doesn't add shop functio
 | 1 | Room names, if `venue` should be a fixed list instead of free text (only "Mezzanine Gallery" appears on the site today) | Gallery | Free text |
 | 2 | Label for the second artist group (*One Hundred Artists Deep* used "Founding Artists") | Gallery | "From the collection" |
 | 3 | *Stitched* start date: April 2 or April 3, 2025 | Gallery | April 3 (its own page) |
+
+## Proposed definitions (parts 4 to 6, not approved)
+
+```json
+{
+  "metaobjectDefinitions": [
+    {"type": "card", "name": "Card", "displayNameKey": "title", "fields": [
+      {"key": "image", "type": "file_reference", "validations": {"file_type_options": ["Image"]}},
+      {"key": "title", "type": "single_line_text_field", "required": true},
+      {"key": "text", "type": "multi_line_text_field"},
+      {"key": "link", "type": "link"}]},
+    {"type": "card_group", "name": "Card group", "displayNameKey": "heading", "fields": [
+      {"key": "heading", "type": "single_line_text_field"},
+      {"key": "cards", "type": "list.metaobject_reference", "required": true, "validations": {"metaobject_definition_type": "card"}}]},
+    {"type": "event", "name": "Event", "displayNameKey": "title", "capabilities": {"publishable": true}, "fields": [
+      {"key": "title", "type": "single_line_text_field", "required": true},
+      {"key": "starts", "type": "date_time", "required": true},
+      {"key": "ends", "type": "date_time"},
+      {"key": "location", "type": "single_line_text_field"},
+      {"key": "summary", "type": "multi_line_text_field"},
+      {"key": "image", "type": "file_reference", "validations": {"file_type_options": ["Image"]}},
+      {"key": "tickets", "type": "link"},
+      {"key": "programme_page", "type": "page_reference"},
+      {"key": "exhibition", "type": "metaobject_reference", "validations": {"metaobject_definition_type": "exhibition"}}]}
+  ],
+  "pageMetafields": [
+    {"namespace": "custom", "key": "card_groups", "type": "list.metaobject_reference", "validations": {"metaobject_definition_type": "card_group"}},
+    {"namespace": "custom", "key": "hero_caption", "type": "single_line_text_field"},
+    {"namespace": "custom", "key": "cta", "type": "link"}
+  ],
+  "collectionMetafields": [
+    {"namespace": "custom", "key": "photo_credit", "type": "single_line_text_field"}
+  ],
+  "productMetafields": [
+    {"namespace": "custom", "key": "availability_note", "type": "single_line_text_field"}
+  ],
+  "removeFromExhibition": ["events"]
+}
+```
 
 ## Definitions (approved; not created yet)
 
