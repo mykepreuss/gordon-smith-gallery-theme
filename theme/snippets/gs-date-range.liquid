@@ -1,0 +1,29 @@
+{% doc %}
+  Exhibition dates in the site's one format (DESIGN.md §6.5), so no page types its own.
+
+    both dates, different years   September 25, 2026 to February 20, 2027
+    both dates, same year         April 12 to June 22, 2024
+    no end date                   From September 25, 2026
+
+  @param {string} start - Start date, e.g. entry.start_date.value
+  @param {string} [end] - End date. Blank means open-ended
+
+  @example
+  <p class="gs-status__dates">{% render 'gs-date-range', start: entry.start_date.value, end: entry.end_date.value %}</p>
+{% enddoc %}
+{%- liquid
+  if end == blank
+    assign from = start | date: '%B %-d, %Y'
+    echo 'exhibitions.dates_from' | t: date: from
+  else
+    assign start_year = start | date: '%Y'
+    assign end_year = end | date: '%Y'
+    if start_year == end_year
+      assign first = start | date: '%B %-d'
+    else
+      assign first = start | date: '%B %-d, %Y'
+    endif
+    assign last = end | date: '%B %-d, %Y'
+    echo 'exhibitions.dates_range' | t: start: first, end: last
+  endif
+-%}

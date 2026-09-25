@@ -1,0 +1,57 @@
+{%- comment -%}
+  More works from the same portfolio, after a product (DESIGN.md §7.5): at most one row of four
+  artwork tiles. The portfolio is the first of the product's collections that is in Theme
+  settings, Shop, so the frames collection never shows here.
+{%- endcomment -%}
+{%- liquid
+  assign portfolio_handles = settings.portfolio_collections | map: 'handle'
+  assign source = nil
+  for c in product.collections
+    if portfolio_handles contains c.handle
+      assign source = c
+      break
+    endif
+  endfor
+  assign shown = 0
+-%}
+{%- if source != blank and source.products_count > 1 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+        <a class="gs-cta-link gs-cta-link--more" href="{{ source.url }}">{{ 'shop.see_portfolio' | t: title: source.title }}</a>
+      </div>
+      <ul class="gs-grid gs-grid--artworks">
+        {%- for item in source.products limit: 5 -%}
+          {%- if item.id != product.id and shown < 4 -%}
+            {%- assign shown = shown | plus: 1 -%}
+            <li>{%- render 'gs-artwork-tile', product: item, heading: 'h3' -%}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "More from the portfolio",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    }
+  ],
+  "presets": [
+    {
+      "name": "More from the portfolio"
+    }
+  ]
+}
+{% endschema %}

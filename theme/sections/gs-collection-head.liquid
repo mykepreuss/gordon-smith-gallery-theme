@@ -1,0 +1,59 @@
+{%- comment -%}
+  Portfolio header (DESIGN.md §7.5, SHOP-03): the collection's title and description, with its
+  image as a photo hero when it has one, and the photo credit from the collection's Photo credit
+  field (content model part 6) under it.
+{%- endcomment -%}
+{%- assign credit = collection.metafields.custom.photo_credit.value -%}
+{%- if collection.image != blank -%}
+  <div class="gs-section gs-section--lead">
+    <div class="gs-hero">
+      {%- render 'gs-media', image: collection.image, preset: 'hero', mode: 'photo', shape: 'lg', class: 'gs-hero__media', alt: collection.title -%}
+      <div class="gs-hero__box gs-surface-accent">
+        <h1 class="gs-h1"{% render 'gs-fit', text: collection.title %}>{{ collection.title | escape }}</h1>
+      </div>
+      {%- if credit != blank -%}
+        <p class="gs-hero__caption gs-caption">{{ credit | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- if collection.description != blank -%}
+    <div class="gs-container gs-lead-in">
+      <div class="gs-page-head">
+        <div class="gs-prose">{{ collection.description }}</div>
+      </div>
+    </div>
+  {%- endif -%}
+{%- else -%}
+  <div class="gs-container gs-lead-in">
+    <header class="gs-page-head">
+      <h1 class="gs-h1"{% render 'gs-fit', text: collection.title %}>{{ collection.title | escape }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="gs-prose">{{ collection.description }}</div>
+      {%- endif -%}
+      {%- if credit != blank -%}
+        <p class="gs-caption">{{ credit | escape }}</p>
+      {%- endif -%}
+    </header>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Portfolio header",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "From the collection: title, description, image and the Photo credit field."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio header"
+    }
+  ]
+}
+{% endschema %}

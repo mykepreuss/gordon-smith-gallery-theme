@@ -9,12 +9,11 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-404",
-      "settings": {}
+    "not-found": {
+      "type": "gs-not-found"
     }
   },
   "order": [
-    "main"
+    "not-found"
   ]
 }

@@ -1,0 +1,54 @@
+{% doc %}
+  The site header (DESIGN.md §6.1). Works without JavaScript: the Menu drawer and every dropdown
+  are <details> elements, so all links are reachable even if assets/gs-nav.js fails to load. The
+  script adds Escape, closing on an outside click, and (desktop) closing when focus leaves a
+  dropdown.
+
+  The main menu renders twice: in the drawer (below 1200px) and in the bar (1200px and up). CSS
+  shows only one, so assistive tech only ever finds one "Main" navigation. In each, the markup
+  order matches what's on screen: the bar's utility row sits above the nav, so it comes first; in
+  the drawer the utility links follow the nav.
+
+  The utility links are fixed (P-07, P-15): Contact (the contact page in theme settings),
+  Newsletter (the sign-up band above the footer), Search and Cart. Contact is always visible.
+
+  @param {object} menu - The main menu (linklist), e.g. section.settings.menu
+
+  @example
+  {%- render 'gs-header', menu: section.settings.menu -%}
+{% enddoc %}
+{%- capture utility -%}
+  <ul class="gs-utility">
+    {%- if settings.contact_page != blank -%}
+      <li><a href="{{ settings.contact_page.url }}"{% if page.id == settings.contact_page.id %} aria-current="page"{% endif %}>{{ 'header.contact' | t }}</a></li>
+    {%- endif -%}
+    <li><a href="#newsletter">{{ 'header.newsletter' | t }}</a></li>
+    <li><a href="{{ routes.search_url }}"{% if request.page_type == 'search' %} aria-current="page"{% endif %}>{{ 'header.search' | t }}</a></li>
+    <li><a href="{{ routes.cart_url }}"{% if request.page_type == 'cart' %} aria-current="page"{% endif %}>{{ 'header.cart' | t: count: cart.item_count }}</a></li>
+  </ul>
+{%- endcapture -%}
+<header class="gs-header" data-gs-header>
+  <a class="gs-header__logo" href="{{ routes.root_url }}" aria-label="{{ 'header.home' | t }}">
+    {%- render 'gs-logo', name: 'gallery-simple-stacked-colour-box', label: 'decorative' -%}
+  </a>
+
+  <details class="gs-drawer">
+    <summary class="gs-header__menu-toggle">{{ 'header.menu' | t }}</summary>
+    <div class="gs-drawer__panel">
+      <nav aria-label="{{ 'header.main_nav' | t }}">
+        {%- render 'gs-nav', menu: menu, variant: 'drawer' -%}
+      </nav>
+      {{ utility }}
+    </div>
+  </details>
+
+  <div class="gs-header__bar">
+    {{ utility }}
+    <nav aria-label="{{ 'header.main_nav' | t }}">
+      {%- render 'gs-nav', menu: menu, variant: 'bar' -%}
+    </nav>
+  </div>
+</header>
+{%- if request.design_mode and settings.contact_page == blank -%}
+  <p class="gs-editor-warning">Choose the contact page in Theme settings, Gallery details, so Contact shows in the header.</p>
+{%- endif -%}

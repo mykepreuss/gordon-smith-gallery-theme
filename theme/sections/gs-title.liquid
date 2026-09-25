@@ -1,0 +1,32 @@
+{%- comment -%}
+  A page title for Shopify's own pages that have no page of their own to take it from, such as
+  the /collections list.
+{%- endcomment -%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    <h1 class="gs-h1"{% render 'gs-fit', text: section.settings.heading %}>{{ section.settings.heading | escape }}</h1>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Title",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["list-collections"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Limited Editions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Title"
+    }
+  ]
+}
+{% endschema %}

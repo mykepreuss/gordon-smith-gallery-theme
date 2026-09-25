@@ -8,63 +8,17 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "t:sections.footer.name",
   "type": "footer",
+  "name": "Footer",
   "sections": {
     "newsletter": {
-      "type": "newsletter",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Join Our Newsletter",
-            "heading_size": "h2"
-          }
-        },
-        "email-form": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "email-form"
-      ],
-      "disabled": true,
-      "settings": {
-        "color_scheme": "scheme-2",
-        "full_width": true,
-        "padding_top": 44,
-        "padding_bottom": 0
-      }
+      "type": "gs-newsletter",
+      "settings": {}
     },
     "footer": {
-      "type": "footer",
-      "blocks": {
-        "text_WEw47c": {
-          "type": "text",
-          "settings": {
-            "heading": "",
-            "subtext": "<h4>Artists For Kids and the Gordon Smith Gallery are situated on the unceded territories of the sḵwx̱wú7mesh (Squamish) and səl̓ílwətaʔɬ (Tsleil-Waututh) Nations, and the xʷməθkʷəy̓əm (Musqueam) Band. We are grateful for the opportunity to create, connect, share, and learn on this land. </h4>"
-          }
-        }
-      },
-      "block_order": [
-        "text_WEw47c"
-      ],
+      "type": "gs-footer",
       "settings": {
-        "color_scheme": "scheme-3",
-        "newsletter_enable": false,
-        "newsletter_heading": "",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "menu": "footer"
       }
     }
   },

@@ -1,0 +1,35 @@
+{% doc %}
+  Artwork tile (DESIGN.md §6.5): the work whole on the mat, then the museum label in order:
+  artist (bold), title (italic) and year; medium; edition; price. No badges over the image: sold
+  out, or not yet on sale, is said in the text. Label fields fall back to the product title.
+
+  @param {object} product - The product
+  @param {string} [heading] - Heading element for the title: 'h2' (default) or 'h3'
+
+  @example
+  {%- render 'gs-artwork-tile', product: product, heading: 'h3' -%}
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h2'
+  assign artist = product.metafields.custom.artist.value
+  assign work = product.metafields.custom.artwork_title.value
+  assign year = product.metafields.custom.year.value
+  assign medium = product.metafields.custom.medium.value
+  assign edition = product.metafields.custom.edition.value
+-%}
+<article class="gs-artwork-tile">
+  {%- render 'gs-media', image: product.featured_media, preset: 'tile', mode: 'artwork', alt: product.title -%}
+  {%- if artist != blank and work != blank -%}
+    <p class="gs-artwork-tile__artist">{{ artist | escape }}</p>
+    <{{ tag }} class="gs-artwork-tile__title">
+      <a href="{{ product.url }}"><cite>{{ work | escape }}</cite>{% if year != blank %}, {{ year | escape }}{% endif %}</a>
+    </{{ tag }}>
+  {%- else -%}
+    <{{ tag }} class="gs-artwork-tile__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></{{ tag }}>
+  {%- endif -%}
+  {%- if medium != blank -%}<p class="gs-meta">{{ medium | escape }}</p>{%- endif -%}
+  {%- if edition != blank -%}<p class="gs-meta">{{ edition | escape }}</p>{%- endif -%}
+  <p class="gs-artwork-tile__price">
+    {%- render 'gs-price', product: product -%}
+  </p>
+</article>

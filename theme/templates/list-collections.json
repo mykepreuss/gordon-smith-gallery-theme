@@ -9,18 +9,21 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-list-collections",
+    "title": {
+      "type": "gs-title",
       "settings": {
-        "title": "Collections",
-        "sort": "alphabetical",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "columns_mobile": "2"
+        "heading": "Limited Editions"
+      }
+    },
+    "portfolios": {
+      "type": "gs-portfolio-nav",
+      "settings": {
+        "heading": "Portfolios"
       }
     }
   },
   "order": [
-    "main"
+    "title",
+    "portfolios"
   ]
 }

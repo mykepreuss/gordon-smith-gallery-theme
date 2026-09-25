@@ -98,7 +98,7 @@ Opening reception, curator and venue are required parts of the model (gallery an
 | `funder_logos` | List of files (images) | | Logos a funder requires, e.g. Canada Council for the Arts |
 | `programme` | Single line text, choice | | Gallery, Smith Foundation or Artists for Kids |
 
-**Status is computed, not typed.** A snippet compares today with the start and end dates (`liquid/snippets/gs-exhibition-status.liquid`), so an exhibition moves from Upcoming to On Now to Past on its own. Liquid can loop over up to 50 entries at once and paginate up to 250 per page ([Shopify: metaobject_definition](https://shopify.dev/docs/api/liquid/objects/metaobject_definition)); the gallery will stay well inside that.
+**Status is computed, not typed.** A snippet compares today with the start and end dates (`theme/snippets/gs-exhibition-status.liquid`), so an exhibition moves from Upcoming to On Now to Past on its own. Liquid can loop over up to 50 entries at once and paginate up to 250 per page ([Shopify: metaobject_definition](https://shopify.dev/docs/api/liquid/objects/metaobject_definition)); the gallery will stay well inside that.
 
 **Past Exhibitions (DS-24, decided by Michael 2026-09-25).** The Past page lists past entries automatically, newest first, above the existing archive, so an exhibition that closes appears there without anyone adding it. The six migrated exhibitions leave the hand-built archive at release; the six older items stay exactly as they are (EXH-03).
 

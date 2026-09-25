@@ -8,63 +8,17 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "t:sections.header.name",
   "type": "header",
+  "name": "Header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement_xLrcWP": {
-          "type": "announcement",
-          "settings": {
-            "text": "*Fall 2026 Limited Editions Now Available*",
-            "link": "shopify://collections/2026-fall-portfolio"
-          }
-        },
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "*Exhibition Opening: September 25th | 6 - 8 PM*",
-            "link": "shopify://pages/on-now"
-          }
-        }
-      },
-      "block_order": [
-        "announcement_xLrcWP",
-        "announcement-bar-0"
-      ],
-      "settings": {
-        "auto_rotate": true,
-        "change_slides_speed": 3,
-        "color_scheme": "scheme-3",
-        "show_line_separator": true,
-        "show_social": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      }
-    },
     "header": {
-      "type": "header",
+      "type": "gs-header",
       "settings": {
-        "logo_position": "top-left",
-        "mobile_logo_position": "left",
-        "menu": "new-website-menu-1",
-        "menu_type_desktop": "dropdown",
-        "sticky_header_type": "none",
-        "show_line_separator": false,
-        "color_scheme": "scheme-2",
-        "menu_color_scheme": "scheme-2",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "enable_customer_avatar": true,
-        "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 0
+        "menu": "new-website-menu-1"
       }
     }
   },
   "order": [
-    "announcement-bar",
     "header"
   ]
 }

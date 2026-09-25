@@ -1,0 +1,25 @@
+{%- comment -%}
+  Page not found: says so, and offers the ways on (home, search). Old exhibition addresses
+  redirect to their entries at release (P-10), so they don't land here.
+{%- endcomment -%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    <h1 class="gs-h1">{{ 'not_found.title' | t }}</h1>
+    <p class="gs-deck">{{ 'not_found.text' | t }}</p>
+    <div class="gs-actions">
+      <a class="gs-button" href="{{ routes.root_url }}">{{ 'not_found.home' | t }}</a>
+      <a class="gs-cta-link" href="{{ routes.search_url }}">{{ 'not_found.search' | t }}</a>
+    </div>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Page not found",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["404"]
+  },
+  "settings": []
+}
+{% endschema %}

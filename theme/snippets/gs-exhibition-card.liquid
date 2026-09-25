@@ -1,0 +1,55 @@
+{% doc %}
+  Exhibition card (DESIGN.md §6.5): key image, title, status and dates, then the curator credit
+  or the artists. The whole card is one link to the exhibition's page. An entry with no summary
+  and no text has no page worth opening, so its card doesn't link: the six older exhibitions in
+  the Past list hold only a title, dates and image (DS-25).
+
+  A key image that is an artwork shows whole on the mat in the card's frame (DS-05); a photo
+  fills the frame around its focal point.
+
+  @param {object} entry - An exhibition entry
+  @param {boolean} [show_status] - Show the status chip (lists that mix statuses, e.g. Home)
+  @param {boolean} [compact] - The compact card, for "More exhibitions"
+  @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
+
+  @example
+  {%- render 'gs-exhibition-card', entry: entry, show_status: true -%}
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h3'
+  assign has_page = true
+  if entry.summary.value == blank and entry.body.value == blank
+    assign has_page = false
+  endif
+  assign mode = 'photo'
+  if entry.key_image_is_artwork.value == true
+    assign mode = 'artwork'
+  endif
+-%}
+<article class="gs-card{% if compact %} gs-card--compact{% endif %}">
+  {%- render 'gs-media', image: entry.key_image.value, preset: 'card', mode: mode, ratio: '4 / 3', alt: entry.title.value -%}
+  <{{ tag }} class="gs-card__title">
+    {%- if has_page -%}
+      <a href="{{ entry.system.url }}">{{ entry.title.value | escape }}</a>
+    {%- else -%}
+      {{- entry.title.value | escape -}}
+    {%- endif -%}
+  </{{ tag }}>
+  {%- render 'gs-exhibition-when', entry: entry, show_status: show_status -%}
+  {%- unless compact -%}
+    {%- if entry.curator_credit.value != blank -%}
+      <p class="gs-meta">{{ entry.curator_credit.value | escape }}</p>
+    {%- elsif entry.artists.value != blank -%}
+      {%- assign names = entry.artists.value -%}
+      <p class="gs-meta">
+        {%- if names.size > 4 -%}
+          {%- assign shown = names | slice: 0, 3 | join: ', ' -%}
+          {%- assign more = names.size | minus: 3 -%}
+          {{- 'exhibitions.artists_more' | t: names: shown, count: more -}}
+        {%- else -%}
+          {{- names | join: ', ' | escape -}}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  {%- endunless -%}
+</article>

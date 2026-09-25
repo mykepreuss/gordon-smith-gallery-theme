@@ -1,0 +1,131 @@
+{%- comment -%}
+  Footer (DESIGN.md §6.10, ACCESS-02, ACCESS-03): ink surface. The three organisations' white
+  logos, the Gallery first and largest; the land acknowledgement once; Visit, Contact, Explore
+  and Follow columns; the legal line. Addresses, hours, contact details, social links and the
+  land acknowledgement are theme settings (Gallery details, Social links), so they're the same on
+  every page.
+{%- endcomment -%}
+{%- liquid
+  assign socials = 'instagram,facebook,youtube,vimeo,linkedin' | split: ','
+  assign has_social = false
+  for key in socials
+    assign setting_id = 'social_' | append: key
+    if settings[setting_id] != blank
+      assign has_social = true
+    endif
+  endfor
+-%}
+<footer class="gs-surface-ink">
+  <div class="gs-container gs-footer">
+    <div class="gs-footer__logos">
+      {%- render 'gs-logo', name: 'gallery-simple-stacked-white' -%}
+      {%- render 'gs-logo', name: 'artists-for-kids-full-white' -%}
+      {%- render 'gs-logo', name: 'foundation-simple-white' -%}
+    </div>
+
+    <div class="gs-footer__cols">
+      <div>
+        <h2 class="gs-label">{{ 'footer.visit' | t }}</h2>
+        {%- if settings.address != blank -%}
+          <address>{{ settings.address | escape | newline_to_br }}</address>
+        {%- endif -%}
+        {%- if settings.hours != blank -%}
+          <p>{{ settings.hours | escape | newline_to_br }}</p>
+        {%- endif -%}
+      </div>
+
+      <div>
+        <h2 class="gs-label">{{ 'footer.contact' | t }}</h2>
+        <ul>
+          {%- if settings.email != blank -%}
+            <li><a href="mailto:{{ settings.email | strip }}">{{ settings.email | strip | escape }}</a></li>
+          {%- endif -%}
+          {%- if settings.phone != blank -%}
+            <li><a href="tel:{{ settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' }}">{{ settings.phone | escape }}</a></li>
+          {%- endif -%}
+          {%- if settings.contact_page != blank -%}
+            <li><a href="{{ settings.contact_page.url }}">{{ 'footer.contact_page' | t }}</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      {%- if section.settings.menu.links.size > 0 -%}
+        <nav aria-labelledby="{{ section.id }}-explore">
+          <h2 class="gs-label" id="{{ section.id }}-explore">{{ 'footer.explore' | t }}</h2>
+          <ul>
+            {%- for link in section.settings.menu.links -%}
+              <li>{%- render 'gs-link', link: link -%}</li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      {%- endif -%}
+
+      {%- if has_social -%}
+        <div>
+          <h2 class="gs-label">{{ 'footer.follow' | t }}</h2>
+          <ul>
+            {%- for key in socials -%}
+              {%- assign setting_id = 'social_' | append: key -%}
+              {%- if settings[setting_id] != blank -%}
+                {%- assign label_key = 'footer.social_' | append: key -%}
+                <li>
+                  <a class="gs-link--external" href="{{ settings[setting_id] }}">
+                    {{- label_key | t -}}
+                    <span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- elsif request.design_mode -%}
+        <p class="gs-editor-warning">Add the gallery's social links in Theme settings, Social links (ACCESS-03).</p>
+      {%- endif -%}
+    </div>
+
+    {%- if settings.land_acknowledgement != blank -%}
+      <div class="gs-footer__ack gs-prose">{{ settings.land_acknowledgement }}</div>
+    {%- endif -%}
+
+    <ul class="gs-footer__legal">
+      <li>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</li>
+      {%- for policy in shop.policies -%}
+        <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
+      {%- endfor -%}
+      {%- for link in section.settings.legal_menu.links -%}
+        <li>
+          {%- render 'gs-link', link: link -%}
+          {%- if link.data_sharing_opt_out_icon -%} {{ link.data_sharing_opt_out_icon }}{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "div",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Address, hours, contact details, social links and the land acknowledgement are in Theme settings."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Explore links",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "legal_menu",
+      "label": "Legal links",
+      "info": "Small links in the last line, for example Do not sell or share my personal information. Store policies are added automatically."
+    }
+  ]
+}
+{% endschema %}

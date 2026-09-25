@@ -1,112 +1,324 @@
 {
-  "$comment": "Page-template rules for the Gordon Smith Gallery theme. Human-readable version: DESIGN.md §7. Checked by scripts/lint_theme.py. Section type names without a gs- prefix are the Dawn-family names Colorblock is expected to use; confirm them when the theme is pulled.",
+  "$comment": "Page-template rules for the Gordon Smith Gallery theme. Human-readable version: DESIGN.md §7. Checked by scripts/lint_theme.py. The new theme (theme/, P-13) uses gs- sections only; the section types without a gs- prefix are Colorblock's, kept so the baseline (baseline/theme/) can still be linted for comparison.",
   "version": 1,
-
   "sectionGroups": {
-    "hero": ["gs-hero", "gs-hero-artwork", "image-banner", "slideshow", "video"],
-    "pageHead": ["gs-page-head", "main-page"],
-    "collectionHead": ["gs-collection-head", "main-collection-banner"],
-    "switcher": ["gs-switcher"],
-    "listing": ["gs-exhibition-list", "gs-card-grid", "gs-portfolio-nav", "gs-artwork-grid", "collection-list", "featured-collection", "main-collection-product-grid", "main-list-collections", "collage", "multicolumn"],
-    "text": ["gs-rich-text", "rich-text", "image-with-text", "multirow"],
-    "gallery": ["gs-gallery"],
-    "feature": ["gs-feature"],
-    "form": ["gs-contact", "contact-form"],
-    "commerce": ["main-product", "gs-artwork-detail"],
-    "related": ["related-products", "gs-related"],
-    "legacy": ["custom-liquid", "apps"]
+    "hero": [
+      "gs-hero",
+      "gs-page-hero",
+      "gs-exhibition-hero",
+      "image-banner",
+      "slideshow",
+      "video"
+    ],
+    "pageHead": [
+      "gs-page-head",
+      "gs-title",
+      "main-page"
+    ],
+    "collectionHead": [
+      "gs-collection-head",
+      "main-collection-banner"
+    ],
+    "switcher": [
+      "gs-switcher"
+    ],
+    "listing": [
+      "gs-exhibition-list",
+      "gs-card-grid",
+      "gs-portfolio-nav",
+      "gs-artwork-grid",
+      "gs-exhibition-more",
+      "collection-list",
+      "featured-collection",
+      "main-collection-product-grid",
+      "main-list-collections",
+      "collage",
+      "multicolumn"
+    ],
+    "cards": [
+      "gs-card-groups"
+    ],
+    "events": [
+      "gs-events"
+    ],
+    "details": [
+      "gs-exhibition-details"
+    ],
+    "text": [
+      "gs-rich-text",
+      "gs-page-body",
+      "gs-exhibition-body",
+      "gs-exhibition-credits",
+      "rich-text",
+      "image-with-text",
+      "multirow"
+    ],
+    "gallery": [
+      "gs-gallery"
+    ],
+    "feature": [
+      "gs-feature",
+      "gs-shop-feature"
+    ],
+    "form": [
+      "gs-contact",
+      "contact-form"
+    ],
+    "commerce": [
+      "main-product",
+      "gs-artwork-detail"
+    ],
+    "related": [
+      "related-products",
+      "gs-related"
+    ],
+    "legacy": [
+      "custom-liquid",
+      "apps"
+    ]
   },
-
   "global": {
     "maxSections": 8,
-    "maxPerGroup": { "hero": 1, "pageHead": 1, "switcher": 1, "legacy": 0 },
-    "firstGroups": ["hero", "pageHead"],
-    "noRepeatedSurface": ["tint", "ink", "accent"],
+    "maxPerGroup": {
+      "hero": 1,
+      "pageHead": 1,
+      "switcher": 1,
+      "legacy": 0
+    },
+    "firstGroups": [
+      "hero",
+      "pageHead"
+    ],
+    "noRepeatedSurface": [
+      "tint",
+      "ink",
+      "accent"
+    ],
     "warnDisabledSections": true,
     "warnUnknownSectionTypes": true,
     "templatesAreClosedSet": true
   },
-
   "templates": {
     "index": {
       "purpose": "Home",
-      "require": ["hero"],
-      "maxPerGroup": { "listing": 3, "feature": 2 }
+      "require": [
+        "hero"
+      ],
+      "maxPerGroup": {
+        "listing": 3,
+        "feature": 2
+      }
     },
     "page": {
-      "purpose": "Standard page: About, Our Story, Volunteer, Permanent Collection, FAQ, Engage, Donate, Gordon and Marion, Plan Your Visit",
-      "maxPerGroup": { "text": 3, "gallery": 1, "feature": 1, "listing": 1 }
+      "purpose": "Standard page: About, Our Story, Volunteer, Permanent Collection, FAQ, Upcoming Events, Engage, Donate, Gordon and Marion, Plan Your Visit, Exhibitions overview",
+      "maxPerGroup": {
+        "text": 3,
+        "gallery": 1,
+        "feature": 1,
+        "listing": 1,
+        "cards": 1,
+        "events": 1
+      }
     },
     "page.programme": {
       "purpose": "Programme landing: Artists for Kids, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company",
-      "maxPerGroup": { "text": 3, "listing": 1, "gallery": 1, "feature": 1 }
+      "maxPerGroup": {
+        "text": 3,
+        "listing": 1,
+        "gallery": 1,
+        "feature": 1,
+        "cards": 1,
+        "events": 1
+      }
     },
     "page.exhibitions": {
       "purpose": "Exhibition lists: On Now, Upcoming Exhibitions. One template; each page shows a different status.",
-      "firstGroups": ["pageHead"],
-      "require": ["pageHead", "switcher", "listing"],
-      "maxPerGroup": { "listing": 1, "text": 1 }
+      "firstGroups": [
+        "pageHead"
+      ],
+      "require": [
+        "pageHead",
+        "switcher",
+        "listing"
+      ],
+      "maxPerGroup": {
+        "listing": 1,
+        "text": 1
+      }
     },
     "page.past-exhibitions": {
       "purpose": "Past Exhibitions: every past exhibition from entries, newest first (DS-24, DS-25), keeping each card's image, dates and title (EXH-03)",
-      "require": ["pageHead", "switcher", "listing"],
-      "maxPerGroup": { "listing": 2 }
+      "require": [
+        "pageHead",
+        "switcher",
+        "listing"
+      ],
+      "maxPerGroup": {
+        "listing": 2
+      }
     },
     "metaobject/exhibition": {
       "purpose": "A single exhibition, rendered from structured exhibition data (proposals/content-model.md)",
-      "require": ["hero", "text"],
-      "maxPerGroup": { "text": 2, "gallery": 2, "listing": 1 }
+      "require": [
+        "hero",
+        "text"
+      ],
+      "maxPerGroup": {
+        "text": 2,
+        "gallery": 2,
+        "listing": 1,
+        "details": 1
+      }
     },
     "page.shop": {
       "purpose": "Shop / Limited Editions landing (SHOP-01, SHOP-02): one introduction, one portfolio navigation, nothing that repeats it",
-      "require": ["listing"],
-      "maxPerGroup": { "listing": 1, "text": 1, "feature": 1 }
+      "require": [
+        "listing"
+      ],
+      "maxPerGroup": {
+        "listing": 1,
+        "text": 1,
+        "feature": 1
+      }
     },
     "page.contact": {
       "purpose": "Contact",
-      "require": ["form"],
-      "maxPerGroup": { "text": 1 }
+      "require": [
+        "form"
+      ],
+      "maxPerGroup": {
+        "text": 1
+      }
     },
     "collection": {
       "purpose": "A portfolio or All Limited Editions",
-      "firstGroups": ["collectionHead"],
-      "require": ["collectionHead", "switcher", "listing"],
-      "maxPerGroup": { "listing": 1, "text": 1 }
+      "firstGroups": [
+        "collectionHead"
+      ],
+      "require": [
+        "collectionHead",
+        "switcher",
+        "listing"
+      ],
+      "maxPerGroup": {
+        "listing": 1,
+        "text": 1
+      }
     },
     "product": {
       "purpose": "An artwork (limited edition). Availability and framing come from product data, not separate templates.",
-      "firstGroups": ["commerce"],
-      "require": ["commerce"],
-      "maxPerGroup": { "related": 1, "text": 1 }
+      "firstGroups": [
+        "commerce"
+      ],
+      "require": [
+        "commerce"
+      ],
+      "maxPerGroup": {
+        "related": 1,
+        "text": 1
+      }
     },
-    "list-collections": { "purpose": "Shopify's /collections page; redirect visitors to the Shop landing instead", "legacy": true },
-    "search": { "purpose": "Search results", "legacy": true },
-    "cart": { "purpose": "Cart", "legacy": true },
-    "404": { "purpose": "Not found", "legacy": true },
-    "password": { "purpose": "Password page", "legacy": true },
-    "gift_card": { "purpose": "Gift card", "legacy": true },
-    "customers/account": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
-    "customers/activate_account": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
-    "customers/addresses": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
-    "customers/login": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
-    "customers/order": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
-    "customers/register": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
-    "customers/reset_password": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
-    "article": { "purpose": "Blog article (News blog is empty)", "legacy": true },
-    "blog": { "purpose": "Blog (News blog is empty)", "legacy": true }
+    "list-collections": {
+      "purpose": "Shopify's /collections page; redirect visitors to the Shop landing instead",
+      "legacy": true
+    },
+    "search": {
+      "purpose": "Search results",
+      "legacy": true
+    },
+    "cart": {
+      "purpose": "Cart",
+      "legacy": true
+    },
+    "404": {
+      "purpose": "Not found",
+      "legacy": true
+    },
+    "password": {
+      "purpose": "Password page",
+      "legacy": true
+    },
+    "gift_card": {
+      "purpose": "Gift card",
+      "legacy": true
+    },
+    "customers/account": {
+      "purpose": "Customer accounts (Shopify system template)",
+      "legacy": true
+    },
+    "customers/activate_account": {
+      "purpose": "Customer accounts (Shopify system template)",
+      "legacy": true
+    },
+    "customers/addresses": {
+      "purpose": "Customer accounts (Shopify system template)",
+      "legacy": true
+    },
+    "customers/login": {
+      "purpose": "Customer accounts (Shopify system template)",
+      "legacy": true
+    },
+    "customers/order": {
+      "purpose": "Customer accounts (Shopify system template)",
+      "legacy": true
+    },
+    "customers/register": {
+      "purpose": "Customer accounts (Shopify system template)",
+      "legacy": true
+    },
+    "customers/reset_password": {
+      "purpose": "Customer accounts (Shopify system template)",
+      "legacy": true
+    },
+    "article": {
+      "purpose": "Blog article (News blog is empty)",
+      "legacy": true
+    },
+    "blog": {
+      "purpose": "Blog (News blog is empty)",
+      "legacy": true
+    }
   },
-
   "lockedSettings": {
     "$comment": "Settings that hand design decisions to staff. They must not exist in gs- sections, and should be removed or hidden from theme sections kept in use.",
-    "types": ["color", "color_background", "color_scheme", "font_picker", "text_alignment"],
+    "types": [
+      "color",
+      "color_background",
+      "color_scheme",
+      "font_picker",
+      "text_alignment"
+    ],
     "idPattern": "(^|_)(padding|margin|spacing|gap|height|font_size|text_size|heading_size|size|opacity|overlay|radius|corner|width|alignment|layout)(_|$)",
-    "allowIds": ["menu", "image", "image_mobile", "heading", "eyebrow", "text", "deck", "button_label", "button_link", "surface", "programme", "collection", "product", "page", "blog", "link_list"]
+    "allowIds": [
+      "menu",
+      "image",
+      "image_mobile",
+      "heading",
+      "eyebrow",
+      "text",
+      "deck",
+      "button_label",
+      "button_link",
+      "surface",
+      "programme",
+      "collection",
+      "product",
+      "page",
+      "blog",
+      "link_list"
+    ]
   },
-
   "codeRules": {
     "$comment": "Raw values that belong in tokens.css, checked in gs- assets, sections and snippets.",
-    "files": ["assets/gs-*.css", "sections/gs-*.liquid", "snippets/gs-*.liquid"],
-    "skipFiles": ["assets/gs-tokens.css", "snippets/gs-logo-*.liquid"],
+    "files": [
+      "assets/gs-*.css",
+      "sections/gs-*.liquid",
+      "snippets/gs-*.liquid"
+    ],
+    "skipFiles": [
+      "assets/gs-tokens.css",
+      "snippets/gs-logo-*.liquid"
+    ],
     "patterns": {
       "raw colour": "#[0-9a-fA-F]{3,8}\\b",
       "raw colour function": "\\b(rgba?|hsla?)\\(",
@@ -114,13 +326,17 @@
       "inline style colour": "style=\"[^\"]*color:"
     }
   },
-
   "renderRules": {
     "$comment": "Snippet calls that must pass certain parameters, checked in every Liquid file of the theme.",
-    "files": ["*.liquid"],
+    "files": [
+      "*.liquid"
+    ],
     "snippets": {
       "gs-media": {
-        "requireOneOf": ["preset", "sizes"],
+        "requireOneOf": [
+          "preset",
+          "sizes"
+        ],
         "message": "pass preset: 'hero', 'card', 'tile', 'gallery' or 'full' (or an explicit sizes:), so the browser downloads the right image width"
       }
     }

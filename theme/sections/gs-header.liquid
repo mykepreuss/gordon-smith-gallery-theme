@@ -1,0 +1,20 @@
+{%- render 'gs-header', menu: section.settings.menu -%}
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "div",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu",
+      "info": "A section with pages under it opens its dropdown and never navigates. Put its main page first in the dropdown, with its own label (for example On now under Exhibitions). Contact, Newsletter, Search and Cart are added automatically."
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{%- comment -%}
+  The page's body text from the normal page editor, styled by .gs-prose (DESIGN.md §6.11). Fonts,
+  sizes and colours pasted from Word or email are neutralised there (TYPE-03).
+{%- endcomment -%}
+{%- if page.content != blank -%}
+  <div class="gs-section gs-surface-paper">
+    <div class="gs-container">
+      <div class="gs-prose">{{ page.content }}</div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Page text",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the page's own text, from Online Store, Pages."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page text"
+    }
+  ]
+}
+{% endschema %}

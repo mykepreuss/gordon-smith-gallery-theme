@@ -1,0 +1,27 @@
+{% doc %}
+  The museum label for a limited edition (DS-16, content model part 3): the artist in bold, the
+  title in italics as a real <cite>, then the year. Built from the product's label fields; until
+  they're filled, the product title shows instead, so nothing breaks mid-migration.
+
+  @param {object} product - The product
+  @param {string} [tag] - Element for the label: 'h1', 'h2', 'h3' or 'p' (default)
+  @param {string} [class] - Classes for that element. Default: gs-artwork-label
+
+  @example
+  {%- render 'gs-artwork-label', product: product, tag: 'h1' -%}
+{% enddoc %}
+{%- liquid
+  assign tag = tag | default: 'p'
+  assign artist = product.metafields.custom.artist.value
+  assign work = product.metafields.custom.artwork_title.value
+  assign year = product.metafields.custom.year.value
+-%}
+<{{ tag }} class="{{ class | default: 'gs-artwork-label' }}">
+  {%- if artist != blank and work != blank -%}
+    <span class="gs-artwork-label__artist">{{ artist | escape }}</span>
+    <cite>{{ work | escape }}</cite>
+    {%- if year != blank -%}, {{ year | escape }}{%- endif -%}
+  {%- else -%}
+    {{- product.title | escape -}}
+  {%- endif -%}
+</{{ tag }}>

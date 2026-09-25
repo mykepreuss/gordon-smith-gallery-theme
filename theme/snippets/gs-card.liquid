@@ -1,0 +1,46 @@
+{% doc %}
+  A card from a card entry (content model part 4): image, title, text, link. Staff don't choose a
+  layout: a card with an image is an image card, a card without one is a text card under a rule
+  (DESIGN.md §6.5).
+
+  The link: with no label of its own, the whole card links through its title; with a label, the
+  label shows as a standalone link under the text. Off-site addresses get the external cue.
+
+  @param {object} card - A card entry
+  @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
+
+  @example
+  {%- render 'gs-card', card: card -%}
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h3'
+  assign image = card.image.value
+  assign link = card.link.value
+  assign stretch = false
+  assign labelled = false
+  if link.url != blank
+    if link.text == blank
+      assign stretch = true
+    else
+      assign labelled = true
+    endif
+  endif
+-%}
+<article class="gs-card{% if image == blank %} gs-card--text{% endif %}">
+  {%- if image != blank -%}
+    {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: card.title.value -%}
+  {%- endif -%}
+  <{{ tag }} class="gs-card__title">
+    {%- if stretch -%}
+      {%- render 'gs-link', link: link, label: card.title.value -%}
+    {%- else -%}
+      {{- card.title.value | escape -}}
+    {%- endif -%}
+  </{{ tag }}>
+  {%- if card.text.value != blank -%}
+    <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
+  {%- endif -%}
+  {%- if labelled -%}
+    {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
+  {%- endif -%}
+</article>

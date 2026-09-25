@@ -1,0 +1,51 @@
+{% doc %}
+  Picks and orders event entries (content model part 5). Outputs comma-separated positions in
+  shop.metaobjects.event.values, soonest first. Read an event back with:
+
+    for event in shop.metaobjects.event.values offset: n limit: 1
+
+  An event drops off every list once it has ended (its end time, or its start time when it has
+  no end). Only active entries exist on the storefront. Reads up to 50 entries.
+
+  Pass one of page or exhibition, or neither for every upcoming event.
+
+  @param {object} [page] - Only events whose programme page is this page
+  @param {object} [exhibition] - Only events tied to this exhibition entry
+  @param {number} [limit] - At most this many
+
+  @example
+  {%- capture ids -%}{% render 'gs-event-index', page: page %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign limit = limit | default: 50
+  assign now = 'now' | date: '%s' | plus: 0
+  assign keys = ''
+  for event in shop.metaobjects.event.values
+    if page != blank
+      if event.programme_page.value.id != page.id
+        continue
+      endif
+    endif
+    if exhibition != blank
+      if event.exhibition.value.system.handle != exhibition.system.handle
+        continue
+      endif
+    endif
+    assign finish = event.ends.value | default: event.starts.value
+    assign finish_s = finish | date: '%s' | plus: 0
+    if finish_s < now
+      continue
+    endif
+    assign start_s = event.starts.value | date: '%s'
+    assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
+    assign keys = keys | append: start_s | append: '-' | append: pos | append: ','
+  endfor
+
+  assign sorted = keys | split: ',' | sort
+  for key in sorted limit: limit
+    echo key | split: '-' | last | plus: 0
+    unless forloop.last
+      echo ','
+    endunless
+  endfor
+-%}

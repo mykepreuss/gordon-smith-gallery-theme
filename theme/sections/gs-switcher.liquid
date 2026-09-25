@@ -1,0 +1,92 @@
+{%- comment -%}
+  Sibling navigation (DESIGN.md §6.7, DS-13): moves sideways between pages of the same kind
+  without the main menu. Real links with aria-current, not tabs, because each item is its own page.
+
+  On exhibition list pages: On now, Upcoming, Past, with counts from the exhibition entries
+  (hidden when zero). The pages are the ones chosen in Theme settings, Exhibitions and events.
+  On portfolio pages: each portfolio in Theme settings, Shop, then All editions.
+{%- endcomment -%}
+{%- if collection != blank -%}
+  {%- assign nav_label = 'shop.portfolios' | t -%}
+  <nav class="gs-container gs-switcher gs-lead-in" aria-label="{{ nav_label }}">
+    <ul class="gs-switcher__list">
+      {%- for item in settings.portfolio_collections -%}
+        <li><a href="{{ item.url }}"{% if item.handle == collection.handle %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
+      {%- endfor -%}
+      {%- assign all = settings.all_editions_collection -%}
+      {%- if all != blank -%}
+        <li><a href="{{ all.url }}"{% if all.handle == collection.handle %} aria-current="page"{% endif %}>{{ 'shop.all_editions' | t }}</a></li>
+      {%- endif -%}
+    </ul>
+  </nav>
+{%- else -%}
+  {%- liquid
+    assign on_now = 0
+    assign upcoming = 0
+    assign past = 0
+    for entry in shop.metaobjects.exhibition.values
+      capture state
+        render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value
+      endcapture
+      assign state = state | strip
+      case state
+        when 'on-now'
+          assign on_now = on_now | plus: 1
+        when 'upcoming'
+          assign upcoming = upcoming | plus: 1
+        else
+          assign past = past | plus: 1
+      endcase
+    endfor
+    assign items = 'on_now,upcoming,past' | split: ','
+  -%}
+  <nav class="gs-container gs-switcher gs-lead-in" aria-label="{{ 'exhibitions.switcher_label' | t }}">
+    <ul class="gs-switcher__list">
+      {%- for item in items -%}
+        {%- liquid
+          case item
+            when 'on_now'
+              assign target = settings.exhibitions_on_now_page
+              assign count = on_now
+            when 'upcoming'
+              assign target = settings.exhibitions_upcoming_page
+              assign count = upcoming
+            else
+              assign target = settings.exhibitions_past_page
+              assign count = past
+          endcase
+          assign label_key = 'exhibitions.switcher_' | append: item
+        -%}
+        {%- if target != blank -%}
+          <li>
+            <a href="{{ target.url }}"{% if page.id == target.id %} aria-current="page"{% endif %}>
+              {{- label_key | t -}}
+              {%- if count > 0 %} <span class="gs-switcher__count">{{ count }}</span>{% endif -%}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Switcher",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page", "collection"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "On exhibition pages: On now, Upcoming and Past, from Theme settings, Exhibitions and events. On portfolio pages: the portfolios in Theme settings, Shop."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Switcher"
+    }
+  ]
+}
+{% endschema %}

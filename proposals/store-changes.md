@@ -23,8 +23,8 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 | Menu | Items | Note |
 | --- | --- | --- |
-| New `utility` menu | Contact (`/pages/contact`), Newsletter (link to the newsletter band), Search (`/search`) | The theme adds Cart. Shown in the header row on desktop and in the Menu drawer |
-| Footer | Explore links (Exhibitions, Limited editions, Artists for Kids), Frequently asked questions (`/pages/frequently-asked-questions`, relative instead of the absolute URL), Do not sell or share my personal information | Social links come from theme settings with visible names (gallery supplies URLs) |
+| ~~New `utility` menu~~ | Not needed: the theme builds the utility links in (DS-29): Contact from the contact-page theme setting, Newsletter (the band's anchor), Search, Cart | One store change fewer. Contact can't be dropped by a menu edit |
+| Footer | Explore links (Exhibitions, Limited editions, Artists for Kids), Frequently asked questions (`/pages/frequently-asked-questions`, relative instead of the absolute URL), Do not sell or share my personal information | Social links come from theme settings with visible names (gallery supplies URLs). The footer section takes two menus: Explore, and an optional Legal menu for the small last-line links; store policies are added automatically. Until the footer menu is edited, the theme uses the existing `footer` menu as Explore, and its absolute FAQ link is made relative by the theme |
 
 ## 3. Template assignments (REUSE-01, DS-14)
 
@@ -62,7 +62,20 @@ Redirects only work from addresses that no longer load a page, so the order matt
 
 Rollback: republish the baseline theme, unhide the six pages, delete the six redirects. Entry handles are proposals until the entries exist.
 
-## 6. Not proposed
+## 6. Theme settings for the review theme
+
+Values the theme's settings need (Online Store, Themes, Customize, Theme settings). These are theme data, not store resources: they live in the review theme's `config/settings_data.json` and change nothing else. The build sets the ones already known.
+
+| Setting | Value | Status |
+| --- | --- | --- |
+| Address | 2121 Lonsdale Avenue, North Vancouver, BC V7M 2K6 | Set (DESIGN.md §6.10) |
+| Land acknowledgement | The current footer's wording | Set (moved from the current theme) |
+| Contact page, On now, Upcoming, Past, Exhibitions overview, Upcoming events and Shop landing pages | `contact`, `on-now`, `upcoming-exhibitions`, `past-exhibitions`, `exhibitions-1`, `upcoming-events`, `shop` | Set |
+| Portfolios, newest first; All limited editions | The five portfolios, 2026 Fall first; `all-prints` | Set |
+| Hours, email, phone, social links, newsletter consent wording | From the gallery (ACCESS-04) | Waiting |
+| Main menu | `new-website-menu-1` until the review menu exists (§1) | Temporary |
+
+## 7. Not proposed
 
 - No other redirects, no product or collection changes beyond part 4, no app installs, no checkout changes.
 - Mailchimp: no change until the audit is complete (`baseline/mailchimp-audit.md`).

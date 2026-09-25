@@ -8,7 +8,7 @@ What the live store and site looked like before any change (plan step 1). Everyt
 | --- | --- |
 | Store | `ed35ee-ea.myshopify.com` (public `gordonsmithgallery.com`) |
 | Live theme | `183162372393` "Colorblock: NEW WEBSITE", role MAIN, Colorblock 15.5.0 |
-| Pulled into | `theme/` (untouched; first theme commit) |
+| Pulled into | `theme/` (untouched; first theme commit 27ef593). Moved unchanged to `baseline/theme/` on the build branch, so `theme/` can hold the new theme (P-13) |
 | Pull time (UTC) | 2026-09-25, about 21:16 (file times of the pulled files) |
 | Pulled by | Michael, on his Mac: `shopify theme pull --store ed35ee-ea.myshopify.com --theme 183162372393 --path theme`. The pull output didn't print the CLI version; discovery used 4.8.2 |
 | Files | 402, committed unchanged as the first theme commit |
@@ -20,7 +20,7 @@ Before release, pull the then-current live theme into a separate folder and comp
 | Check | Result | File |
 | --- | --- | --- |
 | Shopify Theme Check (no auto-correct), Shopify CLI 4.8.2 | 4 errors, 11 warnings in 11 files | `baseline/theme-check.json`, `baseline/theme-check.txt` |
-| Design-system linter (`design-system/scripts/lint_theme.py theme/`) | 41 errors, 200 warnings with the rules as of 2026-09-25. Expected: the linter checks the target structure, which the current theme predates. Informational since the new theme (P-13) replaces this one; the new theme has to pass with no errors | `baseline/lint-theme.txt` |
+| Design-system linter (`design-system/scripts/lint_theme.py baseline/theme/`, run as `theme/` before the move) | 41 errors, 200 warnings with the rules as of 2026-09-25. Expected: the linter checks the target structure, which the current theme predates. Informational since the new theme (P-13) replaces this one; the new theme has to pass with no errors | `baseline/lint-theme.txt` |
 
 ### What the checks show
 
