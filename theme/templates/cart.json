@@ -9,12 +9,11 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "cart",
-      "settings": {}
+    "cart": {
+      "type": "gs-cart"
     }
   },
   "order": [
-    "main"
+    "cart"
   ]
 }

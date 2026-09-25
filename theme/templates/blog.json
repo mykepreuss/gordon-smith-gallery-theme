@@ -9,12 +9,11 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "blog",
-      "settings": {}
+    "blog": {
+      "type": "gs-blog"
     }
   },
   "order": [
-    "main"
+    "blog"
   ]
 }

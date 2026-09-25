@@ -1,0 +1,59 @@
+{%- comment -%}
+  Portfolio navigation (DESIGN.md §7.5, SHOP-01, SHOP-02): one compact card per portfolio, in the
+  order of Theme settings, Shop, with its first work whole on the mat (artwork mode, DS-05). The Shop landing's one
+  listing: nothing else on the page repeats it. Also on Shopify's /collections page, which the
+  menu no longer links to (P-06).
+{%- endcomment -%}
+{%- assign portfolios = settings.portfolio_collections -%}
+{%- if portfolios != blank -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+        {%- if settings.all_editions_collection != blank -%}
+          <a class="gs-cta-link gs-cta-link--more" href="{{ settings.all_editions_collection.url }}">{{ 'shop.all_editions_link' | t }}</a>
+        {%- endif -%}
+      </div>
+      <ul class="gs-grid gs-grid--artworks">
+        {%- for portfolio in portfolios -%}
+          <li>
+            <article class="gs-card gs-card--compact">
+              {%- render 'gs-media', image: portfolio.products.first.featured_media, preset: 'tile', mode: 'artwork', alt: portfolio.title -%}
+              <h3 class="gs-card__title"><a href="{{ portfolio.url }}">{{ portfolio.title | escape }}</a></h3>
+              <p class="gs-meta">{{ 'shop.editions_count' | t: count: portfolio.products_count }}</p>
+            </article>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- elsif request.design_mode -%}
+  <p class="gs-editor-warning gs-container">Choose the portfolios in Theme settings, Shop.</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Portfolio navigation",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page", "list-collections"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the portfolios chosen in Theme settings, Shop, newest first."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Portfolios"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio navigation"
+    }
+  ]
+}
+{% endschema %}

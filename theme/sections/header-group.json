@@ -9,14 +9,16 @@
  */
 {
   "type": "header",
-  "name": "t:general.header",
+  "name": "Header",
   "sections": {
     "header": {
-      "type": "header",
-      "settings": {}
+      "type": "gs-header",
+      "settings": {
+        "menu": "new-website-menu-1"
+      }
     }
   },
   "order": [
     "header"
-  ],
+  ]
 }

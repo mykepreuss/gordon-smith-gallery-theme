@@ -1,0 +1,22 @@
+{% doc %}
+  Turns a programme field's value into the data-gs-brand scope (DESIGN.md §3.3): gallery,
+  foundation or artists-for-kids. Anything else, including blank, is the Gallery.
+
+  @param {string} [value] - The field's value: Gallery, Smith Foundation or Artists for Kids
+
+  Capture the output and strip it before using it in an attribute.
+
+  @example
+  {%- capture brand -%}{% render 'gs-programme', value: page.metafields.custom.programme.value %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign v = value | strip | downcase
+  case v
+    when 'smith foundation'
+      echo 'foundation'
+    when 'artists for kids'
+      echo 'artists-for-kids'
+    else
+      echo 'gallery'
+  endcase
+-%}

@@ -1,0 +1,48 @@
+{% doc %}
+  One event in a list (content model part 5): title, when, where, a sentence, tickets. A blank
+  location means the gallery, so nothing shows. The compact form (on an exhibition's page) leaves
+  out the image and summary.
+
+  @param {object} event - An event entry
+  @param {boolean} [compact] - Title, time, place and tickets only
+  @param {string} [heading] - Element for the title: 'h3' (default), 'h4', or 'p' where a heading would skip a level
+
+  @example
+  <ul class="gs-events">{%- render 'gs-event', event: event -%}</ul>
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h3'
+  assign image = event.image.value
+  assign has_media = false
+  if compact != true and image != blank
+    assign has_media = true
+  endif
+-%}
+<li class="gs-event{% if has_media %} gs-event--media{% endif %}">
+  {%- if has_media -%}
+    {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: event.title.value -%}
+  {%- endif -%}
+  <div class="gs-event__text">
+    <{{ tag }} class="{% if compact %}gs-h4{% else %}gs-h3{% endif %}">{{ event.title.value | escape }}</{{ tag }}>
+    <p class="gs-status__dates">
+      <time datetime="{{ event.starts.value }}">
+        {%- render 'gs-time-range', start: event.starts.value, end: event.ends.value -%}
+      </time>
+    </p>
+    {%- if event.location.value != blank -%}
+      <p class="gs-meta">{{ event.location.value | escape }}</p>
+    {%- endif -%}
+    {%- if compact != true and event.summary.value != blank -%}
+      <p>{{ event.summary.value | escape | newline_to_br }}</p>
+    {%- endif -%}
+    {%- if event.tickets.value.url != blank -%}
+      {%- liquid
+        assign ticket_label = event.tickets.value.text
+        if ticket_label == blank
+          assign ticket_label = 'events.tickets' | t
+        endif
+      -%}
+      {%- render 'gs-link', link: event.tickets.value, label: ticket_label, class: 'gs-cta-link' -%}
+    {%- endif -%}
+  </div>
+</li>

@@ -3,31 +3,18 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
-    {% # Inlined CSS Variables %}
-    {% render 'css-variables' %}
-
-    {% # Load and preload the critical CSS %}
-    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
-
-    {% # Social, title, etc. %}
     {% render 'meta-tags' %}
-
-    {% style %}
-      main {
-        text-align: center;
-      }
-      main img {
-        display: unset;
-      }
-    {% endstyle %}
+    {% render 'gs-fonts' %}
+    {{ 'gs-tokens.css' | asset_url | stylesheet_tag }}
+    {{ 'gs-components.css' | asset_url | stylesheet_tag }}
 
     {{ content_for_header }}
   </head>
 
-  <body>
-    <main>
-      <div class="shopify-section">
-        <h1>{{ gift_card.balance | money }}</h1>
+  <body class="gs-type" data-gs-brand="gallery">
+    <main id="main" class="gs-main">
+      <div class="gs-container gs-page-head">
+        <h1 class="gs-h1">{{ gift_card.balance | money }}</h1>
 
         {% if gift_card.enabled == false or gift_card.expired %}
           <p>{{ 'gift_card.expired' | t }}</p>
@@ -41,19 +28,15 @@
         {% endif %}
 
         <p>
-          {% if settings.logo %}
-            {{ settings.logo | image_url: width: 300 | image_tag: alt: shop.name }}
-          {% else %}
-            <img
-              src="{{ 'gift-card/card.svg' | shopify_asset_url }}"
-              alt="{{ 'gift_card.card' | t }}"
-              width="300"
-              height="200"
-            >
-          {% endif %}
+          <img
+            src="{{ 'gift-card/card.svg' | shopify_asset_url }}"
+            alt="{{ 'gift_card.card' | t }}"
+            width="300"
+            height="200"
+          >
         </p>
 
-        <h2>{{ shop.name }}</h2>
+        <h2 class="gs-h3">{{ shop.name }}</h2>
         <p>{{ 'gift_card.use_at_checkout' | t }}</p>
         <p>{{ gift_card.code | format_code }}</p>
 

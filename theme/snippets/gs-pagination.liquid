@@ -1,0 +1,32 @@
+{% doc %}
+  Page links for a paginated list: previous, page numbers, next. Real links; the current page is
+  marked with aria-current. Renders nothing when there's only one page.
+
+  @param {object} paginate - The paginate object from a paginate tag
+
+  @example
+  {%- render 'gs-pagination', paginate: paginate -%}
+{% enddoc %}
+{%- if paginate.pages > 1 -%}
+  <nav aria-label="{{ 'general.pagination' | t }}">
+    <ul class="gs-pagination">
+      {%- if paginate.previous.is_link -%}
+        <li><a href="{{ paginate.previous.url }}">{{ 'general.previous' | t }}</a></li>
+      {%- endif -%}
+      {%- for part in paginate.parts -%}
+        <li>
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}">{{ part.title }}</a>
+          {%- elsif part.title == paginate.current_page -%}
+            <span aria-current="page">{{ part.title }}</span>
+          {%- else -%}
+            <span>{{ part.title }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+      {%- if paginate.next.is_link -%}
+        <li><a href="{{ paginate.next.url }}">{{ 'general.next' | t }}</a></li>
+      {%- endif -%}
+    </ul>
+  </nav>
+{%- endif -%}

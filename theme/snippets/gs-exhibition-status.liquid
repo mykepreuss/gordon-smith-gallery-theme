@@ -1,0 +1,30 @@
+{% doc %}
+  Works out an exhibition's status from its dates, so labels and lists never go stale
+  (DESIGN.md §7, design-system/proposals/content-model.md). Outputs on-now, upcoming or past.
+
+  Compares calendar days using Liquid's 'now', in the store's timezone (America/Los_Angeles,
+  baseline/store-manifest.md). Storefront pages can be cached for a short time, so a status may
+  lag briefly around midnight on a changeover day.
+
+  @param {string} start - Start date, e.g. entry.start_date.value
+  @param {string} [end] - End date. Blank means open-ended
+
+  @example
+  {% render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value %}
+{% enddoc %}
+{%- liquid
+  assign today = 'now' | date: '%Y%m%d' | plus: 0
+  assign s = start | date: '%Y%m%d' | plus: 0
+  if end != blank
+    assign e = end | date: '%Y%m%d' | plus: 0
+  else
+    assign e = 99991231
+  endif
+  if today < s
+    echo 'upcoming'
+  elsif today > e
+    echo 'past'
+  else
+    echo 'on-now'
+  endif
+-%}

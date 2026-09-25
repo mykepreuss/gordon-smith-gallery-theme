@@ -7,14 +7,13 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
-    "main": {
-      "type": "404",
-      "settings": {}
+    "not-found": {
+      "type": "gs-not-found"
     }
   },
   "order": [
-    "main"
+    "not-found"
   ]
 }

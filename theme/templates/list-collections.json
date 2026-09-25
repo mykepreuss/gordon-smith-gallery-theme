@@ -9,12 +9,21 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "collections",
-      "settings": {}
+    "title": {
+      "type": "gs-title",
+      "settings": {
+        "heading": "Limited Editions"
+      }
+    },
+    "portfolios": {
+      "type": "gs-portfolio-nav",
+      "settings": {
+        "heading": "Portfolios"
+      }
     }
   },
   "order": [
-    "main"
+    "title",
+    "portfolios"
   ]
 }

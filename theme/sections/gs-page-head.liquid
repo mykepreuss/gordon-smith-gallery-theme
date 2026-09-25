@@ -1,0 +1,36 @@
+{%- comment -%}
+  Page header only (DESIGN.md §6.6): the page title and its intro field. For list pages, where a
+  hero would push the list down (On now, Upcoming, Past exhibitions, DESIGN.md §7.5).
+{%- endcomment -%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    {%- if page.metafields.custom.eyebrow.value != blank -%}
+      <p class="gs-eyebrow">{{ page.metafields.custom.eyebrow.value | escape }}</p>
+    {%- endif -%}
+    <h1 class="gs-h1"{% render 'gs-fit', text: page.title %}>{{ page.title | escape }}</h1>
+    {%- if page.metafields.custom.intro.value != blank -%}
+      <p class="gs-deck">{{ page.metafields.custom.intro.value | escape | newline_to_br }}</p>
+    {%- endif -%}
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Page header",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the page title and the page's Intro field."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page header"
+    }
+  ]
+}
+{% endschema %}

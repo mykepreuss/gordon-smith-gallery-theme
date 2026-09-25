@@ -1,0 +1,61 @@
+{%- comment -%}
+  More exhibitions, at the end of an exhibition's page (DESIGN.md §7.5): up to three compact
+  cards for what's on now and coming up, or, when there's nothing else current, the most recent
+  past exhibitions that have their own page. Never the exhibition being shown.
+{%- endcomment -%}
+{%- liquid
+  assign handle = metaobject.system.handle
+  capture ids
+    render 'gs-exhibition-index', status: 'current', exclude: handle, linked_only: true, limit: 3
+  endcapture
+  assign ids = ids | strip | split: ','
+  assign show_status = true
+  if ids.size == 0
+    capture ids
+      render 'gs-exhibition-index', status: 'past', order: 'desc', exclude: handle, linked_only: true, limit: 3
+    endcapture
+    assign ids = ids | strip | split: ','
+    assign show_status = false
+  endif
+-%}
+{%- if ids.size > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'exhibitions.more' | t }}</h2>
+        {%- if settings.exhibitions_past_page != blank -%}
+          <a class="gs-cta-link gs-cta-link--more" href="{{ settings.exhibitions_past_page.url }}">{{ 'exhibitions.all_past' | t }}</a>
+        {%- endif -%}
+      </div>
+      <ul class="gs-grid gs-grid--cards">
+        {%- for id in ids -%}
+          {%- assign n = id | plus: 0 -%}
+          {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+            <li>{%- render 'gs-exhibition-card', entry: entry, show_status: show_status, compact: true, heading: 'h3' -%}</li>
+          {%- endfor -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "More exhibitions",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Up to three other exhibitions: on now and upcoming first, otherwise the most recent past ones."
+    }
+  ],
+  "presets": [
+    {
+      "name": "More exhibitions"
+    }
+  ]
+}
+{% endschema %}

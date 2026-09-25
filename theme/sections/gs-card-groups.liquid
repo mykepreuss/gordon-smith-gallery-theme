@@ -1,0 +1,49 @@
+{%- comment -%}
+  The page's card groups (content model part 4, P-16): its own grids of cards, such as the three
+  organisations on About or the ways to give on Donate. Staff add card groups to the page's Card
+  groups field; this section shows them in order after the page text. A page without card groups
+  shows nothing here.
+{%- endcomment -%}
+{%- assign groups = page.metafields.custom.card_groups.value -%}
+{%- if groups != blank -%}
+  <div class="gs-section gs-surface-paper">
+    <div class="gs-container">
+      {%- for group in groups -%}
+        {%- assign heading = group.heading.value -%}
+        <section class="gs-card-group"{% if heading != blank %} aria-labelledby="{{ section.id }}-{{ forloop.index }}"{% endif %}>
+          {%- if heading != blank -%}
+            <div class="gs-section-head">
+              <h2 class="gs-h2" id="{{ section.id }}-{{ forloop.index }}">{{ heading | escape }}</h2>
+            </div>
+          {%- endif -%}
+          <ul class="gs-grid gs-grid--cards">
+            {%- for card in group.cards.value -%}
+              <li>{%- render 'gs-card', card: card, heading: 'h3' -%}</li>
+            {%- endfor -%}
+          </ul>
+        </section>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Card groups",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the page's Card groups field. Cards with an image show as image cards, cards without one as text cards."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Card groups"
+    }
+  ]
+}
+{% endschema %}

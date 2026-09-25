@@ -9,12 +9,11 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "search",
-      "settings": {}
+    "search": {
+      "type": "gs-search"
     }
   },
   "order": [
-    "main"
+    "search"
   ]
 }

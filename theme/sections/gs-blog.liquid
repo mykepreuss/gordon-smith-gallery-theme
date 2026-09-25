@@ -1,0 +1,47 @@
+{%- comment -%}
+  A blog's articles, newest first. The store's News blog is empty; this keeps its address
+  working in the site's style if it's ever used.
+{%- endcomment -%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    <h1 class="gs-h1"{% render 'gs-fit', text: blog.title %}>{{ blog.title | escape }}</h1>
+  </header>
+</div>
+<div class="gs-section gs-surface-paper">
+  <div class="gs-container">
+    {%- paginate blog.articles by 12 -%}
+      {%- if blog.articles.size > 0 -%}
+        <ul class="gs-grid gs-grid--cards">
+          {%- for article in blog.articles -%}
+            <li>
+              <article class="gs-card">
+                {%- render 'gs-media', image: article.image, preset: 'card', mode: 'photo', alt: article.title -%}
+                <h2 class="gs-card__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>
+                <p class="gs-status__dates">{{ article.published_at | date: '%B %-d, %Y' }}</p>
+                {%- if article.excerpt != blank -%}
+                  <p class="gs-card__text">{{ article.excerpt | strip_html | truncatewords: 30 }}</p>
+                {%- endif -%}
+              </article>
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- render 'gs-pagination', paginate: paginate -%}
+      {%- else -%}
+        <div class="gs-empty">
+          <p class="gs-empty__text">{{ 'blog.empty' | t }}</p>
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["blog"]
+  },
+  "settings": []
+}
+{% endschema %}

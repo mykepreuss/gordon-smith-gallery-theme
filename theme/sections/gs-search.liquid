@@ -1,0 +1,72 @@
+{%- comment -%}
+  Search: the form, then results. Limited editions show as artwork tiles; pages and articles as a
+  list with their titles. Product titles are plain text once the artwork fields are filled
+  (DS-16), which is what lets "Seven Sisters" find Seven Sisters Range.
+{%- endcomment -%}
+{%- assign form_id = 'gs-search-' | append: section.id -%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    <h1 class="gs-h1">{{ 'search.title' | t }}</h1>
+    <form class="gs-form-row" action="{{ routes.search_url }}" method="get" role="search">
+      <div class="gs-field">
+        <label class="gs-field__label" for="{{ form_id }}">{{ 'search.label' | t }}</label>
+        <input class="gs-input" id="{{ form_id }}" type="search" name="q" value="{{ search.terms | escape }}" autocomplete="off">
+      </div>
+      <button class="gs-button" type="submit">{{ 'search.submit' | t }}</button>
+    </form>
+  </header>
+</div>
+
+{%- if search.performed -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-summary">
+    <div class="gs-container">
+      {%- paginate search.results by 24 -%}
+        <p class="gs-deck" id="{{ form_id }}-summary" role="status">
+          {%- if search.results_count == 0 -%}
+            {{- 'search.no_results' | t: terms: search.terms -}}
+          {%- else -%}
+            {{- 'search.results' | t: count: search.results_count, terms: search.terms -}}
+          {%- endif -%}
+        </p>
+        {%- assign products = search.results | where: 'object_type', 'product' -%}
+        {%- assign others = search.results | where: 'object_type', 'page' -%}
+        {%- assign articles = search.results | where: 'object_type', 'article' -%}
+        {%- if products.size > 0 -%}
+          <ul class="gs-grid gs-grid--artworks gs-search__products">
+            {%- for product in products -%}
+              <li>{%- render 'gs-artwork-tile', product: product, heading: 'h2' -%}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if others.size > 0 or articles.size > 0 -%}
+          <ul class="gs-results">
+            {%- for item in others -%}
+              <li>
+                <h2 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h2>
+                {%- if item.content != blank -%}<p class="gs-meta">{{ item.content | strip_html | truncatewords: 30 }}</p>{%- endif -%}
+              </li>
+            {%- endfor -%}
+            {%- for item in articles -%}
+              <li>
+                <h2 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h2>
+                {%- if item.excerpt_or_content != blank -%}<p class="gs-meta">{{ item.excerpt_or_content | strip_html | truncatewords: 30 }}</p>{%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- render 'gs-pagination', paginate: paginate -%}
+      {%- endpaginate -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Search",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["search"]
+  },
+  "settings": []
+}
+{% endschema %}

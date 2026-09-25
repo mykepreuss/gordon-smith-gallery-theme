@@ -1,35 +1,37 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
-    {% # Inlined CSS Variables %}
-    {% render 'css-variables' %}
-
-    {% comment %}
-      Font preloading:
-      1. Preconnect to font CDN for faster connection
-      2. Preload only the critical font variant (base weight)
-      3. Additional variants load on-demand via @font-face
-    {% endcomment %}
-    {% unless settings.type_primary_font.system? %}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-
-      {% comment %} Preload the base font variant for initial page render {% endcomment %}
-      {{ settings.type_primary_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
-    {% endunless %}
-
-    {% # Load and preload the critical CSS %}
-    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
-
-    {% # Social, title, etc. %}
     {% render 'meta-tags' %}
+    {% render 'gs-fonts' %}
+    {{ 'gs-tokens.css' | asset_url | stylesheet_tag }}
+    {{ 'gs-components.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'gs-nav.js' | asset_url }}" defer></script>
+    <script src="{{ 'gs-forms.js' | asset_url }}" defer></script>
 
     {{ content_for_header }}
   </head>
 
-  <body>
+  {%- liquid
+    # Programme colours (DESIGN.md §3.3): from the page's or the exhibition's programme field.
+    assign programme = ''
+    if page != blank
+      assign programme = page.metafields.custom.programme.value
+    elsif metaobject != blank
+      assign programme = metaobject.programme.value
+    endif
+    capture brand
+      render 'gs-programme', value: programme
+    endcapture
+    assign brand = brand | strip
+  -%}
+  <body class="gs-type" data-gs-brand="{{ brand }}">
+    <a class="gs-skip-link" href="#main">{{ 'general.skip_to_content' | t }}</a>
+
     {% sections 'header-group' %}
 
-    {{ content_for_layout }}
+    <main id="main" class="gs-main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
 
     {% sections 'footer-group' %}
   </body>

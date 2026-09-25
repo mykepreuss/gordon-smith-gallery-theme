@@ -9,12 +9,19 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "collection",
-      "settings": {}
+    "head": {
+      "type": "gs-collection-head"
+    },
+    "switcher": {
+      "type": "gs-switcher"
+    },
+    "works": {
+      "type": "gs-artwork-grid"
     }
   },
   "order": [
-    "main"
+    "head",
+    "switcher",
+    "works"
   ]
 }

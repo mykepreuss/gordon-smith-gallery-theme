@@ -1,0 +1,66 @@
+{% doc %}
+  Picks and orders exhibition entries (DS-15, DS-24, DS-25). Outputs comma-separated positions in
+  shop.metaobjects.exhibition.values, in display order. Read an entry back with:
+
+    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+
+  Status comes from the dates (gs-exhibition-status), never from a typed label. Only active
+  entries exist on the storefront; drafts are skipped. Reads up to 50 entries, Liquid's limit for
+  a loop without pagination (the gallery has 15).
+
+  @param {string} status - 'on-now', 'upcoming', 'past', 'current' (on now and upcoming) or 'all'
+  @param {string} [order] - 'asc' (default: earliest start first) or 'desc' (newest first)
+  @param {string} [exclude] - Handle of an entry to leave out (the page's own exhibition)
+  @param {boolean} [linked_only] - Only entries with a page to link to (a summary or text)
+  @param {number} [limit] - At most this many
+
+  @example
+  {%- capture ids -%}{% render 'gs-exhibition-index', status: 'past', order: 'desc' %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign limit = limit | default: 50
+  assign keys = ''
+  for entry in shop.metaobjects.exhibition.values
+    if exclude != blank and entry.system.handle == exclude
+      continue
+    endif
+    if linked_only
+      if entry.summary.value == blank and entry.body.value == blank
+        continue
+      endif
+    endif
+    capture state
+      render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value
+    endcapture
+    assign state = state | strip
+    assign keep = false
+    case status
+      when 'all'
+        assign keep = true
+      when 'current'
+        if state == 'on-now' or state == 'upcoming'
+          assign keep = true
+        endif
+      else
+        if state == status
+          assign keep = true
+        endif
+    endcase
+    if keep
+      assign day = entry.start_date.value | date: '%Y%m%d'
+      assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
+      assign keys = keys | append: day | append: '-' | append: pos | append: ','
+    endif
+  endfor
+
+  assign sorted = keys | split: ',' | sort
+  if order == 'desc'
+    assign sorted = sorted | reverse
+  endif
+  for key in sorted limit: limit
+    echo key | split: '-' | last | plus: 0
+    unless forloop.last
+      echo ','
+    endunless
+  endfor
+-%}

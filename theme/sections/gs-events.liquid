@@ -1,0 +1,72 @@
+{%- comment -%}
+  Upcoming events (content model part 5, P-16). On the page chosen as the Upcoming events page in
+  theme settings it lists every upcoming event; on any other page, the events whose programme
+  page is that page. An event drops off once it has ended. A programme page with no upcoming
+  events shows nothing here; the Upcoming events page says there are none.
+{%- endcomment -%}
+{%- liquid
+  assign all = false
+  if settings.events_page != blank and page.id == settings.events_page.id
+    assign all = true
+  endif
+  if all
+    capture ids
+      render 'gs-event-index'
+    endcapture
+  else
+    capture ids
+      render 'gs-event-index', page: page
+    endcapture
+  endif
+  assign ids = ids | strip | split: ','
+-%}
+{%- if ids.size > 0 or all -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+      </div>
+      {%- if ids.size > 0 -%}
+        <ul class="gs-events">
+          {%- for id in ids -%}
+            {%- assign n = id | plus: 0 -%}
+            {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+              {%- render 'gs-event', event: event -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <div class="gs-empty">
+          <p class="gs-empty__text">{{ 'events.empty' | t }}</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Upcoming events",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Events come from their entries in Content, Metaobjects, Events. Link an event to its programme page to list it there."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Upcoming events"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Upcoming events"
+    }
+  ]
+}
+{% endschema %}

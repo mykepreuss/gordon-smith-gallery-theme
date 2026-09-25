@@ -1,0 +1,86 @@
+{%- comment -%}
+  The cart: each work with its museum label, quantity and a remove link, then the subtotal, the
+  gallery's sales policy (a setting, the same for every cart) and checkout. A plain form, so it
+  works without JavaScript. No checkout changes (P-04).
+{%- endcomment -%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    <h1 class="gs-h1">{{ 'cart.title' | t }}</h1>
+  </header>
+</div>
+<div class="gs-section gs-surface-paper">
+  <div class="gs-container">
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="gs-cart">
+        <ul class="gs-cart__items">
+          {%- for item in cart.items -%}
+            <li class="gs-cart__item">
+              {%- render 'gs-media', image: item.image, sizes: '96px', mode: 'artwork', shape: 'sm', alt: item.product.title -%}
+              <div class="gs-cart__details">
+                <h2 class="gs-cart__name">
+                  <a class="gs-link" href="{{ item.url }}">
+                    {%- render 'gs-artwork-label', product: item.product, tag: 'span', class: 'gs-cart__label' -%}
+                  </a>
+                </h2>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="gs-meta">{{ item.variant.title | escape }}</p>
+                {%- endunless -%}
+                <p class="gs-artwork-tile__price">{{ item.final_line_price | money }}</p>
+              </div>
+              <div class="gs-cart__controls">
+                <div class="gs-field">
+                  <label class="gs-field__label" for="gs-cart-qty-{{ forloop.index }}">{{ 'cart.quantity' | t }}</label>
+                  <input class="gs-input" id="gs-cart-qty-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric">
+                </div>
+                <a class="gs-cta-link" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></a>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <div class="gs-cart__foot">
+          <div>
+            {%- if section.settings.policy != blank -%}
+              <div class="gs-prose">{{ section.settings.policy }}</div>
+            {%- endif -%}
+          </div>
+          <div class="gs-cart__summary">
+            {%- assign subtotal = cart.total_price | money -%}
+            <p class="gs-cart__subtotal">{{ 'cart.subtotal' | t: amount: subtotal }}</p>
+            <p class="gs-meta">{{ 'cart.taxes_shipping' | t }}</p>
+            <div class="gs-actions">
+              <button class="gs-button gs-button--secondary" type="submit" name="update">{{ 'cart.update' | t }}</button>
+              <button class="gs-button" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="gs-empty">
+        <p class="gs-empty__text">{{ 'cart.empty' | t }}</p>
+        {%- assign shop_url = settings.shop_page.url | default: settings.all_editions_collection.url -%}
+        {%- if shop_url != blank -%}
+          <a class="gs-cta-link" href="{{ shop_url }}">{{ 'shop.empty_portfolio_link' | t }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["cart"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "policy",
+      "label": "Sales policy",
+      "default": "<ul><li>All sales are final</li><li>Unframed prints ship in 3–5 business days.</li><li>Framed prints are pickup only * (2–3 weeks)</li><li>Free in-store pickup available (1–2 business days processing).</li><li>Shipping costs confirmed at checkout.</li></ul><p>*Courier delivery can be arranged at the customer’s expense</p><p>By completing your purchase, you agree to our <a href=\"/policies/privacy-policy\" title=\"Terms of Service and Privacy Policy\">Terms of Service and Privacy Policy.</a></p>"
+    }
+  ]
+}
+{% endschema %}

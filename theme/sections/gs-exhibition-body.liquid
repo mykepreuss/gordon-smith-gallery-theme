@@ -1,0 +1,41 @@
+{%- comment -%}
+  An exhibition's text (DESIGN.md §7.5): the summary as the deck, then the body. The body is a
+  rich text field, so pasted page-builder markup and Word formatting from the old pages don't
+  come across (content model part 2, TYPE-03).
+{%- endcomment -%}
+{%- assign entry = metaobject -%}
+{%- if entry.summary.value != blank or entry.body.value != blank -%}
+  <div class="gs-section gs-surface-paper">
+    <div class="gs-container">
+      <div class="gs-prose">
+        {%- if entry.summary.value != blank -%}
+          <p class="gs-deck">{{ entry.summary.value | escape | newline_to_br }}</p>
+        {%- endif -%}
+        {%- if entry.body.value != blank -%}
+          {{ entry.body | metafield_tag }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Exhibition text",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "From the exhibition entry: summary, then text."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Exhibition text"
+    }
+  ]
+}
+{% endschema %}

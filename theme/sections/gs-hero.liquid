@@ -1,0 +1,123 @@
+{%- comment -%}
+  Home page hero (DESIGN.md §6.3, IMG-01, IMG-04). The home page is the only page on its
+  template, so its hero lives in this section's settings; every other page's hero comes from its
+  own page fields (gs-page-hero). One image, no carousel and no autoplay.
+
+  Photo hero: the image fills the frame around its focal point, and the title box overlaps its
+  bottom-left edge by a fixed amount (DS-12). Artwork hero: the work shows whole on the mat with
+  the title box beside it, never over it (DS-05).
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign mode = 'photo'
+  if s.image_is_artwork
+    assign mode = 'artwork'
+  endif
+  assign has_button = false
+  if s.button_label != blank and s.button_link != blank
+    assign has_button = true
+  endif
+  assign has_link = false
+  if s.button2_label != blank and s.button2_link != blank
+    assign has_link = true
+  endif
+-%}
+<div class="gs-section gs-section--lead">
+  <div class="gs-hero{% if s.image_is_artwork %} gs-hero--artwork{% endif %}">
+    {%- render 'gs-media', image: s.image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
+    <div class="gs-hero__box gs-surface-accent">
+      {%- if s.eyebrow != blank -%}
+        <p class="gs-eyebrow">{{ s.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h1 class="gs-display"{% render 'gs-fit', text: s.heading %}>{{ s.heading | escape }}</h1>
+      {%- if s.deck != blank -%}
+        <p class="gs-deck">{{ s.deck | escape }}</p>
+      {%- endif -%}
+      {%- if has_button or has_link -%}
+        <div class="gs-actions">
+          {%- if has_button -%}
+            <a class="gs-button" href="{{ s.button_link }}">{{ s.button_label | escape }}</a>
+          {%- endif -%}
+          {%- if has_link -%}
+            <a class="gs-cta-link" href="{{ s.button2_link }}">{{ s.button2_label | escape }}</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if s.caption != blank -%}
+      <p class="gs-hero__caption gs-caption">{{ s.caption | escape }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home hero",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Set the focal point on the image. On a photo, keep faces and key details out of the bottom-left strip, where the title box overlaps."
+    },
+    {
+      "type": "checkbox",
+      "id": "image_is_artwork",
+      "label": "The image is an artwork",
+      "info": "An artwork shows whole, never cropped or covered.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Label above the heading",
+      "info": "Only when it adds something the heading doesn't, such as a season."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gordon Smith Gallery"
+    },
+    {
+      "type": "text",
+      "id": "deck",
+      "label": "Introduction"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "button2_label",
+      "label": "Second link label"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Second link"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption or photo credit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home hero"
+    }
+  ]
+}
+{% endschema %}

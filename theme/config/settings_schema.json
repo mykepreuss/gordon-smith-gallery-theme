@@ -1,82 +1,150 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Skeleton",
+    "theme_name": "Gordon Smith Gallery",
     "theme_version": "0.1.0",
-    "theme_author": "Shopify",
+    "theme_author": "Michael Preuss",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
   {
-    "name": "t:general.typography",
+    "name": "Gallery details",
     "settings": [
       {
-        "type": "header",
-        "content": "t:general.fonts"
+        "type": "paragraph",
+        "content": "Shown in the footer on every page and on the contact page. Colours, fonts and spacing come from the design system, so there are no settings for them."
       },
       {
-        "type": "font_picker",
-        "id": "type_primary_font",
-        "default": "work_sans_n4",
-        "label": "t:general.primary"
+        "type": "textarea",
+        "id": "address",
+        "label": "Address",
+        "default": "2121 Lonsdale Avenue\nNorth Vancouver, BC V7M 2K6"
+      },
+      {
+        "type": "textarea",
+        "id": "hours",
+        "label": "Opening hours",
+        "info": "One line per day or group of days."
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email address"
+      },
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Phone number"
+      },
+      {
+        "type": "page",
+        "id": "contact_page",
+        "label": "Contact page",
+        "info": "Contact shows in the header on every page and in the footer."
+      },
+      {
+        "type": "richtext",
+        "id": "land_acknowledgement",
+        "label": "Land acknowledgement",
+        "info": "Shown once, in the footer of every page."
       }
     ]
   },
   {
-    "name": "t:general.layout",
+    "name": "Social links",
     "settings": [
       {
-        "type": "select",
-        "id": "max_page_width",
-        "label": "t:labels.page_width",
-        "options": [
-          {
-            "value": "90rem",
-            "label": "t:options.page_width.narrow"
-          },
-          {
-            "value": "110rem",
-            "label": "t:options.page_width.wide"
-          }
-        ],
-        "default": "90rem"
+        "type": "paragraph",
+        "content": "Shown in the footer with their names. Leave an address blank to hide that link."
       },
       {
-        "type": "range",
-        "id": "min_page_margin",
-        "min": 10,
-        "max": 100,
-        "step": 1,
-        "unit": "px",
-        "label": "t:labels.page_margin",
-        "default": 20
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube"
+      },
+      {
+        "type": "url",
+        "id": "social_vimeo",
+        "label": "Vimeo"
+      },
+      {
+        "type": "url",
+        "id": "social_linkedin",
+        "label": "LinkedIn"
       }
     ]
   },
   {
-    "name": "t:general.colors",
+    "name": "Exhibitions and events",
     "settings": [
       {
-        "type": "color",
-        "id": "background_color",
-        "default": "#FFFFFF",
-        "label": "t:labels.background"
+        "type": "paragraph",
+        "content": "Exhibitions and events come from their entries in Content, Metaobjects. Their status follows their dates. These pages hold the lists."
       },
       {
-        "type": "color",
-        "id": "foreground_color",
-        "default": "#333333",
-        "label": "t:labels.foreground"
+        "type": "page",
+        "id": "exhibitions_on_now_page",
+        "label": "On now page"
       },
       {
-        "type": "range",
-        "id": "input_corner_radius",
-        "min": 0,
-        "max": 10,
-        "step": 1,
-        "unit": "px",
-        "label": "t:labels.input_corner_radius",
-        "default": 4
+        "type": "page",
+        "id": "exhibitions_upcoming_page",
+        "label": "Upcoming exhibitions page"
+      },
+      {
+        "type": "page",
+        "id": "exhibitions_past_page",
+        "label": "Past exhibitions page"
+      },
+      {
+        "type": "page",
+        "id": "exhibitions_overview_page",
+        "label": "Exhibitions overview page",
+        "info": "Linked from the exhibition lists, not from the menu."
+      },
+      {
+        "type": "page",
+        "id": "events_page",
+        "label": "Upcoming events page",
+        "info": "This page lists every upcoming event. Other pages list only their own."
+      },
+      {
+        "type": "text",
+        "id": "collection_artists_label",
+        "label": "Label for artists from the permanent collection",
+        "default": "From the collection"
+      }
+    ]
+  },
+  {
+    "name": "Shop",
+    "settings": [
+      {
+        "type": "page",
+        "id": "shop_page",
+        "label": "Shop landing page"
+      },
+      {
+        "type": "collection_list",
+        "id": "portfolio_collections",
+        "label": "Portfolios, newest first",
+        "info": "The Shop landing, the portfolio switcher and the home page read this list. The first one is featured on the home page.",
+        "limit": 12
+      },
+      {
+        "type": "collection",
+        "id": "all_editions_collection",
+        "label": "All limited editions"
       }
     ]
   }

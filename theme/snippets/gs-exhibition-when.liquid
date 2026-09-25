@@ -1,0 +1,34 @@
+{% doc %}
+  An exhibition's status chip and dates (DESIGN.md §6.5, DS-18): the chip, then the dates on
+  their own line. The dates note replaces the dates when the entry has one ("Opens fall 2027").
+  On now is the strong chip. Never a joined "A · B" string.
+
+  @param {object} entry - An exhibition entry
+  @param {boolean} [show_status] - Show the chip. Only where a list mixes statuses, and on the
+    exhibition's own page
+
+  @example
+  {%- render 'gs-exhibition-when', entry: metaobject, show_status: true -%}
+{% enddoc %}
+{%- liquid
+  capture state
+    render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value
+  endcapture
+  assign state = state | strip
+-%}
+<div class="gs-status">
+  {%- if show_status -%}
+    {%- case state -%}
+      {%- when 'on-now' -%}<span class="gs-chip gs-chip--strong">{{ 'exhibitions.status_on_now' | t }}</span>
+      {%- when 'upcoming' -%}<span class="gs-chip">{{ 'exhibitions.status_upcoming' | t }}</span>
+      {%- else -%}<span class="gs-chip">{{ 'exhibitions.status_past' | t }}</span>
+    {%- endcase -%}
+  {%- endif -%}
+  <p class="gs-status__dates">
+    {%- if entry.dates_note.value != blank -%}
+      {{- entry.dates_note.value | escape -}}
+    {%- else -%}
+      {%- render 'gs-date-range', start: entry.start_date.value, end: entry.end_date.value -%}
+    {%- endif -%}
+  </p>
+</div>

@@ -1,0 +1,48 @@
+{% doc %}
+  When an event or opening reception happens, in the site's one format for times:
+
+    Thursday, October 8, 2026, 2:30 to 4 PM
+    Friday, September 25, 2026, 11 AM to 2 PM
+    Saturday, November 7, 2026, 7:30 PM                        (no end time)
+    Friday, May 1, 2026, 6 PM to Saturday, May 2, 2026, 1 AM    (ends another day)
+
+  Minutes show only when they aren't :00. Times are in the store's timezone.
+
+  @param {string} start - Date and time value, e.g. event.starts.value
+  @param {string} [end] - Date and time value
+
+  @example
+  <time datetime="{{ event.starts.value }}">{% render 'gs-time-range', start: event.starts.value, end: event.ends.value %}</time>
+{% enddoc %}
+{%- liquid
+  assign day1 = start | date: '%A, %B %-d, %Y'
+  assign t1 = start | date: '%-I'
+  assign m1 = start | date: '%M'
+  if m1 != '00'
+    assign t1 = t1 | append: ':' | append: m1
+  endif
+  assign p1 = start | date: '%p'
+
+  if end == blank
+    echo day1 | append: ', ' | append: t1 | append: ' ' | append: p1
+  else
+    assign day2 = end | date: '%A, %B %-d, %Y'
+    assign t2 = end | date: '%-I'
+    assign m2 = end | date: '%M'
+    if m2 != '00'
+      assign t2 = t2 | append: ':' | append: m2
+    endif
+    assign p2 = end | date: '%p'
+    if day1 != day2
+      assign from = day1 | append: ', ' | append: t1 | append: ' ' | append: p1
+      assign to = day2 | append: ', ' | append: t2 | append: ' ' | append: p2
+    elsif p1 == p2
+      assign from = day1 | append: ', ' | append: t1
+      assign to = t2 | append: ' ' | append: p2
+    else
+      assign from = day1 | append: ', ' | append: t1 | append: ' ' | append: p1
+      assign to = t2 | append: ' ' | append: p2
+    endif
+    echo 'events.time_range' | t: start: from, end: to
+  endif
+-%}

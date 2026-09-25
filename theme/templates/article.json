@@ -9,12 +9,11 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "article",
-      "settings": {}
+    "article": {
+      "type": "gs-article"
     }
   },
   "order": [
-    "main"
+    "article"
   ]
 }

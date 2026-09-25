@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.4.2 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need gallery approval under the plan's structural-approval step; items marked **Input needed** are blocked on the gallery.
 
@@ -9,10 +9,10 @@ Nothing here changes the live store. Items marked **Proposed** still need galler
 | File | Role |
 | --- | --- |
 | `DESIGN.md` | Rules, rationale, component and template specs, decisions. Read before any UI work. |
-| `tokens.css` | Source of truth for every value. Ships to the theme as `assets/gs-tokens.css`. |
-| `components.css` | Reference implementation of the components in §6. Ships as `assets/gs-components.css`. |
-| `js/gs-nav.js` | Header navigation extras (§6.1): Escape, outside click, focus leaving. The header works without it. Ships as `assets/gs-nav.js`. |
-| `liquid/snippets/*.liquid` | Draft snippets that enforce rules in code: header, navigation, URL handling, media, title fitting, exhibition status and dates, logos (§9.5). Untested until the theme is pulled. |
+| `tokens.css` | Source of truth for every value. Ships to the theme as `assets/gs-tokens.css` (`scripts/sync_theme.py`). |
+| `components.css` | The components in §6. Ships as `assets/gs-components.css` (`scripts/sync_theme.py`). |
+| `js/gs-nav.js`, `js/gs-forms.js` | Header navigation extras (§6.1) and form states (§6.12). Everything works without them. Ship as `assets/gs-nav.js`, `assets/gs-forms.js`. |
+| `../theme/snippets/gs-*.liquid` | The snippets that enforce rules in code (§9.5). They moved into the theme when it was built; the theme is their source. |
 | `templates.rules.json` | The page-template rules in §7, machine-readable. |
 | `proposals/content-model.md` | Store-level proposal for page fields, exhibition entries and artwork label fields. Needs gallery approval. |
 | `preview.html` | Living style guide with real titles, dates, curators, portfolios and prices from the live store (images are placeholders). Open it in a browser (it loads Mulish from Google Fonts for the preview only); update it when a component changes. |
@@ -21,6 +21,8 @@ Nothing here changes the live store. Items marked **Proposed** still need galler
 | `scripts/lint_theme.py` | Checks a theme folder against §7 and §9: approved templates only, composition, locked settings, raw values, required snippet parameters. Tests in `scripts/tests/`. |
 | `scripts/audit_fonts.py` | Reports which fonts actually render the text on live or preview pages, and flags fallbacks. |
 | `scripts/build_logo_snippets.py` | Generates the inline-SVG logo snippets from `logos/`. |
+| `scripts/sync_theme.py` | Copies tokens, components, scripts and logo snippets into `theme/`; `--check` reports copies that differ. |
+| `fonts/Mulish-OFL.txt` | The licence for the Mulish files bundled in the theme. |
 
 Working rules:
 
@@ -29,7 +31,7 @@ Working rules:
 3. One template per kind of page. A page's own content lives in its fields and body, never in template section settings (§7.3).
 4. Staff choose content, not design (§9.4). If a section needs a new visual option, add it here as a decision before building it.
 5. When a brand source is ambiguous, follow the supplied logo files, record the call in §11, and ask the gallery.
-6. Before a pull request: run the contrast check, the theme linter and its tests; before release, run the font audit on the review theme (§10).
+6. Before a pull request: run the contrast check, the theme linter and its tests, and `sync_theme.py --check`; before release, run the font audit on the review theme (§10).
 
 ## 1. Principles
 
@@ -156,7 +158,8 @@ The brand guide sets coloured headlines and orange deck text (p.15). That works 
 
 - Family stack: `"Mulish", Arial, "Helvetica Neue", Helvetica, sans-serif`. Arial is the brand-sanctioned fallback.
 - Weights needed: 300, 400, 700, 800, 900, plus 400 italic for artwork titles.
-- Preferred: Shopify's font library through the theme's `font_picker` settings, loading extra weights with `font_modify`, if the library's Mulish entry has all the weights above. A third-party list shows it under its old name "Muli"; confirm in the theme editor. Otherwise self-host the Mulish variable woff2 (SIL OFL) in `assets/` with `font-display: swap`. The current theme uses Assistant; no text may fall back to it.
+- Bundled with the theme, not a font picker, because fonts aren't a staff choice: the Mulish variable woff2 files (weights 200 to 1000, latin and latin-ext subsets, normal and italic; SIL OFL 1.1, `fonts/Mulish-OFL.txt`) in `theme/assets/`, loaded by `snippets/gs-fonts.liquid` with `font-display: swap`; the roman latin file is preloaded. No text may fall back to Assistant, the old theme's font.
+- Coverage: Mulish has no glyphs for some characters in the Squamish, Tsleil-Waututh and Musqueam names in the land acknowledgement (ʔ, ɬ, θ and some combining marks), so those render in Arial (L-06, Q11).
 
 ### 4.2 Scale
 
@@ -201,12 +204,12 @@ Sizes are fluid between 390 px and 1440 px viewports (`clamp()`), so there are n
 | `--gs-stack-lg` | 32 to 64 | Section heading block to its content |
 | `--gs-hero-overlap` | 48 to 96 | How far the hero title box overlaps the image |
 
-Rhythm inside components: eyebrow to heading 12, heading to deck 16, text to actions 24 to 32. Two paper sections in a row share one gap.
+Rhythm inside components: eyebrow to heading 12, heading to deck 16, text to actions 24 to 32. Two paper sections in a row share one gap: paper sections are spaced with margins, which collapse, even across Shopify's section wrappers; bands (tint, ink, accent) pad inside their colour. A page header or switcher (`.gs-lead-in`) sets its own gap to what follows.
 
 ### 5.2 Layout and breakpoints
 
 - Containers: wide 1440 (heroes, image grids), content 1200 (cards, header, footer), prose 720.
-- Breakpoints: 750 (md), 990 (lg), 1200 (xl). The first two are the Dawn-family breakpoints Colorblock is expected to use; verify when the theme is pulled (§9.6). The header is the one exception to the defaults: the logo reaches desktop size at 990, but the inline navigation needs room for six or seven section labels, so it starts at 1200 and the Menu drawer is used below that.
+- Breakpoints: 750 (md), 990 (lg), 1200 (xl), in `components.css` (the new theme has no others). The header is the one exception to the defaults: the logo reaches desktop size at 990, but the inline navigation needs room for six or seven section labels, so it starts at 1200 and the Menu drawer is used below that.
 - Grids: cards 1 / 2 / 3 columns at base / 750 / 990. Artwork tiles and portfolio cards 2 / 3 / 4 at base / 750 / 1200. Installation views 1 / 2 / 3 at base / 750 / 1200.
 - Media ratios (components choose; staff never do): hero 4:5 / 4:3 / 21:9, card 4:3, installation view 3:2, artwork tile 1:1, portrait 4:5.
 
@@ -364,6 +367,24 @@ Every list, form and image has a defined state for when things aren't there or g
 
 Errors state what happened and how to fix it, without apology. Empty states always point somewhere useful. Colour is never the only signal: the icon and the words carry the error, including in forced-colours mode, where every icon is repainted in the system text colour.
 
+### 6.13 Components added in the build (0.5)
+
+Specified here because the build needed them; each follows the rules above and is in `components.css`.
+
+| Component | Class | Use |
+| --- | --- | --- |
+| Feature panel | `.gs-feature` | One box, text beside an image, on the Home and Shop landing pages. The box takes the surface (tint, accent once per page, or ink) inside a paper section, so it reads as the brand's box. Renders nothing when empty |
+| Details list | `.gs-details` | An exhibition's facts: label over value, each under a rule, in one to three columns; long lists of names run in columns across the full width |
+| Events | `.gs-events`, `.gs-event` | Title, time (`gs-time-range`: "Thursday, October 8, 2026, 2:30 to 4 PM"), place, a sentence, tickets. With an image, the image sits beside the text from 750 px |
+| Text card | `.gs-card--text` | A card without an image: starts under a rule. From card entries (content model part 4) |
+| Artwork detail | `.gs-artwork`, `.gs-artwork-label` | The product page: every image whole on the mat, then the museum label (artist bold, *title* in a `<cite>`, year), meta, price, one action, the archive note, the framing panel, disclosures |
+| Panel | `.gs-panel` | A small box on tint inside a paper section: the framing offer, contact details |
+| Disclosure | `.gs-disclosure` | A `<details>` for product disclosures, with the chevron |
+| Select | `.gs-select`, `.gs-select-wrap` | A native select styled as an input, chevron from the icon set |
+| Cart | `.gs-cart__*` | One row per work (thumbnail on the mat, label, price, quantity, remove), then policy and summary |
+| Pagination, results | `.gs-pagination`, `.gs-results` | Real links, `aria-current` on the current page; search results for pages and articles |
+| Skip link | `.gs-skip-link` | The first stop for keyboard users; hidden until focused |
+
 ## 7. Page templates (REUSE-01 to 04, SHOP-01 to 03, EXH-01 to 03)
 
 ### 7.1 Why this layer exists
@@ -387,12 +408,12 @@ Canonical, machine-readable version: `templates.rules.json`. Checked by `scripts
 ### 7.3 Where content lives
 
 - **Page body:** running text, in the normal page editor, styled by `.gs-prose`.
-- **Page fields** (proposal part 1): hero image, whether it is an artwork, eyebrow, intro, programme, gallery images. Template sections read them through Shopify's dynamic sources, so one template serves many pages ([Shopify: dynamic sources](https://shopify.dev/docs/storefronts/themes/architecture/settings/dynamic-sources)).
+- **Page fields** (proposal parts 1, 4 and 6): hero image, whether it is an artwork, eyebrow, intro, programme, gallery images, card groups, hero caption, call to action. Template sections read them directly in Liquid, so one template serves many pages and nothing has to be connected in the editor (DS-28).
 - **Exhibition entries** (proposal part 2): all exhibition data, with status computed from dates.
 - **Product fields** (proposal part 3): artist, title, year, medium, edition for the museum label.
 - **Never in template section settings:** anything that differs from page to page. Section settings hold only choices that are the same for every page on that template.
 
-Until the proposal is approved, templates can be built with their section settings filled for one representative page and tested with `?view=`; the consolidation of existing pages waits for the fields.
+Until the fields and entries exist in the store, the templates show the page title, body and empty states; test a page on its new template with `?view=` (for example `/pages/on-now?view=exhibitions`).
 
 ### 7.4 Template set and mapping
 
@@ -401,7 +422,7 @@ Until the proposal is approved, templates can be built with their section settin
 | `page` | About (default), About Us (`about-us`), Our Story (`shop`), Volunteer, Permanent Collection, Plan Your Visit, Donate, Gordon and Marion, Artists, Engage (`page`), FAQ (`page`), Upcoming Events (`page`), Exhibitions overview (`exhibitions-overview`, kept as a secondary pathway), privacy opt-out (default) |
 | `page.programme` | Artists for Kids, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company (each currently its own template) |
 | `page.exhibitions` | On Now (`current-on-now-exhibition`), Upcoming Exhibitions (`upcoming-exhibitions`) |
-| `page.past-exhibitions` | Past Exhibitions: existing archive preserved for the older exhibitions (EXH-03); gains the switcher, the shared styles and an automatic list of past entries above the archive (DS-24) |
+| `page.past-exhibitions` | Past Exhibitions: every past exhibition from entries, newest first; the six older ones hold title, dates and image and don't link (DS-24, DS-25) |
 | `metaobject/exhibition` | Every exhibition (six current templates `exhibition-ftg`, `-ohad-2026`, `-playhouse`, `-prevailing`, `-stitched`, `-taoc`, plus the exhibitions now written into On Now and Upcoming) |
 | `page.shop` | Shop / Limited Editions landing (`shop`) |
 | `page.contact` | Contact (`contact`) |
@@ -416,8 +437,8 @@ From 28 page templates to six, plus one exhibition template; from three collecti
 Sections in order; brackets mean optional. All templates also get the global header, newsletter band and footer.
 
 - **index (Home):** hero (photo or artwork) · exhibitions on now and upcoming (cards, from exhibition data) · [feature panel: a programme] · [portfolio navigation or feature: Shop] · [feature panel]. At most three listings.
-- **page:** hero or page header · rich text (page body) · [image gallery] · [feature panel] · [rich text]. Most pages need only the first two.
-- **page.programme:** hero or page header (programme colours from the `programme` field) · rich text · [cards: sessions, events or sub-programmes] · [image gallery] · [feature panel with the programme's call to action]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
+- **page:** hero or page header · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event.
+- **page.programme:** hero or page header (programme colours from the `programme` field; the programme's logo above the title when there's no hero image; the call to action field as the button) · rich text · [card groups] · [upcoming events for this page] · [image gallery]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
 - **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (cards filtered by computed status: this page's status; the empty state when there are none) · [rich text, e.g. tours information].
 - **page.past-exhibitions:** page header · switcher · exhibition list (every past exhibition from entries, newest first; DS-24, DS-25). No hand-built archive section.
 - **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · details (curator credit, artists and collection artists, venue, opening reception until it has passed, upcoming events that reference the exhibition; empty fields show nothing) · rich text (summary as deck, then body) · [credits and funder logos] · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
@@ -461,59 +482,91 @@ The horizontal Gallery lockups are "limited use when this shape is more appealin
 
 ## 9. Shopify implementation map
 
-Written for adapting the current Colorblock theme. Since 2026-09-25 the site gets a new theme built from Shopify's Skeleton theme (P-13, P-14 in `DECISIONS.md`), so this section is rewritten at the start of that build; §9.4 and §9.5 carry over, the Colorblock specifics don't.
+The site gets a new theme (P-13), built on Shopify's Skeleton theme (P-14) in `theme/`. Skeleton supplied the file layout, the meta tags and the gift card page; everything else is `gs-` code. The untouched Colorblock theme is kept in `baseline/theme/` for reference and drift checks only. Rewritten for the build on 2026-09-25 (0.5).
 
 ### 9.1 Files
 
-- `assets/gs-tokens.css`, `assets/gs-components.css` and `assets/gs-nav.js` (deferred), loaded in `layout/theme.liquid` after the theme's own CSS and JS so they win equal-specificity ties.
-- `snippets/gs-header.liquid`, `gs-nav.liquid`, `gs-url.liquid`, `gs-media.liquid`, `gs-fit.liquid`, `gs-exhibition-status.liquid`, `gs-date-range.liquid`, `gs-logo.liquid` and the generated `gs-logo-*.liquid`, from `design-system/liquid/snippets/` and `scripts/build_logo_snippets.py`.
-- New or rebuilt sections use `gs-` names and classes; existing theme sections kept in use are brought in line through §9.2 and have their design controls removed (§9.4).
+| Theme file | Source | Role |
+| --- | --- | --- |
+| `assets/gs-tokens.css`, `assets/gs-components.css` | `tokens.css`, `components.css` | Copies. Edit the design-system file, then run `scripts/sync_theme.py theme/`; `--check` fails if a copy differs |
+| `assets/gs-nav.js`, `assets/gs-forms.js` | `js/` | Copies, loaded with `defer`. Header extras (§6.1) and form states (§6.12). Everything works without them |
+| `assets/mulish-*.woff2` | Google Fonts, SIL OFL 1.1 (`fonts/Mulish-OFL.txt`) | Mulish variable font, latin and latin-ext, normal and italic (DS-02) |
+| `snippets/gs-logo-*.liquid` | `logos/` via `scripts/build_logo_snippets.py` (run by `sync_theme.py`) | Generated inline SVG logos; never edited by hand |
+| `snippets/gs-*.liquid` | The theme itself | Everything that enforces a rule in code (§9.5). LiquidDoc headers, so Theme Check verifies each `render` call's parameters |
+| `sections/gs-*.liquid` | The theme itself | One section per component; no `{% stylesheet %}` blocks, all styling is in `gs-components.css` |
+| `locales/en.default.json` | The theme itself | Every word visitors see that isn't content: labels, states, empty and error messages (§6.12). Staff can change them in the admin (Online Store, Themes, Edit default theme content) without code |
+| `layout/theme.liquid` | The theme itself | Loads the font, tokens, components and scripts; sets `data-gs-brand` (§9.3); skip link; header group, main, footer group |
 
-### 9.2 Bridge to theme settings
+### 9.2 Settings
 
-- Fonts: set the theme's heading and body font settings to Mulish (or bundled files), then point the theme's font variables at `--gs-font-sans`.
-- Colour schemes: define the theme's schemes with the surface values in §3.2 so existing sections match: Paper, Tint, Ink and Accent for the Gallery, plus Tint and Accent for each programme. Hide or retire off-brand schemes.
-- Buttons, inputs, page width and spacing settings: set to the token values (the bottom-right corner cannot be expressed by a single theme radius setting, so buttons in rebuilt sections use `gs-button`).
+There is no bridge to translate: the theme has no colour schemes, font pickers, radius, width or spacing settings. Its settings hold facts, not design:
+
+- **Theme settings:** Gallery details (address, hours, email, phone, contact page, land acknowledgement), Social links, Exhibitions and events (the On now, Upcoming, Past, Exhibitions overview and Upcoming events pages; the label for artists from the collection), Shop (Shop landing page, the portfolio list newest first, All limited editions).
+- **Section settings** only where a template serves one page (Home hero and feature, Shop landing feature) or where the value is the same everywhere (the product archive note and framing text, the cart's sales policy, the newsletter band's heading, text and consent wording).
+- **Everything that differs by page** comes from the page's fields and entries (§7.3), read directly in Liquid (`page.metafields.custom.*`, `metaobject.*`, `shop.metaobjects.*`) rather than connected through dynamic sources in the editor. Nothing has to be connected per template, and a template can't be left connected to the wrong field (DS-28).
 
 ### 9.3 Programme and surface
 
-- Programme: the page's `programme` field sets `data-gs-brand` on `<body>`; sections can override for mixed pages.
-- Surface: each `gs-` section exposes one select, Paper / Tint / Ink. Accent is reserved for the hero title box and one feature-panel section.
+- **Programme:** `layout/theme.liquid` reads the page's `programme` field (or the exhibition entry's) through `snippets/gs-programme.liquid` and sets `data-gs-brand` on `<body>`: `gallery`, `foundation` or `artists-for-kids`. Staff pick the programme in the page's field, never a colour.
+- **Surface:** sections are paper. The newsletter band is tint and the footer ink, fixed. The feature panels (`gs-feature`, `gs-shop-feature`) offer one select, Tint, Brand colour (once per page) or Ink, which colours the box inside a paper section (§6.13). The hero title box is always accent.
+- **Spacing:** paper sections are spaced by margins, which collapse, so two paper sections share one gap even across Shopify's section wrappers and sections that render nothing; bands pad inside their colour (§5.1).
 
 ### 9.4 What staff control
 
-Staff edit words, images (with focal point and alt text), links, page fields, the programme, a surface choice, and which items appear. They do not get colour pickers, colour-scheme pickers, font or size settings, alignment toggles, ratio pickers, overlay opacity, or padding and spacing sliders. Dawn-family sections usually expose per-section padding sliders and colour-scheme pickers; those are removed from sections kept in use (`lockedSettings` in `templates.rules.json`). Any new option is a design decision logged in §12 first.
+Staff edit words, images (with focal point and alt text), links, page fields, entries, the programme, the feature panel's surface, and which pages and portfolios the theme settings point to. They do not get colour pickers, colour-scheme pickers, font or size settings, alignment toggles, ratio pickers, overlay opacity, or padding and spacing sliders (`lockedSettings` in `templates.rules.json`; the linter finds none in the theme). Any new option is a design decision logged in §12 first.
+
+| Where staff work | What they do |
+| --- | --- |
+| Online Store, Pages | Write the body; fill the page fields (hero image, is artwork, eyebrow, intro, programme, gallery images, card groups, hero caption, call to action); choose the template once |
+| Content, Metaobjects | Add exhibitions, events, cards and card groups. Exhibition lists, Home, the switcher counts and "More exhibitions" update from the dates |
+| Products, Collections | Fill the artwork label fields, Coming soon and Availability note, the linked frame, the collection's Photo credit |
+| Online Store, Themes, Customize | Theme settings (§9.2); Home hero and features; the Shop landing feature; the main menu |
+| Online Store, Navigation | The main menu (DS-11 model) and the footer's Explore and Legal menus. Contact, Newsletter, Search and Cart are built in (DS-29) |
 
 ### 9.5 Enforced in code
 
 | Rule | Where |
 | --- | --- |
-| Sections with pages are buttons, sections without are links; a parent's page must be in its dropdown; no repeated labels; store URLs relative; external links get the cue | `snippets/gs-nav.liquid`, `snippets/gs-url.liquid` |
+| Sections with pages are buttons, sections without are links; a parent's page must be in its dropdown; no repeated labels; store URLs relative; external links get the cue | `snippets/gs-nav.liquid`, `gs-url.liquid`, `gs-link.liquid` |
 | Header and navigation work without JavaScript; one dropdown open at a time; drawer below 1200 px | `snippets/gs-header.liquid`, `gs-nav.liquid` (native `<details>`) |
-| Escape, outside click, focus leaving | `js/gs-nav.js` (tested with and without it) |
+| Escape, outside click, focus leaving | `js/gs-nav.js` (tested in the development theme: Escape closes and returns focus) |
+| Contact always in the header and footer | `snippets/gs-header.liquid`, `sections/gs-footer.liquid` (from the contact page theme setting) |
 | Images only through photo or artwork mode; artworks never shifted by a focal point; no empty box when an image is missing | `snippets/gs-media.liquid`, `components.css` |
 | Every image call says where it sits, so the right width downloads | `scripts/lint_theme.py` (`renderRules` in `templates.rules.json`) |
 | Hero and page titles fit their box on any screen | `snippets/gs-fit.liquid`, `components.css` |
 | No sticky hover on touch; icons survive forced colours | `components.css` (hover media query, forced-colours block) |
-| Exhibition status from dates; one date format | `snippets/gs-exhibition-status.liquid`, `gs-date-range.liquid` |
+| Exhibition status from dates; one date format; one time format | `snippets/gs-exhibition-status.liquid`, `gs-date-range.liquid`, `gs-time-range.liquid` |
+| Exhibition lists pick and order themselves; a past exhibition with no summary or text has a card that doesn't link (DS-25) | `snippets/gs-exhibition-index.liquid`, `gs-exhibition-card.liquid` |
+| Events drop off once over; each page lists its own, the Upcoming events page lists all | `snippets/gs-event-index.liquid`, `sections/gs-events.liquid` |
+| Card layout from content: image card or text card; a labelled link shows as a link, an unlabelled one makes the whole card a link | `snippets/gs-card.liquid` |
+| Museum label from product fields, falling back to the product title | `snippets/gs-artwork-label.liquid`, `gs-artwork-tile.liquid` |
+| Price, sold out and not yet on sale from product data, one template for every product | `snippets/gs-price.liquid`, `sections/gs-artwork-detail.liquid` |
 | Site font on form controls, pasted text and embeds | `components.css` base guards, `.gs-prose`, `.gs-embed` |
+| Mulish from bundled files, no fallback to Assistant | `snippets/gs-fonts.liquid` |
+| Visitor-facing wording in one place, editable by staff | `locales/en.default.json` (Theme Check flags a missing key) |
 | Closed template set, composition, no disabled leftovers | `scripts/lint_theme.py` + `templates.rules.json` |
-| No design controls in section schemas | `scripts/lint_theme.py` (errors in `gs-` sections, warnings in theme sections) |
+| No design controls in section schemas | `scripts/lint_theme.py` |
 | No raw colours or px font sizes in `gs-` code | `scripts/lint_theme.py` |
+| Theme copies match the design system | `scripts/sync_theme.py --check` |
 | Text actually renders in Mulish; no Unicode styled letters | `scripts/audit_fonts.py` |
 | Colour pairings pass WCAG AA | `scripts/check_contrast.py` |
 
-The Liquid snippets are drafts until the theme is pulled and they run in the review theme.
+### 9.6 Verified, and still to verify
 
-### 9.6 Verify when the theme is pulled
+Verified in development theme `184755814697` (created by `shopify theme dev`, hidden, never the live theme) on 2026-09-25:
 
-1. Colorblock's breakpoints (expected 750 / 990), page-width variable and section type names (the non-`gs-` names in `templates.rules.json`).
-2. How its colour schemes are structured and applied per section.
-3. Whether Shopify's font library offers Mulish (or "Muli") with weights 300 to 900 and italic.
-4. That `image_tag` outputs the editor's focal point as `object-position`, and that the artwork-mode override holds.
-5. Which existing CSS (especially link, button and heading rules) conflicts with `gs-` components, and whether any section still renders Assistant. Element-level heading defaults in `components.css` use `:where()` so any class wins; they tie with the theme's bare `h1` to `h3` rules and win only by loading later.
-6. The timezone Liquid uses for `'now'`, for exhibition status on changeover days.
-7. Run `lint_theme.py` on the untouched baseline and record its output as the starting point.
+1. Every template renders on the store's real pages, collections and products with no Liquid errors or missing wording (home, about, on now, upcoming, past, exhibitions overview, programme pages, contact, shop, `/collections`, two portfolios, a product, cart, search, 404, blog).
+2. Text renders in the bundled Mulish (`audit_fonts.py` on home, on now, a portfolio and contact). Two fallbacks, both expected: the Unicode italic letters in product titles (L-03, fixed by the label fields) and 12 characters in the land acknowledgement's Indigenous place names, which Mulish doesn't have (L-06).
+3. Header: bar at 1440 and drawer at 652, dropdowns open on click, Escape closes and returns focus, the current section opens in the drawer, Contact shows in the utility row.
+
+Still to verify, mostly in the review theme once fields and entries exist:
+
+1. That `image_tag` writes the editor's focal point from a file field's image as `object-position`, and the artwork-mode override holds (IMG-03).
+2. The timezone Liquid uses for `'now'` and for date and time fields, on a changeover day and for reception times.
+3. Exhibition entry pages: that draft entries can't be previewed (they are skipped in Liquid), the link-preview image, and what an entry address shows under the live theme before release.
+4. The newsletter form with an approved test address: customer created with the `newsletter` tag and email consent, and Mailchimp receiving it (ACCESS-01).
+5. The contact form's delivery address (the store's sender email).
+6. Staff editing: two pages on one template with different fields, content stays separate (REUSE-03).
 
 ## 10. Quality checks
 
@@ -561,7 +614,7 @@ The Liquid snippets are drafts until the theme is pulled and they run in the rev
 | DS-16 | Artwork label data in product fields; plain-text product titles | Approved 2026-09-25 (content model answers recorded by Michael) |
 | DS-24 | Past Exhibitions lists past entries automatically, newest first, above the existing archive; the six migrated exhibitions leave the hand-built archive at release. Reason: otherwise a closing exhibition has to be added by hand, which undoes DS-15 | Decided by Michael, 2026-09-25; amended by DS-25 |
 | DS-25 | Past Exhibitions lists all 12 past exhibitions from entries; the six older ones (2020 to 2023) hold title, dates and image and don't link. Reason: the hand-built archive sections don't carry over to the new theme (P-13 in `DECISIONS.md`) | Decided by Michael, 2026-09-25 |
-| DS-26 | Up to two short announcements with links in the header, set in theme settings, kept from the current announcement bar. One line, text only, no autoplay | Decided by Michael, 2026-09-25 |
+| DS-26 | Up to two short announcements with links in the header, set in theme settings, kept from the current announcement bar. One line, text only, no autoplay | Decided by Michael, 2026-09-25; superseded by DS-27 |
 | DS-17 | Capitals stay for headings, subheadings and labels. The brand guide sets headlines and subheadings in caps (p.15) and labels its own pages in small tracked caps (p.11). The frontend-design review guidance treats caps labels as a template habit; the brand guide wins, and DS-18 limits how many labels there are | Decided by Michael, 2026-09-25 (brand guide governs) |
 | DS-18 | Eyebrows only when they carry information (programme or organisation, season), never as generic section names. Status and dates are a chip plus a dates line, never a joined "A · B" string | Decided by Michael, 2026-09-25 |
 | DS-19 | The header and every dropdown are native `<details>`, so navigation works without JavaScript; the script adds Escape, outside click and focus-leaving only. Same model as DS-11 | Decided by Michael, 2026-09-25 (review fix) |
@@ -569,6 +622,9 @@ The Liquid snippets are drafts until the theme is pulled and they run in the rev
 | DS-21 | The box colour is for the brand's boxes only: logo, hero title box, primary button (brand guide p.11: "use for background logo box"; p.17: rounded-corner boxes). Link hover fills use the tint, and selection, the dropdown edge and the quote rule use the rule colour, as the guide assigns them. The On now chip is solid ink instead of box colour | Decided by Michael, 2026-09-25 (brand guide governs) |
 | DS-22 | A system error colour, `#a3261b` (light `#f28b82` on ink), for error text and invalid-field borders only. The brand guide defines none | Decided by Michael, 2026-09-25 |
 | DS-23 | The header is not sticky on any screen size, so nothing permanently covers the art on a phone | Decided by Michael, 2026-09-25 |
+| DS-27 | No announcement bar in the header. Supersedes DS-26. The news it carried (a new portfolio, an exhibition opening) is on the home page, which builds its exhibition list from entries and features the newest portfolio automatically | Decided by Michael, 2026-09-25 ("we do not want that anymore") |
+| DS-28 | Page fields and entries are read directly in Liquid (`page.metafields.custom.*`, `metaobject.*`), not connected to section settings through dynamic sources. Reason: nothing to connect per template in the editor, nothing that can be connected to the wrong field, and the sections can decide from the content (hero or page header, image card or text card) | Proposed (build, 2026-09-25) |
+| DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Proposed (build, 2026-09-25) |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -582,9 +638,11 @@ The Liquid snippets are drafts until the theme is pulled and they run in the rev
 | Q8 | Is an enlarge/lightbox view wanted for gallery images? | §6.8 |
 | Q9 | Approval of the three parts of `proposals/content-model.md`. Answered 2026-09-25: all approved | DS-14 to DS-16 |
 | Q10 | Room names for the exhibition `venue` field, the label for the second artist group, and the start date of *Stitched* | `proposals/content-model.md` "Still open" |
+| Q11 | The land acknowledgement's place names use characters Mulish doesn't have (ʔ, ɬ, θ, some combining marks), so those letters render in Arial. Accept that, or load a font made for BC Indigenous languages for that text (for example BC Sans, SIL OFL)? | L-06, §4.1 |
 
 ## 13. Changelog
 
+- 0.5 (2026-09-25): the new theme is built (P-13, P-14). §9 rewritten for it. New components in §6.13; section spacing by collapsing margins (§5.1); page and programme templates gain card groups and events (P-16); Past Exhibitions from entries only (DS-25). DS-27 (no announcement bar, supersedes DS-26) decided; DS-28 (fields read in Liquid) and DS-29 (built-in utility links) proposed; Q11 added. The gs- snippets moved into `theme/snippets/`; `scripts/sync_theme.py` added; Mulish bundled.
 - 0.4.2 (2026-09-25): the site gets a new theme built from Shopify's Skeleton theme (P-13, P-14), so §9 is marked for rewrite; DS-25 (all past exhibitions as entries) and DS-26 (header announcements) decided; Past Exhibitions is a normal template in the rules; Q5 answered by the approved menu map.
 - 0.4.1 (2026-09-25): content model approved (DS-14 to DS-16); exhibition fields revised from a review of the content in use (`proposals/content-model.md` part 2); exhibition template spec lists the new details; option B fallback template removed; customer account templates added to the template rules as system templates; DS-24 decided: Past Exhibitions lists past entries automatically above the archive.
 

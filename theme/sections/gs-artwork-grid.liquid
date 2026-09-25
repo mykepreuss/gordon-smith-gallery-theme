@@ -1,0 +1,53 @@
+{%- comment -%}
+  The works in a portfolio (DESIGN.md §6.5, §7.5): artwork tiles, 24 to a page. An empty
+  portfolio says so and points to all limited editions (§6.12).
+{%- endcomment -%}
+{%- paginate collection.products by 24 -%}
+  <section class="gs-section gs-surface-paper" aria-label="{{ 'shop.works_label' | t: title: collection.title }}">
+    <div class="gs-container">
+      {%- if collection.products.size > 0 -%}
+        <ul class="gs-grid gs-grid--artworks">
+          {%- for product in collection.products -%}
+            <li>{%- render 'gs-artwork-tile', product: product, heading: 'h2' -%}</li>
+          {%- endfor -%}
+        </ul>
+        {%- render 'gs-pagination', paginate: paginate -%}
+      {%- else -%}
+        {%- liquid
+          assign all = settings.all_editions_collection
+          assign fallback_url = settings.shop_page.url
+          if all != blank and all.handle != collection.handle
+            assign fallback_url = all.url
+          endif
+        -%}
+        <div class="gs-empty">
+          <p class="gs-empty__text">{{ 'shop.empty_portfolio' | t }}</p>
+          {%- if fallback_url != blank -%}
+            <a class="gs-cta-link" href="{{ fallback_url }}">{{ 'shop.empty_portfolio_link' | t }}</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Portfolio works",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The collection's products as artwork tiles, with labels from each product's artwork fields."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio works"
+    }
+  ]
+}
+{% endschema %}

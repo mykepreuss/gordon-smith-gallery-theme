@@ -1,0 +1,166 @@
+{%- comment -%}
+  A limited edition (DESIGN.md §7.5, DS-05, DS-16): every image of the work whole on the mat;
+  beside it the museum label from the product's artwork fields, medium, edition and size, the
+  price, and one action. One template for every product: whether it's on sale yet comes from
+  custom.coming_soon and custom.availability_note, and the framing offer from the linked frame
+  (custom.featured_frame), so no product needs its own template (content model parts 3 and 6).
+
+  The archive note and framing text are the same on every product, so they're settings here.
+{%- endcomment -%}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign f = product.metafields.custom
+  assign coming_soon = false
+  if f.coming_soon.value == true
+    assign coming_soon = true
+  endif
+  assign frame = f.featured_frame.value
+  assign form_id = 'gs-product-' | append: section.id
+-%}
+<div class="gs-container--wide gs-container">
+  <div class="gs-artwork">
+    <ul class="gs-artwork__media">
+      {%- for media in product.media -%}
+        {%- if media.media_type == 'image' -%}
+          {%- liquid
+            assign loading = 'lazy'
+            if forloop.first
+              assign loading = 'eager'
+            endif
+          -%}
+          <li>
+            {%- render 'gs-media', image: media, sizes: '(min-width: 1536px) 820px, (min-width: 990px) 55vw, 100vw', loading: loading, mode: 'artwork', shape: 'lg', alt: product.title -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+
+    <div class="gs-artwork__info">
+      {%- render 'gs-artwork-label', product: product, tag: 'h1' -%}
+
+      {%- if f.medium.value != blank or f.edition.value != blank or f.dimensions.value != blank -%}
+        <div class="gs-card__meta">
+          {%- if f.medium.value != blank -%}<p class="gs-meta">{{ f.medium.value | escape }}</p>{%- endif -%}
+          {%- if f.edition.value != blank -%}<p class="gs-meta">{{ f.edition.value | escape }}</p>{%- endif -%}
+          {%- if f.dimensions.value != blank -%}<p class="gs-meta">{{ f.dimensions.value | escape }}</p>{%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <p class="gs-price">
+        {%- if coming_soon or product.available == false -%}
+          {{- variant.price | money -}}
+        {%- else -%}
+          {%- render 'gs-price', product: product -%}
+        {%- endif -%}
+      </p>
+
+      {%- if coming_soon -%}
+        <p class="gs-note">{%- render 'gs-price', product: product -%}</p>
+      {%- endif -%}
+
+      {%- form 'product', product, id: form_id, class: 'gs-form', data-gs-form: '' -%}
+        {%- unless product.has_only_default_variant -%}
+          <div class="gs-field">
+            <label class="gs-field__label" for="{{ form_id }}-variant">{{ 'products.option' | t }}</label>
+            <span class="gs-select-wrap">
+              <select class="gs-input gs-select" id="{{ form_id }}-variant" name="id">
+                {%- for v in product.variants -%}
+                  <option value="{{ v.id }}"{% if v.id == variant.id %} selected{% endif %}{% unless v.available %} disabled{% endunless %}>
+                    {{- v.title | escape }}, {{ v.price | money -}}
+                    {%- unless v.available %} ({{ 'products.sold_out' | t }}){% endunless -%}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </span>
+          </div>
+        {%- else -%}
+          <input type="hidden" name="id" value="{{ variant.id }}">
+        {%- endunless -%}
+
+        {%- if coming_soon -%}
+          <button class="gs-button" type="button" disabled>{{ 'products.add_to_cart' | t }}</button>
+        {%- elsif product.available -%}
+          <button class="gs-button" type="submit" name="add" data-gs-busy-label="{{ 'products.adding' | t }}">{{ 'products.add_to_cart' | t }}</button>
+        {%- else -%}
+          <button class="gs-button" type="button" disabled>{{ 'products.add_to_cart' | t }}</button>
+          <p class="gs-note">{{ 'products.sold_out' | t }}</p>
+        {%- endif -%}
+      {%- endform -%}
+
+      {%- if section.settings.archive_note != blank -%}
+        <div class="gs-prose gs-caption">{{ section.settings.archive_note }}</div>
+      {%- endif -%}
+
+      {%- if product.description != blank -%}
+        <div class="gs-prose">{{ product.description }}</div>
+      {%- endif -%}
+
+      {%- if frame != blank -%}
+        {%- assign frame_variant = frame.selected_or_first_available_variant -%}
+        <section class="gs-panel gs-surface-tint" aria-labelledby="{{ form_id }}-frame">
+          <h2 class="gs-h4" id="{{ form_id }}-frame">{{ 'products.frame_heading' | t }}</h2>
+          {%- if section.settings.framing_text != blank -%}
+            <div class="gs-prose">{{ section.settings.framing_text }}</div>
+          {%- endif -%}
+          <p><a class="gs-link" href="{{ frame.url }}">{{ frame.title | escape }}</a>, {{ frame.price | money }}</p>
+          {%- if frame.available -%}
+            {%- form 'product', frame, class: 'gs-form', data-gs-form: '' -%}
+              <input type="hidden" name="id" value="{{ frame_variant.id }}">
+              <button class="gs-button gs-button--secondary" type="submit" data-gs-busy-label="{{ 'products.adding' | t }}">{{ 'products.add_frame' | t }}</button>
+            {%- endform -%}
+          {%- else -%}
+            <p class="gs-note">{{ 'products.frame_sold_out' | t }}</p>
+          {%- endif -%}
+        </section>
+      {%- endif -%}
+
+      {%- liquid
+        assign disclosures = product.metafields.shopify.disclosure.value
+      -%}
+      {%- for disclosure in disclosures -%}
+        {%- assign surfaces = disclosure.display_preferences.value.surfaces -%}
+        {%- if surfaces contains 'product_page' -%}
+          {%- liquid
+            assign disclosure_title = disclosure.title.value
+            if disclosure_title == blank
+              assign disclosure_title = 'products.disclosure' | t
+            endif
+          -%}
+          <details class="gs-disclosure">
+            <summary>{{ disclosure_title | escape }}</summary>
+            <div class="gs-disclosure__body gs-prose">{{ disclosure.content | metafield_tag }}</div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Artwork",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The label comes from each product's artwork fields (artist, title, year, medium, edition, dimensions). Not yet on sale: turn on Coming soon and fill Availability note on the product."
+    },
+    {
+      "type": "richtext",
+      "id": "archive_note",
+      "label": "Note on every artwork",
+      "default": "<p><em>The first edition is archived in the Artists For Kids and the Gordon Smith Gallery Permanent Collection</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "framing_text",
+      "label": "Framing text",
+      "info": "Shown when the product has a linked frame.",
+      "default": "<p>Museum-quality framing and service includes UV-protective glass and acid-free matting, keeping your fine art print vibrant and pristine for decades.<br/>Framing by Artrageous Pictures and Framing North Shore</p>"
+    }
+  ]
+}
+{% endschema %}

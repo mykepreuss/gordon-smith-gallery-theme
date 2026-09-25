@@ -9,12 +9,15 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "product",
-      "settings": {}
+    "artwork": {
+      "type": "gs-artwork-detail"
+    },
+    "related": {
+      "type": "gs-related"
     }
   },
   "order": [
-    "main"
+    "artwork",
+    "related"
   ]
 }

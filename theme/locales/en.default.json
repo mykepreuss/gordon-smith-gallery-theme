@@ -1,34 +1,147 @@
 {
-  "404": {
-    "title": "404",
-    "not_found": "Page not found.",
-    "back_to_shopping": "Back to shopping"
+  "general": {
+    "skip_to_content": "Skip to content",
+    "external_site": "(external site)",
+    "pagination": "Pages",
+    "previous": "Previous",
+    "next": "Next"
   },
-  "blog": {
-    "article_comments": "Comments",
-    "article_metadata_html": "{{ date }} by {{ author }}",
-    "comment_form_body": "Comment",
-    "comment_form_email": "Email",
-    "comment_form_name": "Name",
-    "comment_form_submit": "Post",
-    "comment_form_title": "Add a comment"
+  "header": {
+    "home": "Gordon Smith Gallery, home",
+    "menu": "Menu",
+    "main_nav": "Main",
+    "current_section": ", current section",
+    "contact": "Contact",
+    "newsletter": "Newsletter",
+    "search": "Search",
+    "cart": "Cart ({{ count }})"
+  },
+  "footer": {
+    "visit": "Visit",
+    "contact": "Contact",
+    "contact_page": "Contact form",
+    "explore": "Explore",
+    "follow": "Follow",
+    "social_instagram": "Instagram",
+    "social_facebook": "Facebook",
+    "social_youtube": "YouTube",
+    "social_vimeo": "Vimeo",
+    "social_linkedin": "LinkedIn"
+  },
+  "newsletter": {
+    "email_label": "Email address",
+    "submit": "Sign up",
+    "busy": "Signing up",
+    "done": "You're signed up for the newsletter.",
+    "error_email": "Enter an email address like name@example.com."
+  },
+  "exhibitions": {
+    "dates_range": "{{ start }} to {{ end }}",
+    "dates_from": "From {{ date }}",
+    "status_on_now": "On now",
+    "status_upcoming": "Upcoming",
+    "status_past": "Past",
+    "artists_more": {
+      "one": "{{ names }} and {{ count }} more",
+      "other": "{{ names }} and {{ count }} more"
+    },
+    "switcher_label": "Exhibitions",
+    "switcher_on_now": "On now",
+    "switcher_upcoming": "Upcoming",
+    "switcher_past": "Past",
+    "list_label": "Exhibitions",
+    "all_past": "All past exhibitions",
+    "overview_link": "{{ title }}",
+    "empty_on_now": "No exhibitions are on right now.",
+    "empty_on_now_link": "See what's coming up",
+    "empty_upcoming": "No upcoming exhibitions are announced yet.",
+    "empty_upcoming_link": "See what's on now",
+    "empty_past": "No past exhibitions to show yet.",
+    "details_label": "About the exhibition",
+    "curator": "Curator",
+    "venue": "Where",
+    "reception": "Opening reception",
+    "artists": "Artists",
+    "events": "Events",
+    "credits": "Credits",
+    "installation_views": "Installation views",
+    "more": "More exhibitions"
+  },
+  "events": {
+    "time_range": "{{ start }} to {{ end }}",
+    "tickets": "Tickets",
+    "empty": "No events are scheduled right now."
+  },
+  "shop": {
+    "portfolios": "Portfolios",
+    "all_editions": "All editions",
+    "all_editions_link": "All limited editions",
+    "see_portfolio": "See the {{ title }}",
+    "editions_count": {
+      "one": "{{ count }} edition",
+      "other": "{{ count }} editions"
+    },
+    "works_label": "Works in {{ title }}",
+    "empty_portfolio": "This portfolio has no works available right now.",
+    "empty_portfolio_link": "See all limited editions"
+  },
+  "products": {
+    "price_from": "From {{ price }}",
+    "sold_out": "Sold out",
+    "coming_soon": "Not on sale yet",
+    "option": "Option",
+    "add_to_cart": "Add to cart",
+    "adding": "Adding",
+    "frame_heading": "Add a frame",
+    "add_frame": "Add frame to cart",
+    "frame_sold_out": "This frame is sold out.",
+    "disclosure": "Disclosure"
+  },
+  "contact": {
+    "details_heading": "Visit and contact",
+    "name": "Name",
+    "email": "Email address",
+    "phone": "Phone (optional)",
+    "message": "Message",
+    "submit": "Send",
+    "busy": "Sending",
+    "done": "Thanks, your message is sent. We'll reply by email.",
+    "error_message": "Write a message before sending."
   },
   "cart": {
-    "checkout": "Checkout",
     "title": "Cart",
-    "update": "Update",
-    "remove": "Remove"
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "update": "Update cart",
+    "checkout": "Check out",
+    "subtotal": "Subtotal: {{ amount }}",
+    "taxes_shipping": "Taxes and shipping are calculated at checkout.",
+    "empty": "Your cart is empty."
   },
-  "customers": {
-    "login": {
-      "email": "Email",
-      "password": "Password",
-      "submit": "Sign in",
-      "title": "Login"
+  "search": {
+    "title": "Search",
+    "label": "Search the site",
+    "submit": "Search",
+    "no_results": "Nothing found for “{{ terms }}”. Try another word, or fewer words.",
+    "results": {
+      "one": "1 result for “{{ terms }}”",
+      "other": "{{ count }} results for “{{ terms }}”"
     }
   },
-  "collections": {
-    "title": "Collections"
+  "not_found": {
+    "title": "Page not found",
+    "text": "This address doesn't lead to a page. It may have moved.",
+    "home": "Go to the home page",
+    "search": "Search the site"
+  },
+  "blog": {
+    "empty": "No articles yet."
+  },
+  "password": {
+    "title": "This shop is private",
+    "password": "Password",
+    "error": "That password isn't right. Try again.",
+    "enter": "Enter"
   },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",
@@ -36,17 +149,5 @@
     "expired": "This gift card has expired",
     "expires_on": "Expires on {{ expires_on }}",
     "use_at_checkout": "Use this gift card at checkout"
-  },
-  "password": {
-    "title": "This shop is private",
-    "password": "Password",
-    "enter": "Enter"
-  },
-  "search": {
-    "title": "Search",
-    "placeholder": "Search articles, pages, or products",
-    "submit": "Search",
-    "no_results_html": "No results found for {{ terms }}",
-    "results_for_html": "{{ count }} results found for {{ terms }}"
   }
 }

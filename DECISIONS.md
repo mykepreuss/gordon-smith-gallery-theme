@@ -54,7 +54,10 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-23 | Header not sticky | **Decided by Michael, 2026-09-25** |
 | DS-24 | Past Exhibitions lists past entries automatically above the existing archive | **Decided by Michael, 2026-09-25**; amended by DS-25 |
 | DS-25 | Past Exhibitions lists all 12 past exhibitions from entries. The six older ones (2020 to 2023) hold title, dates and image and don't link. Reason: the hand-built archive sections don't carry over to the new theme (P-13) | **Decided by Michael, 2026-09-25**; follows from P-13 |
-| DS-26 | Up to two short announcements with links in the header, set in theme settings (kept from the current announcement bar) | **Decided by Michael, 2026-09-25** |
+| DS-26 | Up to two short announcements with links in the header, set in theme settings (kept from the current announcement bar) | Decided by Michael, 2026-09-25; **superseded by DS-27** |
+| DS-27 | No announcement bar in the header (supersedes DS-26). The home page carries the same news from entries and the newest portfolio | **Decided by Michael, 2026-09-25** ("we do not want that anymore") |
+| DS-28 | Page fields and entries are read directly in Liquid, not connected through dynamic sources in the editor | Proposed (build) |
+| DS-29 | Header utility links are built in (Contact from the contact-page theme setting, Newsletter, Search, Cart), so no utility menu is created | Proposed (build) |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.
 

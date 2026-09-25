@@ -9,12 +9,33 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
+    "hero": {
+      "type": "gs-hero",
       "settings": {}
+    },
+    "exhibitions": {
+      "type": "gs-exhibition-list",
+      "settings": {
+        "heading": "Exhibitions"
+      }
+    },
+    "programme": {
+      "type": "gs-feature",
+      "settings": {
+        "surface": "tint"
+      }
+    },
+    "shop": {
+      "type": "gs-shop-feature",
+      "settings": {
+        "surface": "accent"
+      }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "exhibitions",
+    "programme",
+    "shop"
   ]
 }

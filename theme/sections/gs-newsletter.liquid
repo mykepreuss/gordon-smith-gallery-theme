@@ -1,0 +1,98 @@
+{%- comment -%}
+  Newsletter band (DESIGN.md §6.9, §6.12, DS-09, ACCESS-01): on every page, above the footer.
+  Shopify's own sign-up form: it creates or updates a customer with email marketing consent and
+  the tag "newsletter". The Mailchimp for Shopify app syncs subscribed customers to the audience
+  (baseline/mailchimp-audit.md, option 1). No ScriptTag (P-08).
+
+  Without JavaScript the form posts and Shopify's reply shows the error or done state here.
+  assets/gs-forms.js adds the inline email check and the "Signing up" state.
+{%- endcomment -%}
+{%- assign form_id = 'gs-newsletter-' | append: section.id -%}
+{%- assign heading_id = form_id | append: '-heading' -%}
+<div class="gs-section gs-surface-tint" id="newsletter">
+  <div class="gs-container gs-newsletter">
+    <div class="gs-newsletter__text">
+      <h2 class="gs-h3" id="{{ heading_id }}">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}
+        <div class="gs-prose">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- form 'customer', id: form_id, class: 'gs-signup', data-gs-form: '', aria-labelledby: heading_id -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- liquid
+        assign email_error = false
+        if form.errors
+          assign email_error = true
+        endif
+      -%}
+      <div class="gs-signup__row">
+        <div class="gs-field">
+          <label class="gs-field__label" for="{{ form_id }}-email">{{ 'newsletter.email_label' | t }}</label>
+          <input
+            class="gs-input"
+            id="{{ form_id }}-email"
+            type="email"
+            name="contact[email]"
+            autocomplete="email"
+            autocapitalize="off"
+            spellcheck="false"
+            required
+            aria-describedby="{{ form_id }}-error{% if section.settings.consent != blank %} {{ form_id }}-consent{% endif %}"
+            {% if email_error %}
+              aria-invalid="true" autofocus
+            {% endif %}
+          >
+        </div>
+        <button class="gs-button" type="submit" data-gs-busy-label="{{ 'newsletter.busy' | t }}">
+          {{- 'newsletter.submit' | t -}}
+        </button>
+      </div>
+      <p class="gs-field__error" id="{{ form_id }}-error"{% unless email_error %} hidden{% endunless %}>
+        {{- 'newsletter.error_email' | t -}}
+      </p>
+      {%- if form.posted_successfully? -%}
+        <p class="gs-form-status" role="status">{{ 'newsletter.done' | t }}</p>
+      {%- endif -%}
+      {%- if section.settings.consent != blank -%}
+        <div class="gs-caption" id="{{ form_id }}-consent">{{ section.settings.consent }}</div>
+      {%- elsif request.design_mode -%}
+        <p class="gs-editor-warning">Add the consent wording from the gallery (ACCESS-04). Visitors see nothing here until you do.</p>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter sign-up",
+  "tag": "section",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Sign-ups become customers with email marketing consent and the tag newsletter. The Mailchimp for Shopify app sends them to the Mailchimp audience."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join Our Newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Be the first to know about new programs, upcoming exhibitions, public events, limited edition releases and other exclusive offers.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "consent",
+      "label": "Consent wording",
+      "info": "What people agree to when they sign up, and how to unsubscribe. Supplied by the gallery."
+    }
+  ]
+}
+{% endschema %}

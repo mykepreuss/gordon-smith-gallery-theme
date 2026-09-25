@@ -9,17 +9,21 @@
  */
 {
   "type": "footer",
-  "name": "t:general.footer",
+  "name": "Footer",
   "sections": {
+    "newsletter": {
+      "type": "gs-newsletter",
+      "settings": {}
+    },
     "footer": {
-      "type": "footer",
+      "type": "gs-footer",
       "settings": {
-        "menu": "",
-        "show_payment_icons": true
+        "menu": "footer"
       }
     }
   },
   "order": [
+    "newsletter",
     "footer"
   ]
 }

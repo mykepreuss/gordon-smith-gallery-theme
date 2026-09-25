@@ -4,6 +4,8 @@ The new theme (P-13) doesn't carry over the current theme's templates, so everyt
 
 Source: the baseline theme's templates and section groups (commit 27ef593), read 2026-09-25. Destinations marked **new** are the additions to the content model approved on 2026-09-25 (P-16; `design-system/proposals/content-model.md` parts 4 to 6).
 
+**Build status (branch `build-new-theme`):** every theme-side home below exists in the new theme. Content already moved into it as defaults: the land acknowledgement (theme setting), the newsletter heading and sentence (from the Contact template), the product archive note and framing text, and the cart's sales policy (its privacy link made relative). Content that lives in fields and entries moves when the definitions and entries are created, with Michael's go-ahead (`proposals/store-changes.md` §4).
+
 ## What the inventory shows
 
 - **Content leaks through the default page template.** About's hero image, its three organisation columns and a land acknowledgement sit in the default template, so every page without its own template shows them too: FAQ, Upcoming Events, Engage and the privacy opt-out page (checked on the live FAQ page).
@@ -16,7 +18,7 @@ Source: the baseline theme's templates and section groups (commit 27ef593), read
 
 | Current place | Content | New home |
 | --- | --- | --- |
-| Header: announcement bar | Two messages with links ("Fall 2026 Limited Editions Now Available", "Exhibition Opening: September 25th, 6 to 8 PM") | Theme setting: up to two short announcements, each with a link, in the header (DS-26) |
+| Header: announcement bar | Two messages with links ("Fall 2026 Limited Editions Now Available", "Exhibition Opening: September 25th, 6 to 8 PM") | Dropped (DS-27, superseding DS-26). The home page carries the same news: exhibitions on now and upcoming from entries, and the newest portfolio |
 | Header: menu | `new-website-menu-1` | The approved menu map (`proposals/store-changes.md` §1) |
 | Footer | Land acknowledgement (full wording) | Footer theme setting, once. The shorter copies on exhibition and programme pages are dropped |
 | Default page template | About's hero, three organisation columns, land acknowledgement | About only: hero image field, card group **new**. Nothing on other pages |

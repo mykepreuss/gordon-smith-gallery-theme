@@ -1,0 +1,26 @@
+{% doc %}
+  A product's price, or why it can't be bought: not on sale yet (the availability note, from
+  custom.coming_soon), sold out, or "From" a price when variants differ. Text only; the element
+  around it is the caller's.
+
+  @param {object} product - The product
+
+  @example
+  <p class="gs-price">{%- render 'gs-price', product: product -%}</p>
+{% enddoc %}
+{%- liquid
+  if product.metafields.custom.coming_soon.value == true
+    assign note = product.metafields.custom.availability_note.value
+    if note == blank
+      assign note = 'products.coming_soon' | t
+    endif
+    echo note | escape
+  elsif product.available == false
+    echo 'products.sold_out' | t
+  elsif product.price_varies
+    assign from = product.price_min | money
+    echo 'products.price_from' | t: price: from
+  else
+    echo product.price | money
+  endif
+-%}
