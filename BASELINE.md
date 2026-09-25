@@ -9,9 +9,9 @@ What the live store and site looked like before any change (plan step 1). Everyt
 | Store | `ed35ee-ea.myshopify.com` (public `gordonsmithgallery.com`) |
 | Live theme | `183162372393` "Colorblock: NEW WEBSITE", role MAIN, Colorblock 15.5.0 |
 | Pulled into | `theme/` (untouched; first theme commit) |
-| Pull time (UTC) | PULL_TIME |
-| Pulled by | Shopify CLI PULL_CLI on Michael's Mac |
-| Files | THEME_FILES |
+| Pull time (UTC) | 2026-09-25, about 21:16 (file times of the pulled files) |
+| Pulled by | Michael, on his Mac: `shopify theme pull --store ed35ee-ea.myshopify.com --theme 183162372393 --path theme`. The pull output didn't print the CLI version; discovery used 4.8.2 |
+| Files | 402, committed unchanged as the first theme commit |
 
 Before release, pull the then-current live theme into a separate folder and compare it with this commit file by file (plan, "Release gate and rollback").
 
@@ -19,8 +19,16 @@ Before release, pull the then-current live theme into a separate folder and comp
 
 | Check | Result | File |
 | --- | --- | --- |
-| Shopify Theme Check (no auto-correct), Shopify CLI 4.8.2 | THEME_CHECK | `baseline/theme-check.json`, `baseline/theme-check.txt` |
-| Design-system linter (`design-system/scripts/lint_theme.py theme/`) | LINT_RESULT | `baseline/lint-theme.txt` |
+| Shopify Theme Check (no auto-correct), Shopify CLI 4.8.2 | 4 errors, 11 warnings in 11 files | `baseline/theme-check.json`, `baseline/theme-check.txt` |
+| Design-system linter (`design-system/scripts/lint_theme.py theme/`) | 46 errors, 200 warnings. Expected: the linter checks the target structure, which the current theme predates | `baseline/lint-theme.txt` |
+
+### What the checks show
+
+- **Theme Check errors:** all four are the `push` filter, which Theme Check doesn't recognise, in two "Cart frame upsells" blocks generated in the theme editor (`blocks/ai_gen_block_3c79063.liquid` in the cart template, `blocks/ai_gen_block_70a7f5b.liquid` in the home template). The frame suggestions they are meant to show probably never appear. Not tested on the storefront. Outside this project's scope; flagged for the gallery.
+- **Rotating image banner:** used in 10 templates, it is another generated block (`blocks/ai_gen_block_72565eb.liquid`) with 85 staff settings, over Theme Check's limit of 40 (IMG-01, IMG-04, L-05).
+- **Linter errors:** 39 of 46 are templates outside the approved set (L-01). Seven of those are Shopify's customer account templates (`templates/customers/*`), which the approved list in `design-system/templates.rules.json` leaves out. They are system templates the theme keeps, so add them to the rules in the first design-system change; until then, expect these seven. The other seven errors are structure on the home, Shop, collection and Past Exhibitions templates.
+- **Linter warnings:** 170 are staff design controls (sizes, alignments, layouts and colour schemes) whose values move into tokens, 18 are disabled sections left in templates, and 12 are sections outside the design system's section groups.
+- **Apps:** no app embeds in `config/settings_data.json`, no app blocks in any template or section group, and no Mailchimp reference in theme files. All social link settings are empty.
 
 ## Store resources
 
@@ -42,7 +50,7 @@ Findings recorded in `capture-log.json`:
 
 ## Mailchimp
 
-`baseline/mailchimp-audit.md`: the Mailchimp for Shopify app is connected (web pixel, one audience) and its storefront script loads through a ScriptTag, which Shopify stops injecting on 2027-03-01. No signup form is rendered anywhere on the site. App settings and consent behaviour are not yet verified.
+`baseline/mailchimp-audit.md`: the Mailchimp for Shopify app is connected (web pixel, one audience) and its storefront script loads through a ScriptTag, which Shopify stops injecting on 2027-03-01. No signup form is rendered anywhere on the site. The pulled theme has no Mailchimp app embed or app block. App settings and consent behaviour are not yet verified.
 
 ## Known drift during the snapshot
 

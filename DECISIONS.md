@@ -16,6 +16,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | P-06 | Shop leads to the Limited Editions landing page (not Shopify's `/collections` list), with one introduction and one portfolio navigation | Decided by Michael | `IMPLEMENTATION_PLAN.md` "Approved direction" |
 | P-07 | Newsletter band above the footer, Contact in the header utility row and footer, social links in the footer | Decided by Michael; gallery supplies values | `IMPLEMENTATION_PLAN.md`, `DESIGN.md` §6.1, §6.9, §6.10 |
 | P-08 | Do not build a signup on storefront ScriptTags | Decided (plan) | `baseline/mailchimp-audit.md` |
+| P-09 | Exhibitions is the first item in the main menu, ahead of About | Decided by Michael, 2026-09-25 (comment on the approval doc); gallery approves labels | `proposals/store-changes.md` §1 |
 
 ## Design system (`design-system/DESIGN.md` §12)
 

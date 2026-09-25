@@ -7,8 +7,8 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | # | Milestone (plan step) | Status | Evidence |
 | --- | --- | --- | --- |
 | 0 | Design specification (`design-system/`, v0.4) | Done, pending gallery approval of the structural parts | `design-system/DESIGN.md`, `design-system/preview.html` |
-| 1 | Source of truth: Git repo, untouched live-theme baseline, records | In progress | `BASELINE.md` |
-| 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | In progress (Theme Check and linter wait on the theme pull) | `baseline/` |
+| 1 | Source of truth: Git repo, untouched live-theme baseline, records | Done 2026-09-25 | `BASELINE.md`, first theme commit |
+| 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | Done 2026-09-25, except Mailchimp app settings (need access) | `baseline/` |
 | 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Drafted, to be sent by Michael | `proposals/`, shared doc |
 | 2 | Implementation on a feature branch, after structural approval | Not started (gated on 1b) | |
 | 3 | Pull request with code, register, proposed store changes, Theme Check | Not started | |
@@ -39,3 +39,4 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | L-02 | Mailchimp's storefront script is injected through a ScriptTag, which Shopify stops injecting on 2027-03-01 | `baseline/mailchimp-audit.md` | Native newsletter form plus app customer sync, or an app embed |
 | L-03 | Product titles carry Unicode italic letters for artwork titles, which the site font can't render as intended and search can't match | `baseline/store-manifest.md` | Plain-text titles plus label fields (DS-16) |
 | L-04 | Focal-point support depends on how each image is rendered; the current banner ignores it | Plan discovery | `image_tag` through `gs-media`; verify in the review theme (IMG-03) |
+| L-05 | Blocks generated in the theme editor sit outside the theme's system: the rotating banner (used in 10 templates) has 85 staff settings, and both cart frame blocks use a filter Theme Check doesn't recognise | `baseline/theme-check.txt` | Replace the banner with the `gs` hero (IMG-04); report the frame blocks to the gallery (outside scope) |

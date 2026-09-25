@@ -1,0 +1,248 @@
+ERROR   templates/collection.all-products-template.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/collection.alt-collection-temp.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/collection.collection-template.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/collection.json: missing required switcher section
+ERROR   templates/customers/account.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/customers/activate_account.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/customers/addresses.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/customers/login.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/customers/order.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/customers/register.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/customers/reset_password.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/index.json: 9 sections; the limit is 8
+ERROR   templates/index.json: must start with hero or pageHead, starts with '_blocks'
+ERROR   templates/index.json: missing required hero section
+ERROR   templates/page.about-us-template.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.about-us.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.about.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.art-in-good-company.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.artists-for-kids.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.artists.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.current-on-now-exhibition.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.donate.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.engage.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.exhibition-ftg.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.exhibition-ohad-2026.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.exhibition-playhouse.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.exhibition-prevailing.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.exhibition-stitched.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.exhibition-taoc.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.exhibitions-overview.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.explore-create.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.gordon-and-marion.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.music-at-the-smith.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.past-exhibitions.json: missing required switcher section
+ERROR   templates/page.permanent-collection.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.plan-your-visit.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.public-programs.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.shop.json: must start with hero or pageHead, starts with '_blocks'
+ERROR   templates/page.shop.json: missing required listing section
+ERROR   templates/page.speaker-series.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.the-smith-foundation.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.upcoming-exhibitions.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/page.volunteer.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/product.no-frame-product.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/product.not-available-yet-product.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+ERROR   templates/product.product-template-2.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
+WARNING sections/announcement-bar.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/collage.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/collage.liquid: design control for staff: select 'desktop_layout'. Remove it; the value belongs in tokens
+WARNING sections/collage.liquid: design control for staff: select 'mobile_layout'. Remove it; the value belongs in tokens
+WARNING sections/collage.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/collage.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/collage.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: select 'heading_alignment'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: select 'layout'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: select 'desktop_layout'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/collapsible-content.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/collection-list.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/collection-list.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/collection-list.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/collection-list.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/contact-form.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/contact-form.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/contact-form.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/contact-form.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/custom-liquid.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/custom-liquid.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/custom-liquid.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/disclosures.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/disclosures.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/disclosures.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/disclosures.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/email-signup-banner.liquid: design control for staff: range 'image_overlay_opacity'. Remove it; the value belongs in tokens
+WARNING sections/email-signup-banner.liquid: design control for staff: select 'image_height'. Remove it; the value belongs in tokens
+WARNING sections/email-signup-banner.liquid: design control for staff: select 'desktop_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/email-signup-banner.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/email-signup-banner.liquid: design control for staff: select 'mobile_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/email-signup-banner.liquid: design control for staff (block 'heading'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/featured-blog.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/featured-blog.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/featured-blog.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/featured-blog.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/featured-collection.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/featured-collection.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/featured-collection.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/featured-collection.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/featured-product.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/featured-product.liquid: design control for staff: select 'media_size'. Remove it; the value belongs in tokens
+WARNING sections/featured-product.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/featured-product.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/featured-product.liquid: design control for staff (block 'title'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/featured-product.liquid: design control for staff (block 'disclosures'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/featured-product.liquid: design control for staff (block 'icon-with-text'): select 'layout'. Remove it; the value belongs in tokens
+WARNING sections/footer.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/footer.liquid: design control for staff: range 'margin_top'. Remove it; the value belongs in tokens
+WARNING sections/footer.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/footer.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/footer.liquid: design control for staff (block 'image'): range 'image_width'. Remove it; the value belongs in tokens
+WARNING sections/footer.liquid: design control for staff (block 'image'): select 'alignment'. Remove it; the value belongs in tokens
+WARNING sections/header.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/header.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/header.liquid: design control for staff: range 'margin_bottom'. Remove it; the value belongs in tokens
+WARNING sections/header.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/header.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/image-banner.liquid: design control for staff: range 'image_overlay_opacity'. Remove it; the value belongs in tokens
+WARNING sections/image-banner.liquid: design control for staff: select 'image_height'. Remove it; the value belongs in tokens
+WARNING sections/image-banner.liquid: design control for staff: select 'desktop_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/image-banner.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/image-banner.liquid: design control for staff: select 'mobile_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/image-banner.liquid: design control for staff (block 'heading'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: select 'height'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: select 'desktop_image_width'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: select 'layout'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: select 'content_layout'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: select 'desktop_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: select 'mobile_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff (block 'heading'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/image-with-text.liquid: design control for staff (block 'caption'): select 'text_size'. Remove it; the value belongs in tokens
+WARNING sections/main-account.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-account.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-activate-account.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-activate-account.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-addresses.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-addresses.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-article.liquid: design control for staff (block 'featured_image'): select 'image_height'. Remove it; the value belongs in tokens
+WARNING sections/main-blog.liquid: design control for staff: select 'layout'. Remove it; the value belongs in tokens
+WARNING sections/main-blog.liquid: design control for staff: select 'image_height'. Remove it; the value belongs in tokens
+WARNING sections/main-blog.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-blog.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-cart-footer.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/main-cart-footer.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-cart-footer.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-cart-items.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/main-cart-items.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-cart-items.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-collection-banner.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/main-collection-product-grid.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/main-collection-product-grid.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-collection-product-grid.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-login.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-login.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-order.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-order.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-page.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-page.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-password-footer.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/main-password-header.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/main-product.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/main-product.liquid: design control for staff: select 'media_size'. Remove it; the value belongs in tokens
+WARNING sections/main-product.liquid: design control for staff: select 'gallery_layout'. Remove it; the value belongs in tokens
+WARNING sections/main-product.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-product.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-product.liquid: design control for staff (block 'disclosures'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/main-product.liquid: design control for staff (block 'icon-with-text'): select 'layout'. Remove it; the value belongs in tokens
+WARNING sections/main-register.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-register.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-reset-password.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-reset-password.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/main-search.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/main-search.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/multicolumn.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/multicolumn.liquid: design control for staff: select 'image_width'. Remove it; the value belongs in tokens
+WARNING sections/multicolumn.liquid: design control for staff: select 'column_alignment'. Remove it; the value belongs in tokens
+WARNING sections/multicolumn.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/multicolumn.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/multicolumn.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: select 'image_height'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: select 'desktop_image_width'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: select 'image_layout'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: select 'desktop_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: select 'mobile_content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/multirow.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/newsletter.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/newsletter.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/newsletter.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/newsletter.liquid: design control for staff (block 'heading'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/page.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/page.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/page.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/page.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/quick-order-list.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/quick-order-list.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/quick-order-list.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/related-products.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/related-products.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/related-products.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/related-products.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/rich-text.liquid: design control for staff: select 'content_alignment'. Remove it; the value belongs in tokens
+WARNING sections/rich-text.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/rich-text.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/rich-text.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING sections/rich-text.liquid: design control for staff (block 'heading'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/rich-text.liquid: design control for staff (block 'caption'): select 'text_size'. Remove it; the value belongs in tokens
+WARNING sections/slideshow.liquid: design control for staff: select 'layout'. Remove it; the value belongs in tokens
+WARNING sections/slideshow.liquid: design control for staff: select 'slide_height'. Remove it; the value belongs in tokens
+WARNING sections/slideshow.liquid: design control for staff (block 'slide'): range 'image_overlay_opacity'. Remove it; the value belongs in tokens
+WARNING sections/slideshow.liquid: design control for staff (block 'slide'): select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/slideshow.liquid: design control for staff (block 'slide'): select 'text_alignment'. Remove it; the value belongs in tokens
+WARNING sections/slideshow.liquid: design control for staff (block 'slide'): select 'text_alignment_mobile'. Remove it; the value belongs in tokens
+WARNING sections/slideshow.liquid: design control for staff (block 'slide'): type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/video.liquid: design control for staff: select 'heading_size'. Remove it; the value belongs in tokens
+WARNING sections/video.liquid: design control for staff: type 'color_scheme'. Remove it; the value belongs in tokens
+WARNING sections/video.liquid: design control for staff: range 'padding_top'. Remove it; the value belongs in tokens
+WARNING sections/video.liquid: design control for staff: range 'padding_bottom'. Remove it; the value belongs in tokens
+WARNING templates/index.json: disabled section 'rich-text' (rich-text): delete it rather than hide it
+WARNING templates/index.json: disabled section 'slideshow_q36cqR' (slideshow): delete it rather than hide it
+WARNING templates/index.json: disabled section 'rich_text_phcYrL' (rich-text): delete it rather than hide it
+WARNING templates/index.json: disabled section 'collage' (collage): delete it rather than hide it
+WARNING templates/index.json: section 'blocks_GhNw6m' has type '_blocks', which isn't in any sectionGroup
+WARNING templates/index.json: section '178458921796244af6' has type '_blocks', which isn't in any sectionGroup
+WARNING templates/index.json: section 'page_TdmCeR' has type 'page', which isn't in any sectionGroup
+WARNING templates/index.json: section '17866470897952aeb5' has type '_blocks', which isn't in any sectionGroup
+WARNING templates/index.json: section '17896981155d693caa' has type '_blocks', which isn't in any sectionGroup
+WARNING templates/index.json: section '1789860927a157cd38' has type '_blocks', which isn't in any sectionGroup
+WARNING templates/page.contact.json: section 'newsletter_hXxHAe' has type 'newsletter', which isn't in any sectionGroup
+WARNING templates/page.json: disabled section 'page_X3UC3E' (page): delete it rather than hide it
+WARNING templates/page.json: disabled section 'page_WVVLf3' (page): delete it rather than hide it
+WARNING templates/page.json: disabled section 'page_cfUzHU' (page): delete it rather than hide it
+WARNING templates/page.past-exhibitions.json: disabled section 'main' (main-page): delete it rather than hide it
+WARNING templates/page.past-exhibitions.json: disabled section 'page_X3UC3E' (page): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'image_with_text_tyfTTX' (image-with-text): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'featured_collection_JAwmrY' (featured-collection): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'main' (main-page): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'collection_list_GrYbtC' (collection-list): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'featured_collection_8kRQNY' (featured-collection): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'featured_collection_dAQK7K' (featured-collection): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'featured_collection_g6xDC9' (featured-collection): delete it rather than hide it
+WARNING templates/page.shop.json: disabled section 'featured_collection_GF394p' (featured-collection): delete it rather than hide it
+WARNING templates/page.shop.json: section 'blocks_wAJnY3' has type '_blocks', which isn't in any sectionGroup
+WARNING templates/page.shop.json: section 'page_X3UC3E' has type 'page', which isn't in any sectionGroup
+WARNING templates/product.json: disabled section 'featured_product_4bVEaE' (featured-product): delete it rather than hide it
+WARNING templates/product.json: section 'disclosures' has type 'disclosures', which isn't in any sectionGroup
+WARNING templates/product.json: section 'featured_product_WwnK78' has type 'featured-product', which isn't in any sectionGroup
+WARNING templates/product.json: section 'blocks_7PUzNd' has type '_blocks', which isn't in any sectionGroup
+
+46 error(s), 200 warning(s)

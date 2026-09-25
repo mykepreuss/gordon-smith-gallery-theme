@@ -1,0 +1,40 @@
+Shopify Theme Check baseline for the untouched live theme
+Theme 183162372393 "Colorblock: NEW WEBSITE", pulled 2026-09-25 about 21:16 UTC
+Command: shopify theme check --path theme --output json (Shopify CLI 4.8.2, no auto-correct)
+Full output: baseline/theme-check.json
+
+Result: 4 errors, 11 warnings in 11 files
+
+By check:
+  error     4  UnknownFilter
+  warning   4  UndefinedObject
+  warning   2  UnusedAssign
+  warning   2  VariableName
+  warning   1  ExcessiveSettingsCount
+  warning   1  LiquidComplexity
+  warning   1  OrphanedSnippet
+
+Offenses (file:line):
+  error   theme/blocks/ai_gen_block_3c79063.liquid:14  UnknownFilter: Unknown filter 'push' used.
+  error   theme/blocks/ai_gen_block_3c79063.liquid:15  UnknownFilter: Unknown filter 'push' used.
+  error   theme/blocks/ai_gen_block_70a7f5b.liquid:13  UnknownFilter: Unknown filter 'push' used.
+  error   theme/blocks/ai_gen_block_70a7f5b.liquid:14  UnknownFilter: Unknown filter 'push' used.
+  warning theme/blocks/ai_gen_block_70a7f5b.liquid:14  UndefinedObject: Unknown object 'suggested_frame_objects' used.
+  warning theme/blocks/ai_gen_block_72565eb.liquid:297  ExcessiveSettingsCount: This schema declares 85 settings, which exceeds the maximum of 40. Consider splitting this section or block into smaller pieces, or grouping related options with a header.
+  warning theme/layout/password.liquid:40  UndefinedObject: Unknown object 'scheme_classes' used.
+  warning theme/layout/theme.liquid:82  UndefinedObject: Unknown object 'scheme_classes' used.
+  warning theme/sections/main-article.liquid:102  VariableName: The variable 'anchorId' uses wrong naming format
+  warning theme/sections/main-list-collections.liquid:20  VariableName: The variable 'moduloResult' uses wrong naming format
+  warning theme/sections/main-product.liquid:601  UndefinedObject: Unknown object 'continue' used.
+  warning theme/sections/main-product.liquid:745  UnusedAssign: The variable 'seo_media' is assigned but not used
+  warning theme/sections/main-search.liquid:274  UnusedAssign: The variable 'product_settings' is assigned but not used
+  warning theme/snippets/facets.liquid:865  LiquidComplexity: Liquid complexity is 136, which exceeds the maximum of 120. The decision at line 865 pushed it over the limit. Consider simplifying conditional logic, or moving self-contained decision logic into snippets with the render tag.
+  warning theme/snippets/quick-order-product-row.liquid:1  OrphanedSnippet: This snippet is not referenced by any other files
+
+Notes:
+  The four errors are the 'push' filter, which Liquid doesn't have, in two blocks generated in the theme
+  editor ('Cart frame upsells', ai_gen_block_3c79063 in the cart template and ai_gen_block_70a7f5b in the
+  home template). The frame suggestions they are meant to show probably never appear. Not tested on the
+  storefront. Outside this project's scope (IMPLEMENTATION_PLAN.md exclusions); flagged for the gallery.
+  ExcessiveSettingsCount is the rotating image banner (ai_gen_block_72565eb), also generated in the theme
+  editor, with 85 staff settings. It is used in 10 templates (IMG-01, IMG-04).
