@@ -43,7 +43,9 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Done 2026-09-25, with Michael's go-ahead:** the `exhibition` and `event` definitions, four exhibition entries and one event, active so they render in the development theme. Their addresses return 404 under the live theme. Log, IDs and undo steps: `proposals/store-writes/README.md`. Still to create: the other 11 exhibitions and the page, card, product and collection fields.
 
-**Also done 2026-09-25, with Michael's go-ahead:** the page field, `card` and `card_group` definitions; the cards, card groups and events of the seven programme pages; and their field values. Still to create: fields on the other pages (About, Donate, Contact, Shop and the rest), the product and collection fields (content model parts 3 and 6).
+**Also done 2026-09-25, with Michael's go-ahead:** the page field, `card` and `card_group` definitions; the cards, card groups and events of the seven programme pages; and their field values. Still to create: fields on the other pages (About, Donate, Contact and the rest).
+
+**Also done 2026-09-25, with Michael's go-ahead:** the product label and availability fields, the collection photo credit field, label values on the 21 limited editions, credits on the five portfolios, and the Shop page's hero. Product titles are unchanged; plain-text titles (DS-16) wait for release (§3 of the content model, migration).
 
 ## 5. Exhibition addresses at release (P-10)
 

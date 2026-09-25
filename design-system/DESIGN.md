@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5.3 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.4 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need gallery approval under the plan's structural-approval step; items marked **Input needed** are blocked on the gallery.
 
@@ -383,7 +383,7 @@ Specified here because the build needed them; each follows the rules above and i
 | Events | `.gs-events`, `.gs-event` | Title, time (`gs-time-range`: "Thursday, October 8, 2026, 2:30 to 4 PM"), place, a sentence, tickets. With an image, the image sits beside the text from 750 px. On a programme page, an event titled like the page (a run of drop-ins) leads with its date and time instead (DS-36) |
 | People grid | `.gs-grid--people` | A card group whose images are all portraits (a board): 4:5 frames, compact titles, two, three and four across (DS-37). The images decide, not a setting |
 | Text card | `.gs-card--text` | A card without an image: starts under a rule. From card entries (content model part 4) |
-| Artwork detail | `.gs-artwork`, `.gs-artwork-label` | The product page: every image whole on the mat, then the museum label (artist bold, *title* in a `<cite>`, year), meta, price, one action, the archive note, the framing panel, disclosures |
+| Artwork detail | `.gs-artwork`, `.gs-artwork-label` | The product page: every image whole on the mat; beside it only what it takes to decide and buy: the museum label (artist bold, *title* in a `<cite>`, year), medium, edition, size, price, one action, the archive note and the framing panel. "About the work" (the description, then disclosures) follows at reading width under both columns (DS-38). In tiles the medium stops at two lines |
 | Panel | `.gs-panel` | A small box on tint inside a paper section: the framing offer, contact details |
 | Disclosure | `.gs-disclosure` | A `<details>` for product disclosures, with the chevron |
 | Select | `.gs-select`, `.gs-select-wrap` | A native select styled as an input, chevron from the icon set |
@@ -642,6 +642,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-35 | The exhibition page puts the summary first, then the text and credits beside a column of facts (reception, events, curator, artists); on a phone the facts follow the summary. Replaces separate details and credits sections. Reason: a list of 19 artists before the description buried what the exhibition is about, and the text column left half the page empty | Proposed (build, 2026-09-25) |
 | DS-36 | On a programme page, an event titled the same as the page leads with its date and time instead of its title. Reason: four Explore + Create drop-ins read as the same heading four times | Proposed (build, 2026-09-25) |
 | DS-37 | A card group whose images are all portraits shows as a people grid: 4:5 frames, compact titles, up to four across. Reason: 14 board headshots cropped to wide 4:3 cards in three large columns made a very long page. Staff don't choose it; the images do | Proposed (build, 2026-09-25) |
+| DS-38 | The product page keeps only the label, price, action, archive note and framing offer beside the work; the description follows as "About the work" at reading width. Reason: the description in the narrow column ran the page to twice the image's height with empty space beside it | Proposed (build, 2026-09-25) |
 | DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Proposed (build, 2026-09-25) |
 
 | ID | Question or input | Needed for |
@@ -660,6 +661,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.4 (2026-09-25): Shop pass, with real product labels and collection credits (`proposals/store-writes/`). Product page split into the buying column and "About the work" (DS-38); tile mediums clamp at two lines; portfolio description sits under the hero. The font audit no longer finds Unicode italics on Shop pages.
 - 0.5.3 (2026-09-25): programme pages pass, with real page fields, cards and events (`proposals/store-writes/`). Events titled like their page lead with the date (DS-36); portrait card groups become a people grid (DS-37); links to PDFs say so. Fixed: the Upcoming Events page listed nothing, because the event index's `page` parameter was shadowed by the current page inside the snippet (now `for_page`).
 - 0.5.2 (2026-09-25): exhibitions pass, reviewed with real entries (`proposals/store-writes/`). Wide cards on On now and Upcoming (DS-34); exhibition page with the facts beside the text (DS-35, `.gs-about`); installation views aligned to the content column; timezone and live-theme checks in §9.6 answered.
 - 0.5.1 (2026-09-25): home page pass. The hero leads with the exhibition on now (DS-30) and its title box widens and lines up with the content column; primary buttons turn ink on tint (DS-31, contrast check now 85 pairings); Visit block on Home (DS-32, §6.13); Home order revised (§7.5). The home heading breaks as GORDON SMITH / GALLERY (DS-33, §4.3).

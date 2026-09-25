@@ -65,6 +65,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-35 | Exhibition page: summary first, then the text and credits beside a column of facts; on a phone the facts follow the summary | Proposed (build) |
 | DS-36 | On a programme page, an event titled like the page leads with its date and time | Proposed (build) |
 | DS-37 | A card group of portraits shows as a people grid (4:5, compact, up to four across) | Proposed (build) |
+| DS-38 | Product page: label, price, action, archive note and framing offer beside the work; the description below as "About the work" | Proposed (build) |
 | DS-29 | Header utility links are built in (Contact from the contact-page theme setting, Newsletter, Search, Cart), so no utility menu is created | Proposed (build) |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.

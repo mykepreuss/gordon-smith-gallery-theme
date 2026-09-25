@@ -693,6 +693,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
     text-underline-offset: var(--gs-link-offset);
   }
 }
+/* A long medium ("Eleven colour, multi-plate photopolymer with...") stops at two lines in a tile;
+   the product page shows it whole. */
+.gs-artwork-tile__medium {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
 .gs-artwork-tile__price {
   margin: var(--gs-space-2) 0 0;
   font-size: var(--gs-text-small);
@@ -1255,6 +1264,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-card-group + .gs-card-group { margin-block-start: var(--gs-section-space); }
+/* A portfolio's description sits under its hero, and the switcher follows at the page header's gap. */
+.gs-collection-head { margin-block-end: var(--gs-stack-lg); }
+.gs-collection-intro { padding-block-start: var(--gs-space-6); }
 /* A link after a list to a related page ("Exhibitions" overview under the exhibition lists). */
 .gs-list-more { margin: var(--gs-stack-lg) 0 0; }
 .gs-gallery__credit { margin: var(--gs-space-4) 0 0; }
@@ -1346,6 +1358,16 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-artwork__media { display: grid; gap: var(--gs-space-4); margin: 0; padding: 0; list-style: none; }
 .gs-artwork__info { display: grid; align-content: start; justify-items: start; gap: var(--gs-space-5); }
 .gs-artwork__info > * { margin: 0; }
+/* About the work: the description at reading width under both columns (DS-38). */
+.gs-artwork__about {
+  display: grid;
+  gap: var(--gs-space-4);
+  max-width: var(--gs-measure);
+  padding-block-start: var(--gs-space-5);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+}
+.gs-artwork__about > * { margin: 0; }
+@media (min-width: 990px) { .gs-artwork__about { grid-column: 1 / -1; } }
 
 /* Museum label: artist in bold, title in italics (a real <cite>), then year. Sentence case (DS-10). */
 .gs-artwork-label {

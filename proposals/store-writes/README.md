@@ -60,3 +60,30 @@ Text is the gallery's, moved without rewriting. Choices made while moving it, fo
 **Effect on the live site:** none. The live theme reads none of these fields or entry types (checked in `baseline/theme/`), and the pages still load normally.
 
 **Undo:** clear the 16 page field values; delete the 7 events, 4 card groups and 29 cards; then delete the 9 page field definitions and the `card_group` and `card` definitions.
+
+## 2026-09-25: Shop (product labels, collection credits, Shop page)
+
+**Why:** to review the Shop with real museum labels. Michael's go-ahead, 2026-09-25 ("Yes, all of it"). Definitions are content model parts 3 and 6 (approved, DS-16, P-16).
+
+**Checked first:** same store and live theme. Before-snapshot: the 21 limited editions' titles, collections, existing custom fields (only `featured_frame`) and the facts in their descriptions are in `snapshots/prints-2026-09-25.json`; no collection or the Shop page had custom fields; no product label or collection credit definitions existed.
+
+**Made through the Shopify connector** (payloads from `shop.py`):
+
+| What | IDs |
+| --- | --- |
+| 8 product field definitions, pinned: `artist`, `artwork_title`, `year`, `medium`, `edition`, `dimensions`, `coming_soon`, `availability_note` | `gid://shopify/MetafieldDefinition/272792060201` to `…289577` |
+| Collection field definition `photo_credit`, pinned | `gid://shopify/MetafieldDefinition/272792322345` |
+| 125 label values on the 21 limited editions (`python3 shop.py review` prints them as a table) | Products listed in the snapshot |
+| Photo credits on the five portfolios ("Photography by Rachel Topham" on 2026 Fall, "Photo by Rachel Topham" on the other four, as their old templates said) | Collections `2026-fall-portfolio`, `2026-spring-portfolio`, `2025-fall-portfolio`, `2025-spring-portfolio`, `2024-fall-portfolio` |
+| Shop landing page: hero image (`GSG_2026_Fall_Edition_1.jpg`, the old banner's first slide) and caption "Photography by Rachel Topham" | Page `shop` |
+
+Label values come only from each print's own title and description: artist, title and year from the title (Unicode styled letters made plain); medium from "Technique:"; edition from "Edition:" ("Edition: 50" became "Edition of 50"); dimensions from "Dimensions:", "Size:" or "Image size:" (the last keeps its label). For the gallery to check:
+
+- Samuel Roy-Bois, *Good Luck (wheelbarrow)*: the description has no Technique line, so the label has no medium.
+- Russna Kaur, *What remains after bloom*: the Technique line is a paragraph about the process; it's the medium as written. Tiles show two lines of it.
+- Product titles are unchanged. They still carry Unicode italic letters in the admin, order emails and the browser tab; the theme shows the labels instead. Plain-text titles (DS-16) are a live change, made at release.
+- The descriptions still open with the name, title and a "Print details" list that now repeat the label. The gallery can trim them; paper and signature details have no field and stay in the description.
+
+**Effect on the live site:** none. The live theme reads only `custom.featured_frame` among product fields (checked in `baseline/theme/`).
+
+**Undo:** clear the 132 values, then delete the 9 definitions.

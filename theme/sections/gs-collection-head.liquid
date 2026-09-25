@@ -5,7 +5,7 @@
 {%- endcomment -%}
 {%- assign credit = collection.metafields.custom.photo_credit.value -%}
 {%- if collection.image != blank -%}
-  <div class="gs-section gs-section--lead">
+  <div class="gs-section gs-section--lead gs-collection-head">
     <div class="gs-hero">
       {%- render 'gs-media', image: collection.image, preset: 'hero', mode: 'photo', shape: 'lg', class: 'gs-hero__media', alt: collection.title -%}
       <div class="gs-hero__box gs-surface-accent">
@@ -15,14 +15,12 @@
         <p class="gs-hero__caption gs-caption">{{ credit | escape }}</p>
       {%- endif -%}
     </div>
-  </div>
-  {%- if collection.description != blank -%}
-    <div class="gs-container gs-lead-in">
-      <div class="gs-page-head">
+    {%- if collection.description != blank -%}
+      <div class="gs-container gs-collection-intro">
         <div class="gs-prose">{{ collection.description }}</div>
       </div>
-    </div>
-  {%- endif -%}
+    {%- endif -%}
+  </div>
 {%- else -%}
   <div class="gs-container gs-lead-in">
     <header class="gs-page-head">
