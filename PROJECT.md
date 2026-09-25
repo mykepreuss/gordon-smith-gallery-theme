@@ -29,7 +29,6 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
 | Artists for Kids external site address and links (Q5) | Gallery | NAV-04 |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
-| DS-24: automatic list of past entries on Past Exhibitions | Michael | Past Exhibitions template |
 
 ## Limitation log (REUSE-04)
 

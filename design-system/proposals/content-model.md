@@ -101,7 +101,7 @@ Opening reception, curator and venue are required parts of the model (gallery an
 
 **Status is computed, not typed.** A snippet compares today with the start and end dates (`liquid/snippets/gs-exhibition-status.liquid`), so an exhibition moves from Upcoming to On Now to Past on its own. Liquid can loop over up to 50 entries at once and paginate up to 250 per page ([Shopify: metaobject_definition](https://shopify.dev/docs/api/liquid/objects/metaobject_definition)); the gallery will stay well inside that.
 
-**Past Exhibitions (DS-24, proposed).** The template spec keeps the Past Exhibitions archive as hand-built sections (EXH-03), so an exhibition that closes would still have to be added there by hand. That breaks the promise that no one moves exhibitions between pages. Recommended: the Past page lists past entries automatically, newest first, above the existing archive; the six migrated exhibitions leave the hand-built archive at release, and the six older items stay exactly as they are.
+**Past Exhibitions (DS-24, decided by Michael 2026-09-25).** The Past page lists past entries automatically, newest first, above the existing archive, so an exhibition that closes appears there without anyone adding it. The six migrated exhibitions leave the hand-built archive at release; the six older items stay exactly as they are (EXH-03).
 
 **Web address and search.** Entry pages live at `/pages/<type handle>/<entry handle>` ([Shopify: metaobject capabilities](https://shopify.dev/docs/apps/build/metaobjects/use-metaobject-capabilities)). With the type handle `exhibitions`, *Playhouse* becomes `/pages/exhibitions/playhouse`. The page title and description for search engines come from `title` and `summary`.
 
@@ -110,7 +110,7 @@ Opening reception, curator and venue are required parts of the model (gallery an
 ### Migration
 
 1. Create nine entries as drafts: the six exhibition pages, *Collect, Assemble, Gather* (from On Now), *Against the Latitude of "Progress"* (April 9 to June 19, 2027) and the fall 2027 exhibition (dates note only). Copy the text into the fields; pasted formatting stays behind.
-2. In the review theme, point the six linked Past Exhibitions archive items at the entry addresses, or with DS-24 remove them from the hand-built archive because the automatic list shows them. The older items stay as they are (EXH-03).
+2. In the review theme, remove the six migrated exhibitions from the hand-built Past Exhibitions archive, because the automatic list shows them (DS-24). The older items stay as they are (EXH-03).
 3. At release, in this order: set the entries to active, publish the theme, hide the six old exhibition pages, create the six redirects, then open each old address and check it lands on its entry. Clear the copy of the exhibition text from the On Now and Upcoming page bodies; it now lives in the entry.
 4. Rollback: republish the baseline theme, unhide the six pages, delete the six redirects.
 
@@ -162,7 +162,6 @@ This restructures information the store already has; it doesn't add shop functio
 | 1 | Room names, if `venue` should be a fixed list instead of free text (only "Mezzanine Gallery" appears on the site today) | Gallery | Free text |
 | 2 | Label for the second artist group (*One Hundred Artists Deep* used "Founding Artists") | Gallery | "From the collection" |
 | 3 | *Stitched* start date: April 2 or April 3, 2025 | Gallery | April 3 (its own page) |
-| 4 | Past Exhibitions lists past entries automatically, above the existing archive (DS-24) | Michael | Proposed |
 
 ## Definitions (approved; not created yet)
 

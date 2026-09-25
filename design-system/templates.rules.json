@@ -48,7 +48,7 @@
       "maxPerGroup": { "listing": 1, "text": 1 }
     },
     "page.past-exhibitions": {
-      "purpose": "Past Exhibitions. Existing presentation preserved (EXH-03); only the switcher is added and the shared styles apply.",
+      "purpose": "Past Exhibitions. Automatic list of past entries (DS-24) above the existing archive, which is preserved for the older exhibitions (EXH-03); the switcher is added and the shared styles apply.",
       "legacy": true,
       "require": ["switcher"]
     },

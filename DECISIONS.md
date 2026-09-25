@@ -48,7 +48,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-21 | Box colour only for the brand's boxes; tints and rules for everything else (brand guide p.11) | **Decided by Michael, 2026-09-25** |
 | DS-22 | System error colour `#a3261b` (`#f28b82` on ink) | **Decided by Michael, 2026-09-25** |
 | DS-23 | Header not sticky | **Decided by Michael, 2026-09-25** |
-| DS-24 | Past Exhibitions lists past entries automatically above the existing archive | Proposed; Michael to decide |
+| DS-24 | Past Exhibitions lists past entries automatically above the existing archive | **Decided by Michael, 2026-09-25** |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.
 
