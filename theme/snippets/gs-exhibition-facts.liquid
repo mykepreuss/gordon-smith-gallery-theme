@@ -1,0 +1,110 @@
+{% doc %}
+  An exhibition's facts as a details list (DESIGN.md §7.5, content model parts 2 and 5): curator
+  credit, where in the building, the opening reception until it has ended, artists and artists
+  from the collection, and upcoming events tied to the exhibition. Empty fields show nothing;
+  with no facts at all the snippet outputs nothing.
+
+  @param {object} entry - An exhibition entry
+
+  @example
+  {%- capture facts -%}{% render 'gs-exhibition-facts', entry: metaobject %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign now = 'now' | date: '%s' | plus: 0
+
+  assign show_reception = false
+  if entry.reception_start.value != blank
+    assign reception_over = entry.reception_end.value | default: entry.reception_start.value
+    assign reception_over_s = reception_over | date: '%s' | plus: 0
+    if reception_over_s >= now
+      assign show_reception = true
+    endif
+  endif
+
+  capture event_ids
+    render 'gs-event-index', exhibition: entry
+  endcapture
+  assign event_ids = event_ids | strip | split: ','
+
+  assign artists = entry.artists.value
+  assign collection_artists = entry.collection_artists.value
+
+  assign has_any = false
+  if entry.curator_credit.value != blank or entry.venue.value != blank or show_reception
+    assign has_any = true
+  endif
+  if artists != blank or collection_artists != blank or event_ids.size > 0
+    assign has_any = true
+  endif
+-%}
+{%- if has_any -%}
+  <dl class="gs-details gs-details--stack">
+    {%- if show_reception -%}
+      <div class="gs-details__item">
+        <dt>{{ 'exhibitions.reception' | t }}</dt>
+        <dd>
+          <p class="gs-status__dates">
+            <time datetime="{{ entry.reception_start.value }}">
+              {%- render 'gs-time-range', start: entry.reception_start.value, end: entry.reception_end.value -%}
+            </time>
+          </p>
+          {%- if entry.reception_note.value != blank -%}
+            <p>{{ entry.reception_note.value | escape }}</p>
+          {%- endif -%}
+        </dd>
+      </div>
+    {%- endif -%}
+
+    {%- if event_ids.size > 0 -%}
+      <div class="gs-details__item">
+        <dt>{{ 'exhibitions.events' | t }}</dt>
+        <dd>
+          <ul class="gs-events gs-events--compact">
+            {%- for id in event_ids -%}
+              {%- assign n = id | plus: 0 -%}
+              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                {%- render 'gs-event', event: event, compact: true, heading: 'p' -%}
+              {%- endfor -%}
+            {%- endfor -%}
+          </ul>
+        </dd>
+      </div>
+    {%- endif -%}
+
+    {%- if entry.curator_credit.value != blank -%}
+      <div class="gs-details__item">
+        <dt>{{ 'exhibitions.curator' | t }}</dt>
+        <dd>{{ entry.curator_credit.value | escape }}</dd>
+      </div>
+    {%- endif -%}
+
+    {%- if entry.venue.value != blank -%}
+      <div class="gs-details__item">
+        <dt>{{ 'exhibitions.venue' | t }}</dt>
+        <dd>{{ entry.venue.value | escape }}</dd>
+      </div>
+    {%- endif -%}
+
+    {%- if artists != blank -%}
+      <div class="gs-details__item{% if artists.size > 6 %} gs-details__item--wide{% endif %}">
+        <dt>{{ 'exhibitions.artists' | t }}</dt>
+        <dd>
+          <ul class="gs-names">
+            {%- for name in artists -%}<li>{{ name | escape }}</li>{%- endfor -%}
+          </ul>
+        </dd>
+      </div>
+    {%- endif -%}
+
+    {%- if collection_artists != blank -%}
+      <div class="gs-details__item{% if collection_artists.size > 6 %} gs-details__item--wide{% endif %}">
+        <dt>{{ settings.collection_artists_label | default: 'From the collection' | escape }}</dt>
+        <dd>
+          <ul class="gs-names">
+            {%- for name in collection_artists -%}<li>{{ name | escape }}</li>{%- endfor -%}
+          </ul>
+        </dd>
+      </div>
+    {%- endif -%}
+  </dl>
+{%- endif -%}

@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5.1 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.2 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need gallery approval under the plan's structural-approval step; items marked **Input needed** are blocked on the gallery.
 
@@ -377,7 +377,9 @@ Specified here because the build needed them; each follows the rules above and i
 | Component | Class | Use |
 | --- | --- | --- |
 | Feature panel | `.gs-feature` | One box, text beside an image, on the Home and Shop landing pages. The box takes the surface (tint, accent once per page, or ink) inside a paper section, so it reads as the brand's box. Renders nothing when empty |
-| Details list | `.gs-details` | An exhibition's facts: label over value, each under a rule, in one to three columns; long lists of names run in columns across the full width |
+| Details list | `.gs-details` | Facts: label over value, each under a rule, in one to three columns; long lists of names run in columns across the full width. `.gs-details--stack` keeps one column from 990 px, for a side column |
+| Wide card | `.gs-card--wide` | On now and Upcoming (DS-34): image (7 columns) beside dates, H2 title, curator, the start of the summary and an "About the exhibition" cue. The whole card is one link; the cue is decoration, not a second link. Stacks below 750 px |
+| About the exhibition | `.gs-about` | The exhibition page's text (DS-35): summary as deck, text and credits in 7 columns, the facts in 4 beside them from 990 px. Below that the facts come straight after the summary. Credits sit under a rule with a label heading |
 | Events | `.gs-events`, `.gs-event` | Title, time (`gs-time-range`: "Thursday, October 8, 2026, 2:30 to 4 PM"), place, a sentence, tickets. With an image, the image sits beside the text from 750 px |
 | Text card | `.gs-card--text` | A card without an image: starts under a rule. From card entries (content model part 4) |
 | Artwork detail | `.gs-artwork`, `.gs-artwork-label` | The product page: every image whole on the mat, then the museum label (artist bold, *title* in a `<cite>`, year), meta, price, one action, the archive note, the framing panel, disclosures |
@@ -443,9 +445,9 @@ Sections in order; brackets mean optional. All templates also get the global hea
 - **index (Home):** hero, led by the exhibition on now (DS-30) · exhibitions on now and upcoming, without the one in the hero (cards with status chips, from exhibition data) · visit (address, hours, Plan your visit; DS-32) · [feature panel: a programme, tint] · Shop feature (the newest portfolio, automatically; accent) · newsletter band. At most three listings. The accent Shop box sits away from the tint newsletter band, so two tints never touch.
 - **page:** hero or page header · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event.
 - **page.programme:** hero or page header (programme colours from the `programme` field; the programme's logo above the title when there's no hero image; the call to action field as the button) · rich text · [card groups] · [upcoming events for this page] · [image gallery]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
-- **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (cards filtered by computed status: this page's status; the empty state when there are none) · [rich text, e.g. tours information].
+- **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (wide cards filtered by computed status: this page's status, DS-34; the empty state when there are none) · link to the Exhibitions overview page · [rich text, e.g. tours information].
 - **page.past-exhibitions:** page header · switcher · exhibition list (every past exhibition from entries, newest first; DS-24, DS-25). No hand-built archive section.
-- **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · details (curator credit, artists and collection artists, venue, opening reception until it has passed, upcoming events that reference the exhibition; empty fields show nothing) · rich text (summary as deck, then body) · [credits and funder logos] · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
+- **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · about the exhibition (summary as deck, text, credits and funder logos, beside the facts: opening reception until it has ended, upcoming events that reference the exhibition, curator credit, venue, artists and collection artists; empty fields show nothing; DS-35) · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
 - **page.shop:** hero or page header · [rich text: one short introduction] · portfolio navigation (compact cards, artwork mode, one per portfolio) · [feature panel: e.g. Our Story or framing]. No other listings (SHOP-01, SHOP-02).
 - **page.contact:** page header · contact details and form · [rich text: visiting information].
 - **collection:** collection header (title, season, short intro) · switcher (portfolios) · artwork grid (tiles) · [rich text]. Keeps the cleaner layout the notes praise (SHOP-03).
@@ -562,12 +564,15 @@ Verified in development theme `184755814697` (created by `shopify theme dev`, hi
 1. Every template renders on the store's real pages, collections and products with no Liquid errors or missing wording (home, about, on now, upcoming, past, exhibitions overview, programme pages, contact, shop, `/collections`, two portfolios, a product, cart, search, 404, blog).
 2. Text renders in the bundled Mulish (`audit_fonts.py` on home, on now, a portfolio and contact). Two fallbacks, both expected: the Unicode italic letters in product titles (L-03, fixed by the label fields) and 12 characters in the land acknowledgement's Indigenous place names, which Mulish doesn't have (L-06).
 3. Header: bar at 1440 and drawer at 652, dropdowns open on click, Escape closes and returns focus, the current section opens in the drawer, Contact shows in the utility row.
+4. With the first exhibition and event entries (`proposals/store-writes/`): exhibition pages, On now, Upcoming, Past and Home render from entries; status follows the dates; a past entry with no text has a card that doesn't link.
+5. Date and time fields show in the store's timezone: the reception entered as 18:00 Pacific reads "Friday, September 25, 2026, 6 to 8 PM".
+6. Under the live theme, an entry's address returns 404, so nothing is visible to the public before release.
 
 Still to verify, mostly in the review theme once fields and entries exist:
 
 1. That `image_tag` writes the editor's focal point from a file field's image as `object-position`, and the artwork-mode override holds (IMG-03).
-2. The timezone Liquid uses for `'now'` and for date and time fields, on a changeover day and for reception times.
-3. Exhibition entry pages: that draft entries can't be previewed (they are skipped in Liquid), the link-preview image, and what an entry address shows under the live theme before release.
+2. The timezone Liquid uses for `'now'` on a changeover day (date and time fields are verified, item 5 above).
+3. Exhibition entry pages: the link-preview image.
 4. The newsletter form with an approved test address: customer created with the `newsletter` tag and email consent, and Mailchimp receiving it (ACCESS-01).
 5. The contact form's delivery address (the store's sender email).
 6. Staff editing: two pages on one template with different fields, content stays separate (REUSE-03).
@@ -632,6 +637,8 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-31 | On tint surfaces the primary button is ink with paper text. Reason: the Gallery box colour on its own tint is 1.9:1 and reads as disabled (seen on the newsletter band) | Proposed (build, 2026-09-25) |
 | DS-32 | The home page gets a Visit block: address and hours from theme settings, and a link to Plan your visit. Reason: where and when to visit is the first thing a gallery visitor needs, and the old home page didn't say | Proposed (build, 2026-09-25) |
 | DS-33 | The home hero's own heading breaks into two balanced lines, sized to the longer line: GORDON SMITH / GALLERY | Decided by Michael, 2026-09-25 |
+| DS-34 | On now and Upcoming show each exhibition as a wide card, image beside dates, title, curator and the start of the summary. Reason: there are rarely more than two, and a single small card in a three-column grid undersold what's on. Past stays a grid of cards | Proposed (build, 2026-09-25) |
+| DS-35 | The exhibition page puts the summary first, then the text and credits beside a column of facts (reception, events, curator, artists); on a phone the facts follow the summary. Replaces separate details and credits sections. Reason: a list of 19 artists before the description buried what the exhibition is about, and the text column left half the page empty | Proposed (build, 2026-09-25) |
 | DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Proposed (build, 2026-09-25) |
 
 | ID | Question or input | Needed for |
@@ -650,6 +657,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.2 (2026-09-25): exhibitions pass, reviewed with real entries (`proposals/store-writes/`). Wide cards on On now and Upcoming (DS-34); exhibition page with the facts beside the text (DS-35, `.gs-about`); installation views aligned to the content column; timezone and live-theme checks in §9.6 answered.
 - 0.5.1 (2026-09-25): home page pass. The hero leads with the exhibition on now (DS-30) and its title box widens and lines up with the content column; primary buttons turn ink on tint (DS-31, contrast check now 85 pairings); Visit block on Home (DS-32, §6.13); Home order revised (§7.5). The home heading breaks as GORDON SMITH / GALLERY (DS-33, §4.3).
 - 0.5 (2026-09-25): the new theme is built (P-13, P-14). §9 rewritten for it. New components in §6.13; section spacing by collapsing margins (§5.1); page and programme templates gain card groups and events (P-16); Past Exhibitions from entries only (DS-25). DS-27 (no announcement bar, supersedes DS-26) decided; DS-28 (fields read in Liquid) and DS-29 (built-in utility links) proposed; Q11 added. The gs- snippets moved into `theme/snippets/`; `scripts/sync_theme.py` added; Mulish bundled.
 - 0.4.2 (2026-09-25): the site gets a new theme built from Shopify's Skeleton theme (P-13, P-14), so §9 is marked for rewrite; DS-25 (all past exhibitions as entries) and DS-26 (header announcements) decided; Past Exhibitions is a normal template in the rules; Q5 answered by the approved menu map.

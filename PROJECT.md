@@ -29,7 +29,7 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
 | Land acknowledgement font (Q11): accept Arial for the characters Mulish lacks, or load a font for BC Indigenous languages | Gallery | L-06 |
-| Go-ahead to create the field and entry definitions, and a review-only menu | Michael | Seeing fields, entries and the new menu in the preview; plan step 4 |
+| Go-ahead for the page, card, product and collection fields, the other 11 exhibitions, and a review-only menu (exhibition and event definitions and the first entries were created 2026-09-25, `proposals/store-writes/`) | Michael | Reviewing the other page types with real content; plan step 4 |
 
 ## Limitation log (REUSE-04)
 

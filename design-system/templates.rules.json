@@ -41,14 +41,10 @@
     "events": [
       "gs-events"
     ],
-    "details": [
-      "gs-exhibition-details"
-    ],
     "text": [
       "gs-rich-text",
       "gs-page-body",
       "gs-exhibition-body",
-      "gs-exhibition-credits",
       "rich-text",
       "image-with-text",
       "multirow"
@@ -168,10 +164,9 @@
         "text"
       ],
       "maxPerGroup": {
-        "text": 2,
+        "text": 1,
         "gallery": 2,
-        "listing": 1,
-        "details": 1
+        "listing": 1
       }
     },
     "page.shop": {

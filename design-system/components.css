@@ -1255,6 +1255,65 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-list-more { margin: var(--gs-stack-lg) 0 0; }
 .gs-gallery__credit { margin: var(--gs-space-4) 0 0; }
 
+/* ---------- Wide exhibition card and feature list (DS-34) ---------- */
+/* On now and Upcoming: each exhibition gets the room of a feature, image beside text. The whole
+   card stays one link (the title's overlay); the "About the exhibition" cue is decoration. */
+
+.gs-card__body { display: grid; align-content: start; justify-items: start; gap: var(--gs-space-3); }
+.gs-card__body > * { margin: 0; }
+.gs-grid--features { grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-8); }
+.gs-card--wide .gs-card__title { font-size: var(--gs-text-h2); }
+.gs-card__cue { margin-block-start: var(--gs-space-2); }
+@media (min-width: 750px) {
+  .gs-card--wide {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: var(--gs-gutter);
+    align-items: center;
+  }
+  .gs-card--wide > .gs-media { margin: 0; }
+}
+.gs-card:active .gs-card__cue { text-decoration-color: currentColor; }
+@media (hover: hover) and (pointer: fine) {
+  .gs-card:hover .gs-card__cue { text-decoration-color: currentColor; }
+}
+
+/* ---------- About the exhibition ---------- */
+/* Summary, text and credits beside the facts. On a phone the facts follow the summary, so the
+   reception and the artists come before the long text. */
+
+.gs-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "deck" "facts" "body" "credits";
+  gap: var(--gs-space-6) var(--gs-gutter);
+}
+.gs-about__deck { grid-area: deck; max-width: none; }
+.gs-about__facts { grid-area: facts; }
+.gs-about__body { grid-area: body; }
+.gs-about__credits {
+  grid-area: credits;
+  display: grid;
+  justify-items: start;
+  gap: var(--gs-space-4);
+  padding-block-start: var(--gs-space-4);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+}
+.gs-about__credits > * { margin: 0; }
+.gs-events--compact { gap: var(--gs-space-4); }
+.gs-events--compact .gs-event { padding: 0; border: 0; gap: var(--gs-space-1); }
+.gs-about__facts .gs-details__item--wide .gs-names { columns: 2 9rem; }
+@media (min-width: 990px) {
+  .gs-about {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "deck facts" "body facts" "credits facts";
+    column-gap: var(--gs-space-8);
+  }
+  .gs-about--no-facts { grid-template-areas: "deck ." "body ." "credits ."; }
+  .gs-about__facts, .gs-about__credits { align-self: start; }
+  .gs-details--stack { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* ---------- Funder logos ---------- */
 /* Other organisations' marks, shown as supplied: no box, no corner. */
 

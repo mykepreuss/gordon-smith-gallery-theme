@@ -61,6 +61,8 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-31 | Primary buttons are ink on tint surfaces (the box colour on its tint reads as disabled) | Proposed (build) |
 | DS-32 | A Visit block on the home page: address and hours from theme settings, link to Plan your visit | Proposed (build) |
 | DS-33 | The home hero's own heading breaks into two balanced lines sized to the longer line: GORDON SMITH / GALLERY | **Decided by Michael, 2026-09-25** |
+| DS-34 | On now and Upcoming show each exhibition as a wide card (image beside dates, title, curator, summary); Past stays a grid | Proposed (build) |
+| DS-35 | Exhibition page: summary first, then the text and credits beside a column of facts; on a phone the facts follow the summary | Proposed (build) |
 | DS-29 | Header utility links are built in (Contact from the contact-page theme setting, Newsletter, Search, Cart), so no utility menu is created | Proposed (build) |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.

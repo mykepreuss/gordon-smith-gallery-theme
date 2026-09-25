@@ -39,7 +39,9 @@ Moving pages from their one-off templates to the closed set in `design-system/DE
 3. Product label fields (artist, title, year, medium, edition, dimensions, coming soon) and plain-text product titles.
 4. Approved 2026-09-25 (P-16): card groups, events, page hero caption and call to action, collection photo credit, product availability note (content model parts 4 to 6).
 
-Creating definitions is additive and doesn't change what visitors see, but it is still a store-level change: create them when implementation starts, with Michael's go-ahead, and record each in the pull request. Exhibition entries are created as drafts.
+Creating definitions is additive and doesn't change what visitors see, but it is still a store-level change: create them when implementation starts, with Michael's go-ahead, and record each in the pull request.
+
+**Done 2026-09-25, with Michael's go-ahead:** the `exhibition` and `event` definitions, four exhibition entries and one event, active so they render in the development theme. Their addresses return 404 under the live theme. Log, IDs and undo steps: `proposals/store-writes/README.md`. Still to create: the other 11 exhibitions and the page, card, product and collection fields.
 
 ## 5. Exhibition addresses at release (P-10)
 
