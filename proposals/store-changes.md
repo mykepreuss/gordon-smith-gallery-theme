@@ -30,6 +30,8 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 Moving pages from their one-off templates to the closed set in `design-system/DESIGN.md` §7.4 is a store-level release action (the Admin assignment list reads the live theme). Until then, new templates are previewed on the review theme with `?view=`. Full mapping: DESIGN.md §7.4. With the new theme (P-13) none of today's page templates exist after publishing, so every page's assignment is set at release by a script run straight after publishing, with a snapshot of today's assignments for rollback.
 
+Until the script runs, pages whose old template the new theme lacks fall back to the default page template, and Our Story (old template `shop`) renders as the Shop landing page (L-08). So the script is written and dry-run before release (plan, "Release gate and rollback"): it snapshots every page's template, maps each page to its new one, and prints the changes for Michael to check. At release it runs straight after publishing, and every page is opened to check it. Not written yet.
+
 ## 4. Field definitions (content model)
 
 `design-system/proposals/content-model.md`, approved 2026-09-25 (DS-14 to DS-16):
@@ -64,9 +66,11 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
 
 3. Open each old address and check it lands on its entry.
-4. Clear the copy of *Collect, Assemble, Gather* from the On Now and Upcoming page bodies; it lives in its entry.
+4. Clear the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now. Snapshot each body first, for rollback.
 
-Rollback: republish the baseline theme, unhide the six pages, delete the six redirects. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the six pages, delete the six redirects, restore the three page bodies from their snapshots. Entry handles are proposals until the entries exist.
+
+The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
 ## 6. Theme settings for the review theme
 
@@ -81,7 +85,13 @@ Values the theme's settings need (Online Store, Themes, Customize, Theme setting
 | Hours, email, phone, social links, newsletter consent wording | From the gallery (ACCESS-04) | Waiting |
 | Main menu | `new-website-menu-1` until the review menu exists (§1) | Temporary |
 
-## 7. Not proposed
+## 7. Product titles at release (DS-16)
+
+The 21 limited editions' titles carry Unicode italic letters (L-03). At release, each title becomes the same words in plain text (`proposals/store-writes/shop.py`, `plain()`). The new theme shows the label fields, so this changes the admin, order emails, search and the browser tab. The live theme shows the titles, which is why this waits for release.
+
+Rollback: restore each title from `proposals/store-writes/snapshots/prints-2026-09-25.json`.
+
+## 8. Not proposed
 
 - No other redirects, no product or collection changes beyond part 4, no app installs, no checkout changes.
 - Mailchimp: no change until the audit is complete (`baseline/mailchimp-audit.md`).

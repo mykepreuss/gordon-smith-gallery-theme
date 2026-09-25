@@ -22,7 +22,7 @@ Before any write: recheck the store domain, the live theme ID and role, and take
 | Exhibition `play`, active. From the Past archive (2020 to 2021): title, dates, image (DS-25) | `gid://shopify/Metaobject/608352141609` | same |
 | Event `curatorial-tour-collect-assemble-gather`, active. From the On Now page: October 26, 2026, 3:30 to 4:30 PM, linked to Collect, Assemble, Gather | `gid://shopify/Metaobject/608352272681` | `entries.py event` |
 
-Text is the gallery's, moved without rewriting. Pasted formatting (inline Poppins, Word markup) stayed behind. Two small format changes to fit the fields: the curator credit and reception note lost their trailing punctuation and pipes ("Welcome Ceremony | 7 PM" became "Welcome ceremony at 7 PM", the content model's example).
+Text is the gallery's, moved without rewriting. Pasted formatting (inline Poppins, Word markup) stayed behind. Two small format changes to fit the fields: the curator credit and reception note lost their trailing punctuation and pipes ("Welcome Ceremony | 7 PM" became "Welcome ceremony at 7 PM", the content model's example). Approved by Michael, 2026-09-25 (P-17).
 
 **Effect on the live site:** none seen. The entries' addresses return 404 on gordonsmithgallery.com, because the live theme has no exhibition template; nothing on the live theme reads these entries. Checked 2026-09-25 (`/pages/exhibitions/collect-assemble-gather`, `/pages/exhibitions/play`).
 
@@ -48,7 +48,7 @@ Text is the gallery's, moved without rewriting. Pasted formatting (inline Poppin
 | 7 events, active: Explore + Create on September 26 and October 3, 10 and 17, 2026; Art In Good Company on October 8; La Modestine (Music at the Smith) on November 7; Omer Arbel (Speaker Series) on November 26. Each linked to its programme page | `gid://shopify/Metaobject/608367575337` to `…771945` |
 | 16 field values on the seven live pages: hero images (each page's first banner image), hero captions (Artists for Kids, Explore + Create), programme (Artists for Kids, Smith Foundation), calls to action (Artists For Kids Website; 2025 A Year In Review), card groups | Pages `artists-for-kids`, `public-programs-1`, `the-smith-foundation`, `speaker-series`, `music-at-the-smith`, `explore-create`, `art-in-good-company` |
 
-Text is the gallery's, moved without rewriting. Choices made while moving it, for the gallery to confirm:
+Text is the gallery's, moved without rewriting. Choices made while moving it, approved by Michael on 2026-09-25 (P-17). Omer Arbel's biography is still open for the gallery:
 
 - The Foundation's "More" links become links on the card titles; a link reading only "More" doesn't say where it goes. The three "More" links that pointed nowhere (gala, scholarships, endowment) are left out.
 - Public Programs' cards had no images; each now shows its programme page's hero image. Music at the Smith's card gets the link it was missing.
@@ -77,7 +77,7 @@ Text is the gallery's, moved without rewriting. Choices made while moving it, fo
 | Photo credits on the five portfolios ("Photography by Rachel Topham" on 2026 Fall, "Photo by Rachel Topham" on the other four, as their old templates said) | Collections `2026-fall-portfolio`, `2026-spring-portfolio`, `2025-fall-portfolio`, `2025-spring-portfolio`, `2024-fall-portfolio` |
 | Shop landing page: hero image (`GSG_2026_Fall_Edition_1.jpg`, the old banner's first slide) and caption "Photography by Rachel Topham" | Page `shop` |
 
-Label values come only from each print's own title and description: artist, title and year from the title (Unicode styled letters made plain); medium from "Technique:"; edition from "Edition:" ("Edition: 50" became "Edition of 50"); dimensions from "Dimensions:", "Size:" or "Image size:" (the last keeps its label). For the gallery to check:
+Label values come only from each print's own title and description: artist, title and year from the title (Unicode styled letters made plain); medium from "Technique:"; edition from "Edition:" ("Edition: 50" became "Edition of 50"); dimensions from "Dimensions:", "Size:" or "Image size:" (the last keeps its label). Approved by Michael, 2026-09-25 (P-17). Still open for the gallery: a medium for *Good Luck (wheelbarrow)*, and trimming the descriptions. Notes:
 
 - Samuel Roy-Bois, *Good Luck (wheelbarrow)*: the description has no Technique line, so the label has no medium.
 - Russna Kaur, *What remains after bloom*: the Technique line is a paragraph about the process; it's the medium as written. Tiles show two lines of it.
