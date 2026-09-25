@@ -57,6 +57,9 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-26 | Up to two short announcements with links in the header, set in theme settings (kept from the current announcement bar) | Decided by Michael, 2026-09-25; **superseded by DS-27** |
 | DS-27 | No announcement bar in the header (supersedes DS-26). The home page carries the same news from entries and the newest portfolio | **Decided by Michael, 2026-09-25** ("we do not want that anymore") |
 | DS-28 | Page fields and entries are read directly in Liquid, not connected through dynamic sources in the editor | Proposed (build) |
+| DS-30 | The home hero leads with the exhibition on now, from its entry; the section's own image and heading show only when nothing is on | Proposed (build) |
+| DS-31 | Primary buttons are ink on tint surfaces (the box colour on its tint reads as disabled) | Proposed (build) |
+| DS-32 | A Visit block on the home page: address and hours from theme settings, link to Plan your visit | Proposed (build) |
 | DS-29 | Header utility links are built in (Contact from the contact-page theme setting, Newsletter, Search, Cart), so no utility menu is created | Proposed (build) |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.

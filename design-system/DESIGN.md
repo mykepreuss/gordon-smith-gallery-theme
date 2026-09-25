@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.1 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need gallery approval under the plan's structural-approval step; items marked **Input needed** are blocked on the gallery.
 
@@ -115,7 +115,7 @@ A section's background is one of four surfaces. Each class remaps the roles so e
 | Surface | Class | Background | Typical use |
 | --- | --- | --- | --- |
 | Paper | `.gs-surface-paper` | white | Default for all content |
-| Tint | `.gs-surface-tint` | programme tint | Newsletter band, alternating feature band. Never two in a row |
+| Tint | `.gs-surface-tint` | programme tint | Newsletter band, alternating feature band. Never two in a row. Primary buttons inside turn ink (DS-31) |
 | Accent | `.gs-surface-accent` | programme box colour | Hero title box, one feature panel. Primary buttons inside turn ink |
 | Ink | `.gs-surface-ink` | `#231f20` | Footer, rare dark band. Brand box colours become text and underline colours here |
 
@@ -129,7 +129,7 @@ Use a programme scope when the page belongs to that programme (Artists for Kids 
 
 ### 3.4 Contrast rules
 
-`python3 design-system/scripts/check_contrast.py` checks 79 required pairings (every programme on every surface, including link hover fills, strong chips and error text) and exits non-zero if any fail. Current result: 79/79 pass. Lowest passing values:
+`python3 design-system/scripts/check_contrast.py` checks 85 required pairings (every programme on every surface, including link hover fills, strong chips and error text) and exits non-zero if any fail. Current result: 85/85 pass. Lowest passing values:
 
 | Pairing | Ratio | Rule |
 | --- | --- | --- |
@@ -273,7 +273,7 @@ Each spec lists anatomy, tokens, states and staff controls. Class names are from
 | Inline link | `.gs-link`, any `a` in `.gs-prose` | Ink text, 2 px underline in link-line colour, 0.22em offset | The surface's hover fill fades in behind the words (120 ms); underline takes the text colour | 3 px outline, 3 px offset | Keeps the underline (DS-06). Fill is a tint, never the box colour (DS-21) |
 | Standalone link | `.gs-cta-link` | Caps label, underlined in link-line colour | Underline darkens to the text colour | Outline | "About the exhibition", "Plan your visit". No arrow (DS-20) |
 | "More" link | `.gs-cta-link.gs-cta-link--more` | As above, plus an arrow | Arrow nudges right as the underline darkens, same timing | Outline | Only for links to more of the same list: "All past exhibitions" |
-| Primary button | `.gs-button` | Box colour, ink caps 900, 48 px tall, bottom-right corner | Inverts to the surface's text colour with background-coloured text | Outline | One per view where possible. The brand's box in small |
+| Primary button | `.gs-button` | Box colour, ink caps 900, 48 px tall, bottom-right corner. Ink with paper text on accent and tint surfaces, where the box colour would disappear into the background (DS-31) | Inverts to the surface's text colour with background-coloured text; on accent and tint, paper with ink text | Outline | One per view where possible. The brand's box in small |
 | Secondary button | `.gs-button--secondary` | Transparent, 2 px ink border | Fills ink | Outline | Beside a primary, or on busy pages |
 | Disabled | `button[disabled]`, `[aria-disabled="true"]` | 45% opacity, not-allowed cursor | None | Outline (`aria-disabled` stays focusable) | A link is never disabled: remove it. Say why nearby ("Sold out") |
 | Submitting | `.gs-button[aria-busy="true"]` | Colours unchanged; label says what's happening ("Signing up"); progress cursor | None | Outline | The form ignores repeat submits while busy |
@@ -286,6 +286,8 @@ Two variants, chosen by what the image is, never by taste. With page fields (§7
 
 - **Photo hero** (`.gs-hero`): installation views, events, people. Media ratio 4:5 below 750, 4:3 to 989, 21:9 from 990, capped at 80% of viewport height, `--gs-shape-lg`, cropped around the editor's focal point. The title box (`.gs-hero__box.gs-surface-accent`: status chip and dates on their own line for an exhibition, or an optional eyebrow such as a programme name; H1, or display on Home; optional deck; up to two actions) sits under the image and overlaps it by exactly `--gs-hero-overlap` (48 to 96 px), inset from the left on wide screens. The covered area is therefore a known strip along the bottom-left edge: keep faces and key details out of it when setting the focal point. The title sizes to the box (§4.3), so a long word like CONVERSATION fits on a phone. Without an image the box stands alone and doesn't overlap anything.
 - **Artwork hero** (`.gs-hero--artwork`): the image is an artwork. The work shows whole on the mat, never cropped, rounded or overlapped; the title box sits beside it from 990 px (7:5 columns) and below it on smaller screens.
+- **Home leads with the exhibition on now (DS-30):** the home hero shows the most recently opened exhibition that's on, from its entry: key image, status chip and dates, title at H1 size, and "About the exhibition". The section's own image and heading show only when nothing is on. So the home page follows the programme without anyone updating it, and the art leads. The page's H1 stays the gallery's name, visually hidden while an exhibition leads.
+- Title box width: `min(40rem, 58%)` from 990 px, `min(48rem, 60%)` from 1200 px, so a four-word title breaks into two lines. Its left edge lines up with the content column (1200 wide) and never sits closer than 48 px to the image's edge.
 - Same position and treatment on every page type that has a hero (Home, exhibition, programme, Shop landing). A page without a strong image uses the page header (§6.6) instead of a weak hero.
 - Staff controls: image (with focal point), whether it is an artwork, heading, deck, up to two buttons, and an eyebrow on non-exhibition pages. Exhibition status and dates come from the exhibition's data, not typed text. No colour, alignment, height or overlay options.
 - The hero image loads first: `gs-media` with `preset: 'hero'` loads it eagerly with high fetch priority.
@@ -384,6 +386,7 @@ Specified here because the build needed them; each follows the rules above and i
 | Cart | `.gs-cart__*` | One row per work (thumbnail on the mat, label, price, quantity, remove), then policy and summary |
 | Pagination, results | `.gs-pagination`, `.gs-results` | Real links, `aria-current` on the current page; search results for pages and articles |
 | Skip link | `.gs-skip-link` | The first stop for keyboard users; hidden until focused |
+| Visit | `.gs-visit` | Home (DS-32): heading and a link to Plan your visit beside the address and hours, which reuse the details list. From theme settings, so they're typed once for the footer, contact page and home |
 
 ## 7. Page templates (REUSE-01 to 04, SHOP-01 to 03, EXH-01 to 03)
 
@@ -436,7 +439,7 @@ From 28 page templates to six, plus one exhibition template; from three collecti
 
 Sections in order; brackets mean optional. All templates also get the global header, newsletter band and footer.
 
-- **index (Home):** hero (photo or artwork) · exhibitions on now and upcoming (cards, from exhibition data) · [feature panel: a programme] · [portfolio navigation or feature: Shop] · [feature panel]. At most three listings.
+- **index (Home):** hero, led by the exhibition on now (DS-30) · exhibitions on now and upcoming, without the one in the hero (cards with status chips, from exhibition data) · visit (address, hours, Plan your visit; DS-32) · [feature panel: a programme, tint] · Shop feature (the newest portfolio, automatically; accent) · newsletter band. At most three listings. The accent Shop box sits away from the tint newsletter band, so two tints never touch.
 - **page:** hero or page header · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event.
 - **page.programme:** hero or page header (programme colours from the `programme` field; the programme's logo above the title when there's no hero image; the call to action field as the button) · rich text · [card groups] · [upcoming events for this page] · [image gallery]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
 - **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (cards filtered by computed status: this page's status; the empty state when there are none) · [rich text, e.g. tours information].
@@ -624,6 +627,9 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-23 | The header is not sticky on any screen size, so nothing permanently covers the art on a phone | Decided by Michael, 2026-09-25 |
 | DS-27 | No announcement bar in the header. Supersedes DS-26. The news it carried (a new portfolio, an exhibition opening) is on the home page, which builds its exhibition list from entries and features the newest portfolio automatically | Decided by Michael, 2026-09-25 ("we do not want that anymore") |
 | DS-28 | Page fields and entries are read directly in Liquid (`page.metafields.custom.*`, `metaobject.*`), not connected to section settings through dynamic sources. Reason: nothing to connect per template in the editor, nothing that can be connected to the wrong field, and the sections can decide from the content (hero or page header, image card or text card) | Proposed (build, 2026-09-25) |
+| DS-30 | The home hero leads with the exhibition on now, from its entry, and shows the section's own image and heading only when nothing is on. Reason: the home page's lead stays current without anyone editing it (the old home featured a portfolio that had been replaced), and the art leads (principle 1). The home exhibition list leaves out the exhibition in the hero | Proposed (build, 2026-09-25) |
+| DS-31 | On tint surfaces the primary button is ink with paper text. Reason: the Gallery box colour on its own tint is 1.9:1 and reads as disabled (seen on the newsletter band) | Proposed (build, 2026-09-25) |
+| DS-32 | The home page gets a Visit block: address and hours from theme settings, and a link to Plan your visit. Reason: where and when to visit is the first thing a gallery visitor needs, and the old home page didn't say | Proposed (build, 2026-09-25) |
 | DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Proposed (build, 2026-09-25) |
 
 | ID | Question or input | Needed for |
@@ -642,6 +648,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.1 (2026-09-25): home page pass. The hero leads with the exhibition on now (DS-30) and its title box widens and lines up with the content column; primary buttons turn ink on tint (DS-31, contrast check now 85 pairings); Visit block on Home (DS-32, §6.13); Home order revised (§7.5).
 - 0.5 (2026-09-25): the new theme is built (P-13, P-14). §9 rewritten for it. New components in §6.13; section spacing by collapsing margins (§5.1); page and programme templates gain card groups and events (P-16); Past Exhibitions from entries only (DS-25). DS-27 (no announcement bar, supersedes DS-26) decided; DS-28 (fields read in Liquid) and DS-29 (built-in utility links) proposed; Q11 added. The gs- snippets moved into `theme/snippets/`; `scripts/sync_theme.py` added; Mulish bundled.
 - 0.4.2 (2026-09-25): the site gets a new theme built from Shopify's Skeleton theme (P-13, P-14), so §9 is marked for rewrite; DS-25 (all past exhibitions as entries) and DS-26 (header announcements) decided; Past Exhibitions is a normal template in the rules; Q5 answered by the approved menu map.
 - 0.4.1 (2026-09-25): content model approved (DS-14 to DS-16); exhibition fields revised from a review of the content in use (`proposals/content-model.md` part 2); exhibition template spec lists the new details; option B fallback template removed; customer account templates added to the template rules as system templates; DS-24 decided: Past Exhibitions lists past entries automatically above the archive.

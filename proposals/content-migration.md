@@ -27,7 +27,7 @@ Source: the baseline theme's templates and section groups (commit 27ef593), read
 
 | Content | New home |
 | --- | --- |
-| Rotating banner, 4 images, autoplay | One hero image in the home template's settings (the home page is the one page on its template, so template settings are the right place). No autoplay carousel |
+| Rotating banner, 4 images, autoplay | The hero leads with the exhibition on now (DS-30). When nothing is on, it shows one image from the home template's settings: the banner's first image (`ON9DA8_1.jpg`) is set. No autoplay carousel |
 | The whole On Now page embedded | Exhibitions on now and upcoming, from exhibition entries |
 | "Shop Limited Editions", 2026 Spring Portfolio, "View Shop" | Shop feature: the newest portfolio automatically, linking to the Shop landing |
 | Two frame blocks | Dropped (the product page offers the frame) |

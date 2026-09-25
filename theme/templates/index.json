@@ -11,7 +11,10 @@
   "sections": {
     "hero": {
       "type": "gs-hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/ON9DA8_1.jpg",
+        "heading": "Gordon Smith Gallery"
+      }
     },
     "exhibitions": {
       "type": "gs-exhibition-list",
@@ -19,10 +22,10 @@
         "heading": "Exhibitions"
       }
     },
-    "programme": {
-      "type": "gs-feature",
+    "visit": {
+      "type": "gs-visit",
       "settings": {
-        "surface": "tint"
+        "heading": "Visit"
       }
     },
     "shop": {
@@ -30,11 +33,18 @@
       "settings": {
         "surface": "accent"
       }
+    },
+    "programme": {
+      "type": "gs-feature",
+      "settings": {
+        "surface": "tint"
+      }
     }
   },
   "order": [
     "hero",
     "exhibitions",
+    "visit",
     "programme",
     "shop"
   ]

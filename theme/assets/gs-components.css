@@ -307,7 +307,7 @@
   --_fg: var(--gs-color-bg);
   --_border: var(--gs-color-fg);
 }
-.gs-surface-accent .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):active {
+:is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):active {
   --_bg: var(--gs-paper);
   --_fg: var(--gs-ink);
   --_border: var(--gs-ink);
@@ -318,7 +318,7 @@
     --_fg: var(--gs-color-bg);
     --_border: var(--gs-color-fg);
   }
-  .gs-surface-accent .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):hover {
+  :is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):hover {
     --_bg: var(--gs-paper);
     --_fg: var(--gs-ink);
     --_border: var(--gs-ink);
@@ -570,11 +570,18 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 @media (min-width: 990px) {
   .gs-hero__media { --gs-media-ratio: var(--gs-ratio-hero-lg); }
+  /* The box's left edge lines up with the content column below the hero (1200 wide), and never
+     sits closer than 48px to the image's edge. */
   .gs-hero__box {
     width: min(var(--gs-width-form), 58%);
-    margin: calc(-1 * var(--gs-hero-overlap)) 0 0 var(--gs-space-7);
+    margin: calc(-1 * var(--gs-hero-overlap)) 0 0 max(var(--gs-space-7), (100% - var(--gs-width-content)) / 2);
     padding: var(--gs-space-7);
   }
+}
+
+/* From 1200 the box widens, so a four-word exhibition title breaks into two lines, not four. */
+@media (min-width: 1200px) {
+  .gs-hero__box { width: min(48rem, 60%); }
 }
 
 /* Artwork hero: the work is never covered, cropped or rounded. */
@@ -1157,7 +1164,10 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 
 /* Photo credit or artwork caption under a hero. */
 .gs-hero__caption { margin-block-start: var(--gs-space-3); max-width: var(--gs-measure); }
-@media (min-width: 990px) { .gs-hero__caption { margin-inline-start: var(--gs-space-7); } }
+.gs-hero__caption > * { margin: 0; }
+@media (min-width: 990px) {
+  .gs-hero:not(.gs-hero--artwork) .gs-hero__caption { margin-inline-start: max(var(--gs-space-7), (100% - var(--gs-width-content)) / 2); }
+}
 
 /* A programme's own logo above its page title (DESIGN.md §8.2). Artwork, so no box or corner. */
 .gs-page-head__logo { display: block; line-height: 0; }
@@ -1411,6 +1421,16 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-newsletter__text { display: grid; gap: var(--gs-space-3); }
 .gs-newsletter__text > * { margin: 0; }
 @media (min-width: 990px) { .gs-newsletter { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+
+/* Visit (home): heading and link beside the facts, which reuse the details list. */
+.gs-visit { display: grid; gap: var(--gs-space-6) var(--gs-gutter); align-items: start; }
+.gs-visit__head { display: grid; justify-items: start; gap: var(--gs-space-4); }
+.gs-visit__head > * { margin: 0; }
+.gs-visit address { font-style: normal; }
+@media (min-width: 990px) {
+  .gs-visit { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .gs-visit__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 .gs-contact { display: grid; gap: var(--gs-space-7) var(--gs-gutter); align-items: start; }
 @media (min-width: 990px) { .gs-contact { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }

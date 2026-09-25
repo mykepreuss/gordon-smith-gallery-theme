@@ -43,6 +43,12 @@
         "info": "Contact shows in the header on every page and in the footer."
       },
       {
+        "type": "page",
+        "id": "visit_page",
+        "label": "Plan your visit page",
+        "info": "Linked from the Visit section on the home page."
+      },
+      {
         "type": "richtext",
         "id": "land_acknowledgement",
         "label": "Land acknowledgement",

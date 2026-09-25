@@ -266,6 +266,8 @@
   --gs-color-bg: var(--gs-color-tint);
   --gs-color-fg: var(--gs-ink);
   --gs-color-fg-muted: var(--gs-ink-soft);
+  --gs-color-accent: var(--gs-ink);      /* DS-31: the box colour on its own tint reads as disabled (1.9:1), so the primary button is ink here */
+  --gs-color-accent-fg: var(--gs-paper);
   --gs-color-accent-text: var(--gs-ink); /* gallery teal is 4.05:1 on its tint: large text only */
   --gs-color-hover-fill: var(--gs-color-rule);
   --gs-color-focus: var(--gs-ink);

@@ -60,6 +60,9 @@
       "gs-feature",
       "gs-shop-feature"
     ],
+    "visit": [
+      "gs-visit"
+    ],
     "form": [
       "gs-contact",
       "contact-form"
@@ -106,7 +109,8 @@
       ],
       "maxPerGroup": {
         "listing": 3,
-        "feature": 2
+        "feature": 2,
+        "visit": 1
       }
     },
     "page": {
