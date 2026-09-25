@@ -32,6 +32,9 @@ Before any write to Shopify, recheck: store domain, live theme ID and role, the 
 - The first theme commit is the untouched live theme. Never amend or rewrite it.
 - No credentials, tokens, `.env` files or Shopify CLI config in Git.
 - Each requirement's row in `REQUIREMENTS.md` changes in the same commit as the work.
+- **Remote:** `origin` is `git@github.com:mykepreuss/gordon-smith-gallery-theme.git` (SSH). Michael pushes from his Mac with his own SSH key.
+- **Agents in a sandbox** (the Cowork VM, a cloud session) don't have that key. Commit on a branch and write the pull request title and description to `.git/pr/<branch>.title` and `.git/pr/<branch>.md` (use `_` for `/` in the branch name). Michael then runs `scripts/push-pr.sh`, which pushes the branch and opens GitHub's pull request form filled in. A GitHub token is used only with Michael's approval for that session, is never written to the repo or its config, and is signed out afterwards.
+- **Cowork VM only:** deleting files in the connected folder is blocked, so git can't clean up its own lock files there. Never run git directly on the folder's `.git` from the VM. Instead: check `.git` has no `*.lock` files, copy it to a git directory outside the folder, run git with `GIT_DIR` pointing there and `GIT_WORK_TREE` at the folder, then copy it back (objects without overwriting, other files by rename) after checking the folder's branch hasn't moved since the copy.
 
 ## Design system
 

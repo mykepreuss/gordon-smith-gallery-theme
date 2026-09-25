@@ -20,13 +20,13 @@ Before release, pull the then-current live theme into a separate folder and comp
 | Check | Result | File |
 | --- | --- | --- |
 | Shopify Theme Check (no auto-correct), Shopify CLI 4.8.2 | 4 errors, 11 warnings in 11 files | `baseline/theme-check.json`, `baseline/theme-check.txt` |
-| Design-system linter (`design-system/scripts/lint_theme.py theme/`) | 46 errors, 200 warnings. Expected: the linter checks the target structure, which the current theme predates | `baseline/lint-theme.txt` |
+| Design-system linter (`design-system/scripts/lint_theme.py theme/`) | 39 errors, 200 warnings with the design system 0.4.1 rules. Expected: the linter checks the target structure, which the current theme predates | `baseline/lint-theme.txt` |
 
 ### What the checks show
 
 - **Theme Check errors:** all four are the `push` filter, which Theme Check doesn't recognise, in two "Cart frame upsells" blocks generated in the theme editor (`blocks/ai_gen_block_3c79063.liquid` in the cart template, `blocks/ai_gen_block_70a7f5b.liquid` in the home template). The frame suggestions they are meant to show probably never appear. Not tested on the storefront. Outside this project's scope; flagged for the gallery.
 - **Rotating image banner:** used in 10 templates, it is another generated block (`blocks/ai_gen_block_72565eb.liquid`) with 85 staff settings, over Theme Check's limit of 40 (IMG-01, IMG-04, L-05).
-- **Linter errors:** 39 of 46 are templates outside the approved set (L-01). Seven of those are Shopify's customer account templates (`templates/customers/*`), which the approved list in `design-system/templates.rules.json` leaves out. They are system templates the theme keeps, so add them to the rules in the first design-system change; until then, expect these seven. The other seven errors are structure on the home, Shop, collection and Past Exhibitions templates.
+- **Linter errors:** 32 of 39 are templates outside the approved set (L-01). The other seven are structure on the home, Shop, collection and Past Exhibitions templates. The first run reported 46 errors because the rules left out Shopify's seven customer account templates (`templates/customers/*`); design system 0.4.1 lists them as system templates and `lint-theme.txt` was re-run with those rules (the first run is in Git history).
 - **Linter warnings:** 170 are staff design controls (sizes, alignments, layouts and colour schemes) whose values move into tokens, 18 are disabled sections left in templates, and 12 are sections outside the design system's section groups.
 - **Apps:** no app embeds in `config/settings_data.json`, no app blocks in any template or section group, and no Mailchimp reference in theme files. All social link settings are empty.
 

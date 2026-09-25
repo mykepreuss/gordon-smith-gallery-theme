@@ -48,17 +48,12 @@
       "maxPerGroup": { "listing": 1, "text": 1 }
     },
     "page.past-exhibitions": {
-      "purpose": "Past Exhibitions. Existing presentation preserved (EXH-03); only the switcher is added and the shared styles apply.",
+      "purpose": "Past Exhibitions. Automatic list of past entries (DS-24) above the existing archive, which is preserved for the older exhibitions (EXH-03); the switcher is added and the shared styles apply.",
       "legacy": true,
       "require": ["switcher"]
     },
     "metaobject/exhibition": {
       "purpose": "A single exhibition, rendered from structured exhibition data (proposals/content-model.md)",
-      "require": ["hero", "text"],
-      "maxPerGroup": { "text": 2, "gallery": 2, "listing": 1 }
-    },
-    "page.exhibition": {
-      "purpose": "Fallback if exhibitions stay as pages (proposal option B): same rules as metaobject/exhibition",
       "require": ["hero", "text"],
       "maxPerGroup": { "text": 2, "gallery": 2, "listing": 1 }
     },
@@ -90,6 +85,13 @@
     "404": { "purpose": "Not found", "legacy": true },
     "password": { "purpose": "Password page", "legacy": true },
     "gift_card": { "purpose": "Gift card", "legacy": true },
+    "customers/account": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/activate_account": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/addresses": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/login": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/order": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/register": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/reset_password": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
     "article": { "purpose": "Blog article (News blog is empty)", "legacy": true },
     "blog": { "purpose": "Blog (News blog is empty)", "legacy": true }
   },

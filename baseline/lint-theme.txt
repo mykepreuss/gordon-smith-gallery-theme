@@ -2,13 +2,6 @@ ERROR   templates/collection.all-products-template.json: not an approved templat
 ERROR   templates/collection.alt-collection-temp.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
 ERROR   templates/collection.collection-template.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
 ERROR   templates/collection.json: missing required switcher section
-ERROR   templates/customers/account.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
-ERROR   templates/customers/activate_account.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
-ERROR   templates/customers/addresses.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
-ERROR   templates/customers/login.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
-ERROR   templates/customers/order.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
-ERROR   templates/customers/register.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
-ERROR   templates/customers/reset_password.json: not an approved template. Move this page to one of the approved templates and put its unique content in page fields (DESIGN.md §7.3)
 ERROR   templates/index.json: 9 sections; the limit is 8
 ERROR   templates/index.json: must start with hero or pageHead, starts with '_blocks'
 ERROR   templates/index.json: missing required hero section
@@ -245,4 +238,4 @@ WARNING templates/product.json: section 'disclosures' has type 'disclosures', wh
 WARNING templates/product.json: section 'featured_product_WwnK78' has type 'featured-product', which isn't in any sectionGroup
 WARNING templates/product.json: section 'blocks_7PUzNd' has type '_blocks', which isn't in any sectionGroup
 
-46 error(s), 200 warning(s)
+39 error(s), 200 warning(s)

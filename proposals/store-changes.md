@@ -32,15 +32,36 @@ Moving pages from their one-off templates to the closed set in `design-system/DE
 
 ## 4. Field definitions (content model)
 
-`design-system/proposals/content-model.md`:
+`design-system/proposals/content-model.md`, approved 2026-09-25 (DS-14 to DS-16):
 
 1. Page fields (`custom.*`): hero image, hero is artwork, eyebrow, intro, programme, gallery images.
-2. Exhibition entries (metaobject `exhibition`), or option B (exhibition pages with fields) if current URLs must stay (Q7).
-3. Product label fields (artist, title, year, medium, edition) and plain-text product titles.
+2. Exhibition entries (metaobject `exhibition`, web pages at `/pages/exhibitions/<entry>`), with the fields revised from the review of content in use: dates and dates note, curator credit, artists and collection artists, venue, opening reception, events, key image and caption, summary, body, installation photos, credits, funder logos, programme.
+3. Product label fields (artist, title, year, medium, edition, dimensions, coming soon) and plain-text product titles.
 
-Creating definitions is additive and doesn't change what visitors see, but it is still a store-level change: create them only after approval, and record each in the pull request.
+Creating definitions is additive and doesn't change what visitors see, but it is still a store-level change: create them when implementation starts, with Michael's go-ahead, and record each in the pull request. Exhibition entries are created as drafts.
 
-## 5. Not proposed
+## 5. Exhibition addresses at release (P-10)
 
-- No redirects, no product or collection changes beyond part 4, no app installs, no checkout changes.
+Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
+
+1. Hide (don't delete) the six exhibition pages, keeping them for rollback.
+2. Create six URL redirects:
+
+| From | To |
+| --- | --- |
+| `/pages/exhibition-one-hundred-artists-deep` | `/pages/exhibitions/one-hundred-artists-deep` |
+| `/pages/exhibition-from-the-ground` | `/pages/exhibitions/from-the-ground` |
+| `/pages/exhibition-stitched-merging-photography-and-textile-practices` | `/pages/exhibitions/stitched` |
+| `/pages/exhibition-playhouse` | `/pages/exhibitions/playhouse` |
+| `/pages/exhibition-prevailing-landscapes` | `/pages/exhibitions/prevailing-landscapes` |
+| `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
+
+3. Open each old address and check it lands on its entry.
+4. Clear the copy of *Collect, Assemble, Gather* from the On Now and Upcoming page bodies; it lives in its entry.
+
+Rollback: republish the baseline theme, unhide the six pages, delete the six redirects. Entry handles are proposals until the entries exist.
+
+## 6. Not proposed
+
+- No other redirects, no product or collection changes beyond part 4, no app installs, no checkout changes.
 - Mailchimp: no change until the audit is complete (`baseline/mailchimp-audit.md`).
