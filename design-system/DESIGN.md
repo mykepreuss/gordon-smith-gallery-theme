@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5.2 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.3 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need gallery approval under the plan's structural-approval step; items marked **Input needed** are blocked on the gallery.
 
@@ -279,7 +279,7 @@ Each spec lists anatomy, tokens, states and staff controls. Class names are from
 | Disabled | `button[disabled]`, `[aria-disabled="true"]` | 45% opacity, not-allowed cursor | None | Outline (`aria-disabled` stays focusable) | A link is never disabled: remove it. Say why nearby ("Sold out") |
 | Submitting | `.gs-button[aria-busy="true"]` | Colours unchanged; label says what's happening ("Signing up"); progress cursor | None | Outline | The form ignores repeat submits while busy |
 
-Hover styles apply only with a mouse or trackpad; on touch, `:active` shows the same change while pressed and nothing sticks after the tap (§5.4). On touch screens standalone links, footer, utility and dropdown links grow to 44 px targets. Visited links look the same as unvisited. One size of button only. Button labels are 1 to 3 words, verb first; the words for an action stay the same through the flow ("Sign up", "Signing up", "You're signed up").
+A link to a PDF says "(PDF)" after its label, so nobody opens a large file by surprise (`gs-link`). Hover styles apply only with a mouse or trackpad; on touch, `:active` shows the same change while pressed and nothing sticks after the tap (§5.4). On touch screens standalone links, footer, utility and dropdown links grow to 44 px targets. Visited links look the same as unvisited. One size of button only. Button labels are 1 to 3 words, verb first; the words for an action stay the same through the flow ("Sign up", "Signing up", "You're signed up").
 
 ### 6.3 Hero (IMG-01, IMG-02, IMG-04, SHOP-04, DS-08, DS-12)
 
@@ -380,7 +380,8 @@ Specified here because the build needed them; each follows the rules above and i
 | Details list | `.gs-details` | Facts: label over value, each under a rule, in one to three columns; long lists of names run in columns across the full width. `.gs-details--stack` keeps one column from 990 px, for a side column |
 | Wide card | `.gs-card--wide` | On now and Upcoming (DS-34): image (7 columns) beside dates, H2 title, curator, the start of the summary and an "About the exhibition" cue. The whole card is one link; the cue is decoration, not a second link. Stacks below 750 px |
 | About the exhibition | `.gs-about` | The exhibition page's text (DS-35): summary as deck, text and credits in 7 columns, the facts in 4 beside them from 990 px. Below that the facts come straight after the summary. Credits sit under a rule with a label heading |
-| Events | `.gs-events`, `.gs-event` | Title, time (`gs-time-range`: "Thursday, October 8, 2026, 2:30 to 4 PM"), place, a sentence, tickets. With an image, the image sits beside the text from 750 px |
+| Events | `.gs-events`, `.gs-event` | Title, time (`gs-time-range`: "Thursday, October 8, 2026, 2:30 to 4 PM"), place, a sentence, tickets. With an image, the image sits beside the text from 750 px. On a programme page, an event titled like the page (a run of drop-ins) leads with its date and time instead (DS-36) |
+| People grid | `.gs-grid--people` | A card group whose images are all portraits (a board): 4:5 frames, compact titles, two, three and four across (DS-37). The images decide, not a setting |
 | Text card | `.gs-card--text` | A card without an image: starts under a rule. From card entries (content model part 4) |
 | Artwork detail | `.gs-artwork`, `.gs-artwork-label` | The product page: every image whole on the mat, then the museum label (artist bold, *title* in a `<cite>`, year), meta, price, one action, the archive note, the framing panel, disclosures |
 | Panel | `.gs-panel` | A small box on tint inside a paper section: the framing offer, contact details |
@@ -639,6 +640,8 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-33 | The home hero's own heading breaks into two balanced lines, sized to the longer line: GORDON SMITH / GALLERY | Decided by Michael, 2026-09-25 |
 | DS-34 | On now and Upcoming show each exhibition as a wide card, image beside dates, title, curator and the start of the summary. Reason: there are rarely more than two, and a single small card in a three-column grid undersold what's on. Past stays a grid of cards | Proposed (build, 2026-09-25) |
 | DS-35 | The exhibition page puts the summary first, then the text and credits beside a column of facts (reception, events, curator, artists); on a phone the facts follow the summary. Replaces separate details and credits sections. Reason: a list of 19 artists before the description buried what the exhibition is about, and the text column left half the page empty | Proposed (build, 2026-09-25) |
+| DS-36 | On a programme page, an event titled the same as the page leads with its date and time instead of its title. Reason: four Explore + Create drop-ins read as the same heading four times | Proposed (build, 2026-09-25) |
+| DS-37 | A card group whose images are all portraits shows as a people grid: 4:5 frames, compact titles, up to four across. Reason: 14 board headshots cropped to wide 4:3 cards in three large columns made a very long page. Staff don't choose it; the images do | Proposed (build, 2026-09-25) |
 | DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Proposed (build, 2026-09-25) |
 
 | ID | Question or input | Needed for |
@@ -657,6 +660,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.3 (2026-09-25): programme pages pass, with real page fields, cards and events (`proposals/store-writes/`). Events titled like their page lead with the date (DS-36); portrait card groups become a people grid (DS-37); links to PDFs say so. Fixed: the Upcoming Events page listed nothing, because the event index's `page` parameter was shadowed by the current page inside the snippet (now `for_page`).
 - 0.5.2 (2026-09-25): exhibitions pass, reviewed with real entries (`proposals/store-writes/`). Wide cards on On now and Upcoming (DS-34); exhibition page with the facts beside the text (DS-35, `.gs-about`); installation views aligned to the content column; timezone and live-theme checks in §9.6 answered.
 - 0.5.1 (2026-09-25): home page pass. The hero leads with the exhibition on now (DS-30) and its title box widens and lines up with the content column; primary buttons turn ink on tint (DS-31, contrast check now 85 pairings); Visit block on Home (DS-32, §6.13); Home order revised (§7.5). The home heading breaks as GORDON SMITH / GALLERY (DS-33, §4.3).
 - 0.5 (2026-09-25): the new theme is built (P-13, P-14). §9 rewritten for it. New components in §6.13; section spacing by collapsing margins (§5.1); page and programme templates gain card groups and events (P-16); Past Exhibitions from entries only (DS-25). DS-27 (no announcement bar, supersedes DS-26) decided; DS-28 (fields read in Liquid) and DS-29 (built-in utility links) proposed; Q11 added. The gs- snippets moved into `theme/snippets/`; `scripts/sync_theme.py` added; Mulish bundled.

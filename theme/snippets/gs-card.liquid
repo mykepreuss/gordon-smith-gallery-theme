@@ -8,6 +8,7 @@
 
   @param {object} card - A card entry
   @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
+  @param {boolean} [portrait] - A card in a group of portraits (people): 4:5 image, compact title
 
   @example
   {%- render 'gs-card', card: card -%}
@@ -26,9 +27,13 @@
     endif
   endif
 -%}
-<article class="gs-card{% if image == blank %} gs-card--text{% endif %}">
+<article class="gs-card{% if image == blank %} gs-card--text{% endif %}{% if portrait %} gs-card--compact{% endif %}">
   {%- if image != blank -%}
-    {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: card.title.value -%}
+    {%- if portrait -%}
+      {%- render 'gs-media', image: image, preset: 'tile', mode: 'photo', ratio: '4 / 5', alt: card.title.value -%}
+    {%- else -%}
+      {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: card.title.value -%}
+    {%- endif -%}
   {%- endif -%}
   <{{ tag }} class="gs-card__title">
     {%- if stretch -%}

@@ -7,22 +7,23 @@
   An event drops off every list once it has ended (its end time, or its start time when it has
   no end). Only active entries exist on the storefront. Reads up to 50 entries.
 
-  Pass one of page or exhibition, or neither for every upcoming event.
+  Pass one of for_page or exhibition, or neither for every upcoming event. (Not "page": inside a
+  snippet that name is also the current page, so leaving it out would still filter by it.)
 
-  @param {object} [page] - Only events whose programme page is this page
+  @param {object} [for_page] - Only events whose programme page is this page
   @param {object} [exhibition] - Only events tied to this exhibition entry
   @param {number} [limit] - At most this many
 
   @example
-  {%- capture ids -%}{% render 'gs-event-index', page: page %}{%- endcapture -%}
+  {%- capture ids -%}{% render 'gs-event-index', for_page: page %}{%- endcapture -%}
 {% enddoc %}
 {%- liquid
   assign limit = limit | default: 50
   assign now = 'now' | date: '%s' | plus: 0
   assign keys = ''
   for event in shop.metaobjects.event.values
-    if page != blank
-      if event.programme_page.value.id != page.id
+    if for_page != blank
+      if event.programme_page.value.id != for_page.id
         continue
       endif
     endif

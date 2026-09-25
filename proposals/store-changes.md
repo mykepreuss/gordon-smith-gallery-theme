@@ -43,6 +43,8 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Done 2026-09-25, with Michael's go-ahead:** the `exhibition` and `event` definitions, four exhibition entries and one event, active so they render in the development theme. Their addresses return 404 under the live theme. Log, IDs and undo steps: `proposals/store-writes/README.md`. Still to create: the other 11 exhibitions and the page, card, product and collection fields.
 
+**Also done 2026-09-25, with Michael's go-ahead:** the page field, `card` and `card_group` definitions; the cards, card groups and events of the seven programme pages; and their field values. Still to create: fields on the other pages (About, Donate, Contact, Shop and the rest), the product and collection fields (content model parts 3 and 6).
+
 ## 5. Exhibition addresses at release (P-10)
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:

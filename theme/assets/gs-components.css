@@ -445,16 +445,20 @@
 }
 ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-grid--cards { grid-template-columns: 1fr; }
+/* People (a board, staff): portraits two to four across (DS-37). */
+.gs-grid--people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
 .gs-grid--artworks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
 @media (min-width: 750px) {
   .gs-grid--cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gs-grid--people { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gs-space-7) var(--gs-gutter); }
   .gs-grid--artworks { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gs-space-7) var(--gs-gutter); }
 }
 @media (min-width: 990px) {
   .gs-grid--cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 1200px) {
-  .gs-grid--artworks { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .gs-grid--artworks,
+  .gs-grid--people { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* ---------- Prose (rich text from staff) ---------- */

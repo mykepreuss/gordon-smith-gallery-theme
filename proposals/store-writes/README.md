@@ -29,3 +29,34 @@ Text is the gallery's, moved without rewriting. Pasted formatting (inline Poppin
 **Undo:** delete the five entries (Content, Metaobjects), then the `event` definition, then the `exhibition` definition. Nothing else refers to them.
 
 **Still to create** (content model part 2, migration step 1): the other 11 exhibitions, the other events, and the page, card, product and collection fields (parts 1, 3, 4, 6).
+
+## 2026-09-25: programme pages (page fields, cards, events)
+
+**Why:** to review the seven programme pages with their real content. Michael's go-ahead, 2026-09-25 ("All seven pages"). Definitions are content model parts 1, 4 and 6 (approved, DS-14, P-16).
+
+**Checked first:** same store and live theme as above. Before-snapshot: none of the seven pages had any `custom` fields; no `card` or `card_group` definitions existed; no page field definitions existed.
+
+**Made through the Shopify connector** (payloads from `programmes.py`; created IDs in `created/`):
+
+| What | IDs |
+| --- | --- |
+| Definition `card` (image, title, text, link; storefront read) | `gid://shopify/MetaobjectDefinition/23754375465` |
+| Definition `card_group` (heading, cards; storefront read) | `gid://shopify/MetaobjectDefinition/23754408233` |
+| 9 page field definitions, namespace `custom`, pinned on the page editor: `hero_image`, `hero_is_artwork`, `hero_caption`, `eyebrow`, `intro`, `cta`, `programme`, `card_groups`, `gallery_images` | `gid://shopify/MetafieldDefinition/272783147305` to `…409449` |
+| 29 cards: Artists for Kids' 6 programmes (linking to artistsforkids.sd44.ca), Public Programs' 4, the Foundation's 5 ways to take part, and its 14-person board | `created/cards.json` |
+| 4 card groups: `afk-programmes`, `public-programs`, `foundation-take-part`, `foundation-board` (heading "Board of Directors") | `created/card-groups.json` |
+| 7 events, active: Explore + Create on September 26 and October 3, 10 and 17, 2026; Art In Good Company on October 8; La Modestine (Music at the Smith) on November 7; Omer Arbel (Speaker Series) on November 26. Each linked to its programme page | `gid://shopify/Metaobject/608367575337` to `…771945` |
+| 16 field values on the seven live pages: hero images (each page's first banner image), hero captions (Artists for Kids, Explore + Create), programme (Artists for Kids, Smith Foundation), calls to action (Artists For Kids Website; 2025 A Year In Review), card groups | Pages `artists-for-kids`, `public-programs-1`, `the-smith-foundation`, `speaker-series`, `music-at-the-smith`, `explore-create`, `art-in-good-company` |
+
+Text is the gallery's, moved without rewriting. Choices made while moving it, for the gallery to confirm:
+
+- The Foundation's "More" links become links on the card titles; a link reading only "More" doesn't say where it goes. The three "More" links that pointed nowhere (gala, scholarships, endowment) are left out.
+- Public Programs' cards had no images; each now shows its programme page's hero image. Music at the Smith's card gets the link it was missing.
+- The 2025 A Year In Review button pointed at a Shopify admin address visitors can't open; it now opens the PDF at `/cdn/shop/files/SMITH_ANNUAL_REPORT_2025.pdf`, and the theme marks it "(PDF)".
+- Speaker Series: the talk's three paragraphs go in the event summary, with "Doors 6 PM, talk begins 6:30 PM." first. Omer Arbel's separate biography paragraph isn't moved yet; the gallery can add it to the page text or the summary. The empty "Past Speaker Series" year headings are dropped.
+- Art In Good Company's "Description of Activity Coming soon" placeholder isn't moved; the event has no summary until there is one.
+- Explore + Create's shorter land acknowledgement is dropped: the footer carries the full one on every page.
+
+**Effect on the live site:** none. The live theme reads none of these fields or entry types (checked in `baseline/theme/`), and the pages still load normally.
+
+**Undo:** clear the 16 page field values; delete the 7 events, 4 card groups and 29 cards; then delete the 9 page field definitions and the `card_group` and `card` definitions.

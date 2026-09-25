@@ -15,7 +15,7 @@
     endcapture
   else
     capture ids
-      render 'gs-event-index', page: page
+      render 'gs-event-index', for_page: page
     endcapture
   endif
   assign ids = ids | strip | split: ','
@@ -31,7 +31,7 @@
           {%- for id in ids -%}
             {%- assign n = id | plus: 0 -%}
             {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-              {%- render 'gs-event', event: event -%}
+              {%- render 'gs-event', event: event, page_title: page.title -%}
             {%- endfor -%}
           {%- endfor -%}
         </ul>
