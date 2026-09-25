@@ -2,7 +2,7 @@
 
 The new theme (P-13) doesn't carry over the current theme's templates, so everything the current theme holds in its template and section settings has to move, or be dropped on purpose, before release. Page bodies, products, collections and files live in Shopify admin and are not affected.
 
-Source: the baseline theme's templates and section groups (commit 27ef593), read 2026-09-25. Destinations marked **new** are proposed additions to the content model (`design-system/proposals/content-model.md` parts 4 and 5) and need approval before they're created.
+Source: the baseline theme's templates and section groups (commit 27ef593), read 2026-09-25. Destinations marked **new** are the additions to the content model approved on 2026-09-25 (P-16; `design-system/proposals/content-model.md` parts 4 to 6).
 
 ## What the inventory shows
 
@@ -16,7 +16,7 @@ Source: the baseline theme's templates and section groups (commit 27ef593), read
 
 | Current place | Content | New home |
 | --- | --- | --- |
-| Header: announcement bar | Two messages with links ("Fall 2026 Limited Editions Now Available", "Exhibition Opening: September 25th, 6 to 8 PM") | Theme setting: up to two short announcements, each with a link, in the header (DS-26, proposed) |
+| Header: announcement bar | Two messages with links ("Fall 2026 Limited Editions Now Available", "Exhibition Opening: September 25th, 6 to 8 PM") | Theme setting: up to two short announcements, each with a link, in the header (DS-26) |
 | Header: menu | `new-website-menu-1` | The approved menu map (`proposals/store-changes.md` §1) |
 | Footer | Land acknowledgement (full wording) | Footer theme setting, once. The shorter copies on exhibition and programme pages are dropped |
 | Default page template | About's hero, three organisation columns, land acknowledgement | About only: hero image field, card group **new**. Nothing on other pages |

@@ -78,7 +78,7 @@ Build shared Liquid/CSS rules and reusable hero, card, gallery, link, and CTA tr
 
 Build new header and footer section groups in the new theme. A JSON template's section configuration is shared by every resource assigned that template, so test content isolation with two pages before calling the editor model complete. If a new alternate template exists only in the unpublished theme, preview it in that theme or with the supported `?view=` route; the normal Admin assignment menu draws from the live theme, and changing an existing resource's template assignment is a store-level release action. [Shopify template behavior](https://help.shopify.com/en/manual/online-store/themes/theme-structure/templates), [alternate-template preview](https://shopify.dev/docs/storefronts/themes/architecture/templates/alternate-templates).
 
-The menu map, page hierarchy, component/editor model, shared access placement and the first store-level field definitions were approved on 2026-09-25. The additions found by the content inventory (card groups, events and a few smaller fields: content model parts 4 to 6, P-16) need the same approval before they are created; build the parts that don't depend on them first. Record approved decisions in the repository.
+The menu map, page hierarchy, component/editor model, shared access placement and the first store-level field definitions were approved on 2026-09-25. The additions found by the content inventory (card groups, events and a few smaller fields: content model parts 4 to 6, P-16) were approved the same day (P-16). Record approved decisions in the repository.
 
 ## GitHub-first delivery workflow
 

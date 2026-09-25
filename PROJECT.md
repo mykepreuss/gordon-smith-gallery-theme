@@ -9,9 +9,9 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | 0 | Design specification (`design-system/`, v0.4.2) | Done; structural parts approved 2026-09-25 (P-15) | `design-system/DESIGN.md`, `design-system/preview.html` |
 | 1 | Source of truth: Git repo, untouched live-theme baseline, records | Done 2026-09-25 | `BASELINE.md`, first theme commit |
 | 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | Done 2026-09-25, except Mailchimp app settings (need access) | `baseline/` |
-| 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Approved 2026-09-25: content model parts 1 to 3, menu map and labels, page types, editing model, contact and newsletter placement. Content model parts 4 to 6 proposed (P-16) | `proposals/`, shared doc, `DECISIONS.md` P-10 to P-16 |
+| 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Approved 2026-09-25: content model parts 1 to 3, menu map and labels, page types, editing model, contact and newsletter placement. Content model parts 4 to 6 approved the same day (P-16) | `proposals/`, shared doc, `DECISIONS.md` P-10 to P-16 |
 | 1c | Content inventory of the current theme, for the new build | Done 2026-09-25 | `proposals/content-migration.md` |
-| 2 | Build the new theme on a feature branch (P-13), from Shopify's Skeleton theme (P-14) | Not started; unblocked, except the parts that need content model parts 4 to 6 | |
+| 2 | Build the new theme on a feature branch (P-13), from Shopify's Skeleton theme (P-14) | Not started; unblocked. Moving to Claude Code on Michael's Mac (`CLAUDE.md`) | |
 | 3 | Pull request with code, register, proposed store changes, Theme Check | Not started | |
 | 4 | Unpublished review theme (the new theme uploaded unpublished), CLI pushes to its ID only | Not started | |
 | 5 | Verification: 1440 / 768 / 390, touch, keyboard, staff editing on two pages of one template, newsletter test | Not started | |
@@ -25,7 +25,6 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 
 | Item | From | Blocks |
 | --- | --- | --- |
-| Approval of content model parts 4 to 6 (P-16), DS-25 and DS-26; confirmation of the Skeleton base (P-14) | Michael | Card groups, events, Past Exhibitions, header announcements |
 | Signup wording and destination, consent wording, contact emails, phone, hours, social URLs | Gallery | ACCESS-01 to ACCESS-04 |
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |

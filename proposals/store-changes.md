@@ -37,7 +37,7 @@ Moving pages from their one-off templates to the closed set in `design-system/DE
 1. Page fields (`custom.*`): hero image, hero is artwork, eyebrow, intro, programme, gallery images.
 2. Exhibition entries (metaobject `exhibition`, web pages at `/pages/exhibitions/<entry>`), with the fields revised from the review of content in use: dates and dates note, curator credit, artists and collection artists, venue, opening reception, events, key image and caption, summary, body, installation photos, credits, funder logos, programme.
 3. Product label fields (artist, title, year, medium, edition, dimensions, coming soon) and plain-text product titles.
-4. Proposed, not approved (P-16): card groups, events, page hero caption and call to action, collection photo credit, product availability note (content model parts 4 to 6).
+4. Approved 2026-09-25 (P-16): card groups, events, page hero caption and call to action, collection photo credit, product availability note (content model parts 4 to 6).
 
 Creating definitions is additive and doesn't change what visitors see, but it is still a store-level change: create them when implementation starts, with Michael's go-ahead, and record each in the pull request. Exhibition entries are created as drafts.
 

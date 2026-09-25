@@ -22,6 +22,7 @@ Before any write to Shopify, recheck: store domain, live theme ID and role, the 
 ## Shopify CLI
 
 - Theme reads: `shopify theme pull --store ed35ee-ea.myshopify.com --theme <id> --path theme`.
+- Preview while building: `shopify theme dev --store ed35ee-ea.myshopify.com --path theme`. It uploads to a hidden development theme, never the live one; allowed during the build. Never pass it the live theme's ID.
 - Theme writes: only `shopify theme push --theme <verified unpublished id> --strict`. Never use `--allow-live`, never `theme push --publish`, never `theme publish` without explicit release approval.
 - Theme Check: `shopify theme check --path theme` without auto-correct. The new theme has no errors; explain any warning in the pull request. `baseline/theme-check.json` records the old theme for comparison only.
 - Admin writes through the Shopify connector or Admin only for approved store-resource changes, with a before-snapshot in `baseline/` or the PR.
