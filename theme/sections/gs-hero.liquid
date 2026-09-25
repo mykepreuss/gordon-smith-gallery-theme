@@ -71,7 +71,19 @@
         {%- if s.eyebrow != blank -%}
           <p class="gs-eyebrow">{{ s.eyebrow | escape }}</p>
         {%- endif -%}
-        <h1 class="gs-display"{% render 'gs-fit', text: s.heading %}>{{ s.heading | escape }}</h1>
+        {%- liquid
+          capture parts
+            render 'gs-fit-lines', text: s.heading
+          endcapture
+          assign parts = parts | strip | split: '~~'
+        -%}
+        <h1 class="gs-display" style="--gs-fit-chars: {{ parts[0] }}">
+          {%- if parts[1] != blank -%}
+            {{- parts[1] | escape }}<br>{{ parts[2] | escape -}}
+          {%- else -%}
+            {{- s.heading | escape -}}
+          {%- endif -%}
+        </h1>
         {%- if s.deck != blank -%}
           <p class="gs-deck">{{ s.deck | escape }}</p>
         {%- endif -%}
