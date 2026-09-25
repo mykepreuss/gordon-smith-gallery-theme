@@ -6,10 +6,10 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 
 | # | Milestone (plan step) | Status | Evidence |
 | --- | --- | --- | --- |
-| 0 | Design specification (`design-system/`, v0.4) | Done, pending gallery approval of the structural parts | `design-system/DESIGN.md`, `design-system/preview.html` |
+| 0 | Design specification (`design-system/`, v0.4.1) | Done, pending gallery approval of the structural parts | `design-system/DESIGN.md`, `design-system/preview.html` |
 | 1 | Source of truth: Git repo, untouched live-theme baseline, records | Done 2026-09-25 | `BASELINE.md`, first theme commit |
 | 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | Done 2026-09-25, except Mailchimp app settings (need access) | `baseline/` |
-| 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Drafted, to be sent by Michael | `proposals/`, shared doc |
+| 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Content model approved 2026-09-25 (all three parts); menu map, page types, editing model and contact placement still to approve | `proposals/`, shared doc, `DECISIONS.md` P-10 to P-12 |
 | 2 | Implementation on a feature branch, after structural approval | Not started (gated on 1b) | |
 | 3 | Pull request with code, register, proposed store changes, Theme Check | Not started | |
 | 4 | Unpublished review theme (duplicate of baseline), CLI pushes to its ID only | Not started | |
@@ -25,11 +25,11 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | Item | From | Blocks |
 | --- | --- | --- |
 | Approval of the menu map, page hierarchy, editor model and access placement | Gallery | Milestone 2 |
-| Approval of the content model (page fields, exhibition entries, product label fields) | Gallery | REUSE-01, DS-14 to DS-16 |
 | Menu labels, signup wording and destination, consent wording, contact emails, phone, hours, social URLs | Gallery | NAV-02, ACCESS-01 to ACCESS-04 |
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
 | Artists for Kids external site address and links (Q5) | Gallery | NAV-04 |
-| Whether current exhibition page URLs must stay unchanged (Q7) | Gallery | EXH-02, content model part 2 |
+| Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
+| DS-24: automatic list of past entries on Past Exhibitions | Michael | Past Exhibitions template |
 
 ## Limitation log (REUSE-04)
 

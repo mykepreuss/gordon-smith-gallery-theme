@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.4 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.4.1 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need gallery approval under the plan's structural-approval step; items marked **Input needed** are blocked on the gallery.
 
@@ -402,7 +402,7 @@ Until the proposal is approved, templates can be built with their section settin
 | `page.programme` | Artists for Kids, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company (each currently its own template) |
 | `page.exhibitions` | On Now (`current-on-now-exhibition`), Upcoming Exhibitions (`upcoming-exhibitions`) |
 | `page.past-exhibitions` | Past Exhibitions: existing presentation preserved (EXH-03); gains the switcher and shared styles |
-| `metaobject/exhibition` | Every exhibition (six current templates `exhibition-ftg`, `-ohad-2026`, `-playhouse`, `-prevailing`, `-stitched`, `-taoc`). Fallback `page.exhibition` if the gallery keeps page URLs (proposal option B) |
+| `metaobject/exhibition` | Every exhibition (six current templates `exhibition-ftg`, `-ohad-2026`, `-playhouse`, `-prevailing`, `-stitched`, `-taoc`, plus the exhibitions now written into On Now and Upcoming) |
 | `page.shop` | Shop / Limited Editions landing (`shop`) |
 | `page.contact` | Contact (`contact`) |
 | `collection` | Every portfolio and All Limited Editions (`collection-template`, `alt-collection-temp`, `all-products-template`) |
@@ -419,8 +419,8 @@ Sections in order; brackets mean optional. All templates also get the global hea
 - **page:** hero or page header · rich text (page body) · [image gallery] · [feature panel] · [rich text]. Most pages need only the first two.
 - **page.programme:** hero or page header (programme colours from the `programme` field) · rich text · [cards: sessions, events or sub-programmes] · [image gallery] · [feature panel with the programme's call to action]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
 - **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (cards filtered by computed status: this page's status; the empty state when there are none) · [rich text, e.g. tours information].
-- **page.past-exhibitions:** page header · switcher · the existing archive sections, unchanged.
-- **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates from the entry) · rich text (summary as deck, then body) · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
+- **page.past-exhibitions:** page header · switcher · the existing archive sections, unchanged. With DS-24 (proposed): an automatic list of past entries goes between the switcher and the archive.
+- **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · details (curator credit, artists and collection artists, venue, opening reception until it has passed, events; empty fields show nothing) · rich text (summary as deck, then body) · [credits and funder logos] · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
 - **page.shop:** hero or page header · [rich text: one short introduction] · portfolio navigation (compact cards, artwork mode, one per portfolio) · [feature panel: e.g. Our Story or framing]. No other listings (SHOP-01, SHOP-02).
 - **page.contact:** page header · contact details and form · [rich text: visiting information].
 - **collection:** collection header (title, season, short intro) · switcher (portfolios) · artwork grid (tiles) · [rich text]. Keeps the cleaner layout the notes praise (SHOP-03).
@@ -556,9 +556,10 @@ The Liquid snippets are drafts until the theme is pulled and they run in the rev
 | DS-11 | A section with pages under it is one button that opens its dropdown and never navigates; the section's main page is the first item inside. Sections without pages are plain links. Click or keyboard only, never hover; one open at a time. Reason: one target and one behaviour on mouse, touch and keyboard (NAV-01, NAV-03). Cost: a section's main page is two clicks from the menu, and its dropdown label must not read as a repeat of the section. Replaces the linked-label-plus-separate-caret model recorded in `IMPLEMENTATION_PLAN.md`, which that file still describes. Revisit only if testing shows people can't find section main pages, and fix that with clearer labels first | Decided by Michael, 2026-09-25; gallery approves labels |
 | DS-12 | Photo hero overlaps the image by a fixed amount only; artwork hero never overlaps | Proposed |
 | DS-13 | Sibling navigation (switcher) on exhibition list pages and portfolio pages | Proposed |
-| DS-14 | Closed set of templates (§7.4) with per-page content in page fields | Proposed; depends on proposal part 1 |
-| DS-15 | Exhibitions as structured entries with status computed from dates | Proposed; proposal part 2 |
-| DS-16 | Artwork label data in product fields; plain-text product titles | Proposed; proposal part 3 |
+| DS-14 | Closed set of templates (§7.4) with per-page content in page fields | Approved 2026-09-25 (content model answers recorded by Michael) |
+| DS-15 | Exhibitions as structured entries with status computed from dates. Addresses change to `/pages/exhibitions/<entry>`; old addresses redirect | Approved 2026-09-25 (content model answers recorded by Michael) |
+| DS-16 | Artwork label data in product fields; plain-text product titles | Approved 2026-09-25 (content model answers recorded by Michael) |
+| DS-24 | Past Exhibitions lists past entries automatically, newest first, above the existing archive; the six migrated exhibitions leave the hand-built archive at release. Reason: otherwise a closing exhibition has to be added by hand, which undoes DS-15 | Proposed |
 | DS-17 | Capitals stay for headings, subheadings and labels. The brand guide sets headlines and subheadings in caps (p.15) and labels its own pages in small tracked caps (p.11). The frontend-design review guidance treats caps labels as a template habit; the brand guide wins, and DS-18 limits how many labels there are | Decided by Michael, 2026-09-25 (brand guide governs) |
 | DS-18 | Eyebrows only when they carry information (programme or organisation, season), never as generic section names. Status and dates are a chip plus a dates line, never a joined "A · B" string | Decided by Michael, 2026-09-25 |
 | DS-19 | The header and every dropdown are native `<details>`, so navigation works without JavaScript; the script adds Escape, outside click and focus-leaving only. Same model as DS-11 | Decided by Michael, 2026-09-25 (review fix) |
@@ -575,11 +576,14 @@ The Liquid snippets are drafts until the theme is pulled and they run in the rev
 | Q4 | Designer confirmation of the colour conflicts in §11 rows 1 and 2 | DS-01 |
 | Q5 | Artists for Kids external site address and which links go there | NAV-04 |
 | Q6 | Accept the system rules for logo minimum size and clear space (the guides set none)? | §8.3 |
-| Q7 | Must the current exhibition page URLs stay unchanged? | Proposal part 2 (entries vs option B) |
+| Q7 | Must the current exhibition page URLs stay unchanged? Answered 2026-09-25: no, redirect them | Proposal part 2 (entries chosen) |
 | Q8 | Is an enlarge/lightbox view wanted for gallery images? | §6.8 |
-| Q9 | Approval of the three parts of `proposals/content-model.md` | DS-14 to DS-16 |
+| Q9 | Approval of the three parts of `proposals/content-model.md`. Answered 2026-09-25: all approved | DS-14 to DS-16 |
+| Q10 | Room names for the exhibition `venue` field, the label for the second artist group, and the start date of *Stitched* | `proposals/content-model.md` "Still open" |
 
 ## 13. Changelog
+
+- 0.4.1 (2026-09-25): content model approved (DS-14 to DS-16); exhibition fields revised from a review of the content in use (`proposals/content-model.md` part 2); exhibition template spec lists the new details; option B fallback template removed; customer account templates added to the template rules as system templates; DS-24 proposed.
 
 - 0.4 (2026-09-25): skill-review fixes, with the brand guide as the source of truth for brand essence (DS-17 to DS-23). Hero and page titles fit their box down to 320 px; navigation and Menu drawer rebuilt on `<details>` so they work without JavaScript, with a new `gs-header` snippet and slimmer script; dropdowns near the right edge open leftwards; forced-colours support for icons, panels and the switcher; hover only with a mouse, `:active` for touch, 44 px touch targets; switcher wraps and marks the current item in the link-line colour; box colour reserved for the brand's boxes (tint link fills, rule-colour selection, dropdown edge and quote rule, ink On now chip); standalone links underlined, arrow only on "more" links; status chip plus dates instead of eyebrow strings; empty, error, submitting, done and disabled states with default wording and a system error colour; `gs-media` presets with a linter rule, and no empty box for a missing image; motion reduced to 120 ms fades plus the chevron, with a 120 ms dropdown reveal; header stays static; preview rebuilt with real store content; contrast check now 79 pairings.
 

@@ -57,11 +57,6 @@
       "require": ["hero", "text"],
       "maxPerGroup": { "text": 2, "gallery": 2, "listing": 1 }
     },
-    "page.exhibition": {
-      "purpose": "Fallback if exhibitions stay as pages (proposal option B): same rules as metaobject/exhibition",
-      "require": ["hero", "text"],
-      "maxPerGroup": { "text": 2, "gallery": 2, "listing": 1 }
-    },
     "page.shop": {
       "purpose": "Shop / Limited Editions landing (SHOP-01, SHOP-02): one introduction, one portfolio navigation, nothing that repeats it",
       "require": ["listing"],
@@ -90,6 +85,13 @@
     "404": { "purpose": "Not found", "legacy": true },
     "password": { "purpose": "Password page", "legacy": true },
     "gift_card": { "purpose": "Gift card", "legacy": true },
+    "customers/account": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/activate_account": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/addresses": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/login": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/order": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/register": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
+    "customers/reset_password": { "purpose": "Customer accounts (Shopify system template)", "legacy": true },
     "article": { "purpose": "Blog article (News blog is empty)", "legacy": true },
     "blog": { "purpose": "Blog (News blog is empty)", "legacy": true }
   },
