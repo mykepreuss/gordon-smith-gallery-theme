@@ -1,0 +1,178 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_XPRbpE": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/GSG_From_the_Ground_RTP_002_c68a6647-c04b-48f3-804b-d3aa06f5b7a4.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_8x6JEP": {
+      "type": "rich-text",
+      "blocks": {
+        "text_y3BxrW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Photo by Rachel Topham</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_y3BxrW"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 52
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "name": "Page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_X3UC3E": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "our-story",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "page_WVVLf3": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "about-us",
+        "heading_size": "h1",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 76
+      }
+    },
+    "page_cfUzHU": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "plan-your-visit",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "blocks_KHaUFD": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8bfb68b_e9RGxV": {
+          "type": "ai_gen_block_8bfb68b",
+          "settings": {
+            "columns_desktop": 3,
+            "columns_mobile": "2",
+            "gap": 16,
+            "section_padding": 40,
+            "desktop_width_percent": 100,
+            "image_aspect_ratio": "1/1",
+            "image_radius": 0,
+            "caption_size": 14,
+            "caption_color": "#465a5e",
+            "caption_alignment": "left",
+            "caption_spacing": 8,
+            "image_1": "shopify://shop_images/GSG_From_the_Ground_RTP_002.jpg",
+            "caption_1": "",
+            "image_2": "shopify://shop_images/GSG_From_the_Ground_RTP_001.jpg",
+            "caption_2": "",
+            "image_3": "shopify://shop_images/GSG_From_the_Ground_RTP_003.jpg",
+            "caption_3": "",
+            "image_4": "shopify://shop_images/GSG_From_the_Ground_RTP_020_1.jpg",
+            "caption_4": "",
+            "image_5": "shopify://shop_images/GSG_From_the_Ground_RTP_008.jpg",
+            "caption_5": "",
+            "image_6": "shopify://shop_images/GSG_From_the_Ground_RTP_011.jpg",
+            "caption_6": "",
+            "image_7": "shopify://shop_images/GSG_From_the_Ground_RTP_005_ee2755b4-f4cc-43b8-af8d-8e0220b17979.jpg",
+            "caption_7": "",
+            "image_8": "shopify://shop_images/GSG_From_the_Ground_RTP_021.jpg",
+            "caption_8": "",
+            "image_9": "shopify://shop_images/GSG_From_the_Ground_RTP_012.jpg",
+            "caption_9": "",
+            "caption_10": "",
+            "caption_11": "",
+            "caption_12": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8bfb68b_e9RGxV"
+      ],
+      "name": "Image gallery",
+      "settings": {}
+    },
+    "rich_text_rdHi9m": {
+      "type": "rich-text",
+      "blocks": {
+        "text_YpYjnn": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Photography by Rachel Topham</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "text_YpYjnn"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "right",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "image_banner_XPRbpE",
+    "rich_text_8x6JEP",
+    "main",
+    "page_X3UC3E",
+    "page_WVVLf3",
+    "page_cfUzHU",
+    "blocks_KHaUFD",
+    "rich_text_rdHi9m"
+  ]
+}

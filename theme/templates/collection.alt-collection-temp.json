@@ -1,0 +1,206 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_MGkxnG": {
+      "type": "rich-text",
+      "blocks": {
+        "text_nGPkQk": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Photography by Rachel Topham</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "text_nGPkQk"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "right",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 12
+      }
+    },
+    "rich_text_3yeTex": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_qDxYYg": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>**AVAILABLE SEPTEMBER 25 AT 12:00PM (PT) **</strong>",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qDxYYg"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_banner_mC8cpJ": {
+      "type": "image-banner",
+      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/GSG_2026_Fall_Edition_1.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "rich_text_iXpAEe": {
+      "type": "rich-text",
+      "blocks": {
+        "text_cznjBD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The works of <strong>Gordon Smith, Amelia Butcher, Arnold Shives,</strong> and <strong>Marlene Yuen </strong>have been brought together in this portfolio to consider the idea of place as both a physical environment and a lived experience. Across painting, printmaking, ceramics, and drawing, each artist approaches place not simply as a location, but as something shaped through memory, community, material, and observation. Their works reveal how landscapes, objects, and histories become vessels for connection, inviting us to reflect on the ways we come to know ourselves, one another, and the environments we inhabit.  </p>"
+          }
+        },
+        "button_byJzA6": {
+          "type": "button",
+          "settings": {
+            "button_label": "AVAILABLE SEPTEMBER 25 at NOON(PT)",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_cznjBD",
+        "button_byJzA6"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "featured_collection_WrbcTd": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "2026-fall-portfolio",
+        "products_to_show": 5,
+        "title": "2026 Fall Portfolio",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_GJpDfe": {
+      "type": "rich-text",
+      "blocks": {
+        "text_TbdVEL": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Photos by Rachel Topham</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "text_TbdVEL"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "right",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "rich_text_MGkxnG",
+    "rich_text_3yeTex",
+    "image_banner_mC8cpJ",
+    "rich_text_iXpAEe",
+    "featured_collection_WrbcTd",
+    "rich_text_GJpDfe"
+  ]
+}

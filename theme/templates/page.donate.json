@@ -1,0 +1,268 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_XPRbpE": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/khimhipol210708_0559.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "name": "Page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_X3UC3E": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "our-story",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "page_WVVLf3": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "about-us",
+        "heading_size": "h1",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 76
+      }
+    },
+    "page_cfUzHU": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "plan-your-visit",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_fM7BNT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_W6CmnR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Donate",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_W6CmnR"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multirow_mbdPhD": {
+      "type": "multirow",
+      "blocks": {
+        "row_M7bihF": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_WcyD4x": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_M7bihF",
+        "row_WcyD4x"
+      ],
+      "disabled": true,
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_6g6Vww": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script type=\"text/JavaScript\" src=\"//app.etapestry.com/hosted/eTapestry.com/etapEmbedResponsiveResizing.js\"></script>\n<iframe id=\"etapIframe\" style=\"border:none;width:100%;min-height:1000px;\" src=\"https://app.etapestry.com/onlineforms/TheGordonandMarionSmithFounda/givenow.html\"></iframe>",
+        "color_scheme": "scheme-5",
+        "padding_top": 12,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_pjdNnh": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_AFmDdM": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Online Form</strong>",
+            "text": "<h6>Donate directly through our website with the secure Blackbaud Etapestry form above. Your submission will be processed when you finalize your secure payment information.</h6>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_cPpaxg": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Email</strong>",
+            "text": "<h6>To make a gift or for more information about the various giving options, email us as at <a href=\"mailto:admin@smithfoundation.ca?subject=Donation\" target=\"_blank\" title=\"email\"><strong>admin@smithfoundation.ca</strong></a></h6>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_xjwUyp": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Mail</strong>",
+            "text": "<h6>Address:<br/>The Gordon and Marion Smith Foundation for Young Artists<br/>2121 Lonsdale Avenue, North Vancouver<br/>British Columbia, Canada<br/>V7M 2K6</h6>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_7bfGVY": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Phone</strong>",
+            "text": "<h6>Contact us by telephone at 604-998-8563<br/></h6>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_AFmDdM",
+        "column_cPpaxg",
+        "column_xjwUyp",
+        "column_7bfGVY"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Ways To Give",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_mfPbTT": {
+      "type": "rich-text",
+      "blocks": {
+        "text_PKN8Ff": {
+          "type": "text",
+          "settings": {
+            "text": "<p>All donations over $25 are eligible for a charitable tax receipt in accordance with CRA regulations. Any donation of $1,000 or above will be recognized in the Gordon and Marion Smith Foundation and Artists for Kids’ Annual Report, including the donor page of each website.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_PKN8Ff"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_dP9BCz": {
+      "type": "rich-text",
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "image_banner_XPRbpE",
+    "main",
+    "page_X3UC3E",
+    "page_WVVLf3",
+    "page_cfUzHU",
+    "rich_text_fM7BNT",
+    "multirow_mbdPhD",
+    "custom_liquid_6g6Vww",
+    "multicolumn_pjdNnh",
+    "rich_text_mfPbTT",
+    "rich_text_dP9BCz"
+  ]
+}

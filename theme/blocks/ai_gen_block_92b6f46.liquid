@@ -1,0 +1,106 @@
+{% doc %}
+  @prompt
+    Create a product-page add-to-cart upsell popup for this Shopify theme. When a customer clicks the existing Add to cart button, first add the original product normally, then show a modal recommending that specific product’s related “Featured Frame” product from its product-reference metafield. Display the frame’s featured image, title, price, and clear Yes, add the frame and No thanks controls. If the customer clicks Yes, add the recommended frame’s available variant to the existing cart without removing or replacing any cart items, then follow the theme’s normal cart behavior. If they click No thanks or close the modal, continue with the original product only. Do not show the popup for any product belonging to the collection with handle “framing”, and do not show it when the current product has no valid Featured Frame reference. Also suppress it if the referenced frame is unavailable. Preserve the theme’s existing add-to-cart validation, sold-out behavior, cart drawer/page behavior, accessibility, and styling. Prevent duplicate submissions and avoid adding the frame twice if it is already in the cart. Make the product-reference metafield namespace and key configurable in the generated block settings if possible, with clear defaults or setup guidance. This must work dynamically per artwork rather than recommending one static frame store-wide.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign frame_reference = product.metafields[block.settings.metafield_namespace][block.settings.metafield_key] %}
+{% assign featured_frame = frame_reference.value %}
+{% assign excluded_product = false %}
+{% for product_collection in product.collections %}
+  {% if product_collection.handle == 'framing' %}
+    {% assign excluded_product = true %}
+  {% endif %}
+{% endfor %}
+
+{% style %}
+  .ai-frame-upsell-{{ ai_gen_id }} { display: block; width: 100%; }
+  .ai-frame-upsell-{{ ai_gen_id }}__dialog { width: min(92vw, 560px); border: 0; padding: 0; color: #000; background: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.25); }
+  .ai-frame-upsell-{{ ai_gen_id }}__dialog::backdrop { background: rgba(0,0,0,.55); }
+  .ai-frame-upsell-{{ ai_gen_id }}__inner { padding: 28px; }
+  .ai-frame-upsell-{{ ai_gen_id }}__close { float: right; border: 0; background: transparent; color: #000; font-size: 26px; line-height: 1; cursor: pointer; padding: 4px; }
+  .ai-frame-upsell-{{ ai_gen_id }}__heading { margin: 0 36px 8px 0; font-size: 1.35rem; }
+  .ai-frame-upsell-{{ ai_gen_id }}__intro { margin: 0 0 20px; color: #333; }
+  .ai-frame-upsell-{{ ai_gen_id }}__product { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; margin-bottom: 24px; }
+  .ai-frame-upsell-{{ ai_gen_id }}__image { width: 120px; aspect-ratio: 1; object-fit: cover; background: #f1f1f1; }
+  .ai-frame-upsell-{{ ai_gen_id }}__title { margin: 0 0 8px; font-weight: 600; }
+  .ai-frame-upsell-{{ ai_gen_id }}__price { margin: 0; }
+  .ai-frame-upsell-{{ ai_gen_id }}__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ai-frame-upsell-{{ ai_gen_id }}__yes, .ai-frame-upsell-{{ ai_gen_id }}__no { min-height: 44px; padding: 10px 18px; border: 1px solid #465a5e; cursor: pointer; font: inherit; }
+  .ai-frame-upsell-{{ ai_gen_id }}__yes { background: #465a5e; color: #fff; }
+  .ai-frame-upsell-{{ ai_gen_id }}__no { background: #fff; color: #465a5e; }
+  .ai-frame-upsell-{{ ai_gen_id }}__yes:disabled { opacity: .6; cursor: wait; }
+  @media (max-width: 480px) { .ai-frame-upsell-{{ ai_gen_id }}__inner { padding: 22px; } .ai-frame-upsell-{{ ai_gen_id }}__product { grid-template-columns: 88px 1fr; } .ai-frame-upsell-{{ ai_gen_id }}__image { width: 88px; } }
+{% endstyle %}
+
+<frame-upsell-{{ ai_gen_id }} class="ai-frame-upsell-{{ ai_gen_id }}" {{ block.shopify_attributes }} data-frame-variant="{% if featured_frame != blank and featured_frame.available %}{{ featured_frame.selected_or_first_available_variant.id }}{% endif %}" data-frame-product="{% if featured_frame != blank %}{{ featured_frame.id }}{% endif %}" data-excluded="{{ excluded_product }}">
+  {% if featured_frame != blank and featured_frame.available and excluded_product == false %}
+    <dialog class="ai-frame-upsell-{{ ai_gen_id }}__dialog" aria-labelledby="ai-frame-upsell-title-{{ ai_gen_id }}">
+      <div class="ai-frame-upsell-{{ ai_gen_id }}__inner">
+        <button type="button" class="ai-frame-upsell-{{ ai_gen_id }}__close" aria-label="Close">&times;</button>
+        <h2 id="ai-frame-upsell-title-{{ ai_gen_id }}" class="ai-frame-upsell-{{ ai_gen_id }}__heading">Add a frame to your artwork?</h2>
+        <p class="ai-frame-upsell-{{ ai_gen_id }}__intro">Complete your purchase with this recommended frame.</p>
+        <div class="ai-frame-upsell-{{ ai_gen_id }}__product">
+          <img class="ai-frame-upsell-{{ ai_gen_id }}__image" src="{{ featured_frame.featured_image | image_url: width: 300 }}" alt="{{ featured_frame.featured_image.alt | default: featured_frame.title | escape }}" width="300" height="300" loading="lazy">
+          <div><p class="ai-frame-upsell-{{ ai_gen_id }}__title">{{ featured_frame.title }}</p><p class="ai-frame-upsell-{{ ai_gen_id }}__price">{{ featured_frame.price | money }}</p></div>
+        </div>
+        <div class="ai-frame-upsell-{{ ai_gen_id }}__actions">
+          <button type="button" class="ai-frame-upsell-{{ ai_gen_id }}__yes">Yes, add the frame</button>
+          <button type="button" class="ai-frame-upsell-{{ ai_gen_id }}__no">No thanks</button>
+        </div>
+      </div>
+    </dialog>
+  {% endif %}
+</frame-upsell-{{ ai_gen_id }}>
+
+<script>
+(function(){
+  class FrameUpsell{{ ai_gen_id }} extends HTMLElement {
+    connectedCallback(){
+      this.dialog=this.querySelector('dialog'); if(!this.dialog) return;
+      this.busy=false; this.form=null;
+      this.yes=this.querySelector('.ai-frame-upsell-{{ ai_gen_id }}__yes');
+      this.close=this.querySelector('.ai-frame-upsell-{{ ai_gen_id }}__close');
+      this.no=this.querySelector('.ai-frame-upsell-{{ ai_gen_id }}__no');
+      this.close.addEventListener('click',()=>this.finish()); this.no.addEventListener('click',()=>this.finish());
+      this.yes.addEventListener('click',()=>this.addFrame());
+      this.listener=(event)=>this.captureSubmit(event); document.addEventListener('submit',this.listener,true);
+    }
+    disconnectedCallback(){ if(this.listener) document.removeEventListener('submit',this.listener,true); }
+    captureSubmit(event){
+      if(this.busy || !this.dialog || this.dataset.excluded==='true') return;
+      const form=event.target; if(!form.matches('form[action*="/cart/add"]')) return;
+      if(!form.checkValidity()){ return; }
+      const variant=form.querySelector('[name="id"]'); if(!variant || !variant.value) return;
+      event.preventDefault(); event.stopImmediatePropagation(); this.busy=true; this.form=form;
+      fetch('/cart/add.js',{method:'POST',headers:{'Accept':'application/json','X-Requested-With':'XMLHttpRequest'},body:new FormData(form)})
+        .then(r=>{if(!r.ok) throw new Error(); return r.json();}).then(()=>{this.dialog.showModal();}).catch(()=>{this.busy=false; form.submit();});
+    }
+    finish(){ this.dialog.close(); this.busy=false; this.form=null; }
+    addFrame(){
+      if(this.yes.disabled) return; this.yes.disabled=true;
+      fetch('/cart.js',{headers:{'Accept':'application/json'}}).then(r=>r.json()).then(cart=>{
+        const id=Number(this.dataset.frameProduct); const existing=cart.items.some(item=>Number(item.product_id)===id);
+        if(existing) return null;
+        return fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:Number(this.dataset.frameVariant),quantity:1}]})});
+      }).then(()=>{this.finish(); document.dispatchEvent(new CustomEvent('cart:updated',{bubbles:true})); if(window.Shopify && typeof Shopify.reinitCart==='function') Shopify.reinitCart();}).catch(()=>{this.yes.disabled=false;});
+    }
+  }
+  if(!customElements.get('frame-upsell-{{ ai_gen_id }}')) customElements.define('frame-upsell-{{ ai_gen_id }}',FrameUpsell{{ ai_gen_id }});
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Frame add-on popup",
+  "settings": [
+    {"type":"header","content":"Metafield setup"},
+    {"type":"paragraph","content":"Create a product-reference metafield on products, then enter its namespace and key below. The default expects custom.featured_frame."},
+    {"type":"text","id":"metafield_namespace","label":"Namespace","default":"custom"},
+    {"type":"text","id":"metafield_key","label":"Key","default":"featured_frame"},
+    {"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100}
+  ],
+  "presets": [{"name":"Frame add-on popup"}],
+  "tag": null,
+  "class": "frame-upsell-block"
+}
+{% endschema %}

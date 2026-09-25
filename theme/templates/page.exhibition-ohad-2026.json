@@ -1,0 +1,212 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_WeTnDV": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_X8XHEY": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_FznQpW": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_rCN88h": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_X8XHEY",
+        "text_FznQpW",
+        "buttons_rCN88h"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/GSG_One_Hundred_Artists_011.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "rich_text_VQNFzi": {
+      "type": "rich-text",
+      "blocks": {
+        "text_7x7hgn": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Photo by Rachel Topham</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "text_7x7hgn"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 52
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "name": "Page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_WVVLf3": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "about-us",
+        "heading_size": "h1",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 76
+      }
+    },
+    "page_cfUzHU": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "plan-your-visit",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1785440245d8196b69": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8bfb68b_eQM3Rt": {
+          "type": "ai_gen_block_8bfb68b",
+          "settings": {
+            "columns_desktop": 3,
+            "columns_mobile": "2",
+            "gap": 20,
+            "section_padding": 16,
+            "desktop_width_percent": 100,
+            "image_aspect_ratio": "1/1",
+            "image_radius": 0,
+            "caption_size": 14,
+            "caption_color": "#465a5e",
+            "caption_alignment": "left",
+            "caption_spacing": 8,
+            "image_1": "shopify://shop_images/GSG_One_Hundred_Artists_014_b5aadf87-6b4a-4bb8-aa1d-b21f362c6f41.jpg",
+            "caption_1": "",
+            "image_2": "shopify://shop_images/GSG_One_Hundred_Artists_013.jpg",
+            "caption_2": "",
+            "image_3": "shopify://shop_images/GSG_One_Hundred_Artists_016.jpg",
+            "caption_3": "",
+            "image_4": "shopify://shop_images/GSG_One_Hundred_Artists_017.jpg",
+            "caption_4": "",
+            "image_5": "shopify://shop_images/GSG_One_Hundred_Artists_003.jpg",
+            "caption_5": "",
+            "image_6": "shopify://shop_images/GSG_One_Hundred_Artists_019_070a41fd-e8c2-40da-8d76-9a17528d0647.jpg",
+            "caption_6": "",
+            "image_7": "shopify://shop_images/GSG_One_Hundred_Artists_018.jpg",
+            "caption_7": "",
+            "image_8": "shopify://shop_images/GSG_One_Hundred_Artists_004.jpg",
+            "caption_8": "",
+            "image_9": "shopify://shop_images/GSG_One_Hundred_Artists_007.jpg",
+            "caption_9": "",
+            "caption_10": "",
+            "caption_11": "",
+            "caption_12": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8bfb68b_eQM3Rt"
+      ],
+      "settings": {}
+    },
+    "rich_text_MatpmG": {
+      "type": "rich-text",
+      "blocks": {
+        "text_gTxK9N": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Photos by Rachel Topham</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "text_gTxK9N"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_dP9BCz": {
+      "type": "rich-text",
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "image_banner_WeTnDV",
+    "rich_text_VQNFzi",
+    "main",
+    "page_WVVLf3",
+    "page_cfUzHU",
+    "1785440245d8196b69",
+    "rich_text_MatpmG",
+    "rich_text_dP9BCz"
+  ]
+}

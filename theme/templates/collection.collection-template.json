@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "rich_text_pKrD9g": {
+      "type": "rich-text",
+      "blocks": {
+        "text_4egN7m": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Photo by Rachel Topham</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "text_4egN7m"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "right",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 12
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "vertical",
+        "enable_sorting": false,
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_N8P94g": {
+      "type": "rich-text",
+      "blocks": {
+        "text_KKKBXM": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Photography by Rachel Topham</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "text_KKKBXM"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "right",
+        "content_alignment": "right",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "rich_text_pKrD9g",
+    "product-grid",
+    "rich_text_N8P94g"
+  ]
+}

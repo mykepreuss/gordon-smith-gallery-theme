@@ -1,0 +1,140 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_XPRbpE": {
+      "type": "image-banner",
+      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/KHIMMATAHIPOL_29.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "name": "Page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_X3UC3E": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "our-story",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "page_WVVLf3": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "about-us",
+        "heading_size": "h1",
+        "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 76
+      }
+    },
+    "page_cfUzHU": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "plan-your-visit",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_cPniTM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_kJePTK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC1389.jpg",
+            "title": "<strong>September 25, 2026 - February 20, 2027</strong>",
+            "text": "<h2><strong>COLLECT, ASSEMBLE, GATHER</strong></h2>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Rrzqnz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/1.jpg",
+            "title": "<strong>April 9, 2027 - June 19, 2027</strong>",
+            "text": "<h2><strong>AGAINST THE LATITUDE OF \"PROGRESS\"</strong></h2>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_qCGFbU": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gordon_Smith_Gallery_Photo_Exterior2.jpg",
+            "title": "<strong>Fall 2027 Exhibition</strong>",
+            "text": "<p><em>COMING SOON</em></p><p>September 2027</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_kJePTK",
+        "column_Rrzqnz",
+        "column_qCGFbU"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Upcoming",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner_XPRbpE",
+    "main",
+    "page_X3UC3E",
+    "page_WVVLf3",
+    "page_cfUzHU",
+    "multicolumn_cPniTM"
+  ]
+}

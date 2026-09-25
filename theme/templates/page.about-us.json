@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_XPRbpE": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/23-8.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "name": "Page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_X3UC3E": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "our-story",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_qixYYk": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_C84XcP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/AFK-Logos-Colour.png",
+            "title": "",
+            "text": "<p>Established in 1989 by renowned BC artist patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists For Kids was founded with the singular intent to support children, their art education, and their future.</p>",
+            "link_label": "",
+            "link": "https://artistsforkids.sd44.ca/"
+          }
+        },
+        "column_w99Jmh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG-FullStacked_Colour.png",
+            "title": "",
+            "text": "<p>The Gordon Smith Gallery is a space where education is seen not as an after-thought to curation, but as the purpose of each step we take. The Gordon and Marion Smith Foundation for Young Artists and Artists for Kids work collaboratively to program the Gordon Smith Gallery of Canadian Art and  the exhibitions.<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_a6chR9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG-Full_Colour.png",
+            "title": "",
+            "text": "<p>The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from which would fund ongoing visual arts enrichment opportunities for the children of British Columbia. The Foundation’s role has evolved to include the presentation of a diverse and accessible range of visual arts programming and the curation of high profile exhibitions at the Gordon Smith Gallery of Canadian Art.<br/><br/></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_C84XcP",
+        "column_w99Jmh",
+        "column_a6chR9"
+      ],
+      "disabled": true,
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_PmmYac": {
+      "type": "rich-text",
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "image_banner_XPRbpE",
+    "main",
+    "page_X3UC3E",
+    "multicolumn_qixYYk",
+    "rich_text_PmmYac"
+  ]
+}

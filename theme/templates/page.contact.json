@@ -1,0 +1,94 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_ChQ6ip": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_HHxNAJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HHxNAJ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    },
+    "newsletter_hXxHAe": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_jYWJtf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join Our Newsletter",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_FYPPaj": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new programs, upcoming exhibitions, public events, limited edition releases and other exclusive offers.</p>"
+          }
+        },
+        "email_form_DiVdAn": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_jYWJtf",
+        "paragraph_FYPPaj",
+        "email_form_DiVdAn"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_ChQ6ip",
+    "form",
+    "newsletter_hXxHAe"
+  ]
+}

@@ -1,0 +1,195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "name": "Page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_X3UC3E": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "our-story",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_RFEUaT": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_JaJgGh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG_One_Hundred_Artists_011.jpg",
+            "title": "April 11, 2026 - June 20, 2026",
+            "text": "<h2><strong> ONE HUNDRED ARTISTS DEEP </strong></h2>",
+            "link_label": "View Exhibition",
+            "link": "shopify://pages/exhibition-one-hundred-artists-deep"
+          }
+        },
+        "column_HQdymJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG_From_the_Ground_RTP_002_c68a6647-c04b-48f3-804b-d3aa06f5b7a4.jpg",
+            "title": "September 19, 2025 - February 26, 2026",
+            "text": "<h2><strong>FROM THE GROUND</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": "shopify://pages/exhibition-from-the-ground"
+          }
+        },
+        "column_Gwatgi": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG_Stitched_003.jpg",
+            "title": "April 2, 2025 - June 21, 2025",
+            "text": "<h2><strong>STITCHED: MERGING PHOTOGRAPHY AND TEXTILE PRACTICES</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": "shopify://pages/exhibition-stitched-merging-photography-and-textile-practices"
+          }
+        },
+        "column_UnUMit": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG_Playhouse_003.jpg",
+            "title": "September 20, 2024 – February 27, 2025",
+            "text": "<h2><strong>PLAYHOUSE</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": "shopify://pages/exhibition-playhouse"
+          }
+        },
+        "column_HLAbLX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG_-Prevailing-Landscapes-002.jpg",
+            "title": "April 12, 2024 - June 22, 2024",
+            "text": "<h2><strong>PREVAILING LANDSCAPES</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": "shopify://pages/exhibition-prevailing-landscapes"
+          }
+        },
+        "column_Jtkm4c": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG_Oct_2023_Art_of_Conversation_008-1200x900.jpg",
+            "title": "September 23, 2023 - February 22, 2024",
+            "text": "<h2><strong>THE ART OF CONVERSATION</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": "shopify://pages/exhibition-the-art-of-conversation"
+          }
+        },
+        "column_jdtP7Q": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Contact-Us-scaled.jpg",
+            "title": "April 15, 2023 - June 17, 2023",
+            "text": "<h2><strong>ENDLESS SUMMER</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": ""
+          }
+        },
+        "column_ydF6Bp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Butterfly-Tattoos_96-x-72-in_2019-1200x922.jpg",
+            "title": "September 24, 2022 - February 23, 2023",
+            "text": "<h2><strong>PATHS</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": ""
+          }
+        },
+        "column_pAG7QW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSG_2022_Only_Hint_04-1200x894.jpg",
+            "title": "April 23, 2022 - June 25, 2022",
+            "text": "<h2><strong>WE CAN ONLY HINT AT THIS WITH WORDS</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": ""
+          }
+        },
+        "column_mqPtTG": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/khimhipol210921_7318.jpg",
+            "title": "September 25, 2021 - February 24, 2022",
+            "text": "<h2><strong>BEYOND THE HORIZON</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": ""
+          }
+        },
+        "column_Vwj4pN": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Knot-Laurie-Kang-8622-x-78-Unfixed-unprocessed-photographic-papeR_1-1200x801.jpg",
+            "title": "April 8, 2021 - June 5, 2021",
+            "text": "<h2><strong>UNFIXED</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": ""
+          }
+        },
+        "column_JVWWyK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/PlayInstall-1-1024x683.jpg",
+            "title": "September 25, 2020 - February 26, 2021",
+            "text": "<h2><strong>PLAY</strong></h2>",
+            "link_label": "View Exhibition",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_JaJgGh",
+        "column_HQdymJ",
+        "column_Gwatgi",
+        "column_UnUMit",
+        "column_HLAbLX",
+        "column_Jtkm4c",
+        "column_jdtP7Q",
+        "column_ydF6Bp",
+        "column_pAG7QW",
+        "column_mqPtTG",
+        "column_Vwj4pN",
+        "column_JVWWyK"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Past Exhibitions",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page_X3UC3E",
+    "multicolumn_RFEUaT"
+  ]
+}

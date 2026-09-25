@@ -1,0 +1,92 @@
+{% doc %}
+  @prompt
+    can you make a simple diver line that is adjustable and follows the theme colours
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-divider-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding-top: {{ block.settings.spacing_top }}px;
+    padding-bottom: {{ block.settings.spacing_bottom }}px;
+    color: {{ block.settings.line_color }};
+  }
+
+  .ai-divider-{{ ai_gen_id }}__line {
+    display: block;
+    width: 100%;
+    height: {{ block.settings.line_thickness }}px;
+    background-color: currentColor;
+  }
+{% endstyle %}
+
+<div class="ai-divider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <span class="ai-divider-{{ ai_gen_id }}__line" role="separator" aria-hidden="true"></span>
+</div>
+
+{% schema %}
+{
+  "name": "Divider line",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The default line colour follows the theme text colour."
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Line colour",
+      "default": "#465A5E"
+    },
+    {
+      "type": "range",
+      "id": "line_thickness",
+      "label": "Thickness",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "label": "Space above",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "label": "Space below",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    }
+  ],
+  "presets": [
+    {
+      "name": "Divider line"
+    }
+  ],
+  "tag": null,
+  "class": "divider-line-block"
+}
+{% endschema %}
