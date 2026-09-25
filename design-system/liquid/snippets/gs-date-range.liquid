@@ -1,0 +1,31 @@
+{%- comment -%}
+  gs-date-range: exhibition dates in the site's one format (DESIGN.md §6.5), so no page types
+  its own. Draft reference: untested until the theme is pulled.
+
+    both dates, different years   September 25, 2026 to February 20, 2027
+    both dates, same year         April 12 to June 22, 2024
+    no end date                   From September 25, 2026
+
+  Params
+    start  date value (e.g. exhibition.start_date.value). Required.
+    end    date value. Optional.
+
+  Example
+    <p class="gs-status__dates">{% render 'gs-date-range', start: entry.start_date.value, end: entry.end_date.value %}</p>
+{%- endcomment -%}
+{%- liquid
+  if end == blank
+    assign from = start | date: '%B %-d, %Y'
+    echo 'From ' | append: from
+  else
+    assign start_year = start | date: '%Y'
+    assign end_year = end | date: '%Y'
+    if start_year == end_year
+      assign first = start | date: '%B %-d'
+    else
+      assign first = start | date: '%B %-d, %Y'
+    endif
+    assign last = end | date: '%B %-d, %Y'
+    echo first | append: ' to ' | append: last
+  endif
+-%}

@@ -1,0 +1,63 @@
+{%- comment -%}
+  gs-media: the only way sections render content images (DESIGN.md §6.4).
+  Draft reference: untested until the theme is pulled.
+
+  Params
+    image    image object (required)
+    preset   where the image sits, which sets `sizes` and loading so the browser fetches the
+             right width. Required unless `sizes` is passed (scripts/lint_theme.py checks):
+               hero     photo or artwork hero, the page's main image: eager, fetchpriority high
+               card     exhibition, programme and compact cards (1 / 2 / 3 columns)
+               tile     artwork tiles and works in an exhibition (2 / 3 / 4 columns)
+               gallery  installation views (1 / 2 / 3 columns)
+               full     full-width image in a band or in text
+    mode     'photo' (default) or 'artwork'. Chosen by the section type, never a staff setting.
+    ratio    optional ratio override passed by a component, e.g. '3 / 2'. Never a staff setting.
+    shape    'sm' | 'md' (default) | 'lg'
+    sizes    explicit sizes attribute, only for a layout none of the presets fit
+    loading  'lazy' (default, or 'eager' for the hero preset)
+    class    extra wrapper classes
+
+  Example
+    {%- render 'gs-media', image: card_image, preset: 'card', mode: 'photo' -%}
+
+  A blank image renders nothing, so no empty tinted box is left in the layout. In the theme
+  editor a placeholder with a warning shows where the image is missing.
+
+  photo    image_tag writes the editor's focal point as inline object-position, so cropping
+           follows what staff chose in the image picker or Files.
+  artwork  whole image on the mat; components.css pins object-position to the centre with
+           !important, so a focal point set for another use of the same file can't shift it.
+{%- endcomment -%}
+{%- liquid
+  assign mode = mode | default: 'photo'
+  assign shape = shape | default: 'md'
+  assign fetchpriority = 'auto'
+  case preset
+    when 'hero'
+      assign preset_sizes = '(min-width: 1536px) 1440px, 100vw'
+      assign loading = loading | default: 'eager'
+      assign fetchpriority = 'high'
+    when 'card'
+      assign preset_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 92vw'
+    when 'tile'
+      assign preset_sizes = '(min-width: 1296px) 276px, (min-width: 1200px) 22vw, (min-width: 750px) 30vw, 46vw'
+    when 'gallery'
+      assign preset_sizes = '(min-width: 1536px) 448px, (min-width: 1200px) 30vw, (min-width: 750px) 47vw, 92vw'
+    when 'full'
+      assign preset_sizes = '100vw'
+  endcase
+  assign sizes = sizes | default: preset_sizes | default: '100vw'
+  assign loading = loading | default: 'lazy'
+  assign alt = image.alt | default: ''
+-%}
+{%- if image != blank -%}
+  <div class="gs-media gs-media--{{ mode }} gs-shape-{{ shape }}{% if class != blank %} {{ class }}{% endif %}"
+    {%- if ratio != blank %} style="--gs-media-ratio: {{ ratio }}"{% endif %}>
+    {{- image | image_url: width: 2400 | image_tag: loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: '400, 600, 800, 1200, 1600, 2000, 2400', alt: alt -}}
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="gs-media gs-media--{{ mode }} gs-shape-{{ shape }}{% if class != blank %} {{ class }}{% endif %}">
+    <span class="gs-editor-warning">Add an image. Visitors see nothing here until you do.</span>
+  </div>
+{%- endif -%}

@@ -1,0 +1,51 @@
+{%- comment -%}
+  gs-header: the site header (DESIGN.md §6.1). Draft reference: untested until the theme is pulled.
+
+  Works without JavaScript. The Menu drawer and every dropdown are <details> elements, so all
+  links are reachable even if assets/gs-nav.js fails to load. The script adds Escape, closing on
+  an outside click, and (desktop) closing when focus leaves a dropdown.
+
+  The main menu renders twice: in the drawer (below 1200px) and in the bar (1200px and up).
+  CSS shows only one, so assistive tech only ever finds one "Main" navigation. In each, the
+  markup order matches what's on screen: the bar's utility row sits above the nav, so it comes
+  first; in the drawer the utility links follow the nav.
+
+  Params
+    menu          main menu linklist, e.g. linklists[section.settings.menu]
+    utility_menu  small linklist: Contact, Newsletter, Search. The cart link is added here.
+
+  Example (sections/gs-header.liquid)
+    {%- render 'gs-header', menu: linklists[section.settings.menu], utility_menu: linklists[section.settings.utility_menu] -%}
+{%- endcomment -%}
+{%- capture utility -%}
+  <ul class="gs-utility">
+    {%- for link in utility_menu.links -%}
+      {%- capture r -%}{%- render 'gs-url', link: link -%}{%- endcapture -%}
+      {%- assign r = r | strip | split: '|' -%}
+      <li><a href="{{ r[0] }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | strip | escape }}</a></li>
+    {%- endfor -%}
+    <li><a href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a></li>
+  </ul>
+{%- endcapture -%}
+<header class="gs-header" data-gs-header>
+  <a class="gs-header__logo" href="{{ routes.root_url }}" aria-label="Gordon Smith Gallery, home">
+    {%- render 'gs-logo', name: 'gallery-simple-stacked-colour-box', label: 'decorative' -%}
+  </a>
+
+  <details class="gs-drawer">
+    <summary class="gs-header__menu-toggle">Menu</summary>
+    <div class="gs-drawer__panel">
+      <nav aria-label="Main">
+        {%- render 'gs-nav', menu: menu, variant: 'drawer' -%}
+      </nav>
+      {{ utility }}
+    </div>
+  </details>
+
+  <div class="gs-header__bar">
+    {{ utility }}
+    <nav aria-label="Main">
+      {%- render 'gs-nav', menu: menu, variant: 'bar' -%}
+    </nav>
+  </div>
+</header>

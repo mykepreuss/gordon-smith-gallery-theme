@@ -1,0 +1,302 @@
+/*
+ * Gordon Smith Gallery: design tokens
+ * Source of truth for every value the theme uses. Rules and rationale: DESIGN.md.
+ * Theme copy: theme/assets/gs-tokens.css (keep identical; edit here first).
+ *
+ * Layers
+ *   1. Raw brand + neutral values (--gs-<org>-*, --gs-ink*, --gs-paper*). Never use in components.
+ *   2. Semantic roles (--gs-color-*, --gs-text-*, --gs-space-*, ...). Components use only these.
+ *   3. Scopes that remap roles: [data-gs-brand] for sub-brands, .gs-surface-* for backgrounds.
+ */
+
+:root {
+  /* ------------------------------------------------------------------
+   * 1. RAW PALETTE
+   * Brand values: brand guide pp. 11-13 and logo guide. Conflicts resolved in DESIGN.md §11.
+   * ------------------------------------------------------------------ */
+
+  /* Gordon Smith Gallery of Canadian Art (umbrella brand, site default) */
+  --gs-gsg-text: #5b757a;  /* primary · "text only logo" · PMS 548 */
+  --gs-gsg-box: #89a6ab;   /* primary · logo box · PMS 5425 (logo files + logo guide; brand guide p.11 says #9eb0b9) */
+  --gs-gsg-rule: #cdd7db;  /* secondary · rules, graphic boxes · PMS 5455 */
+  --gs-gsg-tint: #e4eaec;  /* secondary · background tints and boxes · PMS 538 */
+
+  /* The Gordon and Marion Smith Foundation for Young Artists */
+  --gs-gsf-text: #b8bc49;  /* primary · text-only logo · PMS 397 (decorative only: fails text contrast) */
+  --gs-gsf-box: #cfd65e;   /* primary · logo box · PMS 382 (logo files + logo guide; brand guide p.12 says #dad758) */
+  --gs-gsf-rule: #ede658;  /* secondary · rules, graphic boxes · PMS 395 */
+  --gs-gsf-tint: #ebede3;  /* secondary · background tints and boxes · PMS 538 */
+
+  /* Artists for Kids */
+  --gs-afk-swoosh: #f4853d; /* primary · swoosh · PMS 151 (decorative only: fails text contrast) */
+  --gs-afk-box: #fcb547;    /* primary · logo box · PMS 1365 */
+  --gs-afk-rule: #ffdd62;   /* secondary · rules, graphic boxes · PMS 107 */
+  --gs-afk-tint: #f6efe3;   /* secondary · background tints and boxes · PMS 7499 */
+
+  /* Neutrals (system-derived; the brand guide defines no UI greys) */
+  --gs-ink: #231f20;        /* text black used throughout the brand guide */
+  --gs-ink-soft: #625c5e;   /* secondary text; ≥ 5.3:1 on paper and every tint */
+  --gs-ink-faint: #bfb9ba;  /* secondary text on ink surfaces only */
+  --gs-paper: #ffffff;
+  --gs-mat: #f2f5f6;        /* artwork mat: 50% mix of --gs-gsg-tint and white */
+  --gs-logo-black: #000000; /* only inside logo artwork */
+
+  /* Error (system-derived; the brand guide has no error colour). Text and field borders only,
+     never a fill, so it can't compete with the brand boxes. */
+  --gs-error: #a3261b;       /* ≥ 6.0:1 on paper and every tint */
+  --gs-error-light: #f28b82; /* the same role on ink: 6.8:1 */
+
+  /* ------------------------------------------------------------------
+   * 2. SEMANTIC ROLES. Default = Gallery brand on paper
+   * ------------------------------------------------------------------ */
+
+  --gs-color-bg: var(--gs-paper);
+  --gs-color-fg: var(--gs-ink);
+  --gs-color-fg-muted: var(--gs-ink-soft);
+  --gs-color-box: var(--gs-gsg-box);           /* the brand's box colour; never remapped by surfaces */
+  --gs-color-accent: var(--gs-gsg-box);        /* primary button fill (= box, except on accent surfaces). Brand guide p.11: the box colour is the logo box, so it is kept for the brand's boxes: logo, hero title box, primary button */
+  --gs-color-accent-fg: var(--gs-ink);         /* text/icons on an accent fill */
+  --gs-color-accent-text: var(--gs-gsg-text);  /* coloured text: eyebrows, accent headings (see DESIGN.md §3.3) */
+  --gs-color-tint: var(--gs-gsg-tint);         /* tinted bands, chips (brand guide: "background tints and boxes") */
+  --gs-color-rule: var(--gs-gsg-rule);         /* dividers, dropdown edge, quote rule, selection (brand guide: "rules or graphic boxes"); not for control borders */
+  --gs-color-hover-fill: var(--gs-gsg-tint);   /* inline-link hover fill; each surface resets it (tint on paper, rule on tint, paper on accent, box on ink) */
+  --gs-color-hover-fill-fg: var(--gs-ink);     /* text on the hover fill, on every surface */
+  --gs-color-link-line: var(--gs-gsg-text);    /* inline-link underline, current-item bars; must stay ≥ 3:1 on --gs-color-bg */
+  --gs-color-control-border: var(--gs-ink-soft); /* inputs, secondary buttons; ≥ 3:1 */
+  --gs-color-error: var(--gs-error);           /* error text and invalid-field borders */
+  --gs-color-focus: var(--gs-ink);
+  --gs-color-mat: var(--gs-mat);
+
+  /* ------------------------------------------------------------------
+   * TYPOGRAPHY
+   * Brand font Soleil is paid; Mulish is the brand guide's Google alternative (p.16),
+   * Arial is its system fallback. Font files load in the theme, not here.
+   * Fluid sizes interpolate linearly from 390px to 1440px viewports.
+   * ------------------------------------------------------------------ */
+
+  --gs-font-sans: "Mulish", Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+  --gs-weight-light: 300;     /* captions (brand: Soleil Light) */
+  --gs-weight-regular: 400;   /* body (brand: Soleil Regular) */
+  --gs-weight-bold: 700;      /* deck/intro, emphasis (brand: Soleil Bold) */
+  --gs-weight-extrabold: 800; /* UI labels, nav, buttons */
+  --gs-weight-black: 900;     /* headings (brand: Mulish Black replaces Soleil ExtraBold) */
+
+  --gs-text-display: clamp(2.75rem, 1.543rem + 4.952vw, 6rem);     /* 44 → 96 */
+  --gs-text-h1: clamp(2.25rem, 1.6rem + 2.667vw, 4rem);            /* 36 → 64 */
+  --gs-text-h2: clamp(1.75rem, 1.379rem + 1.524vw, 2.75rem);       /* 28 → 44 */
+  --gs-text-h3: clamp(1.375rem, 1.236rem + 0.571vw, 1.75rem);      /* 22 → 28 */
+  --gs-text-h4: clamp(1.0625rem, 1.016rem + 0.19vw, 1.1875rem);    /* 17 → 19 */
+  --gs-text-deck: clamp(1.1875rem, 1.071rem + 0.476vw, 1.5rem);    /* 19 → 24 */
+  --gs-text-body: clamp(1rem, 0.954rem + 0.19vw, 1.125rem);        /* 16 → 18 */
+  --gs-text-small: 0.9375rem;                                      /* 15 */
+  --gs-text-caption: clamp(0.875rem, 0.852rem + 0.095vw, 0.9375rem); /* 14 → 15 */
+  --gs-text-label: clamp(0.8125rem, 0.789rem + 0.095vw, 0.875rem); /* 13 → 14 */
+  --gs-text-nav: 0.9375rem;                                        /* 15 */
+
+  --gs-leading-display: 0.98;
+  --gs-leading-heading: 1.06;
+  --gs-leading-subheading: 1.2;
+  --gs-leading-deck: 1.38;
+  --gs-leading-body: 1.6;
+  --gs-leading-caption: 1.45;
+  --gs-leading-label: 1.2;
+
+  /* Tracking is a system choice (guide is silent). Kerning stays at browser default. */
+  --gs-tracking-heading: 0;
+  --gs-tracking-subheading: 0.03em;
+  --gs-tracking-label: 0.08em;
+  --gs-tracking-nav: 0.05em;
+
+  --gs-measure: 68ch;        /* body copy line length */
+  --gs-measure-deck: 42ch;
+  --gs-measure-heading: 20ch;
+
+  /* ------------------------------------------------------------------
+   * SPACE (4px base) + fluid layout spacing
+   * ------------------------------------------------------------------ */
+
+  --gs-space-1: 0.25rem; /* 4 */
+  --gs-space-2: 0.5rem;  /* 8 */
+  --gs-space-3: 0.75rem; /* 12 */
+  --gs-space-4: 1rem;    /* 16 */
+  --gs-space-5: 1.5rem;  /* 24 */
+  --gs-space-6: 2rem;    /* 32 */
+  --gs-space-7: 3rem;    /* 48 */
+  --gs-space-8: 4rem;    /* 64 */
+  --gs-space-9: 6rem;    /* 96 */
+  --gs-space-10: 8rem;   /* 128 */
+
+  --gs-gutter: clamp(1rem, 0.257rem + 3.048vw, 3rem);       /* page side padding + grid gap: 16 → 48 */
+  --gs-section-space: clamp(3rem, 1.514rem + 6.095vw, 7rem); /* between page sections: 48 → 112 */
+  --gs-stack-lg: clamp(2rem, 1.257rem + 3.048vw, 4rem);      /* heading block → content: 32 → 64 */
+
+  /* ------------------------------------------------------------------
+   * LAYOUT
+   * Breakpoints can't be custom properties. Use: 750px (md), 990px (lg), 1200px (xl).
+   * ------------------------------------------------------------------ */
+
+  --gs-width-wide: 90rem;     /* 1440: heroes, image grids */
+  --gs-width-content: 75rem;  /* 1200: card grids, header, footer */
+  --gs-width-prose: 45rem;    /* 720: long-form text column */
+  --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
+  --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px */
+  --gs-tap-target: 2.75rem;   /* 44 */
+
+  /* ------------------------------------------------------------------
+   * MEDIA
+   * ------------------------------------------------------------------ */
+
+  --gs-ratio-hero: 4 / 5;      /* < 750 */
+  --gs-ratio-hero-md: 4 / 3;   /* 750 to 989 */
+  --gs-ratio-hero-lg: 21 / 9;  /* ≥ 990 */
+  --gs-hero-max-h: 80svh;
+  --gs-hero-overlap: clamp(3rem, 1.886rem + 4.571vw, 6rem); /* title box overlaps the image by exactly this: 48 to 96 */
+  --gs-ratio-card: 4 / 3;      /* exhibition, program, news cards (photo mode) */
+  --gs-ratio-install: 3 / 2;   /* installation-view galleries (photo mode) */
+  --gs-ratio-artwork: 1 / 1;   /* artwork/product tiles (artwork mode, never cropped) */
+  --gs-ratio-portrait: 4 / 5;  /* artist portraits */
+  --gs-artwork-inset: 8%;      /* mat padding around artwork in tiles */
+
+  /* ------------------------------------------------------------------
+   * SHAPE. Brand "graphic device": round ONE corner (brand guide p.17).
+   * Site-wide corner is bottom-right, matching the Gallery logo box.
+   * border-radius order: top-left top-right bottom-right bottom-left.
+   * ------------------------------------------------------------------ */
+
+  --gs-corner-sm: 0.75rem;                                 /* 12: buttons, inputs, chips */
+  --gs-corner-md: 1.5rem;                                  /* 24: cards, inline images, panels */
+  --gs-corner-lg: clamp(1.5rem, 0.943rem + 2.286vw, 3rem); /* 24 → 48: hero media, title box, bands */
+  --gs-shape-sm: 0 0 var(--gs-corner-sm) 0;
+  --gs-shape-md: 0 0 var(--gs-corner-md) 0;
+  --gs-shape-lg: 0 0 var(--gs-corner-lg) 0;
+
+  /* ------------------------------------------------------------------
+   * LINES, FOCUS, MOTION, LAYERS
+   * ------------------------------------------------------------------ */
+
+  --gs-border: 1px;
+  --gs-border-strong: 2px;
+  --gs-link-thickness: 2px;
+  --gs-link-offset: 0.22em;
+  --gs-focus-width: 3px;
+  --gs-focus-offset: 3px;
+  --gs-shadow-dropdown: 0 10px 28px rgb(35 31 32 / 0.12); /* the only shadow in the system: dropdown panels and the Menu drawer */
+
+  /* Motion answers a person's action only (DESIGN.md §5.4). */
+  --gs-duration-fast: 120ms; /* link fill, underline, arrow nudge, button colour, dropdown reveal */
+  --gs-duration: 200ms;      /* chevron rotation */
+  --gs-duration-slow: 320ms; /* reserved; nothing uses it yet */
+  --gs-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  --gs-z-header: 100;
+  --gs-z-dropdown: 110;
+  --gs-z-drawer: 200;
+  --gs-z-toast: 300;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --gs-duration-fast: 0ms;
+    --gs-duration: 0ms;
+    --gs-duration-slow: 0ms;
+  }
+}
+
+/* --------------------------------------------------------------------
+ * 3a. SUB-BRAND SCOPES
+ * Set once per page (template setting) or per section. Staff pick the programme,
+ * not colours. Neither Foundation nor Artists for Kids has a colour that passes
+ * text contrast on white, so their coloured-text roles fall back to ink.
+ * -------------------------------------------------------------------- */
+
+[data-gs-brand="gallery"] {
+  --gs-color-box: var(--gs-gsg-box);
+  --gs-color-accent: var(--gs-gsg-box);
+  --gs-color-accent-text: var(--gs-gsg-text);
+  --gs-color-tint: var(--gs-gsg-tint);
+  --gs-color-rule: var(--gs-gsg-rule);
+  --gs-color-hover-fill: var(--gs-gsg-tint);
+  --gs-color-link-line: var(--gs-gsg-text);
+}
+
+[data-gs-brand="foundation"] {
+  --gs-color-box: var(--gs-gsf-box);
+  --gs-color-accent: var(--gs-gsf-box);
+  --gs-color-accent-text: var(--gs-ink);
+  --gs-color-tint: var(--gs-gsf-tint);
+  --gs-color-rule: var(--gs-gsf-rule);
+  --gs-color-hover-fill: var(--gs-gsf-tint);
+  --gs-color-link-line: var(--gs-ink);
+}
+
+[data-gs-brand="artists-for-kids"] {
+  --gs-color-box: var(--gs-afk-box);
+  --gs-color-accent: var(--gs-afk-box);
+  --gs-color-accent-text: var(--gs-ink);
+  --gs-color-tint: var(--gs-afk-tint);
+  --gs-color-rule: var(--gs-afk-rule);
+  --gs-color-hover-fill: var(--gs-afk-tint);
+  --gs-color-link-line: var(--gs-ink);
+}
+
+/* --------------------------------------------------------------------
+ * 3b. SURFACES: the only backgrounds a section may use.
+ * Each resets roles so text, links, buttons and focus stay legible on it.
+ * Maps 1:1 to the theme's colour schemes (DESIGN.md §9.2).
+ * -------------------------------------------------------------------- */
+
+.gs-surface-paper {
+  --gs-color-bg: var(--gs-paper);
+  --gs-color-fg: var(--gs-ink);
+  --gs-color-fg-muted: var(--gs-ink-soft);
+  --gs-color-hover-fill: var(--gs-color-tint);
+  --gs-color-focus: var(--gs-ink);
+  background-color: var(--gs-color-bg);
+  color: var(--gs-color-fg);
+}
+
+.gs-surface-tint {
+  --gs-color-bg: var(--gs-color-tint);
+  --gs-color-fg: var(--gs-ink);
+  --gs-color-fg-muted: var(--gs-ink-soft);
+  --gs-color-accent-text: var(--gs-ink); /* gallery teal is 4.05:1 on its tint: large text only */
+  --gs-color-hover-fill: var(--gs-color-rule);
+  --gs-color-focus: var(--gs-ink);
+  background-color: var(--gs-color-bg);
+  color: var(--gs-color-fg);
+}
+
+/* Brand box colour as background (hero title box, feature panels).
+   A primary button inside it can't also be box-coloured, so the accent flips to ink. */
+.gs-surface-accent {
+  --gs-color-bg: var(--gs-color-box);
+  --gs-color-fg: var(--gs-ink);
+  --gs-color-fg-muted: var(--gs-ink);
+  --gs-color-accent: var(--gs-ink);
+  --gs-color-accent-fg: var(--gs-paper);
+  --gs-color-accent-text: var(--gs-ink);
+  --gs-color-link-line: var(--gs-ink);
+  --gs-color-hover-fill: var(--gs-paper);
+  --gs-color-control-border: var(--gs-ink);
+  --gs-color-error: var(--gs-ink); /* no red passes on every box colour; the message and icon carry the error */
+  --gs-color-focus: var(--gs-ink);
+  background-color: var(--gs-color-bg);
+  color: var(--gs-color-fg);
+}
+
+/* Footer and dark bands. Every brand box colour passes as text on ink (≥ 6.2:1),
+   so here the box colour doubles as the coloured-text and underline colour. */
+.gs-surface-ink {
+  --gs-color-bg: var(--gs-ink);
+  --gs-color-fg: var(--gs-paper);
+  --gs-color-fg-muted: var(--gs-ink-faint);
+  --gs-color-accent-text: var(--gs-color-box);
+  --gs-color-link-line: var(--gs-color-box);
+  --gs-color-hover-fill: var(--gs-color-box);
+  --gs-color-control-border: var(--gs-ink-faint);
+  --gs-color-error: var(--gs-error-light);
+  --gs-color-focus: var(--gs-paper);
+  background-color: var(--gs-color-bg);
+  color: var(--gs-color-fg);
+}

@@ -1,0 +1,25 @@
+{%- comment -%}
+  gs-fit: sizes a hero or page-header title to its box, so the longest word fits on a phone
+  (DESIGN.md §4.2). Draft reference: untested until the theme is pulled.
+
+  Outputs a style attribute that sets --gs-fit-chars to the length of the title's longest word.
+  components.css sizes the title as 100% of its box divided by (letters x 0.74em), capped at
+  the H1 or display size. Without it the CSS assumes 12 letters (CONVERSATION).
+
+  Params
+    text   the title
+
+  Example
+    <h1 class="gs-h1"{% render 'gs-fit', text: page.title %}>{{ page.title | escape }}</h1>
+{%- endcomment -%}
+{%- liquid
+  assign longest = 1
+  assign words = text | strip_html | strip | split: ' '
+  for word in words
+    assign n = word | size
+    if n > longest
+      assign longest = n
+    endif
+  endfor
+  echo ' style="--gs-fit-chars: ' | append: longest | append: '"'
+-%}

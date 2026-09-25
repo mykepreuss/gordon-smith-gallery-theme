@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GSG Design System Preview</title>
+<!-- Mulish loads from Google Fonts here only for the preview. The theme loads it per DESIGN.md §4.1. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,700;0,800;0,900;1,400&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<script src="js/gs-nav.js" defer></script>
+<style>
+  /* Preview-only scaffolding. Not part of the system. */
+  body { margin: 0; }
+  .pv-toolbar { position: sticky; top: 0; z-index: 400; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: center; padding: .6rem var(--gs-gutter); background: #fff; border-bottom: 1px solid var(--gs-color-rule); font-size: .8125rem; }
+  .pv-toolbar fieldset { display: flex; flex-wrap: wrap; gap: .75rem; border: 0; margin: 0; padding: 0; }
+  .pv-toolbar legend { float: left; margin-right: .5rem; font-weight: 800; }
+  .pv-toolbar label { display: inline-flex; gap: .3rem; align-items: center; cursor: pointer; }
+  @media (max-width: 749px) { .pv-toolbar { position: static; } }
+  .pv-note { font-size: var(--gs-text-caption); color: var(--gs-color-fg-muted); max-width: 70ch; margin: .5rem 0 0; }
+  .pv-note--before { margin: 0 0 var(--gs-space-6); }
+  .pv-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); gap: var(--gs-space-4); }
+  .pv-swatch { display: grid; grid-template-rows: 5.5rem auto; border-radius: var(--gs-shape-md); overflow: hidden; border: 1px solid var(--gs-color-rule); background: #fff; }
+  .pv-swatch span { display: block; }
+  .pv-swatch div { padding: .6rem .75rem; font-size: .8125rem; line-height: 1.4; }
+  .pv-swatch code { font-size: .75rem; }
+  .pv-org { margin: var(--gs-space-6) 0 var(--gs-space-3); }
+  .pv-surfaces { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--gs-space-4); }
+  .pv-surface { display: grid; gap: var(--gs-space-4); align-content: start; padding: var(--gs-space-6) var(--gs-space-5); border-radius: var(--gs-shape-md); }
+  .pv-surface.gs-surface-paper { outline: 1px solid var(--gs-gsg-rule); outline-offset: -1px; }
+  .pv-type-row { display: grid; grid-template-columns: 9rem 1fr; gap: var(--gs-space-4); align-items: baseline; padding-block: var(--gs-space-4); border-top: 1px solid var(--gs-color-rule); }
+  .pv-type-row > code { font-size: .75rem; color: var(--gs-color-fg-muted); }
+  @media (max-width: 749px) { .pv-type-row { grid-template-columns: 1fr; gap: var(--gs-space-2); } }
+  .pv-states { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: var(--gs-space-6) var(--gs-gutter); }
+  .pv-state { display: grid; gap: var(--gs-space-4); align-content: start; }
+  .pv-logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--gs-space-4); }
+  .pv-logo { margin: 0; display: grid; gap: .5rem; align-content: start; padding: var(--gs-space-4); border-radius: var(--gs-shape-md); background: #fff; border: 1px solid var(--gs-color-rule); }
+  .pv-logo.is-dark { background: var(--gs-ink); border-color: var(--gs-ink); color: #fff; }
+  .pv-logo img { height: 5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; }
+  .pv-logo code { font-size: .6875rem; word-break: break-all; }
+  .pv-sub { margin-block: var(--gs-space-8) var(--gs-space-4); }
+  .pv-sub:first-child { margin-block-start: 0; }
+</style>
+</head>
+<body class="gs-type" data-gs-brand="gallery">
+
+<div class="pv-toolbar" role="region" aria-label="Preview controls">
+  <fieldset>
+    <legend>Programme</legend>
+    <label><input type="radio" name="brand" value="gallery" checked> Gallery</label>
+    <label><input type="radio" name="brand" value="foundation"> Smith Foundation</label>
+    <label><input type="radio" name="brand" value="artists-for-kids"> Artists for Kids</label>
+  </fieldset>
+  <span>Switches <code>data-gs-brand</code> on &lt;body&gt;. The header logo stays Gallery (umbrella brand).</span>
+</div>
+
+<!-- ============ HEADER (markup as snippets/gs-header.liquid renders it) ============ -->
+<header class="gs-header" data-gs-header>
+  <a class="gs-header__logo" href="#top" aria-label="Gordon Smith Gallery, home">
+    <img src="logos/gallery-simple-stacked-colour-box.svg" alt="" width="428" height="376">
+  </a>
+  <details class="gs-drawer">
+    <summary class="gs-header__menu-toggle">Menu</summary>
+    <div class="gs-drawer__panel">
+      <nav aria-label="Main">
+        <ul class="gs-nav">
+          <li class="gs-nav__item gs-nav__item--current">
+            <details class="gs-nav__details" name="gs-nav-drawer" open>
+              <summary class="gs-nav__trigger">Exhibitions<span class="gs-visually-hidden">, current section</span></summary>
+              <ul class="gs-nav__panel">
+                <li><a href="#on-now" aria-current="page">On now</a></li>
+                <li><a href="#upcoming">Upcoming</a></li>
+                <li><a href="#past">Past exhibitions</a></li>
+              </ul>
+            </details>
+          </li>
+          <li class="gs-nav__item">
+            <details class="gs-nav__details" name="gs-nav-drawer">
+              <summary class="gs-nav__trigger">Programs</summary>
+              <ul class="gs-nav__panel">
+                <li><a href="#public-programs">Public programs</a></li>
+                <li><a href="#speaker-series">Speaker series</a></li>
+                <li><a href="#music">Music at the Smith</a></li>
+                <li><a href="#explore">Explore + Create</a></li>
+                <li><a href="#art-in-good-company">Art in Good Company</a></li>
+              </ul>
+            </details>
+          </li>
+          <li class="gs-nav__item">
+            <details class="gs-nav__details" name="gs-nav-drawer">
+              <summary class="gs-nav__trigger">Artists for Kids</summary>
+              <ul class="gs-nav__panel">
+                <li><a href="#afk">About Artists for Kids</a></li>
+                <li><a href="#external" class="gs-link--external">Artists for Kids site<span class="gs-visually-hidden"> (external site)</span></a></li>
+              </ul>
+            </details>
+          </li>
+          <li class="gs-nav__item">
+            <details class="gs-nav__details" name="gs-nav-drawer">
+              <summary class="gs-nav__trigger">Smith Foundation</summary>
+              <ul class="gs-nav__panel">
+                <li><a href="#foundation">About the Foundation</a></li>
+                <li><a href="#gordon-and-marion">Gordon and Marion</a></li>
+                <li><a href="#donate">Donate</a></li>
+              </ul>
+            </details>
+          </li>
+          <li class="gs-nav__item">
+            <details class="gs-nav__details" name="gs-nav-drawer">
+              <summary class="gs-nav__trigger">Shop</summary>
+              <ul class="gs-nav__panel">
+                <li><a href="#shop">Limited editions</a></li>
+                <li><a href="#p1">2026 Fall Portfolio</a></li>
+                <li><a href="#p2">2026 Spring Portfolio</a></li>
+                <li><a href="#our-story">Our story</a></li>
+              </ul>
+            </details>
+          </li>
+          <li class="gs-nav__item"><a class="gs-nav__link" href="#about">About</a></li>
+        </ul>
+      </nav>
+      <ul class="gs-utility">
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#cart">Cart (0)</a></li>
+      </ul>
+    </div>
+  </details>
+  <div class="gs-header__bar">
+    <ul class="gs-utility">
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+      <li><a href="#cart">Cart (0)</a></li>
+    </ul>
+    <nav aria-label="Main">
+      <ul class="gs-nav">
+        <li class="gs-nav__item gs-nav__item--current">
+          <details class="gs-nav__details" name="gs-nav-bar">
+            <summary class="gs-nav__trigger">Exhibitions<span class="gs-visually-hidden">, current section</span></summary>
+            <ul class="gs-nav__panel">
+              <li><a href="#on-now" aria-current="page">On now</a></li>
+              <li><a href="#upcoming">Upcoming</a></li>
+              <li><a href="#past">Past exhibitions</a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="gs-nav__item">
+          <details class="gs-nav__details" name="gs-nav-bar">
+            <summary class="gs-nav__trigger">Programs</summary>
+            <ul class="gs-nav__panel">
+              <li><a href="#public-programs">Public programs</a></li>
+              <li><a href="#speaker-series">Speaker series</a></li>
+              <li><a href="#music">Music at the Smith</a></li>
+              <li><a href="#explore">Explore + Create</a></li>
+              <li><a href="#art-in-good-company">Art in Good Company</a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="gs-nav__item">
+          <details class="gs-nav__details" name="gs-nav-bar">
+            <summary class="gs-nav__trigger">Artists for Kids</summary>
+            <ul class="gs-nav__panel">
+              <li><a href="#afk">About Artists for Kids</a></li>
+              <li><a href="#external" class="gs-link--external">Artists for Kids site<span class="gs-visually-hidden"> (external site)</span></a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="gs-nav__item">
+          <details class="gs-nav__details" name="gs-nav-bar">
+            <summary class="gs-nav__trigger">Smith Foundation</summary>
+            <ul class="gs-nav__panel">
+              <li><a href="#foundation">About the Foundation</a></li>
+              <li><a href="#gordon-and-marion">Gordon and Marion</a></li>
+              <li><a href="#donate">Donate</a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="gs-nav__item">
+          <details class="gs-nav__details" name="gs-nav-bar">
+            <summary class="gs-nav__trigger">Shop</summary>
+            <ul class="gs-nav__panel">
+              <li><a href="#shop">Limited editions</a></li>
+              <li><a href="#p1">2026 Fall Portfolio</a></li>
+              <li><a href="#p2">2026 Spring Portfolio</a></li>
+              <li><a href="#our-story">Our story</a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="gs-nav__item"><a class="gs-nav__link" href="#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="gs-container"><p class="pv-note">Menu labels are illustrative, taken from the live menu. A section with a dropdown is one button: click, tap, Enter or Space opens it, and the section&rsquo;s main page is the first link inside. About is a plain link. Everything works without JavaScript; the script adds Escape, outside click and closing when focus leaves. Narrow the window below 1200 px for the Menu drawer.</p></div>
+
+<main id="top">
+
+<!-- ============ HERO (photo) ============ -->
+<section class="gs-section" aria-labelledby="hero-title" style="padding-block-start: var(--gs-space-6)">
+  <div class="gs-hero">
+    <div class="gs-media gs-media--photo gs-hero__media" style="--gs-focal: 62% 40%">
+      <img alt="Placeholder for an installation view" fetchpriority="high" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23ecebe8'/%3E%3Crect y='760' width='1600' height='240' fill='%23c9c3ba'/%3E%3Crect x='170' y='300' width='330' height='420' fill='%23fff'/%3E%3Crect x='195' y='325' width='280' height='370' fill='%235f6f63'/%3E%3Crect x='195' y='505' width='280' height='190' fill='%23b88a4e'/%3E%3Crect x='720' y='220' width='560' height='440' fill='%23fff'/%3E%3Crect x='750' y='250' width='500' height='380' fill='%2334424f'/%3E%3Ccircle cx='1000' cy='430' r='120' fill='%23d9b24c'/%3E%3Crect x='1380' y='360' width='150' height='200' fill='%23fff'/%3E%3Crect x='1395' y='375' width='120' height='170' fill='%23a3503c'/%3E%3C/svg%3E">
+    </div>
+    <div class="gs-hero__box gs-surface-accent">
+      <div class="gs-status">
+        <span class="gs-chip gs-chip--strong">On now</span>
+        <p class="gs-status__dates">September 25, 2026 to February 20, 2027</p>
+      </div>
+      <h1 class="gs-h1" id="hero-title" style="--gs-fit-chars: 8">Collect, Assemble, Gather</h1>
+      <p class="gs-deck"><cite>Collect, Assemble, Gather</cite> explores acts of collecting as both artistic process and everyday ritual.</p>
+      <div class="gs-actions">
+        <a class="gs-button" href="#visit">Plan your visit</a>
+        <a class="gs-cta-link" href="#exhibition">About the exhibition</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLOUR ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="colour-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="colour-title">Colour</h2></div>
+    <div id="swatches"></div>
+    <p class="pv-note">Brand values from the brand guide pp.11 to 13 and the logo files. Box colours for the Gallery and the Foundation follow the logo files where the guide disagrees (DESIGN.md §11). The box colour is kept for the brand&rsquo;s boxes: logo, hero title box, primary button. Rules and tints do everything else, as the guide assigns them. Orange, green and the Gallery box colour never carry text on white.</p>
+
+    <h3 class="gs-h3 pv-org">Surfaces</h3>
+    <div class="pv-surfaces" id="surfaces"></div>
+  </div>
+</section>
+
+<!-- ============ TYPE ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="type-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="type-title">Typography</h2></div>
+    <div class="pv-type-row"><code>display · 900 caps</code><p class="gs-display">Gordon Smith</p></div>
+    <div class="pv-type-row"><code>h1 · 900 caps</code><p class="gs-h1">Past exhibitions</p></div>
+    <div class="pv-type-row"><code>h2 · 900 caps</code><p class="gs-h2">Limited editions</p></div>
+    <div class="pv-type-row"><code>h3 · 900 caps</code><p class="gs-h3">Prevailing Landscapes</p></div>
+    <div class="pv-type-row"><code>h4 · 900 caps</code><p class="gs-h4">Supported by</p></div>
+    <div class="pv-type-row"><code>eyebrow · 800 caps</code><p class="gs-eyebrow">Artists for Kids</p></div>
+    <div class="pv-type-row"><code>status + dates</code><div class="gs-status"><span class="gs-chip gs-chip--strong">On now</span><p class="gs-status__dates">September 25, 2026 to February 20, 2027</p></div></div>
+    <div class="pv-type-row"><code>chip · 800 caps</code><p><span class="gs-chip">Past</span></p></div>
+    <div class="pv-type-row"><code>deck · 700</code><p class="gs-deck"><cite>From the Ground</cite> explores the interconnectedness of the natural world and our reciprocal relationship with the ecosystems in which we are embedded.</p></div>
+    <div class="pv-type-row"><code>body · 400</code><div class="gs-prose"><p>Curated by Holly Schmidt and Amelia Epp, <cite>From the Ground</cite> brings together drawings, sculptures, prints, and photographs representing the natural world through stories, materials, time, and natural processes. <a href="#x">Inline links</a> keep an underline in the brand colour; a tint fades in behind them on hover.</p></div></div>
+    <div class="pv-type-row"><code>meta · 400 muted</code><p class="gs-meta">Curated by Janet Wang and Amelia Epp</p></div>
+    <div class="pv-type-row"><code>caption · 300</code><p class="gs-caption">Samuel Roy-Bois, <cite>My Sun</cite>, 2024. Wood, paint, object. Photo: Michael Love.</p></div>
+    <div class="pv-type-row"><code>artwork label</code><p class="gs-label-block"><span class="gs-label-block__artist">Gordon Smith</span><span><cite>Pender Harbour</cite>, 2006</span><span class="gs-label-block__meta">Limited edition print</span></p></div>
+  </div>
+</section>
+
+<!-- ============ EXHIBITION LIST (page.exhibitions / Past) ============ -->
+<section class="gs-section gs-surface-tint" aria-labelledby="past-title">
+  <div class="gs-container">
+    <div class="gs-page-head">
+      <h1 class="gs-h1" id="past-title" style="--gs-fit-chars: 11">Past exhibitions</h1>
+    </div>
+    <nav class="gs-switcher" aria-label="Exhibitions">
+      <ul class="gs-switcher__list">
+        <li><a href="#on-now">On now <span class="gs-switcher__count">1</span></a></li>
+        <li><a href="#upcoming">Upcoming</a></li>
+        <li><a href="#past" aria-current="page">Past <span class="gs-switcher__count">6</span></a></li>
+      </ul>
+    </nav>
+    <div class="gs-grid gs-grid--cards" id="cards"></div>
+    <p class="pv-note">Real titles, dates and curators from the six exhibition pages on the live store; images are placeholders. Upcoming shows no count because it has none: a zero count is hidden, and its page shows the empty state below. The preview marks this second H1 only because it stands in for a separate page.</p>
+  </div>
+</section>
+
+<!-- ============ STATES ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="states-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="states-title">States</h2></div>
+    <div class="pv-states">
+      <div class="pv-state">
+        <h3 class="gs-h4">Empty list (Upcoming)</h3>
+        <div class="gs-empty">
+          <p class="gs-empty__text">No upcoming exhibitions are announced yet.</p>
+          <a class="gs-cta-link" href="#on-now">See what&rsquo;s on now</a>
+        </div>
+      </div>
+      <form class="pv-state gs-signup" novalidate onsubmit="return false" aria-labelledby="st-error">
+        <h3 class="gs-h4" id="st-error">Field error</h3>
+        <div class="gs-signup__row">
+          <div class="gs-field">
+            <label class="gs-field__label" for="st-email">Email</label>
+            <input class="gs-input" id="st-email" type="email" value="name@example" aria-invalid="true" aria-describedby="st-email-error" autocomplete="email">
+          </div>
+          <button class="gs-button" type="submit">Sign up</button>
+        </div>
+        <p class="gs-field__error" id="st-email-error">Enter an email address like name@example.com.</p>
+      </form>
+      <form class="pv-state gs-signup" onsubmit="return false" aria-labelledby="st-busy">
+        <h3 class="gs-h4" id="st-busy">Submitting</h3>
+        <div class="gs-signup__row">
+          <div class="gs-field">
+            <label class="gs-field__label" for="st-email2">Email</label>
+            <input class="gs-input" id="st-email2" type="email" value="name@example.com" autocomplete="email">
+          </div>
+          <button class="gs-button" type="submit" aria-busy="true">Signing up</button>
+        </div>
+      </form>
+      <div class="pv-state">
+        <h3 class="gs-h4">Done</h3>
+        <p class="gs-form-status" role="status">You&rsquo;re signed up for the newsletter.</p>
+      </div>
+      <div class="pv-state">
+        <h3 class="gs-h4">Disabled</h3>
+        <div class="gs-actions"><button class="gs-button" type="button" disabled>Add to cart</button><span class="gs-meta">Sold out</span></div>
+      </div>
+      <div class="pv-state">
+        <h3 class="gs-h4">Links that lead on</h3>
+        <a class="gs-cta-link" href="#visit">Plan your visit</a>
+        <a class="gs-cta-link gs-cta-link--more" href="#past">All past exhibitions</a>
+      </div>
+    </div>
+    <p class="pv-note">Only a link that leads to more of the same list gets the arrow. The error message names the fix; the field border and an icon mark it too, so colour is never the only signal. While a form submits, its button says so.</p>
+  </div>
+</section>
+
+<!-- ============ SHOP LANDING (page.shop) ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="shop-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="shop-title">Limited editions</h2></div>
+    <div class="gs-grid gs-grid--artworks" id="portfolios"></div>
+    <p class="pv-note">Portfolio navigation: the one listing on the Shop landing page. Portfolio names and counts from the live store; images are placeholders.</p>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO (collection) ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="portfolio-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="portfolio-title">2026 Fall Portfolio</h2></div>
+    <nav class="gs-switcher" aria-label="Portfolios">
+      <ul class="gs-switcher__list">
+        <li><a href="#p" aria-current="page">2026 Fall</a></li>
+        <li><a href="#p">2026 Spring</a></li>
+        <li><a href="#p">2025 Fall</a></li>
+        <li><a href="#p">2025 Spring</a></li>
+        <li><a href="#p">2024 Fall</a></li>
+        <li><a href="#p">All limited editions</a></li>
+      </ul>
+    </nav>
+    <div class="gs-grid gs-grid--artworks" id="tiles"></div>
+    <p class="pv-note">Artists, titles, years and prices from the live store (CAD); images are placeholders. The store&rsquo;s titles type the italics as Unicode letters; here they come from <code>&lt;cite&gt;</code>, as the content-model proposal recommends. Every work shows whole, on the mat, whatever its orientation.</p>
+  </div>
+</section>
+
+<!-- ============ ARTWORK HERO ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="ahero-title">
+  <div class="gs-hero gs-hero--artwork">
+    <div class="gs-media gs-media--artwork gs-hero__media" id="artwork-hero-media"></div>
+    <div class="gs-hero__box gs-surface-accent">
+      <div class="gs-status">
+        <span class="gs-chip">Past</span>
+        <p class="gs-status__dates">April 12 to June 22, 2024</p>
+      </div>
+      <h2 class="gs-h1" id="ahero-title" style="--gs-fit-chars: 10">Prevailing Landscapes</h2>
+      <p class="gs-meta">Curated by Jackie Wong</p>
+      <div class="gs-actions"><a class="gs-button" href="#x">About the exhibition</a></div>
+    </div>
+  </div>
+  <div class="gs-container"><p class="pv-note">Artwork hero: the key image is an artwork, so it shows whole and uncovered, with the title box beside it from 990 px and below it on phones. Placeholder image.</p></div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="gallery-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="gallery-title">Image gallery</h2></div>
+    <h3 class="gs-h4 pv-sub">Installation views</h3>
+    <ul class="gs-gallery gs-gallery--installation" id="install"></ul>
+    <h3 class="gs-h4 pv-sub">Works</h3>
+    <ul class="gs-gallery gs-gallery--works" id="works"></ul>
+  </div>
+</section>
+
+<!-- ============ PROSE ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="prose-title">
+  <div class="gs-container--prose gs-container">
+    <div class="gs-prose">
+      <h2 id="prose-title">From the Ground</h2>
+      <p class="gs-deck"><cite>From the Ground</cite> explores the interconnectedness of the natural world and our reciprocal relationship with the ecosystems in which we are embedded.</p>
+      <p>The exhibition is rooted in the learning principle articulated by the First Nations Education Steering Committee, which emphasizes:</p>
+      <blockquote><p>connectedness, reciprocal relationships, and a sense of place.</p></blockquote>
+      <p>Curated by Holly Schmidt and Amelia Epp, <em>From the Ground</em> brings together drawings, sculptures, prints, and photographs representing the natural world through stories, materials, time, and natural processes.</p>
+      <h3>Supported by</h3>
+      <ul><li>North Vancouver School District</li><li>North Van Recreation and Culture</li><li>The Tuey Charitable Foundation</li><li>The Christopher Foundation</li></ul>
+      <p>To learn more about FNESC and the First Peoples Principles of Learning, visit <a class="gs-link--external" href="https://www.fnesc.ca/">www.fnesc.ca<span class="gs-visually-hidden"> (external site)</span></a>.<span style="color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;"> This sentence carries the inline Poppins, grey and 13.5pt styling pasted into the live page; the prose styles neutralise it.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="gs-section gs-surface-tint" id="newsletter" aria-labelledby="nl-title">
+  <div class="gs-container">
+    <form class="gs-signup" novalidate id="nl-form">
+      <h2 class="gs-h3" id="nl-title">Newsletter heading (gallery to supply)</h2>
+      <p>One sentence on what subscribers receive. Wording comes from the gallery.</p>
+      <div class="gs-signup__row">
+        <div class="gs-field">
+          <label class="gs-field__label" for="nl-email">Email</label>
+          <input class="gs-input" id="nl-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <button class="gs-button" type="submit">Sign up</button>
+      </div>
+      <p class="gs-field__error" id="nl-email-error" hidden>Enter an email address like name@example.com.</p>
+      <p class="gs-form-status" role="status" id="nl-status" hidden>You&rsquo;re signed up for the newsletter.</p>
+      <p class="gs-caption">Consent wording from the gallery goes here.</p>
+    </form>
+    <p class="pv-note">Try it: submit empty or with a malformed address for the error, a valid one for the submitting and done states (simulated here).</p>
+  </div>
+</section>
+
+<!-- ============ LOGOS ============ -->
+<section class="gs-section gs-surface-paper" aria-labelledby="logos-title">
+  <div class="gs-container">
+    <div class="gs-section-head"><h2 class="gs-h2" id="logos-title">Logos</h2></div>
+    <!-- Generated from logos/logos.json; regenerate if the manifest changes. -->
+    <div class="pv-logos">
+      <figure class="pv-logo"><img src="logos/artists-for-kids-full-black.svg" alt="Artists for Kids"><code>artists-for-kids-full-black.svg</code><span class="gs-caption">1.1565:1, min 48px</span></figure>
+      <figure class="pv-logo"><img src="logos/artists-for-kids-full-bw-box.svg" alt="Artists for Kids"><code>artists-for-kids-full-bw-box.svg</code><span class="gs-caption">1.07:1, min 48px</span></figure>
+      <figure class="pv-logo"><img src="logos/artists-for-kids-full-colour.svg" alt="Artists for Kids"><code>artists-for-kids-full-colour.svg</code><span class="gs-caption">1.1565:1, min 48px</span></figure>
+      <figure class="pv-logo"><img src="logos/artists-for-kids-full-colour-box.svg" alt="Artists for Kids"><code>artists-for-kids-full-colour-box.svg</code><span class="gs-caption">1.07:1, min 48px</span></figure>
+      <figure class="pv-logo is-dark"><img src="logos/artists-for-kids-full-white.svg" alt="Artists for Kids"><code>artists-for-kids-full-white.svg</code><span class="gs-caption">1.1565:1, min 48px</span></figure>
+      <figure class="pv-logo"><img src="logos/foundation-full-black.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-full-black.svg</code><span class="gs-caption">2.248:1, min 88px</span></figure>
+      <figure class="pv-logo"><img src="logos/foundation-full-bw-box.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-full-bw-box.svg</code><span class="gs-caption">2.0642:1, min 88px</span></figure>
+      <figure class="pv-logo"><img src="logos/foundation-full-colour-box.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-full-colour-box.svg</code><span class="gs-caption">2.0642:1, min 88px</span></figure>
+      <figure class="pv-logo is-dark"><img src="logos/foundation-full-white.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-full-white.svg</code><span class="gs-caption">2.248:1, min 88px</span></figure>
+      <figure class="pv-logo"><img src="logos/foundation-simple-black.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-simple-black.svg</code><span class="gs-caption">3.1267:1, min 72px</span></figure>
+      <figure class="pv-logo"><img src="logos/foundation-simple-bw-box.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-simple-bw-box.svg</code><span class="gs-caption">2.5:1, min 72px</span></figure>
+      <figure class="pv-logo"><img src="logos/foundation-simple-colour-box.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-simple-colour-box.svg</code><span class="gs-caption">2.5:1, min 72px</span></figure>
+      <figure class="pv-logo is-dark"><img src="logos/foundation-simple-white.svg" alt="The Gordon and Marion Smith Foundation for Young Artists"><code>foundation-simple-white.svg</code><span class="gs-caption">3.1267:1, min 72px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-full-horizontal-black.svg" alt="Gordon Smith Gallery"><code>gallery-full-horizontal-black.svg</code><span class="gs-caption">3.4345:1, min 64px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-full-horizontal-bw-box.svg" alt="Gordon Smith Gallery"><code>gallery-full-horizontal-bw-box.svg</code><span class="gs-caption">3.0:1, min 64px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-full-horizontal-colour-box.svg" alt="Gordon Smith Gallery"><code>gallery-full-horizontal-colour-box.svg</code><span class="gs-caption">3.0:1, min 64px</span></figure>
+      <figure class="pv-logo is-dark"><img src="logos/gallery-full-horizontal-white.svg" alt="Gordon Smith Gallery"><code>gallery-full-horizontal-white.svg</code><span class="gs-caption">3.4345:1, min 64px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-full-stacked-black.svg" alt="Gordon Smith Gallery"><code>gallery-full-stacked-black.svg</code><span class="gs-caption">1.1077:1, min 112px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-full-stacked-bw-box.svg" alt="Gordon Smith Gallery"><code>gallery-full-stacked-bw-box.svg</code><span class="gs-caption">1.0388:1, min 112px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-full-stacked-colour-box.svg" alt="Gordon Smith Gallery"><code>gallery-full-stacked-colour-box.svg</code><span class="gs-caption">1.0388:1, min 112px</span></figure>
+      <figure class="pv-logo is-dark"><img src="logos/gallery-full-stacked-white.svg" alt="Gordon Smith Gallery"><code>gallery-full-stacked-white.svg</code><span class="gs-caption">1.1077:1, min 112px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-simple-horizontal-black.svg" alt="Gordon Smith Gallery"><code>gallery-simple-horizontal-black.svg</code><span class="gs-caption">3.4345:1, min 32px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-simple-horizontal-bw-box.svg" alt="Gordon Smith Gallery"><code>gallery-simple-horizontal-bw-box.svg</code><span class="gs-caption">3.0:1, min 32px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-simple-horizontal-colour-box.svg" alt="Gordon Smith Gallery"><code>gallery-simple-horizontal-colour-box.svg</code><span class="gs-caption">3.0:1, min 32px</span></figure>
+      <figure class="pv-logo is-dark"><img src="logos/gallery-simple-horizontal-white.svg" alt="Gordon Smith Gallery"><code>gallery-simple-horizontal-white.svg</code><span class="gs-caption">3.4345:1, min 32px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-simple-stacked-black.svg" alt="Gordon Smith Gallery"><code>gallery-simple-stacked-black.svg</code><span class="gs-caption">1.2292:1, min 48px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-simple-stacked-bw-box.svg" alt="Gordon Smith Gallery"><code>gallery-simple-stacked-bw-box.svg</code><span class="gs-caption">1.1383:1, min 48px</span></figure>
+      <figure class="pv-logo"><img src="logos/gallery-simple-stacked-colour-box.svg" alt="Gordon Smith Gallery"><code>gallery-simple-stacked-colour-box.svg</code><span class="gs-caption">1.1383:1, min 48px</span></figure>
+      <figure class="pv-logo is-dark"><img src="logos/gallery-simple-stacked-white.svg" alt="Gordon Smith Gallery"><code>gallery-simple-stacked-white.svg</code><span class="gs-caption">1.2292:1, min 48px</span></figure>
+      <figure class="pv-logo"><img src="logos/derived/gallery-simple-stacked-teal.svg" alt="Gordon Smith Gallery"><code>derived/gallery-simple-stacked-teal.svg</code><span class="gs-caption">1.2292:1, min 48px, derived, needs approval</span></figure>
+      <figure class="pv-logo"><img src="logos/derived/gallery-simple-horizontal-teal.svg" alt="Gordon Smith Gallery"><code>derived/gallery-simple-horizontal-teal.svg</code><span class="gs-caption">3.4345:1, min 32px, derived, needs approval</span></figure>
+    </div>
+    <p class="pv-note">From <code>logos/logos.json</code>. Files in <code>logos/derived/</code> are not supplied artwork and need gallery approval.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="gs-footer gs-surface-ink" id="contact">
+  <div class="gs-container">
+    <div class="gs-footer__logos">
+      <img src="logos/gallery-simple-stacked-white.svg" alt="Gordon Smith Gallery" style="height:104px;width:auto">
+      <img src="logos/artists-for-kids-full-white.svg" alt="Artists for Kids" style="height:80px;width:auto">
+      <img src="logos/foundation-simple-white.svg" alt="The Gordon and Marion Smith Foundation for Young Artists" style="height:72px;width:auto">
+    </div>
+    <div class="gs-footer__cols">
+      <div><h2 class="gs-label">Visit</h2><p>2121 Lonsdale Avenue<br>North Vancouver, V7M 2K6<br><span class="gs-meta">Hours from the gallery</span></p></div>
+      <div><h2 class="gs-label">Contact</h2><ul><li><a href="#x">Email from the gallery</a></li><li><a href="#x">Phone from the gallery</a></li></ul></div>
+      <div><h2 class="gs-label">Explore</h2><ul><li><a href="#x">Exhibitions</a></li><li><a href="#x">Limited editions</a></li><li><a href="#x">Artists for Kids</a></li></ul></div>
+      <div><h2 class="gs-label">Follow</h2><ul><li><a href="#x">Instagram</a></li><li><a href="#x">Facebook</a></li></ul></div>
+    </div>
+    <p class="gs-footer__legal">Footer logos are an interim arrangement until the gallery supplies the logo clusters document.</p>
+  </div>
+</footer>
+
+<script>
+  // Palette swatches straight from tokens.css, so the preview can't drift from the source.
+  const orgs = [
+    ["Gordon Smith Gallery", [["gsg-text","Text-only logo, eyebrows, link lines"],["gsg-box","Logo box, title box, primary button"],["gsg-rule","Rules, selection, hover fill on tint"],["gsg-tint","Tints, bands, link hover fill"]]],
+    ["Smith Foundation", [["gsf-text","Text-only logo (decorative)"],["gsf-box","Logo box, title box, primary button"],["gsf-rule","Rules"],["gsf-tint","Tints, bands"]]],
+    ["Artists for Kids", [["afk-swoosh","Swoosh (decorative)"],["afk-box","Logo box, title box, primary button"],["afk-rule","Rules"],["afk-tint","Tints, bands"]]],
+    ["Neutrals and error (system)", [["ink","Text"],["ink-soft","Muted text"],["ink-faint","Muted text on ink"],["paper","Background"],["mat","Artwork mat"],["error","Error text, invalid fields"],["error-light","Error on ink"]]],
+  ];
+  const cs = getComputedStyle(document.documentElement);
+  document.getElementById("swatches").innerHTML = orgs.map(([name, list]) =>
+    `<h3 class="gs-h4 pv-org">${name}</h3><div class="pv-swatches">` + list.map(([t, use]) => {
+      const v = cs.getPropertyValue("--gs-" + t).trim();
+      return `<div class="pv-swatch"><span style="background:${v}"></span><div><code>--gs-${t}</code><br><strong>${v}</strong><br>${use}</div></div>`;
+    }).join("") + "</div>").join("");
+
+  document.getElementById("surfaces").innerHTML = ["Paper", "Tint", "Accent", "Ink"].map(n => `
+    <div class="pv-surface gs-surface-${n.toLowerCase()}">
+      <h4 class="gs-h4">${n}</h4>
+      <p>Body text with an <a class="gs-link" href="#x">inline link</a> and <span class="gs-meta">muted meta</span>.</p>
+      <p><span class="gs-chip gs-chip--strong">On now</span> <span class="gs-chip">Past</span></p>
+      <div class="gs-actions"><a class="gs-button" href="#x">Plan your visit</a><a class="gs-button gs-button--secondary" href="#x">Donate</a></div>
+      <a class="gs-cta-link" href="#x">About the exhibition</a>
+    </div>`).join("");
+
+  // Placeholder images (generic shapes, not the real works).
+  const svg = (w, h, body) => "data:image/svg+xml," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${w} ${h}'>${body}</svg>`);
+  const photo = (a, b, c) => svg(1200, 900, `<rect width='1200' height='900' fill='${a}'/><rect y='640' width='1200' height='260' fill='${b}'/><rect x='360' y='190' width='480' height='360' fill='#fff'/><rect x='385' y='215' width='430' height='310' fill='${c}'/>`);
+  const tones = [["#e9e7e3","#c7c0b6","#46586a"],["#efeeea","#bdb5aa","#9a5b3f"],["#e4e6e3","#b9b8ae","#6f7d4b"]];
+
+  // Past exhibitions: title, dates, curators (live store pages, 2026-09-25).
+  const past = [
+    ["One Hundred Artists Deep", "April 11 to June 20, 2026", "Curated by Andrea Valentine-Lewis", "50% 40%"],
+    ["From the Ground", "September 19, 2025 to February 26, 2026", "Curated by Holly Schmidt and Amelia Epp", "40% 50%"],
+    ["Stitched: Merging Photography and Textile Practices", "April 3 to June 21, 2025", "Co-curated by Emmy Lee Wall and Chelsea Yuill", "50% 50%"],
+    ["Playhouse", "September 20, 2024 to February 27, 2025", "Curated by Annie Canto and Amelia Epp", "50% 45%"],
+    ["Prevailing Landscapes", "April 12 to June 22, 2024", "Curated by Jackie Wong", "55% 50%"],
+    ["The Art of Conversation", "September 23, 2023 to February 22, 2024", "Curated by Janet Wang and Amelia Epp", "45% 50%"],
+  ];
+  document.getElementById("cards").innerHTML = past.map(([t, dates, curators, f], i) => `
+    <article class="gs-card">
+      <div class="gs-media gs-media--photo gs-shape-md" style="--gs-focal:${f}"><img src="${photo(...tones[i % 3])}" alt=""></div>
+      <h2 class="gs-card__title"><a href="#x">${t}</a></h2>
+      <p class="gs-meta">${dates}<br>${curators}</p>
+    </article>`).join("");
+
+  const art = [
+    [600, 900, `<rect width='600' height='900' fill='#f1ede4'/><rect x='70' y='90' width='460' height='520' fill='#2f4858'/><rect x='70' y='610' width='460' height='200' fill='#c8553d'/>`],
+    [900, 600, `<rect width='900' height='600' fill='#e8e2d6'/><circle cx='330' cy='300' r='190' fill='#33658a'/><rect x='520' y='120' width='300' height='360' fill='#f6ae2d'/>`],
+    [800, 800, `<rect width='800' height='800' fill='#f4f1ea'/><rect x='100' y='100' width='600' height='600' fill='#86bbd8'/><rect x='250' y='250' width='300' height='300' fill='#2f4858'/>`],
+    [500, 900, `<rect width='500' height='900' fill='#efe9df'/><rect x='60' y='60' width='380' height='780' fill='#55828b'/><circle cx='250' cy='300' r='110' fill='#f2e3bc'/>`],
+    [1000, 700, `<rect width='1000' height='700' fill='#ece6da'/><rect x='80' y='80' width='840' height='540' fill='#7a8f6a'/><rect x='80' y='430' width='840' height='190' fill='#3b4a3f'/>`],
+  ];
+
+  // 2026 Fall Portfolio (live store, CAD).
+  const works = [
+    ["Amelia Butcher", "Cup and Saucer", "2026", "$180"],
+    ["Marlene Yuen", "Short Gumboots", "2026", "$138"],
+    ["Gordon Smith", "Pender Harbour", "2006", "$2,200"],
+    ["Arnold Shives", "Seven Sisters Range", "2003", "$350"],
+    ["Arnold Shives", "Mount Orpheus", "2003", "$350"],
+  ];
+  document.getElementById("tiles").innerHTML = works.map(([artist, title, year, price], i) => {
+    const [w, h, b] = art[i];
+    return `<article class="gs-artwork-tile">
+      <div class="gs-media gs-media--artwork gs-shape-md"><img src="${svg(w, h, b)}" alt="Placeholder for ${title} by ${artist}"></div>
+      <p class="gs-artwork-tile__artist">${artist}</p>
+      <h3 class="gs-artwork-tile__title"><a href="#x"><cite>${title}</cite></a>, ${year}</h3>
+      <p class="gs-meta">Limited edition print</p>
+      <p class="gs-artwork-tile__price">${price}</p>
+    </article>`; }).join("");
+
+  // Portfolios (live store collections and product counts).
+  const portfolios = [["2026 Fall Portfolio", 5], ["2026 Spring Portfolio", 3], ["2025 Fall Portfolio", 3], ["2025 Spring Portfolio", 5], ["2024 Fall Portfolio", 5], ["All Limited Editions", 21]];
+  document.getElementById("portfolios").innerHTML = portfolios.map(([t, n], i) => {
+    const [w, h, b] = art[i % art.length];
+    return `<article class="gs-card gs-card--compact">
+      <div class="gs-media gs-media--artwork gs-shape-md"><img src="${svg(w, h, b)}" alt=""></div>
+      <h3 class="gs-card__title"><a href="#x">${t}</a></h3>
+      <p class="gs-meta">${n} works</p>
+    </article>`; }).join("");
+
+  document.getElementById("artwork-hero-media").innerHTML = `<img src="${svg(700, 900, "<rect width='700' height='900' fill='#efe9df'/><rect x='80' y='80' width='540' height='740' fill='#2f4858'/><circle cx='350' cy='360' r='150' fill='#f2e3bc'/><rect x='80' y='640' width='540' height='180' fill='#c8553d'/>")}" alt="Placeholder for an artwork">`;
+
+  document.getElementById("install").innerHTML = tones.map((t, i) => `
+    <li><figure class="gs-figure">
+      <div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...t)}" alt="Placeholder for installation view ${i + 1}"></div>
+      <figcaption class="gs-caption">Installation view, <cite>Collect, Assemble, Gather</cite>, 2026. Photo credit from the gallery.</figcaption>
+    </figure></li>`).join("");
+
+  const labels = [["Samuel Roy-Bois", "My Sun", "2024", "Wood, paint, object. Photo: Michael Love."], ...works.slice(0, 3).map(([a, t, y]) => [a, t, y, "Limited edition print."])];
+  document.getElementById("works").innerHTML = labels.map(([a, t, y, m], i) => {
+    const [w, h, b] = art[i];
+    return `<li><figure class="gs-figure">
+      <div class="gs-media gs-media--artwork gs-shape-md"><img src="${svg(w, h, b)}" alt="Placeholder for ${t} by ${a}"></div>
+      <figcaption class="gs-label-block">
+        <span class="gs-label-block__artist">${a}</span>
+        <span><cite>${t}</cite>, ${y}</span>
+        <span class="gs-label-block__meta">${m}</span>
+      </figcaption>
+    </figure></li>`; }).join("");
+
+  // Newsletter: the states a theme form moves through (simulated; nothing is sent).
+  const form = document.getElementById("nl-form");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    if (form.querySelector("button").getAttribute("aria-busy") === "true") return; // one submission at a time
+    const input = form.querySelector("input"), button = form.querySelector("button"),
+          error = document.getElementById("nl-email-error"), status = document.getElementById("nl-status");
+    status.hidden = true;
+    if (!input.checkValidity() || !/@[^.]+\./.test(input.value)) {
+      input.setAttribute("aria-invalid", "true");
+      input.setAttribute("aria-describedby", "nl-email-error");
+      error.hidden = false;
+      input.focus();
+      return;
+    }
+    input.removeAttribute("aria-invalid"); input.removeAttribute("aria-describedby"); error.hidden = true;
+    button.setAttribute("aria-busy", "true"); button.textContent = "Signing up";
+    setTimeout(() => {
+      button.removeAttribute("aria-busy"); button.textContent = "Sign up";
+      status.hidden = false; input.value = "";
+    }, 900);
+  });
+
+  // Programme switcher.
+  document.querySelectorAll('input[name="brand"]').forEach(r => r.addEventListener("change", e => {
+    document.body.dataset.gsBrand = e.target.value;
+  }));
+</script>
+</body>
+</html>

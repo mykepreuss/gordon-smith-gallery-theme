@@ -1,0 +1,670 @@
+{
+  "generated": "2026-09-25",
+  "note": "SVGs converted from the supplied print PDFs (vector), fills remapped from CMYK builds to the official web sRGB values, unboxed variants cropped to artwork bounds. Original files remain in reference/GS Logos New/.",
+  "websiteDefaults": {
+    "header": "logos/gallery-simple-stacked-colour-box.svg",
+    "headerCondensed": "logos/gallery-simple-horizontal-colour-box.svg",
+    "footerOnInk": [
+      "logos/gallery-simple-stacked-white.svg",
+      "logos/artists-for-kids-full-white.svg",
+      "logos/foundation-simple-white.svg"
+    ],
+    "programmePages": {
+      "foundation": "logos/foundation-simple-colour-box.svg",
+      "artists-for-kids": "logos/artists-for-kids-full-colour-box.svg"
+    }
+  },
+  "logos": [
+    {
+      "file": "logos/artists-for-kids-full-black.svg",
+      "org": "artists-for-kids",
+      "orgName": "Artists for Kids",
+      "altText": "Artists for Kids",
+      "lockup": "full",
+      "variant": "black",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper and light tints",
+      "viewBox": [
+        343.18,
+        296.73
+      ],
+      "aspectRatio": 1.1565,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Interchangeable for all uses; the orange box version is used in clusters (brand guide p.9).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/2 AFK - Logos/Black/Print/AFK-Logo-Black.eps.pdf"
+    },
+    {
+      "file": "logos/artists-for-kids-full-bw-box.svg",
+      "org": "artists-for-kids",
+      "orgName": "Artists for Kids",
+      "altText": "Artists for Kids",
+      "lockup": "full",
+      "variant": "bw-box",
+      "boxed": true,
+      "roundedCorner": "bottom-left",
+      "background": "#000000",
+      "placeOn": "paper or light tints; single-colour contexts",
+      "viewBox": [
+        428.0,
+        400.0
+      ],
+      "aspectRatio": 1.07,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Interchangeable for all uses; the orange box version is used in clusters (brand guide p.9).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/2 AFK - Logos/B&W Box/Print/AFK-Logos-B&W-Box.pdf"
+    },
+    {
+      "file": "logos/artists-for-kids-full-colour.svg",
+      "org": "artists-for-kids",
+      "orgName": "Artists for Kids",
+      "altText": "Artists for Kids",
+      "lockup": "full",
+      "variant": "colour",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper or light tints",
+      "viewBox": [
+        343.18,
+        296.73
+      ],
+      "aspectRatio": 1.1565,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Interchangeable for all uses; the orange box version is used in clusters (brand guide p.9).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/2 AFK - Logos/Full Colour/Print/AFK-Logos-Final.pdf"
+    },
+    {
+      "file": "logos/artists-for-kids-full-colour-box.svg",
+      "org": "artists-for-kids",
+      "orgName": "Artists for Kids",
+      "altText": "Artists for Kids",
+      "lockup": "full",
+      "variant": "colour-box",
+      "boxed": true,
+      "roundedCorner": "bottom-left",
+      "background": "#fcb547",
+      "placeOn": "paper, tint or photography (not on its own box colour)",
+      "viewBox": [
+        428.0,
+        400.0
+      ],
+      "aspectRatio": 1.07,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Interchangeable for all uses; the orange box version is used in clusters (brand guide p.9).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/2 AFK - Logos/Full Colour Box/Print/AFK-Logos-FullColourBoxed.pdf"
+    },
+    {
+      "file": "logos/artists-for-kids-full-white.svg",
+      "org": "artists-for-kids",
+      "orgName": "Artists for Kids",
+      "altText": "Artists for Kids",
+      "lockup": "full",
+      "variant": "white",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "ink surface or dark photography",
+      "viewBox": [
+        343.18,
+        296.73
+      ],
+      "aspectRatio": 1.1565,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Interchangeable for all uses; the orange box version is used in clusters (brand guide p.9).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/2 AFK - Logos/White/Print/AFK-Logo-White.pdf"
+    },
+    {
+      "file": "logos/foundation-full-black.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "full",
+      "variant": "black",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper and light tints",
+      "viewBox": [
+        358.63,
+        159.53
+      ],
+      "aspectRatio": 2.248,
+      "minDisplayHeightPx": 88,
+      "brandUse": "Signage, official documents, web logo (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Full/Black/Print/GSG-Full-Logo-Black.pdf"
+    },
+    {
+      "file": "logos/foundation-full-bw-box.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "full",
+      "variant": "bw-box",
+      "boxed": true,
+      "roundedCorner": "top-right",
+      "background": "#000000",
+      "placeOn": "paper or light tints; single-colour contexts",
+      "viewBox": [
+        450.0,
+        218.0
+      ],
+      "aspectRatio": 2.0642,
+      "minDisplayHeightPx": 88,
+      "brandUse": "Signage, official documents, web logo (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Full/B&W Box/Print/GSG-Full-Logo-B&W-Box.pdf"
+    },
+    {
+      "file": "logos/foundation-full-colour-box.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "full",
+      "variant": "colour-box",
+      "boxed": true,
+      "roundedCorner": "top-right",
+      "background": "#cfd65e",
+      "placeOn": "paper, tint or photography (not on its own box colour)",
+      "viewBox": [
+        450.0,
+        218.0
+      ],
+      "aspectRatio": 2.0642,
+      "minDisplayHeightPx": 88,
+      "brandUse": "Signage, official documents, web logo (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Full/Colour Box/Print/GSG-Full-Logo-Colour-Box.pdf"
+    },
+    {
+      "file": "logos/foundation-full-white.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "full",
+      "variant": "white",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "ink surface or dark photography",
+      "viewBox": [
+        358.63,
+        159.53
+      ],
+      "aspectRatio": 2.248,
+      "minDisplayHeightPx": 88,
+      "brandUse": "Signage, official documents, web logo (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Full/White/Print/GSG-Full-Logo-White.pdf"
+    },
+    {
+      "file": "logos/foundation-simple-black.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "simple",
+      "variant": "black",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper and light tints",
+      "viewBox": [
+        369.29,
+        118.11
+      ],
+      "aspectRatio": 3.1267,
+      "minDisplayHeightPx": 72,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Simple/Black/Print/GSG-Simple-Logo-Black.pdf"
+    },
+    {
+      "file": "logos/foundation-simple-bw-box.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "simple",
+      "variant": "bw-box",
+      "boxed": true,
+      "roundedCorner": "top-right",
+      "background": "#000000",
+      "placeOn": "paper or light tints; single-colour contexts",
+      "viewBox": [
+        450.0,
+        180.0
+      ],
+      "aspectRatio": 2.5,
+      "minDisplayHeightPx": 72,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Simple/B&W Box/Print/GSG-Simple-Logo-B&W-Box.pdf"
+    },
+    {
+      "file": "logos/foundation-simple-colour-box.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "simple",
+      "variant": "colour-box",
+      "boxed": true,
+      "roundedCorner": "top-right",
+      "background": "#cfd65e",
+      "placeOn": "paper, tint or photography (not on its own box colour)",
+      "viewBox": [
+        450.0,
+        180.0
+      ],
+      "aspectRatio": 2.5,
+      "minDisplayHeightPx": 72,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Simple/Colour Box/Print/GSG-Simple-Logo-ColourBox.pdf"
+    },
+    {
+      "file": "logos/foundation-simple-white.svg",
+      "org": "foundation",
+      "orgName": "The Gordon and Marion Smith Foundation for Young Artists",
+      "altText": "The Gordon and Marion Smith Foundation for Young Artists",
+      "lockup": "simple",
+      "variant": "white",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "ink surface or dark photography",
+      "viewBox": [
+        369.29,
+        118.11
+      ],
+      "aspectRatio": 3.1267,
+      "minDisplayHeightPx": 72,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.8).",
+      "status": "supplied",
+      "source": "reference/GS Logos New/3 GSF - Logos/Simple/White/Print/GSG-Simple-Logo-White.pdf"
+    },
+    {
+      "file": "logos/gallery-full-horizontal-black.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-horizontal",
+      "variant": "black",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper and light tints",
+      "viewBox": [
+        371.75,
+        108.24
+      ],
+      "aspectRatio": 3.4345,
+      "minDisplayHeightPx": 64,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Horizontal/Black/Print/GSG-Full-Logo-Horizontal-Black.pdf"
+    },
+    {
+      "file": "logos/gallery-full-horizontal-bw-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-horizontal",
+      "variant": "bw-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#000000",
+      "placeOn": "paper or light tints; single-colour contexts",
+      "viewBox": [
+        450.0,
+        150.0
+      ],
+      "aspectRatio": 3.0,
+      "minDisplayHeightPx": 64,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Horizontal/B&W Box/Print/GSG-Full-Logo-Horizontal-B&W-Box.pdf"
+    },
+    {
+      "file": "logos/gallery-full-horizontal-colour-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-horizontal",
+      "variant": "colour-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#89a6ab",
+      "placeOn": "paper, tint or photography (not on its own box colour)",
+      "viewBox": [
+        450.0,
+        150.0
+      ],
+      "aspectRatio": 3.0,
+      "minDisplayHeightPx": 64,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Horizontal/Colour Box/Print/GSG-Full-Logo-Horizontal-ColourBox.pdf"
+    },
+    {
+      "file": "logos/gallery-full-horizontal-white.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-horizontal",
+      "variant": "white",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "ink surface or dark photography",
+      "viewBox": [
+        371.75,
+        108.24
+      ],
+      "aspectRatio": 3.4345,
+      "minDisplayHeightPx": 64,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Horizontal/White/Print/GSG-Full-Logo-Horizontal-White.pdf"
+    },
+    {
+      "file": "logos/gallery-full-stacked-black.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-stacked",
+      "variant": "black",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper and light tints",
+      "viewBox": [
+        358.73,
+        323.86
+      ],
+      "aspectRatio": 1.1077,
+      "minDisplayHeightPx": 112,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Stacked/Black/Print/GSG-Full-Logo-Stacked-Black.pdf"
+    },
+    {
+      "file": "logos/gallery-full-stacked-bw-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-stacked",
+      "variant": "bw-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#000000",
+      "placeOn": "paper or light tints; single-colour contexts",
+      "viewBox": [
+        428.0,
+        412.0
+      ],
+      "aspectRatio": 1.0388,
+      "minDisplayHeightPx": 112,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Stacked/B&W Box/Print/GSG-Full-Logo-Stacked-B&W-Box.pdf"
+    },
+    {
+      "file": "logos/gallery-full-stacked-colour-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-stacked",
+      "variant": "colour-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#89a6ab",
+      "placeOn": "paper, tint or photography (not on its own box colour)",
+      "viewBox": [
+        428.0,
+        412.0
+      ],
+      "aspectRatio": 1.0388,
+      "minDisplayHeightPx": 112,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Stacked/Colour Box/Print/GSG-Full-Logo-Stacked-ColourBox.pdf"
+    },
+    {
+      "file": "logos/gallery-full-stacked-white.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "full-stacked",
+      "variant": "white",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "ink surface or dark photography",
+      "viewBox": [
+        358.73,
+        323.86
+      ],
+      "aspectRatio": 1.1077,
+      "minDisplayHeightPx": 112,
+      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Full Stacked/White/Print/GSG-Full-Logo-Stacked-White.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-horizontal-black.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-horizontal",
+      "variant": "black",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper and light tints",
+      "viewBox": [
+        371.75,
+        108.24
+      ],
+      "aspectRatio": 3.4345,
+      "minDisplayHeightPx": 32,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Horizontal/Black/Print/GSG-Simple-Logo-Horizontal-Black.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-horizontal-bw-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-horizontal",
+      "variant": "bw-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#000000",
+      "placeOn": "paper or light tints; single-colour contexts",
+      "viewBox": [
+        450.0,
+        150.0
+      ],
+      "aspectRatio": 3.0,
+      "minDisplayHeightPx": 32,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Horizontal/B&W Box/Print/GSG-Simple-Logo-Horizontal-B&W-Box.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-horizontal-colour-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-horizontal",
+      "variant": "colour-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#89a6ab",
+      "placeOn": "paper, tint or photography (not on its own box colour)",
+      "viewBox": [
+        450.0,
+        150.0
+      ],
+      "aspectRatio": 3.0,
+      "minDisplayHeightPx": 32,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Horizontal/Colour Box/Print/GSG-Simple-Logo-Horizontal-ColourBox.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-horizontal-white.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-horizontal",
+      "variant": "white",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "ink surface or dark photography",
+      "viewBox": [
+        371.75,
+        108.24
+      ],
+      "aspectRatio": 3.4345,
+      "minDisplayHeightPx": 32,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Horizontal/White/Print/GSG-Simple-Logo-Horizontal.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-stacked-black.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-stacked",
+      "variant": "black",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper and light tints",
+      "viewBox": [
+        358.73,
+        291.83
+      ],
+      "aspectRatio": 1.2292,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Stacked/Black/Print/GSG-LogoSimple-Black.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-stacked-bw-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-stacked",
+      "variant": "bw-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#000000",
+      "placeOn": "paper or light tints; single-colour contexts",
+      "viewBox": [
+        428.0,
+        376.0
+      ],
+      "aspectRatio": 1.1383,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Stacked/B&W Box/Print/GSG-LogoSimple-Black&WhiteBoxed.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-stacked-colour-box.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-stacked",
+      "variant": "colour-box",
+      "boxed": true,
+      "roundedCorner": "bottom-right",
+      "background": "#89a6ab",
+      "placeOn": "paper, tint or photography (not on its own box colour)",
+      "viewBox": [
+        428.0,
+        376.0
+      ],
+      "aspectRatio": 1.1383,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Stacked/Colour Box/Print/GSG-LogoSimple-ColourBox.pdf"
+    },
+    {
+      "file": "logos/gallery-simple-stacked-white.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-stacked",
+      "variant": "white",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "ink surface or dark photography",
+      "viewBox": [
+        358.73,
+        291.83
+      ],
+      "aspectRatio": 1.2292,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "supplied",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Stacked/White/Print/GSG-LogoSimple-White.pdf"
+    },
+    {
+      "file": "logos/derived/gallery-simple-stacked-teal.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-stacked",
+      "variant": "teal",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper only (teal #5b757a is 4.92:1 on white)",
+      "viewBox": [
+        358.73,
+        291.83
+      ],
+      "aspectRatio": 1.2292,
+      "minDisplayHeightPx": 48,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "derived: black artwork recoloured to #5b757a per brand guide pp.6 and 11 ('use for text only logo'). Not in the supplied files; confirm with the gallery before production use.",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Stacked/Black/Print/GSG-LogoSimple-Black.pdf"
+    },
+    {
+      "file": "logos/derived/gallery-simple-horizontal-teal.svg",
+      "org": "gallery",
+      "orgName": "Gordon Smith Gallery of Canadian Art",
+      "altText": "Gordon Smith Gallery",
+      "lockup": "simple-horizontal",
+      "variant": "teal",
+      "boxed": false,
+      "roundedCorner": null,
+      "background": "transparent",
+      "placeOn": "paper only (teal #5b757a is 4.92:1 on white)",
+      "viewBox": [
+        371.75,
+        108.24
+      ],
+      "aspectRatio": 3.4345,
+      "minDisplayHeightPx": 32,
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "status": "derived: black artwork recoloured to #5b757a per brand guide pp.6 and 11 ('use for text only logo'). Not in the supplied files; confirm with the gallery before production use.",
+      "source": "reference/GS Logos New/1 GSG - Logos/Simple Horizontal/Black/Print/GSG-Simple-Logo-Horizontal-Black.pdf"
+    }
+  ]
+}

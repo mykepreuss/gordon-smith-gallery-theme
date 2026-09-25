@@ -1,0 +1,1144 @@
+/*
+ * Gordon Smith Gallery: reference components
+ * Requires tokens.css. Uses only semantic roles (--gs-color-*, --gs-text-*, ...), never raw palette.
+ * Prefix gs- avoids collisions with the Colorblock/Dawn classes. Unlayered on purpose:
+ * the theme's CSS is unlayered, and layered rules would lose to it.
+ * Theme copy: theme/assets/gs-components.css. Spec and usage: DESIGN.md §5 and §6.
+ *
+ * Hover rules sit inside @media (hover: hover) and (pointer: fine), so a tap on a phone never
+ * leaves a link filled or a button inverted. :active gives touch the same feedback while pressed.
+ */
+
+/* ---------- Base (put .gs-type on <body> in the theme) ---------- */
+
+.gs-type {
+  font-family: var(--gs-font-sans);
+  font-size: var(--gs-text-body);
+  font-weight: var(--gs-weight-regular);
+  line-height: var(--gs-leading-body);
+  font-kerning: normal;
+  color: var(--gs-color-fg);
+  background-color: var(--gs-color-bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; /* components give their own :active feedback */
+}
+
+/* Selection uses the rule colour: the box colour is kept for the brand's boxes (brand guide p.11). */
+.gs-type ::selection {
+  background: var(--gs-color-rule);
+  color: var(--gs-ink);
+}
+
+.gs-type :focus-visible {
+  outline: var(--gs-focus-width) solid var(--gs-color-focus);
+  outline-offset: var(--gs-focus-offset);
+}
+
+/* Shown only in the theme editor (request.design_mode) when content breaks a rule. */
+.gs-editor-warning {
+  display: block;
+  margin-block: var(--gs-space-2);
+  padding: var(--gs-space-2) var(--gs-space-3);
+  font: var(--gs-weight-bold) var(--gs-text-caption) / 1.4 var(--gs-font-sans);
+  color: var(--gs-ink);
+  background: var(--gs-afk-rule);
+  border-radius: var(--gs-shape-sm);
+}
+
+.gs-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Fallback guards. Zero specificity so any theme class still wins; they only replace
+   browser defaults that would otherwise render in a system font. */
+:where(.gs-type) :where(button, input, select, textarea, optgroup) {
+  font-family: inherit;
+  letter-spacing: inherit;
+}
+
+/* Third-party embeds (e.g. Mailchimp) ship their own CSS. Wrap them in .gs-embed. */
+.gs-embed :where(*) { font-family: var(--gs-font-sans) !important; }
+.gs-embed :where(input[type="email"], input[type="text"]) {
+  min-height: 3rem;
+  border: var(--gs-border-strong) solid var(--gs-color-control-border) !important;
+  border-radius: var(--gs-shape-sm) !important;
+}
+
+/* ---------- Type roles ---------- */
+/* Brand: headings and subheadings are extra-bold/black and ALL CAPS (brand guide p.15). */
+
+/* Element defaults use :where() so they carry element-only specificity (0,0,1):
+   any gs- class on a heading (e.g. an h3 styled as .gs-h4 or an artwork title) wins. */
+.gs-display,
+.gs-h1,
+.gs-h2,
+.gs-h3,
+:where(.gs-type) :is(h1, h2, h3) {
+  margin: 0;
+  font-family: var(--gs-font-sans);
+  font-weight: var(--gs-weight-black);
+  line-height: var(--gs-leading-heading);
+  letter-spacing: var(--gs-tracking-heading);
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: break-word; /* last resort: a word wider than its box breaks instead of overflowing */
+  color: inherit;
+}
+
+.gs-display { font-size: var(--gs-text-display); line-height: var(--gs-leading-display); }
+.gs-h1, :where(.gs-type) h1 { font-size: var(--gs-text-h1); }
+.gs-h2, :where(.gs-type) h2 { font-size: var(--gs-text-h2); }
+.gs-h3, :where(.gs-type) h3 { font-size: var(--gs-text-h3); }
+
+/* Subheading: smaller, still black + caps, slight tracking. */
+.gs-h4,
+:where(.gs-type) h4 {
+  margin: 0;
+  font-size: var(--gs-text-h4);
+  font-weight: var(--gs-weight-black);
+  line-height: var(--gs-leading-subheading);
+  letter-spacing: var(--gs-tracking-subheading);
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+/* Titles that must fit a box: the hero title box and the page header. Their size follows the
+   box's width (container query units), so the longest word always fits on a phone:
+   --gs-fit-chars is the title's longest word in letters, set by snippets/gs-fit.liquid
+   (default 12, the length of CONVERSATION). 0.74em is the widest average capital in Mulish Black.
+   Short titles still reach the full H1 or display size. */
+.gs-hero__box,
+.gs-page-head { container-type: inline-size; }
+.gs-hero__box :is(.gs-h1, h1),
+.gs-page-head :is(.gs-h1, h1) {
+  font-size: clamp(1.5rem, 100cqi / (var(--gs-fit-chars, 12) * 0.74), var(--gs-text-h1));
+}
+.gs-hero__box .gs-display {
+  font-size: clamp(1.5rem, 100cqi / (var(--gs-fit-chars, 12) * 0.74), var(--gs-text-display));
+}
+
+/* Coloured heading: h3 and larger only (large-text contrast), never inside brand scopes that map to ink. */
+.gs-heading--accent { color: var(--gs-color-accent-text); }
+
+/* Deck / intro paragraph: Bold (brand guide p.15). */
+.gs-deck {
+  margin: 0;
+  max-width: var(--gs-measure-deck);
+  font-size: var(--gs-text-deck);
+  font-weight: var(--gs-weight-bold);
+  line-height: var(--gs-leading-deck);
+  text-wrap: pretty;
+}
+
+/* Eyebrow: small caps label above a heading. Only when it tells the reader something the heading
+   doesn't: a programme or organisation name, a season, a status. Never a generic section name
+   ("Foundations", "Explore"). Statuses and dates use a chip and a meta line instead (DESIGN.md §6.6). */
+.gs-eyebrow,
+.gs-label {
+  margin: 0;
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-extrabold);
+  line-height: var(--gs-leading-label);
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+}
+.gs-eyebrow { color: var(--gs-color-accent-text); }
+
+/* Caption: Light (brand guide p.15). Keep full ink colour: light weight + grey is too faint. */
+.gs-caption {
+  margin: 0;
+  font-size: var(--gs-text-caption);
+  font-weight: var(--gs-weight-light);
+  line-height: var(--gs-leading-caption);
+}
+
+.gs-meta {
+  margin: 0;
+  font-size: var(--gs-text-small);
+  line-height: 1.5;
+  color: var(--gs-color-fg-muted);
+}
+
+/* ---------- Links ---------- */
+/* Inline links keep an underline (WCAG 1.4.1) but are designed: brand-coloured line, and on
+   hover or press the surface's hover fill (a tint, never the box colour) fades in behind the words. */
+
+.gs-link,
+.gs-prose a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: var(--gs-link-thickness);
+  text-underline-offset: var(--gs-link-offset);
+  text-decoration-skip-ink: auto;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition:
+    background-color var(--gs-duration-fast) var(--gs-ease),
+    color var(--gs-duration-fast) var(--gs-ease),
+    text-decoration-color var(--gs-duration-fast) var(--gs-ease);
+}
+.gs-link:active,
+.gs-prose a:active {
+  background-color: var(--gs-color-hover-fill);
+  color: var(--gs-color-hover-fill-fg);
+  text-decoration-color: currentColor;
+}
+@media (hover: hover) and (pointer: fine) {
+  .gs-link:hover,
+  .gs-prose a:hover {
+    background-color: var(--gs-color-hover-fill);
+    color: var(--gs-color-hover-fill-fg);
+    text-decoration-color: currentColor;
+  }
+}
+
+/* Standalone link to a destination ("About the exhibition", "Plan your visit"): the brand's
+   caps label, underlined like any link. .gs-cta-link--more adds an arrow, only on links that lead
+   to more of the same list ("All past exhibitions"). Underline and arrow move together, same timing. */
+.gs-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  min-height: 1.5rem;
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-extrabold);
+  line-height: var(--gs-leading-label);
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+  color: var(--gs-color-fg);
+  text-decoration-line: underline;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: var(--gs-link-thickness);
+  text-underline-offset: var(--gs-link-offset);
+  transition: text-decoration-color var(--gs-duration-fast) var(--gs-ease);
+}
+.gs-cta-link--more::after {
+  content: "";
+  flex: none;
+  width: 1.15em;
+  height: 0.8em;
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-arrow) center / contain no-repeat;
+  mask: var(--gs-icon-arrow) center / contain no-repeat;
+  transition: transform var(--gs-duration-fast) var(--gs-ease);
+}
+.gs-cta-link:active { text-decoration-color: currentColor; }
+.gs-cta-link--more:active::after { transform: translateX(0.25em); }
+@media (hover: hover) and (pointer: fine) {
+  .gs-cta-link:hover { text-decoration-color: currentColor; }
+  .gs-cta-link--more:hover::after { transform: translateX(0.25em); }
+}
+
+/* External destination cue (e.g. Artists for Kids site). Pair with visually hidden "(external site)". */
+.gs-link--external::after,
+.gs-cta-link.gs-link--external::after {
+  content: "";
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-inline-start: 0.3em;
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-external) center / contain no-repeat;
+  mask: var(--gs-icon-external) center / contain no-repeat;
+  vertical-align: 0.05em;
+}
+
+:root {
+  --gs-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 14'%3E%3Cpath d='M0 7h17.5M11.5 1l6 6-6 6' fill='none' stroke='%23000' stroke-width='2.6'/%3E%3C/svg%3E");
+  --gs-icon-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 12L12 2M4.5 2H12v7.5' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-menu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14'%3E%3Cpath d='M0 2h18M0 7h18M0 12h18' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M1.5 1.5l11 11M12.5 1.5l-11 11' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5L7 7l5.5-5.5' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8.6' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3Cpath d='M10 5v6.2' stroke='%23000' stroke-width='2.6'/%3E%3Ccircle cx='10' cy='14.6' r='1.5'/%3E%3C/svg%3E");
+  --gs-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8.6' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3Cpath d='M5.8 10.2l2.9 2.9 5.5-5.8' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+}
+
+/* ---------- Buttons ---------- */
+/* One size. Primary = brand box colour with ink text: a small version of the brand's box.
+   Hover and press invert it to the surface's fg/bg. Shape = the brand's single rounded corner. */
+
+.gs-button {
+  --_bg: var(--gs-color-accent);
+  --_fg: var(--gs-color-accent-fg);
+  --_border: var(--_bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  font-family: var(--gs-font-sans);
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-black);
+  line-height: 1;
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--_fg);
+  background-color: var(--_bg);
+  border: var(--gs-border-strong) solid var(--_border);
+  border-radius: var(--gs-shape-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--gs-duration-fast) var(--gs-ease),
+    color var(--gs-duration-fast) var(--gs-ease),
+    border-color var(--gs-duration-fast) var(--gs-ease);
+}
+.gs-button--secondary {
+  --_bg: transparent;
+  --_fg: var(--gs-color-fg);
+  --_border: var(--gs-color-fg);
+}
+
+/* Hover and press. Disabled buttons don't react. */
+.gs-button:not([disabled], [aria-disabled="true"]):active {
+  --_bg: var(--gs-color-fg);
+  --_fg: var(--gs-color-bg);
+  --_border: var(--gs-color-fg);
+}
+.gs-surface-accent .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):active {
+  --_bg: var(--gs-paper);
+  --_fg: var(--gs-ink);
+  --_border: var(--gs-ink);
+}
+@media (hover: hover) and (pointer: fine) {
+  .gs-button:not([disabled], [aria-disabled="true"]):hover {
+    --_bg: var(--gs-color-fg);
+    --_fg: var(--gs-color-bg);
+    --_border: var(--gs-color-fg);
+  }
+  .gs-surface-accent .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):hover {
+    --_bg: var(--gs-paper);
+    --_fg: var(--gs-ink);
+    --_border: var(--gs-ink);
+  }
+}
+
+/* Disabled. A <button disabled> can't be clicked; an aria-disabled button stays focusable so its
+   reason can be read, and the script that set it ignores clicks. A link is never disabled: remove it. */
+.gs-button:is([disabled], [aria-disabled="true"]) {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Busy: while a form submits, the button says so ("Signing up") and keeps its colours. */
+.gs-button[aria-busy="true"] { cursor: progress; }
+
+.gs-button--block { width: 100%; }
+@media (min-width: 750px) { .gs-button--block { width: auto; } }
+
+.gs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gs-space-3) var(--gs-space-5);
+}
+
+/* ---------- Chips (status, category) ---------- */
+
+.gs-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4em 0.75em;
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-extrabold);
+  line-height: 1;
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+  color: var(--gs-ink);
+  background-color: var(--gs-color-tint);
+  border-radius: var(--gs-shape-sm);
+}
+/* The one state that matters most (On now): the surface's text colour as a solid chip. */
+.gs-chip--strong {
+  color: var(--gs-color-bg);
+  background-color: var(--gs-color-fg);
+}
+.gs-surface-tint .gs-chip:not(.gs-chip--strong) { background-color: var(--gs-paper); }
+
+/* Status and dates: a chip, then the dates on their own line. No "A · B" strings. */
+.gs-status { display: grid; justify-items: start; gap: var(--gs-space-2); margin: 0; }
+.gs-status__dates { margin: 0; font-size: var(--gs-text-small); font-weight: var(--gs-weight-bold); line-height: 1.4; }
+
+/* ---------- Rules ---------- */
+
+.gs-rule {
+  height: var(--gs-border-strong);
+  margin: 0;
+  border: 0;
+  background-color: var(--gs-color-rule);
+}
+
+/* ---------- Layout ---------- */
+
+.gs-container {
+  width: min(100% - 2 * var(--gs-gutter), var(--gs-width-content));
+  margin-inline: auto;
+}
+.gs-container--wide { width: min(100% - 2 * var(--gs-gutter), var(--gs-width-wide)); }
+.gs-container--prose { width: min(100% - 2 * var(--gs-gutter), var(--gs-width-prose)); }
+
+.gs-section { padding-block: var(--gs-section-space); }
+/* Two paper sections in a row share one gap, not two. */
+.gs-section.gs-surface-paper + .gs-section.gs-surface-paper { padding-block-start: 0; }
+
+.gs-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--gs-space-4) var(--gs-space-6);
+  margin-block-end: var(--gs-stack-lg);
+}
+.gs-section-head__text { display: grid; gap: var(--gs-space-3); }
+
+.gs-page-head {
+  display: grid;
+  gap: var(--gs-space-4);
+  padding-block: var(--gs-space-8) var(--gs-stack-lg);
+}
+.gs-page-head .gs-h1,
+.gs-page-head h1 { max-width: var(--gs-measure-heading); }
+
+/* Empty list: say what's missing and where to go instead. Never a heading over nothing. */
+.gs-empty {
+  display: grid;
+  justify-items: start;
+  gap: var(--gs-space-4);
+  max-width: var(--gs-measure-deck);
+  margin: 0;
+  padding-block: var(--gs-space-5);
+}
+.gs-empty__text {
+  margin: 0;
+  font-size: var(--gs-text-deck);
+  font-weight: var(--gs-weight-bold);
+  line-height: var(--gs-leading-deck);
+  text-wrap: pretty;
+}
+
+.gs-grid {
+  display: grid;
+  gap: var(--gs-space-7) var(--gs-gutter);
+}
+.gs-grid--cards { grid-template-columns: 1fr; }
+.gs-grid--artworks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
+@media (min-width: 750px) {
+  .gs-grid--cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gs-grid--artworks { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gs-space-7) var(--gs-gutter); }
+}
+@media (min-width: 990px) {
+  .gs-grid--cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .gs-grid--artworks { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ---------- Prose (rich text from staff) ---------- */
+
+.gs-prose { max-width: var(--gs-measure); }
+.gs-prose > * { margin-block: 0; }
+.gs-prose > * + * { margin-block-start: 1em; }
+.gs-prose > * + :is(h2, h3, h4) { margin-block-start: 1.8em; }
+.gs-prose > :is(h2, h3, h4) + * { margin-block-start: 0.6em; }
+.gs-prose strong, .gs-prose b { font-weight: var(--gs-weight-bold); }
+.gs-prose ul, .gs-prose ol { padding-inline-start: 1.25em; }
+.gs-prose li + li { margin-block-start: 0.4em; }
+.gs-prose li::marker { color: var(--gs-color-fg-muted); }
+.gs-prose blockquote {
+  margin-inline: 0;
+  padding-inline-start: var(--gs-space-5);
+  border-inline-start: 4px solid var(--gs-color-rule); /* brand guide p.11: the rule colour is for rules */
+  font-size: var(--gs-text-deck);
+  font-weight: var(--gs-weight-bold);
+  line-height: var(--gs-leading-deck);
+}
+.gs-prose img { max-width: 100%; height: auto; border-radius: var(--gs-shape-md); }
+/* Text pasted from Word or email arrives with inline fonts, sizes and colours. Neutralise them. */
+.gs-prose [style],
+.gs-prose font {
+  font-family: inherit !important;
+  color: inherit !important;
+  background-color: transparent !important;
+}
+.gs-prose :is(span, font, p, li, div, strong, em, b, i, a)[style] {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+/* ---------- Media ---------- */
+/* Two modes, chosen by the component, never by staff:
+   photo   = people, events, installation views. Cover-crops to a fixed ratio; honours the focal point.
+   artwork = an artwork itself. Never cropped, never corner-rounded: it sits whole on a mat. */
+
+.gs-media {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-color: var(--gs-color-tint);
+}
+.gs-media > img,
+.gs-media > picture > img,
+.gs-media > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gs-media--photo { aspect-ratio: var(--gs-media-ratio, var(--gs-ratio-card)); }
+.gs-media--photo > img,
+.gs-media--photo > picture > img,
+.gs-media--photo > video {
+  object-fit: cover;
+  object-position: var(--gs-focal, 50% 50%); /* Shopify image_tag writes the editor's focal point inline */
+}
+
+.gs-media--artwork {
+  box-sizing: border-box;
+  aspect-ratio: var(--gs-media-ratio, var(--gs-ratio-artwork));
+  padding: var(--gs-artwork-inset);
+  background-color: var(--gs-color-mat);
+}
+.gs-media--artwork > img,
+.gs-media--artwork > picture > img {
+  object-fit: contain;
+  object-position: 50% 50% !important; /* beats image_tag's inline focal point: artworks are never shifted */
+}
+
+.gs-shape-sm { border-radius: var(--gs-shape-sm); }
+.gs-shape-md { border-radius: var(--gs-shape-md); }
+.gs-shape-lg { border-radius: var(--gs-shape-lg); }
+
+.gs-figure { margin: 0; display: grid; gap: var(--gs-space-3); }
+
+/* ---------- Hero ---------- */
+/* Two variants, chosen by what the image is, never by taste:
+   .gs-hero           photo (installation view, event, people). Cover-cropped with the editor's focal point.
+   .gs-hero--artwork  the image IS an artwork. Shown whole on the mat, title box beside it, no overlap.
+   In the photo hero the title box sits under the image and overlaps it by exactly --gs-hero-overlap,
+   so the covered area is a known strip (bottom-left) that editors can keep clear. */
+
+.gs-hero {
+  display: grid;
+  width: min(100% - 2 * var(--gs-gutter), var(--gs-width-wide));
+  margin-inline: auto;
+}
+.gs-hero__media {
+  --gs-media-ratio: var(--gs-ratio-hero);
+  max-height: var(--gs-hero-max-h);
+  width: 100%;
+  border-radius: var(--gs-shape-lg);
+}
+.gs-hero__box {
+  position: relative;
+  display: grid;
+  gap: var(--gs-space-4);
+  justify-items: start;
+  margin: calc(-1 * var(--gs-hero-overlap)) var(--gs-gutter) 0 0;
+  padding: var(--gs-space-6) var(--gs-space-5);
+  border-radius: var(--gs-shape-lg);
+}
+.gs-hero__box :is(.gs-h1, h1) { max-width: 16ch; }
+/* No image (gs-media renders nothing when the image is blank): the box doesn't pull up into the gap. */
+.gs-hero__box:first-child { margin-block-start: 0; }
+
+@media (min-width: 750px) {
+  .gs-hero__media { --gs-media-ratio: var(--gs-ratio-hero-md); }
+}
+@media (min-width: 990px) {
+  .gs-hero__media { --gs-media-ratio: var(--gs-ratio-hero-lg); }
+  .gs-hero__box {
+    width: min(40rem, 58%);
+    margin: calc(-1 * var(--gs-hero-overlap)) 0 0 var(--gs-space-7);
+    padding: var(--gs-space-7);
+  }
+}
+
+/* Artwork hero: the work is never covered, cropped or rounded. */
+.gs-hero--artwork { gap: var(--gs-space-3); }
+.gs-hero--artwork .gs-hero__media {
+  --gs-media-ratio: 1 / 1;
+  border-radius: var(--gs-shape-lg);
+}
+.gs-hero--artwork .gs-hero__box { margin: 0; }
+@media (min-width: 750px) {
+  .gs-hero--artwork .gs-hero__media { --gs-media-ratio: 4 / 3; }
+}
+@media (min-width: 990px) {
+  .gs-hero--artwork {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: end;
+    gap: var(--gs-gutter);
+  }
+  .gs-hero--artwork .gs-hero__media { --gs-media-ratio: 1 / 1; }
+  .gs-hero--artwork .gs-hero__box { width: auto; margin: 0; }
+}
+
+/* ---------- Cards ---------- */
+/* Whole card is one link (stretched title link). No image zoom on hover: artwork isn't a UI effect. */
+
+.gs-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--gs-space-3);
+}
+.gs-card .gs-media { margin-block-end: var(--gs-space-2); }
+.gs-card__title {
+  margin: 0;
+  font-size: var(--gs-text-h3);
+  font-weight: var(--gs-weight-black);
+  line-height: var(--gs-leading-heading);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.gs-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.gs-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.gs-card--compact .gs-card__title {
+  font-size: var(--gs-text-h4);
+  letter-spacing: var(--gs-tracking-subheading);
+  line-height: var(--gs-leading-subheading);
+}
+.gs-card:active .gs-card__title a {
+  text-decoration-line: underline;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.16em;
+}
+@media (hover: hover) and (pointer: fine) {
+  .gs-card:hover .gs-card__title a {
+    text-decoration-line: underline;
+    text-decoration-color: var(--gs-color-link-line);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.16em;
+  }
+}
+
+/* Artwork tile (Shop / Limited Editions). Museum-label order: artist, title (italic), year; medium; edition; price. */
+.gs-artwork-tile {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--gs-space-1);
+}
+.gs-artwork-tile .gs-media { margin-block-end: var(--gs-space-3); }
+.gs-artwork-tile__artist {
+  margin: 0;
+  font-weight: var(--gs-weight-bold);
+  line-height: 1.35;
+}
+.gs-artwork-tile__title {
+  margin: 0;
+  font-size: var(--gs-text-body);
+  font-weight: var(--gs-weight-regular);
+  line-height: 1.35;
+  text-transform: none;
+}
+.gs-artwork-tile__title a { color: inherit; text-decoration: none; }
+.gs-artwork-tile__title a::after { content: ""; position: absolute; inset: 0; }
+.gs-artwork-tile__title cite { font-style: italic; }
+.gs-artwork-tile:active .gs-artwork-tile__title a {
+  text-decoration-line: underline;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: var(--gs-link-thickness);
+  text-underline-offset: var(--gs-link-offset);
+}
+@media (hover: hover) and (pointer: fine) {
+  .gs-artwork-tile:hover .gs-artwork-tile__title a {
+    text-decoration-line: underline;
+    text-decoration-color: var(--gs-color-link-line);
+    text-decoration-thickness: var(--gs-link-thickness);
+    text-underline-offset: var(--gs-link-offset);
+  }
+}
+.gs-artwork-tile__price {
+  margin: var(--gs-space-2) 0 0;
+  font-size: var(--gs-text-small);
+  font-weight: var(--gs-weight-bold);
+}
+
+/* The whole card or tile shows the focus ring. Only where :has() works: elsewhere the link keeps
+   its own ring, so focus is never invisible. */
+@supports selector(:has(*)) {
+  .gs-card:has(a:focus-visible),
+  .gs-artwork-tile:has(a:focus-visible) {
+    outline: var(--gs-focus-width) solid var(--gs-color-focus);
+    outline-offset: var(--gs-focus-offset);
+  }
+  .gs-card a:focus-visible,
+  .gs-artwork-tile a:focus-visible { outline: none; }
+}
+
+/* ---------- Sibling navigation (switcher) ---------- */
+/* Moves sideways between pages of the same kind without the main menu:
+   On now / Upcoming / Past on exhibition pages, the portfolios on Shop pages.
+   Real links with aria-current, not ARIA tabs: each item is its own page. */
+
+.gs-switcher { margin-block-end: var(--gs-stack-lg); }
+.gs-switcher__list {
+  display: flex;
+  flex-wrap: wrap; /* every item stays visible: ten portfolios wrap to a second row on a phone */
+  gap: 0 var(--gs-space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: inset 0 calc(-1 * var(--gs-border-strong)) 0 var(--gs-color-rule);
+}
+@media (max-width: 749.98px) {
+  .gs-switcher__list { column-gap: var(--gs-space-5); }
+}
+.gs-switcher__list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: var(--gs-tap-target);
+  white-space: nowrap;
+  font-size: var(--gs-text-nav);
+  font-weight: var(--gs-weight-extrabold);
+  letter-spacing: var(--gs-tracking-nav);
+  text-transform: uppercase;
+  color: var(--gs-color-fg-muted);
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+.gs-switcher__list a:active { color: var(--gs-color-fg); border-bottom-color: var(--gs-color-rule); }
+@media (hover: hover) and (pointer: fine) {
+  .gs-switcher__list a:hover { color: var(--gs-color-fg); border-bottom-color: var(--gs-color-rule); }
+}
+/* Current item: the link-line colour, which keeps 3:1 on every surface (the box colour doesn't). */
+.gs-switcher__list a[aria-current="page"] {
+  color: var(--gs-color-fg);
+  border-bottom-color: var(--gs-color-link-line);
+}
+.gs-switcher__count {
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-bold);
+  letter-spacing: 0;
+  color: var(--gs-color-fg-muted);
+}
+
+/* ---------- Image gallery ---------- */
+/* Installation views: photo mode, one ratio, captions always visible.
+   Works in the exhibition: artwork mode on the mat with a museum label. No lightbox in v1. */
+
+.gs-gallery {
+  display: grid;
+  gap: var(--gs-space-6) var(--gs-gutter);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gs-gallery--installation { grid-template-columns: 1fr; }
+.gs-gallery--installation .gs-media { --gs-media-ratio: var(--gs-ratio-install); }
+.gs-gallery--works { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
+@media (min-width: 750px) {
+  .gs-gallery--installation { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gs-gallery--works { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gs-space-7) var(--gs-gutter); }
+}
+@media (min-width: 1200px) {
+  .gs-gallery--installation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .gs-gallery--works { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* Museum label: artist, title (italic) and year, then medium, dimensions, credit. */
+.gs-label-block { display: grid; gap: 0.15em; font-size: var(--gs-text-caption); line-height: var(--gs-leading-caption); }
+.gs-label-block__artist { font-weight: var(--gs-weight-bold); }
+.gs-label-block cite { font-style: italic; }
+.gs-label-block__meta { font-weight: var(--gs-weight-light); }
+
+/* ---------- Forms ---------- */
+
+.gs-field { display: grid; gap: var(--gs-space-2); }
+.gs-field__label {
+  font-size: var(--gs-text-label);
+  line-height: var(--gs-leading-label);
+  font-weight: var(--gs-weight-extrabold);
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+}
+.gs-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 1rem;
+  font: inherit;
+  font-size: var(--gs-text-body);
+  color: var(--gs-ink);
+  background-color: var(--gs-paper);
+  border: var(--gs-border-strong) solid var(--gs-color-control-border);
+  border-radius: var(--gs-shape-sm);
+}
+.gs-input::placeholder { color: var(--gs-ink-soft); opacity: 1; }
+.gs-input:focus-visible { outline-offset: 1px; }
+
+/* Error: the field's border thickens in the error colour, and a message under it says what to do.
+   Link them: <input aria-invalid="true" aria-describedby="ID"> + <p class="gs-field__error" id="ID">.
+   The message and icon carry the error; colour is never the only signal. */
+.gs-input[aria-invalid="true"] {
+  border-color: var(--gs-color-error);
+  box-shadow: inset 0 0 0 1px var(--gs-color-error);
+}
+.gs-field__error,
+.gs-form-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45em;
+  margin: 0;
+  font-size: var(--gs-text-small);
+  font-weight: var(--gs-weight-bold);
+  line-height: 1.4;
+}
+.gs-field__error { color: var(--gs-color-error); }
+.gs-field__error::before,
+.gs-form-status::before {
+  content: "";
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  margin-block-start: 0.1em;
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-alert) center / contain no-repeat;
+  mask: var(--gs-icon-alert) center / contain no-repeat;
+}
+.gs-form-status::before {
+  -webkit-mask-image: var(--gs-icon-check);
+  mask-image: var(--gs-icon-check);
+}
+.gs-field__error[hidden],
+.gs-form-status[hidden] { display: none; }
+
+.gs-signup { display: grid; gap: var(--gs-space-4); max-width: 40rem; }
+.gs-signup__row { display: flex; flex-wrap: wrap; gap: var(--gs-space-3); align-items: end; }
+.gs-signup__row .gs-field { flex: 1 1 16rem; }
+/* In the one-line sign-up form the error message goes under the whole row (after .gs-signup__row),
+   so the button stays level with the input. */
+
+/* ---------- Header + navigation (visual spec; behaviour in DESIGN.md §6.1) ---------- */
+/* Markup: snippets/gs-header.liquid. Works without JavaScript: the Menu drawer and every dropdown
+   are <details> elements. assets/gs-nav.js only adds Escape, outside click and focus-leaving. */
+
+.gs-header {
+  position: relative;
+  z-index: var(--gs-z-header);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gs-space-5) var(--gs-space-7);
+  padding-inline-end: var(--gs-gutter);
+  background-color: var(--gs-color-bg);
+}
+/* The boxed logo hangs flush from the top-left corner of the page, rounded corner facing in. */
+.gs-header__logo { display: block; flex: none; line-height: 0; }
+.gs-header__logo :is(img, svg) { display: block; height: var(--gs-header-logo-h); width: auto; }
+
+/* Summaries used as buttons: no disclosure triangle. */
+:is(.gs-header__menu-toggle, .gs-nav__trigger) { list-style: none; }
+:is(.gs-header__menu-toggle, .gs-nav__trigger)::-webkit-details-marker { display: none; }
+
+/* ----- Menu drawer (below 1200px) ----- */
+.gs-drawer {
+  align-self: center;
+  margin-inline-start: auto;
+}
+.gs-header__menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  min-height: var(--gs-tap-target);
+  padding: 0 var(--gs-space-3);
+  font-family: var(--gs-font-sans);
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-black);
+  line-height: 1;
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+  color: var(--gs-color-fg);
+  background: transparent;
+  border: var(--gs-border-strong) solid var(--gs-color-fg);
+  border-radius: var(--gs-shape-sm);
+  cursor: pointer;
+  user-select: none;
+}
+.gs-header__menu-toggle::after {
+  content: "";
+  width: 1.1em;
+  height: 0.85em;
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-menu) center / contain no-repeat;
+  mask: var(--gs-icon-menu) center / contain no-repeat;
+}
+.gs-drawer[open] > .gs-header__menu-toggle::after {
+  -webkit-mask-image: var(--gs-icon-close);
+  mask-image: var(--gs-icon-close);
+}
+.gs-header__menu-toggle:active {
+  color: var(--gs-color-bg);
+  background-color: var(--gs-color-fg);
+}
+
+/* Opens over the page, under the header, and scrolls inside itself if it's taller than the screen. */
+.gs-drawer__panel {
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  z-index: var(--gs-z-drawer);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gs-space-5);
+  max-height: calc(100vh - var(--gs-header-logo-h));
+  max-height: calc(100dvh - var(--gs-header-logo-h));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--gs-space-2) var(--gs-gutter) var(--gs-space-6);
+  background-color: var(--gs-color-bg);
+  border-block-end: var(--gs-border-strong) solid var(--gs-color-rule);
+  box-shadow: var(--gs-shadow-dropdown);
+}
+.gs-drawer__panel .gs-nav { flex-direction: column; align-items: stretch; gap: 0; }
+.gs-drawer__panel .gs-nav__item { display: block; border-block-end: var(--gs-border) solid var(--gs-color-rule); }
+.gs-drawer__panel :is(.gs-nav__link, .gs-nav__trigger) { display: flex; justify-content: space-between; width: 100%; }
+.gs-drawer__panel .gs-nav__panel {
+  position: static;
+  min-width: 0;
+  padding: 0 0 var(--gs-space-3) var(--gs-space-4);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.gs-drawer__panel .gs-nav__panel a { min-height: var(--gs-tap-target); }
+.gs-drawer__panel .gs-utility { flex-direction: column; gap: 0; }
+.gs-drawer__panel .gs-utility a { display: flex; align-items: center; min-height: var(--gs-tap-target); }
+
+/* ----- Bar (1200px and up): utility row above the main nav ----- */
+.gs-header__bar { display: none; }
+
+.gs-utility {
+  display: flex;
+  gap: var(--gs-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-extrabold);
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+}
+.gs-utility a { color: var(--gs-color-fg); text-decoration: none; }
+
+/* Two kinds of top-level item, never mixed:
+   .gs-nav__link     a plain link, for a section with no dropdown
+   .gs-nav__trigger  the <summary> of a section's <details>: one button (label + chevron) that opens
+                     the dropdown. It never navigates; the section's main page is the first link
+                     inside (DS-11). Dropdowns in one menu share a `name`, so one is open at a time. */
+.gs-nav { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gs-space-1) var(--gs-space-6); margin: 0; padding: 0; list-style: none; }
+.gs-nav__item { position: relative; display: flex; align-items: center; }
+.gs-nav__link,
+.gs-nav__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: var(--gs-tap-target);
+  margin: 0;
+  padding: 0;
+  font-family: var(--gs-font-sans);
+  font-size: var(--gs-text-nav);
+  font-weight: var(--gs-weight-extrabold);
+  line-height: var(--gs-leading-label);
+  letter-spacing: var(--gs-tracking-nav);
+  text-transform: uppercase;
+  color: var(--gs-color-fg);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.gs-nav__trigger::after {
+  content: "";
+  flex: none;
+  width: 0.7em;
+  height: 0.45em;
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-chevron) center / contain no-repeat;
+  mask: var(--gs-icon-chevron) center / contain no-repeat;
+  transition: transform var(--gs-duration) var(--gs-ease);
+}
+.gs-nav__details[open] > .gs-nav__trigger::after { transform: rotate(180deg); }
+
+/* Underline: the current section, and on the bar the open dropdown's button. In the drawer the
+   chevron shows open/closed, so only the current section is underlined there. */
+.gs-nav__link[aria-current="page"],
+.gs-nav__item--current :is(.gs-nav__link, .gs-nav__trigger),
+.gs-header__bar .gs-nav__details[open] > .gs-nav__trigger,
+:is(.gs-nav__link, .gs-nav__trigger):active {
+  text-decoration-line: underline;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.5em;
+}
+
+.gs-nav__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: var(--gs-z-dropdown);
+  display: grid;
+  min-width: 15rem;
+  margin: 0;
+  padding: var(--gs-space-3) var(--gs-space-5) var(--gs-space-4);
+  list-style: none;
+  background-color: var(--gs-paper);
+  border-top: 4px solid var(--gs-color-rule); /* brand guide p.11: the rule colour is for rules */
+  border-radius: var(--gs-shape-md);
+  box-shadow: var(--gs-shadow-dropdown);
+}
+/* The last two sections open their dropdown leftwards, so it never runs off the right edge. */
+.gs-header__bar .gs-nav__item:nth-last-child(-n + 2) .gs-nav__panel { left: auto; right: 0; }
+.gs-nav__panel a {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  color: var(--gs-ink);
+  text-decoration: none;
+}
+.gs-nav__panel a[aria-current="page"],
+.gs-nav__panel a:active,
+.gs-utility a:active {
+  text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
+  text-underline-offset: var(--gs-link-offset);
+}
+
+/* Opening answers a click, so it may move: the panel fades in and drops 4px, 120ms.
+   Closing is instant. Reduced motion sets the duration to 0. */
+@keyframes gs-reveal {
+  from { opacity: 0; transform: translateY(-0.25rem); }
+}
+.gs-nav__details[open] > .gs-nav__panel,
+.gs-drawer[open] > .gs-drawer__panel {
+  animation: gs-reveal var(--gs-duration-fast) var(--gs-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gs-nav__link:hover,
+  .gs-nav__trigger:hover {
+    text-decoration-line: underline;
+    text-decoration-color: var(--gs-color-link-line);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.5em;
+  }
+  .gs-nav__panel a:hover,
+  .gs-utility a:hover {
+    text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
+    text-underline-offset: var(--gs-link-offset);
+  }
+  .gs-header__menu-toggle:hover {
+    color: var(--gs-color-bg);
+    background-color: var(--gs-color-fg);
+  }
+}
+
+@media (min-width: 990px) {
+  .gs-header__logo :is(img, svg) { height: var(--gs-header-logo-h-lg); }
+  .gs-drawer__panel {
+    max-height: calc(100vh - var(--gs-header-logo-h-lg));
+    max-height: calc(100dvh - var(--gs-header-logo-h-lg));
+  }
+}
+
+/* Desktop: the inline nav needs room for six or seven section labels, so the drawer is used up
+   to 1199px. Utility links sit in a small row above the nav (and come first in the markup). */
+@media (min-width: 1200px) {
+  .gs-drawer { display: none; }
+  .gs-header__bar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: var(--gs-space-1);
+    min-height: var(--gs-header-logo-h-lg);
+  }
+  .gs-header__bar .gs-utility { justify-content: flex-end; }
+  .gs-header__bar .gs-utility a { display: inline-flex; align-items: center; min-height: 2rem; }
+  .gs-nav { gap: var(--gs-space-1) clamp(1.25rem, 2.2vw, 2.25rem); }
+}
+
+/* ---------- Footer ---------- */
+
+.gs-footer { padding-block: var(--gs-space-8) var(--gs-space-6); }
+.gs-footer__logos { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--gs-space-6) var(--gs-space-7); }
+.gs-footer__cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--gs-space-6) var(--gs-gutter);
+  margin-block: var(--gs-space-7);
+}
+.gs-footer__cols > * { display: grid; align-content: start; gap: var(--gs-space-3); }
+.gs-footer__cols p { margin: 0; }
+.gs-footer__cols ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--gs-space-2); }
+.gs-footer__cols a { color: inherit; text-decoration: none; }
+.gs-footer__cols a:active {
+  text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
+  text-underline-offset: var(--gs-link-offset);
+}
+@media (hover: hover) and (pointer: fine) {
+  .gs-footer__cols a:hover {
+    text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
+    text-underline-offset: var(--gs-link-offset);
+  }
+}
+.gs-footer__legal { color: var(--gs-color-fg-muted); font-size: var(--gs-text-caption); }
+
+/* ---------- Touch: 44px targets ---------- */
+/* On a coarse pointer, small standalone links grow to the 44px target (WCAG 2.5.5 level, beyond
+   the AA minimum of 24px). Inline links inside text are exempt. */
+@media (pointer: coarse) {
+  .gs-cta-link,
+  .gs-footer__cols a,
+  .gs-utility a,
+  .gs-nav__panel a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--gs-tap-target);
+  }
+  .gs-footer__cols ul { gap: 0; }
+}
+
+/* ---------- Forced colours (Windows High Contrast) ---------- */
+/* Icons are CSS masks painted with background-color, which forced colours removes. Repaint them in
+   the text colour, and give panels and chips a border so their edges survive. */
+@media (forced-colors: active) {
+  .gs-cta-link--more::after,
+  .gs-link--external::after,
+  .gs-header__menu-toggle::after,
+  .gs-nav__trigger::after,
+  .gs-field__error::before,
+  .gs-form-status::before {
+    forced-color-adjust: none;
+    background-color: CanvasText;
+  }
+  a.gs-link--external::after,
+  .gs-cta-link--more::after { background-color: LinkText; }
+  .gs-nav__panel,
+  .gs-drawer__panel,
+  .gs-chip { border: 1px solid CanvasText; }
+  .gs-switcher__list a { border-bottom-color: Canvas; }
+  .gs-switcher__list a[aria-current="page"] { border-bottom-color: Highlight; }
+}

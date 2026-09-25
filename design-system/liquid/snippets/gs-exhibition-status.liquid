@@ -1,0 +1,30 @@
+{%- comment -%}
+  gs-exhibition-status: works out an exhibition's status from its dates so labels and lists
+  never go stale (DESIGN.md §7, proposals/content-model.md).
+  Draft reference: untested until the theme is pulled.
+
+  Params
+    start  date value (e.g. exhibition.start_date.value). Required.
+    end    date value. Blank means open-ended.
+  Output   on-now | upcoming | past
+
+  Compares calendar days using Liquid's 'now'. Storefront pages can be cached for a short
+  time, so a status may lag briefly around midnight on a changeover day. Confirm the
+  timezone Liquid uses for 'now' in the review theme before relying on same-day accuracy.
+{%- endcomment -%}
+{%- liquid
+  assign today = 'now' | date: '%Y%m%d' | plus: 0
+  assign s = start | date: '%Y%m%d' | plus: 0
+  if end != blank
+    assign e = end | date: '%Y%m%d' | plus: 0
+  else
+    assign e = 99991231
+  endif
+  if today < s
+    echo 'upcoming'
+  elsif today > e
+    echo 'past'
+  else
+    echo 'on-now'
+  endif
+-%}
