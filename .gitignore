@@ -1,0 +1,8 @@
+__pycache__/
+.DS_Store
+.claude/
+settings.local.json
+.env
+.env.*
+node_modules/
+_to_delete/
