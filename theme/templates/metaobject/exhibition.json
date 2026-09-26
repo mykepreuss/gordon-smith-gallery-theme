@@ -12,14 +12,8 @@
     "hero": {
       "type": "gs-exhibition-hero"
     },
-    "details": {
-      "type": "gs-exhibition-details"
-    },
     "body": {
       "type": "gs-exhibition-body"
-    },
-    "credits": {
-      "type": "gs-exhibition-credits"
     },
     "views": {
       "type": "gs-gallery"
@@ -30,9 +24,7 @@
   },
   "order": [
     "hero",
-    "details",
     "body",
-    "credits",
     "views",
     "more"
   ]

@@ -6,6 +6,10 @@
   (custom.featured_frame), so no product needs its own template (content model parts 3 and 6).
 
   The archive note and framing text are the same on every product, so they're settings here.
+
+  Beside the work sits only what it takes to decide and buy: label, price, the action, the archive
+  note and the framing offer. The description follows below at reading width, "About the work"
+  (DESIGN.md §7.5), with any disclosures after it (DS-38).
 {%- endcomment -%}
 {%- liquid
   assign variant = product.selected_or_first_available_variant
@@ -91,10 +95,6 @@
         <div class="gs-prose gs-caption">{{ section.settings.archive_note }}</div>
       {%- endif -%}
 
-      {%- if product.description != blank -%}
-        <div class="gs-prose">{{ product.description }}</div>
-      {%- endif -%}
-
       {%- if frame != blank -%}
         {%- assign frame_variant = frame.selected_or_first_available_variant -%}
         <section class="gs-panel gs-surface-tint" aria-labelledby="{{ form_id }}-frame">
@@ -114,9 +114,23 @@
         </section>
       {%- endif -%}
 
-      {%- liquid
-        assign disclosures = product.metafields.shopify.disclosure.value
-      -%}
+    </div>
+
+    {%- liquid
+      assign disclosures = product.metafields.shopify.disclosure.value
+      assign has_disclosures = false
+      for disclosure in disclosures
+        if disclosure.display_preferences.value.surfaces contains 'product_page'
+          assign has_disclosures = true
+        endif
+      endfor
+    -%}
+    {%- if product.description != blank or has_disclosures -%}
+    <section class="gs-artwork__about" aria-labelledby="{{ form_id }}-about">
+      <h2 class="gs-label" id="{{ form_id }}-about">{{ 'products.about_work' | t }}</h2>
+      {%- if product.description != blank -%}
+        <div class="gs-prose">{{ product.description }}</div>
+      {%- endif -%}
       {%- for disclosure in disclosures -%}
         {%- assign surfaces = disclosure.display_preferences.value.surfaces -%}
         {%- if surfaces contains 'product_page' -%}
@@ -132,7 +146,8 @@
           </details>
         {%- endif -%}
       {%- endfor -%}
-    </div>
+    </section>
+    {%- endif -%}
   </div>
 </div>
 

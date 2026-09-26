@@ -4,7 +4,8 @@
     "external_site": "(external site)",
     "pagination": "Pages",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "pdf": "(PDF)"
   },
   "header": {
     "home": "Gordon Smith Gallery, home",
@@ -65,7 +66,9 @@
     "events": "Events",
     "credits": "Credits",
     "installation_views": "Installation views",
-    "more": "More exhibitions"
+    "more": "More exhibitions",
+    "about": "About the exhibition",
+    "all": "All exhibitions"
   },
   "events": {
     "time_range": "{{ start }} to {{ end }}",
@@ -95,7 +98,8 @@
     "frame_heading": "Add a frame",
     "add_frame": "Add frame to cart",
     "frame_sold_out": "This frame is sold out.",
-    "disclosure": "Disclosure"
+    "disclosure": "Disclosure",
+    "about_work": "About the work"
   },
   "contact": {
     "details_heading": "Visit and contact",
@@ -149,5 +153,10 @@
     "expired": "This gift card has expired",
     "expires_on": "Expires on {{ expires_on }}",
     "use_at_checkout": "Use this gift card at checkout"
+  },
+  "visit": {
+    "address": "Address",
+    "hours": "Hours",
+    "plan_link": "{{ title }}"
   }
 }

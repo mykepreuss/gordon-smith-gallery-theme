@@ -1,27 +1,60 @@
 {%- comment -%}
-  An exhibition's text (DESIGN.md §7.5): the summary as the deck, then the body. The body is a
-  rich text field, so pasted page-builder markup and Word formatting from the old pages don't
-  come across (content model part 2, TYPE-03).
+  About the exhibition (DESIGN.md §7.5, content model parts 2 and 5): the summary as the deck,
+  the text, and the credits with funder logos, beside the facts (reception, events, curator,
+  artists; gs-exhibition-facts). On a phone the facts follow the summary, so the reception time
+  and the artists come before the long text. On wide screens they sit in a column beside it.
+
+  The text is a rich text field, so page-builder markup and Word formatting from the old pages
+  don't come across (TYPE-03). Funder logos show as supplied, with no box or corner.
 {%- endcomment -%}
-{%- assign entry = metaobject -%}
-{%- if entry.summary.value != blank or entry.body.value != blank -%}
+{%- liquid
+  assign entry = metaobject
+  capture facts
+    render 'gs-exhibition-facts', entry: entry
+  endcapture
+  assign facts = facts | strip
+  assign has_credits = false
+  if entry.credits.value != blank or entry.funder_logos.value != blank
+    assign has_credits = true
+  endif
+-%}
+{%- if entry.summary.value != blank or entry.body.value != blank or facts != blank or has_credits -%}
   <div class="gs-section gs-surface-paper">
-    <div class="gs-container">
-      <div class="gs-prose">
-        {%- if entry.summary.value != blank -%}
-          <p class="gs-deck">{{ entry.summary.value | escape | newline_to_br }}</p>
-        {%- endif -%}
-        {%- if entry.body.value != blank -%}
-          {{ entry.body | metafield_tag }}
-        {%- endif -%}
-      </div>
+    <div class="gs-container gs-about{% if facts == blank %} gs-about--no-facts{% endif %}">
+      {%- if entry.summary.value != blank -%}
+        <p class="gs-deck gs-about__deck">{{ entry.summary.value | escape | newline_to_br }}</p>
+      {%- endif -%}
+
+      {%- if facts != blank -%}
+        <aside class="gs-about__facts" aria-label="{{ 'exhibitions.details_label' | t }}">{{ facts }}</aside>
+      {%- endif -%}
+
+      {%- if entry.body.value != blank -%}
+        <div class="gs-prose gs-about__body">{{ entry.body | metafield_tag }}</div>
+      {%- endif -%}
+
+      {%- if has_credits -%}
+        <section class="gs-about__credits" aria-labelledby="{{ section.id }}-credits">
+          <h2 class="gs-label" id="{{ section.id }}-credits">{{ 'exhibitions.credits' | t }}</h2>
+          {%- if entry.credits.value != blank -%}
+            <div class="gs-prose">{{ entry.credits | metafield_tag }}</div>
+          {%- endif -%}
+          {%- if entry.funder_logos.value != blank -%}
+            <ul class="gs-logos">
+              {%- for logo in entry.funder_logos.value -%}
+                <li>{{ logo | image_url: height: 112 | image_tag: loading: 'lazy', alt: logo.alt }}</li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </section>
+      {%- endif -%}
     </div>
   </div>
 {%- endif -%}
 
 {% schema %}
 {
-  "name": "Exhibition text",
+  "name": "About the exhibition",
   "tag": "section",
   "enabled_on": {
     "templates": ["metaobject"]
@@ -29,12 +62,12 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "From the exhibition entry: summary, then text."
+      "content": "From the exhibition entry: summary, text, credits and funder logos, beside the opening reception, events linked to the exhibition, curator, where in the building, and artists."
     }
   ],
   "presets": [
     {
-      "name": "Exhibition text"
+      "name": "About the exhibition"
     }
   ]
 }

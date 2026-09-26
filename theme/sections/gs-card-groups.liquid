@@ -3,22 +3,34 @@
   organisations on About or the ways to give on Donate. Staff add card groups to the page's Card
   groups field; this section shows them in order after the page text. A page without card groups
   shows nothing here.
+
+  A group whose cards all have portrait images (a board, a staff list) shows as a grid of people:
+  portrait frames, two to four across, smaller titles (DS-37). Staff don't choose it; the images do.
 {%- endcomment -%}
 {%- assign groups = page.metafields.custom.card_groups.value -%}
 {%- if groups != blank -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container">
       {%- for group in groups -%}
-        {%- assign heading = group.heading.value -%}
+        {%- liquid
+          assign heading = group.heading.value
+          assign portrait = true
+          for card in group.cards.value
+            assign ratio = card.image.value.aspect_ratio | default: 1
+            if ratio >= 1
+              assign portrait = false
+            endif
+          endfor
+        -%}
         <section class="gs-card-group"{% if heading != blank %} aria-labelledby="{{ section.id }}-{{ forloop.index }}"{% endif %}>
           {%- if heading != blank -%}
             <div class="gs-section-head">
               <h2 class="gs-h2" id="{{ section.id }}-{{ forloop.index }}">{{ heading | escape }}</h2>
             </div>
           {%- endif -%}
-          <ul class="gs-grid gs-grid--cards">
+          <ul class="gs-grid {% if portrait %}gs-grid--people{% else %}gs-grid--cards{% endif %}">
             {%- for card in group.cards.value -%}
-              <li>{%- render 'gs-card', card: card, heading: 'h3' -%}</li>
+              <li>{%- render 'gs-card', card: card, heading: 'h3', portrait: portrait -%}</li>
             {%- endfor -%}
           </ul>
         </section>

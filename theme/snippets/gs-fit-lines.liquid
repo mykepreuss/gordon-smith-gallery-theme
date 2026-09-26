@@ -1,0 +1,61 @@
+{% doc %}
+  Splits a short title into two balanced lines and says how many letters the longer line has, so
+  the title can be sized to keep each line whole (DESIGN.md §4.3). "Gordon Smith Gallery" becomes
+  "Gordon Smith" and "Gallery", sized to the 12 letters of the first line, instead of breaking
+  one word per line.
+
+  Output is "<letters>~~<first line>~~<second line>". When the title is one word, or its longer
+  line would have more than max letters (so it would get too small), the output is
+  "<longest word>~~~~" and the title wraps normally, like gs-fit.
+
+    capture parts, render 'gs-fit-lines', text: title, endcapture
+    assign parts = parts | strip | split: '~~'
+    parts[0] = letters for --gs-fit-chars; parts[1], parts[2] = the lines, or blank
+
+  @param {string} text - The title
+  @param {number} [max] - Most letters allowed on the longer line. Default 14
+
+  @example
+  {%- capture parts -%}{% render 'gs-fit-lines', text: section.settings.heading %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign max = max | default: 14
+  assign words = text | strip_html | strip | split: ' '
+  assign count = words.size
+
+  assign longest = 1
+  for word in words
+    assign n = word | size
+    if n > longest
+      assign longest = n
+    endif
+  endfor
+
+  assign best = 9999
+  assign best_at = 0
+  if count > 1
+    assign last = count | minus: 1
+    for i in (1..last)
+      assign rest = count | minus: i
+      assign a = words | slice: 0, i | join: ' ' | size
+      assign b = words | slice: i, rest | join: ' ' | size
+      assign m = a
+      if b > m
+        assign m = b
+      endif
+      if m < best
+        assign best = m
+        assign best_at = i
+      endif
+    endfor
+  endif
+
+  if best_at > 0 and best <= max
+    assign rest = count | minus: best_at
+    assign first = words | slice: 0, best_at | join: ' '
+    assign second = words | slice: best_at, rest | join: ' '
+    echo best | append: '~~' | append: first | append: '~~' | append: second
+  else
+    echo longest | append: '~~~~'
+  endif
+-%}

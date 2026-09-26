@@ -307,7 +307,7 @@
   --_fg: var(--gs-color-bg);
   --_border: var(--gs-color-fg);
 }
-.gs-surface-accent .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):active {
+:is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):active {
   --_bg: var(--gs-paper);
   --_fg: var(--gs-ink);
   --_border: var(--gs-ink);
@@ -318,7 +318,7 @@
     --_fg: var(--gs-color-bg);
     --_border: var(--gs-color-fg);
   }
-  .gs-surface-accent .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):hover {
+  :is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):hover {
     --_bg: var(--gs-paper);
     --_fg: var(--gs-ink);
     --_border: var(--gs-ink);
@@ -445,16 +445,20 @@
 }
 ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-grid--cards { grid-template-columns: 1fr; }
+/* People (a board, staff): portraits two to four across (DS-37). */
+.gs-grid--people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
 .gs-grid--artworks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
 @media (min-width: 750px) {
   .gs-grid--cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gs-grid--people { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gs-space-7) var(--gs-gutter); }
   .gs-grid--artworks { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gs-space-7) var(--gs-gutter); }
 }
 @media (min-width: 990px) {
   .gs-grid--cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 1200px) {
-  .gs-grid--artworks { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .gs-grid--artworks,
+  .gs-grid--people { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* ---------- Prose (rich text from staff) ---------- */
@@ -477,6 +481,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   line-height: var(--gs-leading-deck);
 }
 .gs-prose img { max-width: 100%; height: auto; border-radius: var(--gs-shape-md); }
+/* A video embedded in the page text fills the text column at 16:9, whatever size the embed code gives. */
+.gs-prose iframe:is([src*="vimeo.com"], [src*="youtube.com"], [src*="youtube-nocookie.com"]) {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--gs-ratio-video);
+  border: 0;
+  border-radius: var(--gs-shape-md);
+}
 /* Text pasted from Word or email arrives with inline fonts, sizes and colours. Neutralise them. */
 .gs-prose [style],
 .gs-prose font {
@@ -570,11 +583,18 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 @media (min-width: 990px) {
   .gs-hero__media { --gs-media-ratio: var(--gs-ratio-hero-lg); }
+  /* The box's left edge lines up with the content column below the hero (1200 wide), and never
+     sits closer than 48px to the image's edge. */
   .gs-hero__box {
     width: min(var(--gs-width-form), 58%);
-    margin: calc(-1 * var(--gs-hero-overlap)) 0 0 var(--gs-space-7);
+    margin: calc(-1 * var(--gs-hero-overlap)) 0 0 max(var(--gs-space-7), (100% - var(--gs-width-content)) / 2);
     padding: var(--gs-space-7);
   }
+}
+
+/* From 1200 the box widens, so a four-word exhibition title breaks into two lines, not four. */
+@media (min-width: 1200px) {
+  .gs-hero__box { width: min(48rem, 60%); }
 }
 
 /* Artwork hero: the work is never covered, cropped or rounded. */
@@ -681,6 +701,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
     text-decoration-thickness: var(--gs-link-thickness);
     text-underline-offset: var(--gs-link-offset);
   }
+}
+/* A long medium ("Eleven colour, multi-plate photopolymer with...") stops at two lines in a tile;
+   the product page shows it whole. */
+.gs-artwork-tile__medium {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 .gs-artwork-tile__price {
   margin: var(--gs-space-2) 0 0;
@@ -1157,7 +1186,10 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 
 /* Photo credit or artwork caption under a hero. */
 .gs-hero__caption { margin-block-start: var(--gs-space-3); max-width: var(--gs-measure); }
-@media (min-width: 990px) { .gs-hero__caption { margin-inline-start: var(--gs-space-7); } }
+.gs-hero__caption > * { margin: 0; }
+@media (min-width: 990px) {
+  .gs-hero:not(.gs-hero--artwork) .gs-hero__caption { margin-inline-start: max(var(--gs-space-7), (100% - var(--gs-width-content)) / 2); }
+}
 
 /* A programme's own logo above its page title (DESIGN.md §8.2). Artwork, so no box or corner. */
 .gs-page-head__logo { display: block; line-height: 0; }
@@ -1241,9 +1273,71 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-card-group + .gs-card-group { margin-block-start: var(--gs-section-space); }
+/* A portfolio's description sits under its hero, and the switcher follows at the page header's gap. */
+.gs-collection-head { margin-block-end: var(--gs-stack-lg); }
+.gs-collection-intro { padding-block-start: var(--gs-space-6); }
 /* A link after a list to a related page ("Exhibitions" overview under the exhibition lists). */
 .gs-list-more { margin: var(--gs-stack-lg) 0 0; }
 .gs-gallery__credit { margin: var(--gs-space-4) 0 0; }
+
+/* ---------- Wide exhibition card and feature list (DS-34) ---------- */
+/* On now and Upcoming: each exhibition gets the room of a feature, image beside text. The whole
+   card stays one link (the title's overlay); the "About the exhibition" cue is decoration. */
+
+.gs-card__body { display: grid; align-content: start; justify-items: start; gap: var(--gs-space-3); }
+.gs-card__body > * { margin: 0; }
+.gs-grid--features { grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-8); }
+.gs-card--wide .gs-card__title { font-size: var(--gs-text-h2); }
+.gs-card__cue { margin-block-start: var(--gs-space-2); }
+@media (min-width: 750px) {
+  .gs-card--wide {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: var(--gs-gutter);
+    align-items: center;
+  }
+  .gs-card--wide > .gs-media { margin: 0; }
+}
+.gs-card:active .gs-card__cue { text-decoration-color: currentColor; }
+@media (hover: hover) and (pointer: fine) {
+  .gs-card:hover .gs-card__cue { text-decoration-color: currentColor; }
+}
+
+/* ---------- About the exhibition ---------- */
+/* Summary, text and credits beside the facts. On a phone the facts follow the summary, so the
+   reception and the artists come before the long text. */
+
+.gs-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "deck" "facts" "body" "credits";
+  gap: var(--gs-space-6) var(--gs-gutter);
+}
+.gs-about__deck { grid-area: deck; max-width: none; }
+.gs-about__facts { grid-area: facts; }
+.gs-about__body { grid-area: body; }
+.gs-about__credits {
+  grid-area: credits;
+  display: grid;
+  justify-items: start;
+  gap: var(--gs-space-4);
+  padding-block-start: var(--gs-space-4);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+}
+.gs-about__credits > * { margin: 0; }
+.gs-events--compact { gap: var(--gs-space-4); }
+.gs-events--compact .gs-event { padding: 0; border: 0; gap: var(--gs-space-1); }
+.gs-about__facts .gs-details__item--wide .gs-names { columns: 2 9rem; }
+@media (min-width: 990px) {
+  .gs-about {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "deck facts" "body facts" "credits facts";
+    column-gap: var(--gs-space-8);
+  }
+  .gs-about--no-facts { grid-template-areas: "deck ." "body ." "credits ."; }
+  .gs-about__facts, .gs-about__credits { align-self: start; }
+  .gs-details--stack { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* ---------- Funder logos ---------- */
 /* Other organisations' marks, shown as supplied: no box, no corner. */
@@ -1273,6 +1367,16 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-artwork__media { display: grid; gap: var(--gs-space-4); margin: 0; padding: 0; list-style: none; }
 .gs-artwork__info { display: grid; align-content: start; justify-items: start; gap: var(--gs-space-5); }
 .gs-artwork__info > * { margin: 0; }
+/* About the work: the description at reading width under both columns (DS-38). */
+.gs-artwork__about {
+  display: grid;
+  gap: var(--gs-space-4);
+  max-width: var(--gs-measure);
+  padding-block-start: var(--gs-space-5);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+}
+.gs-artwork__about > * { margin: 0; }
+@media (min-width: 990px) { .gs-artwork__about { grid-column: 1 / -1; } }
 
 /* Museum label: artist in bold, title in italics (a real <cite>), then year. Sentence case (DS-10). */
 .gs-artwork-label {
@@ -1411,6 +1515,16 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-newsletter__text { display: grid; gap: var(--gs-space-3); }
 .gs-newsletter__text > * { margin: 0; }
 @media (min-width: 990px) { .gs-newsletter { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+
+/* Visit (home): heading and link beside the facts, which reuse the details list. */
+.gs-visit { display: grid; gap: var(--gs-space-6) var(--gs-gutter); align-items: start; }
+.gs-visit__head { display: grid; justify-items: start; gap: var(--gs-space-4); }
+.gs-visit__head > * { margin: 0; }
+.gs-visit address { font-style: normal; }
+@media (min-width: 990px) {
+  .gs-visit { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .gs-visit__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 .gs-contact { display: grid; gap: var(--gs-space-7) var(--gs-gutter); align-items: start; }
 @media (min-width: 990px) { .gs-contact { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }

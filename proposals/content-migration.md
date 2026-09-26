@@ -4,7 +4,7 @@ The new theme (P-13) doesn't carry over the current theme's templates, so everyt
 
 Source: the baseline theme's templates and section groups (commit 27ef593), read 2026-09-25. Destinations marked **new** are the additions to the content model approved on 2026-09-25 (P-16; `design-system/proposals/content-model.md` parts 4 to 6).
 
-**Build status (branch `build-new-theme`):** every theme-side home below exists in the new theme. Content already moved into it as defaults: the land acknowledgement (theme setting), the newsletter heading and sentence (from the Contact template), the product archive note and framing text, and the cart's sales policy (its privacy link made relative). Content that lives in fields and entries moves when the definitions and entries are created, with Michael's go-ahead (`proposals/store-changes.md` §4).
+**Build status (branch `build-new-theme`):** every theme-side home below exists in the new theme. Content already moved into it as defaults: the land acknowledgement (theme setting), the newsletter heading and sentence (from the Contact template), the product archive note and framing text, and the cart's sales policy (its privacy link made relative). Content that lives in fields and entries moved on 2026-09-25, with Michael's go-ahead, in four steps: exhibitions, programme pages, Shop, then everything else (`proposals/store-writes/README.md`). **Every row below now has its content in the new theme or the store.** Page text that changes at release (On Now, Upcoming, Upcoming Events, Donate, Gordon and Marion) is staged until then (DS-39, `proposals/store-changes.md` §8).
 
 ## What the inventory shows
 
@@ -27,7 +27,7 @@ Source: the baseline theme's templates and section groups (commit 27ef593), read
 
 | Content | New home |
 | --- | --- |
-| Rotating banner, 4 images, autoplay | One hero image in the home template's settings (the home page is the one page on its template, so template settings are the right place). No autoplay carousel |
+| Rotating banner, 4 images, autoplay | The hero leads with the exhibition on now (DS-30). When nothing is on, it shows one image from the home template's settings: the banner's first image (`ON9DA8_1.jpg`) is set. No autoplay carousel |
 | The whole On Now page embedded | Exhibitions on now and upcoming, from exhibition entries |
 | "Shop Limited Editions", 2026 Spring Portfolio, "View Shop" | Shop feature: the newest portfolio automatically, linking to the Shop landing |
 | Two frame blocks | Dropped (the product page offers the frame) |

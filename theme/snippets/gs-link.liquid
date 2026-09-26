@@ -1,7 +1,8 @@
 {% doc %}
   A link from a link field (a card's link, a page's call to action, an event's tickets) or a menu
   link. Off-site addresses get the external cue: the arrow and "(external site)" for screen
-  readers (DESIGN.md §6.1, §6.2). Store addresses typed in full are made relative (gs-url).
+  readers (DESIGN.md §6.1, §6.2). Store addresses typed in full are made relative (gs-url). A link
+  to a PDF says so, "(PDF)", so nobody opens a large file by surprise.
 
   @param {object} link - A link field's value (url, text) or a menu link (url, title)
   @param {string} [label] - Visible text. Default: the link's own text or title
@@ -16,6 +17,12 @@
   endcapture
   assign r = r | strip | split: '|'
   assign text = label | default: link.text | default: link.title
+  assign path = r[0] | split: '?' | first | downcase
+  assign ending = path | slice: -4, 4
+  assign is_pdf = false
+  if ending == '.pdf'
+    assign is_pdf = true
+  endif
 -%}
 {%- liquid
   assign classes = class | default: ''
@@ -25,5 +32,6 @@
 -%}
 <a{% if classes != blank %} class="{{ classes }}"{% endif %} href="{{ r[0] }}">
   {{- text | escape -}}
+  {%- if is_pdf %} {{ 'general.pdf' | t }}{% endif -%}
   {%- if r[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
 </a>

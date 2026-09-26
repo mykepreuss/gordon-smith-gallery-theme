@@ -160,6 +160,7 @@
   --gs-hero-overlap: clamp(3rem, 1.886rem + 4.571vw, 6rem); /* title box overlaps the image by exactly this: 48 to 96 */
   --gs-ratio-card: 4 / 3;      /* exhibition, program, news cards (photo mode) */
   --gs-ratio-install: 3 / 2;   /* installation-view galleries (photo mode) */
+  --gs-ratio-video: 16 / 9;    /* a video embedded in page text (YouTube, Vimeo) */
   --gs-ratio-artwork: 1 / 1;   /* artwork/product tiles (artwork mode, never cropped) */
   --gs-ratio-portrait: 4 / 5;  /* artist portraits */
   --gs-artwork-inset: 8%;      /* mat padding around artwork in tiles */
@@ -266,6 +267,8 @@
   --gs-color-bg: var(--gs-color-tint);
   --gs-color-fg: var(--gs-ink);
   --gs-color-fg-muted: var(--gs-ink-soft);
+  --gs-color-accent: var(--gs-ink);      /* DS-31: the box colour on its own tint reads as disabled (1.9:1), so the primary button is ink here */
+  --gs-color-accent-fg: var(--gs-paper);
   --gs-color-accent-text: var(--gs-ink); /* gallery teal is 4.05:1 on its tint: large text only */
   --gs-color-hover-fill: var(--gs-color-rule);
   --gs-color-focus: var(--gs-ink);

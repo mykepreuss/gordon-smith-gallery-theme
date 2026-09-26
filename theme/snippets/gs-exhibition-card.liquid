@@ -4,12 +4,17 @@
   and no text has no page worth opening, so its card doesn't link: the six older exhibitions in
   the Past list hold only a title, dates and image (DS-25).
 
+  The wide card (On now and Upcoming pages, DS-34) puts the image beside the text and adds the
+  start of the summary and an "About the exhibition" cue. The cue isn't a second link: the whole
+  card already is one.
+
   A key image that is an artwork shows whole on the mat in the card's frame (DS-05); a photo
   fills the frame around its focal point.
 
   @param {object} entry - An exhibition entry
   @param {boolean} [show_status] - Show the status chip (lists that mix statuses, e.g. Home)
   @param {boolean} [compact] - The compact card, for "More exhibitions"
+  @param {boolean} [wide] - The wide card, image beside text, for the On now and Upcoming pages
   @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
 
   @example
@@ -25,31 +30,54 @@
   if entry.key_image_is_artwork.value == true
     assign mode = 'artwork'
   endif
+  assign preset_sizes = nil
+  if wide
+    assign preset_sizes = '(min-width: 1296px) 700px, (min-width: 750px) 58vw, 92vw'
+  endif
 -%}
-<article class="gs-card{% if compact %} gs-card--compact{% endif %}">
-  {%- render 'gs-media', image: entry.key_image.value, preset: 'card', mode: mode, ratio: '4 / 3', alt: entry.title.value -%}
-  <{{ tag }} class="gs-card__title">
-    {%- if has_page -%}
-      <a href="{{ entry.system.url }}">{{ entry.title.value | escape }}</a>
-    {%- else -%}
-      {{- entry.title.value | escape -}}
+<article class="gs-card{% if compact %} gs-card--compact{% endif %}{% if wide %} gs-card--wide{% endif %}">
+  {%- if wide -%}
+    {%- render 'gs-media', image: entry.key_image.value, sizes: preset_sizes, mode: mode, ratio: '4 / 3', alt: entry.title.value -%}
+  {%- else -%}
+    {%- render 'gs-media', image: entry.key_image.value, preset: 'card', mode: mode, ratio: '4 / 3', alt: entry.title.value -%}
+  {%- endif -%}
+  <div class="gs-card__body">
+    {%- if wide -%}
+      {%- render 'gs-exhibition-when', entry: entry, show_status: show_status -%}
     {%- endif -%}
-  </{{ tag }}>
-  {%- render 'gs-exhibition-when', entry: entry, show_status: show_status -%}
-  {%- unless compact -%}
-    {%- if entry.curator_credit.value != blank -%}
-      <p class="gs-meta">{{ entry.curator_credit.value | escape }}</p>
-    {%- elsif entry.artists.value != blank -%}
-      {%- assign names = entry.artists.value -%}
-      <p class="gs-meta">
-        {%- if names.size > 4 -%}
-          {%- assign shown = names | slice: 0, 3 | join: ', ' -%}
-          {%- assign more = names.size | minus: 3 -%}
-          {{- 'exhibitions.artists_more' | t: names: shown, count: more -}}
-        {%- else -%}
-          {{- names | join: ', ' | escape -}}
-        {%- endif -%}
-      </p>
+    <{{ tag }} class="gs-card__title">
+      {%- if has_page -%}
+        <a href="{{ entry.system.url }}">{{ entry.title.value | escape }}</a>
+      {%- else -%}
+        {{- entry.title.value | escape -}}
+      {%- endif -%}
+    </{{ tag }}>
+    {%- unless wide -%}
+      {%- render 'gs-exhibition-when', entry: entry, show_status: show_status -%}
+    {%- endunless -%}
+    {%- unless compact -%}
+      {%- if entry.curator_credit.value != blank -%}
+        <p class="gs-meta">{{ entry.curator_credit.value | escape }}</p>
+      {%- elsif entry.artists.value != blank -%}
+        {%- assign names = entry.artists.value -%}
+        <p class="gs-meta">
+          {%- if names.size > 4 -%}
+            {%- assign shown = names | slice: 0, 3 | join: ', ' -%}
+            {%- assign more = names.size | minus: 3 -%}
+            {{- 'exhibitions.artists_more' | t: names: shown, count: more -}}
+          {%- else -%}
+            {{- names | join: ', ' | escape -}}
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+    {%- endunless -%}
+    {%- if wide -%}
+      {%- if entry.summary.value != blank -%}
+        <p class="gs-card__text">{{ entry.summary.value | strip_newlines | truncatewords: 45 | escape }}</p>
+      {%- endif -%}
+      {%- if has_page -%}
+        <span class="gs-cta-link gs-card__cue" aria-hidden="true">{{ 'exhibitions.about' | t }}</span>
+      {%- endif -%}
     {%- endif -%}
-  {%- endunless -%}
+  </div>
 </article>

@@ -27,7 +27,7 @@
   {%- else -%}
     <{{ tag }} class="gs-artwork-tile__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></{{ tag }}>
   {%- endif -%}
-  {%- if medium != blank -%}<p class="gs-meta">{{ medium | escape }}</p>{%- endif -%}
+  {%- if medium != blank -%}<p class="gs-meta gs-artwork-tile__medium">{{ medium | escape }}</p>{%- endif -%}
   {%- if edition != blank -%}<p class="gs-meta">{{ edition | escape }}</p>{%- endif -%}
   <p class="gs-artwork-tile__price">
     {%- render 'gs-price', product: product -%}

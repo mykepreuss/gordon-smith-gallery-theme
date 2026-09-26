@@ -1,11 +1,27 @@
 {%- comment -%}
   The page's body text from the normal page editor, styled by .gs-prose (DESIGN.md §6.11). Fonts,
   sizes and colours pasted from Word or email are neutralised there (TYPE-03).
+
+  Until release, a page can carry its text as it will read at release in custom.release_body
+  (DS-39), because the live page text can't change before then. When it's there, it shows instead.
+  An HTML comment alone means the page will have no text. Remove this after release, once the
+  release script has moved the staged text into the pages and deleted the field.
 {%- endcomment -%}
-{%- if page.content != blank -%}
+{%- liquid
+  assign body = page.content
+  if page.metafields.custom.release_body != blank
+    assign body = page.metafields.custom.release_body.value
+  endif
+  assign body_text = body | strip_html | strip
+  assign has_body = false
+  if body_text != blank or body contains '<img' or body contains '<iframe'
+    assign has_body = true
+  endif
+-%}
+{%- if has_body -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container">
-      <div class="gs-prose">{{ page.content }}</div>
+      <div class="gs-prose">{{ body }}</div>
     </div>
   </div>
 {%- endif -%}

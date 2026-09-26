@@ -1,18 +1,47 @@
 {%- comment -%}
-  Home page hero (DESIGN.md §6.3, IMG-01, IMG-04). The home page is the only page on its
-  template, so its hero lives in this section's settings; every other page's hero comes from its
-  own page fields (gs-page-hero). One image, no carousel and no autoplay.
+  Home page hero (DESIGN.md §6.3, IMG-01, IMG-04, DS-30). It leads with the exhibition on now,
+  automatically: its key image, status and dates, title and a button to its page, so the home
+  page changes when the gallery's programme does and never needs updating by hand. When several
+  are on, the most recently opened leads. When nothing is on, the image and words in this
+  section's settings show instead.
+
+  Either way the page's H1 is the heading setting (the gallery's name by default). With an
+  exhibition leading, it's visually hidden and the exhibition title is the hero's visible title,
+  at H1 size as on the exhibition's own page, so the same exhibition looks the same in both
+  places (IMG-04). Display size is kept for the short heading shown when nothing is on.
 
   Photo hero: the image fills the frame around its focal point, and the title box overlaps its
   bottom-left edge by a fixed amount (DS-12). Artwork hero: the work shows whole on the mat with
-  the title box beside it, never over it (DS-05).
+  the title box beside it, never over it (DS-05). One image, no carousel, no autoplay.
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
+  assign lead = nil
+  capture lead_id
+    render 'gs-exhibition-index', status: 'on-now', order: 'desc', linked_only: true, limit: 1
+  endcapture
+  assign lead_id = lead_id | strip
+  if lead_id != blank
+    assign n = lead_id | plus: 0
+    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+      assign lead = entry
+    endfor
+  endif
+
+  if lead
+    assign image = lead.key_image.value
+    assign is_artwork = lead.key_image_is_artwork.value
+    assign alt_text = lead.title.value
+  else
+    assign image = s.image
+    assign is_artwork = s.image_is_artwork
+    assign alt_text = s.heading
+  endif
   assign mode = 'photo'
-  if s.image_is_artwork
+  if is_artwork == true
     assign mode = 'artwork'
   endif
+
   assign has_button = false
   if s.button_label != blank and s.button_link != blank
     assign has_button = true
@@ -23,28 +52,58 @@
   endif
 -%}
 <div class="gs-section gs-section--lead">
-  <div class="gs-hero{% if s.image_is_artwork %} gs-hero--artwork{% endif %}">
-    {%- render 'gs-media', image: s.image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
+  {%- if lead -%}
+    <h1 class="gs-visually-hidden">{{ s.heading | escape }}</h1>
+  {%- endif -%}
+  <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}">
+    {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media', alt: alt_text -%}
     <div class="gs-hero__box gs-surface-accent">
-      {%- if s.eyebrow != blank -%}
-        <p class="gs-eyebrow">{{ s.eyebrow | escape }}</p>
-      {%- endif -%}
-      <h1 class="gs-display"{% render 'gs-fit', text: s.heading %}>{{ s.heading | escape }}</h1>
-      {%- if s.deck != blank -%}
-        <p class="gs-deck">{{ s.deck | escape }}</p>
-      {%- endif -%}
-      {%- if has_button or has_link -%}
+      {%- if lead -%}
+        {%- render 'gs-exhibition-when', entry: lead, show_status: true -%}
+        <h2 class="gs-h1"{% render 'gs-fit', text: lead.title.value %}>{{ lead.title.value | escape }}</h2>
+        {%- if lead.subtitle.value != blank -%}
+          <p class="gs-deck">{{ lead.subtitle.value | escape }}</p>
+        {%- endif -%}
         <div class="gs-actions">
-          {%- if has_button -%}
-            <a class="gs-button" href="{{ s.button_link }}">{{ s.button_label | escape }}</a>
-          {%- endif -%}
-          {%- if has_link -%}
-            <a class="gs-cta-link" href="{{ s.button2_link }}">{{ s.button2_label | escape }}</a>
-          {%- endif -%}
+          <a class="gs-button" href="{{ lead.system.url }}">{{ 'exhibitions.about' | t }}</a>
         </div>
+      {%- else -%}
+        {%- if s.eyebrow != blank -%}
+          <p class="gs-eyebrow">{{ s.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- liquid
+          capture parts
+            render 'gs-fit-lines', text: s.heading
+          endcapture
+          assign parts = parts | strip | split: '~~'
+        -%}
+        <h1 class="gs-display" style="--gs-fit-chars: {{ parts[0] }}">
+          {%- if parts[1] != blank -%}
+            {{- parts[1] | escape }}<br>{{ parts[2] | escape -}}
+          {%- else -%}
+            {{- s.heading | escape -}}
+          {%- endif -%}
+        </h1>
+        {%- if s.deck != blank -%}
+          <p class="gs-deck">{{ s.deck | escape }}</p>
+        {%- endif -%}
+        {%- if has_button or has_link -%}
+          <div class="gs-actions">
+            {%- if has_button -%}
+              <a class="gs-button" href="{{ s.button_link }}">{{ s.button_label | escape }}</a>
+            {%- endif -%}
+            {%- if has_link -%}
+              <a class="gs-cta-link" href="{{ s.button2_link }}">{{ s.button2_label | escape }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
       {%- endif -%}
     </div>
-    {%- if s.caption != blank -%}
+    {%- if lead -%}
+      {%- if lead.key_image_caption.value != blank -%}
+        <div class="gs-hero__caption gs-caption">{{ lead.key_image_caption | metafield_tag }}</div>
+      {%- endif -%}
+    {%- elsif s.caption != blank -%}
       <p class="gs-hero__caption gs-caption">{{ s.caption | escape }}</p>
     {%- endif -%}
   </div>
@@ -59,9 +118,13 @@
   },
   "settings": [
     {
+      "type": "paragraph",
+      "content": "While an exhibition is on, the hero shows it automatically, from its entry. The settings below show when nothing is on."
+    },
+    {
       "type": "image_picker",
       "id": "image",
-      "label": "Image",
+      "label": "Image when no exhibition is on",
       "info": "Set the focal point on the image. On a photo, keep faces and key details out of the bottom-left strip, where the title box overlaps."
     },
     {
@@ -81,6 +144,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
+      "info": "Also the page's main heading for screen readers and search engines while an exhibition leads.",
       "default": "Gordon Smith Gallery"
     },
     {

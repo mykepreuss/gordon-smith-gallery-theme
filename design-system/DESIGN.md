@@ -1,8 +1,8 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.6 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
-Nothing here changes the live store. Items marked **Proposed** still need gallery approval under the plan's structural-approval step; items marked **Input needed** are blocked on the gallery.
+Nothing here changes the live store. Items marked **Proposed** still need Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
 ## 0. How to use this
 
@@ -115,7 +115,7 @@ A section's background is one of four surfaces. Each class remaps the roles so e
 | Surface | Class | Background | Typical use |
 | --- | --- | --- | --- |
 | Paper | `.gs-surface-paper` | white | Default for all content |
-| Tint | `.gs-surface-tint` | programme tint | Newsletter band, alternating feature band. Never two in a row |
+| Tint | `.gs-surface-tint` | programme tint | Newsletter band, alternating feature band. Never two in a row. Primary buttons inside turn ink (DS-31) |
 | Accent | `.gs-surface-accent` | programme box colour | Hero title box, one feature panel. Primary buttons inside turn ink |
 | Ink | `.gs-surface-ink` | `#231f20` | Footer, rare dark band. Brand box colours become text and underline colours here |
 
@@ -129,7 +129,7 @@ Use a programme scope when the page belongs to that programme (Artists for Kids 
 
 ### 3.4 Contrast rules
 
-`python3 design-system/scripts/check_contrast.py` checks 79 required pairings (every programme on every surface, including link hover fills, strong chips and error text) and exits non-zero if any fail. Current result: 79/79 pass. Lowest passing values:
+`python3 design-system/scripts/check_contrast.py` checks 85 required pairings (every programme on every surface, including link hover fills, strong chips and error text) and exits non-zero if any fail. Current result: 85/85 pass. Lowest passing values:
 
 | Pairing | Ratio | Rule |
 | --- | --- | --- |
@@ -184,6 +184,7 @@ Sizes are fluid between 390 px and 1440 px viewports (`clamp()`), so there are n
 - Headings are Mulish Black in capitals (p.15). Use real heading elements in order; style follows the element or a `gs-` class, never a size choice by staff.
 - Capitals stay for labels too (DS-17). The brand guide sets headlines and subheadings in caps (p.15) and labels its own pages in small tracked caps (p.11: "USE FOR BACKGROUND LOGO BOX", "PRIMARY"), so caps labels are the brand's voice here, not a template habit. What changes is how many there are: a label only appears when it carries information (DS-18).
 - Titles fit their box. Hero and page-header titles size to the width of their box, so the longest word always fits on a 320 px phone and at 200% zoom: `snippets/gs-fit.liquid` passes the title's longest word length as `--gs-fit-chars`, and the CSS divides the box width by it (0.74 em per capital, the widest average in Mulish Black), capped at the H1 or display size. Short titles still reach full size. As a last resort a word breaks instead of overflowing.
+- The home hero's own heading (shown when no exhibition is on) keeps its words together in two balanced lines: "Gordon Smith Gallery" reads GORDON SMITH / GALLERY at every width, sized to the longer line (`snippets/gs-fit-lines.liquid`, DS-33). A heading whose longer line would pass 14 letters wraps normally instead, so it never shrinks below about H1 size on desktop.
 - Exception: artwork titles are italic, sentence case, regular weight (museum-label convention), e.g. artist name in bold, then *Title*, year. The italics come from markup (`<cite>`), never from Unicode "italic" letters typed into titles (§7.1, proposal part 3).
 - Deck paragraphs are Bold; emphasis in body is Bold, not colour or underline.
 - Captions are Light but stay full ink colour; Light plus grey reads too faint.
@@ -273,12 +274,12 @@ Each spec lists anatomy, tokens, states and staff controls. Class names are from
 | Inline link | `.gs-link`, any `a` in `.gs-prose` | Ink text, 2 px underline in link-line colour, 0.22em offset | The surface's hover fill fades in behind the words (120 ms); underline takes the text colour | 3 px outline, 3 px offset | Keeps the underline (DS-06). Fill is a tint, never the box colour (DS-21) |
 | Standalone link | `.gs-cta-link` | Caps label, underlined in link-line colour | Underline darkens to the text colour | Outline | "About the exhibition", "Plan your visit". No arrow (DS-20) |
 | "More" link | `.gs-cta-link.gs-cta-link--more` | As above, plus an arrow | Arrow nudges right as the underline darkens, same timing | Outline | Only for links to more of the same list: "All past exhibitions" |
-| Primary button | `.gs-button` | Box colour, ink caps 900, 48 px tall, bottom-right corner | Inverts to the surface's text colour with background-coloured text | Outline | One per view where possible. The brand's box in small |
+| Primary button | `.gs-button` | Box colour, ink caps 900, 48 px tall, bottom-right corner. Ink with paper text on accent and tint surfaces, where the box colour would disappear into the background (DS-31) | Inverts to the surface's text colour with background-coloured text; on accent and tint, paper with ink text | Outline | One per view where possible. The brand's box in small |
 | Secondary button | `.gs-button--secondary` | Transparent, 2 px ink border | Fills ink | Outline | Beside a primary, or on busy pages |
 | Disabled | `button[disabled]`, `[aria-disabled="true"]` | 45% opacity, not-allowed cursor | None | Outline (`aria-disabled` stays focusable) | A link is never disabled: remove it. Say why nearby ("Sold out") |
 | Submitting | `.gs-button[aria-busy="true"]` | Colours unchanged; label says what's happening ("Signing up"); progress cursor | None | Outline | The form ignores repeat submits while busy |
 
-Hover styles apply only with a mouse or trackpad; on touch, `:active` shows the same change while pressed and nothing sticks after the tap (§5.4). On touch screens standalone links, footer, utility and dropdown links grow to 44 px targets. Visited links look the same as unvisited. One size of button only. Button labels are 1 to 3 words, verb first; the words for an action stay the same through the flow ("Sign up", "Signing up", "You're signed up").
+A link to a PDF says "(PDF)" after its label, so nobody opens a large file by surprise (`gs-link`). Hover styles apply only with a mouse or trackpad; on touch, `:active` shows the same change while pressed and nothing sticks after the tap (§5.4). On touch screens standalone links, footer, utility and dropdown links grow to 44 px targets. Visited links look the same as unvisited. One size of button only. Button labels are 1 to 3 words, verb first; the words for an action stay the same through the flow ("Sign up", "Signing up", "You're signed up").
 
 ### 6.3 Hero (IMG-01, IMG-02, IMG-04, SHOP-04, DS-08, DS-12)
 
@@ -286,6 +287,8 @@ Two variants, chosen by what the image is, never by taste. With page fields (§7
 
 - **Photo hero** (`.gs-hero`): installation views, events, people. Media ratio 4:5 below 750, 4:3 to 989, 21:9 from 990, capped at 80% of viewport height, `--gs-shape-lg`, cropped around the editor's focal point. The title box (`.gs-hero__box.gs-surface-accent`: status chip and dates on their own line for an exhibition, or an optional eyebrow such as a programme name; H1, or display on Home; optional deck; up to two actions) sits under the image and overlaps it by exactly `--gs-hero-overlap` (48 to 96 px), inset from the left on wide screens. The covered area is therefore a known strip along the bottom-left edge: keep faces and key details out of it when setting the focal point. The title sizes to the box (§4.3), so a long word like CONVERSATION fits on a phone. Without an image the box stands alone and doesn't overlap anything.
 - **Artwork hero** (`.gs-hero--artwork`): the image is an artwork. The work shows whole on the mat, never cropped, rounded or overlapped; the title box sits beside it from 990 px (7:5 columns) and below it on smaller screens.
+- **Home leads with the exhibition on now (DS-30):** the home hero shows the most recently opened exhibition that's on, from its entry: key image, status chip and dates, title at H1 size, and "About the exhibition". The section's own image and heading show only when nothing is on. So the home page follows the programme without anyone updating it, and the art leads. The page's H1 stays the gallery's name, visually hidden while an exhibition leads.
+- Title box width: `min(40rem, 58%)` from 990 px, `min(48rem, 60%)` from 1200 px, so a four-word title breaks into two lines. Its left edge lines up with the content column (1200 wide) and never sits closer than 48 px to the image's edge.
 - Same position and treatment on every page type that has a hero (Home, exhibition, programme, Shop landing). A page without a strong image uses the page header (§6.6) instead of a weak hero.
 - Staff controls: image (with focal point), whether it is an artwork, heading, deck, up to two buttons, and an eyebrow on non-exhibition pages. Exhibition status and dates come from the exhibition's data, not typed text. No colour, alignment, height or overlay options.
 - The hero image loads first: `gs-media` with `preset: 'hero'` loads it eagerly with high fetch priority.
@@ -346,7 +349,9 @@ Ink surface. Top row: the three white logos with the Gallery first and largest (
 
 ### 6.11 Rich text
 
-`.gs-prose` wraps staff-entered text: 68ch measure, 1em paragraph spacing, headings inside use the scale above, blockquote with a 4 px rule in the rule colour and deck styling, images in text get `--gs-shape-md`. Staff formatting is limited to headings, bold, italic, lists, links and quotes. Inline fonts, sizes and colours pasted from Word or email are neutralised.
+`.gs-prose` wraps staff-entered text: 68ch measure, 1em paragraph spacing, headings inside use the scale above, blockquote with a 4 px rule in the rule colour and deck styling, images in text get `--gs-shape-md`. A YouTube or Vimeo video embedded in the text fills the column at `--gs-ratio-video` (16:9), whatever size the embed code gives. Staff formatting is limited to headings, bold, italic, lists, links, quotes and embedded video. Inline fonts, sizes and colours pasted from Word or email are neutralised.
+
+Until release, the page text can come from a staged field instead of the live page text (DS-39); the section is otherwise unchanged.
 
 ### 6.12 States: empty, error, submitting, done
 
@@ -374,16 +379,20 @@ Specified here because the build needed them; each follows the rules above and i
 | Component | Class | Use |
 | --- | --- | --- |
 | Feature panel | `.gs-feature` | One box, text beside an image, on the Home and Shop landing pages. The box takes the surface (tint, accent once per page, or ink) inside a paper section, so it reads as the brand's box. Renders nothing when empty |
-| Details list | `.gs-details` | An exhibition's facts: label over value, each under a rule, in one to three columns; long lists of names run in columns across the full width |
-| Events | `.gs-events`, `.gs-event` | Title, time (`gs-time-range`: "Thursday, October 8, 2026, 2:30 to 4 PM"), place, a sentence, tickets. With an image, the image sits beside the text from 750 px |
+| Details list | `.gs-details` | Facts: label over value, each under a rule, in one to three columns; long lists of names run in columns across the full width. `.gs-details--stack` keeps one column from 990 px, for a side column |
+| Wide card | `.gs-card--wide` | On now and Upcoming (DS-34): image (7 columns) beside dates, H2 title, curator, the start of the summary and an "About the exhibition" cue. The whole card is one link; the cue is decoration, not a second link. Stacks below 750 px |
+| About the exhibition | `.gs-about` | The exhibition page's text (DS-35): summary as deck, text and credits in 7 columns, the facts in 4 beside them from 990 px. Below that the facts come straight after the summary. Credits sit under a rule with a label heading |
+| Events | `.gs-events`, `.gs-event` | Title, time (`gs-time-range`: "Thursday, October 8, 2026, 2:30 to 4 PM"), place, a sentence, tickets. With an image, the image sits beside the text from 750 px. On a programme page, an event titled like the page (a run of drop-ins) leads with its date and time instead (DS-36) |
+| People grid | `.gs-grid--people` | A card group whose images are all portraits (a board): 4:5 frames, compact titles, two, three and four across (DS-37). The images decide, not a setting |
 | Text card | `.gs-card--text` | A card without an image: starts under a rule. From card entries (content model part 4) |
-| Artwork detail | `.gs-artwork`, `.gs-artwork-label` | The product page: every image whole on the mat, then the museum label (artist bold, *title* in a `<cite>`, year), meta, price, one action, the archive note, the framing panel, disclosures |
+| Artwork detail | `.gs-artwork`, `.gs-artwork-label` | The product page: every image whole on the mat; beside it only what it takes to decide and buy: the museum label (artist bold, *title* in a `<cite>`, year), medium, edition, size, price, one action, the archive note and the framing panel. "About the work" (the description, then disclosures) follows at reading width under both columns (DS-38). In tiles the medium stops at two lines |
 | Panel | `.gs-panel` | A small box on tint inside a paper section: the framing offer, contact details |
 | Disclosure | `.gs-disclosure` | A `<details>` for product disclosures, with the chevron |
 | Select | `.gs-select`, `.gs-select-wrap` | A native select styled as an input, chevron from the icon set |
 | Cart | `.gs-cart__*` | One row per work (thumbnail on the mat, label, price, quantity, remove), then policy and summary |
 | Pagination, results | `.gs-pagination`, `.gs-results` | Real links, `aria-current` on the current page; search results for pages and articles |
 | Skip link | `.gs-skip-link` | The first stop for keyboard users; hidden until focused |
+| Visit | `.gs-visit` | Home (DS-32): heading and a link to Plan your visit beside the address and hours, which reuse the details list. From theme settings, so they're typed once for the footer, contact page and home |
 
 ## 7. Page templates (REUSE-01 to 04, SHOP-01 to 03, EXH-01 to 03)
 
@@ -436,12 +445,12 @@ From 28 page templates to six, plus one exhibition template; from three collecti
 
 Sections in order; brackets mean optional. All templates also get the global header, newsletter band and footer.
 
-- **index (Home):** hero (photo or artwork) · exhibitions on now and upcoming (cards, from exhibition data) · [feature panel: a programme] · [portfolio navigation or feature: Shop] · [feature panel]. At most three listings.
+- **index (Home):** hero, led by the exhibition on now (DS-30) · exhibitions on now and upcoming, without the one in the hero (cards with status chips, from exhibition data) · visit (address, hours, Plan your visit; DS-32) · [feature panel: a programme, tint] · Shop feature (the newest portfolio, automatically; accent) · newsletter band. At most three listings. The accent Shop box sits away from the tint newsletter band, so two tints never touch.
 - **page:** hero or page header · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event.
 - **page.programme:** hero or page header (programme colours from the `programme` field; the programme's logo above the title when there's no hero image; the call to action field as the button) · rich text · [card groups] · [upcoming events for this page] · [image gallery]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
-- **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (cards filtered by computed status: this page's status; the empty state when there are none) · [rich text, e.g. tours information].
+- **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (wide cards filtered by computed status: this page's status, DS-34; the empty state when there are none) · link to the Exhibitions overview page · [rich text, e.g. tours information].
 - **page.past-exhibitions:** page header · switcher · exhibition list (every past exhibition from entries, newest first; DS-24, DS-25). No hand-built archive section.
-- **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · details (curator credit, artists and collection artists, venue, opening reception until it has passed, upcoming events that reference the exhibition; empty fields show nothing) · rich text (summary as deck, then body) · [credits and funder logos] · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
+- **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · about the exhibition (summary as deck, text, credits and funder logos, beside the facts: opening reception until it has ended, upcoming events that reference the exhibition, curator credit, venue, artists and collection artists; empty fields show nothing; DS-35) · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
 - **page.shop:** hero or page header · [rich text: one short introduction] · portfolio navigation (compact cards, artwork mode, one per portfolio) · [feature panel: e.g. Our Story or framing]. No other listings (SHOP-01, SHOP-02).
 - **page.contact:** page header · contact details and form · [rich text: visiting information].
 - **collection:** collection header (title, season, short intro) · switcher (portfolios) · artwork grid (tiles) · [rich text]. Keeps the cleaner layout the notes praise (SHOP-03).
@@ -558,12 +567,15 @@ Verified in development theme `184755814697` (created by `shopify theme dev`, hi
 1. Every template renders on the store's real pages, collections and products with no Liquid errors or missing wording (home, about, on now, upcoming, past, exhibitions overview, programme pages, contact, shop, `/collections`, two portfolios, a product, cart, search, 404, blog).
 2. Text renders in the bundled Mulish (`audit_fonts.py` on home, on now, a portfolio and contact). Two fallbacks, both expected: the Unicode italic letters in product titles (L-03, fixed by the label fields) and 12 characters in the land acknowledgement's Indigenous place names, which Mulish doesn't have (L-06).
 3. Header: bar at 1440 and drawer at 652, dropdowns open on click, Escape closes and returns focus, the current section opens in the drawer, Contact shows in the utility row.
+4. With the first exhibition and event entries (`proposals/store-writes/`): exhibition pages, On now, Upcoming, Past and Home render from entries; status follows the dates; a past entry with no text has a card that doesn't link.
+5. Date and time fields show in the store's timezone: the reception entered as 18:00 Pacific reads "Friday, September 25, 2026, 6 to 8 PM".
+6. Under the live theme, an entry's address returns 404, so nothing is visible to the public before release.
 
 Still to verify, mostly in the review theme once fields and entries exist:
 
 1. That `image_tag` writes the editor's focal point from a file field's image as `object-position`, and the artwork-mode override holds (IMG-03).
-2. The timezone Liquid uses for `'now'` and for date and time fields, on a changeover day and for reception times.
-3. Exhibition entry pages: that draft entries can't be previewed (they are skipped in Liquid), the link-preview image, and what an entry address shows under the live theme before release.
+2. The timezone Liquid uses for `'now'` on a changeover day (date and time fields are verified, item 5 above).
+3. Exhibition entry pages: the link-preview image.
 4. The newsletter form with an approved test address: customer created with the `newsletter` tag and email consent, and Mailchimp receiving it (ACCESS-01).
 5. The contact form's delivery address (the store's sender email).
 6. Staff editing: two pages on one template with different fields, content stays separate (REUSE-03).
@@ -623,8 +635,18 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-22 | A system error colour, `#a3261b` (light `#f28b82` on ink), for error text and invalid-field borders only. The brand guide defines none | Decided by Michael, 2026-09-25 |
 | DS-23 | The header is not sticky on any screen size, so nothing permanently covers the art on a phone | Decided by Michael, 2026-09-25 |
 | DS-27 | No announcement bar in the header. Supersedes DS-26. The news it carried (a new portfolio, an exhibition opening) is on the home page, which builds its exhibition list from entries and features the newest portfolio automatically | Decided by Michael, 2026-09-25 ("we do not want that anymore") |
-| DS-28 | Page fields and entries are read directly in Liquid (`page.metafields.custom.*`, `metaobject.*`), not connected to section settings through dynamic sources. Reason: nothing to connect per template in the editor, nothing that can be connected to the wrong field, and the sections can decide from the content (hero or page header, image card or text card) | Proposed (build, 2026-09-25) |
-| DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Proposed (build, 2026-09-25) |
+| DS-28 | Page fields and entries are read directly in Liquid (`page.metafields.custom.*`, `metaobject.*`), not connected to section settings through dynamic sources. Reason: nothing to connect per template in the editor, nothing that can be connected to the wrong field, and the sections can decide from the content (hero or page header, image card or text card) | Decided by Michael, 2026-09-25 |
+| DS-30 | The home hero leads with the exhibition on now, from its entry, and shows the section's own image and heading only when nothing is on. Reason: the home page's lead stays current without anyone editing it (the old home featured a portfolio that had been replaced), and the art leads (principle 1). The home exhibition list leaves out the exhibition in the hero | Decided by Michael, 2026-09-25 |
+| DS-31 | On tint surfaces the primary button is ink with paper text. Reason: the Gallery box colour on its own tint is 1.9:1 and reads as disabled (seen on the newsletter band) | Decided by Michael, 2026-09-25 |
+| DS-32 | The home page gets a Visit block: address and hours from theme settings, and a link to Plan your visit. Reason: where and when to visit is the first thing a gallery visitor needs, and the old home page didn't say | Decided by Michael, 2026-09-25 |
+| DS-33 | The home hero's own heading breaks into two balanced lines, sized to the longer line: GORDON SMITH / GALLERY | Decided by Michael, 2026-09-25 |
+| DS-34 | On now and Upcoming show each exhibition as a wide card, image beside dates, title, curator and the start of the summary. Reason: there are rarely more than two, and a single small card in a three-column grid undersold what's on. Past stays a grid of cards | Decided by Michael, 2026-09-25 |
+| DS-35 | The exhibition page puts the summary first, then the text and credits beside a column of facts (reception, events, curator, artists); on a phone the facts follow the summary. Replaces separate details and credits sections. Reason: a list of 19 artists before the description buried what the exhibition is about, and the text column left half the page empty | Decided by Michael, 2026-09-25 |
+| DS-36 | On a programme page, an event titled the same as the page leads with its date and time instead of its title. Reason: four Explore + Create drop-ins read as the same heading four times | Decided by Michael, 2026-09-25 |
+| DS-37 | A card group whose images are all portraits shows as a people grid: 4:5 frames, compact titles, up to four across. Reason: 14 board headshots cropped to wide 4:3 cards in three large columns made a very long page. Staff don't choose it; the images do | Decided by Michael, 2026-09-25 |
+| DS-38 | The product page keeps only the label, price, action, archive note and framing offer beside the work; the description follows as "About the work" at reading width. Reason: the description in the narrow column ran the page to twice the image's height with empty space beside it | Decided by Michael, 2026-09-25 |
+| DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Decided by Michael, 2026-09-25 |
+| DS-39 | Page text that changes at release is staged in a temporary page field (`custom.release_body`) that the new theme shows instead of the live text; a release script moves it into the page and deletes the field, stopping if the live text changed meanwhile. Reason: the review has to show the site as it will launch, and page text is live, so it can't change before release. Used for On Now, Upcoming and Upcoming Events (cleared) and for Donate and Gordon and Marion (content added from their old templates). The fallback leaves the theme after release | Decided by Michael, 2026-09-25 |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -642,6 +664,12 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.6 (2026-09-25): all content migrated for review (`proposals/store-writes/`). Page text that changes at release is staged (DS-39). Videos embedded in page text fill the column at 16:9 (`--gs-ratio-video`, §6.11).
+- 0.5.5 (2026-09-25): the build decisions DS-28 to DS-38 are approved by Michael, who approves design decisions for the gallery (P-17). No design change.
+- 0.5.4 (2026-09-25): Shop pass, with real product labels and collection credits (`proposals/store-writes/`). Product page split into the buying column and "About the work" (DS-38); tile mediums clamp at two lines; portfolio description sits under the hero. The font audit no longer finds Unicode italics on Shop pages.
+- 0.5.3 (2026-09-25): programme pages pass, with real page fields, cards and events (`proposals/store-writes/`). Events titled like their page lead with the date (DS-36); portrait card groups become a people grid (DS-37); links to PDFs say so. Fixed: the Upcoming Events page listed nothing, because the event index's `page` parameter was shadowed by the current page inside the snippet (now `for_page`).
+- 0.5.2 (2026-09-25): exhibitions pass, reviewed with real entries (`proposals/store-writes/`). Wide cards on On now and Upcoming (DS-34); exhibition page with the facts beside the text (DS-35, `.gs-about`); installation views aligned to the content column; timezone and live-theme checks in §9.6 answered.
+- 0.5.1 (2026-09-25): home page pass. The hero leads with the exhibition on now (DS-30) and its title box widens and lines up with the content column; primary buttons turn ink on tint (DS-31, contrast check now 85 pairings); Visit block on Home (DS-32, §6.13); Home order revised (§7.5). The home heading breaks as GORDON SMITH / GALLERY (DS-33, §4.3).
 - 0.5 (2026-09-25): the new theme is built (P-13, P-14). §9 rewritten for it. New components in §6.13; section spacing by collapsing margins (§5.1); page and programme templates gain card groups and events (P-16); Past Exhibitions from entries only (DS-25). DS-27 (no announcement bar, supersedes DS-26) decided; DS-28 (fields read in Liquid) and DS-29 (built-in utility links) proposed; Q11 added. The gs- snippets moved into `theme/snippets/`; `scripts/sync_theme.py` added; Mulish bundled.
 - 0.4.2 (2026-09-25): the site gets a new theme built from Shopify's Skeleton theme (P-13, P-14), so §9 is marked for rewrite; DS-25 (all past exhibitions as entries) and DS-26 (header announcements) decided; Past Exhibitions is a normal template in the rules; Q5 answered by the approved menu map.
 - 0.4.1 (2026-09-25): content model approved (DS-14 to DS-16); exhibition fields revised from a review of the content in use (`proposals/content-model.md` part 2); exhibition template spec lists the new details; option B fallback template removed; customer account templates added to the template rules as system templates; DS-24 decided: Past Exhibitions lists past entries automatically above the archive.
