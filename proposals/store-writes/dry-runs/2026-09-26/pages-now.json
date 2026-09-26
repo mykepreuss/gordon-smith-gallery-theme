@@ -101,9 +101,12 @@
   "title": "About Us",
   "templateSuffix": "about-us",
   "isPublished": true,
-  "updatedAt": "2026-09-26T00:13:49Z",
+  "updatedAt": "2026-09-26T16:34:27Z",
   "body": "<p><strong><span style=\"font-size: 11pt; font-family: Assistant,sans-serif;\"><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/triad_logo_cluster.png?v=1784578218\" alt=\"\" width=\"329\" height=\"201\"><br></span></strong></p>\n<p> </p>\n<p><strong>THE GORDON SMITH GALLERY OF CANADIAN ART<br></strong></p>\n<p>The Gordon Smith Gallery is a space where art education is seen not as an afterthought to curation, but as the purpose of each step we take. Artists for Kids and the Gordon and Marion Smith Foundation work collaboratively to foster exceptional Canadian art curation and education through exhibitions, community events and engagement, and gallery programming.<br><br></p>\n<p><strong>ARTISTS FOR KIDS</strong></p>\n<p>Established in 1989 by Canadian artists and educators, Artists for Kids fosters innovative programming at the Gordon Smith Gallery and within the community. Our many programs support children and youth, art educators and Canadian Artists, and offer time and space to share and learn from the stories that each of us hold. By placing positive and supportive relationships in the center of what we do, Artists for Kids continues to nurture belonging by creating safe and dynamic learning spaces for all, to learn, relearn, share and grow together through the arts.<br><br></p>\n<p><strong>THE GORDON AND MARION SMITH FOUNDATION FOR YOUNG ARTISTS</strong></p>\n<p>The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from which would fund ongoing visual arts enrichment opportunities through Artists for Kids. In addition to providing key annual funding supporting art education at the Gordon Smith Gallery and Artists for Kids, the Foundation’s role has evolved to include the presentation of a diverse and accessible range of visual arts programming at the Gordon Smith Gallery of Canadian Art.<strong><span style=\"font-size: 11pt; font-family: Assistant,sans-serif;\"></span></strong></p>",
-  "staged": null
+  "staged": {
+   "id": "gid://shopify/Metafield/190403068461353",
+   "value": "<!-- Cleared at release: this page's text now lives in its card group, each organisation beside its logo. -->"
+  }
  },
  {
   "id": "gid://shopify/Page/155692957993",

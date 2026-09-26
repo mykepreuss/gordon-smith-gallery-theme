@@ -3,8 +3,13 @@
   layout: a card with an image is an image card, a card without one is a text card under a rule
   (DESIGN.md §6.5).
 
-  The link: with no label of its own, the whole card links through its title; with a label, the
-  label shows as a standalone link under the text. Off-site addresses get the external cue.
+  A card with a logo (the Gallery, the Foundation or Artists for Kids) is about that organisation:
+  the logo is its heading, the title stays for screen readers, and the card takes the
+  organisation's colours for its rule and link (DS-50).
+
+  The link: with no label of its own, the whole card links through its title (on a logo card, the
+  logo links); with a label, the label shows as a standalone link under the text. Off-site
+  addresses get the external cue.
 
   @param {object} card - A card entry
   @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
@@ -26,26 +31,70 @@
       assign labelled = true
     endif
   endif
+  assign brand = ''
+  if card.logo.value != blank
+    capture brand
+      render 'gs-programme', value: card.logo.value
+    endcapture
+    assign brand = brand | strip
+  endif
 -%}
-<article class="gs-card{% if image == blank %} gs-card--text{% endif %}{% if portrait %} gs-card--compact{% endif %}">
-  {%- if image != blank -%}
-    {%- if portrait -%}
-      {%- render 'gs-media', image: image, preset: 'tile', mode: 'photo', ratio: '4 / 5', alt: card.title.value -%}
-    {%- else -%}
-      {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: card.title.value -%}
+{%- if brand != blank -%}
+  {%- liquid
+    # The full lockups: a card names the organisation in full (DESIGN.md §8.2).
+    case brand
+      when 'foundation'
+        assign logo = 'foundation-full-colour-box'
+      when 'artists-for-kids'
+        assign logo = 'artists-for-kids-full-colour-box'
+      else
+        assign logo = 'gallery-full-stacked-colour-box'
+    endcase
+  -%}
+  <article class="gs-card gs-card--logo" data-gs-brand="{{ brand }}">
+    <{{ tag }} class="gs-card__logo gs-card__logo--{{ brand }}">
+      {%- if stretch -%}
+        {%- capture r -%}{% render 'gs-url', link: link %}{%- endcapture -%}
+        {%- assign r = r | strip | split: '|' -%}
+        <a href="{{ r[0] }}">
+          <span class="gs-visually-hidden">{{ card.title.value | escape }}{% if r[1] == '1' %} {{ 'general.external_site' | t }}{% endif %}</span>
+          {%- render 'gs-logo', name: logo, label: 'decorative' -%}
+        </a>
+      {%- else -%}
+        <span class="gs-visually-hidden">{{ card.title.value | escape }}</span>
+        {%- render 'gs-logo', name: logo, label: 'decorative' -%}
+      {%- endif -%}
+    </{{ tag }}>
+    <div class="gs-card__body">
+      {%- if card.text.value != blank -%}
+        <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
+      {%- endif -%}
+      {%- if labelled -%}
+        {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
+      {%- endif -%}
+    </div>
+  </article>
+{%- else -%}
+  <article class="gs-card{% if image == blank %} gs-card--text{% endif %}{% if portrait %} gs-card--compact{% endif %}">
+    {%- if image != blank -%}
+      {%- if portrait -%}
+        {%- render 'gs-media', image: image, preset: 'tile', mode: 'photo', ratio: '4 / 5', alt: card.title.value -%}
+      {%- else -%}
+        {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: card.title.value -%}
+      {%- endif -%}
     {%- endif -%}
-  {%- endif -%}
-  <{{ tag }} class="gs-card__title">
-    {%- if stretch -%}
-      {%- render 'gs-link', link: link, label: card.title.value -%}
-    {%- else -%}
-      {{- card.title.value | escape -}}
+    <{{ tag }} class="gs-card__title">
+      {%- if stretch -%}
+        {%- render 'gs-link', link: link, label: card.title.value -%}
+      {%- else -%}
+        {{- card.title.value | escape -}}
+      {%- endif -%}
+    </{{ tag }}>
+    {%- if card.text.value != blank -%}
+      <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
     {%- endif -%}
-  </{{ tag }}>
-  {%- if card.text.value != blank -%}
-    <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
-  {%- endif -%}
-  {%- if labelled -%}
-    {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
-  {%- endif -%}
-</article>
+    {%- if labelled -%}
+      {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
+    {%- endif -%}
+  </article>
+{%- endif -%}

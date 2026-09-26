@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.6.5 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.6.6 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Every design decision is decided as of 2026-09-26; a new one starts as **Proposed** and needs Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -311,6 +311,7 @@ Two modes, chosen by the component. Sections render images only through `snippet
 
 - **Exhibition / programme card** (`.gs-card`): photo media 4:3 with `--gs-shape-md`; status chip only where a list mixes statuses (Home), not on a list that is all one status; H3 title in caps; dates, then curators or artists, each on its own line in muted small. On a grid card the curator credit stops at two lines, so cards in a row stay even; wide cards and the exhibition page show it whole. The title link is stretched over the whole card; the card shows the focus ring where the browser supports `:has()`, otherwise the link keeps its own. Hover (mouse) and press (touch) underline the title; images do not zoom.
 - **Card groups** (`.gs-grid--cards`): one, two, then three across. A group of four or eight (`.gs-grid--fours`) goes two, then four, across instead, so no card sits alone on a row (DS-44).
+- **Logo card** (`.gs-card--logo`, DS-50): a card about one of the three organisations, chosen by the card's Logo field. The organisation's full logo (§8.2) is the card's heading, and the title is there for screen readers only, so the name isn't said twice on screen. The card takes the organisation's rule and link colours (`data-gs-brand`, §3.3). A group whose cards all have logos (`.gs-grid--logos`) is one organisation per row: the logo beside its text from 750 px, above it on phones, each row under a rule in the organisation's colour. Logos are 112 px tall (the Foundation's wider lockup 88 px), 144 and 104 px from 990 px; the gap to the text is at least the logo's clear space (§8.3). Staff don't choose it; the Logo field does.
 - **Compact card** (`.gs-card--compact`): same anatomy with an H4-size title; used for portfolio navigation and "More exhibitions" rows.
 - **Artwork tile** (`.gs-artwork-tile`): in grids of two, then three across, never four, so each work shows large (DS-46); artwork media 1:1 on the mat; artist (bold), *title* (italic) and year, medium and edition (muted small), price (bold small). No badges over the image; sold-out or edition status goes in the text.
 - **Status chip** (`.gs-chip`): On now, Upcoming, Past, Sold out. Tint background; the single most important state (On now) is `.gs-chip--strong`, a solid chip in the surface's text colour (ink on paper, paper on ink). Text always states the status; colour is never the only signal. Exhibition status is computed from dates, never typed (`snippets/gs-exhibition-status.liquid`).
@@ -466,7 +467,7 @@ Sections in order; brackets mean optional. All templates also get the global hea
 - Lockups: Gallery `simple-stacked`, `simple-horizontal`, `full-stacked`, `full-horizontal` (full adds "of Canadian Art"); Foundation `simple`, `full` (full adds "for Young Artists"); Artists for Kids `full` (single lockup).
 - Variants: `colour-box`, `bw-box`, `black`, `white`, and `colour` (Artists for Kids unboxed, black type with orange swoosh).
 
-Conversion notes: fills were remapped from the PDFs' CMYK builds to the official web sRGB values (§11), unboxed variants were cropped to the artwork's bounds so they align with type and grid edges, and each file carries `role="img"` and an `aria-label`. The originals in `reference/` are untouched. The eight logos the website uses are generated into theme snippets by `scripts/build_logo_snippets.py` and rendered with `{% render 'gs-logo', name: ... %}`. The snippets leave out the files' embedded content credentials (a C2PA manifest of about 7.7 KB each), which would otherwise be inlined on every page; the files keep them.
+Conversion notes: fills were remapped from the PDFs' CMYK builds to the official web sRGB values (§11), unboxed variants were cropped to the artwork's bounds so they align with type and grid edges, and each file carries `role="img"` and an `aria-label`. The originals in `reference/` are untouched. The nine logos the website uses are generated into theme snippets by `scripts/build_logo_snippets.py` and rendered with `{% render 'gs-logo', name: ... %}`. The snippets leave out the files' embedded content credentials (a C2PA manifest of about 7.7 KB each), which would otherwise be inlined on every page; the files keep them.
 
 ### 8.2 Which logo where
 
@@ -478,6 +479,7 @@ Conversion notes: fills were remapped from the PDFs' CMYK builds to the official
 | Condensed or very tight header (if ever needed) | `gallery-simple-horizontal-colour-box` |
 | Footer (ink) | `gallery-simple-stacked-white`, `artists-for-kids-full-white`, `foundation-simple-white` |
 | About page, official content | `gallery-full-stacked-colour-box` at 112 px tall or more |
+| A logo card: each organisation beside its own text, as on About Us (DS-50) | `gallery-full-stacked-colour-box`, `artists-for-kids-full-colour-box`, `foundation-full-colour-box`: the full lockups, since the text names each organisation in full |
 
 The horizontal Gallery lockups are "limited use when this shape is more appealing in a design" (p.7); the simplified lockups are the primary use (pp.6, 8).
 
@@ -657,6 +659,7 @@ Since then every page has had a design pass with its real content, on the develo
 | DS-47 | The header logo follows the page's programme field (the same value that sets the programme colours, DS-04): `artists-for-kids-full-colour-box` on Artists for Kids pages, `foundation-simple-colour-box` on Smith Foundation pages (the Foundation, Gordon and Marion, Donate), `gallery-simple-stacked-colour-box` everywhere else, including the Shop, portfolios, products, Our Story and Artists (Michael, 2026-09-26). It always links home, and its accessible name says whose logo it is. The Foundation logo is 72 px tall on phones, its minimum (§8.3); a page header no longer repeats a programme logo. Reason: asked for with the approval of DS-07, so each organisation's pages carry its own mark | Decided by Michael, 2026-09-26 |
 | DS-48 | On Now, Upcoming and Past use the standard page template: it carries the switcher and the exhibition list, which show only on the pages chosen as On now, Upcoming and Past in Theme settings, as the events list does on the Upcoming events page. The `page.exhibitions` and `page.past-exhibitions` templates are removed. Reason: the lists no longer depend on each page's template assignment. They show in the review before templates are reassigned, release has three fewer pages to reassign, and a wrong template choice can't empty On Now | Decided by Michael, 2026-09-26 |
 | DS-49 | On the Shop template, the portfolio navigation and the feature panel show only on the Shop landing page chosen in Theme settings; any other page on that template shows its page header and text. Reason: Our Story still has the old template name `shop` until release, so it showed as the Shop landing page. Same principle as DS-48: special content follows Theme settings, not template assignment | Decided by Michael, 2026-09-26 |
+| DS-50 | Cards get a Logo field (Gallery, Smith Foundation, Artists for Kids). A card with a logo shows that organisation's full logo as its heading, in its colours; a group of them is one organisation per row, the logo beside its text (§6.5). About Us uses it: its three descriptions move from the page text into a card group, each beside its own logo, and the combined logo image above them goes at release. Each row links on: Plan your visit, More about Artists for Kids, More about the Foundation. Reason: Michael asked for the correct logo with each description and the two better integrated (2026-09-26) | Proposed |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -674,6 +677,7 @@ Since then every page has had a design pass with its real content, on the develo
 
 ## 13. Changelog
 
+- 0.6.6 (2026-09-26): logo cards (DS-50, proposed): a card with a logo shows it as its heading, and a group of them sets each organisation beside its text. About Us uses them. `foundation-full-colour-box` joins the website's logos (§8.1, §8.2); logo card tokens `--gs-org-logo-*`.
 - 0.6.5 (2026-09-26): a funder logo without alt text is marked decorative (the credits name the funder). Verification record: `verification/2026-09-26.md`.
 - 0.6.4 (2026-09-26): the Shop template's portfolio navigation and feature panel follow the Shop landing setting (DS-49), so Our Story reads as a plain page before its template is reassigned.
 - 0.6.3 (2026-09-26): the exhibition lists move into the standard page template, driven by Theme settings (DS-48); `page.exhibitions` and `page.past-exhibitions` removed.

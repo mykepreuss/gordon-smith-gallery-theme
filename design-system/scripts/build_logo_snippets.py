@@ -27,6 +27,7 @@ WEBSITE_LOGOS = [
     "artists-for-kids-full-colour-box",
     "artists-for-kids-full-white",
     "foundation-simple-colour-box",
+    "foundation-full-colour-box",
     "foundation-simple-white",
 ]
 

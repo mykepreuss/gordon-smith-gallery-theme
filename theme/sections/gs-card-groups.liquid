@@ -7,6 +7,8 @@
   A group whose cards all have portrait images (a board, a staff list) shows as a grid of people:
   portrait frames, two to four across, smaller titles (DS-37). Staff don't choose it; the images do.
   A group of four or eight cards goes two, then four, across, so no card sits alone (DS-44).
+  A group whose cards all have a logo (the three organisations on About Us) shows as rows, each
+  logo beside its text (DS-50).
   A group without a heading has its card titles at H2, so no heading level is skipped after the
   page's H1.
 {%- endcomment -%}
@@ -22,10 +24,14 @@
             assign card_heading = 'h3'
           endif
           assign portrait = true
+          assign logos = true
           for card in group.cards.value
             assign ratio = card.image.value.aspect_ratio | default: 1
             if ratio >= 1
               assign portrait = false
+            endif
+            if card.logo.value == blank
+              assign logos = false
             endif
           endfor
         -%}
@@ -44,7 +50,7 @@
               assign fours = true
             endif
           -%}
-          <ul class="gs-grid {% if portrait %}gs-grid--people{% else %}gs-grid--cards{% if fours %} gs-grid--fours{% endif %}{% endif %}">
+          <ul class="gs-grid {% if logos %}gs-grid--logos{% elsif portrait %}gs-grid--people{% else %}gs-grid--cards{% if fours %} gs-grid--fours{% endif %}{% endif %}">
             {%- for card in group.cards.value -%}
               <li>{%- render 'gs-card', card: card, heading: card_heading, portrait: portrait -%}</li>
             {%- endfor -%}
@@ -65,7 +71,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Shows the page's Card groups field. Cards with an image show as image cards, cards without one as text cards."
+      "content": "Shows the page's Card groups field. Cards with an image show as image cards, cards without one as text cards. Cards with a logo show the logo as their heading; a group of them shows as rows."
     }
   ],
   "presets": [

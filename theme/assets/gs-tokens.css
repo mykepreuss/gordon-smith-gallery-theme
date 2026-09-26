@@ -142,6 +142,12 @@
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
   --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px */
   --gs-header-logo-h-foundation: 4.5rem; /* 72: the Foundation logo's minimum height (§8.3), on phones */
+  --gs-org-logo-h: 7rem;           /* 112: a square logo beside its organisation's text (DS-50); the Gallery full stacked minimum (§8.3) */
+  --gs-org-logo-h-lg: 9rem;        /* 144 at ≥ 990px */
+  --gs-org-logo-h-wide: 5.5rem;    /* 88: the Foundation full lockup (about 2:1) at its minimum */
+  --gs-org-logo-h-wide-lg: 6.5rem; /* 104 at ≥ 990px: about the same area as the square logos */
+  --gs-org-logo-col: 12rem;        /* 192: the logo column beside the text, 750 to 989px; fits the Foundation lockup (182) */
+  --gs-org-logo-col-lg: 14rem;     /* 224 at ≥ 990px; fits the Foundation lockup (215) */
   --gs-tap-target: 2.75rem;   /* 44 */
   --gs-footer-logo-h: 4.5rem;      /* 72: partner logos in the footer; the Foundation simple lockup's minimum (DESIGN.md §8.3) */
   --gs-footer-logo-h-lead: 6rem;   /* 96: the Gallery logo leads the footer row (§6.10) */

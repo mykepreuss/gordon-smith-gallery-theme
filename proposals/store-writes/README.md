@@ -198,3 +198,26 @@ For the gallery:
 **Effect on the live site:** none. The live theme shows this logo inside the On Now page's own text, with its own `alt`, and doesn't read label fields.
 
 **Undo:** set the alt text back to empty; delete the medium value.
+
+## 2026-09-26: About Us, each organisation beside its logo (DS-50)
+
+**Why:** Michael, 2026-09-26: "Improve the design of this page: /pages/about-us. We should use the correct logo for each text description and integrate the logo and text better." Today the page shows one combined logo image, then three descriptions under capitalised headings, so no logo sits with its own text.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` "Colorblock: NEW WEBSITE", role MAIN; review theme `184767250729`, role UNPUBLISHED (Admin API). About Us's text matched `snapshots/pages-2026-09-25.json`. Before-snapshot: `snapshots/about-us-2026-09-26-before.json` (the card definition's four fields and 30 cards; About Us's only field, its hero image).
+
+**Made through the Shopify connector** (payloads from `about_us.py`; created IDs in `created/about-us-*.json`):
+
+| What | ID |
+| --- | --- |
+| Card definition: new field `logo` ("Logo"; Gallery, Smith Foundation or Artists for Kids) | `gid://shopify/MetaobjectDefinition/23754375465` |
+| Card `about-us-gallery`: "The Gordon Smith Gallery of Canadian Art", logo Gallery, link "Plan your visit" | `gid://shopify/Metaobject/608631816489` |
+| Card `about-us-artists-for-kids`: "Artists for Kids", logo Artists for Kids, link "More about Artists for Kids" | `gid://shopify/Metaobject/608631882025` |
+| Card `about-us-foundation`: "The Gordon and Marion Smith Foundation for Young Artists", logo Smith Foundation, link "More about the Foundation" | `gid://shopify/Metaobject/608631947561` |
+| Card group `about-us-organisations` (no heading), the three cards in the page's order | `gid://shopify/Metaobject/608631980329` |
+| About Us: `card_groups` set to that group; staged text (`release_body`) set to none | Page `about-us` |
+
+The descriptions are the gallery's, read from the snapshot, word for word. The card titles are the page's headings in normal capitals; the logos show them on screen and the titles are read by screen readers. The three links are new, pointing to the pages the header already has. At release the page's own text goes: its three descriptions now live in the cards, and the combined logo image above them would repeat the logos.
+
+**Effect on the live site:** none. The live theme reads no card entries or page fields, and the live About Us page still shows its own text and image (checked 2026-09-26). The review theme shows the cards once `main` has the logo cards; until then it shows them as plain text cards.
+
+**Undo:** clear About Us's `card_groups` and `release_body`; delete the card group and the three cards; delete the `logo` field from the card definition.

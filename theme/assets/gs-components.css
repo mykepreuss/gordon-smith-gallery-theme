@@ -1315,6 +1315,41 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-card-group + .gs-card-group { margin-block-start: var(--gs-section-space); }
+
+/* ---------- Logo cards (DS-50) ---------- */
+/* A card about one of the three organisations: its logo is the heading (the title is there for
+   screen readers) and the card takes the organisation's rule and link colours (data-gs-brand).
+   A group of them is one organisation per row, the logo beside its text from 750px. */
+
+.gs-card--logo { gap: var(--gs-space-6); } /* at least the logo's clear space, 25% of its height (§8.3) */
+.gs-card__logo { margin: 0; line-height: 0; }
+.gs-card__logo a { display: inline-block; }
+.gs-card__logo .gs-logo { display: block; height: var(--gs-org-logo-h); width: auto; }
+.gs-card__logo--foundation .gs-logo { height: var(--gs-org-logo-h-wide); }
+.gs-card--logo .gs-card__body { gap: var(--gs-space-4); }
+.gs-grid--logos { grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-7); }
+.gs-grid--logos .gs-card--logo {
+  padding-block-start: var(--gs-space-6);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+}
+@media (min-width: 750px) {
+  .gs-grid--logos .gs-card--logo {
+    grid-template-columns: var(--gs-org-logo-col) minmax(0, var(--gs-width-prose));
+    gap: var(--gs-gutter);
+  }
+}
+@media (min-width: 990px) {
+  .gs-card__logo .gs-logo { height: var(--gs-org-logo-h-lg); }
+  .gs-card__logo--foundation .gs-logo { height: var(--gs-org-logo-h-wide-lg); }
+  .gs-grid--logos {
+    max-inline-size: calc(var(--gs-org-logo-col-lg) + var(--gs-gutter) + var(--gs-width-prose));
+    gap: var(--gs-space-8);
+  }
+  .gs-grid--logos .gs-card--logo {
+    grid-template-columns: var(--gs-org-logo-col-lg) minmax(0, var(--gs-width-prose));
+    padding-block-start: var(--gs-space-7);
+  }
+}
 /* A portfolio's description sits under its hero, and the switcher follows at the page header's gap. */
 .gs-collection-head { margin-block-end: var(--gs-stack-lg); }
 .gs-collection-intro { padding-block-start: var(--gs-space-6); }

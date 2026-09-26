@@ -1,0 +1,17 @@
+{
+  "taken": "2026-09-26",
+  "why": "Before DS-50: the card definition gets a Logo field, About Us gets a card group and staged text.",
+  "store": "ed35ee-ea.myshopify.com",
+  "liveTheme": {"id": "gid://shopify/OnlineStoreTheme/183162372393", "name": "Colorblock: NEW WEBSITE", "role": "MAIN"},
+  "reviewTheme": {"id": "gid://shopify/OnlineStoreTheme/184767250729", "name": "New theme for review (do not publish)", "role": "UNPUBLISHED"},
+  "cardDefinition": {
+    "id": "gid://shopify/MetaobjectDefinition/23754375465", "type": "card", "metaobjectsCount": 30,
+    "fieldKeys": ["image", "title", "text", "link"]
+  },
+  "page": {
+    "id": "gid://shopify/Page/155687813417", "handle": "about-us", "templateSuffix": "about-us",
+    "updatedAt": "2026-09-26T00:13:49Z",
+    "bodyMatches": "snapshots/pages-2026-09-25.json",
+    "customFields": [{"key": "hero_image", "type": "file_reference", "value": "gid://shopify/MediaImage/45637943591209"}]
+  }
+}

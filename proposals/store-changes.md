@@ -118,7 +118,7 @@ The dry run prints each description before and after; nothing changes until the 
 
 ## 8. Staged page text at release (DS-39)
 
-Script: `release.py staged` (dry run 2026-09-26: all six pages still match the snapshot).
+Script: `release.py staged` (dry run 2026-09-26: all seven pages still match the snapshot).
 
 Page text is live, so the text that changes at release is staged in a temporary page field, `custom.release_body`, which the new theme shows instead of the page's text (`sections/gs-page-body.liquid`). Created 2026-09-25 with Michael's go-ahead (`proposals/store-writes/README.md`).
 
@@ -128,6 +128,7 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Donate | Its text, then the tax receipt note from the old template. "Ways to Support" is a heading and "Every contribution makes a difference:" the paragraph after it (page pass, 2026-09-26) |
 | Gordon and Marion | Its text, then the video from the old template |
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
+| About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 

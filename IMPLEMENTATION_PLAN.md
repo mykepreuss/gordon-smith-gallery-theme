@@ -153,6 +153,7 @@ Open while iterating. Add what each review finds; take items off when they merge
 | --- | --- | --- |
 | Set the seven hero focal points in the admin (Content > Files), then check them on the review theme at phone width | Michael, then Agent | `proposals/hero-focal-points.md`, each point tried on the preview first (2026-09-26). Shopify's API can't set focal points. IMG-02, IMG-03 |
 | Send the gallery its questions: values, exhibitions, content checks, brand | Michael | `proposals/gallery-questions.md` collects all of them in one place (2026-09-26) |
+| Decide DS-50: About Us sets each organisation's description beside its own logo (logo cards) | Michael | Proposed 2026-09-26, built on branch `about-us-logos`; the store side is in place and invisible to the live site (`proposals/store-writes/README.md`). About's three organisation cards could use it too |
 
 ### Release backlog (on hold until Michael decides to release)
 
@@ -191,7 +192,7 @@ Before requesting release approval, provide:
   3. Reassigning every page's template, by script, straight after publishing (below).
   4. Switching or editing the main menu, and editing the footer menu.
   5. Hiding the six old exhibition pages and the Exhibitions overview, and creating their redirects (P-10, P-20).
-  6. Moving the staged page text into its six pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, and makes the Artists names one list.
+  6. Moving the staged page text into its seven pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, makes the Artists names one list, and leaves About Us's descriptions to its card group (DS-50).
   7. Plain-text titles and the description clean-up on the 21 limited editions, after a dry run the gallery approves (DS-16, P-21, P-22, `proposals/store-changes.md` §7).
   8. Setting the 16 active frame products to Unlisted, so they leave search (P-19, `proposals/store-changes.md` §9).
 - A check that every active exhibition entry is ready to be seen. The entries are already active; their pages return 404 only because the live theme has no exhibition template, so publishing the new theme makes them public.

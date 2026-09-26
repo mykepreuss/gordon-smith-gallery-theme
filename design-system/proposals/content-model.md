@@ -151,11 +151,11 @@ This restructures information the store already has; it doesn't add shop functio
 
 Status: **Approved 2026-09-25** (P-16). Found by the content inventory for the new theme (`proposals/content-migration.md`): 5 pages show grids of cards (image, title, short text, link), and the approved fields have no place for them.
 
-- **Card** entry: `image` (image), `title` (required), `text` (multi-line), `link` (link: label and address). External links get the external cue automatically.
+- **Card** entry: `image` (image), `title` (required), `text` (multi-line), `link` (link: label and address), `logo` (one of Gallery, Smith Foundation, Artists for Kids; added 2026-09-26, DS-50). External links get the external cue automatically. A card with a logo is about that organisation: the logo is its heading.
 - **Card group** entry: `heading` (optional) and `cards` (list of cards, required).
 - **Page field** `custom.card_groups`: list of card groups, shown in order after the page body.
 
-In use for: About (the three organisations), Artists for Kids (6 programmes on its own site), Public Programs (4 programmes), The Smith Foundation (5 ways to take part, and the 14-person board), Donate (4 ways to give). Staff don't choose a layout: cards with images show as image cards, cards without as text cards (DESIGN.md §6.5).
+In use for: About (the three organisations), Artists for Kids (6 programmes on its own site), Public Programs (4 programmes), The Smith Foundation (5 ways to take part, and the 14-person board), Donate (4 ways to give). Staff don't choose a layout: cards with images show as image cards, cards without as text cards, and a group of cards with logos as one organisation per row (DESIGN.md §6.5). About Us (the three organisations, each beside its logo) uses the last since 2026-09-26.
 
 ## 5. Events
 
@@ -212,7 +212,8 @@ Status: **Approved 2026-09-25** (P-16).
       {"key": "image", "type": "file_reference", "validations": {"file_type_options": ["Image"]}},
       {"key": "title", "type": "single_line_text_field", "required": true},
       {"key": "text", "type": "multi_line_text_field"},
-      {"key": "link", "type": "link"}]},
+      {"key": "link", "type": "link"},
+      {"key": "logo", "type": "single_line_text_field", "validations": {"choices": ["Gallery", "Smith Foundation", "Artists for Kids"]}}]},
     {"type": "card_group", "name": "Card group", "displayNameKey": "heading", "fields": [
       {"key": "heading", "type": "single_line_text_field"},
       {"key": "cards", "type": "list.metaobject_reference", "required": true, "validations": {"metaobject_definition_type": "card"}}]},

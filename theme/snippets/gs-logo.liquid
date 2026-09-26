@@ -20,6 +20,7 @@
   {%- when 'artists-for-kids-full-colour-box' -%}{%- render 'gs-logo-artists-for-kids-full-colour-box', label: label -%}
   {%- when 'artists-for-kids-full-white' -%}{%- render 'gs-logo-artists-for-kids-full-white', label: label -%}
   {%- when 'foundation-simple-colour-box' -%}{%- render 'gs-logo-foundation-simple-colour-box', label: label -%}
+  {%- when 'foundation-full-colour-box' -%}{%- render 'gs-logo-foundation-full-colour-box', label: label -%}
   {%- when 'foundation-simple-white' -%}{%- render 'gs-logo-foundation-simple-white', label: label -%}
   {%- else -%}
     {%- if request.design_mode -%}<span class="gs-editor-warning">Unknown logo "{{ name | escape }}".</span>{%- endif -%}
