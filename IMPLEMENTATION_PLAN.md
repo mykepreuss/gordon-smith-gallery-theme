@@ -118,7 +118,7 @@ Done 2026-09-25: every page's content, the 15 exhibitions, the card groups and e
 
 | Item | Owner | Notes |
 | --- | --- | --- |
-| Decide DS-01 to DS-10, DS-12, DS-13 and DS-40 to DS-45, still Proposed | Michael | Nothing Proposed ships (P-17). DS-40 to DS-45 came from the page pass of 2026-09-26 |
+| Decide DS-40 to DS-45, still Proposed | Michael | Nothing Proposed ships (P-17). They came from the page pass of 2026-09-26. DS-01 to DS-13 were decided on 2026-09-26 |
 | Search results fill with frame products (each print's frame is its own product): decide whether frames leave search, for example by making them unlisted at release | Michael | Found in the page pass; a store change, so at release |
 | The template reassignment script, with a dry run (see "Release gate and rollback") | Agent | In `proposals/store-writes/`; reviewed by Michael |
 | The staged page text script, with a dry run (`proposals/store-changes.md` §8) | Agent | In `proposals/store-writes/`; reviewed by Michael |

@@ -151,3 +151,13 @@ For the gallery:
 **Effect on the live site:** none; the live theme doesn't read the staged field.
 
 **Undo:** set Donate's staged text back to the 2026-09-25 value (`migration.py` before this pass: text plus the tax receipt note), and clear Artists' staged text.
+
+## 2026-09-26: programme on Donate and Gordon and Marion
+
+**Why:** the header logo follows the page's programme (DS-47). Michael asked for the Foundation logo on the Foundation's pages: Donate and Gordon and Marion sit under Smith Foundation in the menu, beside the Foundation page, which already had it.
+
+**Made through the Shopify connector:** the `programme` field set to "Smith Foundation" on pages `donate` and `gordon-and-marion`. Their title boxes take the Foundation's colour too (DS-04).
+
+**Effect on the live site:** none; the live theme reads no page fields.
+
+**Undo:** clear the two values.

@@ -5,8 +5,8 @@
   image is never stretched into a hero. Nothing here is a section setting, so one template serves
   many pages without their content leaking into each other (L-01).
 
-  Programme pages without a hero image show their programme's logo above the title (§8.2). The
-  logo never sits in the title box: a boxed logo on its own box colour is not allowed (§8.3).
+  A programme page's logo is in the header (DS-47), so the page header doesn't repeat it. No logo
+  ever sits in the title box: a boxed logo on its own box colour is not allowed (§8.3).
 {%- endcomment -%}
 {%- liquid
   assign f = page.metafields.custom
@@ -15,10 +15,6 @@
   if f.hero_is_artwork.value == true
     assign mode = 'artwork'
   endif
-  capture brand
-    render 'gs-programme', value: f.programme.value
-  endcapture
-  assign brand = brand | strip
   assign cta = f.cta.value
 -%}
 {%- if image != blank -%}
@@ -45,11 +41,6 @@
 {%- else -%}
   <div class="gs-container gs-lead-in">
     <header class="gs-page-head">
-      {%- if brand == 'artists-for-kids' -%}
-        <span class="gs-page-head__logo">{%- render 'gs-logo', name: 'artists-for-kids-full-colour-box' -%}</span>
-      {%- elsif brand == 'foundation' -%}
-        <span class="gs-page-head__logo">{%- render 'gs-logo', name: 'foundation-simple-colour-box' -%}</span>
-      {%- endif -%}
       {%- if f.eyebrow.value != blank -%}
         <p class="gs-eyebrow">{{ f.eyebrow.value | escape }}</p>
       {%- endif -%}

@@ -15,7 +15,7 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 
 The theme is built and all content is migrated, merged to `main` on 2026-09-26. The to-do list is the plan's "Remaining work before the review theme". In order:
 
-1. Michael decides the decisions still Proposed (DS-01 to DS-10, DS-12, DS-13 and DS-40 to DS-45). The review fixes and the design pass on every page were done 2026-09-26.
+1. Michael decides the decisions still Proposed (DS-40 to DS-45). The review fixes and the design pass on every page were done 2026-09-26.
 2. The two release scripts, each with a dry run: template reassignment and staged page text (`proposals/store-changes.md` §3, §8).
 3. Review theme (plan step 4): `shopify theme push --unpublished`, record its ID and role here and in `AGENTS.md`, then push only to that ID with `--strict`.
 4. Verification (plan step 5): the still-to-verify list in DESIGN.md §9.6, the date-driven checks, the font audit, the newsletter test and the staff editing test.

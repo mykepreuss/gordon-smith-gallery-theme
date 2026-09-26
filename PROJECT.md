@@ -30,7 +30,7 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
 | Land acknowledgement font (Q11): accept Arial for the characters Mulish lacks, or load a font for BC Indigenous languages | Gallery | L-06 |
 | Checks from the migration and page pass: the Donate "Online Form" card (the form is off), Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, About and About Us as two pages, three artist names that may be misspelled (`proposals/store-writes/README.md`) | Gallery | Nothing; the review shows today's content |
-| Decisions DS-01 to DS-10, DS-12, DS-13 and DS-40 to DS-45 (Proposed), and whether frame products leave search | Michael | Release (nothing Proposed ships) |
+| Decisions DS-40 to DS-45 (Proposed), and whether frame products leave search | Michael | Release (nothing Proposed ships) |
 
 ## Limitation log (REUSE-04)
 

@@ -13,14 +13,8 @@
 
   {%- liquid
     # Programme colours (DESIGN.md §3.3): from the page's or the exhibition's programme field.
-    assign programme = ''
-    if page != blank
-      assign programme = page.metafields.custom.programme.value
-    elsif metaobject != blank
-      assign programme = metaobject.programme.value
-    endif
     capture brand
-      render 'gs-programme', value: programme
+      render 'gs-brand'
     endcapture
     assign brand = brand | strip
   -%}

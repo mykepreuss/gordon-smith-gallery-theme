@@ -31,19 +31,19 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 
 | ID | Decision (short) | Status |
 | --- | --- | --- |
-| DS-01 | Where the guides disagree, the supplied logo files set the colour values | Proposed; designer to confirm (Q4) |
-| DS-02 | Mulish is the web font; Soleil only if the gallery holds an Adobe licence | Proposed (plan already chose Mulish) |
-| DS-03 | One rounded corner, bottom-right, site-wide | Proposed |
-| DS-04 | Programme theming via `data-gs-brand`; Foundation and Artists for Kids text colours fall back to ink | Proposed |
-| DS-05 | Artworks never cropped, rounded, shifted or overlaid | Proposed |
-| DS-06 | Inline links keep a designed underline with a tint hover fill | Proposed |
-| DS-07 | Header logo: Gallery simple stacked colour box, flush top-left, 64 / 96 px | Proposed; judge in a header mockup (TYPE-04) |
-| DS-08 | Hero text in a title box in the programme colour, never on the image | Proposed |
-| DS-09 | Newsletter band on tint above an ink footer, on every template | Proposed |
-| DS-10 | Headings in capitals; artwork titles italic sentence case | Proposed |
+| DS-01 | Where the guides disagree, the supplied logo files set the colour values | **Decided by Michael, 2026-09-26** |
+| DS-02 | Mulish is the web font; Soleil only if the gallery holds an Adobe licence | **Decided by Michael, 2026-09-26** |
+| DS-03 | One rounded corner, bottom-right, site-wide | **Decided by Michael, 2026-09-26** |
+| DS-04 | Programme theming via `data-gs-brand`; Foundation and Artists for Kids text colours fall back to ink | **Decided by Michael, 2026-09-26** |
+| DS-05 | Artworks never cropped, rounded, shifted or overlaid | **Decided by Michael, 2026-09-26** |
+| DS-06 | Inline links keep a designed underline with a tint hover fill | **Decided by Michael, 2026-09-26** |
+| DS-07 | Header logo: Gallery simple stacked colour box, flush top-left, 64 / 96 px | **Decided by Michael, 2026-09-26**; amended by DS-47 |
+| DS-08 | Hero text in a title box in the programme colour, never on the image | **Decided by Michael, 2026-09-26** |
+| DS-09 | Newsletter band on tint above an ink footer, on every template | **Decided by Michael, 2026-09-26** |
+| DS-10 | Headings in capitals; artwork titles italic sentence case | **Decided by Michael, 2026-09-26** |
 | DS-11 | A section with pages is one button that opens its dropdown; its main page is the first link inside. Replaces the linked-label-plus-caret model | **Decided by Michael, 2026-09-25**; gallery approves labels |
-| DS-12 | Photo hero overlaps the image by a fixed amount; artwork hero never overlaps | Proposed |
-| DS-13 | Sibling navigation (switcher) on exhibition list and portfolio pages | Proposed |
+| DS-12 | Photo hero overlaps the image by a fixed amount; artwork hero never overlaps | **Decided by Michael, 2026-09-26** |
+| DS-13 | Sibling navigation (switcher) on exhibition list and portfolio pages | **Decided by Michael, 2026-09-26** |
 | DS-14 | Closed set of templates with per-page content in page fields | **Approved 2026-09-25** (content model answers recorded by Michael) |
 | DS-15 | Exhibitions as structured entries with status from dates | **Approved 2026-09-25** (content model answers recorded by Michael) |
 | DS-16 | Artwork label data in product fields; plain-text product titles | **Approved 2026-09-25** (content model answers recorded by Michael) |
@@ -76,6 +76,8 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-43 | The Exhibitions overview carries the On now / Upcoming / Past switcher | Proposed (page pass, 2026-09-26) |
 | DS-44 | Card groups of four or eight go two, then four, across | Proposed (page pass, 2026-09-26) |
 | DS-45 | Long lists in page text (12 or more items) flow into columns; the Artists names become one list | Proposed (page pass, 2026-09-26) |
+| DS-46 | Artwork grids show at most three across; related works one row of three | **Decided by Michael, 2026-09-26** (with DS-05: "go from 4 images wide to 3") |
+| DS-47 | The header logo follows the page's programme: Artists for Kids pages carry the Artists for Kids logo, Smith Foundation pages (the Foundation, Gordon and Marion, Donate) the Foundation logo, every other page the Gallery logo, including the Shop, portfolios, Our Story and Artists. It always links home | **Decided by Michael, 2026-09-26** (with DS-07) |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.
 
