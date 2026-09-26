@@ -48,6 +48,17 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 4.3 | May the site use a teal version of the text-only Gallery logo, which the brand guide shows but wasn't supplied? (Q3) | Not used |
 | 4.4 | Should gallery images open larger when clicked? (Q8) | They don't |
 
+## 5. The Permanent Collection (`proposals/permanent-collection.md`)
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 5.1 | Do the image permissions (CARFAC or artists' agreements) cover showing the collection on gordonsmithgallery.com? The catalogue shows them today at afkcatalogue.sd44.ca | Nothing from the collection is made public |
+| 5.2 | Credit lines: name donors ("Gift of Alan & Elizabeth Bell"), or the collection credit alone? | The collection credit alone |
+| 5.3 | Publish the Teaching Collection (195 works) and the artists' Text Resources (press, exhibition lists)? Leave out the 6 works on loan? | Teaching Collection and Text Resources left out; loans left out |
+| 5.4 | Review the artist names and life dates: 313 spellings become about 204 artists, and some conflict (Ann Meredith Barry has four sets of dates) | Names as the catalogue has them, dates left off where they conflict |
+| 5.5 | Where are the original image files (the catalogue holds 36 GB of TIFFs), and who at the district's IT can help with the download and, later, the redirects? | The trial uses 20 works' files from the catalogue |
+| 5.6 | Once the catalogue retires, where do the private records live (where each work is, provenance, donors)? | They stay in the catalogue |
+
 ## At release (later)
 
 - The product description clean-up (P-21, P-22): the gallery approves a before-and-after list of the 21 descriptions before anything changes.
