@@ -35,7 +35,7 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 3.3 | Three names on the Artists page may be misspelled: "Atilla Lukacs" (his site is attilarichardlukacs.com), "Jean McEwan" (the link goes to Jean McEwen), "Graham Gillmore" (the Permanent Collection page says Graham Gilmore) | As written |
 | 3.4 | Speaker Series: where should Omer Arbel's separate biography paragraph go (the page text or the event summary)? | Not on the site |
 | 3.5 | *Good Luck (wheelbarrow)* by Samuel Roy-Bois: its description gives the medium as "archival pigment print on Legacy Baryta paper", so its label now says "archival pigment print". Right? | As filled in, 2026-09-26 |
-| 3.6 | About and About Us are two pages. The menu links About Us; About (the Artists for Kids history) is reachable only by its address. Keep both, or merge them? | Both kept, as today |
+| 3.6 | About Artists for Kids (the old About page, P-23) and Our Story (under Shop) tell the same history of the first portfolio print, with the same Bill Reid print. Keep both, or should one link to the other? | Both kept, as today |
 | 3.7 | Roz Marshall's link on the Artists page goes to `rozmarshall-artist.com`, which no longer exists. A new address, or remove the link? | The dead link stays |
 
 ## 4. Brand

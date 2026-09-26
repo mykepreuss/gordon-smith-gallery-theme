@@ -22,4 +22,10 @@ Hide first: a redirect only works from an address that no longer loads a page.
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
 | `/pages/exhibitions-1` | `/pages/on-now` |
 
-Rollback: delete the seven redirects, publish the seven pages.
+Then the renamed pages: new title and address, the old address forwarded by Shopify.
+
+| Now | At release |
+| --- | --- |
+| `/pages/about`, "About" | `/pages/about-artists-for-kids`, "About Artists for Kids" |
+
+Rollback: delete the seven redirects, publish the seven pages; give the renamed pages their old title and address back and delete the redirect Shopify made.

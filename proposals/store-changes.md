@@ -9,7 +9,7 @@ Model (DS-11): a section with pages under it is one button; its main page is the
 | Section | Type | Items, in order (destination) | Change from today |
 | --- | --- | --- | --- |
 | Exhibitions | Section | On now (`/pages/on-now`), Upcoming (`/pages/upcoming-exhibitions`), Past exhibitions (`/pages/past-exhibitions`) | Moves to the first place in the menu (P-09). Adds Upcoming (missing today). The Exhibitions overview page (`/pages/exhibitions-1`) is removed (P-20): hidden at release, its address redirecting to On now (§5) |
-| About | Section | About the gallery (`/pages/about` or `/pages/about-us`, one page, Q: which), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About and About Us: gallery decides whether they are one page |
+| About | Section | About the gallery (`/pages/about-us`; `/pages/about` becomes About Artists for Kids, P-23), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About and About Us stay two pages: About Us is about the three organisations, About becomes About Artists for Kids (Michael, 2026-09-26, P-23) |
 | Artists for Kids | Link | `/pages/artists-for-kids` | None. Approved 2026-09-25 as one link (P-15); the programme links to the Artists for Kids site stay on its page |
 | Programs | Section | Public programs (`/pages/public-programs-1`), Speaker series, Music at the Smith, Explore + Create, Art in Good Company | "Public Programs" no longer repeats the section, because the section itself is not a link |
 | Smith Foundation | Section | About the Foundation (`/pages/the-smith-foundation`), Gordon and Marion (`/pages/gordon-and-marion`), Donate (`/pages/donate`) | Renames the first item so it doesn't repeat the section |
@@ -75,11 +75,12 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibitions-1` | `/pages/on-now` |
 
 3. Open each old address and check it lands on its entry.
-4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
+4. Rename About (P-23): title "About Artists for Kids", address `/pages/about-artists-for-kids`, with Shopify forwarding `/pages/about` to it (`redirectNewHandle`). Menus link pages by ID, so nothing else changes. Open both addresses to check.
+5. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
 The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 
-Rollback: republish the baseline theme, unhide the seven pages, delete the seven redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the seven pages, delete the seven redirects, give About its old title and address back (and delete the redirect Shopify made), restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
@@ -118,7 +119,7 @@ The dry run prints each description before and after; nothing changes until the 
 
 ## 8. Staged page text at release (DS-39)
 
-Script: `release.py staged` (dry run 2026-09-26: all seven pages still match the snapshot).
+Script: `release.py staged` (dry run 2026-09-26: all eight pages still match the snapshot).
 
 Page text is live, so the text that changes at release is staged in a temporary page field, `custom.release_body`, which the new theme shows instead of the page's text (`sections/gs-page-body.liquid`). Created 2026-09-25 with Michael's go-ahead (`proposals/store-writes/README.md`).
 
@@ -129,6 +130,7 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Gordon and Marion | Its text, then the video from the old template |
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
 | About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
+| About (About Artists for Kids at release, P-23) | Its four paragraphs, word for word, without the Bill Reid print and its caption, which its hero now shows. Pasted formatting (Outlook markup, spacer lines) stays behind |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 

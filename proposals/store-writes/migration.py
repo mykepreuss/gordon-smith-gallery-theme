@@ -436,6 +436,8 @@ def release_bodies():
 def page_fields(created_groups):
     ids = {v["metaobject"]["handle"]: v["metaobject"]["id"] for v in created_groups.values()}
     rows = [
+        # About: superseded on 2026-09-26 by about_us.py about-afk (P-23: the Bill Reid print as hero,
+        # no card groups). A re-run would put these two back.
         ("about", "hero_image", "file_reference", img(45637943591209)),
         ("about", "card_groups", "list.metaobject_reference", json.dumps([ids["about-organisations"]])),
         ("about-us", "hero_image", "file_reference", img(45637943591209)),

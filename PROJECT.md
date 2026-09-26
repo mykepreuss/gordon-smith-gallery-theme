@@ -34,7 +34,7 @@ All the gallery's questions, in one list to send: `proposals/gallery-questions.m
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
 | Land acknowledgement font (Q11): accept Arial for the characters Mulish lacks, or load a font for BC Indigenous languages | Gallery | L-06 |
-| Checks from the migration and page pass: the Donate "Online Form" card (the form is off), Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, About and About Us as two pages, three artist names that may be misspelled (`proposals/store-writes/README.md`) | Gallery | Nothing; the review shows today's content |
+| Checks from the migration and page pass: the Donate "Online Form" card (the form is off), Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, About Artists for Kids and Our Story telling the same history, three artist names that may be misspelled (`proposals/store-writes/README.md`) | Gallery | Nothing; the review shows today's content |
 
 ## Limitation log (REUSE-04)
 

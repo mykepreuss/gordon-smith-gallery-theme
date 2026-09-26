@@ -241,3 +241,27 @@ The words, titles, links and order are unchanged: Artists for Kids first, as on 
 **Effect on the live site:** none; the live theme reads no card entries, and the live About page still loads normally (checked 2026-09-26).
 
 **Undo:** clear the Logo field on the three cards.
+
+## 2026-09-26: About becomes About Artists for Kids (P-23)
+
+**Why:** Michael, 2026-09-26: "/about-us and /about look very similar, why is this? I think /about should be /about-artists-for-kids and be focused on that part of the organization." They looked alike because both had the building photo as their hero and the same three organisation rows at the end; only About's text, Artists for Kids' history, was its own.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` "Colorblock: NEW WEBSITE", role MAIN. About's text matched `snapshots/pages-2026-09-25.json`. Before-snapshot: `snapshots/about-2026-09-26-before.json` (its hero image and card group; the print's empty alt text).
+
+**Made through the Shopify connector** (payload from `about_us.py about-afk`; `about-afk-review` prints the text):
+
+| What | Before | After |
+| --- | --- | --- |
+| About's `programme` | not set | Artists for Kids: its logo in the header, its colours (DS-04, DS-47) |
+| About's `hero_image` | the building photo, as on About Us | the Bill Reid print from its text (`Reid_REID002_Xhuwaji_HaidaGrizzly.jpg`, `gid://shopify/MediaImage/40274179096873`, 3589 × 3629) |
+| About's `hero_is_artwork` | not set | true: shown whole, never cropped |
+| About's `hero_caption` | not set | "Bill Reid, (Canadian, 1920 – 1998) XHUWAJI/Haida Grizzly Bear", the page's own caption |
+| About's `card_groups` | the three organisation cards | removed: they're on About Us. The cards and their group stay in the store, unused |
+| About's staged text (`release_body`) | not set | its four paragraphs, word for word, without the print and caption the hero now carries |
+| The print's alt text | empty | "Bill Reid, Xhuwaji / Haida Grizzly Bear, 1990" (artwork alt: artist, title, year) |
+
+**At release** (`release.py addresses`): title "About Artists for Kids" and address `/pages/about-artists-for-kids`, with Shopify forwarding `/pages/about`. Until then the review theme still says "About" at `/pages/about`.
+
+**Effect on the live site:** none. The live theme reads no page fields, and shows the print only inside page text, with its own empty `alt`. The live About page still shows its text and print (checked 2026-09-26).
+
+**Undo:** set `hero_image` back to `gid://shopify/MediaImage/45637943591209` and `card_groups` back to `["gid://shopify/Metaobject/608389529897"]`; clear `programme`, `hero_is_artwork`, `hero_caption` and `release_body`; set the print's alt text back to empty.

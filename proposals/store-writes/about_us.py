@@ -13,6 +13,16 @@ Prints the variables for each step's mutation.
   python3 proposals/store-writes/about_us.py card-group <created/about-us-cards.json>
   python3 proposals/store-writes/about_us.py page-fields <created/about-us-card-group.json>
   python3 proposals/store-writes/about_us.py about-logos   # About's three cards (Michael, 2026-09-26)
+  python3 proposals/store-writes/about_us.py about-afk     # About becomes About Artists for Kids (below)
+  python3 proposals/store-writes/about_us.py about-afk-review   # its staged text and caption, as text
+
+About Artists for Kids (Michael, 2026-09-26: "/about should be /about-artists-for-kids and be
+focused on that part of the organization"). About's text is Artists for Kids' history, but the page
+shared About Us's hero photo and three organisation rows, so the two looked alike. Now, invisible to
+the live theme: the Artists for Kids programme (its logo and colours, DS-47), the first portfolio
+print as an artwork hero with the page's own caption, no organisation rows (they stay on About Us),
+and its text staged without the print and caption, which the hero now carries. The title and address
+change at release (release.py addresses), because the live theme shows them.
 """
 import html
 import json
@@ -102,6 +112,45 @@ def about_logos():
     return {gid: {"fields": [{"key": "logo", "value": logo}]} for gid, logo in ABOUT_CARDS.items()}
 
 
+ABOUT = next(p for p in json.loads((HERE / "snapshots" / "pages-2026-09-25.json").read_text())
+             if p["handle"] == "about")
+REID = "gid://shopify/MediaImage/40274179096873"  # Reid_REID002_Xhuwaji_HaidaGrizzly.jpg, 3589 x 3629
+REID_ALT = "Bill Reid, Xhuwaji / Haida Grizzly Bear, 1990"
+
+
+def clean_inline(s):
+    s = re.sub(r"\s+data-[\w-]+=\"[^\"]*\"", "", s)
+    s = s.replace("\u00a0", " ").replace("&nbsp;", " ")
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def about_afk_text():
+    """About's four paragraphs, word for word, as paragraphs; and its print's caption."""
+    body = ABOUT["body"]
+    paras = [clean_inline(m.group(1)) for m in re.finditer(r'<div class="x_elementToProof"[^>]*>(.*?)</div>', body, flags=re.S)]
+    paras = [x for x in paras if plain(x)]
+    assert len(paras) == 4 and paras[0].startswith("Artists for Kids was founded in 1989"), "About's text changed since the snapshot"
+    caption = plain(re.search(r"<h5[^>]*>(.*?)</h5>", body, flags=re.S).group(1))
+    assert caption.startswith("Bill Reid, (Canadian, 1920"), caption
+    return "\n".join(f"<p>{x}</p>" for x in paras), caption
+
+
+def about_afk():
+    staged, caption = about_afk_text()
+    page = ABOUT["id"]
+    return {
+        "metafieldsSet": {"m0": [
+            {"ownerId": page, "namespace": "custom", "key": "programme", "type": "single_line_text_field", "value": "Artists for Kids"},
+            {"ownerId": page, "namespace": "custom", "key": "hero_image", "type": "file_reference", "value": REID},
+            {"ownerId": page, "namespace": "custom", "key": "hero_is_artwork", "type": "boolean", "value": "true"},
+            {"ownerId": page, "namespace": "custom", "key": "hero_caption", "type": "single_line_text_field", "value": caption},
+            {"ownerId": page, "namespace": "custom", "key": "release_body", "type": "multi_line_text_field", "value": staged},
+        ]},
+        "metafieldsDelete": [{"ownerId": page, "namespace": "custom", "key": "card_groups"}],
+        "fileUpdate": [{"id": REID, "alt": REID_ALT}],
+    }
+
+
 def page_fields(created_group):
     group = created_group["about_us_organisations"]["metaobject"]["id"]
     return {"m0": [
@@ -124,6 +173,11 @@ if __name__ == "__main__":
         result = page_fields(json.loads(pathlib.Path(sys.argv[2]).read_text()))
     elif step == "about-logos":
         result = about_logos()
+    elif step == "about-afk":
+        result = about_afk()
+    elif step == "about-afk-review":
+        staged, caption = about_afk_text()
+        sys.exit(print(f"Hero caption: {caption}\nHero alt: {REID_ALT}\n\nStaged text:\n{staged}"))
     else:
         sys.exit(__doc__)
     print(json.dumps(result, indent=2, ensure_ascii=False))

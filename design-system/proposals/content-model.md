@@ -155,7 +155,7 @@ Status: **Approved 2026-09-25** (P-16). Found by the content inventory for the n
 - **Card group** entry: `heading` (optional) and `cards` (list of cards, required).
 - **Page field** `custom.card_groups`: list of card groups, shown in order after the page body.
 
-In use for: About (the three organisations), Artists for Kids (6 programmes on its own site), Public Programs (4 programmes), The Smith Foundation (5 ways to take part, and the 14-person board), Donate (4 ways to give). Staff don't choose a layout: cards with images show as image cards, cards without as text cards, and a group of cards with logos as one organisation per row (DESIGN.md §6.5). About and About Us (the three organisations, each beside its logo) use the last since 2026-09-26.
+In use for: About Us (the three organisations), Artists for Kids (6 programmes on its own site), Public Programs (4 programmes), The Smith Foundation (5 ways to take part, and the 14-person board), Donate (4 ways to give). Staff don't choose a layout: cards with images show as image cards, cards without as text cards, and a group of cards with logos as one organisation per row (DESIGN.md §6.5). About Us (the three organisations, each beside its logo) uses the last since 2026-09-26. About had the same three organisations until it became About Artists for Kids (P-23).
 
 ## 5. Events
 
