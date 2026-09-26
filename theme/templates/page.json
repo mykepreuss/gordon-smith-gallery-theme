@@ -19,10 +19,19 @@
       "type": "gs-exhibition-list"
     },
     "body": {
-      "type": "gs-page-body"
+      "type": "gs-page-body",
+      "settings": {
+        "part": "opening"
+      }
     },
     "cards": {
       "type": "gs-card-groups"
+    },
+    "sections": {
+      "type": "gs-page-body",
+      "settings": {
+        "part": "sections"
+      }
     },
     "events": {
       "type": "gs-events"
@@ -37,6 +46,7 @@
     "exhibitions",
     "body",
     "cards",
+    "sections",
     "events",
     "gallery"
   ]

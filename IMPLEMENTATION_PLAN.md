@@ -14,7 +14,7 @@ Keep four change surfaces distinct: **Git owns theme source and project records;
 
 - **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.4).
 - **Content:** everything the current theme held is in the store or the theme: 15 exhibitions, programme and information pages, card groups, events, product labels and three review menus (`proposals/store-writes/README.md`). Page text that changes at release is staged (DS-39).
-- **Decisions:** every design decision is decided (DS-01 to DS-50, `DECISIONS.md`).
+- **Decisions:** every design decision is decided (DS-01 to DS-51, `DECISIONS.md`).
 - **Review theme:** `184767250729` "New theme for review (do not publish)", matching `main` at 1ad4dba.
   - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729
   - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184767250729/editor
@@ -166,6 +166,7 @@ Done so far: every page's content, the 15 exhibitions, the card groups and event
 | The staff editing test and the newsletter test | Gallery staff, Mailchimp access | Staff use the review theme's editor |
 | Mailchimp app settings: customer sync, audience, consent mapping, double opt-in | Gallery or Michael | ACCESS-01; needs app access |
 | The release gate | Agent, Michael | "Release gate and rollback" |
+| After release: remove the pre-release bridges, which are the staged-text fallback in `gs-page-text` (DS-39) and the list of old template names in `gs-is-programme-page` (L-08) | Agent | One follow-up pull request, once the release scripts have run |
 
 ## Verification and completion rules
 
