@@ -736,11 +736,10 @@
         </article></li>
       </ul>
     </section>
-    <section class="gs-card-group" aria-labelledby="afk-cards-title">
-      <div class="gs-section-head"><h2 class="gs-h2" id="afk-cards-title">Artists for Kids</h2></div>
+    <section class="gs-card-group">
       <ul class="gs-grid gs-grid--cards" id="afk-cards"></ul>
     </section>
-    <p class="pv-note">Card groups, shown after a page&rsquo;s text. Staff don&rsquo;t choose a layout: a card with an image is an image card, one without is a text card under a rule. Ways To Give is the Donate page&rsquo;s group, word for word; its cards have no images or links. A group of four or eight goes two, then four, across, so no card sits alone (DS-44). The second group is the six programmes on the Artists for Kids page, each linking to the Artists for Kids site. With no link label of its own, the whole card is the link, and its title carries the external arrow. On the store that group has no heading; the preview adds one so the headings stay in order. Images are placeholders.</p>
+    <p class="pv-note">Card groups, shown after a page&rsquo;s text. Staff don&rsquo;t choose a layout: a card with an image is an image card, one without is a text card under a rule. Ways To Give is the Donate page&rsquo;s group, word for word; its cards have no images or links. A group of four or eight goes two, then four, across, so no card sits alone (DS-44). The second group is the six programmes on the Artists for Kids page, each linking to the Artists for Kids site. With no link label of its own, the whole card is the link, and its title carries the external arrow. That group has no heading, so its card titles are H2s and no heading level is skipped. Images are placeholders.</p>
   </div>
 </div>
 
@@ -1168,7 +1167,7 @@
   document.getElementById("afk-cards").innerHTML = afk.map(([t, url], i) => `
     <li><article class="gs-card">
       <div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...tones[i % 3])}" alt=""></div>
-      <h3 class="gs-card__title"><a class="gs-link--external" href="${url}">${t}<span class="gs-visually-hidden"> (external site)</span></a></h3>
+      <h2 class="gs-card__title"><a class="gs-link--external" href="${url}">${t}<span class="gs-visually-hidden"> (external site)</span></a></h2>
     </article></li>`).join("");
 
   // Upcoming events (live store programme pages): title, start, the time as gs-time-range writes it,
