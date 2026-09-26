@@ -13,7 +13,8 @@
   A group whose cards all have a logo (the three organisations on About Us) shows as rows, each
   logo beside its text (DS-50).
   A group without a heading has its card titles at H2, so no heading level is skipped after the
-  page's H1.
+  page's H1. Each group can be linked to by its handle, e.g. /pages/donate#donate-ways-to-give, so a
+  page's call to action can jump to it (DS-53).
 {%- endcomment -%}
 {%- assign groups = page.metafields.custom.card_groups.value -%}
 {%- if groups != blank -%}
@@ -38,7 +39,7 @@
             endif
           endfor
         -%}
-        <section class="gs-card-group"{% if heading != blank %} aria-labelledby="{{ section.id }}-{{ forloop.index }}"{% endif %}>
+        <section class="gs-card-group" id="{{ group.system.handle }}"{% if heading != blank %} aria-labelledby="{{ section.id }}-{{ forloop.index }}"{% endif %}>
           {%- if heading != blank -%}
             <div class="gs-section-head">
               <h2 class="gs-h2" id="{{ section.id }}-{{ forloop.index }}">{{ heading | escape }}</h2>

@@ -526,6 +526,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   line-height: var(--gs-leading-deck);
 }
 .gs-prose img { max-width: 100%; height: auto; border-radius: var(--gs-shape-md); }
+/* A quote with who said it (DS-53): <figure class="gs-quote"><blockquote>…</blockquote><figcaption>…</figcaption></figure>.
+   As a figure it sits beside the text it belongs to from 990px, as a pull quote (.gs-text-media). */
+.gs-prose .gs-quote blockquote { margin: 0; }
+.gs-prose .gs-quote blockquote > * { margin: 0; }
+.gs-prose .gs-quote figcaption { padding-inline-start: calc(var(--gs-space-5) + 4px); }
 /* A picture with its caption. An artwork keeps square corners (DS-05); only photos are rounded. */
 .gs-prose figure { margin-inline: 0; display: grid; gap: var(--gs-space-3); }
 .gs-prose figcaption {
@@ -1360,6 +1365,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-card-group + .gs-card-group { margin-block-start: var(--gs-section-space); }
+.gs-card-group { scroll-margin-block-start: var(--gs-space-6); } /* a call to action can jump here (DS-53) */
 
 /* ---------- Logo cards (DS-50) ---------- */
 /* A card about one of the three organisations: its logo is the heading (the title is there for

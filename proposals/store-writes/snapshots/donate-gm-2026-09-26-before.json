@@ -1,0 +1,15 @@
+{
+  "taken": "2026-09-26",
+  "why": "Before the Donate and Gordon and Marion pass (DS-53).",
+  "donate": {
+    "id": "gid://shopify/Page/155885863209",
+    "updatedAt": "2026-09-26T15:16:56Z",
+    "cta": null,
+    "release_body": "= migration.py donate_body() (checked equal)"
+  },
+  "gordon-and-marion": {
+    "id": "gid://shopify/Page/155692957993",
+    "updatedAt": "2026-09-26T15:16:56Z",
+    "release_body": "= migration.py page text + GORDON_AND_MARION_VIDEO (checked equal)"
+  }
+}
