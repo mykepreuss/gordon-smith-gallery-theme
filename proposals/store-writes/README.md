@@ -132,3 +132,22 @@ For the gallery:
 **Undo:** delete the 3 menus; clear the 19 page field values; delete the 2 card groups, 7 cards and 11 exhibitions; delete the `release_body` definition.
 
 **At release:** a script moves each staged text into its page, stopping if the live text no longer matches `snapshots/pages-2026-09-25.json`, then deletes the values and the definition (`store-changes.md` §8).
+
+## 2026-09-26: page pass (staged text on Donate and Artists)
+
+**Why:** fixes from the review of the remaining pages. Michael's go-ahead, 2026-09-26 ("Fix what the review found" and "Design passes on the pages not yet reviewed").
+
+**Checked first:** the live text of Donate and Artists still matches `snapshots/pages-2026-09-25.json` (Donate's later update time is the field write of 2026-09-25; Artists hasn't changed since 2026-09-25 19:40 UTC).
+
+**Made through the Shopify connector** (payload from `migration.py page-pass`):
+
+| What | Page |
+| --- | --- |
+| Donate's staged text rewritten: "Ways to Support" becomes a heading and "Every contribution makes a difference:" the paragraph after it. The two phrases sat in one heading, split by line breaks, so they read as two headings. Words unchanged; the tax receipt note stays at the end | `donate` |
+| Artists' staged text added: its two paragraphs, then its 59 artist links as one list, in the same order with the same addresses. Today they're loose links and line breaks centred in two blocks; as a list they flow into columns (DS-45) | `artists` |
+
+**For the gallery:** three names on the Artists page may be misspelled: "Atilla Lukacs" (his site is attilarichardlukacs.com), "Jean McEwan" (the link is to Jean McEwen) and "Graham Gillmore" (Permanent Collection's text says Graham Gilmore). Moved as written.
+
+**Effect on the live site:** none; the live theme doesn't read the staged field.
+
+**Undo:** set Donate's staged text back to the 2026-09-25 value (`migration.py` before this pass: text plus the tax receipt note), and clear Artists' staged text.

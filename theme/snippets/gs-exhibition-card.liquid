@@ -57,7 +57,7 @@
     {%- endunless -%}
     {%- unless compact -%}
       {%- if entry.curator_credit.value != blank -%}
-        <p class="gs-meta">{{ entry.curator_credit.value | escape }}</p>
+        <p class="gs-meta gs-card__credit">{{ entry.curator_credit.value | escape }}</p>
       {%- elsif entry.artists.value != blank -%}
         {%- assign names = entry.artists.value -%}
         <p class="gs-meta">

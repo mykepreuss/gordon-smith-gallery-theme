@@ -11,14 +11,16 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 - What the current theme holds and where it goes: `proposals/content-migration.md`. Store changes for review and release: `proposals/store-changes.md`.
 - The live theme (Colorblock, ID `183162372393`) is in `baseline/theme/` as a reference for content and placement only. Don't copy its code or settings, and never write to it.
 
-## Next body of work (plan steps 3 to 5)
+## Next body of work (plan steps 4 and 5)
 
-The template set is built on `build-new-theme` (DESIGN.md §9.6 lists what was checked and what's left). Next:
+The theme is built and all content is migrated, merged to `main` on 2026-09-26. The to-do list is the plan's "Remaining work before the review theme". In order:
 
-1. Pull request for the build (plan step 3).
-2. With Michael's go-ahead: create the field and entry definitions (content model parts 1 to 6) and draft entries, and a review-only copy of the main menu (`proposals/store-changes.md` §1, §4). Additive and invisible under the live theme, but still store writes: log each in the PR.
+1. Michael decides the decisions still Proposed (DS-01 to DS-10, DS-12, DS-13 and DS-40 to DS-45). The review fixes and the design pass on every page were done 2026-09-26.
+2. The two release scripts, each with a dry run: template reassignment and staged page text (`proposals/store-changes.md` §3, §8).
 3. Review theme (plan step 4): `shopify theme push --unpublished`, record its ID and role here and in `AGENTS.md`, then push only to that ID with `--strict`.
-4. Verification (plan step 5): the still-to-verify list in DESIGN.md §9.6, the font audit, and the staff editing test.
+4. Verification (plan step 5): the still-to-verify list in DESIGN.md §9.6, the date-driven checks, the font audit, the newsletter test and the staff editing test.
+
+Store writes (definitions, entries, field values, menus) need Michael's go-ahead and a before-snapshot, and are logged in `proposals/store-writes/README.md`. Page text that changes at release is staged in `custom.release_body` (DS-39), never written to the live page.
 
 ## Commands
 

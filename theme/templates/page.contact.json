@@ -14,14 +14,10 @@
     },
     "contact": {
       "type": "gs-contact"
-    },
-    "body": {
-      "type": "gs-page-body"
     }
   },
   "order": [
     "hero",
-    "contact",
-    "body"
+    "contact"
   ]
 }

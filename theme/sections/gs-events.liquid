@@ -2,7 +2,8 @@
   Upcoming events (content model part 5, P-16). On the page chosen as the Upcoming events page in
   theme settings it lists every upcoming event; on any other page, the events whose programme
   page is that page. An event drops off once it has ended. A programme page with no upcoming
-  events shows nothing here; the Upcoming events page says there are none.
+  events shows nothing here; the Upcoming events page says there are none. On the Upcoming events
+  page the list's heading is for screen readers only: the page title already says it.
 {%- endcomment -%}
 {%- liquid
   assign all = false
@@ -23,9 +24,13 @@
 {%- if ids.size > 0 or all -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
     <div class="gs-container">
-      <div class="gs-section-head">
-        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
-      </div>
+      {%- if all -%}
+        <h2 class="gs-visually-hidden" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+      {%- else -%}
+        <div class="gs-section-head">
+          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+        </div>
+      {%- endif -%}
       {%- if ids.size > 0 -%}
         <ul class="gs-events">
           {%- for id in ids -%}

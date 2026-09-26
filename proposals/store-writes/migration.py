@@ -11,6 +11,7 @@ retyped. Prints the variables for each step's mutation.
   python3 proposals/store-writes/migration.py card-groups <created/migration-cards.json>
   python3 proposals/store-writes/migration.py page-fields <created/migration-card-groups.json>
   python3 proposals/store-writes/migration.py review      # the exhibition fields as text, for checking
+  python3 proposals/store-writes/migration.py page-pass   # the staged text changed by the page pass (2026-09-26)
 
 Staged page text (custom.release_body): the page's text as it will read at release. The review
 theme shows it instead of the live text (sections/gs-page-body.liquid). At release a script moves
@@ -383,13 +384,49 @@ DONATE_NOTE = (
 )
 
 
+# Donate's "Ways to Support" heading holds two phrases in one heading, split by line breaks, so it
+# reads as two headings. The words stay; the second phrase becomes the paragraph it is (page pass,
+# 2026-09-26).
+DONATE_HEADING_OLD = (
+    '<h2>\n<strong><span style="color: #b8bc49; font-size: 24pt; font-family: Poppins,sans-serif;">'
+    '<br>Ways to Support<br></span></strong><br>Every contribution makes a difference:</h2>'
+)
+DONATE_HEADING_NEW = "<h2>Ways to Support</h2>\n<p>Every contribution makes a difference:</p>"
+
+
+def donate_body():
+    body = PAGES["donate"]["body"]
+    assert body.count(DONATE_HEADING_OLD) == 1, "Donate's heading changed since the snapshot"
+    return body.replace(DONATE_HEADING_OLD, DONATE_HEADING_NEW) + "\n" + DONATE_NOTE
+
+
+def artists_body():
+    """The Artists page: its two paragraphs, then its artist links as one list, in the same order
+    and with the same addresses. Today they're loose links and line breaks centred in two blocks,
+    so they can't be laid out; as a list they flow into columns (DS-45). Page pass, 2026-09-26."""
+    body = PAGES["artists"]["body"]
+    intro = [f"<p>{plain_text(m.group(1))}</p>" for m in re.finditer(r"<p[^>]*>((?:(?!<a ).)*?)</p>", body, flags=re.S)
+             if plain_text(m.group(1))]
+    links = []
+    for m in re.finditer(r'<a href="([^"]+)"[^>]*>(.*?)</a>', body, flags=re.S):
+        name = plain_text(m.group(2))
+        if name:
+            links.append(f'<li><a href="{m.group(1)}" rel="noopener" target="_blank">{name}</a></li>')
+    return "\n".join(intro + ["<ul>"] + links + ["</ul>"])
+
+
+def plain_text(s):
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s))).strip()
+
+
 def release_bodies():
     return {
         "on-now": CLEARED,
         "upcoming-exhibitions": CLEARED,
         "upcoming-events": CLEARED,
-        "donate": PAGES["donate"]["body"] + "\n" + DONATE_NOTE,
+        "donate": donate_body(),
         "gordon-and-marion": PAGES["gordon-and-marion"]["body"] + "\n" + GORDON_AND_MARION_VIDEO,
+        "artists": artists_body(),
     }
 
 
@@ -441,3 +478,7 @@ if __name__ == "__main__":
         print(json.dumps(page_fields(json.loads(pathlib.Path(sys.argv[2]).read_text())), indent=2, ensure_ascii=False))
     elif step == "review":
         review()
+    elif step == "page-pass":
+        rows = [{"ownerId": PAGES[h]["id"], "namespace": "custom", "key": "release_body", "type": "multi_line_text_field", "value": v}
+                for h, v in release_bodies().items() if h in ("donate", "artists")]
+        print(json.dumps({"m0": rows}, indent=2, ensure_ascii=False))

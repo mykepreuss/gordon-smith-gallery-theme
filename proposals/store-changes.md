@@ -104,8 +104,9 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Page | Staged text |
 | --- | --- |
 | On Now, Upcoming Exhibitions, Upcoming Events | None: each repeats *Collect, Assemble, Gather*, which lives in its entry |
-| Donate | Its text, then the tax receipt note from the old template |
+| Donate | Its text, then the tax receipt note from the old template. "Ways to Support" is a heading and "Every contribution makes a difference:" the paragraph after it (page pass, 2026-09-26) |
 | Gordon and Marion | Its text, then the video from the old template |
+| Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 
