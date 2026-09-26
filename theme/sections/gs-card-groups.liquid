@@ -6,6 +6,7 @@
 
   A group whose cards all have portrait images (a board, a staff list) shows as a grid of people:
   portrait frames, two to four across, smaller titles (DS-37). Staff don't choose it; the images do.
+  A group of four or eight cards goes two, then four, across, so no card sits alone (DS-44).
 {%- endcomment -%}
 {%- assign groups = page.metafields.custom.card_groups.value -%}
 {%- if groups != blank -%}
@@ -28,7 +29,16 @@
               <h2 class="gs-h2" id="{{ section.id }}-{{ forloop.index }}">{{ heading | escape }}</h2>
             </div>
           {%- endif -%}
-          <ul class="gs-grid {% if portrait %}gs-grid--people{% else %}gs-grid--cards{% endif %}">
+          {%- liquid
+            assign fours = false
+            assign count = group.cards.value.size
+            assign by_three = count | modulo: 3
+            assign by_four = count | modulo: 4
+            if by_four == 0 and by_three != 0
+              assign fours = true
+            endif
+          -%}
+          <ul class="gs-grid {% if portrait %}gs-grid--people{% else %}gs-grid--cards{% if fours %} gs-grid--fours{% endif %}{% endif %}">
             {%- for card in group.cards.value -%}
               <li>{%- render 'gs-card', card: card, heading: 'h3', portrait: portrait -%}</li>
             {%- endfor -%}

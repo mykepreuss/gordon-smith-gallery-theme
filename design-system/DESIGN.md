@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5.6 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.7 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -309,7 +309,8 @@ Two modes, chosen by the component. Sections render images only through `snippet
 
 ### 6.5 Cards
 
-- **Exhibition / programme card** (`.gs-card`): photo media 4:3 with `--gs-shape-md`; status chip only where a list mixes statuses (Home), not on a list that is all one status; H3 title in caps; dates, then curators or artists, each on its own line in muted small. The title link is stretched over the whole card; the card shows the focus ring where the browser supports `:has()`, otherwise the link keeps its own. Hover (mouse) and press (touch) underline the title; images do not zoom.
+- **Exhibition / programme card** (`.gs-card`): photo media 4:3 with `--gs-shape-md`; status chip only where a list mixes statuses (Home), not on a list that is all one status; H3 title in caps; dates, then curators or artists, each on its own line in muted small. On a grid card the curator credit stops at two lines, so cards in a row stay even; wide cards and the exhibition page show it whole. The title link is stretched over the whole card; the card shows the focus ring where the browser supports `:has()`, otherwise the link keeps its own. Hover (mouse) and press (touch) underline the title; images do not zoom.
+- **Card groups** (`.gs-grid--cards`): one, two, then three across. A group of four or eight (`.gs-grid--fours`) goes two, then four, across instead, so no card sits alone on a row (DS-44).
 - **Compact card** (`.gs-card--compact`): same anatomy with an H4-size title; used for portfolio navigation and "More exhibitions" rows.
 - **Artwork tile** (`.gs-artwork-tile`): artwork media 1:1 on the mat; artist (bold), *title* (italic) and year, medium and edition (muted small), price (bold small). No badges over the image; sold-out or edition status goes in the text.
 - **Status chip** (`.gs-chip`): On now, Upcoming, Past, Sold out. Tint background; the single most important state (On now) is `.gs-chip--strong`, a solid chip in the surface's text colour (ink on paper, paper on ink). Text always states the status; colour is never the only signal. Exhibition status is computed from dates, never typed (`snippets/gs-exhibition-status.liquid`).
@@ -325,7 +326,7 @@ Two modes, chosen by the component. Sections render images only through `snippet
 
 `.gs-switcher` moves sideways between pages of the same kind without the main menu. Real links with `aria-current="page"`, not ARIA tabs, because each item is its own page.
 
-- Exhibitions: On now / Upcoming / Past, with counts from the exhibition data. Placed directly under the page header on the exhibition list pages, including Past Exhibitions.
+- Exhibitions: On now / Upcoming / Past, with counts from the exhibition data. Placed directly under the page header on the exhibition list pages, including Past Exhibitions, and under the hero on the Exhibitions overview page, where none is current, so the overview is the way in to all three lists (DS-43). No other page shows it.
 - Portfolios: one link per portfolio plus All editions, under the collection header on every portfolio page.
 - Label style, 44 px targets, 4 px underline in the link-line colour on the current item (3:1 or more on every surface; the box colour isn't). Items wrap onto a second row on narrow screens, so every portfolio stays visible; nothing scrolls sideways out of view.
 - Counts show only when they're above zero. A list with nothing in it shows the empty state (§6.12), not a heading over nothing.
@@ -351,7 +352,9 @@ Ink surface. Top row: the three white logos with the Gallery first and largest (
 
 `.gs-prose` wraps staff-entered text: 68ch measure, 1em paragraph spacing, headings inside use the scale above, blockquote with a 4 px rule in the rule colour and deck styling, images in text get `--gs-shape-md`. A YouTube or Vimeo video embedded in the text fills the column at `--gs-ratio-video` (16:9), whatever size the embed code gives. Staff formatting is limited to headings, bold, italic, lists, links, quotes and embedded video. Inline fonts, sizes and colours pasted from Word or email are neutralised.
 
-Until release, the page text can come from a staged field instead of the live page text (DS-39); the section is otherwise unchanged.
+Headings in page text sit one step below the page's section headings: `h2` at the H3 size, `h3` and `h4` at the H4 size (DS-40). They organise a page's reading; they don't open a new part of the page. A list of twelve or more items (the Artists page's names) flows into two columns, three from 990 px, without bullets (DS-45). A heading at the very start of the text that only repeats the page title isn't shown (DS-41).
+
+Until release, the page text can come from a staged field instead of the live page text (DS-39). `snippets/gs-page-text.liquid` resolves both, for the page text section and the Contact page.
 
 ### 6.12 States: empty, error, submitting, done
 
@@ -446,13 +449,13 @@ From 28 page templates to six, plus one exhibition template; from three collecti
 Sections in order; brackets mean optional. All templates also get the global header, newsletter band and footer.
 
 - **index (Home):** hero, led by the exhibition on now (DS-30) · exhibitions on now and upcoming, without the one in the hero (cards with status chips, from exhibition data) · visit (address, hours, Plan your visit; DS-32) · [feature panel: a programme, tint] · Shop feature (the newest portfolio, automatically; accent) · newsletter band. At most three listings. The accent Shop box sits away from the tint newsletter band, so two tints never touch.
-- **page:** hero or page header · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event.
+- **page:** hero or page header · [switcher: the Exhibitions overview page only] · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event, and its heading is for screen readers only, since the page title says the same.
 - **page.programme:** hero or page header (programme colours from the `programme` field; the programme's logo above the title when there's no hero image; the call to action field as the button) · rich text · [card groups] · [upcoming events for this page] · [image gallery]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
 - **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (wide cards filtered by computed status: this page's status, DS-34; the empty state when there are none) · link to the Exhibitions overview page · [rich text, e.g. tours information].
 - **page.past-exhibitions:** page header · switcher · exhibition list (every past exhibition from entries, newest first; DS-24, DS-25). No hand-built archive section.
 - **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · about the exhibition (summary as deck, text, credits and funder logos, beside the facts: opening reception until it has ended, upcoming events that reference the exhibition, curator credit, venue, artists and collection artists; empty fields show nothing; DS-35) · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
 - **page.shop:** hero or page header · [rich text: one short introduction] · portfolio navigation (compact cards, artwork mode, one per portfolio) · [feature panel: e.g. Our Story or framing]. No other listings (SHOP-01, SHOP-02).
-- **page.contact:** page header · contact details and form · [rich text: visiting information].
+- **page.contact:** page header · contact details beside the form. The details are the page's own text when it has some, in the tint panel, so the gallery's words (both email addresses, office hours) show once; otherwise the address, hours, email and phone from Theme settings (DS-42).
 - **collection:** collection header (title, season, short intro) · switcher (portfolios) · artwork grid (tiles) · [rich text]. Keeps the cleaner layout the notes praise (SHOP-03).
 - **product:** artwork detail (artwork-mode media, museum label from product fields, price, edition, add to cart, framing option from `custom.featured_frame`) · [rich text: about the work] · [related works, max one row].
 
@@ -647,6 +650,12 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-38 | The product page keeps only the label, price, action, archive note and framing offer beside the work; the description follows as "About the work" at reading width. Reason: the description in the narrow column ran the page to twice the image's height with empty space beside it | Decided by Michael, 2026-09-25 |
 | DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Decided by Michael, 2026-09-25 |
 | DS-39 | Page text that changes at release is staged in a temporary page field (`custom.release_body`) that the new theme shows instead of the live text; a release script moves it into the page and deletes the field, stopping if the live text changed meanwhile. Reason: the review has to show the site as it will launch, and page text is live, so it can't change before release. Used for On Now, Upcoming and Upcoming Events (cleared) and for Donate and Gordon and Marion (content added from their old templates). The fallback leaves the theme after release | Decided by Michael, 2026-09-25 |
+| DS-40 | Headings in page text sit one step below section headings: `h2` at the H3 size, `h3` and `h4` at the H4 size. Reason: on Plan Your Visit, the FAQ and Donate, headings in the page text were as large as the page's own section headings (Ways To Give, Upcoming events), so eight short facts read as eight sections | Proposed (page pass, 2026-09-26) |
+| DS-41 | A heading at the very start of the page text that only repeats the page title isn't shown. Reason: the FAQ opens with "Frequently Asked Questions" under its own title; the page header already says it. Nothing is deleted from the page | Proposed (page pass, 2026-09-26) |
+| DS-42 | The Contact page shows its own text beside the form, in the tint panel, in place of the theme's contact details; a page without text still gets the details from Theme settings. Reason: the page text repeated the address and phone below the form, and holds what the settings don't (both email addresses, office hours) | Proposed (page pass, 2026-09-26) |
+| DS-43 | The Exhibitions overview page carries the On now / Upcoming / Past switcher under its hero. Reason: the overview had no way into the three lists except the menu (EXH-02); with the switcher it's the way in | Proposed (page pass, 2026-09-26) |
+| DS-44 | A card group of four or eight goes two, then four, across instead of three. Reason: four cards in three columns left one alone (Donate's Ways To Give, Public Programs) | Proposed (page pass, 2026-09-26) |
+| DS-45 | A list of twelve or more items in page text flows into two columns, three from 990 px, without bullets. The Artists page's names become one list in its staged text (DS-39): same names, order and links. Reason: 59 names in one centred column made a very long page | Proposed (page pass, 2026-09-26) |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -664,6 +673,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.7 (2026-09-26): remaining pages pass. Smaller headings in page text (DS-40), no heading that repeats the title (DS-41), Contact's own text beside the form (DS-42), the switcher on the Exhibitions overview (DS-43), groups of four go two then four across (DS-44), long lists in columns (DS-45). Fixes: the Upcoming Events page no longer shows its title twice; long curator credits stop at two lines on grid cards; `.gs-panel` includes its padding in its width; empty sections no longer break the space after a page header.
 - 0.5.6 (2026-09-25): all content migrated for review (`proposals/store-writes/`). Page text that changes at release is staged (DS-39). Videos embedded in page text fill the column at 16:9 (`--gs-ratio-video`, §6.11).
 - 0.5.5 (2026-09-25): the build decisions DS-28 to DS-38 are approved by Michael, who approves design decisions for the gallery (P-17). No design change.
 - 0.5.4 (2026-09-25): Shop pass, with real product labels and collection credits (`proposals/store-writes/`). Product page split into the buying column and "About the work" (DS-38); tile mediums clamp at two lines; portfolio description sits under the hero. The font audit no longer finds Unicode italics on Shop pages.

@@ -114,13 +114,12 @@ These go in the release change set.
 
 ### Remaining work before the review theme
 
-Done 2026-09-25: every page's content, the 15 exhibitions, the card groups and events, the product labels and the three review menus (`proposals/store-writes/README.md`).
+Done 2026-09-25: every page's content, the 15 exhibitions, the card groups and events, the product labels and the three review menus (`proposals/store-writes/README.md`). Done 2026-09-26: the fixes from the review and a design pass on every page not yet reviewed (DESIGN.md 0.5.7).
 
 | Item | Owner | Notes |
 | --- | --- | --- |
-| Fix what the review found: Upcoming Events shows its title twice; Donate's "Ways to Support" heading splits into two; *Stitched*'s long curator credit makes its Past card much taller than the others | Agent | Theme work in Git |
-| Design passes on the pages not yet reviewed: About, About Us, Contact, Donate, Plan your visit, Exhibitions overview, Permanent collection, Volunteer, Gordon and Marion, Upcoming Events, FAQ, Our Story, Artists; then search, cart and 404 | Agent | Theme work in Git, one pull request per page or group; Michael approves any new decision |
-| Decide DS-01 to DS-10, DS-12 and DS-13, still Proposed | Michael | Nothing Proposed ships (P-17) |
+| Decide DS-01 to DS-10, DS-12, DS-13 and DS-40 to DS-45, still Proposed | Michael | Nothing Proposed ships (P-17). DS-40 to DS-45 came from the page pass of 2026-09-26 |
+| Search results fill with frame products (each print's frame is its own product): decide whether frames leave search, for example by making them unlisted at release | Michael | Found in the page pass; a store change, so at release |
 | The template reassignment script, with a dry run (see "Release gate and rollback") | Agent | In `proposals/store-writes/`; reviewed by Michael |
 | The staged page text script, with a dry run (`proposals/store-changes.md` §8) | Agent | In `proposals/store-writes/`; reviewed by Michael |
 | Wording and values: consent wording, the site email, social URLs; confirm the hours and phone taken from the current site; Q10, Q11 | Gallery | See "Inputs, exclusions, and known limits" |
@@ -151,7 +150,7 @@ Before requesting release approval, provide:
   3. Reassigning every page's template, by script, straight after publishing (below).
   4. Switching or editing the main menu, and editing the footer menu.
   5. Hiding the six old exhibition pages and creating their redirects.
-  6. Moving the staged page text into its five pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, and adds Donate's tax receipt note and the Gordon and Marion video.
+  6. Moving the staged page text into its six pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, and makes the Artists names one list.
   7. Plain-text titles on the 21 limited editions (DS-16).
 - A check that every active exhibition entry is ready to be seen. The entries are already active; their pages return 404 only because the live theme has no exhibition template, so publishing the new theme makes them public.
 - Test evidence for storefront and staff editing, plus comparison against the latest live theme state.

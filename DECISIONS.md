@@ -70,6 +70,12 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-38 | Product page: label, price, action, archive note and framing offer beside the work; the description below as "About the work" | **Decided by Michael, 2026-09-25** (approved with the plan review) |
 | DS-29 | Header utility links are built in (Contact from the contact-page theme setting, Newsletter, Search, Cart), so no utility menu is created | **Decided by Michael, 2026-09-25** (approved with the plan review) |
 | DS-39 | Page text that changes at release is staged in a temporary page field the new theme shows instead of the live text; a release script moves it into the page and deletes the field | **Decided by Michael, 2026-09-25** ("Stage it") |
+| DS-40 | Headings in page text sit one step below section headings (h2 at the H3 size, h3 and h4 at the H4 size) | Proposed (page pass, 2026-09-26) |
+| DS-41 | A heading at the start of the page text that only repeats the page title isn't shown | Proposed (page pass, 2026-09-26) |
+| DS-42 | Contact shows its own page text beside the form, in place of the theme's contact details | Proposed (page pass, 2026-09-26) |
+| DS-43 | The Exhibitions overview carries the On now / Upcoming / Past switcher | Proposed (page pass, 2026-09-26) |
+| DS-44 | Card groups of four or eight go two, then four, across | Proposed (page pass, 2026-09-26) |
+| DS-45 | Long lists in page text (12 or more items) flow into columns; the Artists names become one list | Proposed (page pass, 2026-09-26) |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.
 

@@ -402,7 +402,13 @@
 .gs-section--lead { margin-block-start: var(--gs-space-5); }
 /* A page header or switcher sets its own gap to the content after it (--gs-stack-lg). */
 .gs-lead-in + .gs-section,
-:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section) > .gs-section { margin-block-start: 0; }
+:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section) > .gs-section,
+/* Sections that render nothing on this page (the switcher on most pages, a page with no text or
+   cards) don't break the lead-in: up to four are skipped. */
+:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section,
+:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section,
+:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section,
+:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section { margin-block-start: 0; }
 
 .gs-section-head {
   display: flex;
@@ -455,6 +461,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 @media (min-width: 990px) {
   .gs-grid--cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  /* Four or eight cards: two across, then four, so no card sits alone on a row (DS-44). */
+  .gs-grid--cards.gs-grid--fours { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .gs-grid--cards.gs-grid--fours { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (min-width: 1200px) {
   .gs-grid--artworks,
@@ -468,6 +479,22 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-prose > * + * { margin-block-start: 1em; }
 .gs-prose > * + :is(h2, h3, h4) { margin-block-start: 1.8em; }
 .gs-prose > :is(h2, h3, h4) + * { margin-block-start: 0.6em; }
+/* Headings in page text sit one step below the page's section headings (DS-40): they organise a
+   page's reading, they don't open a new part of the page. */
+.gs-prose h2 { font-size: var(--gs-text-h3); }
+.gs-prose :is(h3, h4) { font-size: var(--gs-text-h4); }
+/* A long list in page text (12 items or more, such as a list of artists) flows into columns
+   without bullets: two, then three on wider screens (DS-45). */
+.gs-prose ul:has(> li:nth-child(12)) {
+  columns: 2;
+  column-gap: var(--gs-gutter);
+  padding-inline-start: 0;
+  list-style: none;
+}
+.gs-prose ul:has(> li:nth-child(12)) > li { break-inside: avoid; margin-block: 0 0.4em; }
+@media (min-width: 990px) {
+  .gs-prose ul:has(> li:nth-child(12)) { columns: 3; }
+}
 .gs-prose strong, .gs-prose b { font-weight: var(--gs-weight-bold); }
 .gs-prose ul, .gs-prose ol { padding-inline-start: 1.25em; }
 .gs-prose li + li { margin-block-start: 0.4em; }
@@ -701,6 +728,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
     text-decoration-thickness: var(--gs-link-thickness);
     text-underline-offset: var(--gs-link-offset);
   }
+}
+/* A long curator credit stops at two lines on a grid card, so cards in a row stay even; wide cards
+   and the exhibition page show it whole. */
+.gs-card:not(.gs-card--wide) .gs-card__credit {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 /* A long medium ("Eleven colour, multi-plate photopolymer with...") stops at two lines in a tile;
    the product page shows it whole. */
@@ -1420,6 +1456,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   align-content: start;
   justify-items: start;
   gap: var(--gs-space-4);
+  box-sizing: border-box; /* width 100% includes the padding, so the panel stays in its column */
   width: 100%;
   padding: var(--gs-space-5);
   border-radius: var(--gs-shape-md);

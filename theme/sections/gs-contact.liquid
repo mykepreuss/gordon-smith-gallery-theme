@@ -1,12 +1,19 @@
 {%- comment -%}
-  Contact details and form (DESIGN.md §7.5, ACCESS-02): the gallery's address, hours, email and
-  phone from Theme settings, Gallery details, beside Shopify's contact form, which emails the
-  store's sender address. Works without JavaScript; gs-forms.js adds the inline email check and
-  the "Sending" state.
+  Contact details and form (DESIGN.md §7.5, ACCESS-02) beside Shopify's contact form, which emails
+  the store's sender address. The details are the Contact page's own text when it has some, so the
+  gallery's words (both email addresses, office hours) show once, beside the form (DS-42). A page
+  without text gets the address, hours, email and phone from Theme settings, Gallery details.
+  Works without JavaScript; gs-forms.js adds the inline email check and the "Sending" state.
 {%- endcomment -%}
 {%- assign form_id = 'gs-contact-' | append: section.id -%}
+{%- capture page_text -%}{% render 'gs-page-text' %}{%- endcapture -%}
 <div class="gs-section gs-surface-paper">
   <div class="gs-container gs-contact">
+    {%- if page_text != blank -%}
+    <div class="gs-panel gs-surface-tint">
+      <div class="gs-prose">{{ page_text }}</div>
+    </div>
+    {%- else -%}
     <div class="gs-panel gs-surface-tint">
       <h2 class="gs-h4">{{ 'contact.details_heading' | t }}</h2>
       {%- if settings.address != blank -%}
@@ -22,6 +29,7 @@
         <p><a class="gs-link" href="tel:{{ settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' }}">{{ settings.phone | escape }}</a></p>
       {%- endif -%}
     </div>
+    {%- endif -%}
 
     {%- form 'contact', id: form_id, class: 'gs-form', data-gs-form: '' -%}
       <h2 class="gs-h3">{{ section.settings.heading | escape }}</h2>
