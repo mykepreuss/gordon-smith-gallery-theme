@@ -14,7 +14,7 @@ Keep four change surfaces distinct: **Git owns theme source and project records;
 
 - **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.4).
 - **Content:** everything the current theme held is in the store or the theme: 15 exhibitions, programme and information pages, card groups, events, product labels and three review menus (`proposals/store-writes/README.md`). Page text that changes at release is staged (DS-39).
-- **Decisions:** every design decision is decided (DS-01 to DS-49, `DECISIONS.md`).
+- **Decisions:** every design decision is decided (DS-01 to DS-50, `DECISIONS.md`).
 - **Review theme:** `184767250729` "New theme for review (do not publish)", matching `main` at 1ad4dba.
   - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729
   - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184767250729/editor
@@ -190,15 +190,15 @@ Before requesting release approval, provide:
   2. Publishing the review theme.
   3. Reassigning every page's template, by script, straight after publishing (below).
   4. Switching or editing the main menu, and editing the footer menu.
-  5. Hiding the six old exhibition pages and the Exhibitions overview, and creating their redirects (P-10, P-20).
-  6. Moving the staged page text into its six pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, and makes the Artists names one list.
+  5. Hiding the six old exhibition pages and the Exhibitions overview, and creating their redirects (P-10, P-20). Hiding About and Our Story too, with `/pages/about` forwarded to About Us (P-24) and `/pages/our-story` to Artists for Kids (P-25).
+  6. Moving the staged page text into its eight pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, makes the Artists names one list, leaves About Us's descriptions to its card group (DS-50), and adds About's history to the Artists for Kids page (P-24).
   7. Plain-text titles and the description clean-up on the 21 limited editions, after a dry run the gallery approves (DS-16, P-21, P-22, `proposals/store-changes.md` §7).
   8. Setting the 16 active frame products to Unlisted, so they leave search (P-19, `proposals/store-changes.md` §9).
 - A check that every active exhibition entry is ready to be seen. The entries are already active; their pages return 404 only because the live theme has no exhibition template, so publishing the new theme makes them public.
 - Test evidence for storefront and staff editing, plus comparison against the latest live theme state.
 - Rollback steps: retain the original live theme and its ID; republish it if needed; restore page template assignments from the script's snapshot; unhide the old exhibition pages and delete their redirects; restore product titles from `proposals/store-writes/snapshots/prints-2026-09-25.json` and descriptions from the snapshot taken before their clean-up, frame products to Active from `snapshots/frames-2026-09-26.json`, and page bodies from their before-snapshots; restore any separately changed live menu, page, File, or app resource from its own recorded pre-release snapshot. Theme rollback alone does not reverse store-resource changes.
 
-**Template reassignment** (`release.py templates`, dry run 2026-09-26: 21 pages change). Pages keep their old template names until release (L-08). The new theme doesn't have most of those templates, so after publishing, those pages fall back to the default page template. Since DS-48 and DS-49 every page still renders correctly that way: the exhibition lists come from Theme settings, and a page on the Shop template other than the Shop landing (Our Story, old template `shop`) reads as a plain page. So the gap after publishing no longer shows to visitors; the reassignment puts the right template name on each page in the admin, for staff. Before release, write a script in `proposals/store-writes/` that:
+**Template reassignment** (`release.py templates`, dry run 2026-09-26: 20 pages change; Our Story and About are hidden instead, P-24, P-25). Pages keep their old template names until release (L-08). The new theme doesn't have most of those templates, so after publishing, those pages fall back to the default page template. Since DS-48 and DS-49 every page still renders correctly that way: the exhibition lists come from Theme settings, and a page on the Shop template other than the Shop landing (Our Story, old template `shop`) reads as a plain page. So the gap after publishing no longer shows to visitors; the reassignment puts the right template name on each page in the admin, for staff. Before release, write a script in `proposals/store-writes/` that:
 
 1. Snapshots every page's current template, for rollback.
 2. Maps each page to its new template (`design-system/DESIGN.md` §7.4).

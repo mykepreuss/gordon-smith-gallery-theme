@@ -1,11 +1,11 @@
 ## Template names
 
-21 pages change. Rollback: set each back to the "Now" value.
+20 pages change. Rollback: set each back to the "Now" value.
 
 | Page | Now | At release |
 | --- | --- | --- |
 | `2025-spring-portfolio` | `page` | unchanged (unpublished) |
-| `about` | `(default)` | already right |
+| `about` | `(default)` | unchanged (hidden at release) |
 | `about-us` | `about-us` | **`(default)`** |
 | `art-in-good-company` | `art-in-good-company` | **`programme`** |
 | `artists` | `artists` | **`(default)`** |
@@ -27,7 +27,7 @@
 | `gordon-and-marion` | `gordon-and-marion` | **`(default)`** |
 | `music-at-the-smith` | `music-at-the-smith` | **`programme`** |
 | `on-now` | `current-on-now-exhibition` | **`(default)`** |
-| `our-story` | `shop` | **`(default)`** |
+| `our-story` | `shop` | unchanged (hidden at release) |
 | `past-exhibitions` | `past-exhibitions` | **`(default)`** |
 | `permanent-collection` | `permanent-collection` | **`(default)`** |
 | `plan-your-visit` | `plan-your-visit` | **`(default)`** |

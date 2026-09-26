@@ -1,0 +1,68 @@
+{% doc %}
+  Page text with pictures beside it (DS-51, DESIGN.md §6.11). The text is split at its H2
+  headings; in each part, the figures (a picture with its caption) move beside the text from
+  990 px and follow it on smaller screens, so a picture sits next to the paragraphs it belongs to
+  instead of breaking the reading column. Used when the text has a figure, and for the headed
+  sections a programme page shows after its programmes.
+
+  With heads, each H2 is the heading of a part of the page, level with a card group's heading:
+  section-heading size, above the text and its pictures (DS-51). Without, H2s stay page-text
+  headings, one step smaller (DS-40).
+
+  @param {string} text - The page text, from gs-page-text
+  @param {boolean} [heads] - The H2s head parts of the page (the programme template's sections)
+
+  @example
+  {%- render 'gs-text-media', text: text -%}
+  {%- render 'gs-text-media', text: text, heads: true -%}
+{% enddoc %}
+{%- assign blocks = text | split: '<h2' -%}
+<div class="gs-text-media-list{% if heads %} gs-text-media-list--sections{% endif %}">
+  {%- for block in blocks -%}
+    {%- liquid
+      if block == blank
+        continue
+      endif
+      assign html = block
+      unless forloop.first
+        assign html = '<h2' | append: block
+      endunless
+      assign head = ''
+      if heads and html contains '</h2>'
+        assign first_part = html | split: '</h2>' | first
+        assign starts = first_part | slice: 0, 3
+        if starts == '<h2'
+          assign head = first_part | append: '</h2>' | replace_first: '<h2', '<h2 class="gs-h2"'
+          assign html = html | remove_first: first_part | remove_first: '</h2>'
+        endif
+      endif
+      assign prose = ''
+      assign media = ''
+      assign chunks = html | split: '<figure'
+      for chunk in chunks
+        if forloop.first
+          assign prose = chunk
+        else
+          assign inner = chunk | split: '</figure>' | first
+          assign media = media | append: '<figure' | append: inner | append: '</figure>'
+          assign after = chunk | remove_first: inner | remove_first: '</figure>'
+          assign prose = prose | append: after
+        endif
+      endfor
+      assign prose = prose | strip
+    -%}
+    <div class="gs-text-media-part">
+      {%- if head != blank -%}
+        <div class="gs-section-head">{{ head }}</div>
+      {%- endif -%}
+      <div class="gs-text-media{% if media == blank %} gs-text-media--text{% endif %}">
+        {%- if prose != blank -%}
+          <div class="gs-prose">{{ prose }}</div>
+        {%- endif -%}
+        {%- if media != blank -%}
+          <div class="gs-prose gs-text-media__aside">{{ media }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>

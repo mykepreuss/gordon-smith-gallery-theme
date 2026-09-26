@@ -302,22 +302,25 @@ def exhibitions():
 # Cards and card groups (content model part 4).
 
 CARDS = {
-    # About: the three organisation columns from the old default template. Text cards: the
-    # logos were the columns' only titles, and the footer carries them site-wide.
+    # About: the three organisation columns from the old default template. The logos were the
+    # columns' only titles; since DS-50 each card's Logo field shows its logo as its heading.
     "about-artists-for-kids": {
         "title": "Artists for Kids",
         "text": "Established in 1989 by renowned BC artist patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists For Kids was founded with the singular intent to support children, their art education, and their future.",
         "link": link("https://artistsforkids.sd44.ca/", "Website + Programs"),
+        "logo": "Artists for Kids",  # DS-50, 2026-09-26
     },
     "about-gordon-smith-gallery": {
         "title": "The Gordon Smith Gallery of Canadian Art",
         "text": "The Gordon Smith Gallery is a space where education is seen not as an after-thought to curation, but as the purpose of each step we take. The Gordon and Marion Smith Foundation for Young Artists and Artists for Kids work collaboratively to program the Gordon Smith Gallery of Canadian Art and the exhibitions.",
         "link": link(f"{SITE}/pages/on-now", "Exhibitions"),
+        "logo": "Gallery",  # DS-50, 2026-09-26
     },
     "about-smith-foundation": {
         "title": "The Gordon and Marion Smith Foundation for Young Artists",
         "text": "The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from which would fund ongoing visual arts enrichment opportunities for the children of British Columbia. The Foundation’s role has evolved to include the presentation of a diverse and accessible range of visual arts programming and the curation of high profile exhibitions at the Gordon Smith Gallery of Canadian Art.",
         "link": link(f"{SITE}/pages/the-smith-foundation", "The Foundation"),
+        "logo": "Smith Foundation",  # DS-50, 2026-09-26
     },
     # Donate: "Ways To Give", four text cards.
     "donate-online-form": {
@@ -433,6 +436,8 @@ def release_bodies():
 def page_fields(created_groups):
     ids = {v["metaobject"]["handle"]: v["metaobject"]["id"] for v in created_groups.values()}
     rows = [
+        # About: superseded on 2026-09-26 by about_us.py about-afk (P-23: the Bill Reid print as hero,
+        # no card groups). A re-run would put these two back.
         ("about", "hero_image", "file_reference", img(45637943591209)),
         ("about", "card_groups", "list.metaobject_reference", json.dumps([ids["about-organisations"]])),
         ("about-us", "hero_image", "file_reference", img(45637943591209)),

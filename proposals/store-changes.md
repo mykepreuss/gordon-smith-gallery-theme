@@ -9,17 +9,17 @@ Model (DS-11): a section with pages under it is one button; its main page is the
 | Section | Type | Items, in order (destination) | Change from today |
 | --- | --- | --- | --- |
 | Exhibitions | Section | On now (`/pages/on-now`), Upcoming (`/pages/upcoming-exhibitions`), Past exhibitions (`/pages/past-exhibitions`) | Moves to the first place in the menu (P-09). Adds Upcoming (missing today). The Exhibitions overview page (`/pages/exhibitions-1`) is removed (P-20): hidden at release, its address redirecting to On now (§5) |
-| About | Section | About the gallery (`/pages/about` or `/pages/about-us`, one page, Q: which), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About and About Us: gallery decides whether they are one page |
+| About | Section | About the gallery (`/pages/about-us`; `/pages/about` is hidden at release and forwards to Artists for Kids, P-24), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About Us is the page about the three organisations. About's history joins the Artists for Kids page, and About is hidden at release (Michael, 2026-09-26, P-24) |
 | Artists for Kids | Link | `/pages/artists-for-kids` | None. Approved 2026-09-25 as one link (P-15); the programme links to the Artists for Kids site stay on its page |
 | Programs | Section | Public programs (`/pages/public-programs-1`), Speaker series, Music at the Smith, Explore + Create, Art in Good Company | "Public Programs" no longer repeats the section, because the section itself is not a link |
 | Smith Foundation | Section | About the Foundation (`/pages/the-smith-foundation`), Gordon and Marion (`/pages/gordon-and-marion`), Donate (`/pages/donate`) | Renames the first item so it doesn't repeat the section |
-| Shop | Section | Limited editions (`/pages/shop`), 2026 Fall Portfolio, 2026 Spring Portfolio, 2025 Fall Portfolio, 2025 Spring Portfolio, 2024 Fall Portfolio, Our story (`/pages/our-story`), Artists (`/pages/artists`) | Leads to the Shop landing page instead of Shopify's `/collections` list. 2025 Fall Portfolio uses the relative `/collections/2025-fall-portfolio` instead of the absolute myshopify URL |
+| Shop | Section | Limited editions (`/pages/shop`), 2026 Fall Portfolio, 2026 Spring Portfolio, 2025 Fall Portfolio, 2025 Spring Portfolio, 2024 Fall Portfolio, Artists (`/pages/artists`) | Leads to the Shop landing page instead of Shopify's `/collections` list. 2025 Fall Portfolio uses the relative `/collections/2025-fall-portfolio` instead of the absolute myshopify URL |
 
 Each section's own link in the Shopify menu editor points at its first item, so `snippets/gs-nav.liquid` raises no editor warning.
 
 **How it is applied:** during review, as a separate new menu referenced only by the review theme (so the live header doesn't change). At release, either switch the live header to the reviewed menu or edit `new-website-menu-1` to match, recorded in the release change set.
 
-**Created 2026-09-25** as `new-theme-main` ("Main menu (new theme)"), with Michael's go-ahead, and set in the new theme's header (`sections/header-group.json`). Publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.
+**Created 2026-09-25** as `new-theme-main` ("Main menu (new theme)"), with Michael's go-ahead, and set in the new theme's header (`sections/header-group.json`). Our story removed from its Shop section 2026-09-26 (P-25). Publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.
 
 ## 2. Utility and footer menus (ACCESS-02, ACCESS-03)
 
@@ -55,14 +55,14 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Also done 2026-09-25, with Michael's go-ahead ("migrate all content"):** the other 11 exhibitions, the About and Donate card groups, the remaining pages' fields, the staged page text (§8) and the three review menus (§1, §2). Every item in `proposals/content-migration.md` now has its content in the store or the theme. Log: `proposals/store-writes/README.md`.
 
-## 5. Exhibition addresses at release (P-10)
+## 5. Addresses at release (P-10, P-20, P-24, P-25)
 
 Script: `release.py addresses` (dry run: `dry-runs/2026-09-26/addresses.md`).
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
-1. Hide (don't delete) the six exhibition pages and the Exhibitions overview (`exhibitions-1`, P-20), keeping them for rollback.
-2. Create seven URL redirects:
+1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20), About (P-24) and Our Story (P-25), keeping them for rollback.
+2. Create nine URL redirects:
 
 | From | To |
 | --- | --- |
@@ -73,13 +73,15 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibition-prevailing-landscapes` | `/pages/exhibitions/prevailing-landscapes` |
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
 | `/pages/exhibitions-1` | `/pages/on-now` |
+| `/pages/about` | `/pages/about-us` |
+| `/pages/our-story` | `/pages/artists-for-kids` |
 
 3. Open each old address and check it lands on its entry.
 4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
 The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 
-Rollback: republish the baseline theme, unhide the seven pages, delete the seven redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the nine pages, delete the nine redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
@@ -118,7 +120,7 @@ The dry run prints each description before and after; nothing changes until the 
 
 ## 8. Staged page text at release (DS-39)
 
-Script: `release.py staged` (dry run 2026-09-26: all six pages still match the snapshot).
+Script: `release.py staged` (dry run 2026-09-26: all eight pages still match the snapshot).
 
 Page text is live, so the text that changes at release is staged in a temporary page field, `custom.release_body`, which the new theme shows instead of the page's text (`sections/gs-page-body.liquid`). Created 2026-09-25 with Michael's go-ahead (`proposals/store-writes/README.md`).
 
@@ -128,6 +130,8 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Donate | Its text, then the tax receipt note from the old template. "Ways to Support" is a heading and "Every contribution makes a difference:" the paragraph after it (page pass, 2026-09-26) |
 | Gordon and Marion | Its text, then the video from the old template |
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
+| About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
+| Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading (P-24), with Our Story's sentence on art specialists and its fuller caption for the Bill Reid print (P-25). Our Story's sentence on the ceremonial drum was added, then dropped because it repeated the sentences around it. Words unchanged; both pictures become figures with their own captions; "contemporary limited editions" links to the Shop; pasted formatting stays behind |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 

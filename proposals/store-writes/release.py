@@ -31,6 +31,7 @@ sys.path.insert(0, str(HERE))
 import shop  # noqa: E402  (label parsing and plain titles, 2026-09-25)
 
 SNAP_PAGES = {p["handle"]: p for p in json.loads((HERE / "snapshots" / "pages-2026-09-25.json").read_text())}
+SNAP_BY_ID = {p["id"]: p for p in SNAP_PAGES.values()}  # by ID, so a changed handle can't break the check
 CLEARED_PREFIX = "<!--"
 
 # ---------------------------------------------------------------------------
@@ -41,7 +42,9 @@ PROGRAMME = {"artists-for-kids", "the-smith-foundation", "public-programs-1", "s
              "music-at-the-smith", "explore-create", "art-in-good-company"}
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
-                     "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1"}
+                     "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
+                     "about",       # About: its history joins Artists for Kids (P-24)
+                     "our-story"}   # Our Story: removed from the Shop (P-25)
 
 
 def new_template(page):
@@ -76,7 +79,7 @@ def templates(pages, want_vars):
 
 
 # ---------------------------------------------------------------------------
-# 2. Exhibition addresses (store-changes §5): hide seven pages, then seven redirects.
+# 2. Addresses (store-changes §5): hide nine pages, then nine redirects.
 
 REDIRECTS = [
     ("/pages/exhibition-one-hundred-artists-deep", "/pages/exhibitions/one-hundred-artists-deep"),
@@ -86,6 +89,8 @@ REDIRECTS = [
     ("/pages/exhibition-prevailing-landscapes", "/pages/exhibitions/prevailing-landscapes"),
     ("/pages/exhibition-the-art-of-conversation", "/pages/exhibitions/the-art-of-conversation"),
     ("/pages/exhibitions-1", "/pages/on-now"),
+    ("/pages/about", "/pages/about-us"),                 # P-24, Michael 2026-09-26
+    ("/pages/our-story", "/pages/artists-for-kids"),     # P-25: its history is on Artists for Kids
 ]
 
 
@@ -98,10 +103,11 @@ def addresses(pages, want_vars):
         return out
     rows = [f"| `{p['handle']}` | {'published' if p['isPublished'] else 'hidden'} | hidden |" for p in hide]
     rrows = [f"| `{a}` | `{b}` |" for a, b in REDIRECTS]
-    return "\n".join(["## Exhibition addresses", "", "Hide first: a redirect only works from an address that no longer loads a page.", "",
+
+    return "\n".join(["## Addresses", "", "Hide first: a redirect only works from an address that no longer loads a page.", "",
                       "| Page | Now | At release |", "| --- | --- | --- |"] + rows +
                      ["", "| Redirect from | To |", "| --- | --- |"] + rrows +
-                     ["", "Rollback: delete the seven redirects, publish the seven pages."])
+                     ["", f"Rollback: delete the {len(REDIRECTS)} redirects, publish the {len(hide)} pages."])
 
 
 # ---------------------------------------------------------------------------
@@ -112,7 +118,7 @@ def staged(pages, want_vars):
     for p in sorted(pages, key=lambda p: p["handle"]):
         if not p.get("staged"):
             continue
-        snap = SNAP_PAGES.get(p["handle"], {}).get("body")
+        snap = SNAP_BY_ID.get(p["id"], {}).get("body")
         new = p["staged"]["value"]
         new_body = "" if new.strip().startswith(CLEARED_PREFIX) and new.strip().endswith("-->") else new
         same = snap is not None and p["body"] == snap

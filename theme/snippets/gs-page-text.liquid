@@ -6,9 +6,14 @@
     HTML comment alone means the page will have no text.
   - A heading at the very start that only repeats the page title isn't shown: the hero or page
     header already says it (DS-41).
+  - A template can show the text in two parts (DS-51): the opening, up to the first H2, and the
+    sections from the first H2 on. The programme template puts the programmes between them.
+
+  @param {string} [part] - 'opening', 'sections', or blank for all of it
 
   @example
   {%- capture text -%}{% render 'gs-page-text' %}{%- endcapture -%}
+  {%- capture text -%}{% render 'gs-page-text', part: 'opening' %}{%- endcapture -%}
 {% enddoc %}
 {%- liquid
   assign body = page.content
@@ -27,6 +32,17 @@
       assign rest_parts = rest | split: '>'
       assign closing = rest_parts.first | append: '>'
       assign body = rest | remove_first: closing | strip
+    endif
+  endif
+
+  if part == 'opening' or part == 'sections'
+    # A leading character keeps the first piece even when the text starts with an H2.
+    assign marked = '|' | append: body
+    assign opening = marked | split: '<h2' | first | remove_first: '|'
+    if part == 'opening'
+      assign body = opening | strip
+    else
+      assign body = body | slice: opening.size, body.size | strip
     endif
   endif
 

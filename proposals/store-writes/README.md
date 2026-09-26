@@ -198,3 +198,140 @@ For the gallery:
 **Effect on the live site:** none. The live theme shows this logo inside the On Now page's own text, with its own `alt`, and doesn't read label fields.
 
 **Undo:** set the alt text back to empty; delete the medium value.
+
+## 2026-09-26: About Us, each organisation beside its logo (DS-50)
+
+**Why:** Michael, 2026-09-26: "Improve the design of this page: /pages/about-us. We should use the correct logo for each text description and integrate the logo and text better." Today the page shows one combined logo image, then three descriptions under capitalised headings, so no logo sits with its own text.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` "Colorblock: NEW WEBSITE", role MAIN; review theme `184767250729`, role UNPUBLISHED (Admin API). About Us's text matched `snapshots/pages-2026-09-25.json`. Before-snapshot: `snapshots/about-us-2026-09-26-before.json` (the card definition's four fields and 30 cards; About Us's only field, its hero image).
+
+**Made through the Shopify connector** (payloads from `about_us.py`; created IDs in `created/about-us-*.json`):
+
+| What | ID |
+| --- | --- |
+| Card definition: new field `logo` ("Logo"; Gallery, Smith Foundation or Artists for Kids) | `gid://shopify/MetaobjectDefinition/23754375465` |
+| Card `about-us-gallery`: "The Gordon Smith Gallery of Canadian Art", logo Gallery, link "Plan your visit" | `gid://shopify/Metaobject/608631816489` |
+| Card `about-us-artists-for-kids`: "Artists for Kids", logo Artists for Kids, link "More about Artists for Kids" | `gid://shopify/Metaobject/608631882025` |
+| Card `about-us-foundation`: "The Gordon and Marion Smith Foundation for Young Artists", logo Smith Foundation, link "More about the Foundation" | `gid://shopify/Metaobject/608631947561` |
+| Card group `about-us-organisations` (no heading), the three cards in the page's order | `gid://shopify/Metaobject/608631980329` |
+| About Us: `card_groups` set to that group; staged text (`release_body`) set to none | Page `about-us` |
+
+The descriptions are the gallery's, read from the snapshot, word for word. The card titles are the page's headings in normal capitals; the logos show them on screen and the titles are read by screen readers. The three links are new, pointing to the pages the header already has. At release the page's own text goes: its three descriptions now live in the cards, and the combined logo image above them would repeat the logos.
+
+**Effect on the live site:** none. The live theme reads no card entries or page fields, and the live About Us page still shows its own text and image (checked 2026-09-26). The review theme shows the cards once `main` has the logo cards; until then it shows them as plain text cards.
+
+**Undo:** clear About Us's `card_groups` and `release_body`; delete the card group and the three cards; delete the `logo` field from the card definition.
+
+## 2026-09-26: About's organisation cards get their logos (DS-50)
+
+**Why:** Michael, 2026-09-26: "DS-50 approved, apply logos to the About page too."
+
+**Checked first:** same store and live theme as the entry above. Before-snapshot: `snapshots/about-cards-2026-09-26-before.json` (the three cards had no logo; their other fields are unchanged and listed in `migration.py`).
+
+**Made through the Shopify connector** (payload from `about_us.py about-logos`; `migration.py` has the same values, so a re-run matches):
+
+| Card | ID | Logo |
+| --- | --- | --- |
+| `about-artists-for-kids` | `gid://shopify/Metaobject/608389267753` | Artists for Kids |
+| `about-gordon-smith-gallery` | `gid://shopify/Metaobject/608389300521` | Gallery |
+| `about-smith-foundation` | `gid://shopify/Metaobject/608389333289` | Smith Foundation |
+
+The words, titles, links and order are unchanged: Artists for Kids first, as on the old page, whose text is Artists for Kids' history.
+
+**Effect on the live site:** none; the live theme reads no card entries, and the live About page still loads normally (checked 2026-09-26).
+
+**Undo:** clear the Logo field on the three cards.
+
+## 2026-09-26: About becomes About Artists for Kids (P-23)
+
+**Why:** Michael, 2026-09-26: "/about-us and /about look very similar, why is this? I think /about should be /about-artists-for-kids and be focused on that part of the organization." They looked alike because both had the building photo as their hero and the same three organisation rows at the end; only About's text, Artists for Kids' history, was its own.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` "Colorblock: NEW WEBSITE", role MAIN. About's text matched `snapshots/pages-2026-09-25.json`. Before-snapshot: `snapshots/about-2026-09-26-before.json` (its hero image and card group; the print's empty alt text).
+
+**Made through the Shopify connector** (payload from `about_us.py about-afk`; `about-afk-review` prints the text):
+
+| What | Before | After |
+| --- | --- | --- |
+| About's `programme` | not set | Artists for Kids: its logo in the header, its colours (DS-04, DS-47) |
+| About's `hero_image` | the building photo, as on About Us | the Bill Reid print from its text (`Reid_REID002_Xhuwaji_HaidaGrizzly.jpg`, `gid://shopify/MediaImage/40274179096873`, 3589 × 3629) |
+| About's `hero_is_artwork` | not set | true: shown whole, never cropped |
+| About's `hero_caption` | not set | "Bill Reid, (Canadian, 1920 – 1998) XHUWAJI/Haida Grizzly Bear", the page's own caption |
+| About's `card_groups` | the three organisation cards | removed: they're on About Us. The cards and their group stay in the store, unused |
+| About's staged text (`release_body`) | not set | its four paragraphs, word for word, without the print and caption the hero now carries |
+| The print's alt text | empty | "Bill Reid, Xhuwaji / Haida Grizzly Bear, 1990" (artwork alt: artist, title, year) |
+
+**At release** (`release.py addresses`): title "About Artists for Kids" and address `/pages/about-artists-for-kids`, with Shopify forwarding `/pages/about`. Until then the review theme still says "About" at `/pages/about`.
+
+**Effect on the live site:** none. The live theme reads no page fields, and shows the print only inside page text, with its own empty `alt`. The live About page still shows its text and print (checked 2026-09-26).
+
+**Undo:** set `hero_image` back to `gid://shopify/MediaImage/45637943591209` and `card_groups` back to `["gid://shopify/Metaobject/608389529897"]`; clear `programme`, `hero_is_artwork`, `hero_caption` and `release_body`; set the print's alt text back to empty.
+
+## 2026-09-26: About merges into Artists for Kids (P-24, supersedes P-23)
+
+**Why:** Michael, 2026-09-26: "Should /pages/artists-for-kids and /pages/about be merged? I prefer /pages/artists-for-kids." Two pages about the same organisation; the Artists for Kids page is the one in the menu, with the programmes and the website link.
+
+**Checked first:** same store and live theme. The Artists for Kids page's text matched `snapshots/pages-2026-09-25.json` and it had no staged text. Before-snapshot: `snapshots/afk-merge-2026-09-26-before.json` (About's staged text from the entry above).
+
+**Made through the Shopify connector** (payload from `about_us.py afk-merge`; `afk-merge-review` prints the text):
+
+| What | Before | After |
+| --- | --- | --- |
+| Artists for Kids' staged text (`release_body`) | not set | its own two paragraphs and Paradise Valley photo, then About's four paragraphs under "History", with the Bill Reid print after the paragraph that names it. Words unchanged; both pictures are figures with their own captions |
+| About's staged text | its four paragraphs (P-23) | removed: About is hidden at release |
+
+About keeps the fields from the entry above (Artists for Kids programme, the print as its hero, no organisation rows) until release, when it is hidden and `/pages/about` forwards to `/pages/artists-for-kids` (`release.py addresses`). The print's alt text stays: the figure uses the same words.
+
+**Effect on the live site:** none; the live theme doesn't read the staged field. The live Artists for Kids page shows its own text, without the print (checked 2026-09-26).
+
+**For the gallery:** the Paradise Valley photo's description says 1994, its caption 1996 (`proposals/gallery-questions.md` 3.8).
+
+**Undo:** clear Artists for Kids' staged text; set About's back from the snapshot.
+
+## 2026-09-26: Our Story leaves the Shop; About forwards to About Us (P-25, P-24)
+
+**Why:** Michael, 2026-09-26: "I think /pages/about should redirect to /about-us and remove Our Story under Shop." Our Story retold the Artists for Kids history that is now on the Artists for Kids page (P-24), with the same print and two of that page's paragraphs.
+
+**Checked first:** the review menu `new-theme-main` is used only by the new theme (`theme/sections/header-group.json`); the live header uses `new-website-menu-1` (`baseline/theme/sections/header-group.json`). No page text links to `/pages/our-story`. Before-snapshot: `snapshots/menu-new-theme-main-2026-09-26-before.json` (the whole menu, with item IDs).
+
+**Made through the Shopify connector:** `new-theme-main` (`gid://shopify/Menu/305860739369`) without "Our story" (item `gid://shopify/MenuItem/767490195753`) in its Shop section. The other 28 items keep their IDs, titles and order.
+
+**At release** (`release.py addresses`, not before, because the live site shows them): Our Story and About are hidden; `/pages/our-story` forwards to `/pages/artists-for-kids`, where its history now is, and `/pages/about` to `/pages/about-us` (Michael's choice, replacing the forward to Artists for Kids). Shopify serves pages only under `/pages/`, so the target is `/pages/about-us`.
+
+**Effect on the live site:** none. The live menu is untouched, and Our Story and About still load.
+
+**Undo:** set the menu back from the snapshot (put "Our story" back between "2024 Fall Portfolio" and "Artists").
+
+## 2026-09-26: Our Story's details join the Artists for Kids history (P-25)
+
+**Why:** Michael, 2026-09-26: "Add that content you identified word for word." The three things from Our Story that the Artists for Kids page didn't have.
+
+**Before-snapshot:** `snapshots/afk-our-story-2026-09-26-before.json` (the staged text from the entry before last).
+
+**Made through the Shopify connector** (`about_us.py afk-merge`, now reading Our Story from `snapshots/pages-2026-09-25.json`): the Artists for Kids page's staged text, with, word for word:
+
+- after "Artists for Kids was founded in 1989…": "Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators."
+- after the paragraph on the first print: "This print by Bill Reid, based on a ceremonial drum, marked the beginning of an extraordinary partnership with now more than 100 Canadian artists - from Kenojuak Ashevak to Ian Wallace - that has produced one of the most significant limited edition collections in the country."
+- the print's caption: "Bill Reid, (Canadian, 1920 – 1998) *XHUWAJI/Haida Grizzly Bear*, (1990) Serigraph, 22 in x 22 in." (the italics end before the comma now).
+
+Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Our Story sat under. Two phrases now come twice in a row; the words are the gallery's, so that's a question for them (`proposals/gallery-questions.md` 3.6).
+
+**Effect on the live site:** none; the live theme doesn't read the staged field.
+
+**Undo:** set the staged text back from the snapshot.
+
+## 2026-09-26: Artists for Kids, a Programs heading and one repeat dropped (DS-51)
+
+**Why:** Michael, 2026-09-26: "DS-51 approved, drop the repeated sentences and add a Programs heading."
+
+**Before-snapshot:** `snapshots/afk-repeats-2026-09-26-before.json` (the group had no heading; the staged text from the entry above).
+
+**Made through the Shopify connector** (`about_us.py afk-programs-heading` and `afk-merge`):
+
+| What | Before | After |
+| --- | --- | --- |
+| Card group `afk-programmes` (`gid://shopify/Metaobject/608367378729`), `heading` | not set | "Programs": its card titles become H3s under it |
+| Artists for Kids' staged text | with Our Story's sentence "This print by Bill Reid, based on a ceremonial drum, …" | without it: it repeated "marked the beginning of an extraordinary partnership" and "one of the most significant limited edition collections" from the paragraphs on either side. The ceremonial drum and the more than 100 artists go with it; `proposals/gallery-questions.md` 3.6 asks the gallery whether to mention them in its own words |
+
+**Effect on the live site:** none; the live theme reads no card groups or staged text.
+
+**Undo:** clear the group's heading; set the staged text back from the snapshot.

@@ -13,10 +13,19 @@
       "type": "gs-page-hero"
     },
     "body": {
-      "type": "gs-page-body"
+      "type": "gs-page-body",
+      "settings": {
+        "part": "opening"
+      }
     },
     "cards": {
       "type": "gs-card-groups"
+    },
+    "sections": {
+      "type": "gs-page-body",
+      "settings": {
+        "part": "sections"
+      }
     },
     "events": {
       "type": "gs-events"
@@ -29,6 +38,7 @@
     "hero",
     "body",
     "cards",
+    "sections",
     "events",
     "gallery"
   ]
