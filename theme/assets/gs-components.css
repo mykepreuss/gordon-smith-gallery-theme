@@ -1368,7 +1368,10 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-about__credits > * { margin: 0; }
 .gs-events--compact { gap: var(--gs-space-4); }
 .gs-events--compact .gs-event { padding: 0; border: 0; gap: var(--gs-space-1); }
-.gs-about__facts .gs-details__item--wide .gs-names { columns: 2 9rem; }
+/* Two columns of names only where each column holds a whole name (12rem fits nine in ten of the
+   artists' names in the entries). In the facts beside the text on wide screens that means one
+   column, so no name breaks across lines; on a tablet, where the facts span the page, two. */
+.gs-about__facts .gs-details__item--wide .gs-names { columns: 2 12rem; }
 @media (min-width: 990px) {
   .gs-about {
     grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);

@@ -64,8 +64,16 @@
 
       {%- form 'product', product, id: form_id, class: 'gs-form', data-gs-form: '' -%}
         {%- unless product.has_only_default_variant -%}
+          {%- liquid
+            # The select is named after the product's option, as the store calls it ("Colour"). A
+            # product with more than one option gets the general word.
+            assign option_label = 'products.option' | t
+            if product.options.size == 1
+              assign option_label = product.options.first
+            endif
+          -%}
           <div class="gs-field">
-            <label class="gs-field__label" for="{{ form_id }}-variant">{{ 'products.option' | t }}</label>
+            <label class="gs-field__label" for="{{ form_id }}-variant">{{ option_label | escape }}</label>
             <span class="gs-select-wrap">
               <select class="gs-input gs-select" id="{{ form_id }}-variant" name="id">
                 {%- for v in product.variants -%}

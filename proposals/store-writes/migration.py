@@ -326,7 +326,7 @@ CARDS = {
     },
     "donate-email": {
         "title": "Email",
-        "text": "To make a gift or for more information about the various giving options, email us as at admin@smithfoundation.ca",
+        "text": "To make a gift or for more information about the various giving options, email us at admin@smithfoundation.ca",
     },
     "donate-mail": {
         "title": "Mail",

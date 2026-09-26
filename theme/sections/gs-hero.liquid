@@ -90,10 +90,10 @@
         {%- if has_button or has_link -%}
           <div class="gs-actions">
             {%- if has_button -%}
-              <a class="gs-button" href="{{ s.button_link }}">{{ s.button_label | escape }}</a>
+              {%- render 'gs-link', url: s.button_link, label: s.button_label, class: 'gs-button' -%}
             {%- endif -%}
             {%- if has_link -%}
-              <a class="gs-cta-link" href="{{ s.button2_link }}">{{ s.button2_label | escape }}</a>
+              {%- render 'gs-link', url: s.button2_link, label: s.button2_label, class: 'gs-cta-link' -%}
             {%- endif -%}
           </div>
         {%- endif -%}
