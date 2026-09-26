@@ -35,7 +35,7 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 3.3 | Three names on the Artists page may be misspelled: "Atilla Lukacs" (his site is attilarichardlukacs.com), "Jean McEwan" (the link goes to Jean McEwen), "Graham Gillmore" (the Permanent Collection page says Graham Gilmore) | As written |
 | 3.4 | Speaker Series: where should Omer Arbel's separate biography paragraph go (the page text or the event summary)? | Not on the site |
 | 3.5 | *Good Luck (wheelbarrow)* by Samuel Roy-Bois: its description gives the medium as "archival pigment print on Legacy Baryta paper", so its label now says "archival pigment print". Right? | As filled in, 2026-09-26 |
-| 3.6 | The Artists for Kids history joins About's and Our Story's words (P-24, P-25), so two phrases now come twice in a row: "marked the beginning of an extraordinary partnership" and "one of the most significant limited edition collections". Would the gallery like to merge those sentences? | Both kept, word for word |
+| 3.6 | Our Story's sentence "This print by Bill Reid, based on a ceremonial drum, marked the beginning of an extraordinary partnership with now more than 100 Canadian artists - from Kenojuak Ashevak to Ian Wallace - …" was left off the Artists for Kids history because it repeated the sentences around it (P-25). Would the gallery like the ceremonial drum and the more than 100 artists mentioned in the history, in its own words? | Not mentioned |
 | 3.7 | Roz Marshall's link on the Artists page goes to `rozmarshall-artist.com`, which no longer exists. A new address, or remove the link? | The dead link stays |
 | 3.8 | The Paradise Valley photo on the Artists for Kids page: its description says 1994, its caption 1996. Which year? | Both as written |
 

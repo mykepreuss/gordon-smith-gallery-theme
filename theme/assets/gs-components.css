@@ -527,6 +527,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* Page text split at its H2 headings; each part's figures sit beside its paragraphs from 990px
    (text in 7 columns, pictures in 5) and follow them on smaller screens. */
 .gs-text-media-list { display: grid; gap: var(--gs-stack-lg); }
+/* The headed sections after a programme page's programmes are parts of the page: section spacing,
+   and their H2 is a section heading (.gs-section-head .gs-h2) above the text and its pictures. */
+.gs-text-media-list--sections { gap: var(--gs-section-space); }
 .gs-text-media { display: grid; gap: var(--gs-space-6) var(--gs-gutter); align-items: start; }
 .gs-text-media__aside > * + * { margin-block-start: var(--gs-space-6); }
 @media (min-width: 990px) {

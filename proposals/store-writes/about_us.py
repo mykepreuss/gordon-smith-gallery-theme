@@ -22,7 +22,11 @@ Then (Michael, 2026-09-26: "Add that content you identified word for word"), fro
 leaves the Shop (P-25): its sentence on art specialists after the founding, its sentence on the
 ceremonial drum and the more than 100 artists after the paragraph on the first print, and its fuller
 caption for the print. "contemporary limited editions" links to the Shop, which Our Story used to
-sit under.
+sit under. The drum sentence was then dropped: it repeated "marked the beginning of an extraordinary
+partnership" and "one of the most significant limited edition collections" from the paragraphs on
+either side (Michael: "drop the repeated sentences").
+
+  python3 proposals/store-writes/about_us.py afk-programs-heading   # "Programs" over its programmes
 
 About Artists for Kids (Michael, 2026-09-26: "/about should be /about-artists-for-kids and be
 focused on that part of the organization"). About's text is Artists for Kids' history, but the page
@@ -221,7 +225,8 @@ def afk_merge_text():
     out.append(f"<p>{specialists}</p>")
     out.append(history[1])
     out.append(figure(REID_SRC, REID_ALT, full_caption, 1440, 1456, artwork=True, caption_html=True))
-    out.append(f"<p>{drum}</p>")
+    # Our Story's drum sentence repeated two phrases from the paragraphs around it, so it was
+    # dropped (Michael, 2026-09-26: "drop the repeated sentences").
     out += history[2:]
     return "\n".join(out)
 
@@ -233,6 +238,13 @@ def afk_merge():
         ]},
         "metafieldsDelete": [{"ownerId": ABOUT["id"], "namespace": "custom", "key": "release_body"}],
     }
+
+
+AFK_PROGRAMMES = "gid://shopify/Metaobject/608367378729"  # card group afk-programmes
+
+
+def afk_programs_heading():
+    return {"id": AFK_PROGRAMMES, "metaobject": {"fields": [{"key": "heading", "value": "Programs"}]}}
 
 
 def page_fields(created_group):
@@ -259,6 +271,8 @@ if __name__ == "__main__":
         result = about_logos()
     elif step == "about-afk":
         result = about_afk()
+    elif step == "afk-programs-heading":
+        result = afk_programs_heading()
     elif step == "afk-merge":
         result = afk_merge()
     elif step == "afk-merge-review":

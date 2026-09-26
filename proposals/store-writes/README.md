@@ -318,3 +318,20 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 **Effect on the live site:** none; the live theme doesn't read the staged field.
 
 **Undo:** set the staged text back from the snapshot.
+
+## 2026-09-26: Artists for Kids, a Programs heading and one repeat dropped (DS-51)
+
+**Why:** Michael, 2026-09-26: "DS-51 approved, drop the repeated sentences and add a Programs heading."
+
+**Before-snapshot:** `snapshots/afk-repeats-2026-09-26-before.json` (the group had no heading; the staged text from the entry above).
+
+**Made through the Shopify connector** (`about_us.py afk-programs-heading` and `afk-merge`):
+
+| What | Before | After |
+| --- | --- | --- |
+| Card group `afk-programmes` (`gid://shopify/Metaobject/608367378729`), `heading` | not set | "Programs": its card titles become H3s under it |
+| Artists for Kids' staged text | with Our Story's sentence "This print by Bill Reid, based on a ceremonial drum, …" | without it: it repeated "marked the beginning of an extraordinary partnership" and "one of the most significant limited edition collections" from the paragraphs on either side. The ceremonial drum and the more than 100 artists go with it; `proposals/gallery-questions.md` 3.6 asks the gallery whether to mention them in its own words |
+
+**Effect on the live site:** none; the live theme reads no card groups or staged text.
+
+**Undo:** clear the group's heading; set the staged text back from the snapshot.

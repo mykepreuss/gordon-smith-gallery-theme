@@ -4,14 +4,17 @@
   gs-page-text: staged text until release (DS-39), without a heading that repeats the title (DS-41).
 
   The Part setting is the same for every page on a template (DS-51): the programme template shows
-  the opening before its programmes and the headed sections after them. Text with a figure sets
-  each picture beside its paragraphs (gs-text-media).
+  the opening before its programmes and the headed sections after them, whose H2s are section
+  headings, level with the programmes' heading. Text with a figure sets each picture beside its
+  paragraphs (gs-text-media).
 {%- endcomment -%}
 {%- capture text -%}{% render 'gs-page-text', part: section.settings.part %}{%- endcapture -%}
 {%- if text != blank -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container">
-      {%- if text contains '<figure' -%}
+      {%- if section.settings.part == 'sections' -%}
+        {%- render 'gs-text-media', text: text, heads: true -%}
+      {%- elsif text contains '<figure' -%}
         {%- render 'gs-text-media', text: text -%}
       {%- else -%}
         <div class="gs-prose">{{ text }}</div>
