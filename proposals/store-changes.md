@@ -128,7 +128,7 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | --- | --- |
 | On Now, Upcoming Exhibitions, Upcoming Events | None: each repeats *Collect, Assemble, Gather*, which lives in its entry |
 | Donate | Its text, then the tax receipt note from the old template. "Ways to Support" is a heading and "Every contribution makes a difference:" the paragraph after it (page pass, 2026-09-26). "The impact of your gift" is a heading too, and Asha's words a quote with her name under it; spacing typed as line breaks goes, and the Explore + Create link stays in the same tab (DS-53) |
-| Gordon and Marion | Its text, then the video from the old template. The biography's paragraphs, split by line breaks, become paragraphs, and the photo becomes a figure with a description (DS-53) |
+| Gordon and Marion | Its text, then the video from the old template. The biography's paragraphs, split by line breaks, become paragraphs, and the photo becomes a figure with a description. The video, which is square, joins the photo beside the biography, captioned with its heading, without Vimeo's title overlay (DS-53) |
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
 | About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
 | The Smith Foundation | Its two paragraphs, word for word, without the line above them that repeated the first sentence's opening (the Foundation's full name). Explore + Create, Art In Good Company, Speaker Series and Music at The Smith link to their pages; the Gordon and Marion link stays on the site instead of opening a new tab (DS-52) |

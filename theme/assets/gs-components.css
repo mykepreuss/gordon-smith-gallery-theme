@@ -558,17 +558,20 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 990px) {
   .gs-text-media:not(.gs-text-media--text) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 }
-/* A video embedded in the page text fills the text column at 16:9, whatever size the embed code gives. */
+/* A video embedded in the page text fills its column at its own shape: the embed code's width and
+   height set --gs-video-ratio (snippets/gs-page-text.liquid, DS-53); 16:9 when the code gives none.
+   The tint shows while the player loads. */
 .gs-prose iframe:is([src*="vimeo.com"], [src*="youtube.com"], [src*="youtube-nocookie.com"]) {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: var(--gs-ratio-video);
+  aspect-ratio: var(--gs-video-ratio, var(--gs-ratio-video));
   border: 0;
   border-radius: var(--gs-shape-md);
+  background-color: var(--gs-color-tint);
 }
 /* Text pasted from Word or email arrives with inline fonts, sizes and colours. Neutralise them. */
-.gs-prose [style],
+.gs-prose [style]:not(iframe),
 .gs-prose font {
   font-family: inherit !important;
   color: inherit !important;

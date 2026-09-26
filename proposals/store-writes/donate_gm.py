@@ -11,7 +11,8 @@ each step's mutation.
 
 Gordon and Marion: the biography's paragraphs, which were one paragraph split by line breaks,
 become paragraphs, and the photo of Gordon and Marion becomes a figure with a description, so it
-sits beside the biography from 990 px (DS-51).
+sits beside the biography from 990 px (DS-51). The video, which is square, joins it there at its own
+shape, captioned with its heading.
 
 Donate: "The impact of your gift" becomes the heading it looks like, level with "Ways to Support".
 Asha's words become a quote with her name under it, set beside the list of what a gift does from
@@ -56,6 +57,16 @@ def gm_staged():
               f'height="1490" loading="lazy"></figure>')
     body = body.replace(img.group(0), figure, 1)
     body = body.replace("<p><br></p>\n", "", 1)
+    # The video is square (Vimeo, 2026-09-26), so a 16:9 box gave it bars down both sides. It goes
+    # beside the biography under the photo, at its own shape, with its heading as its caption;
+    # Vimeo's title overlay would repeat the caption, and its blue gives way to the ink colour.
+    old_video = migration.GORDON_AND_MARION_VIDEO
+    assert body.count(old_video) == 1
+    video = ('<figure><iframe src="https://player.vimeo.com/video/392350371?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0'
+             '&amp;color=231f20" title="Gordon Smith\'s Magic" width="640" height="640" allow="fullscreen; picture-in-picture" '
+             'loading="lazy"></iframe><figcaption>Video: Gordon Smith\'s Magic</figcaption></figure>')
+    body = body.replace("\n" + old_video, "", 1)
+    body = body.replace("</figure>", "</figure>\n" + video, 1)
     assert words(body).replace(" ", "") == words(before).replace(" ", ""), "Words changed"
     return body
 

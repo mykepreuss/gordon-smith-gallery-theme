@@ -382,3 +382,18 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 **Effect on the live site:** none; the live theme reads neither field.
 
 **Undo:** set both staged texts back to `migration.py`'s (`donate_body()`, and Gordon and Marion's text plus the video); clear Donate's `cta`.
+
+## 2026-09-26: Gordon and Marion's video at its own shape (DS-53)
+
+**Why:** Michael, 2026-09-26: "Let's improve this video embed, it looks bad." Vimeo gives the video as square (240 × 240 in its oEmbed data, 200 × 200 thumbnail), and the page boxed it at 16:9, so it played with bars down both sides under a heading pressed against it.
+
+**Before-snapshot:** `snapshots/gm-video-2026-09-26-before.json`.
+
+**Made through the Shopify connector** (`donate_gm.py gm-staged`): Gordon and Marion's staged text. The video is now a figure under the photo, beside the biography:
+- It has width and height 640, which the theme turns into its shape.
+- Its caption is its old heading, "Video: Gordon Smith's Magic", with the words unchanged.
+- The player asks Vimeo for no title, byline or portrait overlay (`title=0&byline=0&portrait=0`), which would repeat the caption, and for the ink colour (`color=231f20`) instead of Vimeo's blue.
+
+**Effect on the live site:** none; the live theme doesn't read the staged field.
+
+**Undo:** set the staged text back from the snapshot.
