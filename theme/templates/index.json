@@ -16,36 +16,64 @@
         "heading": "Gordon Smith Gallery"
       }
     },
-    "exhibitions": {
-      "type": "gs-exhibition-list",
+    "whats_on": {
+      "type": "gs-whats-on",
       "settings": {
-        "heading": "Exhibitions"
-      }
-    },
-    "visit": {
-      "type": "gs-visit",
-      "settings": {
-        "heading": "Visit"
-      }
-    },
-    "shop": {
-      "type": "gs-shop-feature",
-      "settings": {
-        "surface": "accent"
+        "heading": "What's on"
       }
     },
     "programme": {
       "type": "gs-feature",
       "settings": {
-        "surface": "tint"
+        "programme": "Artists for Kids",
+        "surface": "tint",
+        "image": "shopify://shop_images/KMH853740.jpg",
+        "image_is_artwork": false,
+        "eyebrow": "",
+        "heading": "For kids, families and schools",
+        "text": "<p>Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators.</p>",
+        "button_label": "See Artists for Kids programs",
+        "button_link": "shopify://pages/artists-for-kids",
+        "link_label": "Explore + Create Saturdays",
+        "link_url": "shopify://pages/explore-create"
+      }
+    },
+    "editions": {
+      "type": "gs-portfolio-row",
+      "settings": {
+        "heading": "New limited editions"
+      }
+    },
+    "support": {
+      "type": "gs-feature",
+      "settings": {
+        "programme": "Smith Foundation",
+        "surface": "accent",
+        "image": "shopify://shop_images/khimhipol210708_0559.jpg",
+        "image_is_artwork": false,
+        "eyebrow": "The Smith Foundation",
+        "heading": "Support art education",
+        "text": "<p>You can help ensure that children and youth continue to experience the joy, confidence, and curiosity that come from making and encountering art at the Gordon Smith Gallery and through Artists for Kids.</p>",
+        "button_label": "Donate",
+        "button_link": "shopify://pages/donate",
+        "link_label": "Volunteer",
+        "link_url": "shopify://pages/volunteer"
+      }
+    },
+    "visit": {
+      "type": "gs-visit",
+      "settings": {
+        "image": "shopify://shop_images/23-8.jpg",
+        "heading": "Visit"
       }
     }
   },
   "order": [
     "hero",
-    "exhibitions",
-    "visit",
+    "whats_on",
     "programme",
-    "shop"
+    "editions",
+    "support",
+    "visit"
   ]
 }

@@ -159,5 +159,19 @@
     "address": "Address",
     "hours": "Hours",
     "plan_link": "{{ title }}"
+  },
+  "open": {
+    "days_times": "Open {{ days }}, {{ times }}",
+    "today": "Open today, {{ times }}",
+    "now": "Open now until {{ time }}",
+    "closed_today": "Closed today. Open {{ day }}, {{ times }}",
+    "closed_now": "Closed now. Open {{ day }}, {{ times }}",
+    "tomorrow": "tomorrow",
+    "to": "to",
+    "and": "and",
+    "weekdays": "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
+  },
+  "home": {
+    "all_events": "All events"
   }
 }

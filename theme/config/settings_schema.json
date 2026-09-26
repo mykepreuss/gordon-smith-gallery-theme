@@ -27,6 +27,320 @@
         "info": "One line per day or group of days."
       },
       {
+        "type": "header",
+        "content": "Opening days and times"
+      },
+      {
+        "type": "paragraph",
+        "content": "For the home page's line that says whether the gallery is open today (DS-54). The Hours text above still shows in the footer, on the home page's Visit block and on the Contact page, so change both when the hours change."
+      },
+      {
+        "type": "checkbox",
+        "id": "open_monday",
+        "label": "Open on Monday",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "open_tuesday",
+        "label": "Open on Tuesday",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "open_wednesday",
+        "label": "Open on Wednesday",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "open_thursday",
+        "label": "Open on Thursday",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "open_friday",
+        "label": "Open on Friday",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "open_saturday",
+        "label": "Open on Saturday",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "open_sunday",
+        "label": "Open on Sunday",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "opens_at",
+        "label": "Opens at",
+        "options": [
+          {
+            "value": "07:00",
+            "label": "7 AM"
+          },
+          {
+            "value": "07:30",
+            "label": "7:30 AM"
+          },
+          {
+            "value": "08:00",
+            "label": "8 AM"
+          },
+          {
+            "value": "08:30",
+            "label": "8:30 AM"
+          },
+          {
+            "value": "09:00",
+            "label": "9 AM"
+          },
+          {
+            "value": "09:30",
+            "label": "9:30 AM"
+          },
+          {
+            "value": "10:00",
+            "label": "10 AM"
+          },
+          {
+            "value": "10:30",
+            "label": "10:30 AM"
+          },
+          {
+            "value": "11:00",
+            "label": "11 AM"
+          },
+          {
+            "value": "11:30",
+            "label": "11:30 AM"
+          },
+          {
+            "value": "12:00",
+            "label": "12 PM"
+          },
+          {
+            "value": "12:30",
+            "label": "12:30 PM"
+          },
+          {
+            "value": "13:00",
+            "label": "1 PM"
+          },
+          {
+            "value": "13:30",
+            "label": "1:30 PM"
+          },
+          {
+            "value": "14:00",
+            "label": "2 PM"
+          },
+          {
+            "value": "14:30",
+            "label": "2:30 PM"
+          },
+          {
+            "value": "15:00",
+            "label": "3 PM"
+          },
+          {
+            "value": "15:30",
+            "label": "3:30 PM"
+          },
+          {
+            "value": "16:00",
+            "label": "4 PM"
+          },
+          {
+            "value": "16:30",
+            "label": "4:30 PM"
+          },
+          {
+            "value": "17:00",
+            "label": "5 PM"
+          },
+          {
+            "value": "17:30",
+            "label": "5:30 PM"
+          },
+          {
+            "value": "18:00",
+            "label": "6 PM"
+          },
+          {
+            "value": "18:30",
+            "label": "6:30 PM"
+          },
+          {
+            "value": "19:00",
+            "label": "7 PM"
+          },
+          {
+            "value": "19:30",
+            "label": "7:30 PM"
+          },
+          {
+            "value": "20:00",
+            "label": "8 PM"
+          },
+          {
+            "value": "20:30",
+            "label": "8:30 PM"
+          },
+          {
+            "value": "21:00",
+            "label": "9 PM"
+          },
+          {
+            "value": "21:30",
+            "label": "9:30 PM"
+          },
+          {
+            "value": "22:00",
+            "label": "10 PM"
+          }
+        ],
+        "default": "12:00"
+      },
+      {
+        "type": "select",
+        "id": "closes_at",
+        "label": "Closes at",
+        "options": [
+          {
+            "value": "07:00",
+            "label": "7 AM"
+          },
+          {
+            "value": "07:30",
+            "label": "7:30 AM"
+          },
+          {
+            "value": "08:00",
+            "label": "8 AM"
+          },
+          {
+            "value": "08:30",
+            "label": "8:30 AM"
+          },
+          {
+            "value": "09:00",
+            "label": "9 AM"
+          },
+          {
+            "value": "09:30",
+            "label": "9:30 AM"
+          },
+          {
+            "value": "10:00",
+            "label": "10 AM"
+          },
+          {
+            "value": "10:30",
+            "label": "10:30 AM"
+          },
+          {
+            "value": "11:00",
+            "label": "11 AM"
+          },
+          {
+            "value": "11:30",
+            "label": "11:30 AM"
+          },
+          {
+            "value": "12:00",
+            "label": "12 PM"
+          },
+          {
+            "value": "12:30",
+            "label": "12:30 PM"
+          },
+          {
+            "value": "13:00",
+            "label": "1 PM"
+          },
+          {
+            "value": "13:30",
+            "label": "1:30 PM"
+          },
+          {
+            "value": "14:00",
+            "label": "2 PM"
+          },
+          {
+            "value": "14:30",
+            "label": "2:30 PM"
+          },
+          {
+            "value": "15:00",
+            "label": "3 PM"
+          },
+          {
+            "value": "15:30",
+            "label": "3:30 PM"
+          },
+          {
+            "value": "16:00",
+            "label": "4 PM"
+          },
+          {
+            "value": "16:30",
+            "label": "4:30 PM"
+          },
+          {
+            "value": "17:00",
+            "label": "5 PM"
+          },
+          {
+            "value": "17:30",
+            "label": "5:30 PM"
+          },
+          {
+            "value": "18:00",
+            "label": "6 PM"
+          },
+          {
+            "value": "18:30",
+            "label": "6:30 PM"
+          },
+          {
+            "value": "19:00",
+            "label": "7 PM"
+          },
+          {
+            "value": "19:30",
+            "label": "7:30 PM"
+          },
+          {
+            "value": "20:00",
+            "label": "8 PM"
+          },
+          {
+            "value": "20:30",
+            "label": "8:30 PM"
+          },
+          {
+            "value": "21:00",
+            "label": "9 PM"
+          },
+          {
+            "value": "21:30",
+            "label": "9:30 PM"
+          },
+          {
+            "value": "22:00",
+            "label": "10 PM"
+          }
+        ],
+        "default": "16:00"
+      },
+      {
         "type": "text",
         "id": "email",
         "label": "Email address"

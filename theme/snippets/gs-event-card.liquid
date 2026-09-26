@@ -1,0 +1,76 @@
+{% doc %}
+  An event as a card, for rows that mix events with exhibitions (Home's What's on, DS-54): image,
+  what it belongs to, title, when. The event's own image, else its programme page's hero image,
+  else its exhibition's key image, so every card has a picture without anyone adding one twice.
+  The whole card links to the programme page, else the exhibition, else the tickets.
+
+  A line under the date names the programme ("Music at the Smith") or the exhibition ("Collect,
+  Assemble, Gather"); an event titled like its programme ("Explore + Create") has none. It sits
+  under the title, not above it, so every title in a row starts at the same height (DS-55).
+
+  @param {object} event - An event entry
+  @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
+
+  @example
+  {%- render 'gs-event-card', event: event -%}
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h3'
+  assign programme = event.programme_page.value
+  assign exhibition = event.exhibition.value
+  assign image = event.image.value
+  assign mode = 'photo'
+  if image == blank and programme != blank
+    assign image = programme.metafields.custom.hero_image.value
+    if programme.metafields.custom.hero_is_artwork.value == true
+      assign mode = 'artwork'
+    endif
+  endif
+  if image == blank and exhibition != blank
+    assign image = exhibition.key_image.value
+    if exhibition.key_image_is_artwork.value == true
+      assign mode = 'artwork'
+    endif
+  endif
+
+  assign label = ''
+  if programme != blank
+    assign a = programme.title | strip | downcase
+    assign b = event.title.value | strip | downcase
+    if a != b
+      assign label = programme.title
+    endif
+  elsif exhibition != blank
+    assign label = exhibition.title.value
+  endif
+
+  assign href = ''
+  if programme != blank
+    assign href = programme.url
+  elsif exhibition != blank and exhibition.summary.value != blank
+    assign href = exhibition.system.url
+  elsif event.tickets.value.url != blank
+    capture r
+      render 'gs-url', link: event.tickets.value
+    endcapture
+    assign href = r | strip | split: '|' | first
+  endif
+-%}
+<article class="gs-card">
+  {%- if image != blank -%}
+    {%- render 'gs-media', image: image, preset: 'card', mode: mode, ratio: '4 / 3', alt: event.title.value -%}
+  {%- endif -%}
+  <div class="gs-card__body">
+    <{{ tag }} class="gs-card__title">
+      {%- if href != blank -%}
+        <a href="{{ href }}">{{ event.title.value | escape }}</a>
+      {%- else -%}
+        {{- event.title.value | escape -}}
+      {%- endif -%}
+    </{{ tag }}>
+    <p class="gs-status__dates"><time datetime="{{ event.starts.value }}">{% render 'gs-time-range', start: event.starts.value, end: event.ends.value %}</time></p>
+    {%- if label != blank -%}
+      <p class="gs-meta">{{ label | escape }}</p>
+    {%- endif -%}
+  </div>
+</article>

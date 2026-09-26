@@ -293,7 +293,12 @@
   transition:
     background-color var(--gs-duration-fast) var(--gs-ease),
     color var(--gs-duration-fast) var(--gs-ease),
-    border-color var(--gs-duration-fast) var(--gs-ease);
+    border-color var(--gs-duration-fast) var(--gs-ease),
+    transform var(--gs-duration-press) var(--gs-ease-press);
+}
+/* Pressed, a button gives a little under the finger (DS-55). Not with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .gs-button:active { transform: scale(0.97); }
 }
 .gs-button--secondary {
   --_bg: transparent;
@@ -602,6 +607,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 
 .gs-media--photo { aspect-ratio: var(--gs-media-ratio, var(--gs-ratio-card)); }
+/* A hairline inside every photo, so one with a white wall or sky keeps its edge on paper (DS-55).
+   Artworks don't need it: the mat is their edge. */
+.gs-media--photo { outline: var(--gs-border) solid var(--gs-color-media-edge); outline-offset: calc(-1 * var(--gs-border)); }
 .gs-media--photo > img,
 .gs-media--photo > picture > img,
 .gs-media--photo > video {
@@ -680,13 +688,17 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 
 /* Artwork hero: the work is never covered, cropped or rounded. */
 .gs-hero--artwork { gap: var(--gs-space-3); }
+/* The mat follows the work's own shape, between 4:5 and 4:3, so a wide work isn't floating in a
+   square of empty mat (DS-55). --gs-art-ratio is the image's ratio, set by the hero. */
 .gs-hero--artwork .gs-hero__media {
-  --gs-media-ratio: 1 / 1;
+  --gs-media-ratio: max(0.8, min(1.3333, var(--gs-art-ratio, 1)));
   border-radius: var(--gs-shape-lg);
 }
 .gs-hero--artwork .gs-hero__box { margin: 0; }
-@media (min-width: 750px) {
-  .gs-hero--artwork .gs-hero__media { --gs-media-ratio: 4 / 3; }
+/* Until the box moves beside it, the credit sits straight under the work it names. */
+@media (max-width: 989px) {
+  .gs-hero--artwork .gs-hero__caption { order: 1; margin-block-start: 0; }
+  .gs-hero--artwork .gs-hero__box { order: 2; margin-block-start: var(--gs-space-3); }
 }
 @media (min-width: 990px) {
   .gs-hero--artwork {
@@ -694,7 +706,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
     align-items: end;
     gap: var(--gs-gutter);
   }
-  .gs-hero--artwork .gs-hero__media { --gs-media-ratio: 1 / 1; }
   .gs-hero--artwork .gs-hero__box { width: auto; margin: 0; }
 }
 
@@ -1304,9 +1315,18 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 .gs-feature__text { display: grid; gap: var(--gs-space-4); justify-items: start; align-content: center; }
 .gs-feature__text > * { margin: 0; }
+/* A programme's logo leads a panel in its colours (DS-55): the programme is seen, not only named. */
+.gs-feature__logo { line-height: 0; margin-block-end: var(--gs-space-2); }
+.gs-feature__logo .gs-logo { display: block; height: var(--gs-feature-logo-h); width: auto; }
 @media (min-width: 990px) {
   .gs-feature { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); padding: var(--gs-space-7); }
   .gs-feature--no-media { grid-template-columns: minmax(0, 1fr); }
+  /* Feature panels on one page alternate: the second puts its image on the right, so image-led
+     rows don't all lean the same way (DS-55). */
+  .shopify-section:has(.gs-feature:not(.gs-feature--no-media)) ~ .shopify-section .gs-feature:not(.gs-feature--no-media) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .shopify-section:has(.gs-feature:not(.gs-feature--no-media)) ~ .shopify-section .gs-feature:not(.gs-feature--no-media) > .gs-media { order: 2; }
 }
 
 /* ---------- Details list (exhibition facts) ---------- */
@@ -1659,6 +1679,39 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 @media (min-width: 990px) {
   .gs-visit { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   .gs-visit__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* With the building's photo (DS-54): the photo beside the heading and the details, which sit
+   together, centred on the photo (DS-55). */
+.gs-visit__body { display: grid; gap: var(--gs-space-6); align-content: center; }
+@media (min-width: 990px) {
+  .gs-visit--media { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gs-space-8); align-items: center; }
+  .gs-visit--media .gs-visit__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Home: What's on, open today, sideways rows (DS-54) ---------- */
+
+/* Whether the gallery is open today (snippets/gs-open-today.liquid, js/gs-open.js). */
+.gs-open { margin: 0; font-weight: var(--gs-weight-bold); }
+/* Links beside a section heading ("All exhibitions", "All events"). */
+.gs-whats-on__links { margin: 0; display: flex; flex-wrap: wrap; gap: var(--gs-space-3) var(--gs-space-6); }
+/* A row of cards that scrolls sideways on phones, bleeding to the screen's edges with the next card
+   peeking in, so it's clear there's more; the card grid from 750px. No script, no autoplay. */
+@media (max-width: 749px) {
+  .gs-grid.gs-rail {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--gs-rail-item);
+    gap: var(--gs-space-4);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gs-gutter);
+    margin-inline: calc(-1 * var(--gs-gutter));
+    padding-inline: var(--gs-gutter);
+    padding-block-end: var(--gs-space-3);
+    scrollbar-width: thin;
+  }
+  .gs-rail > li { scroll-snap-align: start; }
 }
 
 .gs-contact { display: grid; gap: var(--gs-space-7) var(--gs-gutter); align-items: start; }

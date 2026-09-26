@@ -1,0 +1,123 @@
+{%- comment -%}
+  What's on (Home, DS-54): the next exhibitions and events in one row, soonest first, so the home
+  page always says what a visitor can come to next. It leaves out the exhibition in the hero and
+  shows each event once, at its next date (Explore + Create runs every Saturday). Six at most.
+  The heading carries today's opening line (gs-open-today) and links to all exhibitions and all
+  events. Everything comes from the entries and Theme settings; nothing here is typed by hand.
+
+  On phones the row scrolls sideways, the next card peeking in so it's clear there's more
+  (.gs-rail); from 750 px it's the card grid.
+{%- endcomment -%}
+{%- liquid
+  capture lead_id
+    render 'gs-exhibition-index', status: 'on-now', order: 'desc', linked_only: true, limit: 1
+  endcapture
+  assign lead_id = lead_id | strip
+  assign lead_handle = ''
+  if lead_id != blank
+    assign n = lead_id | plus: 0
+    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+      assign lead_handle = entry.system.handle
+    endfor
+  endif
+
+  assign keys = ''
+  capture ex_ids
+    render 'gs-exhibition-index', status: 'current', exclude: lead_handle
+  endcapture
+  assign ex_ids = ex_ids | strip | split: ','
+  for id in ex_ids
+    assign n = id | plus: 0
+    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+      assign when = entry.start_date.value | date: '%Y%m%d' | append: '0000'
+      assign keys = keys | append: when | append: '-x-' | append: id | append: ','
+    endfor
+  endfor
+
+  capture ev_ids
+    render 'gs-event-index'
+  endcapture
+  assign ev_ids = ev_ids | strip | split: ','
+  assign seen = '|'
+  for id in ev_ids
+    assign n = id | plus: 0
+    for event in shop.metaobjects.event.values offset: n limit: 1
+      assign title_key = event.title.value | strip | downcase | prepend: '|' | append: '|'
+      if seen contains title_key
+        continue
+      endif
+      assign seen = seen | append: title_key
+      assign when = event.starts.value | date: '%Y%m%d%H%M'
+      assign keys = keys | append: when | append: '-e-' | append: id | append: ','
+    endfor
+  endfor
+  assign items = keys | split: ',' | sort
+-%}
+{%- if items.size > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head gs-whats-on__head">
+        <div class="gs-section-head__text">
+          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+          {%- render 'gs-open-today' -%}
+        </div>
+        <p class="gs-whats-on__links">
+          {%- if settings.exhibitions_on_now_page != blank -%}
+            <a class="gs-cta-link gs-cta-link--more" href="{{ settings.exhibitions_on_now_page.url }}">{{ 'exhibitions.all' | t }}</a>
+          {%- endif -%}
+          {%- if settings.events_page != blank -%}
+            <a class="gs-cta-link gs-cta-link--more" href="{{ settings.events_page.url }}">{{ 'home.all_events' | t }}</a>
+          {%- endif -%}
+        </p>
+      </div>
+      <ul class="gs-grid gs-grid--cards gs-rail" role="list">
+        {%- for item in items limit: 6 -%}
+          {%- liquid
+            assign parts = item | split: '-'
+            assign n = parts[2] | plus: 0
+          -%}
+          <li>
+            {%- if parts[1] == 'x' -%}
+              {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+                {%- render 'gs-exhibition-card', entry: entry, show_status: true -%}
+              {%- endfor -%}
+            {%- else -%}
+              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                {%- render 'gs-event-card', event: event -%}
+              {%- endfor -%}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- elsif request.design_mode -%}
+  <p class="gs-editor-warning gs-container">Nothing is on or coming up: add exhibition or event entries in Content, Metaobjects.</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "What's on",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The next exhibitions and events, from their entries, soonest first. The line under the heading comes from the opening days and times in Theme settings, Gallery details."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What's on"
+    }
+  ],
+  "presets": [
+    {
+      "name": "What's on"
+    }
+  ]
+}
+{% endschema %}

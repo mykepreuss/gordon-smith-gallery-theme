@@ -4,6 +4,14 @@
   templates, so the content lives in the section. The box takes the surface: tint by default,
   accent (the brand's box colour) at most once on a page, or ink (DESIGN.md §3.2). On a page it
   shows only on the Shop landing page chosen in Theme settings (DS-49): the content is that page's.
+
+  A programme setting gives the panel that programme's colours (DS-54): Artists for Kids' orange
+  or the Foundation's green for its box, button and rules, as on the programme's own pages. Staff
+  pick the programme, never a colour (§9.4). A second, plain link can sit beside the button.
+
+  A panel for Artists for Kids or the Foundation starts with that programme's logo (DS-55): the
+  colour box on a tint, the white logo on ink. Not on the programme's own box colour (accent),
+  where a boxed logo mustn't sit (§8.3); the colour already says whose panel it is.
 {%- endcomment -%}
 {%- liquid
   assign other_page = false
@@ -16,6 +24,24 @@
     assign mode = 'artwork'
   endif
   assign surface = s.surface | default: 'tint'
+  capture brand
+    render 'gs-programme', value: s.programme
+  endcapture
+  assign brand = brand | strip
+  assign logo = ''
+  if brand == 'artists-for-kids'
+    if surface == 'tint'
+      assign logo = 'artists-for-kids-full-colour-box'
+    elsif surface == 'ink'
+      assign logo = 'artists-for-kids-full-white'
+    endif
+  elsif brand == 'foundation'
+    if surface == 'tint'
+      assign logo = 'foundation-simple-colour-box'
+    elsif surface == 'ink'
+      assign logo = 'foundation-simple-white'
+    endif
+  endif
 -%}
 {%- if other_page -%}
   {%- comment -%} Not the Shop landing page: nothing to show. {%- endcomment -%}
@@ -24,13 +50,16 @@
     <p class="gs-editor-warning gs-container">Add a heading, text or image to this feature. Visitors see nothing here until you do.</p>
   {%- endif -%}
 {%- else -%}
-<section class="gs-section gs-surface-paper"{% if s.heading != blank %} aria-labelledby="{{ section.id }}-heading"{% endif %}>
+<section class="gs-section gs-surface-paper"{% if s.programme != blank %} data-gs-brand="{{ brand }}"{% endif %}{% if s.heading != blank %} aria-labelledby="{{ section.id }}-heading"{% endif %}>
   <div class="gs-container">
     <div class="gs-feature gs-surface-{{ surface }}{% if s.image == blank %} gs-feature--no-media{% endif %}">
       {%- if s.image != blank -%}
         {%- render 'gs-media', image: s.image, preset: 'card', sizes: '(min-width: 990px) 55vw, 100vw', mode: mode, shape: 'md' -%}
       {%- endif -%}
       <div class="gs-feature__text">
+        {%- if logo != blank -%}
+          <div class="gs-feature__logo">{%- render 'gs-logo', name: logo -%}</div>
+        {%- endif -%}
         {%- if s.eyebrow != blank -%}
           <p class="gs-eyebrow">{{ s.eyebrow | escape }}</p>
         {%- endif -%}
@@ -40,8 +69,25 @@
         {%- if s.text != blank -%}
           <div class="gs-prose">{{ s.text }}</div>
         {%- endif -%}
-        {%- if s.button_label != blank and s.button_link != blank -%}
-          {%- render 'gs-link', url: s.button_link, label: s.button_label, class: 'gs-button' -%}
+        {%- liquid
+          assign has_button = false
+          if s.button_label != blank and s.button_link != blank
+            assign has_button = true
+          endif
+          assign has_link = false
+          if s.link_label != blank and s.link_url != blank
+            assign has_link = true
+          endif
+        -%}
+        {%- if has_button or has_link -%}
+          <div class="gs-actions">
+            {%- if has_button -%}
+              {%- render 'gs-link', url: s.button_link, label: s.button_label, class: 'gs-button' -%}
+            {%- endif -%}
+            {%- if has_link -%}
+              {%- render 'gs-link', url: s.link_url, label: s.link_label, class: 'gs-cta-link' -%}
+            {%- endif -%}
+          </div>
         {%- endif -%}
       </div>
     </div>
@@ -57,6 +103,18 @@
     "templates": ["index", "page"]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "programme",
+      "label": "Programme",
+      "options": [
+        { "value": "Gallery", "label": "The gallery" },
+        { "value": "Artists for Kids", "label": "Artists for Kids" },
+        { "value": "Smith Foundation", "label": "Smith Foundation" }
+      ],
+      "default": "Gallery",
+      "info": "Gives the panel that programme's colours, as on its own pages."
+    },
     {
       "type": "select",
       "id": "surface",
@@ -103,6 +161,17 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Second link label",
+      "info": "Optional. A plain link beside the button."
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Second link"
     }
   ],
   "presets": [
