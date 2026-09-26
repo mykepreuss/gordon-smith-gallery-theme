@@ -100,17 +100,20 @@
       {
         "type": "page",
         "id": "exhibitions_on_now_page",
-        "label": "On now page"
+        "label": "On now page",
+        "info": "Shows the exhibitions on now, below its title, whatever template the page has."
       },
       {
         "type": "page",
         "id": "exhibitions_upcoming_page",
-        "label": "Upcoming exhibitions page"
+        "label": "Upcoming exhibitions page",
+        "info": "Shows the upcoming exhibitions, soonest first, whatever template the page has."
       },
       {
         "type": "page",
         "id": "exhibitions_past_page",
-        "label": "Past exhibitions page"
+        "label": "Past exhibitions page",
+        "info": "Shows every past exhibition, newest first, whatever template the page has."
       },
       {
         "type": "page",

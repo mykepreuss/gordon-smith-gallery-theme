@@ -110,14 +110,15 @@
       }
     },
     "page": {
-      "purpose": "Standard page: About, Our Story, Volunteer, Permanent Collection, FAQ, Upcoming Events, Engage, Donate, Gordon and Marion, Plan Your Visit, Exhibitions overview",
+      "purpose": "Standard page: About, Our Story, Volunteer, Permanent Collection, FAQ, Upcoming Events, Engage, Donate, Gordon and Marion, Plan Your Visit, On Now, Upcoming Exhibitions and Past Exhibitions (their lists come from Theme settings, DS-48)",
       "maxPerGroup": {
         "text": 3,
         "gallery": 1,
         "feature": 1,
         "listing": 1,
         "cards": 1,
-        "events": 1
+        "events": 1,
+        "switcher": 1
       }
     },
     "page.programme": {
@@ -129,32 +130,6 @@
         "feature": 1,
         "cards": 1,
         "events": 1
-      }
-    },
-    "page.exhibitions": {
-      "purpose": "Exhibition lists: On Now, Upcoming Exhibitions. One template; each page shows a different status.",
-      "firstGroups": [
-        "pageHead"
-      ],
-      "require": [
-        "pageHead",
-        "switcher",
-        "listing"
-      ],
-      "maxPerGroup": {
-        "listing": 1,
-        "text": 1
-      }
-    },
-    "page.past-exhibitions": {
-      "purpose": "Past Exhibitions: every past exhibition from entries, newest first (DS-24, DS-25), keeping each card's image, dates and title (EXH-03)",
-      "require": [
-        "pageHead",
-        "switcher",
-        "listing"
-      ],
-      "maxPerGroup": {
-        "listing": 2
       }
     },
     "metaobject/exhibition": {

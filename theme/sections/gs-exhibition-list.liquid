@@ -3,30 +3,33 @@
   with status from their dates, so a list never needs editing when a show opens or closes.
 
   Which exhibitions depends on where the list is, never on a setting per page:
-  - Past exhibitions template: every past exhibition, newest first (DS-24, DS-25).
-  - The Upcoming exhibitions page (Theme settings): upcoming ones, soonest first.
-  - Any other exhibition list page (On now): what's on now.
+  - The On now, Upcoming and Past pages chosen in Theme settings, Exhibitions and events: what's
+    on now; upcoming ones, soonest first; every past exhibition, newest first (DS-24, DS-25).
+    These pages use the standard page template, which carries this section; on any other page
+    it shows nothing (DS-48). So the lists don't depend on each page's template assignment.
   - Home: on now and upcoming together, with a status chip on each card, leaving out the
     exhibition the home hero leads with (DS-30).
   On now and Upcoming show each exhibition as a wide card, image beside its dates, title, curator
   and summary (DS-34): there are rarely more than two, and each deserves room. Home and Past use
   the grid of cards.
-  An empty list says so and points somewhere useful (§6.12). The Exhibitions overview page, off
-  the menu since P-05, is linked under the list.
+  An empty list says so and points somewhere useful (§6.12).
 {%- endcomment -%}
 {%- liquid
   assign order = 'asc'
   assign show_status = false
+  assign status = ''
   if template.name == 'index'
     assign status = 'current'
     assign show_status = true
-  elsif template.suffix == 'past-exhibitions'
-    assign status = 'past'
-    assign order = 'desc'
-  elsif settings.exhibitions_upcoming_page != blank and page.id == settings.exhibitions_upcoming_page.id
-    assign status = 'upcoming'
-  else
-    assign status = 'on-now'
+  elsif page != blank
+    if settings.exhibitions_past_page != blank and page.id == settings.exhibitions_past_page.id
+      assign status = 'past'
+      assign order = 'desc'
+    elsif settings.exhibitions_upcoming_page != blank and page.id == settings.exhibitions_upcoming_page.id
+      assign status = 'upcoming'
+    elsif settings.exhibitions_on_now_page != blank and page.id == settings.exhibitions_on_now_page.id
+      assign status = 'on-now'
+    endif
   endif
 
   assign exclude = ''
@@ -43,9 +46,12 @@
     endif
   endif
 
-  capture ids
-    render 'gs-exhibition-index', status: status, order: order, exclude: exclude
-  endcapture
+  assign ids = ''
+  if status != blank
+    capture ids
+      render 'gs-exhibition-index', status: status, order: order, exclude: exclude
+    endcapture
+  endif
   assign ids = ids | strip | split: ','
   assign wide = false
   if template.name != 'index' and status != 'past'
@@ -57,7 +63,9 @@
     assign heading_tag = 'h3'
   endif
 -%}
-{%- if template.name == 'index' and ids.size == 0 -%}
+{%- if status == blank -%}
+  {%- comment -%} Not an exhibition list page: nothing to show. {%- endcomment -%}
+{%- elsif template.name == 'index' and ids.size == 0 -%}
   {%- if request.design_mode -%}
     <p class="gs-editor-warning gs-container">No other exhibition is on now or upcoming, so this list is hidden. It shows again when an exhibition entry's dates are current.</p>
   {%- endif -%}

@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.6.1 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.6.2 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Every design decision is decided as of 2026-09-26; a new one starts as **Proposed** and needs Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -425,16 +425,14 @@ Canonical, machine-readable version: `templates.rules.json`. Checked by `scripts
 - **Product fields** (proposal part 3): artist, title, year, medium, edition for the museum label.
 - **Never in template section settings:** anything that differs from page to page. Section settings hold only choices that are the same for every page on that template.
 
-Until the fields and entries exist in the store, the templates show the page title, body and empty states; test a page on its new template with `?view=` (for example `/pages/on-now?view=exhibitions`).
+Until templates are reassigned at release, a page whose old template the new theme lacks falls back to `page`. The exhibition lists show on `page` anyway (DS-48); test another page on its new template with `?view=` (for example `/pages/artists-for-kids?view=programme`).
 
 ### 7.4 Template set and mapping
 
 | Template | Used by (current template in brackets) |
 | --- | --- |
-| `page` | About (default), About Us (`about-us`), Our Story (`shop`), Volunteer, Permanent Collection, Plan Your Visit, Donate, Gordon and Marion, Artists, Engage (`page`), FAQ (`page`), Upcoming Events (`page`), Exhibitions overview (`exhibitions-overview`, kept as a secondary pathway), privacy opt-out (default) |
+| `page` | About (default), About Us (`about-us`), Our Story (`shop`), Volunteer, Permanent Collection, Plan Your Visit, Donate, Gordon and Marion, Artists, Engage (`page`), FAQ (`page`), Upcoming Events (`page`), On Now (`current-on-now-exhibition`), Upcoming Exhibitions (`upcoming-exhibitions`), Past Exhibitions (`past-exhibitions`), privacy opt-out (default) |
 | `page.programme` | Artists for Kids, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company (each currently its own template) |
-| `page.exhibitions` | On Now (`current-on-now-exhibition`), Upcoming Exhibitions (`upcoming-exhibitions`) |
-| `page.past-exhibitions` | Past Exhibitions: every past exhibition from entries, newest first; the six older ones hold title, dates and image and don't link (DS-24, DS-25) |
 | `metaobject/exhibition` | Every exhibition (six current templates `exhibition-ftg`, `-ohad-2026`, `-playhouse`, `-prevailing`, `-stitched`, `-taoc`, plus the exhibitions now written into On Now and Upcoming) |
 | `page.shop` | Shop / Limited Editions landing (`shop`) |
 | `page.contact` | Contact (`contact`) |
@@ -442,17 +440,16 @@ Until the fields and entries exist in the store, the templates show the page tit
 | `product` | Every limited edition (`not-available-yet-product`, `no-frame-product`, default); availability and framing come from product data |
 | `index` | Home |
 
-From 28 page templates to six, plus one exhibition template; from three collection templates to one; from three product templates to one. Three unpublished pages (2025 Spring Portfolio, Exhibition Tours and an older Public Programs) aren't mapped; the gallery can decide whether to keep them.
+From 28 page templates to four (DS-48), plus one exhibition template; from three collection templates to one; from three product templates to one. Three unpublished pages (2025 Spring Portfolio, Exhibition Tours and an older Public Programs) aren't mapped; the gallery can decide whether to keep them.
 
 ### 7.5 Template specs
 
 Sections in order; brackets mean optional. All templates also get the global header, newsletter band and footer.
 
 - **index (Home):** hero, led by the exhibition on now (DS-30) · exhibitions on now and upcoming, without the one in the hero (cards with status chips, from exhibition data) · visit (address, hours, Plan your visit; DS-32) · [feature panel: a programme, tint] · Shop feature (the newest portfolio, automatically; accent) · newsletter band. At most three listings. The accent Shop box sits away from the tint newsletter band, so two tints never touch.
-- **page:** hero or page header · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event, and its heading is for screen readers only, since the page title says the same.
+- **page:** hero or page header · [switcher and exhibition list: the On now, Upcoming and Past pages only] · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event, and its heading is for screen readers only, since the page title says the same.
 - **page.programme:** hero or page header (programme colours from the `programme` field; the programme's logo above the title when there's no hero image; the call to action field as the button) · rich text · [card groups] · [upcoming events for this page] · [image gallery]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
-- **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (wide cards filtered by computed status: this page's status, DS-34; the empty state when there are none) · link to the Exhibitions overview page · [rich text, e.g. tours information].
-- **page.past-exhibitions:** page header · switcher · exhibition list (every past exhibition from entries, newest first; DS-24, DS-25). No hand-built archive section.
+- **The exhibition lists (on `page`, DS-48):** on the pages chosen as On now, Upcoming and Past in Theme settings, the page template shows the switcher (On now / Upcoming / Past) and the exhibition list after the page header. On now and Upcoming show wide cards of their status, soonest first (DS-34), with the empty state when there are none; Past shows every past exhibition from entries, newest first (DS-24, DS-25), with no hand-built archive section. Any page text follows the list. The lists don't depend on the page's template assignment, so they work before templates are reassigned and can't be lost to a wrong template choice.
 - **metaobject/exhibition:** hero (key image, artwork or photo variant; status chip and dates, or the dates note, from the entry; key image caption) · about the exhibition (summary as deck, text, credits and funder logos, beside the facts: opening reception until it has ended, upcoming events that reference the exhibition, curator credit, venue, artists and collection artists; empty fields show nothing; DS-35) · [installation views gallery] · [works gallery, phase 2] · [more exhibitions: compact cards].
 - **page.shop:** hero or page header · [rich text: one short introduction] · portfolio navigation (compact cards, artwork mode, one per portfolio) · [feature panel: e.g. Our Story or framing]. No other listings (SHOP-01, SHOP-02).
 - **page.contact:** page header · contact details beside the form. The details are the page's own text when it has some, in the tint panel, so the gallery's words (both email addresses, office hours) show once; otherwise the address, hours, email and phone from Theme settings (DS-42).
@@ -658,6 +655,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-45 | A list of twelve or more items in page text flows into two columns, three from 990 px, without bullets. The Artists page's names become one list in its staged text (DS-39): same names, order and links. Reason: 59 names in one centred column made a very long page | Decided by Michael, 2026-09-26 |
 | DS-46 | Artwork grids (portfolio pages, the Shop's portfolio navigation, search results, related works, galleries of works) show at most three across, and related works one row of three. Reason: at four across each print was too small to see; asked for with the approval of DS-05 | Decided by Michael, 2026-09-26 |
 | DS-47 | The header logo follows the page's programme field (the same value that sets the programme colours, DS-04): `artists-for-kids-full-colour-box` on Artists for Kids pages, `foundation-simple-colour-box` on Smith Foundation pages (the Foundation, Gordon and Marion, Donate), `gallery-simple-stacked-colour-box` everywhere else, including the Shop, portfolios, products, Our Story and Artists (Michael, 2026-09-26). It always links home, and its accessible name says whose logo it is. The Foundation logo is 72 px tall on phones, its minimum (§8.3); a page header no longer repeats a programme logo. Reason: asked for with the approval of DS-07, so each organisation's pages carry its own mark | Decided by Michael, 2026-09-26 |
+| DS-48 | On Now, Upcoming and Past use the standard page template: it carries the switcher and the exhibition list, which show only on the pages chosen as On now, Upcoming and Past in Theme settings, as the events list does on the Upcoming events page. The `page.exhibitions` and `page.past-exhibitions` templates are removed. Reason: the lists no longer depend on each page's template assignment. They show in the review before templates are reassigned, release has three fewer pages to reassign, and a wrong template choice can't empty On Now | Decided by Michael, 2026-09-26 |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -675,6 +673,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.6.2 (2026-09-26): the exhibition lists move into the standard page template, driven by Theme settings (DS-48); `page.exhibitions` and `page.past-exhibitions` removed.
 - 0.6.1 (2026-09-26): no Exhibitions overview page (P-20): the lists no longer link to it, the switcher leaves the page template, and its theme setting goes.
 - 0.6 (2026-09-26): every design decision is decided (DS-40 to DS-45 approved by Michael). The review theme exists: 184767250729.
 - 0.5.9 (2026-09-26): Michael approves DS-01 and DS-07. The header logo follows the page's programme (DS-47); page headers no longer repeat a programme logo.
