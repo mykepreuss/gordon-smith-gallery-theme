@@ -286,3 +286,17 @@ About keeps the fields from the entry above (Artists for Kids programme, the pri
 **For the gallery:** the Paradise Valley photo's description says 1994, its caption 1996 (`proposals/gallery-questions.md` 3.8).
 
 **Undo:** clear Artists for Kids' staged text; set About's back from the snapshot.
+
+## 2026-09-26: Our Story leaves the Shop; About forwards to About Us (P-25, P-24)
+
+**Why:** Michael, 2026-09-26: "I think /pages/about should redirect to /about-us and remove Our Story under Shop." Our Story retold the Artists for Kids history that is now on the Artists for Kids page (P-24), with the same print and two of that page's paragraphs.
+
+**Checked first:** the review menu `new-theme-main` is used only by the new theme (`theme/sections/header-group.json`); the live header uses `new-website-menu-1` (`baseline/theme/sections/header-group.json`). No page text links to `/pages/our-story`. Before-snapshot: `snapshots/menu-new-theme-main-2026-09-26-before.json` (the whole menu, with item IDs).
+
+**Made through the Shopify connector:** `new-theme-main` (`gid://shopify/Menu/305860739369`) without "Our story" (item `gid://shopify/MenuItem/767490195753`) in its Shop section. The other 28 items keep their IDs, titles and order.
+
+**At release** (`release.py addresses`, not before, because the live site shows them): Our Story and About are hidden; `/pages/our-story` forwards to `/pages/artists-for-kids`, where its history now is, and `/pages/about` to `/pages/about-us` (Michael's choice, replacing the forward to Artists for Kids). Shopify serves pages only under `/pages/`, so the target is `/pages/about-us`.
+
+**Effect on the live site:** none. The live menu is untouched, and Our Story and About still load.
+
+**Undo:** set the menu back from the snapshot (put "Our story" back between "2024 Fall Portfolio" and "Artists").

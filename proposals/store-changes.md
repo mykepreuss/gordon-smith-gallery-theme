@@ -13,13 +13,13 @@ Model (DS-11): a section with pages under it is one button; its main page is the
 | Artists for Kids | Link | `/pages/artists-for-kids` | None. Approved 2026-09-25 as one link (P-15); the programme links to the Artists for Kids site stay on its page |
 | Programs | Section | Public programs (`/pages/public-programs-1`), Speaker series, Music at the Smith, Explore + Create, Art in Good Company | "Public Programs" no longer repeats the section, because the section itself is not a link |
 | Smith Foundation | Section | About the Foundation (`/pages/the-smith-foundation`), Gordon and Marion (`/pages/gordon-and-marion`), Donate (`/pages/donate`) | Renames the first item so it doesn't repeat the section |
-| Shop | Section | Limited editions (`/pages/shop`), 2026 Fall Portfolio, 2026 Spring Portfolio, 2025 Fall Portfolio, 2025 Spring Portfolio, 2024 Fall Portfolio, Our story (`/pages/our-story`), Artists (`/pages/artists`) | Leads to the Shop landing page instead of Shopify's `/collections` list. 2025 Fall Portfolio uses the relative `/collections/2025-fall-portfolio` instead of the absolute myshopify URL |
+| Shop | Section | Limited editions (`/pages/shop`), 2026 Fall Portfolio, 2026 Spring Portfolio, 2025 Fall Portfolio, 2025 Spring Portfolio, 2024 Fall Portfolio, Artists (`/pages/artists`) | Leads to the Shop landing page instead of Shopify's `/collections` list. 2025 Fall Portfolio uses the relative `/collections/2025-fall-portfolio` instead of the absolute myshopify URL |
 
 Each section's own link in the Shopify menu editor points at its first item, so `snippets/gs-nav.liquid` raises no editor warning.
 
 **How it is applied:** during review, as a separate new menu referenced only by the review theme (so the live header doesn't change). At release, either switch the live header to the reviewed menu or edit `new-website-menu-1` to match, recorded in the release change set.
 
-**Created 2026-09-25** as `new-theme-main` ("Main menu (new theme)"), with Michael's go-ahead, and set in the new theme's header (`sections/header-group.json`). Publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.
+**Created 2026-09-25** as `new-theme-main` ("Main menu (new theme)"), with Michael's go-ahead, and set in the new theme's header (`sections/header-group.json`). Our story removed from its Shop section 2026-09-26 (P-25). Publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.
 
 ## 2. Utility and footer menus (ACCESS-02, ACCESS-03)
 
@@ -55,14 +55,14 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Also done 2026-09-25, with Michael's go-ahead ("migrate all content"):** the other 11 exhibitions, the About and Donate card groups, the remaining pages' fields, the staged page text (§8) and the three review menus (§1, §2). Every item in `proposals/content-migration.md` now has its content in the store or the theme. Log: `proposals/store-writes/README.md`.
 
-## 5. Addresses at release (P-10, P-20, P-24)
+## 5. Addresses at release (P-10, P-20, P-24, P-25)
 
 Script: `release.py addresses` (dry run: `dry-runs/2026-09-26/addresses.md`).
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
-1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20) and About (P-24), keeping them for rollback.
-2. Create eight URL redirects:
+1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20), About (P-24) and Our Story (P-25), keeping them for rollback.
+2. Create nine URL redirects:
 
 | From | To |
 | --- | --- |
@@ -73,14 +73,15 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibition-prevailing-landscapes` | `/pages/exhibitions/prevailing-landscapes` |
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
 | `/pages/exhibitions-1` | `/pages/on-now` |
-| `/pages/about` | `/pages/artists-for-kids` |
+| `/pages/about` | `/pages/about-us` |
+| `/pages/our-story` | `/pages/artists-for-kids` |
 
 3. Open each old address and check it lands on its entry.
 4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
 The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 
-Rollback: republish the baseline theme, unhide the eight pages, delete the eight redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the nine pages, delete the nine redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 

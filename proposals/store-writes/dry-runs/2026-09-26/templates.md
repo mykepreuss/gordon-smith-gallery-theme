@@ -1,6 +1,6 @@
 ## Template names
 
-21 pages change. Rollback: set each back to the "Now" value.
+20 pages change. Rollback: set each back to the "Now" value.
 
 | Page | Now | At release |
 | --- | --- | --- |
@@ -27,7 +27,7 @@
 | `gordon-and-marion` | `gordon-and-marion` | **`(default)`** |
 | `music-at-the-smith` | `music-at-the-smith` | **`programme`** |
 | `on-now` | `current-on-now-exhibition` | **`(default)`** |
-| `our-story` | `shop` | **`(default)`** |
+| `our-story` | `shop` | unchanged (hidden at release) |
 | `past-exhibitions` | `past-exhibitions` | **`(default)`** |
 | `permanent-collection` | `permanent-collection` | **`(default)`** |
 | `plan-your-visit` | `plan-your-visit` | **`(default)`** |

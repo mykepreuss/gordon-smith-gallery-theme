@@ -12,6 +12,7 @@ Hide first: a redirect only works from an address that no longer loads a page.
 | `exhibition-stitched-merging-photography-and-textile-practices` | published | hidden |
 | `exhibition-the-art-of-conversation` | published | hidden |
 | `exhibitions-1` | published | hidden |
+| `our-story` | published | hidden |
 
 | Redirect from | To |
 | --- | --- |
@@ -22,6 +23,7 @@ Hide first: a redirect only works from an address that no longer loads a page.
 | `/pages/exhibition-prevailing-landscapes` | `/pages/exhibitions/prevailing-landscapes` |
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
 | `/pages/exhibitions-1` | `/pages/on-now` |
-| `/pages/about` | `/pages/artists-for-kids` |
+| `/pages/about` | `/pages/about-us` |
+| `/pages/our-story` | `/pages/artists-for-kids` |
 
-Rollback: delete the 8 redirects, publish the 8 pages.
+Rollback: delete the 9 redirects, publish the 9 pages.

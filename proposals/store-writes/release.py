@@ -43,7 +43,8 @@ PROGRAMME = {"artists-for-kids", "the-smith-foundation", "public-programs-1", "s
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
-                     "about"}  # About: its history joins Artists for Kids (P-24)
+                     "about",       # About: its history joins Artists for Kids (P-24)
+                     "our-story"}   # Our Story: removed from the Shop (P-25)
 
 
 def new_template(page):
@@ -78,7 +79,7 @@ def templates(pages, want_vars):
 
 
 # ---------------------------------------------------------------------------
-# 2. Addresses (store-changes §5): hide eight pages, then eight redirects.
+# 2. Addresses (store-changes §5): hide nine pages, then nine redirects.
 
 REDIRECTS = [
     ("/pages/exhibition-one-hundred-artists-deep", "/pages/exhibitions/one-hundred-artists-deep"),
@@ -88,7 +89,8 @@ REDIRECTS = [
     ("/pages/exhibition-prevailing-landscapes", "/pages/exhibitions/prevailing-landscapes"),
     ("/pages/exhibition-the-art-of-conversation", "/pages/exhibitions/the-art-of-conversation"),
     ("/pages/exhibitions-1", "/pages/on-now"),
-    ("/pages/about", "/pages/artists-for-kids"),
+    ("/pages/about", "/pages/about-us"),                 # P-24, Michael 2026-09-26
+    ("/pages/our-story", "/pages/artists-for-kids"),     # P-25: its history is on Artists for Kids
 ]
 
 
