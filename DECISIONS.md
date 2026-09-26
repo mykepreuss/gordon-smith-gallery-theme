@@ -26,6 +26,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | P-16 | Content model parts 4 to 6: card groups, events (replacing the exhibition `events` field from P-11), hero caption, call to action, collection photo credit, product availability note | **Approved by Michael, 2026-09-25**; found by the content inventory | `design-system/proposals/content-model.md` parts 4 to 6 |
 | P-17 | Michael is the approver for structural and design decisions and for the choices made while moving content into fields and entries. The gallery still supplies wording and values: labels, editorial copy, contact details, consent text (EXH-04, ACCESS-04). A decision still Proposed doesn't ship | **Decided by Michael, 2026-09-25** ("I am the approver") | `IMPLEMENTATION_PLAN.md` "Approved direction" |
 | P-18 | The newsletter band uses Shopify's own form (customer tagged `newsletter`, email marketing consent), and the Mailchimp for Shopify app syncs subscribers to the gallery's audience. Option 1 in the Mailchimp audit; no ScriptTag, no new app. Fallback: a link to a Mailchimp signup page, if the sync can't be verified | **Decided by Michael, 2026-09-25** (approved with the plan review) | `IMPLEMENTATION_PLAN.md` "Approved direction", `baseline/mailchimp-audit.md` |
+| P-19 | Frame products leave search: at release, the 16 active frames (product type Frame) become Unlisted. They stay buyable, and each print's page still offers its frame through `custom.featured_frame`; they no longer fill search results or show in collections. Rollback sets them back to Active | **Decided by Michael, 2026-09-26** | `proposals/store-changes.md` §9 |
 
 ## Design system (`design-system/DESIGN.md` §12)
 
@@ -70,12 +71,12 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-38 | Product page: label, price, action, archive note and framing offer beside the work; the description below as "About the work" | **Decided by Michael, 2026-09-25** (approved with the plan review) |
 | DS-29 | Header utility links are built in (Contact from the contact-page theme setting, Newsletter, Search, Cart), so no utility menu is created | **Decided by Michael, 2026-09-25** (approved with the plan review) |
 | DS-39 | Page text that changes at release is staged in a temporary page field the new theme shows instead of the live text; a release script moves it into the page and deletes the field | **Decided by Michael, 2026-09-25** ("Stage it") |
-| DS-40 | Headings in page text sit one step below section headings (h2 at the H3 size, h3 and h4 at the H4 size) | Proposed (page pass, 2026-09-26) |
-| DS-41 | A heading at the start of the page text that only repeats the page title isn't shown | Proposed (page pass, 2026-09-26) |
-| DS-42 | Contact shows its own page text beside the form, in place of the theme's contact details | Proposed (page pass, 2026-09-26) |
-| DS-43 | The Exhibitions overview carries the On now / Upcoming / Past switcher | Proposed (page pass, 2026-09-26) |
-| DS-44 | Card groups of four or eight go two, then four, across | Proposed (page pass, 2026-09-26) |
-| DS-45 | Long lists in page text (12 or more items) flow into columns; the Artists names become one list | Proposed (page pass, 2026-09-26) |
+| DS-40 | Headings in page text sit one step below section headings (h2 at the H3 size, h3 and h4 at the H4 size) | **Decided by Michael, 2026-09-26** |
+| DS-41 | A heading at the start of the page text that only repeats the page title isn't shown | **Decided by Michael, 2026-09-26** |
+| DS-42 | Contact shows its own page text beside the form, in place of the theme's contact details | **Decided by Michael, 2026-09-26** |
+| DS-43 | The Exhibitions overview carries the On now / Upcoming / Past switcher | **Decided by Michael, 2026-09-26** |
+| DS-44 | Card groups of four or eight go two, then four, across | **Decided by Michael, 2026-09-26** |
+| DS-45 | Long lists in page text (12 or more items) flow into columns; the Artists names become one list | **Decided by Michael, 2026-09-26** |
 | DS-46 | Artwork grids show at most three across; related works one row of three | **Decided by Michael, 2026-09-26** (with DS-05: "go from 4 images wide to 3") |
 | DS-47 | The header logo follows the page's programme: Artists for Kids pages carry the Artists for Kids logo, Smith Foundation pages (the Foundation, Gordon and Marion, Donate) the Foundation logo, every other page the Gallery logo, including the Shop, portfolios, Our Story and Artists. It always links home | **Decided by Michael, 2026-09-26** (with DS-07) |
 

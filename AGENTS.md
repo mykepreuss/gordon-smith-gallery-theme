@@ -8,7 +8,7 @@ For any person or agent (Claude, Codex, or other) working in this repo. These ru
 | --- | --- |
 | Store | `ed35ee-ea.myshopify.com` (public domain `gordonsmithgallery.com`) |
 | Live theme | `183162372393` "Colorblock: NEW WEBSITE", role MAIN. **Never write to it.** |
-| Review theme | Not created yet. When it is, record its ID here and in `PROJECT.md`, and push only to that ID |
+| Review theme | `184767250729` "New theme for review (do not publish)", role UNPUBLISHED. Created 2026-09-26 from `main` at 594eb01. Push only to this ID |
 
 Before any write to Shopify, recheck: store domain, live theme ID and role, the review theme's ID and `UNPUBLISHED` role, and the CLI account.
 
@@ -23,6 +23,7 @@ Before any write to Shopify, recheck: store domain, live theme ID and role, the 
 
 - Theme reads: `shopify theme pull --store ed35ee-ea.myshopify.com --theme <id> --path <folder>`. Never pull into `theme/`, which holds the new theme; pull the live theme into a separate folder for drift checks.
 - Preview while building: `shopify theme dev --store ed35ee-ea.myshopify.com --path theme`. It uploads to a hidden development theme, never the live one; allowed during the build. Never pass it the live theme's ID.
+- Before a push to the review theme, pull its `config/settings_data.json` and `templates/*.json` into a scratch folder and compare them with Git. Changes made in its theme editor (staff testing) come into Git first, so a push never overwrites them.
 - Theme writes: only `shopify theme push --theme <verified unpublished id> --strict`. Never use `--allow-live`, never `theme push --publish`, never `theme publish` without explicit release approval.
 - Theme Check: `shopify theme check --path theme` without auto-correct. The new theme has no errors; explain any warning in the pull request. `baseline/theme-check.json` records the old theme for comparison only.
 - Admin writes through the Shopify connector or Admin only for approved store-resource changes, with a before-snapshot in `baseline/` or the PR.

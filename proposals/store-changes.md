@@ -118,7 +118,15 @@ Then it deletes the `release_body` definition. The theme's fallback in `gs-page-
 
 Rollback: restore each page's text from the snapshot.
 
-## 9. Not proposed
+## 9. Frame products at release (P-19)
+
+Each print's frame is its own product (product type Frame, collection `framing`), so search results fill with frames. At release, after publishing, the 16 active frames become **Unlisted**: still buyable, still offered on each print's page through `custom.featured_frame` (a metafield reference, which Liquid still returns), but out of search, collections and recommendations. The draft Michael Snow frame stays a draft. Snapshot: `proposals/store-writes/snapshots/frames-2026-09-26.json`.
+
+This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's "Add a frame" still adds its frame to the cart.
+
+Rollback: set the 16 back to Active from the snapshot.
+
+## 10. Not proposed
 
 - No other redirects, no product or collection changes beyond part 4, no app installs, no checkout changes.
 - Mailchimp: no change until the audit is complete (`baseline/mailchimp-audit.md`).
