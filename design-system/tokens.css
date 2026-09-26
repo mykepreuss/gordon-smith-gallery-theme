@@ -58,6 +58,7 @@
   --gs-color-accent-fg: var(--gs-ink);         /* text/icons on an accent fill */
   --gs-color-accent-text: var(--gs-gsg-text);  /* coloured text: eyebrows, accent headings (see DESIGN.md §3.3) */
   --gs-color-tint: var(--gs-gsg-tint);         /* tinted bands, chips (brand guide: "background tints and boxes") */
+  --gs-color-media-edge: rgb(0 0 0 / 0.1);     /* hairline inside photos, so a light photo keeps its edge on paper (DS-55) */
   --gs-color-rule: var(--gs-gsg-rule);         /* dividers, dropdown edge, quote rule, selection (brand guide: "rules or graphic boxes"); not for control borders */
   --gs-color-hover-fill: var(--gs-gsg-tint);   /* inline-link hover fill; each surface resets it (tint on paper, rule on tint, paper on accent, box on ink) */
   --gs-color-hover-fill-fg: var(--gs-ink);     /* text on the hover fill, on every surface */
@@ -149,6 +150,7 @@
   --gs-org-logo-col: 12rem;        /* 192: the logo column beside the text, 750 to 989px; fits the Foundation lockup (182) */
   --gs-org-logo-col-lg: 14rem;     /* 224 at ≥ 990px; fits the Foundation lockup (215) */
   --gs-rail-item: min(82%, 20rem); /* a card in a sideways row on phones: the next one peeks in (DS-54) */
+  --gs-feature-logo-h: 4.5rem;     /* 72: a programme's logo in a feature panel; the Foundation logo's minimum (§8.3, DS-55) */
   --gs-tap-target: 2.75rem;   /* 44 */
   --gs-footer-logo-h: 4.5rem;      /* 72: partner logos in the footer; the Foundation simple lockup's minimum (DESIGN.md §8.3) */
   --gs-footer-logo-h-lead: 6rem;   /* 96: the Gallery logo leads the footer row (§6.10) */
@@ -202,6 +204,8 @@
   --gs-duration-fast: 120ms; /* link fill, underline, arrow nudge, button colour, dropdown reveal */
   --gs-duration: 200ms;      /* chevron rotation */
   --gs-duration-slow: 320ms; /* reserved; nothing uses it yet */
+  --gs-duration-press: 160ms; /* a button shrinking while pressed (DS-55) */
+  --gs-ease-press: cubic-bezier(0.23, 1, 0.32, 1); /* strong ease-out: the press shows at once */
   --gs-ease: cubic-bezier(0.2, 0, 0, 1);
 
   --gs-z-header: 100;
@@ -215,6 +219,7 @@
     --gs-duration-fast: 0ms;
     --gs-duration: 0ms;
     --gs-duration-slow: 0ms;
+    --gs-duration-press: 0ms;
   }
 }
 
@@ -314,6 +319,7 @@
   --gs-color-control-border: var(--gs-ink-faint);
   --gs-color-error: var(--gs-error-light);
   --gs-color-focus: var(--gs-paper);
+  --gs-color-media-edge: rgb(255 255 255 / 0.1);
   background-color: var(--gs-color-bg);
   color: var(--gs-color-fg);
 }

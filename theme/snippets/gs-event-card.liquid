@@ -4,8 +4,9 @@
   else its exhibition's key image, so every card has a picture without anyone adding one twice.
   The whole card links to the programme page, else the exhibition, else the tickets.
 
-  The label above the title names the programme ("Music at the Smith") or the exhibition
-  ("Collect, Assemble, Gather"); an event titled like its programme ("Explore + Create") has none.
+  A line under the date names the programme ("Music at the Smith") or the exhibition ("Collect,
+  Assemble, Gather"); an event titled like its programme ("Explore + Create") has none. It sits
+  under the title, not above it, so every title in a row starts at the same height (DS-55).
 
   @param {object} event - An event entry
   @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
@@ -60,9 +61,6 @@
     {%- render 'gs-media', image: image, preset: 'card', mode: mode, ratio: '4 / 3', alt: event.title.value -%}
   {%- endif -%}
   <div class="gs-card__body">
-    {%- if label != blank -%}
-      <p class="gs-eyebrow">{{ label | escape }}</p>
-    {%- endif -%}
     <{{ tag }} class="gs-card__title">
       {%- if href != blank -%}
         <a href="{{ href }}">{{ event.title.value | escape }}</a>
@@ -71,5 +69,8 @@
       {%- endif -%}
     </{{ tag }}>
     <p class="gs-status__dates"><time datetime="{{ event.starts.value }}">{% render 'gs-time-range', start: event.starts.value, end: event.ends.value %}</time></p>
+    {%- if label != blank -%}
+      <p class="gs-meta">{{ label | escape }}</p>
+    {%- endif -%}
   </div>
 </article>

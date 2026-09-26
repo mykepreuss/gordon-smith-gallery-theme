@@ -29,10 +29,10 @@
         "surface": "tint",
         "image": "shopify://shop_images/KMH853740.jpg",
         "image_is_artwork": false,
-        "eyebrow": "For kids and families",
-        "heading": "Artists for Kids",
+        "eyebrow": "",
+        "heading": "For kids, families and schools",
         "text": "<p>Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators.</p>",
-        "button_label": "See the programs",
+        "button_label": "See Artists for Kids programs",
         "button_link": "shopify://pages/artists-for-kids",
         "link_label": "Explore + Create Saturdays",
         "link_url": "shopify://pages/explore-create"

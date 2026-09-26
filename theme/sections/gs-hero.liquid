@@ -65,7 +65,7 @@
   {%- if lead -%}
     <h1 class="gs-visually-hidden">{{ s.heading | escape }}</h1>
   {%- endif -%}
-  <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}">
+  <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
     {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media', alt: alt_text -%}
     <div class="gs-hero__box gs-surface-accent">
       {%- if lead -%}

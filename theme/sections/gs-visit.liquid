@@ -14,6 +14,7 @@
       {%- if image != blank -%}
         {%- render 'gs-media', image: image, preset: 'card', sizes: '(min-width: 990px) 50vw, 100vw', mode: 'photo', ratio: '4 / 3', shape: 'md', class: 'gs-visit__media' -%}
       {%- endif -%}
+      {%- if image != blank -%}<div class="gs-visit__body">{%- endif -%}
       <div class="gs-visit__head">
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
         {%- if image != blank -%}
@@ -40,6 +41,7 @@
           <p class="gs-editor-warning">Add the opening hours in Theme settings, Gallery details.</p>
         {%- endif -%}
       </dl>
+      {%- if image != blank -%}</div>{%- endif -%}
     </div>
   </section>
 {%- elsif request.design_mode -%}

@@ -8,6 +8,10 @@
   A programme setting gives the panel that programme's colours (DS-54): Artists for Kids' orange
   or the Foundation's green for its box, button and rules, as on the programme's own pages. Staff
   pick the programme, never a colour (§9.4). A second, plain link can sit beside the button.
+
+  A panel for Artists for Kids or the Foundation starts with that programme's logo (DS-55): the
+  colour box on a tint, the white logo on ink. Not on the programme's own box colour (accent),
+  where a boxed logo mustn't sit (§8.3); the colour already says whose panel it is.
 {%- endcomment -%}
 {%- liquid
   assign other_page = false
@@ -24,6 +28,20 @@
     render 'gs-programme', value: s.programme
   endcapture
   assign brand = brand | strip
+  assign logo = ''
+  if brand == 'artists-for-kids'
+    if surface == 'tint'
+      assign logo = 'artists-for-kids-full-colour-box'
+    elsif surface == 'ink'
+      assign logo = 'artists-for-kids-full-white'
+    endif
+  elsif brand == 'foundation'
+    if surface == 'tint'
+      assign logo = 'foundation-simple-colour-box'
+    elsif surface == 'ink'
+      assign logo = 'foundation-simple-white'
+    endif
+  endif
 -%}
 {%- if other_page -%}
   {%- comment -%} Not the Shop landing page: nothing to show. {%- endcomment -%}
@@ -39,6 +57,9 @@
         {%- render 'gs-media', image: s.image, preset: 'card', sizes: '(min-width: 990px) 55vw, 100vw', mode: mode, shape: 'md' -%}
       {%- endif -%}
       <div class="gs-feature__text">
+        {%- if logo != blank -%}
+          <div class="gs-feature__logo">{%- render 'gs-logo', name: logo -%}</div>
+        {%- endif -%}
         {%- if s.eyebrow != blank -%}
           <p class="gs-eyebrow">{{ s.eyebrow | escape }}</p>
         {%- endif -%}
