@@ -18,6 +18,12 @@ Prints the variables for each step's mutation.
   python3 proposals/store-writes/about_us.py afk-merge     # About merged into Artists for Kids (below)
   python3 proposals/store-writes/about_us.py afk-merge-review
 
+Then (Michael, 2026-09-26: "Add that content you identified word for word"), from Our Story, which
+leaves the Shop (P-25): its sentence on art specialists after the founding, its sentence on the
+ceremonial drum and the more than 100 artists after the paragraph on the first print, and its fuller
+caption for the print. "contemporary limited editions" links to the Shop, which Our Story used to
+sit under.
+
 About Artists for Kids (Michael, 2026-09-26: "/about should be /about-artists-for-kids and be
 focused on that part of the organization"). About's text is Artists for Kids' history, but the page
 shared About Us's hero photo and three organisation rows, so the two looked alike. Now, invisible to
@@ -161,13 +167,35 @@ def about_afk():
 
 AFK = next(p for p in json.loads((HERE / "snapshots" / "pages-2026-09-25.json").read_text())
            if p["handle"] == "artists-for-kids")
+OUR_STORY = next(p for p in json.loads((HERE / "snapshots" / "pages-2026-09-25.json").read_text())
+                 if p["handle"] == "our-story")
+SHOP = "/pages/shop"
+
+
+def our_story_parts():
+    """Our Story's three things the Artists for Kids page lacked, word for word."""
+    body = OUR_STORY["body"]
+    blocks = [clean_inline(m.group(1)) for m in re.finditer(r"<(?:p|div)[^>]*>(.*?)</(?:p|div)>", body, flags=re.S)]
+    specialists = next(b for b in blocks if b.startswith("Through art specialists"))
+    first_print = next(b for b in blocks if b.startswith("In 1990, the group published"))
+    drum = first_print[first_print.index("This print by Bill Reid"):]
+    assert drum.endswith("collections in the country."), drum
+    caption = clean_inline(re.search(r"<h5[^>]*>(.*?)</h5>", body, flags=re.S).group(1))
+    caption = re.sub(r"</?span[^>]*>", "", caption).strip()
+    # The italics moved inside the comma; words unchanged.
+    caption = caption.replace("1998)<em> XHUWAJI/Haida Grizzly Bear, </em>(1990)", "1998) <em>XHUWAJI/Haida Grizzly Bear</em>, (1990)")
+    assert caption == "Bill Reid, (Canadian, 1920 – 1998) <em>XHUWAJI/Haida Grizzly Bear</em>, (1990) Serigraph, 22 in x 22 in.", caption
+    return specialists, drum, caption
+
+
 REID_SRC = "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Reid_REID002_Xhuwaji_HaidaGrizzly.jpg?v=1728074721&width=1440"
 
 
-def figure(src, alt, caption, width, height, artwork=False):
+def figure(src, alt, caption, width, height, artwork=False, caption_html=False):
     cls = ' class="gs-figure--artwork"' if artwork else ""
+    cap = caption if caption_html else html.escape(caption, quote=False)
     return (f'<figure{cls}><img src="{html.escape(src, quote=True)}" alt="{html.escape(alt, quote=True)}" width="{width}" height="{height}" loading="lazy">'
-            f"<figcaption>{html.escape(caption, quote=False)}</figcaption></figure>")
+            f"<figcaption>{cap}</figcaption></figure>")
 
 
 def afk_merge_text():
@@ -184,9 +212,16 @@ def afk_merge_text():
     assert "<em>Xhuwaji / Haida Grizzly</em>" in history[1]
     out = [f"<p>{x}</p>" for x in paras]
     out.append(figure(img.group(1), html.unescape(img.group(2)), caption, 1764, 993))
+    specialists, drum, full_caption = our_story_parts()
+    editions = "contemporary limited editions"
+    assert history[2].count(editions) == 1
+    history[2] = history[2].replace(editions, f'<a href="{SHOP}">{editions}</a>')
     out.append("<h2>History</h2>")
-    out += history[:2]
-    out.append(figure(REID_SRC, REID_ALT, reid_caption, 1440, 1456, artwork=True))
+    out.append(history[0])
+    out.append(f"<p>{specialists}</p>")
+    out.append(history[1])
+    out.append(figure(REID_SRC, REID_ALT, full_caption, 1440, 1456, artwork=True, caption_html=True))
+    out.append(f"<p>{drum}</p>")
     out += history[2:]
     return "\n".join(out)
 

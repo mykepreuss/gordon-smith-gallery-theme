@@ -300,3 +300,21 @@ About keeps the fields from the entry above (Artists for Kids programme, the pri
 **Effect on the live site:** none. The live menu is untouched, and Our Story and About still load.
 
 **Undo:** set the menu back from the snapshot (put "Our story" back between "2024 Fall Portfolio" and "Artists").
+
+## 2026-09-26: Our Story's details join the Artists for Kids history (P-25)
+
+**Why:** Michael, 2026-09-26: "Add that content you identified word for word." The three things from Our Story that the Artists for Kids page didn't have.
+
+**Before-snapshot:** `snapshots/afk-our-story-2026-09-26-before.json` (the staged text from the entry before last).
+
+**Made through the Shopify connector** (`about_us.py afk-merge`, now reading Our Story from `snapshots/pages-2026-09-25.json`): the Artists for Kids page's staged text, with, word for word:
+
+- after "Artists for Kids was founded in 1989…": "Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators."
+- after the paragraph on the first print: "This print by Bill Reid, based on a ceremonial drum, marked the beginning of an extraordinary partnership with now more than 100 Canadian artists - from Kenojuak Ashevak to Ian Wallace - that has produced one of the most significant limited edition collections in the country."
+- the print's caption: "Bill Reid, (Canadian, 1920 – 1998) *XHUWAJI/Haida Grizzly Bear*, (1990) Serigraph, 22 in x 22 in." (the italics end before the comma now).
+
+Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Our Story sat under. Two phrases now come twice in a row; the words are the gallery's, so that's a question for them (`proposals/gallery-questions.md` 3.6).
+
+**Effect on the live site:** none; the live theme doesn't read the staged field.
+
+**Undo:** set the staged text back from the snapshot.

@@ -131,7 +131,7 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Gordon and Marion | Its text, then the video from the old template |
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
 | About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
-| Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading, with the Bill Reid print after the paragraph that names it (P-24). Words unchanged; both pictures become figures with their own captions, and pasted formatting stays behind |
+| Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading (P-24), with Our Story's sentence on art specialists, its sentence on the ceremonial drum and the more than 100 artists, and its fuller caption for the Bill Reid print (P-25). Words unchanged; both pictures become figures with their own captions; "contemporary limited editions" links to the Shop; pasted formatting stays behind |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 

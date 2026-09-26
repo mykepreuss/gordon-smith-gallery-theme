@@ -515,7 +515,23 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   font-weight: var(--gs-weight-light);
   line-height: var(--gs-leading-caption);
 }
-.gs-prose .gs-figure--artwork img { border-radius: 0; }
+/* An artwork sits whole on the mat, as in artwork mode: the mat takes the corner, the work never does. */
+.gs-prose .gs-figure--artwork img {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--gs-artwork-inset);
+  background-color: var(--gs-color-mat);
+}
+
+/* ---------- Text with pictures (DS-51) ---------- */
+/* Page text split at its H2 headings; each part's figures sit beside its paragraphs from 990px
+   (text in 7 columns, pictures in 5) and follow them on smaller screens. */
+.gs-text-media-list { display: grid; gap: var(--gs-stack-lg); }
+.gs-text-media { display: grid; gap: var(--gs-space-6) var(--gs-gutter); align-items: start; }
+.gs-text-media__aside > * + * { margin-block-start: var(--gs-space-6); }
+@media (min-width: 990px) {
+  .gs-text-media:not(.gs-text-media--text) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+}
 /* A video embedded in the page text fills the text column at 16:9, whatever size the embed code gives. */
 .gs-prose iframe:is([src*="vimeo.com"], [src*="youtube.com"], [src*="youtube-nocookie.com"]) {
   display: block;
