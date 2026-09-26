@@ -11,15 +11,14 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 - What the current theme holds and where it goes: `proposals/content-migration.md`. Store changes for review and release: `proposals/store-changes.md`.
 - The live theme (Colorblock, ID `183162372393`) is in `baseline/theme/` as a reference for content and placement only. Don't copy its code or settings, and never write to it.
 
-## Next body of work (plan step 5, then release)
+## Current phase: iterating (release on hold)
 
-The theme is built, all content is migrated, every design decision is decided, and the review theme exists (`184767250729`, from `main` at 594eb01). The to-do list is the plan's "Remaining work before release". In order:
+The theme is built, all content is migrated, every design decision is decided (DS-01 to DS-49), and the review theme (`184767250729`) matches `main`. Michael has put release on hold: we keep improving the site until he decides to go ahead.
 
-1. The two release scripts, each with a dry run: template reassignment and staged page text (`proposals/store-changes.md` §3, §8). The frames step (§9) goes in with them.
-2. Verification (plan step 5), on the review theme: the still-to-verify list in DESIGN.md §9.6, the date-driven checks, the font audit, the newsletter test and the staff editing test.
-3. The release gate (plan, "Release gate and rollback").
-
-Store writes (definitions, entries, field values, menus) need Michael's go-ahead and a before-snapshot, and are logged in `proposals/store-writes/README.md`. Page text that changes at release is staged in `custom.release_body` (DS-39), never written to the live page.
+- Work the loop in the plan's "How we iterate": branch from `main`, work against the development theme, design system first, record decisions as Proposed for Michael, open a pull request. After Michael merges, update the review theme from `main`, checking its editor JSON first.
+- Open work: the plan's "Iteration backlog". The "Release backlog" (release scripts, verification, staff and newsletter tests, the release gate) waits until Michael says to release.
+- Nothing the live site shows changes before release. Store writes are limited to the kinds under "Store writes before release", need Michael's go-ahead and a before-snapshot, and are logged in `proposals/store-writes/README.md`. A page's own text is staged in `custom.release_body` (DS-39).
+- Another session may be working in this repo at the same time: pull `main` before starting, and merge `main` into your branch if it moved.
 
 ## Commands
 

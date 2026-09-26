@@ -8,7 +8,7 @@ For any person or agent (Claude, Codex, or other) working in this repo. These ru
 | --- | --- |
 | Store | `ed35ee-ea.myshopify.com` (public domain `gordonsmithgallery.com`) |
 | Live theme | `183162372393` "Colorblock: NEW WEBSITE", role MAIN. **Never write to it.** |
-| Review theme | `184767250729` "New theme for review (do not publish)", role UNPUBLISHED. Created 2026-09-26 from `main` at 594eb01. Push only to this ID |
+| Review theme | `184767250729` "New theme for review (do not publish)", role UNPUBLISHED. Created 2026-09-26. It follows `main`: after a merge, push `main` to it (editor JSON checked first) and record the commit in `PROJECT.md`. Push only to this ID |
 
 Before any write to Shopify, recheck: store domain, live theme ID and role, the review theme's ID and `UNPUBLISHED` role, and the CLI account.
 

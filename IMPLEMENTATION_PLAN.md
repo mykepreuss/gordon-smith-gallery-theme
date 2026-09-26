@@ -10,6 +10,16 @@ Work is GitHub-first. Theme code, the requirements register, proposed Shopify re
 
 Keep four change surfaces distinct: **Git owns theme source and project records; the unpublished theme owns preview-specific code and settings; Shopify Admin resources are shared across themes; installed apps have their own configuration and theme-specific placements.** Theme preview is not a copy of the store. Use Shopify CLI as the default path for writing theme files and the connector or Admin only for verified, approved store-resource operations. Shopify's theme-file GraphQL mutation requires an additional exemption beyond `write_themes`, so the connector's scope alone does not establish a usable theme deployment path. [Shopify theme-file mutation](https://shopify.dev/docs/api/admin-graphql/2026-01/mutations/themeFilesUpsert).
 
+## Where the project stands (2026-09-26)
+
+- **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.4).
+- **Content:** everything the current theme held is in the store or the theme: 15 exhibitions, programme and information pages, card groups, events, product labels and three review menus (`proposals/store-writes/README.md`). Page text that changes at release is staged (DS-39).
+- **Decisions:** every design decision is decided (DS-01 to DS-49, `DECISIONS.md`).
+- **Review theme:** `184767250729` "New theme for review (do not publish)", matching `main` at 1ad4dba.
+  - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729
+  - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184767250729/editor
+- **Phase: iterating on the site.** Changes follow "How we iterate" below. **Release is on hold** until Michael decides to go ahead. Until then nothing the live site shows changes, and the release work in "Release backlog" waits.
+
 ## Discovery snapshot and preflight
 
 Read-only checks on 2026-09-23 found:
@@ -85,14 +95,37 @@ Michael is the approver for structural and design decisions and for content-movi
 ## GitHub-first delivery workflow
 
 1. **Create the source of truth.** Initialize Git in this folder. Pull the exact verified live theme into `theme/` without changing Shopify, and commit it as the untouched baseline with the reference materials, requirement register, baseline evidence index, and a manifest of store resources. Create a private `mykepreuss/gordon-smith-gallery-theme` repository unless the gallery supplies an existing repository or organization destination. Keep credentials and tokens out of Git. Record the source theme ID, pull time, CLI version, and baseline Theme Check output. Add concise `PROJECT.md` for milestone/requirement status, `DECISIONS.md` for approvals, and repository `AGENTS.md` for store-target and release rules without overriding existing user instructions. *Done 2026-09-25: baseline commit 27ef593.*
-2. **Build the new theme after the structural approval.** Work on a feature branch. Move the untouched baseline to `baseline/theme/` so that `theme/` holds the new theme; the baseline commit stays unchanged in history. Start from Shopify's Skeleton theme, add the design system's tokens, components and snippets, then build the approved template set (`design-system/DESIGN.md` §7), header, footer, newsletter band and commerce templates (product, collection, cart, search and system pages). The store uses Shopify's new customer accounts, so the theme needs no account templates. Prepare the content migration as scripts or instructions in Git. Creating definitions, entries and field values is a store write, even when it's invisible under the live theme: follow "Store writes before release" below. Separate theme-only changes from proposed store-level changes in both commits and the register. Theme-only changes include Liquid, CSS, JavaScript, JSON templates, section groups, and settings for the future unpublished theme. Store-level changes include menus, page content/fields and template assignments, products, collections, Files and shared image metadata, redirects, and Mailchimp configuration. A preview theme does not sandbox any of these Admin resources. Keep proposed store-level changes as reviewable manifests or instructions in Git until the relevant preview or release gate. Use CLI for theme file writes and only a verified connector/Admin capability for approved Admin writes. [Shopify store-resource behavior](https://help.shopify.com/en/manual/online-store/themes/customizing-themes/theme-editor/add-and-edit-store-resources). *Built 2026-09-25 on `build-new-theme`: the template set, then design passes with real content for Home, Exhibitions, the programme pages and Shop. All content migrated the same day, with the page text that changes at release staged (DS-39, `proposals/store-writes/README.md`). What's left is under "Remaining work before release".*
+2. **Build the new theme after the structural approval.** Work on a feature branch. Move the untouched baseline to `baseline/theme/` so that `theme/` holds the new theme; the baseline commit stays unchanged in history. Start from Shopify's Skeleton theme, add the design system's tokens, components and snippets, then build the approved template set (`design-system/DESIGN.md` §7), header, footer, newsletter band and commerce templates (product, collection, cart, search and system pages). The store uses Shopify's new customer accounts, so the theme needs no account templates. Prepare the content migration as scripts or instructions in Git. Creating definitions, entries and field values is a store write, even when it's invisible under the live theme: follow "Store writes before release" below. Separate theme-only changes from proposed store-level changes in both commits and the register. Theme-only changes include Liquid, CSS, JavaScript, JSON templates, section groups, and settings for the future unpublished theme. Store-level changes include menus, page content/fields and template assignments, products, collections, Files and shared image metadata, redirects, and Mailchimp configuration. A preview theme does not sandbox any of these Admin resources. Keep proposed store-level changes as reviewable manifests or instructions in Git until the relevant preview or release gate. Use CLI for theme file writes and only a verified connector/Admin capability for approved Admin writes. [Shopify store-resource behavior](https://help.shopify.com/en/manual/online-store/themes/customizing-themes/theme-editor/add-and-edit-store-resources). *Built 2026-09-25 on `build-new-theme`: the template set, then design passes with real content for Home, Exhibitions, the programme pages and Shop. All content migrated the same day, with the page text that changes at release staged (DS-39, `proposals/store-writes/README.md`). What's left is under "Iteration backlog" and "Release backlog".*
 3. **Open a reviewable pull request before Shopify preview writes.** Include the code diff, requirement statuses, proposed menu map and store resource changes, missing gallery inputs, theme check output, and the content parity check against `proposals/content-migration.md`. Do not auto-deploy or connect the repository to production. *Done: [PR #4](https://github.com/mykepreuss/gordon-smith-gallery-theme/pull/4) (the build) merged 2026-09-25; [PR #6](https://github.com/mykepreuss/gordon-smith-gallery-theme/pull/6) (page passes, plan review, content migration) and [PR #5](https://github.com/mykepreuss/gordon-smith-gallery-theme/pull/5) (the design-system preview) merged 2026-09-26.* From here, make changes in smaller pull requests, one per page or topic, each passing the checks in "Verification and completion rules". Push the review theme only from `main` or a reviewed branch, and record the commit in the PR.
 4. **Create the designated unpublished review theme.** Reverify the store and live theme ID, upload the new theme as a clearly named unpublished theme (`shopify theme push --unpublished`), and record its new ID and `UNPUBLISHED` role in the PR, `AGENTS.md` and `PROJECT.md`. Push only to that ID using CLI `--theme <verified ID>` and `--strict`; never use `--allow-live` or `theme push --publish`. A separate menu may be created and referenced only by this theme for realistic navigation testing. Prefer an existing resource or theme-editor preview for staff testing; a temporary page is still a store-level resource, so create one only if necessary and explicitly approved, and do not assume an unpublished page has a visitor preview URL. During review, change nothing the live theme shows: see "Store writes before release". [Theme push](https://shopify.dev/docs/api/shopify-cli/theme/theme-push). *Done 2026-09-26: review theme `184767250729`, "New theme for review (do not publish)", from `main` at 594eb01. Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729. Before each push, bring any theme editor changes into Git first (`AGENTS.md`).*
-5. **Keep the PR and preview synchronized.** Every preview change must correspond to a reviewed Git commit or a logged preview-only store resource. Record the exact theme ID, Git commit, changed files/resources, and preview URL in the PR. Recheck for concurrent edits to the live theme before release and reconcile drift deliberately.
+5. **Keep the PR and preview synchronized.** Every preview change must correspond to a reviewed Git commit or a logged preview-only store resource. Record the exact theme ID, Git commit, changed files/resources, and preview URL in the PR. Recheck for concurrent edits to the live theme before release and reconcile drift deliberately. *Ongoing: see "How we iterate".*
 
 GitHub can hold the code and proposed definitions for menus and other Shopify resources, but cannot itself host their working Admin state. The unpublished theme and separate preview resources are limited Shopify writes for review; they are not production changes. Record any preview-only Admin resource and its cleanup path separately from the theme. Use the theme ID and Git commit as durable review identifiers because shareable preview URLs may expire.
 
-**Development theme.** Until the review theme exists, `shopify theme dev` serves the branch as a development theme (ID 184755814697 so far). It's hidden, tied to the CLI session and temporary: logging the CLI out removes it, and a new session can make one with a different ID. Use it for working checks only. All evidence for the verification rules and the release gate is captured again on the review theme.
+**Development theme and review theme.** `shopify theme dev` serves the branch you're working on as a development theme (ID 184755814697 so far). It's hidden, tied to the CLI session and temporary: logging the CLI out removes it, and a new session can make one with a different ID. Use it for working checks only. The review theme (`184767250729`) follows `main` and is what Michael and gallery staff review and edit. All evidence for the verification rules and the release gate is captured on the review theme.
+
+### How we iterate
+
+The loop for every change while release is on hold:
+
+1. **Branch** from an up-to-date `main`, one page or topic per branch.
+2. **Work** against the development theme: `shopify theme dev --store ed35ee-ea.myshopify.com --path theme` serves the branch at http://127.0.0.1:9292. Check design changes at 1440, 768 and 390.
+3. **Design system first:**
+   - Values go in `design-system/tokens.css` and shared styles in `components.css`; then run `sync_theme.py theme/`.
+   - A new component or rule goes in `DESIGN.md` and `preview.html`.
+   - Bump the version and add a changelog line.
+4. **Decisions:** a new design or structural choice is recorded as Proposed in `DECISIONS.md` and `DESIGN.md` §12. Michael approves it (P-17); nothing Proposed ships.
+5. **Store writes:** only the kinds under "Store writes before release", with Michael's go-ahead, a before-snapshot and an undo step, logged in `proposals/store-writes/README.md`. A change to a page's own text is staged in `custom.release_body` (DS-39), never written to the live page.
+6. **Records in the same pull request:**
+   - the affected `REQUIREMENTS.md` rows;
+   - anything that must happen at release, in `proposals/store-changes.md` and "Release backlog";
+   - `PROJECT.md` if a status or open question changes.
+7. **Checks:** the ones under "Verification and completion rules" that a pull request needs: Theme Check, the linter and its tests, `check_contrast.py`, `sync_theme.py --check` and `git diff --check`.
+8. **Pull request;** Michael reviews and merges.
+9. **Review theme:** after the merge, update it from `main`.
+   - Pull its `config/settings_data.json` and `templates/*.json` and compare them with Git. Bring any theme editor changes into Git first (`AGENTS.md`).
+   - Push with `--strict`, and record the commit in `PROJECT.md`, milestone 4.
+   - A reviewed branch may go to the review theme before it merges, when Michael wants to see it there. The review theme is then ahead of `main` until the merge, and the pull request says so.
 
 ### Store writes before release
 
@@ -112,17 +145,30 @@ Not allowed before release, because the live theme shows them:
 
 These go in the release change set.
 
-### Remaining work before release
+### Iteration backlog
 
-Done 2026-09-25: every page's content, the 15 exhibitions, the card groups and events, the product labels and the three review menus (`proposals/store-writes/README.md`). Done 2026-09-26: the fixes from the review and a design pass on every page not yet reviewed (DESIGN.md 0.5.7); every design decision decided; the frames decision (P-19); the review theme (step 4).
+Open while iterating. Add what each review finds; take items off when they merge.
 
 | Item | Owner | Notes |
 | --- | --- | --- |
-| The template reassignment script, with a dry run (see "Release gate and rollback") | Agent | In `proposals/store-writes/`; reviewed by Michael |
-| The staged page text script, with a dry run (`proposals/store-changes.md` §8) | Agent | In `proposals/store-writes/`; reviewed by Michael |
+| Check every hero crop on the review theme at 1440, 768 and 390, and set a focal point in Files where a crop loses the subject | Agent with Michael, or gallery staff | IMG-02, IMG-03; setting a focal point is a store write on a shared file |
+| Checks from the migration: the Donate "Online Form" card (the form is off), Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, About and About Us as two pages, three artist names that may be misspelled | Gallery | `proposals/store-writes/README.md` |
 | Wording and values: consent wording, the site email, social URLs; confirm the hours and phone taken from the current site; Q10, Q11 | Gallery | See "Inputs, exclusions, and known limits" |
-| Checks from the migration: the Donate "Online Form" card, Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, About and About Us as two pages | Gallery | `proposals/store-writes/README.md` |
+
+### Release backlog (on hold until Michael decides to release)
+
+Done so far: every page's content, the 15 exhibitions, the card groups and events, the product labels and the three review menus (2026-09-25); the review fixes, a design pass on every page, every design decision, the frames decision (P-19), the product description decision (P-21, P-22) and the review theme (2026-09-26).
+
+| Item | Owner | Notes |
+| --- | --- | --- |
+| The template reassignment script, with a dry run (see "Release gate and rollback") | Agent | In `proposals/store-writes/`; reviewed by Michael. Since DS-48 and DS-49 it only sets template names for staff; visitors see every page correctly without it |
+| The staged page text script, with a dry run (`proposals/store-changes.md` §8) | Agent | Six pages; stops if a page's live text changed since the snapshot |
+| The product titles and descriptions script, with a dry run and a full snapshot of the 21 descriptions first (§7; DS-16, P-21, P-22) | Agent | The gallery approves the dry run |
+| The frames step (§9, P-19) | Agent | Goes in with the scripts |
+| Verification on the review theme (plan step 5): widths, keyboard, touch, the date checks, the font audit, the contact form's delivery address | Agent | DESIGN.md §9.6 lists what's still to verify |
+| The staff editing test and the newsletter test | Gallery staff, Mailchimp access | Staff use the review theme's editor |
 | Mailchimp app settings: customer sync, audience, consent mapping, double opt-in | Gallery or Michael | ACCESS-01; needs app access |
+| The release gate | Agent, Michael | "Release gate and rollback" |
 
 ## Verification and completion rules
 
@@ -149,11 +195,11 @@ Before requesting release approval, provide:
   4. Switching or editing the main menu, and editing the footer menu.
   5. Hiding the six old exhibition pages and the Exhibitions overview, and creating their redirects (P-10, P-20).
   6. Moving the staged page text into its six pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, and makes the Artists names one list.
-  7. Plain-text titles on the 21 limited editions (DS-16).
+  7. Plain-text titles and the description clean-up on the 21 limited editions, after a dry run the gallery approves (DS-16, P-21, P-22, `proposals/store-changes.md` §7).
   8. Setting the 16 active frame products to Unlisted, so they leave search (P-19, `proposals/store-changes.md` §9).
 - A check that every active exhibition entry is ready to be seen. The entries are already active; their pages return 404 only because the live theme has no exhibition template, so publishing the new theme makes them public.
 - Test evidence for storefront and staff editing, plus comparison against the latest live theme state.
-- Rollback steps: retain the original live theme and its ID; republish it if needed; restore page template assignments from the script's snapshot; unhide the old exhibition pages and delete their redirects; restore product titles from `proposals/store-writes/snapshots/prints-2026-09-25.json`, frame products to Active from `snapshots/frames-2026-09-26.json`, and page bodies from their before-snapshots; restore any separately changed live menu, page, File, or app resource from its own recorded pre-release snapshot. Theme rollback alone does not reverse store-resource changes.
+- Rollback steps: retain the original live theme and its ID; republish it if needed; restore page template assignments from the script's snapshot; unhide the old exhibition pages and delete their redirects; restore product titles from `proposals/store-writes/snapshots/prints-2026-09-25.json` and descriptions from the snapshot taken before their clean-up, frame products to Active from `snapshots/frames-2026-09-26.json`, and page bodies from their before-snapshots; restore any separately changed live menu, page, File, or app resource from its own recorded pre-release snapshot. Theme rollback alone does not reverse store-resource changes.
 
 **Template reassignment.** Pages keep their old template names until release (L-08). The new theme doesn't have most of those templates, so after publishing, those pages fall back to the default page template. Since DS-48 and DS-49 every page still renders correctly that way: the exhibition lists come from Theme settings, and a page on the Shop template other than the Shop landing (Our Story, old template `shop`) reads as a plain page. So the gap after publishing no longer shows to visitors; the reassignment puts the right template name on each page in the admin, for staff. Before release, write a script in `proposals/store-writes/` that:
 
@@ -173,7 +219,7 @@ Gallery inputs still needed (tracked in `PROJECT.md`, "Waiting on"):
 - Contact email addresses, phone, hours, social URLs, and any replacement images or captions. Menu labels were approved on 2026-09-25.
 - Q10: room names for the exhibition venue field, the label for the second artist group, and the start date of *Stitched*.
 - Q11: whether to accept Arial for the land acknowledgement characters Mulish lacks, or load a font made for BC Indigenous languages (L-06).
-- The open content items in `proposals/store-writes/README.md`: Omer Arbel's biography, a medium for *Good Luck (wheelbarrow)*, and trimming product descriptions that repeat the label.
+- The open content items in `proposals/store-writes/README.md`: Omer Arbel's biography and a medium for *Good Luck (wheelbarrow)*. The product description clean-up is decided (P-21, P-22); the gallery approves its dry run at release.
 
 Existing copy remains in place until supplied or specifically approved for change. The brand guide and available logos are present in `reference/`; no paid Soleil web font files are present.
 
