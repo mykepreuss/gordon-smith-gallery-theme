@@ -564,14 +564,14 @@ Staff edit words, images (with focal point and alt text), links, page fields, en
 
 Verified in development theme `184755814697` (created by `shopify theme dev`, hidden, never the live theme) on 2026-09-25:
 
-1. Every template renders on the store's real pages, collections and products with no Liquid errors or missing wording (home, about, on now, upcoming, past, exhibitions overview, programme pages, contact, shop, `/collections`, two portfolios, a product, cart, search, 404, blog).
+1. Every template renders on the store's real pages, collections and products with no Liquid errors or missing wording (home, about, on now, upcoming, past, programme pages, contact, shop, `/collections`, two portfolios, a product, cart, search, 404, blog).
 2. Text renders in the bundled Mulish (`audit_fonts.py` on home, on now, a portfolio and contact). Two fallbacks, both expected: the Unicode italic letters in product titles (L-03, fixed by the label fields) and 12 characters in the land acknowledgement's Indigenous place names, which Mulish doesn't have (L-06).
 3. Header: bar at 1440 and drawer at 652, dropdowns open on click, Escape closes and returns focus, the current section opens in the drawer, Contact shows in the utility row.
 4. With the first exhibition and event entries (`proposals/store-writes/`): exhibition pages, On now, Upcoming, Past and Home render from entries; status follows the dates; a past entry with no text has a card that doesn't link.
 5. Date and time fields show in the store's timezone: the reception entered as 18:00 Pacific reads "Friday, September 25, 2026, 6 to 8 PM".
 6. Under the live theme, an entry's address returns 404, so nothing is visible to the public before release.
 
-Still to verify, mostly in the review theme once fields and entries exist:
+Since then every page has had a design pass with its real content, on the development theme and the review theme `184767250729` (2026-09-26). Still to verify, on the review theme, as part of the release backlog (plan):
 
 1. That `image_tag` writes the editor's focal point from a file field's image as `object-position`, and the artwork-mode override holds (IMG-03).
 2. The timezone Liquid uses for `'now'` on a changeover day (date and time fields are verified, item 5 above).
