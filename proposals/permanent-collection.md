@@ -1,6 +1,6 @@
 # The Permanent Collection on gordonsmithgallery.com
 
-Status: **Proposed**, 2026-09-26, for Michael. Parts need the gallery (marked **Gallery**).
+Status: **Approved by Michael**, 2026-09-26 ("Everything is approved"). Parts need the gallery (marked **Gallery**).
 
 Michael, 2026-09-26: "I don't like that all of these assets are on an external site and would prefer them to be part of gordonsmithgallery.com... put together a plan to integrate all of the assets into our Shopify site rather than the external catalogue site."
 
