@@ -13,7 +13,7 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 
 ## Current phase: iterating (release on hold)
 
-The theme is built, all content is migrated, every design decision is decided (DS-01 to DS-49), and the review theme (`184767250729`) matches `main`. Michael has put release on hold: we keep improving the site until he decides to go ahead.
+The theme is built, all content is migrated, every design decision is decided (DS-01 to DS-51), and the review theme (`184767250729`) follows `main`. Michael has put release on hold: we keep improving the site until he decides to go ahead.
 
 - Work the loop in the plan's "How we iterate": branch from `main`, work against the development theme, design system first, record decisions as Proposed for Michael, open a pull request. After Michael merges, update the review theme from `main`, checking its editor JSON first.
 - Open work: the plan's "Iteration backlog". The "Release backlog" (release scripts, verification, staff and newsletter tests, the release gate) waits until Michael says to release.
@@ -23,7 +23,7 @@ The theme is built, all content is migrated, every design decision is decided (D
 ## Commands
 
 - Preview while building: `shopify theme dev --store ed35ee-ea.myshopify.com --path theme` (a hidden development theme; last used: 184755814697).
-- Review theme: `shopify theme push --store ed35ee-ea.myshopify.com --path theme --theme 184767250729 --strict`, only from `main` or a reviewed branch, after bringing any theme editor changes into Git (`AGENTS.md`). Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729. Preview a page on its new template with `?view=`, e.g. `/pages/artists-for-kids?view=programme`, until templates are reassigned at release; the exhibition lists need none (DS-48).
+- Review theme: `shopify theme push --store ed35ee-ea.myshopify.com --path theme --theme 184767250729 --strict`, only from `main` or a reviewed branch, after bringing any theme editor changes into Git (`AGENTS.md`). Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729. Every page shows its release layout at its own address: the exhibition lists follow Theme settings (DS-48), and the programme pages are recognised by their old template names until release (`snippets/gs-is-programme-page.liquid`, L-08). `?view=` still previews any template.
 - Checks: `shopify theme check --path theme`, `python3 design-system/scripts/lint_theme.py theme/ --strict`, `python3 design-system/scripts/tests/test_lint_theme.py`, `python3 design-system/scripts/check_contrast.py`, `python3 design-system/scripts/sync_theme.py theme/ --check`.
 - Rendered fonts: `python3 design-system/scripts/audit_fonts.py <url> ...` against the theme's preview link (`?preview_theme_id=<id>`); the `theme dev` address never goes network-idle.
 - Shopify docs, API schemas and Liquid validation: Shopify's Dev MCP server (`claude mcp add --transport stdio shopify-dev-mcp -- npx -y @shopify/dev-mcp@latest`).

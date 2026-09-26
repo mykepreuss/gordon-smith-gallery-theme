@@ -3,16 +3,35 @@
   sizes and colours pasted from Word or email are neutralised there (TYPE-03). The text comes from
   gs-page-text: staged text until release (DS-39), without a heading that repeats the title (DS-41).
 
-  The Part setting is the same for every page on a template (DS-51): the programme template shows
-  the opening before its programmes and the headed sections after them, whose H2s are section
-  headings, level with the programmes' heading. Text with a figure sets each picture beside its
-  paragraphs (gs-text-media).
+  The Part setting is the same for every page on a template (DS-51). On a programme page the
+  opening comes before the programmes and the headed sections after them, whose H2s are section
+  headings, level with the programmes' heading. On any other page the opening part is all of the
+  text and the sections part shows nothing, so the default template can carry both parts and still
+  lay programme pages out right before their templates are reassigned (gs-is-programme-page, L-08).
+  Text with a figure sets each picture beside its paragraphs (gs-text-media).
 {%- endcomment -%}
-{%- capture text -%}{% render 'gs-page-text', part: section.settings.part %}{%- endcapture -%}
+{%- liquid
+  assign part = section.settings.part
+  if part == 'opening' or part == 'sections'
+    capture programme_page
+      render 'gs-is-programme-page'
+    endcapture
+    unless programme_page contains 'true'
+      if part == 'opening'
+        assign part = 'all'
+      else
+        assign part = 'none'
+      endif
+    endunless
+  endif
+-%}
+{%- if part != 'none' -%}
+  {%- capture text -%}{% render 'gs-page-text', part: part %}{%- endcapture -%}
+{%- endif -%}
 {%- if text != blank -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container">
-      {%- if section.settings.part == 'sections' -%}
+      {%- if part == 'sections' -%}
         {%- render 'gs-text-media', text: text, heads: true -%}
       {%- elsif text contains '<figure' -%}
         {%- render 'gs-text-media', text: text -%}
@@ -41,11 +60,11 @@
       "label": "Part of the text",
       "options": [
         { "value": "all", "label": "All of it" },
-        { "value": "opening", "label": "The opening, up to the first heading" },
-        { "value": "sections", "label": "The headed sections, from the first heading on" }
+        { "value": "opening", "label": "Before the cards" },
+        { "value": "sections", "label": "After the cards" }
       ],
       "default": "all",
-      "info": "The same for every page on this template. The programme template shows the opening before the programmes and the headed sections after them."
+      "info": "The same for every page on this template. On a programme page, Before the cards is the text up to its first heading and After the cards the headed sections. On other pages, Before the cards is all of it and After the cards is empty."
     }
   ],
   "presets": [

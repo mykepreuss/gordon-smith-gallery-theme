@@ -1,0 +1,24 @@
+{% doc %}
+  Whether the current page is a programme page (DS-51): one on the programme template. Prints
+  true or false; capture it and compare with 'true'.
+
+  Until release, pages keep their old template names (L-08), and the new theme has none of them,
+  so the seven programme pages fall back to the default page template. They are recognised here by
+  those old names too, so the review theme lays them out as they will be after release.
+  After release the release script moves them to the programme template: then delete the list.
+
+  @example
+  {%- capture programme_page -%}{% render 'gs-is-programme-page' %}{%- endcapture -%}
+  {%- if programme_page contains 'true' -%} ... {%- endif -%}
+{% enddoc %}
+{%- liquid
+  # The seven programme pages' template names before release (proposals/store-changes.md §3).
+  assign old_names = 'artists-for-kids,the-smith-foundation,public-programs,speaker-series,music-at-the-smith,explore-create,art-in-good-company' | split: ','
+  assign result = false
+  if template.suffix == 'programme'
+    assign result = true
+  elsif page != blank and old_names contains page.template_suffix
+    assign result = true
+  endif
+  echo result
+-%}
