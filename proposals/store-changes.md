@@ -32,7 +32,7 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 Moving pages from their one-off templates to the closed set in `design-system/DESIGN.md` §7.4 (On Now, Upcoming and Past go to the standard page template, DS-48) is a store-level release action (the Admin assignment list reads the live theme). Until then, new templates are previewed on the review theme with `?view=`. Full mapping: DESIGN.md §7.4. With the new theme (P-13) none of today's page templates exist after publishing, so every page's assignment is set at release by a script run straight after publishing, with a snapshot of today's assignments for rollback.
 
-Until the script runs, pages whose old template the new theme lacks fall back to the default page template, and Our Story (old template `shop`) renders as the Shop landing page (L-08). So the script is written and dry-run before release (plan, "Release gate and rollback"): it snapshots every page's template, maps each page to its new one, and prints the changes for Michael to check. At release it runs straight after publishing, and every page is opened to check it. Not written yet.
+Until the script runs, pages whose old template the new theme lacks fall back to the default page template, which shows them correctly (the exhibition lists from Theme settings, DS-48), and Our Story (old template `shop`) shows as a plain page on the Shop template (DS-49). So the script puts the right template names on the pages for staff rather than fixing what visitors see. It is written and dry-run before release (plan, "Release gate and rollback"): it snapshots every page's template, maps each page to its new one, and prints the changes for Michael to check. At release it runs straight after publishing, and every page is opened to check it. Not written yet.
 
 ## 4. Field definitions (content model)
 
@@ -73,7 +73,7 @@ Redirects only work from addresses that no longer load a page, so the order matt
 3. Open each old address and check it lands on its entry.
 4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
-No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
+The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 
 Rollback: republish the baseline theme, unhide the seven pages, delete the seven redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
