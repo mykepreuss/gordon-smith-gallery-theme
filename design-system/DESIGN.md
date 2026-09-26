@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.6 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.6.1 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Every design decision is decided as of 2026-09-26; a new one starts as **Proposed** and needs Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -326,7 +326,7 @@ Two modes, chosen by the component. Sections render images only through `snippet
 
 `.gs-switcher` moves sideways between pages of the same kind without the main menu. Real links with `aria-current="page"`, not ARIA tabs, because each item is its own page.
 
-- Exhibitions: On now / Upcoming / Past, with counts from the exhibition data. Placed directly under the page header on the exhibition list pages, including Past Exhibitions, and under the hero on the Exhibitions overview page, where none is current, so the overview is the way in to all three lists (DS-43). No other page shows it.
+- Exhibitions: On now / Upcoming / Past, with counts from the exhibition data. Placed directly under the page header on the three exhibition list pages, including Past Exhibitions. No other page shows it; there is no overview page (P-20).
 - Portfolios: one link per portfolio plus All editions, under the collection header on every portfolio page.
 - Label style, 44 px targets, 4 px underline in the link-line colour on the current item (3:1 or more on every surface; the box colour isn't). Items wrap onto a second row on narrow screens, so every portfolio stays visible; nothing scrolls sideways out of view.
 - Counts show only when they're above zero. A list with nothing in it shows the empty state (§6.12), not a heading over nothing.
@@ -449,7 +449,7 @@ From 28 page templates to six, plus one exhibition template; from three collecti
 Sections in order; brackets mean optional. All templates also get the global header, newsletter band and footer.
 
 - **index (Home):** hero, led by the exhibition on now (DS-30) · exhibitions on now and upcoming, without the one in the hero (cards with status chips, from exhibition data) · visit (address, hours, Plan your visit; DS-32) · [feature panel: a programme, tint] · Shop feature (the newest portfolio, automatically; accent) · newsletter band. At most three listings. The accent Shop box sits away from the tint newsletter band, so two tints never touch.
-- **page:** hero or page header · [switcher: the Exhibitions overview page only] · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event, and its heading is for screen readers only, since the page title says the same.
+- **page:** hero or page header · rich text (page body) · [card groups] · [upcoming events] · [image gallery]. Most pages need only the first two; the others show only when the page has them. On the Upcoming Events page (theme setting) the events list shows every upcoming event, and its heading is for screen readers only, since the page title says the same.
 - **page.programme:** hero or page header (programme colours from the `programme` field; the programme's logo above the title when there's no hero image; the call to action field as the button) · rich text · [card groups] · [upcoming events for this page] · [image gallery]. The Artists for Kids page carries the external-site links as normal links; the cue is automatic.
 - **page.exhibitions:** page header · switcher (On now / Upcoming / Past) · exhibition list (wide cards filtered by computed status: this page's status, DS-34; the empty state when there are none) · link to the Exhibitions overview page · [rich text, e.g. tours information].
 - **page.past-exhibitions:** page header · switcher · exhibition list (every past exhibition from entries, newest first; DS-24, DS-25). No hand-built archive section.
@@ -653,7 +653,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-40 | Headings in page text sit one step below section headings: `h2` at the H3 size, `h3` and `h4` at the H4 size. Reason: on Plan Your Visit, the FAQ and Donate, headings in the page text were as large as the page's own section headings (Ways To Give, Upcoming events), so eight short facts read as eight sections | Decided by Michael, 2026-09-26 |
 | DS-41 | A heading at the very start of the page text that only repeats the page title isn't shown. Reason: the FAQ opens with "Frequently Asked Questions" under its own title; the page header already says it. Nothing is deleted from the page | Decided by Michael, 2026-09-26 |
 | DS-42 | The Contact page shows its own text beside the form, in the tint panel, in place of the theme's contact details; a page without text still gets the details from Theme settings. Reason: the page text repeated the address and phone below the form, and holds what the settings don't (both email addresses, office hours) | Decided by Michael, 2026-09-26 |
-| DS-43 | The Exhibitions overview page carries the On now / Upcoming / Past switcher under its hero. Reason: the overview had no way into the three lists except the menu (EXH-02); with the switcher it's the way in | Decided by Michael, 2026-09-26 |
+| DS-43 | The Exhibitions overview page carries the On now / Upcoming / Past switcher under its hero. Reason: the overview had no way into the three lists except the menu (EXH-02); with the switcher it's the way in | Decided by Michael, 2026-09-26; superseded by P-20 (no overview page) |
 | DS-44 | A card group of four or eight goes two, then four, across instead of three. Reason: four cards in three columns left one alone (Donate's Ways To Give, Public Programs) | Decided by Michael, 2026-09-26 |
 | DS-45 | A list of twelve or more items in page text flows into two columns, three from 990 px, without bullets. The Artists page's names become one list in its staged text (DS-39): same names, order and links. Reason: 59 names in one centred column made a very long page | Decided by Michael, 2026-09-26 |
 | DS-46 | Artwork grids (portfolio pages, the Shop's portfolio navigation, search results, related works, galleries of works) show at most three across, and related works one row of three. Reason: at four across each print was too small to see; asked for with the approval of DS-05 | Decided by Michael, 2026-09-26 |
@@ -675,6 +675,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.6.1 (2026-09-26): no Exhibitions overview page (P-20): the lists no longer link to it, the switcher leaves the page template, and its theme setting goes.
 - 0.6 (2026-09-26): every design decision is decided (DS-40 to DS-45 approved by Michael). The review theme exists: 184767250729.
 - 0.5.9 (2026-09-26): Michael approves DS-01 and DS-07. The header logo follows the page's programme (DS-47); page headers no longer repeat a programme logo.
 - 0.5.8 (2026-09-26): Michael approves DS-02 to DS-06, DS-08 to DS-10, DS-12 and DS-13. Artwork grids stay at three across (DS-46).

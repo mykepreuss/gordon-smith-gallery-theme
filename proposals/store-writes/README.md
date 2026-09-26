@@ -161,3 +161,13 @@ For the gallery:
 **Effect on the live site:** none; the live theme reads no page fields.
 
 **Undo:** clear the two values.
+
+## 2026-09-26: About's Gallery card links to On Now
+
+**Why:** there is no Exhibitions overview page any more (P-20, Michael, 2026-09-26). The card `about-gordon-smith-gallery` linked its "Exhibitions" label to it.
+
+**Made through the Shopify connector:** the card's link now goes to `/pages/on-now`, label unchanged (`migration.py` updated to match).
+
+**Effect on the live site:** none; the live theme doesn't read cards. The overview page's own field values (hero image, caption) stay on the page, which is hidden at release.
+
+**Undo:** set the link back to `https://gordonsmithgallery.com/pages/exhibitions-1`.

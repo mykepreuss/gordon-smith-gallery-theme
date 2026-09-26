@@ -12,9 +12,6 @@
     "hero": {
       "type": "gs-page-hero"
     },
-    "switcher": {
-      "type": "gs-switcher"
-    },
     "body": {
       "type": "gs-page-body"
     },
@@ -30,7 +27,6 @@
   },
   "order": [
     "hero",
-    "switcher",
     "body",
     "cards",
     "events",

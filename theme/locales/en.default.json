@@ -54,7 +54,6 @@
     "switcher_past": "Past",
     "list_label": "Exhibitions",
     "all_past": "All past exhibitions",
-    "overview_link": "{{ title }}",
     "empty_on_now": "No exhibitions are on right now.",
     "empty_on_now_link": "See what's coming up",
     "empty_upcoming": "No upcoming exhibitions are announced yet.",

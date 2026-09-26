@@ -101,10 +101,6 @@
         </div>
       {%- endif -%}
 
-      {%- assign overview = settings.exhibitions_overview_page -%}
-      {%- if template.name != 'index' and overview != blank -%}
-        <p class="gs-list-more"><a class="gs-cta-link" href="{{ overview.url }}">{{ 'exhibitions.overview_link' | t: title: overview.title }}</a></p>
-      {%- endif -%}
     </div>
   </section>
 {%- endif -%}

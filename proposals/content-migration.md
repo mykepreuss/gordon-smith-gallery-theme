@@ -39,7 +39,7 @@ Source: the baseline theme's templates and section groups (commit 27ef593), read
 | Six `page.exhibition-*` | Banner image and credit, 1 to 9 installation images and credit, land acknowledgement | Exhibition entries (P-10, P-11): key image and caption, installation views and credit |
 | `page.current-on-now-exhibition`, `page.upcoming-exhibitions` | *Collect, Assemble, Gather*; three upcoming cards (image, dates, title) | Exhibition entries; the lists build themselves |
 | `page.past-exhibitions` | 12 cards (image, dates, title, link); 6 link to pages, 6 older ones (2020 to 2023) don't | 12 exhibition entries. The 6 older ones hold title, dates and image, and their cards don't link (DS-25, follows from P-13) |
-| `page.exhibitions-overview` | Rotating banner (4 images) and credit | Hero image and caption fields |
+| `page.exhibitions-overview` | Rotating banner (4 images) and credit | Dropped with the page and its text (P-20, Michael, 2026-09-26) |
 
 ## Programme and information pages
 

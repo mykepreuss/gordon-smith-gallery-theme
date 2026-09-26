@@ -114,12 +114,6 @@
       },
       {
         "type": "page",
-        "id": "exhibitions_overview_page",
-        "label": "Exhibitions overview page",
-        "info": "Linked from the exhibition lists, not from the menu."
-      },
-      {
-        "type": "page",
         "id": "events_page",
         "label": "Upcoming events page",
         "info": "This page lists every upcoming event. Other pages list only their own."

@@ -12,7 +12,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | P-02 | GitHub-first: theme source, register, proposed store changes, decisions and test evidence are reviewed in a private pull request before any release. Private repo `mykepreuss/gordon-smith-gallery-theme` | Decided by Michael, 2026-09-25 | `IMPLEMENTATION_PLAN.md` step 1, `AGENTS.md` |
 | P-03 | Nothing on the live store changes until explicit release approval. Read-only discovery only; preview work goes to one designated unpublished theme | Decided (plan) | `IMPLEMENTATION_PLAN.md`, `AGENTS.md` |
 | P-04 | Scope excludes platform replacement, a full rewrite, archive rebuild, rebranding, general copy rewriting, paid apps, checkout changes and new shop functionality | Decided (plan); "a full rewrite" superseded by P-13, the rest stands | `IMPLEMENTATION_PLAN.md` "Inputs, exclusions, and known limits" |
-| P-05 | Exhibitions leads to On Now (first link in the Exhibitions dropdown); Upcoming and Past sit beside it; the Exhibitions overview page moves to a secondary pathway | Decided by Michael | `IMPLEMENTATION_PLAN.md` "Approved direction" |
+| P-05 | Exhibitions leads to On Now (first link in the Exhibitions dropdown); Upcoming and Past sit beside it; the Exhibitions overview page moves to a secondary pathway | Decided by Michael | Decided by Michael; the overview part **superseded by P-20** |
 | P-06 | Shop leads to the Limited Editions landing page (not Shopify's `/collections` list), with one introduction and one portfolio navigation | Decided by Michael | `IMPLEMENTATION_PLAN.md` "Approved direction" |
 | P-07 | Newsletter band above the footer, Contact in the header utility row and footer, social links in the footer | Decided by Michael; gallery supplies values | `IMPLEMENTATION_PLAN.md`, `DESIGN.md` §6.1, §6.9, §6.10 |
 | P-08 | Do not build a signup on storefront ScriptTags | Decided (plan) | `baseline/mailchimp-audit.md` |
@@ -27,6 +27,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | P-17 | Michael is the approver for structural and design decisions and for the choices made while moving content into fields and entries. The gallery still supplies wording and values: labels, editorial copy, contact details, consent text (EXH-04, ACCESS-04). A decision still Proposed doesn't ship | **Decided by Michael, 2026-09-25** ("I am the approver") | `IMPLEMENTATION_PLAN.md` "Approved direction" |
 | P-18 | The newsletter band uses Shopify's own form (customer tagged `newsletter`, email marketing consent), and the Mailchimp for Shopify app syncs subscribers to the gallery's audience. Option 1 in the Mailchimp audit; no ScriptTag, no new app. Fallback: a link to a Mailchimp signup page, if the sync can't be verified | **Decided by Michael, 2026-09-25** (approved with the plan review) | `IMPLEMENTATION_PLAN.md` "Approved direction", `baseline/mailchimp-audit.md` |
 | P-19 | Frame products leave search: at release, the 16 active frames (product type Frame) become Unlisted. They stay buyable, and each print's page still offers its frame through `custom.featured_frame`; they no longer fill search results or show in collections. Rollback sets them back to Active | **Decided by Michael, 2026-09-26** | `proposals/store-changes.md` §9 |
+| P-20 | No Exhibitions overview page: `/pages/exhibitions-1` and its text are removed. At release the page is hidden and its address redirects to On Now; nothing links to it. Supersedes the overview part of P-05 and DS-43 | **Decided by Michael, 2026-09-26** ("should not exist", "remove it completely") | `proposals/store-changes.md` §5 |
 
 ## Design system (`design-system/DESIGN.md` §12)
 
@@ -74,7 +75,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-40 | Headings in page text sit one step below section headings (h2 at the H3 size, h3 and h4 at the H4 size) | **Decided by Michael, 2026-09-26** |
 | DS-41 | A heading at the start of the page text that only repeats the page title isn't shown | **Decided by Michael, 2026-09-26** |
 | DS-42 | Contact shows its own page text beside the form, in place of the theme's contact details | **Decided by Michael, 2026-09-26** |
-| DS-43 | The Exhibitions overview carries the On now / Upcoming / Past switcher | **Decided by Michael, 2026-09-26** |
+| DS-43 | The Exhibitions overview carries the On now / Upcoming / Past switcher | Decided by Michael, 2026-09-26; **superseded by P-20** |
 | DS-44 | Card groups of four or eight go two, then four, across | **Decided by Michael, 2026-09-26** |
 | DS-45 | Long lists in page text (12 or more items) flow into columns; the Artists names become one list | **Decided by Michael, 2026-09-26** |
 | DS-46 | Artwork grids show at most three across; related works one row of three | **Decided by Michael, 2026-09-26** (with DS-05: "go from 4 images wide to 3") |

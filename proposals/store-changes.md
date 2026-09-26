@@ -8,7 +8,7 @@ Model (DS-11): a section with pages under it is one button; its main page is the
 
 | Section | Type | Items, in order (destination) | Change from today |
 | --- | --- | --- | --- |
-| Exhibitions | Section | On now (`/pages/on-now`), Upcoming (`/pages/upcoming-exhibitions`), Past exhibitions (`/pages/past-exhibitions`) | Moves to the first place in the menu (P-09). Adds Upcoming (missing today). The Exhibitions overview page (`/pages/exhibitions-1`) leaves the menu and stays reachable from On now |
+| Exhibitions | Section | On now (`/pages/on-now`), Upcoming (`/pages/upcoming-exhibitions`), Past exhibitions (`/pages/past-exhibitions`) | Moves to the first place in the menu (P-09). Adds Upcoming (missing today). The Exhibitions overview page (`/pages/exhibitions-1`) is removed (P-20): hidden at release, its address redirecting to On now (§5) |
 | About | Section | About the gallery (`/pages/about` or `/pages/about-us`, one page, Q: which), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About and About Us: gallery decides whether they are one page |
 | Artists for Kids | Link | `/pages/artists-for-kids` | None. Approved 2026-09-25 as one link (P-15); the programme links to the Artists for Kids site stay on its page |
 | Programs | Section | Public programs (`/pages/public-programs-1`), Speaker series, Music at the Smith, Explore + Create, Art in Good Company | "Public Programs" no longer repeats the section, because the section itself is not a link |
@@ -57,8 +57,8 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
-1. Hide (don't delete) the six exhibition pages, keeping them for rollback.
-2. Create six URL redirects:
+1. Hide (don't delete) the six exhibition pages and the Exhibitions overview (`exhibitions-1`, P-20), keeping them for rollback.
+2. Create seven URL redirects:
 
 | From | To |
 | --- | --- |
@@ -68,11 +68,12 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibition-playhouse` | `/pages/exhibitions/playhouse` |
 | `/pages/exhibition-prevailing-landscapes` | `/pages/exhibitions/prevailing-landscapes` |
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
+| `/pages/exhibitions-1` | `/pages/on-now` |
 
 3. Open each old address and check it lands on its entry.
 4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
-Rollback: republish the baseline theme, unhide the six pages, delete the six redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the seven pages, delete the seven redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
@@ -84,7 +85,7 @@ Values the theme's settings need (Online Store, Themes, Customize, Theme setting
 | --- | --- | --- |
 | Address | 2121 Lonsdale Avenue, North Vancouver, BC V7M 2K6 | Set (DESIGN.md §6.10) |
 | Land acknowledgement | The current footer's wording | Set (moved from the current theme) |
-| Contact page, On now, Upcoming, Past, Exhibitions overview, Upcoming events and Shop landing pages | `contact`, `on-now`, `upcoming-exhibitions`, `past-exhibitions`, `exhibitions-1`, `upcoming-events`, `shop` | Set |
+| Contact page, On now, Upcoming, Past, Upcoming events and Shop landing pages | `contact`, `on-now`, `upcoming-exhibitions`, `past-exhibitions`, `upcoming-events`, `shop` | Set |
 | Portfolios, newest first; All limited editions | The five portfolios, 2026 Fall first; `all-prints` | Set |
 | Hours, phone | Thursday to Saturday, 12:00 PM - 4:00 PM (Plan Your Visit); (604) 903-3798 (Contact page) | Set 2026-09-25 from the current site; gallery to confirm |
 | Email | One address, for the footer and Contact | Blank until the gallery chooses (Michael, 2026-09-25) |
