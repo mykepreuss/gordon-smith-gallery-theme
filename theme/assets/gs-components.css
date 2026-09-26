@@ -573,6 +573,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   margin: calc(-1 * var(--gs-hero-overlap)) var(--gs-gutter) 0 0;
   padding: var(--gs-space-6) var(--gs-space-5);
   border-radius: var(--gs-shape-lg);
+  box-sizing: content-box; /* the widths below are for the text, which the titles are sized to; the padding sits outside */
 }
 .gs-hero__box :is(.gs-h1, h1) { max-width: 16ch; }
 /* No image (gs-media renders nothing when the image is blank): the box doesn't pull up into the gap. */
@@ -1043,6 +1044,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   left: 0;
   z-index: var(--gs-z-dropdown);
   display: grid;
+  box-sizing: content-box; /* min-width is the links' room; the padding sits outside it */
   min-width: 15rem;
   margin: 0;
   padding: var(--gs-space-3) var(--gs-space-5) var(--gs-space-4);
@@ -1158,8 +1160,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* ---------- Page frame ---------- */
 /* What a starter theme's reset would otherwise supply. Zero specificity, so any class wins. */
 
-:where(html) { box-sizing: border-box; }
-:where(*, *::before, *::after) { box-sizing: inherit; }
+/* Every box's size includes its padding and border. Pseudo-elements aren't allowed inside
+   :where(), so they follow it. Each element is set directly instead of inheriting from html:
+   the contents of a <details> (the header's dropdowns, product disclosures) inherit from the
+   browser's own slot inside it, which no rule here can reach, so they would stay content-box. */
+:where(*), :where(*)::before, :where(*)::after { box-sizing: border-box; }
 :where(body) { margin: 0; }
 :where(.gs-type) :where(img, video) { max-width: 100%; height: auto; }
 .gs-main:focus { outline: none; } /* the skip link's target; focus moves there, nothing to show */
