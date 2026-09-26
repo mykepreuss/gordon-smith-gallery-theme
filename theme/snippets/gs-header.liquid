@@ -9,6 +9,9 @@
   order matches what's on screen: the bar's utility row sits above the nav, so it comes first; in
   the drawer the utility links follow the nav.
 
+  The logo is the page's programme's (DS-47): Artists for Kids or the Foundation on their pages,
+  the Gallery everywhere else. It always links home.
+
   The utility links are fixed (P-07, P-15): Contact (the contact page in theme settings),
   Newsletter (the sign-up band above the footer), Search and Cart. Contact is always visible.
 
@@ -27,9 +30,28 @@
     <li><a href="{{ routes.cart_url }}"{% if request.page_type == 'cart' %} aria-current="page"{% endif %}>{{ 'header.cart' | t: count: cart.item_count }}</a></li>
   </ul>
 {%- endcapture -%}
+{%- liquid
+  # The logo follows the page's programme (DS-47): Artists for Kids and Foundation pages carry their
+  # own logo, every other page the Gallery's. It always links to the site's home page.
+  capture brand
+    render 'gs-brand'
+  endcapture
+  assign brand = brand | strip
+  case brand
+    when 'artists-for-kids'
+      assign logo = 'artists-for-kids-full-colour-box'
+      assign home_label = 'header.home_artists_for_kids' | t
+    when 'foundation'
+      assign logo = 'foundation-simple-colour-box'
+      assign home_label = 'header.home_foundation' | t
+    else
+      assign logo = 'gallery-simple-stacked-colour-box'
+      assign home_label = 'header.home' | t
+  endcase
+-%}
 <header class="gs-header" data-gs-header>
-  <a class="gs-header__logo" href="{{ routes.root_url }}" aria-label="{{ 'header.home' | t }}">
-    {%- render 'gs-logo', name: 'gallery-simple-stacked-colour-box', label: 'decorative' -%}
+  <a class="gs-header__logo gs-header__logo--{{ brand }}" href="{{ routes.root_url }}" aria-label="{{ home_label }}">
+    {%- render 'gs-logo', name: logo, label: 'decorative' -%}
   </a>
 
   <details class="gs-drawer">

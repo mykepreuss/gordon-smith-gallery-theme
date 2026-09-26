@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5.8 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.9 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -239,7 +239,7 @@ Each spec lists anatomy, tokens, states and staff controls. Class names are from
 
 ### 6.1 Header and navigation (NAV-01 to 04, TYPE-04, ACCESS-02)
 
-- **Logo (DS-07, needs review in context):** `gallery-simple-stacked-colour-box` hangs flush from the top-left corner of the page, rounded corner facing into the page, 64 px tall on mobile and 96 px from 990 px. It is the brand's primary lockup and the mark on the brand guide cover, and the solid box carries more presence than type alone. Judge it against the current header (logo width setting 250 px) in a mockup before approving. Rendered inline through `snippets/gs-logo.liquid`; the link's accessible name is "Gordon Smith Gallery, home".
+- **Logo (DS-07, DS-47):** the page's programme decides the logo: Artists for Kids pages carry `artists-for-kids-full-colour-box`, Smith Foundation pages `foundation-simple-colour-box` (72 px tall on phones, its minimum), every other page `gallery-simple-stacked-colour-box`. Each hangs flush from the top-left corner of the page, rounded corner facing into the page, 64 px tall on mobile and 96 px from 990 px. It is the brand's primary lockup and the mark on the brand guide cover, and the solid box carries more presence than type alone. Judge it against the current header (logo width setting 250 px) in a mockup before approving. Rendered inline through `snippets/gs-logo.liquid`; the link's accessible name is "Gordon Smith Gallery, home".
 - **Markup:** `snippets/gs-header.liquid`. The main menu renders twice, once in the Menu drawer and once in the desktop bar; CSS shows one, so assistive tech only ever finds one "Main" navigation. In each, the order in the markup matches the order on screen, so focus order follows what people see.
 - **Main nav model (DS-11):** every top-level item is one of two things, never both.
   - **A section with pages under it** is a `<details>` whose `<summary>` is the section's button (label plus chevron). Clicking, tapping, Enter or Space opens its dropdown; the button never navigates. The section's main page is the first link inside the dropdown, with its own label (for example On now, Public programs, About the Foundation, Limited editions).
@@ -475,11 +475,11 @@ Conversion notes: fills were remapped from the PDFs' CMYK builds to the official
 
 | Placement | File |
 | --- | --- |
-| Header, all pages | `gallery-simple-stacked-colour-box` |
+| Header, Gallery pages (all but the two below) | `gallery-simple-stacked-colour-box` |
+| Header, Artists for Kids pages (DS-47) | `artists-for-kids-full-colour-box` |
+| Header, Smith Foundation pages: the Foundation, Gordon and Marion, Donate (DS-47) | `foundation-simple-colour-box` |
 | Condensed or very tight header (if ever needed) | `gallery-simple-horizontal-colour-box` |
 | Footer (ink) | `gallery-simple-stacked-white`, `artists-for-kids-full-white`, `foundation-simple-white` |
-| Artists for Kids programme pages, page header | `artists-for-kids-full-colour-box` |
-| Foundation programme pages, page header | `foundation-simple-colour-box` |
 | About page, official content | `gallery-full-stacked-colour-box` at 112 px tall or more |
 
 The horizontal Gallery lockups are "limited use when this shape is more appealing in a design" (p.7); the simplified lockups are the primary use (pp.6, 8).
@@ -611,13 +611,13 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 | ID | Decision | Status |
 | --- | --- | --- |
-| DS-01 | Where the guides disagree, the supplied logo files set the colour values | Proposed; confirm with the brand designer (Q4) |
+| DS-01 | Where the guides disagree, the supplied logo files set the colour values | Decided by Michael, 2026-09-26 |
 | DS-02 | Mulish is the web font; Soleil via Adobe Fonts only if the gallery holds a licence | Decided by Michael, 2026-09-26 |
 | DS-03 | One rounded corner, bottom-right, site-wide; sizes sm/md/lg | Decided by Michael, 2026-09-26 |
 | DS-04 | Programme theming via `data-gs-brand`; Foundation and Artists for Kids text colours fall back to ink | Decided by Michael, 2026-09-26 |
 | DS-05 | Artwork images are never cropped, rounded, shifted or overlaid; photo mode for everything else | Decided by Michael, 2026-09-26 |
 | DS-06 | Inline links keep an underline, styled in brand colour with a tint hover fill (DS-21); "beyond default underlining" is met by design, not by removing the cue | Decided by Michael, 2026-09-26 |
-| DS-07 | Header logo: Gallery simple stacked colour box, flush top-left, 64 / 96 px | Proposed; judge in a header mockup (TYPE-04) |
+| DS-07 | Header logo: Gallery simple stacked colour box, flush top-left, 64 / 96 px | Decided by Michael, 2026-09-26; amended by DS-47 |
 | DS-08 | Hero text lives in a title box in the programme colour, never on the image | Decided by Michael, 2026-09-26 |
 | DS-09 | Newsletter band on tint above an ink footer, on every template | Decided by Michael, 2026-09-26 |
 | DS-10 | Headings in capitals per brand; artwork titles italic sentence case | Decided by Michael, 2026-09-26 |
@@ -657,6 +657,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-44 | A card group of four or eight goes two, then four, across instead of three. Reason: four cards in three columns left one alone (Donate's Ways To Give, Public Programs) | Proposed (page pass, 2026-09-26) |
 | DS-45 | A list of twelve or more items in page text flows into two columns, three from 990 px, without bullets. The Artists page's names become one list in its staged text (DS-39): same names, order and links. Reason: 59 names in one centred column made a very long page | Proposed (page pass, 2026-09-26) |
 | DS-46 | Artwork grids (portfolio pages, the Shop's portfolio navigation, search results, related works, galleries of works) show at most three across, and related works one row of three. Reason: at four across each print was too small to see; asked for with the approval of DS-05 | Decided by Michael, 2026-09-26 |
+| DS-47 | The header logo follows the page's programme field (the same value that sets the programme colours, DS-04): `artists-for-kids-full-colour-box` on Artists for Kids pages, `foundation-simple-colour-box` on Smith Foundation pages (the Foundation, Gordon and Marion, Donate), `gallery-simple-stacked-colour-box` everywhere else. It always links home, and its accessible name says whose logo it is. The Foundation logo is 72 px tall on phones, its minimum (§8.3); a page header no longer repeats a programme logo. Reason: asked for with the approval of DS-07, so each organisation's pages carry its own mark | Decided by Michael, 2026-09-26 |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -674,6 +675,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.9 (2026-09-26): Michael approves DS-01 and DS-07. The header logo follows the page's programme (DS-47); page headers no longer repeat a programme logo.
 - 0.5.8 (2026-09-26): Michael approves DS-02 to DS-06, DS-08 to DS-10, DS-12 and DS-13. Artwork grids stay at three across (DS-46).
 - 0.5.7 (2026-09-26): remaining pages pass. Smaller headings in page text (DS-40), no heading that repeats the title (DS-41), Contact's own text beside the form (DS-42), the switcher on the Exhibitions overview (DS-43), groups of four go two then four across (DS-44), long lists in columns (DS-45). Fixes: the Upcoming Events page no longer shows its title twice; long curator credits stop at two lines on grid cards; `.gs-panel` includes its padding in its width; empty sections no longer break the space after a page header.
 - 0.5.6 (2026-09-25): all content migrated for review (`proposals/store-writes/`). Page text that changes at release is staged (DS-39). Videos embedded in page text fill the column at 16:9 (`--gs-ratio-video`, §6.11).

@@ -141,6 +141,7 @@
   --gs-width-prose: 45rem;    /* 720: long-form text column */
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
   --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px */
+  --gs-header-logo-h-foundation: 4.5rem; /* 72: the Foundation logo's minimum height (§8.3), on phones */
   --gs-tap-target: 2.75rem;   /* 44 */
   --gs-footer-logo-h: 4.5rem;      /* 72: partner logos in the footer; the Foundation simple lockup's minimum (DESIGN.md §8.3) */
   --gs-footer-logo-h-lead: 6rem;   /* 96: the Gallery logo leads the footer row (§6.10) */

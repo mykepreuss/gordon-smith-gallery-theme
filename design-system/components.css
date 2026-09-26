@@ -925,6 +925,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* The boxed logo hangs flush from the top-left corner of the page, rounded corner facing in. */
 .gs-header__logo { display: block; flex: none; line-height: 0; }
 .gs-header__logo :is(img, svg) { display: block; height: var(--gs-header-logo-h); width: auto; }
+/* The Foundation logo can't go below 72 px tall (§8.3), so on phones it's taller than the others (DS-47). */
+.gs-header__logo--foundation :is(img, svg) { height: var(--gs-header-logo-h-foundation); }
 
 /* Summaries used as buttons: no disclosure triangle. */
 :is(.gs-header__menu-toggle, .gs-nav__trigger) { list-style: none; }
