@@ -467,6 +467,24 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
   .gs-grid--cards.gs-grid--fours { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+/* A count that would leave a short last row gives the spare room to its first cards (DS-52).
+   Two across: an odd count starts with one wide card, its image beside its text. */
+@media (min-width: 750px) and (max-width: 989px) {
+  .gs-grid--cards.gs-grid--odd > li:first-child { grid-column: 1 / -1; }
+  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card:has(> .gs-media) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: repeat(3, auto) 1fr; /* the image's extra height goes below the text */
+    column-gap: var(--gs-gutter);
+  }
+  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
+  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card > :not(.gs-media) { grid-column: 2; }
+}
+/* Three across: five (or eleven) cards start with two wider ones, then threes. */
+@media (min-width: 990px) {
+  .gs-grid--cards.gs-grid--lead { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .gs-grid--cards.gs-grid--lead > li { grid-column: span 2; }
+  .gs-grid--cards.gs-grid--lead > li:nth-child(-n + 2) { grid-column: span 3; }
+}
 /* Artworks stay at three across on wide screens, so each work is shown larger (DS-46); people go to four. */
 @media (min-width: 1200px) {
   .gs-grid--people { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -1335,7 +1353,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 
 .gs-card__meta { display: grid; gap: var(--gs-space-1); margin: 0; }
 .gs-card__meta > * { margin: 0; }
-.gs-card__text { margin: 0; }
+.gs-card__text { margin: 0; text-wrap: pretty; }
 /* A card without an image: the rule marks where it starts. */
 .gs-card--text {
   padding-block-start: var(--gs-space-4);

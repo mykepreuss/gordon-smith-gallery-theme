@@ -14,7 +14,7 @@ Keep four change surfaces distinct: **Git owns theme source and project records;
 
 - **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.4).
 - **Content:** everything the current theme held is in the store or the theme: 15 exhibitions, programme and information pages, card groups, events, product labels and three review menus (`proposals/store-writes/README.md`). Page text that changes at release is staged (DS-39).
-- **Decisions:** every design decision is decided (DS-01 to DS-51, `DECISIONS.md`).
+- **Decisions:** every design decision is decided (DS-01 to DS-52, `DECISIONS.md`).
 - **Review theme:** `184767250729` "New theme for review (do not publish)", matching `main` at 1ad4dba.
   - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729
   - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184767250729/editor
@@ -192,7 +192,7 @@ Before requesting release approval, provide:
   3. Reassigning every page's template, by script, straight after publishing (below).
   4. Switching or editing the main menu, and editing the footer menu.
   5. Hiding the six old exhibition pages and the Exhibitions overview, and creating their redirects (P-10, P-20). Hiding About and Our Story too, with `/pages/about` forwarded to About Us (P-24) and `/pages/our-story` to Artists for Kids (P-25).
-  6. Moving the staged page text into its eight pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, makes the Artists names one list, leaves About Us's descriptions to its card group (DS-50), and adds About's history to the Artists for Kids page (P-24).
+  6. Moving the staged page text into its nine pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, makes the Artists names one list, leaves About Us's descriptions to its card group (DS-50), adds About's history to the Artists for Kids page (P-24), and tidies The Smith Foundation's text (DS-52).
   7. Plain-text titles and the description clean-up on the 21 limited editions, after a dry run the gallery approves (DS-16, P-21, P-22, `proposals/store-changes.md` §7).
   8. Setting the 16 active frame products to Unlisted, so they leave search (P-19, `proposals/store-changes.md` §9).
 - A check that every active exhibition entry is ready to be seen. The entries are already active; their pages return 404 only because the live theme has no exhibition template, so publishing the new theme makes them public.

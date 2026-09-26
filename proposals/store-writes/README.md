@@ -335,3 +335,32 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 **Effect on the live site:** none; the live theme reads no card groups or staged text.
 
 **Undo:** clear the group's heading; set the staged text back from the snapshot.
+
+## 2026-09-26: The Smith Foundation's staged text (DS-52)
+
+**Why:** Michael, 2026-09-26: "improve the design of the page while still adhering to the brand guidelines and design system."
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` unchanged. The page's text matched `snapshots/pages-2026-09-25.json`, and it had no staged text (`snapshots/foundation-2026-09-26-before.json`).
+
+**Made through the Shopify connector** (payload from `foundation.py staged`; `foundation.py review` prints the text): the page's staged text (`release_body`, `gid://shopify/Page/155705409833`).
+
+- Its two paragraphs, word for word, without pasted styling.
+- The line above them, "The Gordon and Marion Smith Foundation for Young Artists", in the Foundation's colour at 20 pt, is left out. The next sentence opens with the same words, and the header already carries the Foundation's logo.
+- Explore + Create, Art In Good Company, Speaker Series and Music at The Smith link to their pages.
+- "Gordon A. Smith and his late wife, Marion." still links to Gordon and Marion, now without opening a new tab.
+
+**Effect on the live site:** none; the live theme doesn't read the staged field.
+
+**Undo:** clear the page's staged text.
+
+## 2026-09-26: "Get involved" over the Foundation's five ways to take part (DS-52)
+
+**Why:** Michael, 2026-09-26: "DS-52 approved, add a Get involved heading."
+
+**Before-snapshot:** `snapshots/foundation-take-part-2026-09-26-before.json` (no heading).
+
+**Made through the Shopify connector** (`foundation.py heading`): card group `foundation-take-part` (`gid://shopify/Metaobject/608367444265`), `heading` set to "Get involved". Its card titles become H3s under it.
+
+**Effect on the live site:** none; the live theme reads no card groups.
+
+**Undo:** clear the group's heading.
