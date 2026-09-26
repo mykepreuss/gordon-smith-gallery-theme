@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.6 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.6.1 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Every design decision is decided as of 2026-09-26; a new one starts as **Proposed** and needs Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -675,6 +675,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.6.1 (2026-09-26): review fixes. Buttons from a section's link setting get the external and PDF cues (feature panel, home hero); card groups without a heading keep heading levels in order; artist names in the facts column no longer break across lines; logo snippets leave out the files' embedded content credentials (§8.1); the product page names its variant select after the product's option.
 - 0.6 (2026-09-26): every design decision is decided (DS-40 to DS-45 approved by Michael). The review theme exists: 184767250729.
 - 0.5.9 (2026-09-26): Michael approves DS-01 and DS-07. The header logo follows the page's programme (DS-47); page headers no longer repeat a programme logo.
 - 0.5.8 (2026-09-26): Michael approves DS-02 to DS-06, DS-08 to DS-10, DS-12 and DS-13. Artwork grids stay at three across (DS-46).
