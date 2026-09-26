@@ -1,0 +1,12 @@
+{
+  "taken": "2026-09-26",
+  "why": "Before DS-50 on the About page: the three organisation cards get their Logo field. Only that field changes.",
+  "page": {"id": "gid://shopify/Page/141077479721", "handle": "about", "card_groups": ["gid://shopify/Metaobject/608389529897"]},
+  "group": {"id": "gid://shopify/Metaobject/608389529897", "handle": "about-organisations",
+            "cards": ["gid://shopify/Metaobject/608389267753", "gid://shopify/Metaobject/608389300521", "gid://shopify/Metaobject/608389333289"]},
+  "cards": [
+    {"id": "gid://shopify/Metaobject/608389267753", "handle": "about-artists-for-kids", "updatedAt": "2026-09-26T00:12:56Z", "logo": null},
+    {"id": "gid://shopify/Metaobject/608389300521", "handle": "about-gordon-smith-gallery", "updatedAt": "2026-09-26T15:35:18Z", "logo": null},
+    {"id": "gid://shopify/Metaobject/608389333289", "handle": "about-smith-foundation", "updatedAt": "2026-09-26T00:12:56Z", "logo": null}
+  ]
+}

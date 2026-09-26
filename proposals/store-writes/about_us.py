@@ -12,6 +12,7 @@ Prints the variables for each step's mutation.
   python3 proposals/store-writes/about_us.py cards
   python3 proposals/store-writes/about_us.py card-group <created/about-us-cards.json>
   python3 proposals/store-writes/about_us.py page-fields <created/about-us-card-group.json>
+  python3 proposals/store-writes/about_us.py about-logos   # About's three cards (Michael, 2026-09-26)
 """
 import html
 import json
@@ -88,6 +89,19 @@ def card_group(created_cards):
                                       "fields": [{"key": "cards", "value": json.dumps([ids[o[1]] for o in ORGS])}]}}
 
 
+# About's organisation cards (migration.py), the same logos (Michael, 2026-09-26: "DS-50 approved,
+# apply logos to the About page too"). Only the Logo field changes.
+ABOUT_CARDS = {
+    "gid://shopify/Metaobject/608389267753": "Artists for Kids",   # about-artists-for-kids
+    "gid://shopify/Metaobject/608389300521": "Gallery",            # about-gordon-smith-gallery
+    "gid://shopify/Metaobject/608389333289": "Smith Foundation",   # about-smith-foundation
+}
+
+
+def about_logos():
+    return {gid: {"fields": [{"key": "logo", "value": logo}]} for gid, logo in ABOUT_CARDS.items()}
+
+
 def page_fields(created_group):
     group = created_group["about_us_organisations"]["metaobject"]["id"]
     return {"m0": [
@@ -108,6 +122,8 @@ if __name__ == "__main__":
         result = card_group(json.loads(pathlib.Path(sys.argv[2]).read_text()))
     elif step == "page-fields":
         result = page_fields(json.loads(pathlib.Path(sys.argv[2]).read_text()))
+    elif step == "about-logos":
+        result = about_logos()
     else:
         sys.exit(__doc__)
     print(json.dumps(result, indent=2, ensure_ascii=False))

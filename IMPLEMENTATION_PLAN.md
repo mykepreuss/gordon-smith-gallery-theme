@@ -14,7 +14,7 @@ Keep four change surfaces distinct: **Git owns theme source and project records;
 
 - **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.4).
 - **Content:** everything the current theme held is in the store or the theme: 15 exhibitions, programme and information pages, card groups, events, product labels and three review menus (`proposals/store-writes/README.md`). Page text that changes at release is staged (DS-39).
-- **Decisions:** every design decision is decided (DS-01 to DS-49, `DECISIONS.md`).
+- **Decisions:** every design decision is decided (DS-01 to DS-50, `DECISIONS.md`).
 - **Review theme:** `184767250729` "New theme for review (do not publish)", matching `main` at 1ad4dba.
   - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729
   - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184767250729/editor
@@ -153,7 +153,6 @@ Open while iterating. Add what each review finds; take items off when they merge
 | --- | --- | --- |
 | Set the seven hero focal points in the admin (Content > Files), then check them on the review theme at phone width | Michael, then Agent | `proposals/hero-focal-points.md`, each point tried on the preview first (2026-09-26). Shopify's API can't set focal points. IMG-02, IMG-03 |
 | Send the gallery its questions: values, exhibitions, content checks, brand | Michael | `proposals/gallery-questions.md` collects all of them in one place (2026-09-26) |
-| Decide DS-50: About Us sets each organisation's description beside its own logo (logo cards) | Michael | Proposed 2026-09-26, built on branch `about-us-logos`; the store side is in place and invisible to the live site (`proposals/store-writes/README.md`). About's three organisation cards could use it too |
 
 ### Release backlog (on hold until Michael decides to release)
 

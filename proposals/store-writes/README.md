@@ -221,3 +221,23 @@ The descriptions are the gallery's, read from the snapshot, word for word. The c
 **Effect on the live site:** none. The live theme reads no card entries or page fields, and the live About Us page still shows its own text and image (checked 2026-09-26). The review theme shows the cards once `main` has the logo cards; until then it shows them as plain text cards.
 
 **Undo:** clear About Us's `card_groups` and `release_body`; delete the card group and the three cards; delete the `logo` field from the card definition.
+
+## 2026-09-26: About's organisation cards get their logos (DS-50)
+
+**Why:** Michael, 2026-09-26: "DS-50 approved, apply logos to the About page too."
+
+**Checked first:** same store and live theme as the entry above. Before-snapshot: `snapshots/about-cards-2026-09-26-before.json` (the three cards had no logo; their other fields are unchanged and listed in `migration.py`).
+
+**Made through the Shopify connector** (payload from `about_us.py about-logos`; `migration.py` has the same values, so a re-run matches):
+
+| Card | ID | Logo |
+| --- | --- | --- |
+| `about-artists-for-kids` | `gid://shopify/Metaobject/608389267753` | Artists for Kids |
+| `about-gordon-smith-gallery` | `gid://shopify/Metaobject/608389300521` | Gallery |
+| `about-smith-foundation` | `gid://shopify/Metaobject/608389333289` | Smith Foundation |
+
+The words, titles, links and order are unchanged: Artists for Kids first, as on the old page, whose text is Artists for Kids' history.
+
+**Effect on the live site:** none; the live theme reads no card entries, and the live About page still loads normally (checked 2026-09-26).
+
+**Undo:** clear the Logo field on the three cards.
