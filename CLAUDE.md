@@ -11,20 +11,20 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 - What the current theme holds and where it goes: `proposals/content-migration.md`. Store changes for review and release: `proposals/store-changes.md`.
 - The live theme (Colorblock, ID `183162372393`) is in `baseline/theme/` as a reference for content and placement only. Don't copy its code or settings, and never write to it.
 
-## Next body of work (plan steps 4 and 5)
+## Next body of work (plan step 5, then release)
 
-The theme is built and all content is migrated, merged to `main` on 2026-09-26. The to-do list is the plan's "Remaining work before the review theme". In order:
+The theme is built, all content is migrated, every design decision is decided, and the review theme exists (`184767250729`, from `main` at 594eb01). The to-do list is the plan's "Remaining work before release". In order:
 
-1. Michael decides the decisions still Proposed (DS-40 to DS-45). The review fixes and the design pass on every page were done 2026-09-26.
-2. The two release scripts, each with a dry run: template reassignment and staged page text (`proposals/store-changes.md` §3, §8).
-3. Review theme (plan step 4): `shopify theme push --unpublished`, record its ID and role here and in `AGENTS.md`, then push only to that ID with `--strict`.
-4. Verification (plan step 5): the still-to-verify list in DESIGN.md §9.6, the date-driven checks, the font audit, the newsletter test and the staff editing test.
+1. The two release scripts, each with a dry run: template reassignment and staged page text (`proposals/store-changes.md` §3, §8). The frames step (§9) goes in with them.
+2. Verification (plan step 5), on the review theme: the still-to-verify list in DESIGN.md §9.6, the date-driven checks, the font audit, the newsletter test and the staff editing test.
+3. The release gate (plan, "Release gate and rollback").
 
 Store writes (definitions, entries, field values, menus) need Michael's go-ahead and a before-snapshot, and are logged in `proposals/store-writes/README.md`. Page text that changes at release is staged in `custom.release_body` (DS-39), never written to the live page.
 
 ## Commands
 
-- Preview while building: `shopify theme dev --store ed35ee-ea.myshopify.com --path theme` (a hidden development theme; last used: 184755814697). Preview a page on its new template with `?view=`, e.g. `/pages/on-now?view=exhibitions`, until templates are reassigned at release.
+- Preview while building: `shopify theme dev --store ed35ee-ea.myshopify.com --path theme` (a hidden development theme; last used: 184755814697).
+- Review theme: `shopify theme push --store ed35ee-ea.myshopify.com --path theme --theme 184767250729 --strict`, only from `main` or a reviewed branch, after bringing any theme editor changes into Git (`AGENTS.md`). Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729. Preview a page on its new template with `?view=`, e.g. `/pages/on-now?view=exhibitions`, until templates are reassigned at release.
 - Checks: `shopify theme check --path theme`, `python3 design-system/scripts/lint_theme.py theme/ --strict`, `python3 design-system/scripts/tests/test_lint_theme.py`, `python3 design-system/scripts/check_contrast.py`, `python3 design-system/scripts/sync_theme.py theme/ --check`.
 - Rendered fonts: `python3 design-system/scripts/audit_fonts.py <url> ...` against the theme's preview link (`?preview_theme_id=<id>`); the `theme dev` address never goes network-idle.
 - Shopify docs, API schemas and Liquid validation: Shopify's Dev MCP server (`claude mcp add --transport stdio shopify-dev-mcp -- npx -y @shopify/dev-mcp@latest`).

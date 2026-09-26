@@ -1,0 +1,20 @@
+{"taken": "2026-09-26, before any change. Products with product type Frame, all in the framing collection. At release the ACTIVE ones become UNLISTED (store-changes.md §9); rollback sets them back to ACTIVE.",
+ "frames": [
+  {"id": "gid://shopify/Product/10095715057961", "handle": "russna-kaur-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10095749431593", "handle": "gathie-falk-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10095796584745", "handle": "ann-kipling-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10095798812969", "handle": "lauren-brevner-james-harry-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096174563625", "handle": "gordon-smith-byway-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096175022377", "handle": "michael-snow-frame", "status": "DRAFT"},
+  {"id": "gid://shopify/Product/10096175350057", "handle": "ian-wallace-drums-and-paint-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096175939881", "handle": "karin-bubas-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096187867433", "handle": "wayne-eastcott-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096188653865", "handle": "sandeep-johal-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096189079849", "handle": "sara-khan-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096189538601", "handle": "anna-binta-diallo-prairie-girl-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096190390569", "handle": "anna-binta-diallo-red-feather-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10096190718249", "handle": "samuel-roy-bois-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10194099044649", "handle": "short-gumboots-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10194100551977", "handle": "arnold-shives-frame", "status": "ACTIVE"},
+  {"id": "gid://shopify/Product/10194102976809", "handle": "gordon-smith-pender-harbour-frame", "status": "ACTIVE"}
+ ]}
