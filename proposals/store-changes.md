@@ -25,7 +25,7 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 | Menu | Items | Note |
 | --- | --- | --- |
-| ~~New `utility` menu~~ | Not needed: the theme builds the utility links in (DS-29): Contact from the contact-page theme setting, Newsletter (the band's anchor), Search, Cart | One store change fewer. Contact can't be dropped by a menu edit |
+| ~~New `utility` menu~~ | Not needed: the theme builds the utility links in (DS-29): Contact from the contact-page theme setting, Search, Cart (Newsletter removed, DS-56) | One store change fewer. Contact can't be dropped by a menu edit |
 | Footer | Explore links (Exhibitions, Limited editions, Artists for Kids), Frequently asked questions (`/pages/frequently-asked-questions`, relative instead of the absolute URL), Do not sell or share my personal information | Social links come from theme settings with visible names (gallery supplies URLs). The footer section takes two menus: Explore, and an optional Legal menu for the small last-line links; store policies are added automatically. Created 2026-09-25 as `new-theme-explore` (Exhibitions, Limited editions, Artists for Kids, Frequently asked questions) and `new-theme-legal` (Do not sell or share my personal information), set in the new theme's footer. The live `footer` menu is untouched |
 
 ## 3. Template assignments (REUSE-01, DS-14)
