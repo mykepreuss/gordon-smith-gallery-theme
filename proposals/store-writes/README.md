@@ -87,3 +87,48 @@ Label values come only from each print's own title and description: artist, titl
 **Effect on the live site:** none. The live theme reads only `custom.featured_frame` among product fields (checked in `baseline/theme/`).
 
 **Undo:** clear the 132 values, then delete the 9 definitions.
+
+## 2026-09-25: the rest of the content (exhibitions, pages, staged text, review menus)
+
+**Why:** to review and improve every page with its real content before release. Michael's go-ahead, 2026-09-25 ("migrate all content into our new theme so we can review and improve comprehensively"). He chose to stage the page text that changes at release (DS-39) and to leave the site email blank until the gallery chooses one.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` "Colorblock: NEW WEBSITE", role live (`shopify theme list`); development theme 184755814697 present. Before-snapshots: every page's text, template and fields in `snapshots/pages-2026-09-25.json`; the entries, menus and page field definitions that existed in `snapshots/entries-2026-09-25-before-migration.json`. The live theme reads no page fields (`baseline/theme/`).
+
+**Made through the Shopify connector** (payloads from `migration.py`; created IDs in `created/migration-*.json`):
+
+| What | IDs |
+| --- | --- |
+| Page field definition `release_body` ("Text at release (temporary)"), not pinned | `gid://shopify/MetafieldDefinition/272804249897` |
+| 11 exhibitions, active. Five past shows from their pages: *From the Ground*, *Stitched*, *Playhouse*, *Prevailing Landscapes*, *The Art of Conversation*. Five older shows from the Past cards (title, dates, image; DS-25): *Endless Summer*, *Paths*, *We Can Only Hint at This with Words*, *Beyond the Horizon*, *Unfixed*. The Upcoming page's third card: *Fall 2027 Exhibition* | `created/migration-exhibitions.json` |
+| 7 cards: About's three organisation columns (from the old default template) and Donate's four "Ways To Give" | `created/migration-cards.json` |
+| 2 card groups: `about-organisations`, `donate-ways-to-give` | `created/migration-card-groups.json` |
+| 14 field values on 8 pages: hero images (each page's old banner or first slide) on About, About Us, Exhibitions, Donate, Permanent Collection, Volunteer, Gordon and Marion and Plan Your Visit; the Exhibitions hero caption; card groups on About and Donate; Permanent Collection's intro and call to action (Browse, the collection catalogue); Volunteer's call to action (Volunteer Form, the PDF) | Pages as listed |
+| Staged text (`release_body`) on 5 pages. On Now, Upcoming Exhibitions and Upcoming Events: cleared, since each repeats *Collect, Assemble, Gather*. Donate: its text plus the tax receipt note from the old template. Gordon and Marion: its text plus the Vimeo video from the old template ("Video: Gordon Smith's Magic") | Pages `on-now`, `upcoming-exhibitions`, `upcoming-events`, `donate`, `gordon-and-marion` |
+| 3 menus, referenced only by the new theme: `new-theme-main` (the approved menu map, `store-changes.md` §1), `new-theme-explore` and `new-theme-legal` (the footer, §2) | `created/migration-menus.json` |
+
+Read back after writing: every entry, card and page field matches `migration.py` exactly.
+
+Text is the gallery's, moved without rewriting; exhibition text is read from the page snapshot, so nothing was retyped. Choices made while moving it, for Michael to check:
+
+- **Exhibition summaries:** each page's first paragraph. *Stitched*'s first paragraph is six sentences, so its first two are the summary and the rest opens the text, in the same reading order.
+- **Curators and artists:** lines as written. *From the Ground* had no artist list, so its artists and collection artists are read from its text, which keeps them too. Lists ending "X and Y" became two names, except "Hannah Jickling and Reed H. Reed", who work as a pair.
+- **Repeated images left out:** *From the Ground*'s and *Stitched*'s galleries each repeated the key image, and *Prevailing Landscapes*' one gallery image was the key image. *The Art of Conversation*: the page's banner is the key image, and the Past card's image is its one installation view.
+- **Older shows:** titles in title case, from the cards' capitals. *Paths* and *Unfixed* show artworks, so their images are marked as artworks (shown whole).
+- **Fall 2027 Exhibition:** title as on the card, "Coming soon, September 2027" as the dates note, September 1, 2027 as the expected start (the field needs a date). No text, so its card doesn't link.
+- **About's organisation cards:** text cards titled with each organisation's name. The columns' only titles were logos, which the footer carries. The dead "Exhibitions" and "The Foundation" labels now link to the Exhibitions and Smith Foundation pages.
+- **Labels in capitals** (BROWSE, VOLUNTEER FORM) are stored as Browse and Volunteer Form; buttons set their own case.
+- **Permanent Collection's long heading** ("Artists For Kids & The Gordon Smith Gallery Permanent Collection") is dropped: the page title and the first sentence of its text say the same.
+- **Hours and phone** in theme settings come from Plan Your Visit's gallery hours and the Contact page (Git, not a store write).
+
+For the gallery:
+
+- The Donate card "Online Form" refers to a form "above", but the donation form is switched off on the live page too.
+- Upcoming Events' copy of *Collect, Assemble, Gather* lists Carl Heywood among the artists; On Now's newer copy, which the entry follows, doesn't.
+- *Stitched*'s credits link the Smith Foundation to `smithfoundation.co/…/smithfoundation.ca`, which doesn't open.
+- About and About Us are still two pages. The menu links About Us, as today; About keeps its text and gains the organisation cards.
+
+**Effect on the live site:** none. The live theme reads no page fields and has no exhibition template (the new entries' addresses return 404), and the three menus aren't used by it.
+
+**Undo:** delete the 3 menus; clear the 19 page field values; delete the 2 card groups, 7 cards and 11 exhibitions; delete the `release_body` definition.
+
+**At release:** a script moves each staged text into its page, stopping if the live text no longer matches `snapshots/pages-2026-09-25.json`, then deletes the values and the definition (`store-changes.md` §8).

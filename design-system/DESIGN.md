@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5.5 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.6 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -349,7 +349,9 @@ Ink surface. Top row: the three white logos with the Gallery first and largest (
 
 ### 6.11 Rich text
 
-`.gs-prose` wraps staff-entered text: 68ch measure, 1em paragraph spacing, headings inside use the scale above, blockquote with a 4 px rule in the rule colour and deck styling, images in text get `--gs-shape-md`. Staff formatting is limited to headings, bold, italic, lists, links and quotes. Inline fonts, sizes and colours pasted from Word or email are neutralised.
+`.gs-prose` wraps staff-entered text: 68ch measure, 1em paragraph spacing, headings inside use the scale above, blockquote with a 4 px rule in the rule colour and deck styling, images in text get `--gs-shape-md`. A YouTube or Vimeo video embedded in the text fills the column at `--gs-ratio-video` (16:9), whatever size the embed code gives. Staff formatting is limited to headings, bold, italic, lists, links, quotes and embedded video. Inline fonts, sizes and colours pasted from Word or email are neutralised.
+
+Until release, the page text can come from a staged field instead of the live page text (DS-39); the section is otherwise unchanged.
 
 ### 6.12 States: empty, error, submitting, done
 
@@ -644,6 +646,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-37 | A card group whose images are all portraits shows as a people grid: 4:5 frames, compact titles, up to four across. Reason: 14 board headshots cropped to wide 4:3 cards in three large columns made a very long page. Staff don't choose it; the images do | Decided by Michael, 2026-09-25 |
 | DS-38 | The product page keeps only the label, price, action, archive note and framing offer beside the work; the description follows as "About the work" at reading width. Reason: the description in the narrow column ran the page to twice the image's height with empty space beside it | Decided by Michael, 2026-09-25 |
 | DS-29 | The header's utility links are built in: Contact (the contact page in theme settings), Newsletter, Search and Cart, as approved (P-07, P-15). Reason: Contact can't be dropped by a menu edit, and no utility menu has to be created in the store | Decided by Michael, 2026-09-25 |
+| DS-39 | Page text that changes at release is staged in a temporary page field (`custom.release_body`) that the new theme shows instead of the live text; a release script moves it into the page and deletes the field, stopping if the live text changed meanwhile. Reason: the review has to show the site as it will launch, and page text is live, so it can't change before release. Used for On Now, Upcoming and Upcoming Events (cleared) and for Donate and Gordon and Marion (content added from their old templates). The fallback leaves the theme after release | Decided by Michael, 2026-09-25 |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -661,6 +664,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.6 (2026-09-25): all content migrated for review (`proposals/store-writes/`). Page text that changes at release is staged (DS-39). Videos embedded in page text fill the column at 16:9 (`--gs-ratio-video`, §6.11).
 - 0.5.5 (2026-09-25): the build decisions DS-28 to DS-38 are approved by Michael, who approves design decisions for the gallery (P-17). No design change.
 - 0.5.4 (2026-09-25): Shop pass, with real product labels and collection credits (`proposals/store-writes/`). Product page split into the buying column and "About the work" (DS-38); tile mediums clamp at two lines; portfolio description sits under the hero. The font audit no longer finds Unicode italics on Shop pages.
 - 0.5.3 (2026-09-25): programme pages pass, with real page fields, cards and events (`proposals/store-writes/`). Events titled like their page lead with the date (DS-36); portrait card groups become a people grid (DS-37); links to PDFs say so. Fixed: the Upcoming Events page listed nothing, because the event index's `page` parameter was shadowed by the current page inside the snippet (now `for_page`).

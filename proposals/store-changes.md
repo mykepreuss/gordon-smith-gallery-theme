@@ -19,12 +19,14 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 **How it is applied:** during review, as a separate new menu referenced only by the review theme (so the live header doesn't change). At release, either switch the live header to the reviewed menu or edit `new-website-menu-1` to match, recorded in the release change set.
 
+**Created 2026-09-25** as `new-theme-main` ("Main menu (new theme)"), with Michael's go-ahead, and set in the new theme's header (`sections/header-group.json`). Publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.
+
 ## 2. Utility and footer menus (ACCESS-02, ACCESS-03)
 
 | Menu | Items | Note |
 | --- | --- | --- |
 | ~~New `utility` menu~~ | Not needed: the theme builds the utility links in (DS-29): Contact from the contact-page theme setting, Newsletter (the band's anchor), Search, Cart | One store change fewer. Contact can't be dropped by a menu edit |
-| Footer | Explore links (Exhibitions, Limited editions, Artists for Kids), Frequently asked questions (`/pages/frequently-asked-questions`, relative instead of the absolute URL), Do not sell or share my personal information | Social links come from theme settings with visible names (gallery supplies URLs). The footer section takes two menus: Explore, and an optional Legal menu for the small last-line links; store policies are added automatically. Until the footer menu is edited, the theme uses the existing `footer` menu as Explore, and its absolute FAQ link is made relative by the theme |
+| Footer | Explore links (Exhibitions, Limited editions, Artists for Kids), Frequently asked questions (`/pages/frequently-asked-questions`, relative instead of the absolute URL), Do not sell or share my personal information | Social links come from theme settings with visible names (gallery supplies URLs). The footer section takes two menus: Explore, and an optional Legal menu for the small last-line links; store policies are added automatically. Created 2026-09-25 as `new-theme-explore` (Exhibitions, Limited editions, Artists for Kids, Frequently asked questions) and `new-theme-legal` (Do not sell or share my personal information), set in the new theme's footer. The live `footer` menu is untouched |
 
 ## 3. Template assignments (REUSE-01, DS-14)
 
@@ -43,11 +45,13 @@ Until the script runs, pages whose old template the new theme lacks fall back to
 
 Creating definitions is additive and doesn't change what visitors see, but it is still a store-level change: create them when implementation starts, with Michael's go-ahead, and record each in the pull request.
 
-**Done 2026-09-25, with Michael's go-ahead:** the `exhibition` and `event` definitions, four exhibition entries and one event, active so they render in the development theme. Their addresses return 404 under the live theme. Log, IDs and undo steps: `proposals/store-writes/README.md`. Still to create: the other 11 exhibitions and the page, card, product and collection fields.
+**Done 2026-09-25, with Michael's go-ahead:** the `exhibition` and `event` definitions, four exhibition entries and one event, active so they render in the development theme. Their addresses return 404 under the live theme. Log, IDs and undo steps: `proposals/store-writes/README.md`. The other 11 exhibitions followed (below).
 
-**Also done 2026-09-25, with Michael's go-ahead:** the page field, `card` and `card_group` definitions; the cards, card groups and events of the seven programme pages; and their field values. Still to create: fields on the other pages (About, Donate, Contact and the rest).
+**Also done 2026-09-25, with Michael's go-ahead:** the page field, `card` and `card_group` definitions; the cards, card groups and events of the seven programme pages; and their field values. The other pages' fields followed (below).
 
 **Also done 2026-09-25, with Michael's go-ahead:** the product label and availability fields, the collection photo credit field, label values on the 21 limited editions, credits on the five portfolios, and the Shop page's hero. Product titles are unchanged; plain-text titles (DS-16) wait for release (§3 of the content model, migration).
+
+**Also done 2026-09-25, with Michael's go-ahead ("migrate all content"):** the other 11 exhibitions, the About and Donate card groups, the remaining pages' fields, the staged page text (§8) and the three review menus (§1, §2). Every item in `proposals/content-migration.md` now has its content in the store or the theme. Log: `proposals/store-writes/README.md`.
 
 ## 5. Exhibition addresses at release (P-10)
 
@@ -66,9 +70,9 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
 
 3. Open each old address and check it lands on its entry.
-4. Clear the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now. Snapshot each body first, for rollback.
+4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
-Rollback: republish the baseline theme, unhide the six pages, delete the six redirects, restore the three page bodies from their snapshots. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the six pages, delete the six redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
@@ -82,8 +86,10 @@ Values the theme's settings need (Online Store, Themes, Customize, Theme setting
 | Land acknowledgement | The current footer's wording | Set (moved from the current theme) |
 | Contact page, On now, Upcoming, Past, Exhibitions overview, Upcoming events and Shop landing pages | `contact`, `on-now`, `upcoming-exhibitions`, `past-exhibitions`, `exhibitions-1`, `upcoming-events`, `shop` | Set |
 | Portfolios, newest first; All limited editions | The five portfolios, 2026 Fall first; `all-prints` | Set |
-| Hours, email, phone, social links, newsletter consent wording | From the gallery (ACCESS-04) | Waiting |
-| Main menu | `new-website-menu-1` until the review menu exists (§1) | Temporary |
+| Hours, phone | Thursday to Saturday, 12:00 PM - 4:00 PM (Plan Your Visit); (604) 903-3798 (Contact page) | Set 2026-09-25 from the current site; gallery to confirm |
+| Email | One address, for the footer and Contact | Blank until the gallery chooses (Michael, 2026-09-25) |
+| Social links, newsletter consent wording | From the gallery (ACCESS-04) | Waiting |
+| Main menu; footer Explore and Legal menus | `new-theme-main`; `new-theme-explore`, `new-theme-legal` (§1, §2) | Set |
 
 ## 7. Product titles at release (DS-16)
 
@@ -91,7 +97,27 @@ The 21 limited editions' titles carry Unicode italic letters (L-03). At release,
 
 Rollback: restore each title from `proposals/store-writes/snapshots/prints-2026-09-25.json`.
 
-## 8. Not proposed
+## 8. Staged page text at release (DS-39)
+
+Page text is live, so the text that changes at release is staged in a temporary page field, `custom.release_body`, which the new theme shows instead of the page's text (`sections/gs-page-body.liquid`). Created 2026-09-25 with Michael's go-ahead (`proposals/store-writes/README.md`).
+
+| Page | Staged text |
+| --- | --- |
+| On Now, Upcoming Exhibitions, Upcoming Events | None: each repeats *Collect, Assemble, Gather*, which lives in its entry |
+| Donate | Its text, then the tax receipt note from the old template |
+| Gordon and Marion | Its text, then the video from the old template |
+
+At release, a script (to write before release, with a dry run) does, for each page:
+
+1. Checks the page's live text still matches `proposals/store-writes/snapshots/pages-2026-09-25.json`. If not, it stops: the staged text is rebuilt from the new live text and checked again.
+2. Replaces the page's text with the staged text (an HTML comment alone means no text).
+3. Clears the staged value.
+
+Then it deletes the `release_body` definition. The theme's fallback in `gs-page-body.liquid` is removed in a later pull request.
+
+Rollback: restore each page's text from the snapshot.
+
+## 9. Not proposed
 
 - No other redirects, no product or collection changes beyond part 4, no app installs, no checkout changes.
 - Mailchimp: no change until the audit is complete (`baseline/mailchimp-audit.md`).

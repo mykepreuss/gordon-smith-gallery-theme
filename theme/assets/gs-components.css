@@ -481,6 +481,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   line-height: var(--gs-leading-deck);
 }
 .gs-prose img { max-width: 100%; height: auto; border-radius: var(--gs-shape-md); }
+/* A video embedded in the page text fills the text column at 16:9, whatever size the embed code gives. */
+.gs-prose iframe:is([src*="vimeo.com"], [src*="youtube.com"], [src*="youtube-nocookie.com"]) {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--gs-ratio-video);
+  border: 0;
+  border-radius: var(--gs-shape-md);
+}
 /* Text pasted from Word or email arrives with inline fonts, sizes and colours. Neutralise them. */
 .gs-prose [style],
 .gs-prose font {

@@ -11,7 +11,7 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | Done 2026-09-25, except Mailchimp app settings (need access) | `baseline/` |
 | 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Approved 2026-09-25: content model parts 1 to 3, menu map and labels, page types, editing model, contact and newsletter placement. Content model parts 4 to 6 approved the same day (P-16) | `proposals/`, shared doc, `DECISIONS.md` P-10 to P-16 |
 | 1c | Content inventory of the current theme, for the new build | Done 2026-09-25 | `proposals/content-migration.md` |
-| 2 | Build the new theme on a feature branch (P-13), from Shopify's Skeleton theme (P-14) | Template set built on `build-new-theme`, 2026-09-25, then design passes with real content for Home, Exhibitions, the programme pages and Shop. Checked in development theme 184755814697 (hidden, made by `shopify theme dev`). Still to do: the plan's "Remaining work before the review theme" | `theme/`, DESIGN.md §9.6, `proposals/store-writes/` |
+| 2 | Build the new theme on a feature branch (P-13), from Shopify's Skeleton theme (P-14) | Template set built on `build-new-theme`, 2026-09-25, then design passes with real content for Home, Exhibitions, the programme pages and Shop. All content migrated 2026-09-25: every page, exhibition, card and menu is in the store or the theme, with the page text that changes at release staged (DS-39). Checked in development theme 184755814697. Still to do: design passes on the remaining pages, and the plan's "Remaining work before the review theme" | `theme/`, DESIGN.md §9.6, `proposals/store-writes/` |
 | 3 | Pull request with code, register, proposed store changes, Theme Check | Open: [PR #4](https://github.com/mykepreuss/gordon-smith-gallery-theme/pull/4) (`build-new-theme`). Merges once the remaining pages have had their pass; smaller pull requests after that (plan step 3) | Theme Check 0 offences; lint 0 errors, 0 warnings |
 | 4 | Unpublished review theme (the new theme uploaded unpublished), CLI pushes to its ID only | Not started | |
 | 5 | Verification: 1440 / 768 / 390, touch, keyboard, staff editing on two pages of one template, newsletter test | Not started | |
@@ -25,11 +25,11 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 
 | Item | From | Blocks |
 | --- | --- | --- |
-| Signup wording, consent wording, contact emails, phone, hours, social URLs | Gallery | ACCESS-01 to ACCESS-04 |
+| Signup wording, consent wording, the site email, social URLs; confirming the hours and phone taken from the current site | Gallery | ACCESS-01 to ACCESS-04 |
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
 | Land acknowledgement font (Q11): accept Arial for the characters Mulish lacks, or load a font for BC Indigenous languages | Gallery | L-06 |
-| Go-ahead for the other pages' field values, the other 11 exhibitions, and a review-only menu (exhibitions, events, page fields, cards, programme pages and the Shop's labels were done 2026-09-25, `proposals/store-writes/`) | Michael | Reviewing the remaining pages with real content; plan step 4 |
+| Checks from the migration: the Donate "Online Form" card (the form is off), Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, About and About Us as two pages (`proposals/store-writes/README.md`) | Gallery | Nothing; the review shows today's content |
 
 ## Limitation log (REUSE-04)
 

@@ -1,0 +1,7 @@
+{"taken": "2026-09-25, before migration.py writes",
+ "exhibition": ["collect-assemble-gather", "one-hundred-artists-deep", "against-the-latitude-of-progress", "play"],
+ "card_count": 29, "card_group": ["afk-programmes", "public-programs", "foundation-take-part", "foundation-board"],
+ "event_count": 8,
+ "menus": ["main-menu", "footer", "customer-account-main-menu", "footer-menu-copy", "new-website-menu-1"],
+ "page_field_definitions": ["hero_image", "hero_is_artwork", "hero_caption", "eyebrow", "intro", "cta", "programme", "card_groups", "gallery_images"],
+ "pages": "pages-2026-09-25.json (every page's body, template and custom fields)"}

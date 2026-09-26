@@ -117,10 +117,11 @@ These go in the release change set.
 | Item | Owner | Notes |
 | --- | --- | --- |
 | Design passes for About, Contact, Donate, Plan your visit, the Exhibitions overview, FAQ and Volunteer | Agent | Theme work in Git |
-| Field values on those pages, including Donate's card group and the Gordon and Marion video in its page body | Agent, with Michael's go-ahead | Store writes (above); map in `proposals/content-migration.md` |
-| The other 11 exhibition entries | Agent, with Michael's go-ahead | Content model part 2; `proposals/store-writes/entries.py` |
-| The review menu (`proposals/store-changes.md` §1), set in the review theme only | Agent, with Michael's go-ahead | Plan step 4 |
+| Field values on those pages, including Donate's card group and the Gordon and Marion video | Agent, with Michael's go-ahead | Done 2026-09-25; the video and Donate's tax receipt note are staged page text (DS-39) |
+| The other 11 exhibition entries | Agent, with Michael's go-ahead | Done 2026-09-25 (`proposals/store-writes/migration.py`) |
+| The review menus (`proposals/store-changes.md` §1, §2), set in the new theme only | Agent, with Michael's go-ahead | Done 2026-09-25: `new-theme-main`, `new-theme-explore`, `new-theme-legal` |
 | The template reassignment script, with a dry run (see "Release gate and rollback") | Agent | In `proposals/store-writes/`; reviewed by Michael |
+| The staged page text script, with a dry run (`proposals/store-changes.md` §8) | Agent | In `proposals/store-writes/`; reviewed by Michael |
 | Wording and values: consent text, hours, email, phone, social URLs, Q10, Q11 | Gallery | See "Inputs, exclusions, and known limits" |
 | Mailchimp app settings: customer sync, audience, consent mapping, double opt-in | Gallery or Michael | ACCESS-01; needs app access |
 
@@ -148,7 +149,7 @@ Before requesting release approval, provide:
   3. Reassigning every page's template, by script, straight after publishing (below).
   4. Switching or editing the main menu, and editing the footer menu.
   5. Hiding the six old exhibition pages and creating their redirects.
-  6. Clearing the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
+  6. Moving the staged page text into its five pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, and adds Donate's tax receipt note and the Gordon and Marion video.
   7. Plain-text titles on the 21 limited editions (DS-16).
 - A check that every active exhibition entry is ready to be seen. The entries are already active; their pages return 404 only because the live theme has no exhibition template, so publishing the new theme makes them public.
 - Test evidence for storefront and staff editing, plus comparison against the latest live theme state.

@@ -18,7 +18,8 @@
     "footer": {
       "type": "gs-footer",
       "settings": {
-        "menu": "footer"
+        "menu": "new-theme-explore",
+        "legal_menu": "new-theme-legal"
       }
     }
   },
