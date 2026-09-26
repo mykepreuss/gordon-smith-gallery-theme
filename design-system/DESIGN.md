@@ -469,7 +469,7 @@ Sections in order; brackets mean optional. All templates also get the global hea
 - Lockups: Gallery `simple-stacked`, `simple-horizontal`, `full-stacked`, `full-horizontal` (full adds "of Canadian Art"); Foundation `simple`, `full` (full adds "for Young Artists"); Artists for Kids `full` (single lockup).
 - Variants: `colour-box`, `bw-box`, `black`, `white`, and `colour` (Artists for Kids unboxed, black type with orange swoosh).
 
-Conversion notes: fills were remapped from the PDFs' CMYK builds to the official web sRGB values (§11), unboxed variants were cropped to the artwork's bounds so they align with type and grid edges, and each file carries `role="img"` and an `aria-label`. The originals in `reference/` are untouched. The eight logos the website uses are generated into theme snippets by `scripts/build_logo_snippets.py` and rendered with `{% render 'gs-logo', name: ... %}`.
+Conversion notes: fills were remapped from the PDFs' CMYK builds to the official web sRGB values (§11), unboxed variants were cropped to the artwork's bounds so they align with type and grid edges, and each file carries `role="img"` and an `aria-label`. The originals in `reference/` are untouched. The eight logos the website uses are generated into theme snippets by `scripts/build_logo_snippets.py` and rendered with `{% render 'gs-logo', name: ... %}`. The snippets leave out the files' embedded content credentials (a C2PA manifest of about 7.7 KB each), which would otherwise be inlined on every page; the files keep them.
 
 ### 8.2 Which logo where
 
