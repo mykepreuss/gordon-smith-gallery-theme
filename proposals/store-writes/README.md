@@ -364,3 +364,36 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 **Effect on the live site:** none; the live theme reads no card groups.
 
 **Undo:** clear the group's heading.
+
+## 2026-09-26: Donate and Gordon and Marion pass (DS-53)
+
+**Why:** Michael, 2026-09-26: "using our design skills let's improve these pages."
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` unchanged. Both pages' staged text matched what `migration.py` builds, and Donate had no call to action (`snapshots/donate-gm-2026-09-26-before.json`).
+
+**Made through the Shopify connector** (payloads from `donate_gm.py`; `donate_gm.py review` prints both texts; each step checks the words are unchanged):
+
+| Page | Field | Change |
+| --- | --- | --- |
+| Gordon and Marion | staged text | The biography, one paragraph split by line breaks, becomes paragraphs. The photo becomes a figure with the description "Gordon and Marion Smith looking at a print together" (it had none), so it sits beside the biography |
+| Donate | staged text | "The impact of your gift" becomes a heading. Asha's words become a quote with her name under it, beside the list of what a gift does. Spacing typed as line breaks goes; the Explore + Create link stays in the same tab; a space inside a link moves out |
+| Donate | `cta` | "Ways to give", to `/pages/donate#donate-ways-to-give`: the hero's button jumps to the Ways To Give cards |
+
+**Effect on the live site:** none; the live theme reads neither field.
+
+**Undo:** set both staged texts back to `migration.py`'s (`donate_body()`, and Gordon and Marion's text plus the video); clear Donate's `cta`.
+
+## 2026-09-26: Gordon and Marion's video at its own shape (DS-53)
+
+**Why:** Michael, 2026-09-26: "Let's improve this video embed, it looks bad." Vimeo gives the video as square (240 × 240 in its oEmbed data, 200 × 200 thumbnail), and the page boxed it at 16:9, so it played with bars down both sides under a heading pressed against it.
+
+**Before-snapshot:** `snapshots/gm-video-2026-09-26-before.json`.
+
+**Made through the Shopify connector** (`donate_gm.py gm-staged`): Gordon and Marion's staged text. The video is now a figure under the photo, beside the biography:
+- It has width and height 640, which the theme turns into its shape.
+- Its caption is its old heading, "Video: Gordon Smith's Magic", with the words unchanged.
+- The player asks Vimeo for no title, byline or portrait overlay (`title=0&byline=0&portrait=0`), which would repeat the caption, and for the ink colour (`color=231f20`) instead of Vimeo's blue.
+
+**Effect on the live site:** none; the live theme doesn't read the staged field.
+
+**Undo:** set the staged text back from the snapshot.
