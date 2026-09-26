@@ -467,8 +467,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
   .gs-grid--cards.gs-grid--fours { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+/* Artworks stay at three across on wide screens, so each work is shown larger (DS-46); people go to four. */
 @media (min-width: 1200px) {
-  .gs-grid--artworks,
   .gs-grid--people { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
@@ -834,7 +834,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 @media (min-width: 1200px) {
   .gs-gallery--installation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .gs-gallery--works { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 /* Museum label: artist, title (italic) and year, then medium, dimensions, credit. */
 .gs-label-block { display: grid; gap: 0.15em; font-size: var(--gs-text-caption); line-height: var(--gs-leading-caption); }

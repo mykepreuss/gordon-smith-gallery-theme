@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.5.7 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.5.8 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Items marked **Proposed** still need Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -312,7 +312,7 @@ Two modes, chosen by the component. Sections render images only through `snippet
 - **Exhibition / programme card** (`.gs-card`): photo media 4:3 with `--gs-shape-md`; status chip only where a list mixes statuses (Home), not on a list that is all one status; H3 title in caps; dates, then curators or artists, each on its own line in muted small. On a grid card the curator credit stops at two lines, so cards in a row stay even; wide cards and the exhibition page show it whole. The title link is stretched over the whole card; the card shows the focus ring where the browser supports `:has()`, otherwise the link keeps its own. Hover (mouse) and press (touch) underline the title; images do not zoom.
 - **Card groups** (`.gs-grid--cards`): one, two, then three across. A group of four or eight (`.gs-grid--fours`) goes two, then four, across instead, so no card sits alone on a row (DS-44).
 - **Compact card** (`.gs-card--compact`): same anatomy with an H4-size title; used for portfolio navigation and "More exhibitions" rows.
-- **Artwork tile** (`.gs-artwork-tile`): artwork media 1:1 on the mat; artist (bold), *title* (italic) and year, medium and edition (muted small), price (bold small). No badges over the image; sold-out or edition status goes in the text.
+- **Artwork tile** (`.gs-artwork-tile`): in grids of two, then three across, never four, so each work shows large (DS-46); artwork media 1:1 on the mat; artist (bold), *title* (italic) and year, medium and edition (muted small), price (bold small). No badges over the image; sold-out or edition status goes in the text.
 - **Status chip** (`.gs-chip`): On now, Upcoming, Past, Sold out. Tint background; the single most important state (On now) is `.gs-chip--strong`, a solid chip in the surface's text colour (ink on paper, paper on ink). Text always states the status; colour is never the only signal. Exhibition status is computed from dates, never typed (`snippets/gs-exhibition-status.liquid`).
 - **Status and dates** (`.gs-status`): the chip, then the dates on their own line in bold small (`.gs-status__dates`), written out by `snippets/gs-date-range.liquid`: "September 25, 2026 to February 20, 2027"; "April 12 to June 22, 2024" when both dates share a year; "From September 25, 2026" without an end date. Never a joined string such as "On now · Until February" (DS-18).
 
@@ -336,7 +336,7 @@ Two modes, chosen by the component. Sections render images only through `snippet
 `.gs-gallery` is a list of figures with captions always visible. No lightbox in v1 (Q8).
 
 - Installation views (`.gs-gallery--installation`): photo mode 3:2, `--gs-shape-md`, caption in caption style ("Installation view, Exhibition, year. Photo: Name").
-- Works (`.gs-gallery--works`): artwork mode on the mat with a museum label (`.gs-label-block`: artist bold, *title* italic and year, medium and credit light). Phase 2: needs artwork data (proposal part 2).
+- Works (`.gs-gallery--works`): two, then three across, never more (DS-46); artwork mode on the mat with a museum label (`.gs-label-block`: artist bold, *title* italic and year, medium and credit light). Phase 2: needs artwork data (proposal part 2).
 
 ### 6.9 Newsletter band (ACCESS-01)
 
@@ -457,7 +457,7 @@ Sections in order; brackets mean optional. All templates also get the global hea
 - **page.shop:** hero or page header · [rich text: one short introduction] · portfolio navigation (compact cards, artwork mode, one per portfolio) · [feature panel: e.g. Our Story or framing]. No other listings (SHOP-01, SHOP-02).
 - **page.contact:** page header · contact details beside the form. The details are the page's own text when it has some, in the tint panel, so the gallery's words (both email addresses, office hours) show once; otherwise the address, hours, email and phone from Theme settings (DS-42).
 - **collection:** collection header (title, season, short intro) · switcher (portfolios) · artwork grid (tiles) · [rich text]. Keeps the cleaner layout the notes praise (SHOP-03).
-- **product:** artwork detail (artwork-mode media, museum label from product fields, price, edition, add to cart, framing option from `custom.featured_frame`) · [rich text: about the work] · [related works, max one row].
+- **product:** artwork detail (artwork-mode media, museum label from product fields, price, edition, add to cart, framing option from `custom.featured_frame`) · [rich text: about the work] · [related works, one row of three].
 
 ## 8. Logos
 
@@ -612,18 +612,18 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | ID | Decision | Status |
 | --- | --- | --- |
 | DS-01 | Where the guides disagree, the supplied logo files set the colour values | Proposed; confirm with the brand designer (Q4) |
-| DS-02 | Mulish is the web font; Soleil via Adobe Fonts only if the gallery holds a licence | Proposed (plan already chose Mulish) |
-| DS-03 | One rounded corner, bottom-right, site-wide; sizes sm/md/lg | Proposed |
-| DS-04 | Programme theming via `data-gs-brand`; Foundation and Artists for Kids text colours fall back to ink | Proposed |
-| DS-05 | Artwork images are never cropped, rounded, shifted or overlaid; photo mode for everything else | Proposed |
-| DS-06 | Inline links keep an underline, styled in brand colour with a tint hover fill (DS-21); "beyond default underlining" is met by design, not by removing the cue | Proposed |
+| DS-02 | Mulish is the web font; Soleil via Adobe Fonts only if the gallery holds a licence | Decided by Michael, 2026-09-26 |
+| DS-03 | One rounded corner, bottom-right, site-wide; sizes sm/md/lg | Decided by Michael, 2026-09-26 |
+| DS-04 | Programme theming via `data-gs-brand`; Foundation and Artists for Kids text colours fall back to ink | Decided by Michael, 2026-09-26 |
+| DS-05 | Artwork images are never cropped, rounded, shifted or overlaid; photo mode for everything else | Decided by Michael, 2026-09-26 |
+| DS-06 | Inline links keep an underline, styled in brand colour with a tint hover fill (DS-21); "beyond default underlining" is met by design, not by removing the cue | Decided by Michael, 2026-09-26 |
 | DS-07 | Header logo: Gallery simple stacked colour box, flush top-left, 64 / 96 px | Proposed; judge in a header mockup (TYPE-04) |
-| DS-08 | Hero text lives in a title box in the programme colour, never on the image | Proposed |
-| DS-09 | Newsletter band on tint above an ink footer, on every template | Proposed |
-| DS-10 | Headings in capitals per brand; artwork titles italic sentence case | Proposed |
+| DS-08 | Hero text lives in a title box in the programme colour, never on the image | Decided by Michael, 2026-09-26 |
+| DS-09 | Newsletter band on tint above an ink footer, on every template | Decided by Michael, 2026-09-26 |
+| DS-10 | Headings in capitals per brand; artwork titles italic sentence case | Decided by Michael, 2026-09-26 |
 | DS-11 | A section with pages under it is one button that opens its dropdown and never navigates; the section's main page is the first item inside. Sections without pages are plain links. Click or keyboard only, never hover; one open at a time. Reason: one target and one behaviour on mouse, touch and keyboard (NAV-01, NAV-03). Cost: a section's main page is two clicks from the menu, and its dropdown label must not read as a repeat of the section. Replaces the linked-label-plus-separate-caret model recorded in `IMPLEMENTATION_PLAN.md`, which that file still describes. Revisit only if testing shows people can't find section main pages, and fix that with clearer labels first | Decided by Michael, 2026-09-25; gallery approves labels |
-| DS-12 | Photo hero overlaps the image by a fixed amount only; artwork hero never overlaps | Proposed |
-| DS-13 | Sibling navigation (switcher) on exhibition list pages and portfolio pages | Proposed |
+| DS-12 | Photo hero overlaps the image by a fixed amount only; artwork hero never overlaps | Decided by Michael, 2026-09-26 |
+| DS-13 | Sibling navigation (switcher) on exhibition list pages and portfolio pages | Decided by Michael, 2026-09-26 |
 | DS-14 | Closed set of templates (§7.4) with per-page content in page fields | Approved 2026-09-25 (content model answers recorded by Michael) |
 | DS-15 | Exhibitions as structured entries with status computed from dates. Addresses change to `/pages/exhibitions/<entry>`; old addresses redirect | Approved 2026-09-25 (content model answers recorded by Michael) |
 | DS-16 | Artwork label data in product fields; plain-text product titles | Approved 2026-09-25 (content model answers recorded by Michael) |
@@ -656,6 +656,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 | DS-43 | The Exhibitions overview page carries the On now / Upcoming / Past switcher under its hero. Reason: the overview had no way into the three lists except the menu (EXH-02); with the switcher it's the way in | Proposed (page pass, 2026-09-26) |
 | DS-44 | A card group of four or eight goes two, then four, across instead of three. Reason: four cards in three columns left one alone (Donate's Ways To Give, Public Programs) | Proposed (page pass, 2026-09-26) |
 | DS-45 | A list of twelve or more items in page text flows into two columns, three from 990 px, without bullets. The Artists page's names become one list in its staged text (DS-39): same names, order and links. Reason: 59 names in one centred column made a very long page | Proposed (page pass, 2026-09-26) |
+| DS-46 | Artwork grids (portfolio pages, the Shop's portfolio navigation, search results, related works, galleries of works) show at most three across, and related works one row of three. Reason: at four across each print was too small to see; asked for with the approval of DS-05 | Decided by Michael, 2026-09-26 |
 
 | ID | Question or input | Needed for |
 | --- | --- | --- |
@@ -673,6 +674,7 @@ Still to verify, mostly in the review theme once fields and entries exist:
 
 ## 13. Changelog
 
+- 0.5.8 (2026-09-26): Michael approves DS-02 to DS-06, DS-08 to DS-10, DS-12 and DS-13. Artwork grids stay at three across (DS-46).
 - 0.5.7 (2026-09-26): remaining pages pass. Smaller headings in page text (DS-40), no heading that repeats the title (DS-41), Contact's own text beside the form (DS-42), the switcher on the Exhibitions overview (DS-43), groups of four go two then four across (DS-44), long lists in columns (DS-45). Fixes: the Upcoming Events page no longer shows its title twice; long curator credits stop at two lines on grid cards; `.gs-panel` includes its padding in its width; empty sections no longer break the space after a page header.
 - 0.5.6 (2026-09-25): all content migrated for review (`proposals/store-writes/`). Page text that changes at release is staged (DS-39). Videos embedded in page text fill the column at 16:9 (`--gs-ratio-video`, §6.11).
 - 0.5.5 (2026-09-25): the build decisions DS-28 to DS-38 are approved by Michael, who approves design decisions for the gallery (P-17). No design change.
