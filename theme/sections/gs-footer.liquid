@@ -1,7 +1,8 @@
 {%- comment -%}
   Footer (DESIGN.md §6.10, ACCESS-02, ACCESS-03): ink surface. The three organisations' white
-  logos, the Gallery first and largest; the land acknowledgement once; Visit, Contact, Explore
-  and Follow columns; the legal line. Addresses, hours, contact details, social links and the
+  logos, the Gallery first and largest, beside the land acknowledgement that names them; then
+  Visit, Contact, Explore and Follow columns, which keep their places whether or not Follow
+  shows; then the legal line (DS-57). Addresses, hours, contact details, social links and the
   land acknowledgement are theme settings (Gallery details, Social links), so they're the same on
   every page.
 {%- endcomment -%}
@@ -17,10 +18,15 @@
 -%}
 <footer class="gs-surface-ink">
   <div class="gs-container gs-footer">
-    <div class="gs-footer__logos">
-      {%- render 'gs-logo', name: 'gallery-simple-stacked-white' -%}
-      {%- render 'gs-logo', name: 'artists-for-kids-full-white' -%}
-      {%- render 'gs-logo', name: 'foundation-simple-white' -%}
+    <div class="gs-footer__top">
+      <div class="gs-footer__logos">
+        {%- render 'gs-logo', name: 'gallery-simple-stacked-white' -%}
+        {%- render 'gs-logo', name: 'artists-for-kids-full-white' -%}
+        {%- render 'gs-logo', name: 'foundation-simple-white' -%}
+      </div>
+      {%- if settings.land_acknowledgement != blank -%}
+        <div class="gs-footer__ack gs-prose">{{ settings.land_acknowledgement }}</div>
+      {%- endif -%}
     </div>
 
     <div class="gs-footer__cols">
@@ -82,10 +88,6 @@
         <p class="gs-editor-warning">Add the gallery's social links in Theme settings, Social links (ACCESS-03).</p>
       {%- endif -%}
     </div>
-
-    {%- if settings.land_acknowledgement != blank -%}
-      <div class="gs-footer__ack gs-prose">{{ settings.land_acknowledgement }}</div>
-    {%- endif -%}
 
     <ul class="gs-footer__legal">
       <li>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</li>

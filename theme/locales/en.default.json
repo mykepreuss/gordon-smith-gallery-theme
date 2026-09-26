@@ -15,7 +15,6 @@
     "main_nav": "Main",
     "current_section": ", current section",
     "contact": "Contact",
-    "newsletter": "Newsletter",
     "search": "Search",
     "cart": "Cart ({{ count }})"
   },

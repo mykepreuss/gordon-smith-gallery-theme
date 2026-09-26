@@ -1229,12 +1229,28 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* ---------- Footer ---------- */
 
 .gs-footer { padding-block: var(--gs-space-8) var(--gs-space-6); }
-.gs-footer__logos { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--gs-space-6) var(--gs-space-7); }
+/* Who and where: the three logos, then the land acknowledgement that names the organisations;
+   side by side from 990 px (DS-57). Both rows share one column gap, so the columns below line up
+   with the acknowledgement. */
+.gs-footer__top { display: grid; gap: var(--gs-space-6); align-items: start; }
+.gs-footer__logos { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--gs-space-5) var(--gs-space-7); }
+/* The columns keep their places: two across (Visit alone on top on phones), four from 1200 px, so
+   Follow fills the fourth when the gallery adds its social links and nothing else moves. From
+   990 px a column starts where the acknowledgement does. */
 .gs-footer__cols {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: var(--gs-space-6) var(--gs-gutter);
-  margin-block: var(--gs-space-7);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gs-space-6);
+  margin-block: var(--gs-space-8) var(--gs-space-7);
+}
+@media (max-width: 749px) {
+  .gs-footer__cols > :first-child { grid-column: 1 / -1; }
+}
+@media (min-width: 990px) {
+  .gs-footer__top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .gs-footer__cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 .gs-footer__cols > * { display: grid; align-content: start; gap: var(--gs-space-3); }
 .gs-footer__cols p { margin: 0; }
@@ -1252,10 +1268,13 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 .gs-footer__legal { display: flex; flex-wrap: wrap; gap: var(--gs-space-2) var(--gs-space-5); margin: 0; padding: 0; list-style: none; color: var(--gs-color-fg-muted); font-size: var(--gs-text-caption); }
 .gs-footer__legal a { color: inherit; }
+/* The copyright on its own line, the links together under it, so no link is left alone on a line. */
+.gs-footer__legal > :first-child { flex-basis: 100%; }
 .gs-footer__logos svg { display: block; height: var(--gs-footer-logo-h); width: auto; }
 .gs-footer__logos > svg:first-child,
 .gs-footer__logos > :first-child svg { height: var(--gs-footer-logo-h-lead); }
-.gs-footer__ack { max-width: var(--gs-measure); margin: 0 0 var(--gs-space-6); }
+.gs-footer__ack { max-width: var(--gs-measure); margin: 0; }
+.gs-footer__ack > * { margin-block: 0; }
 .gs-footer__cols address { font-style: normal; }
 
 /* ---------- Page frame ---------- */
