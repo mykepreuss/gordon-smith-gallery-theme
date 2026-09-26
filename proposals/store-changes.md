@@ -101,9 +101,9 @@ Rollback: restore each title from `proposals/store-writes/snapshots/prints-2026-
 
 Proposed for release, in the same script as the titles, after a dry run the gallery approves:
 
-1. Remove the lines that repeat a label field: artist, title and year, "Limited Edition", edition, sizes, technique, date.
+1. Remove the lines that repeat a label field: artist, title and year, "Limited Edition", edition, sizes, technique, date. Remove the second repeat of the details in Samuel Roy-Bois's and Sara Khan's descriptions too (P-21, decided).
 2. Keep paper and signature, which have no field, as one short line. Keep everything else in the description as written, including Russna Kaur's opening quote.
-3. The gallery decides the "Availability" lines ("Low Stock", "SOLD OUT"): typed stock status goes out of date, and the theme already says Sold out from inventory. Samuel Roy-Bois's and Sara Khan's descriptions repeat the details a second time after them; the gallery decides those too.
+3. Remove the "Availability" lines ("Low Stock", "SOLD OUT"): typed stock status goes out of date, and the theme already says Sold out from inventory (P-22, proposed).
 
 The dry run prints each description before and after; nothing changes until the gallery approves. Before the change, snapshot the 21 descriptions in full (`snapshots/prints-2026-09-25.json` holds the titles and parsed details, not the descriptions). Rollback: restore each description from that snapshot.
 
