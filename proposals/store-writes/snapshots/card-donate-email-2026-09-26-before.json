@@ -1,0 +1,18 @@
+{
+  "taken": "2026-09-26, before the typo fix",
+  "shop": {"myshopifyDomain": "ed35ee-ea.myshopify.com", "primaryDomain": "gordonsmithgallery.com"},
+  "liveTheme": {"id": "gid://shopify/OnlineStoreTheme/183162372393", "name": "Colorblock: NEW WEBSITE", "role": "MAIN"},
+  "metaobject": {
+    "id": "gid://shopify/Metaobject/608389398825",
+    "handle": "donate-email",
+    "type": "card",
+    "updatedAt": "2026-09-26T00:12:56Z",
+    "fields": [
+      {"key": "image", "value": null},
+      {"key": "title", "value": "Email"},
+      {"key": "text", "value": "To make a gift or for more information about the various giving options, email us as at admin@smithfoundation.ca"},
+      {"key": "link", "value": null}
+    ],
+    "referencedBy": ["gid://shopify/Metaobject/608389562665 (card_group donate-ways-to-give)"]
+  }
+}
