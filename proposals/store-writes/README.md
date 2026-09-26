@@ -161,3 +161,15 @@ For the gallery:
 **Effect on the live site:** none; the live theme reads no page fields.
 
 **Undo:** clear the two values.
+
+## 2026-09-26: Donate's Email card, typo
+
+**Why:** the card read "email us as at". Michael asked for it fixed, 2026-09-26. The rest of the words are the gallery's, unchanged.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`, live theme `183162372393` "Colorblock: NEW WEBSITE", role MAIN (Admin API). Before-snapshot: `snapshots/card-donate-email-2026-09-26-before.json`.
+
+**Made through the Shopify connector:** card `donate-email` (`gid://shopify/Metaobject/608389398825`), field `text`: "...email us as at admin@smithfoundation.ca" became "...email us at admin@smithfoundation.ca". Nothing else on the entry changed. `migration.py` has the corrected text, so a re-run can't bring the typo back.
+
+**Effect on the live site:** none; the live theme reads no card entries. The live Donate page shows the same words from the live theme's own template, which keeps the typo until release: the live theme isn't written to (AGENTS.md).
+
+**Undo:** set the field back to the value in the snapshot.
