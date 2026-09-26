@@ -34,7 +34,7 @@
           <div class="gs-prose">{{ s.text }}</div>
         {%- endif -%}
         {%- if s.button_label != blank and s.button_link != blank -%}
-          <a class="gs-button" href="{{ s.button_link }}">{{ s.button_label | escape }}</a>
+          {%- render 'gs-link', url: s.button_link, label: s.button_label, class: 'gs-button' -%}
         {%- endif -%}
       </div>
     </div>

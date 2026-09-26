@@ -1,19 +1,22 @@
 {% doc %}
-  A link from a link field (a card's link, a page's call to action, an event's tickets) or a menu
-  link. Off-site addresses get the external cue: the arrow and "(external site)" for screen
-  readers (DESIGN.md §6.1, §6.2). Store addresses typed in full are made relative (gs-url). A link
-  to a PDF says so, "(PDF)", so nobody opens a large file by surprise.
+  A link from a link field (a card's link, a page's call to action, an event's tickets), a menu
+  link, or a section's link setting (a feature's button). Off-site addresses get the external cue:
+  the arrow and "(external site)" for screen readers (DESIGN.md §6.1, §6.2). Store addresses typed
+  in full are made relative (gs-url). A link to a PDF says so, "(PDF)", so nobody opens a large
+  file by surprise.
 
-  @param {object} link - A link field's value (url, text) or a menu link (url, title)
+  @param {object} [link] - A link field's value (url, text) or a menu link (url, title)
+  @param {string} [url] - A section's link setting, which is the address alone. Pass label with it
   @param {string} [label] - Visible text. Default: the link's own text or title
   @param {string} [class] - Classes for the <a>, e.g. 'gs-button' or 'gs-cta-link'
 
   @example
   {%- render 'gs-link', link: page.metafields.custom.cta.value, class: 'gs-button' -%}
+  {%- render 'gs-link', url: section.settings.button_link, label: section.settings.button_label, class: 'gs-button' -%}
 {% enddoc %}
 {%- liquid
   capture r
-    render 'gs-url', link: link
+    render 'gs-url', link: link, url: url
   endcapture
   assign r = r | strip | split: '|'
   assign text = label | default: link.text | default: link.title

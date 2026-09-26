@@ -49,6 +49,13 @@ def build(out_dir):
     for name in WEBSITE_LOGOS:
         svg = (ROOT / "logos" / f"{name}.svg").read_text()
         svg = re.sub(r"<title>.*?</title>\s*", "", svg, flags=re.S)
+        # The exported files carry content credentials (a C2PA manifest, about 7.7 KB of base64):
+        # provenance, not drawing. Inlined, it would add that to every page for each logo, so the
+        # snippets leave it out. The files in logos/ and reference/ keep it.
+        svg = re.sub(r"<metadata>.*?</metadata>\s*", "", svg, flags=re.S)
+        svg = re.sub(r'\sxmlns:c2pa="[^"]*"', "", svg)
+        if "c2pa" in svg:
+            raise SystemExit(f"{name}: content credentials left in the snippet")
         svg, n = re.subn(r'role="img" aria-label="[^"]*"', A11Y.format(alt=alt[name]), svg, count=1)
         if n != 1:
             raise SystemExit(f"{name}: expected one role/aria-label attribute")

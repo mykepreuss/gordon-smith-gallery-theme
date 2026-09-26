@@ -13,13 +13,14 @@
   - Any other absolute URL is external and gets the external cue.
   - A blank URL or "#" means "no destination" and comes back as "#".
 
-  @param {object} link - A menu link, or a link field's value; anything with a url property
+  @param {object} [link] - A menu link, or a link field's value; anything with a url property
+  @param {string} [url] - A section's link setting, which is the address alone. Used when there's no link
 
   @example
   {% render 'gs-url', link: link %}
 {% enddoc %}
 {%- liquid
-  assign href = link.url | default: '#'
+  assign href = link.url | default: url | default: '#'
   assign external = '0'
   if href contains '://'
     assign bare = href | split: '://' | last
