@@ -91,11 +91,21 @@ Values the theme's settings need (Online Store, Themes, Customize, Theme setting
 | Social links, newsletter consent wording | From the gallery (ACCESS-04) | Waiting |
 | Main menu; footer Explore and Legal menus | `new-theme-main`; `new-theme-explore`, `new-theme-legal` (§1, §2) | Set |
 
-## 7. Product titles at release (DS-16)
+## 7. Product titles and descriptions at release (DS-16)
 
 The 21 limited editions' titles carry Unicode italic letters (L-03). At release, each title becomes the same words in plain text (`proposals/store-writes/shop.py`, `plain()`). The new theme shows the label fields, so this changes the admin, order emails, search and the browser tab. The live theme shows the titles, which is why this waits for release.
 
 Rollback: restore each title from `proposals/store-writes/snapshots/prints-2026-09-25.json`.
+
+**Descriptions (found 2026-09-26).** Each of the 21 descriptions opens with its label typed out: artist, title and year, "Limited Edition" (or "Art Edition"), on some an "Availability" line, then "PRINT DETAILS" with edition, sizes, paper, technique, date and signature. The new theme shows the label beside the work and the description under About the work, so a product page says most of it twice. The live theme has no label fields and shows these details only through the description, which is why they stay until release.
+
+Proposed for release, in the same script as the titles, after a dry run the gallery approves:
+
+1. Remove the lines that repeat a label field: artist, title and year, "Limited Edition", edition, sizes, technique, date.
+2. Keep paper and signature, which have no field, as one short line. Keep everything else in the description as written, including Russna Kaur's opening quote.
+3. The gallery decides the "Availability" lines ("Low Stock", "SOLD OUT"): typed stock status goes out of date, and the theme already says Sold out from inventory. Samuel Roy-Bois's and Sara Khan's descriptions repeat the details a second time after them; the gallery decides those too.
+
+The dry run prints each description before and after; nothing changes until the gallery approves. Before the change, snapshot the 21 descriptions in full (`snapshots/prints-2026-09-25.json` holds the titles and parsed details, not the descriptions). Rollback: restore each description from that snapshot.
 
 ## 8. Staged page text at release (DS-39)
 
