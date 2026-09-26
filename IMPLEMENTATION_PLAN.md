@@ -151,21 +151,18 @@ Open while iterating. Add what each review finds; take items off when they merge
 
 | Item | Owner | Notes |
 | --- | --- | --- |
-| Check every hero crop on the review theme at 1440, 768 and 390, and set a focal point in Files where a crop loses the subject | Agent with Michael, or gallery staff | IMG-02, IMG-03; setting a focal point is a store write on a shared file |
-| Checks from the migration: the Donate "Online Form" card (the form is off), Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, About and About Us as two pages, three artist names that may be misspelled | Gallery | `proposals/store-writes/README.md` |
-| Wording and values: consent wording, the site email, social URLs; confirm the hours and phone taken from the current site; Q10, Q11 | Gallery | See "Inputs, exclusions, and known limits" |
+| Set the seven hero focal points in the admin (Content > Files), then check them on the review theme at phone width | Michael, then Agent | `proposals/hero-focal-points.md`, each point tried on the preview first (2026-09-26). Shopify's API can't set focal points. IMG-02, IMG-03 |
+| Send the gallery its questions: values, exhibitions, content checks, brand | Michael | `proposals/gallery-questions.md` collects all of them in one place (2026-09-26) |
 
 ### Release backlog (on hold until Michael decides to release)
 
-Done so far: every page's content, the 15 exhibitions, the card groups and events, the product labels and the three review menus (2026-09-25); the review fixes, a design pass on every page, every design decision, the frames decision (P-19), the product description decision (P-21, P-22) and the review theme (2026-09-26).
+Done so far: every page's content, the 15 exhibitions, the card groups and events, the product labels and the three review menus (2026-09-25); the review fixes, a design pass on every page, every design decision, the frames decision (P-19), the product description decision (P-21, P-22) and the review theme (2026-09-26). Also on 2026-09-26: the release script with a dry run of every step (`proposals/store-writes/release.py`, `dry-runs/2026-09-26/`), and the agent's verification checks (`verification/2026-09-26.md`).
 
 | Item | Owner | Notes |
 | --- | --- | --- |
-| The template reassignment script, with a dry run (see "Release gate and rollback") | Agent | In `proposals/store-writes/`; reviewed by Michael. Since DS-48 and DS-49 it only sets template names for staff; visitors see every page correctly without it |
-| The staged page text script, with a dry run (`proposals/store-changes.md` §8) | Agent | Six pages; stops if a page's live text changed since the snapshot |
-| The product titles and descriptions script, with a dry run and a full snapshot of the 21 descriptions first (§7; DS-16, P-21, P-22) | Agent | The gallery approves the dry run |
-| The frames step (§9, P-19) | Agent | Goes in with the scripts |
-| Verification on the review theme (plan step 5): widths, keyboard, touch, the date checks, the font audit, the contact form's delivery address | Agent | DESIGN.md §9.6 lists what's still to verify |
+| The gallery approves the product description clean-up | Gallery | The before-and-after list: `proposals/store-writes/dry-runs/2026-09-26/products.md` |
+| On the day: fresh exports of pages and the 21 prints, the dry runs again, then each step with `--vars` in order: publish, templates, addresses, staged text, products, frames | Agent, Michael | `release.py` docstring. Each step stops or reports before it changes anything |
+| The date checks: an event dropping off after it ends, an exhibition changing status at midnight Pacific | Agent | `verification/2026-09-26.md`: the first can be seen after 3 PM on 2026-09-26; the second needs a real changeover or a test entry with Michael's go-ahead |
 | The staff editing test and the newsletter test | Gallery staff, Mailchimp access | Staff use the review theme's editor |
 | Mailchimp app settings: customer sync, audience, consent mapping, double opt-in | Gallery or Michael | ACCESS-01; needs app access |
 | The release gate | Agent, Michael | "Release gate and rollback" |
@@ -201,7 +198,7 @@ Before requesting release approval, provide:
 - Test evidence for storefront and staff editing, plus comparison against the latest live theme state.
 - Rollback steps: retain the original live theme and its ID; republish it if needed; restore page template assignments from the script's snapshot; unhide the old exhibition pages and delete their redirects; restore product titles from `proposals/store-writes/snapshots/prints-2026-09-25.json` and descriptions from the snapshot taken before their clean-up, frame products to Active from `snapshots/frames-2026-09-26.json`, and page bodies from their before-snapshots; restore any separately changed live menu, page, File, or app resource from its own recorded pre-release snapshot. Theme rollback alone does not reverse store-resource changes.
 
-**Template reassignment.** Pages keep their old template names until release (L-08). The new theme doesn't have most of those templates, so after publishing, those pages fall back to the default page template. Since DS-48 and DS-49 every page still renders correctly that way: the exhibition lists come from Theme settings, and a page on the Shop template other than the Shop landing (Our Story, old template `shop`) reads as a plain page. So the gap after publishing no longer shows to visitors; the reassignment puts the right template name on each page in the admin, for staff. Before release, write a script in `proposals/store-writes/` that:
+**Template reassignment** (`release.py templates`, dry run 2026-09-26: 21 pages change). Pages keep their old template names until release (L-08). The new theme doesn't have most of those templates, so after publishing, those pages fall back to the default page template. Since DS-48 and DS-49 every page still renders correctly that way: the exhibition lists come from Theme settings, and a page on the Shop template other than the Shop landing (Our Story, old template `shop`) reads as a plain page. So the gap after publishing no longer shows to visitors; the reassignment puts the right template name on each page in the admin, for staff. Before release, write a script in `proposals/store-writes/` that:
 
 1. Snapshots every page's current template, for rollback.
 2. Maps each page to its new template (`design-system/DESIGN.md` §7.4).

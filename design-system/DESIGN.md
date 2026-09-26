@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.6.4 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.6.5 (draft), 2026-09-25. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Every design decision is decided as of 2026-09-26; a new one starts as **Proposed** and needs Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -575,9 +575,9 @@ Since then every page has had a design pass with its real content, on the develo
 
 1. That `image_tag` writes the editor's focal point from a file field's image as `object-position`, and the artwork-mode override holds (IMG-03).
 2. The timezone Liquid uses for `'now'` on a changeover day (date and time fields are verified, item 5 above).
-3. Exhibition entry pages: the link-preview image.
+3. ~~Exhibition entry pages: the link-preview image.~~ Verified 2026-09-26: every page has one (`verification/2026-09-26.md`).
 4. The newsletter form with an approved test address: customer created with the `newsletter` tag and email consent, and Mailchimp receiving it (ACCESS-01).
-5. The contact form's delivery address (the store's sender email).
+5. The contact form's delivery address: the store's contact email, `artistsforkids@sd44.ca` (Settings, Store details), checked 2026-09-26; a test message waits for the gallery.
 6. Staff editing: two pages on one template with different fields, content stays separate (REUSE-03).
 
 ## 10. Quality checks
@@ -674,6 +674,7 @@ Since then every page has had a design pass with its real content, on the develo
 
 ## 13. Changelog
 
+- 0.6.5 (2026-09-26): a funder logo without alt text is marked decorative (the credits name the funder). Verification record: `verification/2026-09-26.md`.
 - 0.6.4 (2026-09-26): the Shop template's portfolio navigation and feature panel follow the Shop landing setting (DS-49), so Our Story reads as a plain page before its template is reassigned.
 - 0.6.3 (2026-09-26): the exhibition lists move into the standard page template, driven by Theme settings (DS-48); `page.exhibitions` and `page.past-exhibitions` removed.
 - 0.6.2 (2026-09-26): no Exhibitions overview page (P-20): the lists no longer link to it, the switcher leaves the page template, and its theme setting goes.

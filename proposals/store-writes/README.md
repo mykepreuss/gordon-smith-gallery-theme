@@ -183,3 +183,18 @@ For the gallery:
 **Effect on the live site:** none; the live theme doesn't read cards. The overview page's own field values (hero image, caption) stay on the page, which is hidden at release.
 
 **Undo:** set the link back to `https://gordonsmithgallery.com/pages/exhibitions-1`.
+
+## 2026-09-26: two fixes from verification
+
+**Why:** the verification and release-preparation pass (Michael, 2026-09-26: "do the hero crop and all other backlog items we can").
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` unchanged.
+
+| What | Before | After |
+| --- | --- | --- |
+| Alt text on the Canada Council logo file (`gid://shopify/MediaImage/45716498317609`, `CAC-lockup-EN-RGB-Black.png`), the funder logo on *Collect, Assemble, Gather* | empty | "Canada Council for the Arts" |
+| Medium on *Good Luck (wheelbarrow)* by Samuel Roy-Bois (`gid://shopify/Product/9501294690601`, `custom.medium`) | not set: the description has no Technique line | "archival pigment print", from the description's own second list of details ("archival pigment print on Legacy Baryta paper") |
+
+**Effect on the live site:** none. The live theme shows this logo inside the On Now page's own text, with its own `alt`, and doesn't read label fields.
+
+**Undo:** set the alt text back to empty; delete the medium value.

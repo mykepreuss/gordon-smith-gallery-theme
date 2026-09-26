@@ -17,7 +17,7 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | 3 | Pull request with code, register, proposed store changes, Theme Check | Done: [PR #4](https://github.com/mykepreuss/gordon-smith-gallery-theme/pull/4) merged 2026-09-25; [PR #5](https://github.com/mykepreuss/gordon-smith-gallery-theme/pull/5) and [PR #6](https://github.com/mykepreuss/gordon-smith-gallery-theme/pull/6) merged 2026-09-26. Further changes in smaller pull requests (plan step 3) | Theme Check 0 offences; lint 0 errors, 0 warnings |
 | 4 | Unpublished review theme (the new theme uploaded unpublished), CLI pushes to its ID only | Done 2026-09-26: `184767250729` "New theme for review (do not publish)", role unpublished. Last pushed from d0d50d0; matches `main` at 1ad4dba (no theme files changed since). Editor JSON checked before each push: no staff changes so far | Preview https://ed35ee-ea.myshopify.com?preview_theme_id=184767250729; editor https://ed35ee-ea.myshopify.com/admin/themes/184767250729/editor |
 | 4a | Iterate on the site in the review theme (current phase) | In progress from 2026-09-26: branch, pull request, `main`, then the review theme (plan, "How we iterate") | Plan, "Iteration backlog" |
-| 5 | Verification: 1440 / 768 / 390, touch, keyboard, staff editing on two pages of one template, newsletter test | On hold until Michael decides to release; design checks happen as we iterate | Plan, "Release backlog" |
+| 5 | Verification: 1440 / 768 / 390, touch, keyboard, staff editing on two pages of one template, newsletter test | Agent checks done 2026-09-26 (`verification/2026-09-26.md`): pages, widths, keyboard, no-JavaScript menu, links, fonts, contact form address. Waiting: focal points (Michael), the date checks, the staff and newsletter tests | Plan, "Release backlog" |
 | 6 | Release approval, publish, apply approved store changes, post-release check | On hold until Michael decides to release | Plan, "Release gate and rollback" |
 
 ## Requirement status
@@ -25,6 +25,8 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 29 requirements: 26 **In progress** (built in the new theme, not yet verified in a review theme with staff) and 3 **Blocked** on gallery input (ACCESS-01, ACCESS-03, ACCESS-04). Nothing is Done: Done needs storefront and staff-editing evidence. See `REQUIREMENTS.md`.
 
 ## Waiting on
+
+All the gallery's questions, in one list to send: `proposals/gallery-questions.md`.
 
 | Item | From | Blocks |
 | --- | --- | --- |

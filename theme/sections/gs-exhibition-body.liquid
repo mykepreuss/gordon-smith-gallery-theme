@@ -42,7 +42,12 @@
           {%- if entry.funder_logos.value != blank -%}
             <ul class="gs-logos">
               {%- for logo in entry.funder_logos.value -%}
-                <li>{{ logo | image_url: height: 112 | image_tag: loading: 'lazy', alt: logo.alt }}</li>
+                {%- comment -%} A logo without alt text is marked decorative: the credits beside it name the funder. {%- endcomment -%}
+                {%- if logo.alt != blank -%}
+                  <li>{{ logo | image_url: height: 112 | image_tag: loading: 'lazy', alt: logo.alt }}</li>
+                {%- else -%}
+                  <li>{{ logo | image_url: height: 112 | image_tag: loading: 'lazy' | replace_first: '<img ', '<img alt="" ' }}</li>
+                {%- endif -%}
               {%- endfor -%}
             </ul>
           {%- endif -%}

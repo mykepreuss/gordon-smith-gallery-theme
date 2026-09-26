@@ -30,6 +30,8 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 ## 3. Template assignments (REUSE-01, DS-14)
 
+Script: `proposals/store-writes/release.py templates` (dry run 2026-09-26: `store-writes/dry-runs/2026-09-26/templates.md`).
+
 Moving pages from their one-off templates to the closed set in `design-system/DESIGN.md` §7.4 (On Now, Upcoming and Past go to the standard page template, DS-48) is a store-level release action (the Admin assignment list reads the live theme). Until then, new templates are previewed on the review theme with `?view=`. Full mapping: DESIGN.md §7.4. With the new theme (P-13) none of today's page templates exist after publishing, so every page's assignment is set at release by a script run straight after publishing, with a snapshot of today's assignments for rollback.
 
 Until the script runs, pages whose old template the new theme lacks fall back to the default page template, which shows them correctly (the exhibition lists from Theme settings, DS-48), and Our Story (old template `shop`) shows as a plain page on the Shop template (DS-49). So the script puts the right template names on the pages for staff rather than fixing what visitors see. It is written and dry-run before release (plan, "Release gate and rollback"): it snapshots every page's template, maps each page to its new one, and prints the changes for Michael to check. At release it runs straight after publishing, and every page is opened to check it. Not written yet.
@@ -54,6 +56,8 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 **Also done 2026-09-25, with Michael's go-ahead ("migrate all content"):** the other 11 exhibitions, the About and Donate card groups, the remaining pages' fields, the staged page text (§8) and the three review menus (§1, §2). Every item in `proposals/content-migration.md` now has its content in the store or the theme. Log: `proposals/store-writes/README.md`.
 
 ## 5. Exhibition addresses at release (P-10)
+
+Script: `release.py addresses` (dry run: `dry-runs/2026-09-26/addresses.md`).
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
@@ -96,6 +100,8 @@ Values the theme's settings need (Online Store, Themes, Customize, Theme setting
 
 ## 7. Product titles and descriptions at release (DS-16)
 
+Script: `release.py products` (dry run for the gallery: `dry-runs/2026-09-26/products.md`; the 21 titles and descriptions before any change: `snapshots/prints-descriptions-2026-09-26.json`).
+
 The 21 limited editions' titles carry Unicode italic letters (L-03). At release, each title becomes the same words in plain text (`proposals/store-writes/shop.py`, `plain()`). The new theme shows the label fields, so this changes the admin, order emails, search and the browser tab. The live theme shows the titles, which is why this waits for release.
 
 Rollback: restore each title from `proposals/store-writes/snapshots/prints-2026-09-25.json`.
@@ -111,6 +117,8 @@ Proposed for release, in the same script as the titles, after a dry run the gall
 The dry run prints each description before and after; nothing changes until the gallery approves. Before the change, snapshot the 21 descriptions in full (`snapshots/prints-2026-09-25.json` holds the titles and parsed details, not the descriptions). Rollback: restore each description from that snapshot.
 
 ## 8. Staged page text at release (DS-39)
+
+Script: `release.py staged` (dry run 2026-09-26: all six pages still match the snapshot).
 
 Page text is live, so the text that changes at release is staged in a temporary page field, `custom.release_body`, which the new theme shows instead of the page's text (`sections/gs-page-body.liquid`). Created 2026-09-25 with Michael's go-ahead (`proposals/store-writes/README.md`).
 
@@ -132,6 +140,8 @@ Then it deletes the `release_body` definition. The theme's fallback in `gs-page-
 Rollback: restore each page's text from the snapshot.
 
 ## 9. Frame products at release (P-19)
+
+Script: `release.py frames` (dry run: `dry-runs/2026-09-26/frames.md`).
 
 Each print's frame is its own product (product type Frame, collection `framing`), so search results fill with frames. At release, after publishing, the 16 active frames become **Unlisted**: still buyable, still offered on each print's page through `custom.featured_frame` (a metafield reference, which Liquid still returns), but out of search, collections and recommendations. The draft Michael Snow frame stays a draft. Snapshot: `proposals/store-writes/snapshots/frames-2026-09-26.json`.
 
