@@ -352,3 +352,15 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 **Effect on the live site:** none; the live theme doesn't read the staged field.
 
 **Undo:** clear the page's staged text.
+
+## 2026-09-26: "Get involved" over the Foundation's five ways to take part (DS-52)
+
+**Why:** Michael, 2026-09-26: "DS-52 approved, add a Get involved heading."
+
+**Before-snapshot:** `snapshots/foundation-take-part-2026-09-26-before.json` (no heading).
+
+**Made through the Shopify connector** (`foundation.py heading`): card group `foundation-take-part` (`gid://shopify/Metaobject/608367444265`), `heading` set to "Get involved". Its card titles become H3s under it.
+
+**Effect on the live site:** none; the live theme reads no card groups.
+
+**Undo:** clear the group's heading.

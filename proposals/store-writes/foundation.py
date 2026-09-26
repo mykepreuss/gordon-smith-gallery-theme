@@ -10,6 +10,9 @@ the text names link to their pages. Prints the variables for the metafieldsSet m
 
   python3 proposals/store-writes/foundation.py staged
   python3 proposals/store-writes/foundation.py review   # the staged text
+  python3 proposals/store-writes/foundation.py heading  # "Get involved" over the five ways to take part
+
+Michael, 2026-09-26: "DS-52 approved, add a Get involved heading".
 """
 import html
 import json
@@ -50,11 +53,20 @@ def staged_text():
     return f"<p>{first}</p>\n<p>{second}</p>"
 
 
+TAKE_PART = "gid://shopify/Metaobject/608367444265"  # card group foundation-take-part
+
+
+def heading():
+    return {"id": TAKE_PART, "metaobject": {"fields": [{"key": "heading", "value": "Get involved"}]}}
+
+
 if __name__ == "__main__":
     step = sys.argv[1] if len(sys.argv) > 1 else ""
     if step == "staged":
         print(json.dumps({"metafields": [{"ownerId": PAGE["id"], "namespace": "custom", "key": "release_body",
                                           "type": "multi_line_text_field", "value": staged_text()}]}, indent=2, ensure_ascii=False))
+    elif step == "heading":
+        print(json.dumps(heading(), indent=2))
     elif step == "review":
         print(staged_text())
     else:
