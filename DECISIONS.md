@@ -77,7 +77,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-44 | Card groups of four or eight go two, then four, across | Proposed (page pass, 2026-09-26) |
 | DS-45 | Long lists in page text (12 or more items) flow into columns; the Artists names become one list | Proposed (page pass, 2026-09-26) |
 | DS-46 | Artwork grids show at most three across; related works one row of three | **Decided by Michael, 2026-09-26** (with DS-05: "go from 4 images wide to 3") |
-| DS-47 | The header logo follows the page's programme: Artists for Kids pages carry the Artists for Kids logo, Smith Foundation pages (the Foundation, Gordon and Marion, Donate) the Foundation logo, every other page the Gallery logo. It always links home | **Decided by Michael, 2026-09-26** (with DS-07) |
+| DS-47 | The header logo follows the page's programme: Artists for Kids pages carry the Artists for Kids logo, Smith Foundation pages (the Foundation, Gordon and Marion, Donate) the Foundation logo, every other page the Gallery logo, including the Shop, portfolios, Our Story and Artists. It always links home | **Decided by Michael, 2026-09-26** (with DS-07) |
 
 "Decided by Michael" rows are structural or design-system choices; the gallery still approves labels, copy and anything in the approval package.
 
