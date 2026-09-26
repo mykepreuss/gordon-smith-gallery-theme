@@ -508,6 +508,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   line-height: var(--gs-leading-deck);
 }
 .gs-prose img { max-width: 100%; height: auto; border-radius: var(--gs-shape-md); }
+/* A picture with its caption. An artwork keeps square corners (DS-05); only photos are rounded. */
+.gs-prose figure { margin-inline: 0; display: grid; gap: var(--gs-space-3); }
+.gs-prose figcaption {
+  font-size: var(--gs-text-caption);
+  font-weight: var(--gs-weight-light);
+  line-height: var(--gs-leading-caption);
+}
+.gs-prose .gs-figure--artwork img { border-radius: 0; }
 /* A video embedded in the page text fills the text column at 16:9, whatever size the embed code gives. */
 .gs-prose iframe:is([src*="vimeo.com"], [src*="youtube.com"], [src*="youtube-nocookie.com"]) {
   display: block;

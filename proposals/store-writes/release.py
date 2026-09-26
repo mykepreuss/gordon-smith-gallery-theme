@@ -31,7 +31,7 @@ sys.path.insert(0, str(HERE))
 import shop  # noqa: E402  (label parsing and plain titles, 2026-09-25)
 
 SNAP_PAGES = {p["handle"]: p for p in json.loads((HERE / "snapshots" / "pages-2026-09-25.json").read_text())}
-SNAP_BY_ID = {p["id"]: p for p in SNAP_PAGES.values()}  # the staged step runs after renames
+SNAP_BY_ID = {p["id"]: p for p in SNAP_PAGES.values()}  # by ID, so a changed handle can't break the check
 CLEARED_PREFIX = "<!--"
 
 # ---------------------------------------------------------------------------
@@ -42,7 +42,8 @@ PROGRAMME = {"artists-for-kids", "the-smith-foundation", "public-programs-1", "s
              "music-at-the-smith", "explore-create", "art-in-good-company"}
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
-                     "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1"}
+                     "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
+                     "about"}  # About: its history joins Artists for Kids (P-24)
 
 
 def new_template(page):
@@ -77,8 +78,7 @@ def templates(pages, want_vars):
 
 
 # ---------------------------------------------------------------------------
-# 2. Exhibition addresses (store-changes §5): hide seven pages, then seven redirects. Then pages
-# that change their title and address; Shopify forwards the old address (redirectNewHandle).
+# 2. Addresses (store-changes §5): hide eight pages, then eight redirects.
 
 REDIRECTS = [
     ("/pages/exhibition-one-hundred-artists-deep", "/pages/exhibitions/one-hundred-artists-deep"),
@@ -88,11 +88,7 @@ REDIRECTS = [
     ("/pages/exhibition-prevailing-landscapes", "/pages/exhibitions/prevailing-landscapes"),
     ("/pages/exhibition-the-art-of-conversation", "/pages/exhibitions/the-art-of-conversation"),
     ("/pages/exhibitions-1", "/pages/on-now"),
-]
-# About becomes About Artists for Kids (Michael, 2026-09-26; about_us.py). Menus link pages by ID, so
-# they follow the new address.
-RENAMES = [
-    ("about", "About Artists for Kids", "about-artists-for-kids"),
+    ("/pages/about", "/pages/artists-for-kids"),
 ]
 
 
@@ -102,20 +98,14 @@ def addresses(pages, want_vars):
     if want_vars:
         out = {f"hide{i}": {"id": p["id"], "page": {"isPublished": False}} for i, p in enumerate(hide)}
         out.update({f"r{i}": {"path": a, "target": b} for i, (a, b) in enumerate(REDIRECTS)})
-        out.update({f"rename{i}": {"id": by[h]["id"], "page": {"title": t, "handle": n, "redirectNewHandle": True}}
-                    for i, (h, t, n) in enumerate(RENAMES) if h in by})
         return out
     rows = [f"| `{p['handle']}` | {'published' if p['isPublished'] else 'hidden'} | hidden |" for p in hide]
     rrows = [f"| `{a}` | `{b}` |" for a, b in REDIRECTS]
-    nrows = [f"| `/pages/{h}`, \"{by[h]['title']}\" | `/pages/{n}`, \"{t}\" |" if h in by else f"| `/pages/{h}` | **not found** |"
-             for h, t, n in RENAMES]
-    return "\n".join(["## Exhibition addresses", "", "Hide first: a redirect only works from an address that no longer loads a page.", "",
+
+    return "\n".join(["## Addresses", "", "Hide first: a redirect only works from an address that no longer loads a page.", "",
                       "| Page | Now | At release |", "| --- | --- | --- |"] + rows +
                      ["", "| Redirect from | To |", "| --- | --- |"] + rrows +
-                     ["", "Then the renamed pages: new title and address, the old address forwarded by Shopify.", "",
-                      "| Now | At release |", "| --- | --- |"] + nrows +
-                     ["", "Rollback: delete the seven redirects, publish the seven pages; give the renamed pages their old title "
-                      "and address back and delete the redirect Shopify made."])
+                     ["", f"Rollback: delete the {len(REDIRECTS)} redirects, publish the {len(hide)} pages."])
 
 
 # ---------------------------------------------------------------------------

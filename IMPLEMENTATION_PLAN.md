@@ -190,8 +190,8 @@ Before requesting release approval, provide:
   2. Publishing the review theme.
   3. Reassigning every page's template, by script, straight after publishing (below).
   4. Switching or editing the main menu, and editing the footer menu.
-  5. Hiding the six old exhibition pages and the Exhibitions overview, and creating their redirects (P-10, P-20). Renaming About to About Artists for Kids at `/pages/about-artists-for-kids`, with the old address forwarded (P-23).
-  6. Moving the staged page text into its eight pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, makes the Artists names one list, leaves About Us's descriptions to its card group (DS-50), and takes About's print and caption out of its text, since its hero shows them (P-23).
+  5. Hiding the six old exhibition pages and the Exhibitions overview, and creating their redirects (P-10, P-20). Hiding About too, with `/pages/about` forwarded to Artists for Kids (P-24).
+  6. Moving the staged page text into its eight pages and deleting the temporary field (DS-39, `proposals/store-changes.md` §8). This clears the exhibition text repeated in On Now, Upcoming and Upcoming Events, adds Donate's tax receipt note and the Gordon and Marion video, makes the Artists names one list, leaves About Us's descriptions to its card group (DS-50), and adds About's history to the Artists for Kids page (P-24).
   7. Plain-text titles and the description clean-up on the 21 limited editions, after a dry run the gallery approves (DS-16, P-21, P-22, `proposals/store-changes.md` §7).
   8. Setting the 16 active frame products to Unlisted, so they leave search (P-19, `proposals/store-changes.md` §9).
 - A check that every active exhibition entry is ready to be seen. The entries are already active; their pages return 404 only because the live theme has no exhibition template, so publishing the new theme makes them public.

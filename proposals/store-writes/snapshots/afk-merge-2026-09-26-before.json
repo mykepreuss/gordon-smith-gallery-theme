@@ -1,0 +1,15 @@
+{
+  "taken": "2026-09-26",
+  "why": "Before P-24: About's history merges into Artists for Kids. The Artists for Kids page gets staged text; About's staged text is removed.",
+  "artists-for-kids": {
+    "id": "gid://shopify/Page/155720810793",
+    "updatedAt": "2026-09-25T23:35:12Z",
+    "release_body": null,
+    "bodyMatches": "snapshots/pages-2026-09-25.json"
+  },
+  "about": {
+    "id": "gid://shopify/Page/141077479721",
+    "updatedAt": "2026-09-26T16:51:15Z",
+    "release_body": "<p>Artists for Kids was founded in 1989 with the singular intent to support art education, for all.</p>\n<p>In 1990, with the support of art educators and artist patrons Bill Reid, Jack Shadbolt, and Gordon Smith, the first Artists for Kids Limited Edition Portfolio print, <em>Xhuwaji / Haida Grizzly</em> was published - marking the beginning of an extraordinary partnership between Canadian artists and Artists for Kids.</p>\n<p>Entering its 37th year, Artists for Kids continues to work with renowned Canadian artists and print studios across Canada to publish contemporary limited editions; its portfolio is now revered as one of the most significant limited edition collections in Canada.</p>\n<p>The Artists for Kids Limited Edition Portfolio program funds educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for the Artists for Kids and the Gordon Smith Gallery Permanent Collection.</p>"
+  }
+}

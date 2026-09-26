@@ -9,7 +9,7 @@ Model (DS-11): a section with pages under it is one button; its main page is the
 | Section | Type | Items, in order (destination) | Change from today |
 | --- | --- | --- | --- |
 | Exhibitions | Section | On now (`/pages/on-now`), Upcoming (`/pages/upcoming-exhibitions`), Past exhibitions (`/pages/past-exhibitions`) | Moves to the first place in the menu (P-09). Adds Upcoming (missing today). The Exhibitions overview page (`/pages/exhibitions-1`) is removed (P-20): hidden at release, its address redirecting to On now (§5) |
-| About | Section | About the gallery (`/pages/about-us`; `/pages/about` becomes About Artists for Kids, P-23), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About and About Us stay two pages: About Us is about the three organisations, About becomes About Artists for Kids (Michael, 2026-09-26, P-23) |
+| About | Section | About the gallery (`/pages/about-us`; `/pages/about` is hidden at release and forwards to Artists for Kids, P-24), Plan your visit (`/pages/plan-your-visit`), Permanent collection (`/pages/permanent-collection`), Volunteer (`/pages/volunteer`) | The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About Us is the page about the three organisations. About's history joins the Artists for Kids page, and About is hidden at release (Michael, 2026-09-26, P-24) |
 | Artists for Kids | Link | `/pages/artists-for-kids` | None. Approved 2026-09-25 as one link (P-15); the programme links to the Artists for Kids site stay on its page |
 | Programs | Section | Public programs (`/pages/public-programs-1`), Speaker series, Music at the Smith, Explore + Create, Art in Good Company | "Public Programs" no longer repeats the section, because the section itself is not a link |
 | Smith Foundation | Section | About the Foundation (`/pages/the-smith-foundation`), Gordon and Marion (`/pages/gordon-and-marion`), Donate (`/pages/donate`) | Renames the first item so it doesn't repeat the section |
@@ -55,14 +55,14 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Also done 2026-09-25, with Michael's go-ahead ("migrate all content"):** the other 11 exhibitions, the About and Donate card groups, the remaining pages' fields, the staged page text (§8) and the three review menus (§1, §2). Every item in `proposals/content-migration.md` now has its content in the store or the theme. Log: `proposals/store-writes/README.md`.
 
-## 5. Exhibition addresses at release (P-10)
+## 5. Addresses at release (P-10, P-20, P-24)
 
 Script: `release.py addresses` (dry run: `dry-runs/2026-09-26/addresses.md`).
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
-1. Hide (don't delete) the six exhibition pages and the Exhibitions overview (`exhibitions-1`, P-20), keeping them for rollback.
-2. Create seven URL redirects:
+1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20) and About (P-24), keeping them for rollback.
+2. Create eight URL redirects:
 
 | From | To |
 | --- | --- |
@@ -73,14 +73,14 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibition-prevailing-landscapes` | `/pages/exhibitions/prevailing-landscapes` |
 | `/pages/exhibition-the-art-of-conversation` | `/pages/exhibitions/the-art-of-conversation` |
 | `/pages/exhibitions-1` | `/pages/on-now` |
+| `/pages/about` | `/pages/artists-for-kids` |
 
 3. Open each old address and check it lands on its entry.
-4. Rename About (P-23): title "About Artists for Kids", address `/pages/about-artists-for-kids`, with Shopify forwarding `/pages/about` to it (`redirectNewHandle`). Menus link pages by ID, so nothing else changes. Open both addresses to check.
-5. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
+4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
 The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 
-Rollback: republish the baseline theme, unhide the seven pages, delete the seven redirects, give About its old title and address back (and delete the redirect Shopify made), restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the eight pages, delete the eight redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
@@ -130,7 +130,7 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Gordon and Marion | Its text, then the video from the old template |
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
 | About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
-| About (About Artists for Kids at release, P-23) | Its four paragraphs, word for word, without the Bill Reid print and its caption, which its hero now shows. Pasted formatting (Outlook markup, spacer lines) stays behind |
+| Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading, with the Bill Reid print after the paragraph that names it (P-24). Words unchanged; both pictures become figures with their own captions, and pasted formatting stays behind |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 

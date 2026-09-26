@@ -265,3 +265,24 @@ The words, titles, links and order are unchanged: Artists for Kids first, as on 
 **Effect on the live site:** none. The live theme reads no page fields, and shows the print only inside page text, with its own empty `alt`. The live About page still shows its text and print (checked 2026-09-26).
 
 **Undo:** set `hero_image` back to `gid://shopify/MediaImage/45637943591209` and `card_groups` back to `["gid://shopify/Metaobject/608389529897"]`; clear `programme`, `hero_is_artwork`, `hero_caption` and `release_body`; set the print's alt text back to empty.
+
+## 2026-09-26: About merges into Artists for Kids (P-24, supersedes P-23)
+
+**Why:** Michael, 2026-09-26: "Should /pages/artists-for-kids and /pages/about be merged? I prefer /pages/artists-for-kids." Two pages about the same organisation; the Artists for Kids page is the one in the menu, with the programmes and the website link.
+
+**Checked first:** same store and live theme. The Artists for Kids page's text matched `snapshots/pages-2026-09-25.json` and it had no staged text. Before-snapshot: `snapshots/afk-merge-2026-09-26-before.json` (About's staged text from the entry above).
+
+**Made through the Shopify connector** (payload from `about_us.py afk-merge`; `afk-merge-review` prints the text):
+
+| What | Before | After |
+| --- | --- | --- |
+| Artists for Kids' staged text (`release_body`) | not set | its own two paragraphs and Paradise Valley photo, then About's four paragraphs under "History", with the Bill Reid print after the paragraph that names it. Words unchanged; both pictures are figures with their own captions |
+| About's staged text | its four paragraphs (P-23) | removed: About is hidden at release |
+
+About keeps the fields from the entry above (Artists for Kids programme, the print as its hero, no organisation rows) until release, when it is hidden and `/pages/about` forwards to `/pages/artists-for-kids` (`release.py addresses`). The print's alt text stays: the figure uses the same words.
+
+**Effect on the live site:** none; the live theme doesn't read the staged field. The live Artists for Kids page shows its own text, without the print (checked 2026-09-26).
+
+**For the gallery:** the Paradise Valley photo's description says 1994, its caption 1996 (`proposals/gallery-questions.md` 3.8).
+
+**Undo:** clear Artists for Kids' staged text; set About's back from the snapshot.

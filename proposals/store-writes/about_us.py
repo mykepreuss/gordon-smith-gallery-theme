@@ -15,6 +15,8 @@ Prints the variables for each step's mutation.
   python3 proposals/store-writes/about_us.py about-logos   # About's three cards (Michael, 2026-09-26)
   python3 proposals/store-writes/about_us.py about-afk     # About becomes About Artists for Kids (below)
   python3 proposals/store-writes/about_us.py about-afk-review   # its staged text and caption, as text
+  python3 proposals/store-writes/about_us.py afk-merge     # About merged into Artists for Kids (below)
+  python3 proposals/store-writes/about_us.py afk-merge-review
 
 About Artists for Kids (Michael, 2026-09-26: "/about should be /about-artists-for-kids and be
 focused on that part of the organization"). About's text is Artists for Kids' history, but the page
@@ -23,6 +25,12 @@ the live theme: the Artists for Kids programme (its logo and colours, DS-47), th
 print as an artwork hero with the page's own caption, no organisation rows (they stay on About Us),
 and its text staged without the print and caption, which the hero now carries. The title and address
 change at release (release.py addresses), because the live theme shows them.
+
+Superseded the same day (P-24; Michael: "Should /pages/artists-for-kids and /pages/about be merged?
+I prefer /pages/artists-for-kids"): About's history joins the Artists for Kids page, under a
+"History" heading after the page's own text, with the print where the text names it. About is hidden
+at release and its address forwarded to Artists for Kids (release.py addresses), so its own staged
+text is removed.
 """
 import html
 import json
@@ -151,6 +159,47 @@ def about_afk():
     }
 
 
+AFK = next(p for p in json.loads((HERE / "snapshots" / "pages-2026-09-25.json").read_text())
+           if p["handle"] == "artists-for-kids")
+REID_SRC = "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Reid_REID002_Xhuwaji_HaidaGrizzly.jpg?v=1728074721&width=1440"
+
+
+def figure(src, alt, caption, width, height, artwork=False):
+    cls = ' class="gs-figure--artwork"' if artwork else ""
+    return (f'<figure{cls}><img src="{html.escape(src, quote=True)}" alt="{html.escape(alt, quote=True)}" width="{width}" height="{height}" loading="lazy">'
+            f"<figcaption>{html.escape(caption, quote=False)}</figcaption></figure>")
+
+
+def afk_merge_text():
+    """The Artists for Kids page's own text, then About's history under a heading, word for word.
+    Both pages' pictures become figures with their own captions; pasted formatting stays behind."""
+    body = AFK["body"]
+    paras = [clean_inline(re.sub(r"<span[^>]*></span>", "", m.group(1))) for m in re.finditer(r"<p[^>]*>(.*?)</p>", body, flags=re.S)]
+    assert len(paras) == 2 and paras[0].startswith("Artists for Kids brings together"), "Artists for Kids' text changed since the snapshot"
+    img = re.search(r'<img src="([^"]+)" alt="([^"]*)"', body)
+    caption = plain(re.findall(r'<div style="text-align: left;">(.*?)</div>', body, flags=re.S)[0])
+    assert caption.startswith("Gordon Smith and a group of young artists"), caption
+    history, reid_caption = about_afk_text()
+    history = history.split("\n")
+    assert "<em>Xhuwaji / Haida Grizzly</em>" in history[1]
+    out = [f"<p>{x}</p>" for x in paras]
+    out.append(figure(img.group(1), html.unescape(img.group(2)), caption, 1764, 993))
+    out.append("<h2>History</h2>")
+    out += history[:2]
+    out.append(figure(REID_SRC, REID_ALT, reid_caption, 1440, 1456, artwork=True))
+    out += history[2:]
+    return "\n".join(out)
+
+
+def afk_merge():
+    return {
+        "metafieldsSet": {"m0": [
+            {"ownerId": AFK["id"], "namespace": "custom", "key": "release_body", "type": "multi_line_text_field", "value": afk_merge_text()},
+        ]},
+        "metafieldsDelete": [{"ownerId": ABOUT["id"], "namespace": "custom", "key": "release_body"}],
+    }
+
+
 def page_fields(created_group):
     group = created_group["about_us_organisations"]["metaobject"]["id"]
     return {"m0": [
@@ -175,6 +224,10 @@ if __name__ == "__main__":
         result = about_logos()
     elif step == "about-afk":
         result = about_afk()
+    elif step == "afk-merge":
+        result = afk_merge()
+    elif step == "afk-merge-review":
+        sys.exit(print(afk_merge_text()))
     elif step == "about-afk-review":
         staged, caption = about_afk_text()
         sys.exit(print(f"Hero caption: {caption}\nHero alt: {REID_ALT}\n\nStaged text:\n{staged}"))

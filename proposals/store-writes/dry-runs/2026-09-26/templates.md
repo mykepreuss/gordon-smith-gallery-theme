@@ -5,7 +5,7 @@
 | Page | Now | At release |
 | --- | --- | --- |
 | `2025-spring-portfolio` | `page` | unchanged (unpublished) |
-| `about` | `(default)` | already right |
+| `about` | `(default)` | unchanged (hidden at release) |
 | `about-us` | `about-us` | **`(default)`** |
 | `art-in-good-company` | `art-in-good-company` | **`programme`** |
 | `artists` | `artists` | **`(default)`** |

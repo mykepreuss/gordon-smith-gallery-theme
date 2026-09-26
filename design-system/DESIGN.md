@@ -351,7 +351,7 @@ Ink surface. Top row: the three white logos with the Gallery first and largest (
 
 ### 6.11 Rich text
 
-`.gs-prose` wraps staff-entered text: 68ch measure, 1em paragraph spacing, headings inside use the scale above, blockquote with a 4 px rule in the rule colour and deck styling, images in text get `--gs-shape-md`. A YouTube or Vimeo video embedded in the text fills the column at `--gs-ratio-video` (16:9), whatever size the embed code gives. Staff formatting is limited to headings, bold, italic, lists, links, quotes and embedded video. Inline fonts, sizes and colours pasted from Word or email are neutralised.
+`.gs-prose` wraps staff-entered text: 68ch measure, 1em paragraph spacing, headings inside use the scale above, blockquote with a 4 px rule in the rule colour and deck styling, images in text get `--gs-shape-md`. A YouTube or Vimeo video embedded in the text fills the column at `--gs-ratio-video` (16:9), whatever size the embed code gives. Staff formatting is limited to headings, bold, italic, lists, links, quotes and embedded video. A picture with a caption is a `<figure>` with a `<figcaption>` in the caption style; a photo gets the rounded corner, an artwork (`<figure class="gs-figure--artwork">`) keeps square corners (DS-05), as on the Artists for Kids page's Bill Reid print. Inline fonts, sizes and colours pasted from Word or email are neutralised.
 
 Headings in page text sit one step below the page's section headings: `h2` at the H3 size, `h3` and `h4` at the H4 size (DS-40). They organise a page's reading; they don't open a new part of the page. A list of twelve or more items (the Artists page's names) flows into two columns, three from 990 px, without bullets (DS-45). A heading at the very start of the text that only repeats the page title isn't shown (DS-41).
 
@@ -432,7 +432,7 @@ Until templates are reassigned at release, a page whose old template the new the
 
 | Template | Used by (current template in brackets) |
 | --- | --- |
-| `page` | About Artists for Kids (default; `/pages/about` until release, P-23), About Us (`about-us`), Our Story (`shop`), Volunteer, Permanent Collection, Plan Your Visit, Donate, Gordon and Marion, Artists, Engage (`page`), FAQ (`page`), Upcoming Events (`page`), On Now (`current-on-now-exhibition`), Upcoming Exhibitions (`upcoming-exhibitions`), Past Exhibitions (`past-exhibitions`), privacy opt-out (default) |
+| `page` | About (default; hidden at release, its history joins Artists for Kids, P-24), About Us (`about-us`), Our Story (`shop`), Volunteer, Permanent Collection, Plan Your Visit, Donate, Gordon and Marion, Artists, Engage (`page`), FAQ (`page`), Upcoming Events (`page`), On Now (`current-on-now-exhibition`), Upcoming Exhibitions (`upcoming-exhibitions`), Past Exhibitions (`past-exhibitions`), privacy opt-out (default) |
 | `page.programme` | Artists for Kids, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company (each currently its own template) |
 | `metaobject/exhibition` | Every exhibition (six current templates `exhibition-ftg`, `-ohad-2026`, `-playhouse`, `-prevailing`, `-stitched`, `-taoc`, plus the exhibitions now written into On Now and Upcoming) |
 | `page.shop` | Shop / Limited Editions landing (`shop`) |
@@ -677,7 +677,7 @@ Since then every page has had a design pass with its real content, on the develo
 
 ## 13. Changelog
 
-- 0.6.6 (2026-09-26): logo cards (DS-50, approved by Michael): a card with a logo shows it as its heading, and a group of them sets each organisation beside its text. About Us uses them. About becomes About Artists for Kids (P-23) and loses the organisation rows it shared with About Us. `foundation-full-colour-box` joins the website's logos (§8.1, §8.2); logo card tokens `--gs-org-logo-*`.
+- 0.6.6 (2026-09-26): logo cards (DS-50, approved by Michael): a card with a logo shows it as its heading, and a group of them sets each organisation beside its text. About Us uses them. About's history joins the Artists for Kids page (P-24), so About loses the organisation rows it shared with About Us. Pictures in page text can be figures with captions; an artwork keeps square corners (§6.11). `foundation-full-colour-box` joins the website's logos (§8.1, §8.2); logo card tokens `--gs-org-logo-*`.
 - 0.6.5 (2026-09-26): a funder logo without alt text is marked decorative (the credits name the funder). Verification record: `verification/2026-09-26.md`.
 - 0.6.4 (2026-09-26): the Shop template's portfolio navigation and feature panel follow the Shop landing setting (DS-49), so Our Story reads as a plain page before its template is reassigned.
 - 0.6.3 (2026-09-26): the exhibition lists move into the standard page template, driven by Theme settings (DS-48); `page.exhibitions` and `page.past-exhibitions` removed.

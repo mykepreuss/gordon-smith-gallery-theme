@@ -4,9 +4,9 @@
 
 | Page | Live text | At release |
 | --- | --- | --- |
-| `about` | matches the snapshot | 942 characters (was 2234) |
 | `about-us` | matches the snapshot | cleared |
 | `artists` | matches the snapshot | 7098 characters (was 9441) |
+| `artists-for-kids` | matches the snapshot | 2985 characters (was 1792) |
 | `donate` | matches the snapshot | 3673 characters (was 3502) |
 | `gordon-and-marion` | matches the snapshot | 2484 characters (was 2293) |
 | `on-now` | matches the snapshot | cleared |
