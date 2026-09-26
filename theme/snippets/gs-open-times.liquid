@@ -1,0 +1,44 @@
+{% doc %}
+  Opening times in the site's one format for times (as gs-time-range): "12 to 4 PM",
+  "10 AM to 4 PM", "10:30 AM to 5 PM". Minutes show only when they aren't :00.
+
+  @param {string} opens - 24-hour time, e.g. '12:00'
+  @param {string} closes - 24-hour time, e.g. '16:00'
+
+  @example
+  {% render 'gs-open-times', opens: settings.opens_at, closes: settings.closes_at %}
+{% enddoc %}
+{%- liquid
+  assign h1 = opens | split: ':' | first | plus: 0
+  assign m1 = opens | split: ':' | last
+  assign h2 = closes | split: ':' | first | plus: 0
+  assign m2 = closes | split: ':' | last
+  assign p1 = 'AM'
+  if h1 >= 12
+    assign p1 = 'PM'
+  endif
+  assign p2 = 'AM'
+  if h2 >= 12
+    assign p2 = 'PM'
+  endif
+  assign t1 = h1 | modulo: 12
+  if t1 == 0
+    assign t1 = 12
+  endif
+  assign t2 = h2 | modulo: 12
+  if t2 == 0
+    assign t2 = 12
+  endif
+  if m1 != '00'
+    assign t1 = t1 | append: ':' | append: m1
+  endif
+  if m2 != '00'
+    assign t2 = t2 | append: ':' | append: m2
+  endif
+  assign to_word = 'open.to' | t
+  if p1 == p2
+    echo t1 | append: ' ' | append: to_word | append: ' ' | append: t2 | append: ' ' | append: p2
+  else
+    echo t1 | append: ' ' | append: p1 | append: ' ' | append: to_word | append: ' ' | append: t2 | append: ' ' | append: p2
+  endif
+-%}

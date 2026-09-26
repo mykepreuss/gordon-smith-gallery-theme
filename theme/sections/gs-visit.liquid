@@ -2,13 +2,23 @@
   Visit (DS-32): where the gallery is and when it's open, on the home page, with a link to the
   Plan your visit page. The address and hours are the same theme settings the footer and the
   contact page use (Gallery details), so they're typed once. Nothing shows without an address.
+
+  With an image (the building), the photo sits beside the details, as the reference galleries
+  show their locations, and the line under the heading says whether it's open today (DS-54).
 {%- endcomment -%}
 {%- assign visit = settings.visit_page -%}
+{%- assign image = section.settings.image -%}
 {%- if settings.address != blank -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
-    <div class="gs-container gs-visit">
+    <div class="gs-container gs-visit{% if image != blank %} gs-visit--media{% endif %}">
+      {%- if image != blank -%}
+        {%- render 'gs-media', image: image, preset: 'card', sizes: '(min-width: 990px) 50vw, 100vw', mode: 'photo', ratio: '4 / 3', shape: 'md', class: 'gs-visit__media' -%}
+      {%- endif -%}
       <div class="gs-visit__head">
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+        {%- if image != blank -%}
+          {%- render 'gs-open-today' -%}
+        {%- endif -%}
         {%- if section.settings.text != blank -%}
           <div class="gs-prose">{{ section.settings.text }}</div>
         {%- endif -%}
@@ -47,6 +57,12 @@
     {
       "type": "paragraph",
       "content": "Address and opening hours come from Theme settings, Gallery details. The link goes to the Plan your visit page chosen there."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Optional. The building, beside the details. Set its focal point in Files."
     },
     {
       "type": "text",

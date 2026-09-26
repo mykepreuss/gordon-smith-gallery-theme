@@ -1660,6 +1660,38 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-visit { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
   .gs-visit__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* With the building's photo (DS-54): the photo beside the heading and the details. */
+@media (min-width: 990px) {
+  .gs-visit--media { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gs-space-8); }
+  .gs-visit--media .gs-visit__media { grid-column: 1; grid-row: 1 / span 2; }
+  .gs-visit--media :is(.gs-visit__head, .gs-visit__facts) { grid-column: 2; }
+}
+
+/* ---------- Home: What's on, open today, sideways rows (DS-54) ---------- */
+
+/* Whether the gallery is open today (snippets/gs-open-today.liquid, js/gs-open.js). */
+.gs-open { margin: 0; font-weight: var(--gs-weight-bold); }
+/* Links beside a section heading ("All exhibitions", "All events"). */
+.gs-whats-on__links { margin: 0; display: flex; flex-wrap: wrap; gap: var(--gs-space-3) var(--gs-space-6); }
+/* A row of cards that scrolls sideways on phones, bleeding to the screen's edges with the next card
+   peeking in, so it's clear there's more; the card grid from 750px. No script, no autoplay. */
+@media (max-width: 749px) {
+  .gs-grid.gs-rail {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--gs-rail-item);
+    gap: var(--gs-space-4);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gs-gutter);
+    margin-inline: calc(-1 * var(--gs-gutter));
+    padding-inline: var(--gs-gutter);
+    padding-block-end: var(--gs-space-3);
+    scrollbar-width: thin;
+  }
+  .gs-rail > li { scroll-snap-align: start; }
+}
 
 .gs-contact { display: grid; gap: var(--gs-space-7) var(--gs-gutter); align-items: start; }
 @media (min-width: 990px) { .gs-contact { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }

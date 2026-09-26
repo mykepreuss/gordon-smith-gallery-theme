@@ -1,0 +1,64 @@
+{%- comment -%}
+  New limited editions (Home, DS-54): the newest portfolio's first works as artwork tiles, so the
+  home page shows the prints themselves, not an advert for them. The portfolio is the first one in
+  Theme settings, Shop, as for the Shop landing, so the row moves on when a new portfolio is out.
+  Three works, whole on the mat (DS-05, DS-46), then links to the portfolio and to all editions.
+  On phones the row scrolls sideways (.gs-rail), so the third print never sits alone on a row.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign portfolio = settings.portfolio_collections | first
+  assign all_url = settings.shop_page.url | default: settings.all_editions_collection.url
+-%}
+{%- if portfolio != blank and portfolio.products_count > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <div class="gs-section-head__text">
+          <p class="gs-eyebrow">{{ portfolio.title | escape }}</p>
+          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ s.heading | escape }}</h2>
+        </div>
+        <p class="gs-whats-on__links">
+          <a class="gs-cta-link gs-cta-link--more" href="{{ portfolio.url }}">{{ 'shop.see_portfolio' | t: title: portfolio.title }}</a>
+          {%- if all_url != blank -%}
+            <a class="gs-cta-link gs-cta-link--more" href="{{ all_url }}">{{ 'shop.all_editions_link' | t }}</a>
+          {%- endif -%}
+        </p>
+      </div>
+      <ul class="gs-grid gs-grid--artworks gs-rail" role="list">
+        {%- for product in portfolio.products limit: 3 -%}
+          <li>{%- render 'gs-artwork-tile', product: product, heading: 'h3' -%}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- elsif request.design_mode -%}
+  <p class="gs-editor-warning gs-container">Choose the portfolios in Theme settings, Shop. The first one's works show here.</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "New limited editions",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the first three works of the first portfolio in Theme settings, Shop."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "New limited editions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New limited editions"
+    }
+  ]
+}
+{% endschema %}

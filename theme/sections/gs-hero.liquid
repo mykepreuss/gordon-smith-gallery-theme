@@ -13,6 +13,9 @@
   Photo hero: the image fills the frame around its focal point, and the title box overlaps its
   bottom-left edge by a fixed amount (DS-12). Artwork hero: the work shows whole on the mat with
   the title box beside it, never over it (DS-05). One image, no carousel, no autoplay.
+
+  When the exhibition has installation views, the first one leads, as a photo of the art in the
+  room, with the installation credit as its caption (DS-54). Until there are some, the key image.
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
@@ -28,10 +31,17 @@
     endfor
   endif
 
+  assign room_view = false
   if lead
     assign image = lead.key_image.value
     assign is_artwork = lead.key_image_is_artwork.value
     assign alt_text = lead.title.value
+    # A list field's value has no .first here, so the first view comes from a one-item loop.
+    for view in lead.installation_views.value limit: 1
+      assign image = view
+      assign is_artwork = false
+      assign room_view = true
+    endfor
   else
     assign image = s.image
     assign is_artwork = s.image_is_artwork
@@ -99,7 +109,11 @@
         {%- endif -%}
       {%- endif -%}
     </div>
-    {%- if lead -%}
+    {%- if room_view -%}
+      {%- if lead.installation_credit.value != blank -%}
+        <p class="gs-hero__caption gs-caption">{{ lead.installation_credit.value | escape }}</p>
+      {%- endif -%}
+    {%- elsif lead -%}
       {%- if lead.key_image_caption.value != blank -%}
         <div class="gs-hero__caption gs-caption">{{ lead.key_image_caption | metafield_tag }}</div>
       {%- endif -%}

@@ -28,6 +28,11 @@
       "2025-spring-portfolio",
       "2024-fall-portfolio"
     ],
-    "all_editions_collection": "all-prints"
+    "all_editions_collection": "all-prints",
+    "open_thursday": true,
+    "open_friday": true,
+    "open_saturday": true,
+    "opens_at": "12:00",
+    "closes_at": "16:00"
   }
 }
