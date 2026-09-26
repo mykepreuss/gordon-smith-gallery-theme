@@ -2,9 +2,16 @@
   Portfolio navigation (DESIGN.md §7.5, SHOP-01, SHOP-02): one compact card per portfolio, in the
   order of Theme settings, Shop, with its first work whole on the mat (artwork mode, DS-05). The Shop landing's one
   listing: nothing else on the page repeats it. Also on Shopify's /collections page, which the
-  menu no longer links to (P-06).
+  menu no longer links to (P-06). On a page, it shows only on the Shop landing page chosen in
+  Theme settings, so another page on the Shop template (Our Story, until its template is
+  reassigned at release) reads as a plain page (DS-49).
 {%- endcomment -%}
-{%- assign portfolios = settings.portfolio_collections -%}
+{%- liquid
+  assign portfolios = settings.portfolio_collections
+  if page != blank and settings.shop_page != blank and page.id != settings.shop_page.id
+    assign portfolios = blank
+  endif
+-%}
 {%- if portfolios != blank -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
     <div class="gs-container">

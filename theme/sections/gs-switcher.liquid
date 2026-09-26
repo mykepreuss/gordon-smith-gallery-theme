@@ -2,9 +2,8 @@
   Sibling navigation (DESIGN.md §6.7, DS-13): moves sideways between pages of the same kind
   without the main menu. Real links with aria-current, not tabs, because each item is its own page.
 
-  On exhibition list pages and the Exhibitions overview: On now, Upcoming, Past, with counts from
-  the exhibition entries (hidden when zero). The pages are the ones chosen in Theme settings,
-  Exhibitions and events. On the overview none is current, so it reads as the way in (DS-43).
+  On exhibition list pages: On now, Upcoming, Past, with counts from the exhibition entries
+  (hidden when zero). The pages are the ones chosen in Theme settings, Exhibitions and events.
   On portfolio pages: each portfolio in Theme settings, Shop, then All editions.
 {%- endcomment -%}
 {%- if collection != blank -%}
@@ -22,11 +21,10 @@
   </nav>
 {%- else -%}
   {%- liquid
-    # On a page, only the three exhibition lists and the Exhibitions overview show this switcher.
-    # The overview's page template carries it for that one page, making it the way in to all three.
+    # On a page, only the three exhibition lists show this switcher.
     assign exhibitions_page = false
     if page != blank
-      if page.id == settings.exhibitions_on_now_page.id or page.id == settings.exhibitions_upcoming_page.id or page.id == settings.exhibitions_past_page.id or page.id == settings.exhibitions_overview_page.id
+      if page.id == settings.exhibitions_on_now_page.id or page.id == settings.exhibitions_upcoming_page.id or page.id == settings.exhibitions_past_page.id
         assign exhibitions_page = true
       endif
     endif

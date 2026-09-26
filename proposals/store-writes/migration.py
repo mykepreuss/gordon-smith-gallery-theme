@@ -312,7 +312,7 @@ CARDS = {
     "about-gordon-smith-gallery": {
         "title": "The Gordon Smith Gallery of Canadian Art",
         "text": "The Gordon Smith Gallery is a space where education is seen not as an after-thought to curation, but as the purpose of each step we take. The Gordon and Marion Smith Foundation for Young Artists and Artists for Kids work collaboratively to program the Gordon Smith Gallery of Canadian Art and the exhibitions.",
-        "link": link(f"{SITE}/pages/exhibitions-1", "Exhibitions"),
+        "link": link(f"{SITE}/pages/on-now", "Exhibitions"),
     },
     "about-smith-foundation": {
         "title": "The Gordon and Marion Smith Foundation for Young Artists",

@@ -2,9 +2,14 @@
   Feature panel: one box with text beside an image, for pointing to one thing (a programme, Our
   Story). Used on the home page and the Shop landing, which are the only pages on their
   templates, so the content lives in the section. The box takes the surface: tint by default,
-  accent (the brand's box colour) at most once on a page, or ink (DESIGN.md §3.2).
+  accent (the brand's box colour) at most once on a page, or ink (DESIGN.md §3.2). On a page it
+  shows only on the Shop landing page chosen in Theme settings (DS-49): the content is that page's.
 {%- endcomment -%}
 {%- liquid
+  assign other_page = false
+  if page != blank and settings.shop_page != blank and page.id != settings.shop_page.id
+    assign other_page = true
+  endif
   assign s = section.settings
   assign mode = 'photo'
   if s.image_is_artwork
@@ -12,7 +17,9 @@
   endif
   assign surface = s.surface | default: 'tint'
 -%}
-{%- if s.heading == blank and s.text == blank and s.image == blank -%}
+{%- if other_page -%}
+  {%- comment -%} Not the Shop landing page: nothing to show. {%- endcomment -%}
+{%- elsif s.heading == blank and s.text == blank and s.image == blank -%}
   {%- if request.design_mode -%}
     <p class="gs-editor-warning gs-container">Add a heading, text or image to this feature. Visitors see nothing here until you do.</p>
   {%- endif -%}

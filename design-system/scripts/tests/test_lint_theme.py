@@ -53,7 +53,7 @@ class LintTheme(unittest.TestCase):
             {"type": "text", "id": "heading", "label": "Heading"},
             {"type": "select", "id": "surface", "label": "Surface", "options": [{"value": "paper", "label": "Paper"}]},
         ]))
-        self.write("templates/page.exhibitions.json", template([
+        self.write("templates/page.json", template([
             ("head", {"type": "gs-page-head"}),
             ("switch", {"type": "gs-switcher"}),
             ("list", {"type": "gs-exhibition-list"}),
