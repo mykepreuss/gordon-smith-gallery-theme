@@ -1,0 +1,11 @@
+{
+  "taken": "2026-09-26",
+  "why": "Before the Foundation page's staged text (DS-52).",
+  "page": {
+    "id": "gid://shopify/Page/155705409833",
+    "handle": "the-smith-foundation",
+    "updatedAt": "2026-09-25T23:35:12Z",
+    "release_body": null,
+    "bodyMatches": "snapshots/pages-2026-09-25.json"
+  }
+}

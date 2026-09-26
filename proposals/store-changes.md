@@ -120,7 +120,7 @@ The dry run prints each description before and after; nothing changes until the 
 
 ## 8. Staged page text at release (DS-39)
 
-Script: `release.py staged` (dry run 2026-09-26: all eight pages still match the snapshot).
+Script: `release.py staged` (dry run 2026-09-26: all nine pages still match the snapshot).
 
 Page text is live, so the text that changes at release is staged in a temporary page field, `custom.release_body`, which the new theme shows instead of the page's text (`sections/gs-page-body.liquid`). Created 2026-09-25 with Michael's go-ahead (`proposals/store-writes/README.md`).
 
@@ -131,6 +131,7 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Gordon and Marion | Its text, then the video from the old template |
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
 | About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
+| The Smith Foundation | Its two paragraphs, word for word, without the line above them that repeated the first sentence's opening (the Foundation's full name). Explore + Create, Art In Good Company, Speaker Series and Music at The Smith link to their pages; the Gordon and Marion link stays on the site instead of opening a new tab (DS-52) |
 | Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading (P-24), with Our Story's sentence on art specialists and its fuller caption for the Bill Reid print (P-25). Our Story's sentence on the ceremonial drum was added, then dropped because it repeated the sentences around it. Words unchanged; both pictures become figures with their own captions; "contemporary limited editions" links to the Shop; pasted formatting stays behind |
 
 At release, a script (to write before release, with a dry run) does, for each page:
