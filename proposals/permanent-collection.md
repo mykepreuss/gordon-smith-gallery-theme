@@ -15,7 +15,7 @@ Michael, 2026-09-26: "I don't like that all of these assets are on an external s
 - **The menu** has a Collection section, second after Exhibitions: The collection, Artists. Artists left the Shop and Permanent collection left About (P-26). The order is now Exhibitions, Collection, Programs, About, Artists for Kids, Smith Foundation, Shop (P-29).
 - **Editions** link their artist's name to the artist's page, and appear on it.
 - **Exhibition pages** list their works from the collection after the installation views: *From the Ground* 26, *Playhouse* 25, *The Art of Conversation* 18 (DS-63).
-- **1,420 images** and **184 document files** are in the store's Files: 113 documents, each a Document entry with its cover and its file. 34 of them wait for a PDF under 20 MB and show their cover without a link.
+- **1,420 images** and **223 document files** are in the store's Files: 118 documents, each a Document entry with its file and, for all but 8, its cover. The 39 PDFs over Shopify's 20 MB limit are smaller copies made here (`images.py shrink`, Michael, 2026-09-27); the catalogue keeps the originals.
 
 Nothing shows on the live site: the live theme has no templates for these pages (`proposals/store-writes/README.md`, "Effect on the live site").
 
@@ -50,7 +50,7 @@ The catalogue at afkcatalogue.sd44.ca (Omeka S), read through its public API on 
 | Identifier | Accession number and the page's address |
 | The exhibition sets (*The Art of Conversation*, *Playhouse*, *From the Ground*) and the catalogue's "Works in …" pages | Shown in on the work, and Works from the collection on the exhibition |
 | Indigenous, Published Editions (with its history paragraph), Teaching Collection, Portfolio Collective 2021 | Groupings |
-| Text Resources | The artists' documents: one Document entry per document, with its cover image and its PDF (20 MB and under), or the photograph itself when it has no PDF |
+| Text Resources | The artists' documents: one Document entry per document, with its cover image and its PDF (a smaller copy when the original is over 20 MB), or the photograph itself when it has no PDF |
 | Storage locations, provenance, old identifiers, donors | Not published |
 
 The images are the catalogue's masters, converted once: JPEG, 3,000 px on the long side, sRGB, quality 85, never cropped. The masters stay on the catalogue.
@@ -73,7 +73,7 @@ The images are the catalogue's masters, converted once: JPEG, 3,000 px on the lo
 1. `inventory.py <folder>`: a fresh read-only export of the catalogue.
 2. `clean.py <export> <data>`: the cleaned artists, works, groupings, images and documents, and the review sheets in `sheets/` (artists, titles, problems, themes, groupings).
 3. `definitions.py`: the definitions (already created).
-4. `images.py convert | upload | docs | alts | docalts`: the web copies, their upload to Files, the documents, and alt text updates.
+4. `images.py convert | upload | shrink | docs | alts | docalts`: the web copies, their upload to Files, smaller copies of the PDFs over 20 MB, the documents, and alt text updates.
 5. `import.py artists | works | documents | link | groups | exhibitions | products`: the entries, the Document entries, then the artists' Works and Documents lists, the groupings, the exhibitions' Works from the collection, and the editions' Artist pages field (through the connector).
 
 To apply the gallery's corrections: edit the rules or names in `clean.py` (or the entries in the admin), run `clean.py`, then `import.py artists`, `works`, `link`, `groups` and `exhibitions`, and `images.py alts` if titles or descriptions changed.
@@ -90,7 +90,7 @@ To apply the gallery's corrections: edit the rules or names in `clean.py` (or th
 ## Still open
 
 - The gallery's review of the sheets and names (§5 of the gallery questions): artists and dates, titles, 41 years to check (5.14), themes, the names chosen for four artists, the featured works, and credit lines.
-- 39 documents over 20 MB aren't on the site (Shopify's limit): listed with a note to address in `proposals/gallery-questions.md`, "Documents too large for the site".
+- The 39 documents over 20 MB are on the site as smaller copies. Sharper copies from the gallery can replace them (`proposals/gallery-questions.md`, "Documents too large for the site").
 - The featured works: the gallery chooses them (gallery questions 1.7).
 - The works on loan: their credit lines and whether their pages should say so (5.13).
 - A staff editing test that adds a work and an artist (plan, "Release backlog").

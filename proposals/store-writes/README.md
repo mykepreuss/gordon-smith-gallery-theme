@@ -544,3 +544,23 @@ The cleaned data follows the gallery-questions defaults (§5) where the gallery 
 **Effect on the live site:** none. The live header uses `new-website-menu-1`, which is untouched.
 
 **Undo:** `menuUpdate` with the snapshot's order.
+
+## 2026-09-27: smaller copies of the 39 documents over 20 MB (DS-63)
+
+**Why:** Michael, 2026-09-27: "Can you create the optimized versions of all the Documents too large for the site". Asked whether to upload and link them too: "Upload and link".
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (a shop query through the CLI); the live theme 183162372393 (live) and the review theme 184767250729 (unpublished), neither touched by these writes. Before-snapshot: `snapshots/collection-documents-2026-09-27-before.json` (113 Document entries, 34 without a file, and every artist's Documents list). The regenerated data was compared with what was imported: only the 34 entries' file, 5 new entries and 4 artists' Documents lists differ.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| 39 PDFs: smaller copies of the catalogue's originals (1.9 GB to 378 MB, each under 19 MB; 34 at 200 dpi, 3 at 150, one each at 130 and 120), named in their alt text | CLI | `images.py shrink`, then `images.py docs`. How each was made: `collection/shrunk-documents.json`; file IDs: `created/collection-files.json` |
+| 34 Document entries: their file | CLI | `import.py documents` (upserts all 118; the other 79 are unchanged) |
+| 5 new Document entries, active, with a file and no cover: Robert Bateman's Biography and Press, Books, Exhibitions; Nuveeya Ipellie's Document; Melia Padluq's Works; Kabubuwa Tunnillie's Works | CLI | `created/collection-documents.json` |
+| 4 artists' Documents lists: those new entries | CLI | `import.py link` (rewrites every artist's lists from the data; the other 167 are unchanged, checked against the snapshot) |
+| The new files' alt text: their titles | CLI | `images.py docalts` |
+
+**Checked after:** 118 Document entries, none without a file; no title or cover changed; only those 4 artists' lists differ from the snapshot. On the development theme, Gordon Smith's, Jack Shadbolt's and Robert Bateman's documents open their PDFs, and the largest (18.2 MB) is served as a PDF.
+
+**Effect on the live site:** none. The live theme renders none of these.
+
+**Undo:** empty the 34 entries' file field, delete the 5 new entries, run `import.py link` from the previous commit, and delete the 39 files (their IDs are in `created/collection-files.json`, under the media IDs in `shrunk-documents.json`).

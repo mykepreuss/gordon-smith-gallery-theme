@@ -51,6 +51,7 @@ EXHIBITION_PAGES = {"works-in-the-art-of-conversation": "the-art-of-conversation
                     "works-in-from-the-ground": "from-the-ground"}
 MIN_THEME_GROUP = 5
 MAX_DOCUMENT = 20_000_000  # Shopify's limit for a file
+SHRUNK = HERE / "shrunk-documents.json"  # smaller copies of the PDFs over it, from images.py shrink
 # The Permanent Collection page's featured row (the grouping "featured"): the three founding patrons,
 # then a painting, a sculpture and a print from across the collection. The gallery can change them in
 # the admin (Content, Metaobjects, Collection grouping, Featured works).
@@ -510,7 +511,9 @@ def main(export, out):
     # Documents as entries (DS-63): one per document, with its cover image and its file, shown as tiles
     # after the works, as the catalogue shows them. Most catalogue items are a PDF plus a small image
     # of its cover. An item that is only a photograph is its own cover and file. A PDF over Shopify's
-    # 20 MB limit isn't on the site yet (large-documents.csv): its entry shows the cover, unlinked.
+    # 20 MB limit goes up as its smaller copy (images.py shrink); without one, its entry shows the
+    # cover, unlinked (large-documents.csv).
+    shrunk = json.loads(SHRUNK.read_text()) if SHRUNK.exists() else {}
     by_item = collections.defaultdict(list)
     for d in documents:
         by_item[d["item_id"]].append(d)
@@ -535,9 +538,9 @@ def main(export, out):
         cover = images_[0] if images_ else None
         files_ = pdfs or images_[:1]
         for n, f in enumerate(files_, 1):
-            too_big = f["size"] > MAX_DOCUMENT
-            if too_big:
+            if f["size"] > MAX_DOCUMENT:
                 large.append(f)
+            too_big = f["size"] > MAX_DOCUMENT and str(f["media_id"]) not in shrunk
             if too_big and not cover:
                 continue  # nothing to show until a smaller copy is uploaded
             doc_entries.append({
@@ -648,8 +651,9 @@ def main(export, out):
     write_csv("titles.csv", ["Accession number", "Title in the catalogue", "Title on the site", "Edition"], titles)
     write_csv("problems.csv", ["Accession number", "Problem", "Catalogue item"],
               sorted(problems, key=lambda p: p[2]))
-    write_csv("large-documents.csv", ["Artist", "Document", "Size (MB)", "In the catalogue"],
+    write_csv("large-documents.csv", ["Artist", "Document", "Size (MB)", "On the site (MB)", "In the catalogue"],
               [[by_handle[d["artist"]]["name"], d["title"], f"{d['size'] / 1e6:.0f}",
+                f"{shrunk[str(d['media_id'])]['bytes'] / 1e6:.0f}" if str(d["media_id"]) in shrunk else "",
                 f"https://afkcatalogue.sd44.ca/s/TheCollection/item/{d['item_id']}"]
                for d in sorted(large, key=lambda d: (ascii_fold(by_handle[d["artist"]]["sort_name"]).lower(), d["title"]))])
     raw_terms = collections.Counter(t.strip().lower() for i in works_raw for s in values(i, "dcterms:subject") for t in re.split(r"[,;]", s) if t.strip())
@@ -659,7 +663,7 @@ def main(export, out):
               [[g["name"], g["kind"], f"/pages/browse/{g['handle']}", len(g["works"])] for g in groups.values()])
 
     print(f"works {len(works)} (loans {len(loans)}), artists {len(artists)}, groupings {len(groups)}, images {len(images)}, "
-          f"document entries {len(doc_entries)} ({sum(1 for e in doc_entries if not e['file'])} without their file), {len(large)} PDFs over 20 MB, "
+          f"document entries {len(doc_entries)} ({sum(1 for e in doc_entries if not e['file'])} without their file), {len(large)} PDFs over 20 MB ({sum(1 for d in large if str(d['media_id']) in shrunk)} as smaller copies), "
           f"exhibitions with works {sum(1 for v in exhibition_works.values() if v)}")
     print(f"titles changed {len(titles)}, problems {len(problems)}, dates left off {sum(1 for a in artists.values() if a['dates_conflict'])}")
     print("works in the Shop:", {w["handle"]: w["in_the_shop"] for w in works if w["in_the_shop"]})

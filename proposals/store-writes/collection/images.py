@@ -4,12 +4,20 @@
 
   python3 images.py convert <data folder> <image folder>   download each master, make the web copy, delete the master
   python3 images.py upload <data folder> <image folder>    upload the web copies to Files, record their IDs
-  python3 images.py docs <data folder> <doc folder>        the same for the artists' documents (20 MB and under)
+  python3 images.py shrink <data folder> <doc folder>      a copy under 19 MB of each PDF over 20 MB (needs PyMuPDF and Pillow)
+  python3 images.py docs <data folder> <doc folder>        the same for the artists' documents (20 MB and under, or shrunk)
   python3 images.py alts <data folder> <image folder>      update alt text in Files after a clean-up change
   python3 images.py docalts <data folder> <doc folder>     the documents' alt text: covers empty, files their titles
 
 Web copy: a JPEG 3,000 px on its long side, in sRGB with the colour profile applied, quality 85, the
 whole image (no cropping). macOS sips does the conversion. The masters stay on the catalogue.
+
+Smaller copies of PDFs over Shopify's 20 MB limit (Michael, 2026-09-27: "Can you create the optimized
+versions of all the Documents too large for the site"): these are scans, each page one picture at
+300 dpi with the OCR text on top. Each picture is resampled to a lower resolution and saved as a JPEG,
+at the gentlest setting in SHRINK_STEPS that brings the file under 19 MB. The text, the pages and any
+black-and-white fax-compressed pictures are left as they are. What each file got goes to
+shrunk-documents.json, which clean.py reads so the document's entry links its file.
 
 Uploads go through the Shopify CLI (`shopify store execute`, authorised by Michael for this import,
 P-27): a staged upload, then fileCreate, in batches. The file IDs go to ../created/collection-files.json,
@@ -29,6 +37,11 @@ CREATED = HERE.parent / "created" / "collection-files.json"
 SRGB = "/System/Library/ColorSync/Profiles/sRGB Profile.icc"
 AGENT = "Gordon Smith Gallery collection import"
 MAX_BYTES = 20_000_000
+SHRUNK = HERE / "shrunk-documents.json"
+SHRINK_TARGET = 19_000_000  # under Shopify's limit with room to spare
+# (dpi, JPEG quality), gentlest first. 150 dpi keeps a page of type readable on screen; below that
+# only the largest scans go.
+SHRINK_STEPS = [(200, 75), (150, 70), (150, 60), (130, 60), (120, 55), (110, 50), (100, 50)]
 
 
 def download(url, path):
@@ -139,10 +152,99 @@ def upload(data, folder, batch=25):
         print(f"{min(i + batch, len(todo))}/{len(todo)}", flush=True)
 
 
+def shrink_pdf(src, dst, dpi, quality):
+    """Resample every picture above `dpi` to it, as a JPEG at `quality`, and save to `dst`."""
+    import io
+    import math
+    import pymupdf
+    from PIL import Image
+
+    doc = pymupdf.open(src)
+    # A picture can be placed more than once: go by its largest placement (its lowest dpi).
+    placed = {}
+    for page in doc:
+        for info in page.get_image_info(xrefs=True):
+            a, b, c, d = info["transform"][:4]
+            w_in, h_in = math.hypot(a, b) / 72, math.hypot(c, d) / 72
+            if info["xref"] and w_in and h_in:
+                low = min(info["width"] / w_in, info["height"] / h_in)
+                placed[info["xref"]] = min(low, placed.get(info["xref"], low))
+    for xref, have in placed.items():
+        if have <= dpi * 1.1:
+            continue
+        keys = {k: doc.xref_get_key(xref, k)[1] for k in ("Filter", "ImageMask", "SMask", "Mask")}
+        if "CCITT" in keys["Filter"] or "JBIG2" in keys["Filter"] or keys["ImageMask"] == "true" \
+                or keys["SMask"] != "null" or keys["Mask"] != "null":
+            continue  # black-and-white fax pictures are small already; masked pictures stay exact
+        pix = pymupdf.Pixmap(doc, xref)
+        if pix.alpha:
+            pix = pymupdf.Pixmap(pix, 0)
+        if pix.colorspace is None or pix.colorspace.n not in (1, 3):
+            pix = pymupdf.Pixmap(pymupdf.csRGB, pix)
+        gray = pix.n == 1
+        im = Image.frombytes("L" if gray else "RGB", (pix.width, pix.height), pix.samples)
+        scale = dpi / have
+        im = im.resize((max(1, round(pix.width * scale)), max(1, round(pix.height * scale))), Image.LANCZOS)
+        buf = io.BytesIO()
+        im.save(buf, "JPEG", quality=quality, optimize=True, progressive=True)
+        # The new JPEG goes into the picture's own object, so every page that shows it gets it and
+        # nothing is stored twice (Page.replace_image keeps its temporary copy on the page).
+        doc.update_stream(xref, buf.getvalue(), compress=False)
+        for key, value in (("Filter", "/DCTDecode"), ("DecodeParms", "null"), ("Decode", "null"),
+                           ("Width", str(im.width)), ("Height", str(im.height)), ("BitsPerComponent", "8"),
+                           ("ColorSpace", "/DeviceGray" if gray else "/DeviceRGB")):
+            doc.xref_set_key(xref, key, value)
+    doc.save(dst, garbage=3, deflate=True)
+    return doc.page_count
+
+
+def shrink(data, folder):
+    """A copy under SHRINK_TARGET of each document over MAX_BYTES, in `folder` under the name docs
+    uploads; the originals go to `folder`/originals and can be deleted afterwards."""
+    import pymupdf
+
+    originals = folder / "originals"
+    originals.mkdir(parents=True, exist_ok=True)
+    shrunk = json.loads(SHRUNK.read_text()) if SHRUNK.exists() else {}
+    big = [d for d in json.loads((data / "documents.json").read_text())
+           if d["artist"] and d["size"] > MAX_BYTES and d["type"] == "application/pdf"]
+    for n, d in enumerate(sorted(big, key=lambda d: d["size"]), 1):
+        fn = f"{d['artist']}-document-{d['media_id']}.pdf"
+        out = folder / fn
+        if str(d["media_id"]) in shrunk and out.exists():
+            continue
+        src = originals / fn
+        if not src.exists() or src.stat().st_size != d["size"]:
+            download(d["url"], src)
+        text = [p.get_text() for p in pymupdf.open(src)]
+        for dpi, quality in SHRINK_STEPS:
+            pages = shrink_pdf(src, out, dpi, quality)
+            if out.stat().st_size <= SHRINK_TARGET:
+                break
+        else:
+            out.unlink()
+            print(f"{n}/{len(big)} {fn}: still over {SHRINK_TARGET / 1e6:.0f} MB at {dpi} dpi; left out", flush=True)
+            continue
+        # The copy has to be the same document: every page, the text on each, and every page drawing
+        # without an error.
+        assert pages == len(text) and [p.get_text() for p in pymupdf.open(out)] == text, fn
+        pymupdf.TOOLS.reset_mupdf_warnings()
+        for p in pymupdf.open(out):
+            p.get_pixmap(matrix=pymupdf.Matrix(0.2, 0.2))
+        assert "error" not in pymupdf.TOOLS.mupdf_warnings().lower(), (fn, pymupdf.TOOLS.mupdf_warnings())
+        shrunk[str(d["media_id"])] = {"file": fn, "original_bytes": d["size"], "bytes": out.stat().st_size,
+                                      "pages": pages, "dpi": dpi, "quality": quality}
+        SHRUNK.write_text(json.dumps(shrunk, indent=1, sort_keys=True) + "\n")
+        print(f"{n}/{len(big)} {fn}: {d['size'] / 1e6:.0f} MB to {out.stat().st_size / 1e6:.1f} MB "
+              f"({dpi} dpi, quality {quality}, {pages} pages)", flush=True)
+
+
 def docs(data, folder, batch=10):
     folder.mkdir(parents=True, exist_ok=True)
     created = json.loads(CREATED.read_text()) if CREATED.exists() else {}
-    documents = [d for d in json.loads((data / "documents.json").read_text()) if d["artist"] and d["size"] <= MAX_BYTES]
+    shrunk = json.loads(SHRUNK.read_text()) if SHRUNK.exists() else {}
+    documents = [d for d in json.loads((data / "documents.json").read_text())
+                 if d["artist"] and (d["size"] <= MAX_BYTES or str(d["media_id"]) in shrunk)]
     todo = []
     for d in documents:
         key = f"doc-{d['media_id']}"
@@ -151,6 +253,8 @@ def docs(data, folder, batch=10):
         suffix = pathlib.Path(d["url"]).suffix.lower()
         fn = f"{d['artist']}-document-{d['media_id']}{suffix}"
         if not (folder / fn).exists():
+            if str(d["media_id"]) in shrunk:
+                sys.exit(f"{fn}: the smaller copy isn't in {folder}; run images.py shrink first")
             download(d["url"], folder / fn)
             time.sleep(0.1)
         todo.append((key, fn, d["title"], d["type"]))
@@ -208,7 +312,7 @@ def docalts(data, folder, batch=25):
 
 
 if __name__ == "__main__":
-    steps = {"convert": convert, "upload": upload, "docs": docs, "alts": alts, "docalts": docalts}
+    steps = {"convert": convert, "upload": upload, "shrink": shrink, "docs": docs, "alts": alts, "docalts": docalts}
     if len(sys.argv) != 4 or sys.argv[1] not in steps:
         sys.exit(__doc__)
     steps[sys.argv[1]](pathlib.Path(sys.argv[2]), pathlib.Path(sys.argv[3]))

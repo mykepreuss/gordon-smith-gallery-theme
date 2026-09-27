@@ -1,0 +1,314 @@
+{
+ "4631": {
+  "bytes": 6797687,
+  "dpi": 200,
+  "file": "gordon-smith-document-4631.pdf",
+  "original_bytes": 37525485,
+  "pages": 24,
+  "quality": 75
+ },
+ "4638": {
+  "bytes": 18179064,
+  "dpi": 130,
+  "file": "jack-shadbolt-document-4638.pdf",
+  "original_bytes": 215044699,
+  "pages": 83,
+  "quality": 60
+ },
+ "4644": {
+  "bytes": 15348574,
+  "dpi": 150,
+  "file": "jack-shadbolt-document-4644.pdf",
+  "original_bytes": 83808635,
+  "pages": 37,
+  "quality": 70
+ },
+ "4655": {
+  "bytes": 17228961,
+  "dpi": 150,
+  "file": "gordon-smith-document-4655.pdf",
+  "original_bytes": 78590720,
+  "pages": 47,
+  "quality": 70
+ },
+ "4703": {
+  "bytes": 13941721,
+  "dpi": 150,
+  "file": "gordon-smith-document-4703.pdf",
+  "original_bytes": 119834908,
+  "pages": 72,
+  "quality": 70
+ },
+ "4779": {
+  "bytes": 13901890,
+  "dpi": 200,
+  "file": "latcholassie-akesuk-document-4779.pdf",
+  "original_bytes": 38070657,
+  "pages": 49,
+  "quality": 75
+ },
+ "4788": {
+  "bytes": 8796356,
+  "dpi": 200,
+  "file": "anne-meredith-barry-document-4788.pdf",
+  "original_bytes": 21753444,
+  "pages": 43,
+  "quality": 75
+ },
+ "4789": {
+  "bytes": 11930107,
+  "dpi": 200,
+  "file": "anne-meredith-barry-document-4789.pdf",
+  "original_bytes": 30161447,
+  "pages": 39,
+  "quality": 75
+ },
+ "4791": {
+  "bytes": 9103369,
+  "dpi": 200,
+  "file": "anne-meredith-barry-document-4791.pdf",
+  "original_bytes": 24262587,
+  "pages": 27,
+  "quality": 75
+ },
+ "4795": {
+  "bytes": 15293322,
+  "dpi": 200,
+  "file": "anne-meredith-barry-document-4795.pdf",
+  "original_bytes": 32950806,
+  "pages": 20,
+  "quality": 75
+ },
+ "4801": {
+  "bytes": 9658748,
+  "dpi": 200,
+  "file": "robert-bateman-document-4801.pdf",
+  "original_bytes": 22556056,
+  "pages": 18,
+  "quality": 75
+ },
+ "4805": {
+  "bytes": 13262174,
+  "dpi": 200,
+  "file": "robert-bateman-document-4805.pdf",
+  "original_bytes": 34470221,
+  "pages": 12,
+  "quality": 75
+ },
+ "4829": {
+  "bytes": 11603431,
+  "dpi": 200,
+  "file": "david-blackwood-document-4829.pdf",
+  "original_bytes": 28701588,
+  "pages": 33,
+  "quality": 75
+ },
+ "4831": {
+  "bytes": 16600767,
+  "dpi": 120,
+  "file": "david-blackwood-document-4831.pdf",
+  "original_bytes": 134703749,
+  "pages": 99,
+  "quality": 55
+ },
+ "4837": {
+  "bytes": 6740397,
+  "dpi": 200,
+  "file": "molly-lamb-bobak-document-4837.pdf",
+  "original_bytes": 32084750,
+  "pages": 19,
+  "quality": 75
+ },
+ "4871": {
+  "bytes": 6600474,
+  "dpi": 200,
+  "file": "robert-davidson-document-4871.pdf",
+  "original_bytes": 36134266,
+  "pages": 24,
+  "quality": 75
+ },
+ "4881": {
+  "bytes": 6147030,
+  "dpi": 200,
+  "file": "wayne-eastcott-document-4881.pdf",
+  "original_bytes": 32182143,
+  "pages": 17,
+  "quality": 75
+ },
+ "4887": {
+  "bytes": 5337540,
+  "dpi": 200,
+  "file": "jamie-evrard-document-4887.pdf",
+  "original_bytes": 32622069,
+  "pages": 10,
+  "quality": 75
+ },
+ "4895": {
+  "bytes": 7177723,
+  "dpi": 200,
+  "file": "joe-fafard-document-4895.pdf",
+  "original_bytes": 34948409,
+  "pages": 27,
+  "quality": 75
+ },
+ "4897": {
+  "bytes": 9238565,
+  "dpi": 200,
+  "file": "joe-fafard-document-4897.pdf",
+  "original_bytes": 41527347,
+  "pages": 12,
+  "quality": 75
+ },
+ "4903": {
+  "bytes": 13550995,
+  "dpi": 200,
+  "file": "gathie-falk-document-4903.pdf",
+  "original_bytes": 66055153,
+  "pages": 39,
+  "quality": 75
+ },
+ "4905": {
+  "bytes": 15585504,
+  "dpi": 200,
+  "file": "gathie-falk-document-4905.pdf",
+  "original_bytes": 73500535,
+  "pages": 22,
+  "quality": 75
+ },
+ "4911": {
+  "bytes": 6429430,
+  "dpi": 200,
+  "file": "angela-george-document-4911.pdf",
+  "original_bytes": 30274469,
+  "pages": 8,
+  "quality": 75
+ },
+ "4921": {
+  "bytes": 10718503,
+  "dpi": 200,
+  "file": "graham-gillmore-document-4921.pdf",
+  "original_bytes": 52589854,
+  "pages": 23,
+  "quality": 75
+ },
+ "4985": {
+  "bytes": 6143492,
+  "dpi": 200,
+  "file": "j-carl-heywood-document-4985.pdf",
+  "original_bytes": 25052760,
+  "pages": 23,
+  "quality": 75
+ },
+ "5008": {
+  "bytes": 5933128,
+  "dpi": 200,
+  "file": "e-j-hughes-document-5008.pdf",
+  "original_bytes": 32704600,
+  "pages": 14,
+  "quality": 75
+ },
+ "5010": {
+  "bytes": 8649458,
+  "dpi": 200,
+  "file": "e-j-hughes-document-5010.pdf",
+  "original_bytes": 35321002,
+  "pages": 16,
+  "quality": 75
+ },
+ "5029": {
+  "bytes": 6491641,
+  "dpi": 200,
+  "file": "nuveeya-ipellie-document-5029.pdf",
+  "original_bytes": 39871290,
+  "pages": 19,
+  "quality": 75
+ },
+ "5131": {
+  "bytes": 6149668,
+  "dpi": 200,
+  "file": "toni-onley-document-5131.pdf",
+  "original_bytes": 28312240,
+  "pages": 9,
+  "quality": 75
+ },
+ "5142": {
+  "bytes": 4447071,
+  "dpi": 200,
+  "file": "ross-penhall-document-5142.pdf",
+  "original_bytes": 22967253,
+  "pages": 8,
+  "quality": 75
+ },
+ "5175": {
+  "bytes": 9888915,
+  "dpi": 200,
+  "file": "pat-and-rosemarie-keough-document-5175.pdf",
+  "original_bytes": 42617185,
+  "pages": 19,
+  "quality": 75
+ },
+ "5181": {
+  "bytes": 2854491,
+  "dpi": 200,
+  "file": "melia-padluq-document-5181.pdf",
+  "original_bytes": 20481294,
+  "pages": 12,
+  "quality": 75
+ },
+ "5200": {
+  "bytes": 9256331,
+  "dpi": 200,
+  "file": "newgaleak-qimirpik-document-5200.pdf",
+  "original_bytes": 59676671,
+  "pages": 27,
+  "quality": 75
+ },
+ "5221": {
+  "bytes": 5693133,
+  "dpi": 200,
+  "file": "arnold-shives-document-5221.pdf",
+  "original_bytes": 24246265,
+  "pages": 9,
+  "quality": 75
+ },
+ "5244": {
+  "bytes": 6116795,
+  "dpi": 200,
+  "file": "takao-tanabe-document-5244.pdf",
+  "original_bytes": 24543954,
+  "pages": 28,
+  "quality": 75
+ },
+ "5254": {
+  "bytes": 15873688,
+  "dpi": 200,
+  "file": "kabubuwa-tunnillie-document-5254.pdf",
+  "original_bytes": 103506422,
+  "pages": 45,
+  "quality": 75
+ },
+ "5274": {
+  "bytes": 6041237,
+  "dpi": 200,
+  "file": "charlene-vickers-document-5274.pdf",
+  "original_bytes": 31407475,
+  "pages": 19,
+  "quality": 75
+ },
+ "5343": {
+  "bytes": 5722106,
+  "dpi": 200,
+  "file": "betty-goodwin-document-5343.pdf",
+  "original_bytes": 27504810,
+  "pages": 19,
+  "quality": 75
+ },
+ "5346": {
+  "bytes": 9355195,
+  "dpi": 200,
+  "file": "betty-goodwin-document-5346.pdf",
+  "original_bytes": 40469609,
+  "pages": 13,
+  "quality": 75
+ }
+}
