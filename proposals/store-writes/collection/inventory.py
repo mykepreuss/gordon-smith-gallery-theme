@@ -5,7 +5,7 @@ public API. Read only: it downloads the public records and prints the counts the
 
   python3 proposals/collection/inventory.py <output folder>
 
-The folder gets items.json, item_sets.json and media.json (about 5 MB), for the import scripts to
+The folder gets items.json, item_sets.json, media.json and site_pages.json (about 5 MB), for the import scripts to
 start from. Don't commit them: run it again before each import, since the catalogue keeps changing.
 """
 import collections
@@ -41,7 +41,7 @@ def values(item, key):
 
 def main(folder):
     folder.mkdir(parents=True, exist_ok=True)
-    data = {r: fetch_all(r) for r in ("items", "item_sets", "media")}
+    data = {r: fetch_all(r) for r in ("items", "item_sets", "media", "site_pages")}
     for name, rows in data.items():
         (folder / f"{name}.json").write_text(json.dumps(rows))
     items, sets, media = data["items"], data["item_sets"], data["media"]

@@ -10,26 +10,29 @@
 {
   "sections": {
     "hero": {
-      "type": "gs-exhibition-hero"
+      "type": "gs-page-hero"
     },
     "body": {
-      "type": "gs-exhibition-body"
+      "type": "gs-page-body",
+      "settings": {
+        "part": "all"
+      }
     },
-    "views": {
-      "type": "gs-gallery"
+    "search": {
+      "type": "gs-collection-search"
     },
-    "more": {
-      "type": "gs-exhibition-more"
+    "ways": {
+      "type": "gs-collection-ways"
     },
-    "works": {
-      "type": "gs-work-grid"
+    "featured": {
+      "type": "gs-collection-featured"
     }
   },
   "order": [
     "hero",
     "body",
-    "views",
-    "works",
-    "more"
+    "search",
+    "ways",
+    "featured"
   ]
 }

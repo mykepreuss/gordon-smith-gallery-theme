@@ -60,6 +60,30 @@
   </section>
 {%- endif -%}
 
+{%- comment -%}
+  Works in the Permanent Collection that match, found by gs-collection.js (entries aren't in
+  Shopify's search, DS-62). Hidden until there are some; the link opens every match on the
+  Permanent Collection page.
+{%- endcomment -%}
+{%- if search.performed and search.terms != blank and settings.collection_page != blank -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-collection" data-gs-finder data-gs-finder-site data-gs-limit="6" data-gs-query="{{ search.terms | escape }}" hidden>
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <div class="gs-section-head__text">
+          <h2 class="gs-h2" id="{{ form_id }}-collection">{{ 'collection.site_heading' | t }}</h2>
+          <p class="gs-meta" role="status" data-gs-finder-status
+            data-gs-one="{{ 'collection.works_found_one' | t: terms: '[terms]' | escape }}"
+            data-gs-other="{{ 'collection.works_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
+            data-gs-none=""></p>
+        </div>
+        <a class="gs-cta-link gs-cta-link--more" href="{{ settings.collection_page.url }}?q={{ search.terms | url_encode }}#collection-search">{{ 'collection.site_all' | t }}</a>
+      </div>
+      <ul class="gs-grid gs-grid--artworks" data-gs-finder-results></ul>
+    </div>
+  </section>
+  <script src="{{ 'gs-collection.js' | asset_url }}" defer></script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "Search",

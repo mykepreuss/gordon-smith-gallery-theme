@@ -1,0 +1,113 @@
+{%- comment -%}
+  Ways into the collection (DESIGN.md §6.13, §7.5, DS-62), on the Permanent Collection page: the
+  groupings as cards, each with its first work on the mat, then every category and every theme as
+  a list of links with how many works each holds, and a link to the Artists page. All from the
+  Collection grouping entries, so a new grouping shows here without editing the page. The grouping
+  whose handle is "featured" is the featured works row instead (gs-collection-featured).
+{%- endcomment -%}
+{%- liquid
+  assign id = 'gs-ways-' | append: section.id
+  assign groupings = ''
+  assign categories = ''
+  assign themes = ''
+-%}
+{%- paginate metaobjects.collection_group.values by 250 -%}
+  {%- for g in metaobjects.collection_group.values -%}
+    {%- if g.system.handle == 'featured' or g.works.value == blank -%}{%- continue -%}{%- endif -%}
+    {%- liquid
+      assign count = g.works.value.size
+      capture count_text
+        render 'gs-number', value: count
+      endcapture
+      assign name_html = g.name.value | escape
+      assign key = g.name.value | downcase
+    -%}
+    {%- case g.kind.value -%}
+      {%- when 'Grouping' -%}
+        {%- capture card -%}
+          <li>
+            <article class="gs-card gs-card--compact">
+              {%- for w in g.works.value limit: 1 -%}
+                {%- for image in w.images.value limit: 1 -%}
+                  {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', ratio: '4 / 3' -%}
+                {%- endfor -%}
+              {%- endfor -%}
+              <h3 class="gs-card__title"><a href="{{ g.system.url }}">{{ name_html }}</a></h3>
+              <p class="gs-meta">{{ 'collection.works_count' | t: count: count }}</p>
+            </article>
+          </li>
+        {%- endcapture -%}
+        {%- assign groupings = groupings | append: key | append: '~~key~~' | append: card | append: '~~row~~' -%}
+      {%- else -%}
+        {%- capture link -%}
+          <li><a class="gs-link" href="{{ g.system.url }}">{{ name_html }}</a> <span class="gs-meta">{{ count_text }}</span></li>
+        {%- endcapture -%}
+        {%- if g.kind.value == 'Category' -%}
+          {%- assign categories = categories | append: key | append: '~~key~~' | append: link | append: '~~row~~' -%}
+        {%- else -%}
+          {%- assign themes = themes | append: key | append: '~~key~~' | append: link | append: '~~row~~' -%}
+        {%- endif -%}
+    {%- endcase -%}
+  {%- endfor -%}
+{%- endpaginate -%}
+{%- liquid
+  assign groupings = groupings | split: '~~row~~' | sort
+  assign categories = categories | split: '~~row~~' | sort
+  assign themes = themes | split: '~~row~~' | sort
+-%}
+{%- if groupings.size > 0 or categories.size > 0 or themes.size > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ id }}-heading">
+    <div class="gs-container gs-ways">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ id }}-heading">{{ 'collection.ways_heading' | t }}</h2>
+        {%- if settings.artists_page != blank -%}
+          <a class="gs-cta-link gs-cta-link--more" href="{{ settings.artists_page.url }}">{{ 'collection.artists_link' | t }}</a>
+        {%- endif -%}
+      </div>
+      {%- if groupings.size > 0 -%}
+        <ul class="gs-grid gs-grid--cards{% if groupings.size == 4 %} gs-grid--fours{% endif %}">
+          {%- for row in groupings -%}{{ row | split: '~~key~~' | last }}{%- endfor -%}
+        </ul>
+      {%- endif -%}
+      <div class="gs-browse">
+        {%- if categories.size > 0 -%}
+          <div>
+            <h3 class="gs-h4">{{ 'collection.by_category' | t }}</h3>
+            <ul class="gs-browse__list">
+              {%- for row in categories -%}{{ row | split: '~~key~~' | last }}{%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+        {%- if themes.size > 0 -%}
+          <div>
+            <h3 class="gs-h4">{{ 'collection.by_theme' | t }}</h3>
+            <ul class="gs-browse__list">
+              {%- for row in themes -%}{{ row | split: '~~key~~' | last }}{%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Ways into the collection",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The Collection grouping entries: groupings as cards, then categories and themes as lists. Add or change them in Content, Metaobjects, Collection grouping."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ways into the collection"
+    }
+  ]
+}
+{% endschema %}

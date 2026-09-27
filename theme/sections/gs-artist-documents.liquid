@@ -1,0 +1,50 @@
+{%- comment -%}
+  An artist's documents (DESIGN.md §7.5, DS-63): press, exhibition catalogues, books and photographs
+  from the catalogue's archive, as a list of text links after the works. Each is named by its file's
+  alt text ("Press", "Exhibitions, Photos"); a PDF says so. They're the store's own files, so they
+  don't get the external cue.
+{%- endcomment -%}
+{%- if metaobject.documents.value != blank -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.documents' | t }}</h2>
+      </div>
+      <ul class="gs-docs">
+        {%- for doc in metaobject.documents.value -%}
+          {%- liquid
+            assign doc_url = doc.url
+            if doc.media_type == 'image'
+              assign doc_url = doc | image_url
+            endif
+            assign doc_file = doc_url | split: '?' | first | split: '/' | last
+            assign doc_name = doc.alt | default: doc_file
+            assign doc_ending = doc_file | downcase | slice: -4, 4
+          -%}
+          <li><a class="gs-link" href="{{ doc_url }}">{{ doc_name | escape }}{% if doc_ending == '.pdf' %} {{ 'general.pdf' | t }}{% endif %}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Artist's documents",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The files in the artist's Documents field, as links named by each file's alt text."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Artist's documents"
+    }
+  ]
+}
+{% endschema %}

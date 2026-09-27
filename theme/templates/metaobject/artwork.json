@@ -9,27 +9,15 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "gs-exhibition-hero"
-    },
-    "body": {
-      "type": "gs-exhibition-body"
-    },
-    "views": {
-      "type": "gs-gallery"
+    "work": {
+      "type": "gs-work-detail"
     },
     "more": {
-      "type": "gs-exhibition-more"
-    },
-    "works": {
-      "type": "gs-work-grid"
+      "type": "gs-work-more"
     }
   },
   "order": [
-    "hero",
-    "body",
-    "views",
-    "works",
+    "work",
     "more"
   ]
 }

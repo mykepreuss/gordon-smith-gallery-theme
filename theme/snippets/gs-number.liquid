@@ -1,0 +1,18 @@
+{% doc %}
+  A whole number with thousands separated by commas, as the site writes counts: 1,168.
+
+  @param {number} value - The number
+
+  @example
+  {%- render 'gs-number', value: 1168 -%}
+{% enddoc %}
+{%- liquid
+  assign n = value | plus: 0
+  assign thousands = n | divided_by: 1000
+  if thousands > 0
+    assign rest = n | modulo: 1000 | prepend: '00' | slice: -3, 3
+    echo thousands | append: ',' | append: rest
+  else
+    echo n
+  endif
+-%}

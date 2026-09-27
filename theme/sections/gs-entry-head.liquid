@@ -1,0 +1,98 @@
+{%- comment -%}
+  The header of an artist's page or a grouping's page (DESIGN.md §6.6, §7.5, DS-62), from the entry.
+
+  Artist: a link back to the Artists page, the name, the other names the artist is known by (a
+  Haida or traditional name, the full name), then nationality or Nation and life dates, and the
+  biography when there is one, with the portrait beside them. No link out to the artist's website
+  (DS-63): the page is about their work here. Their documents follow the works
+  (gs-artist-documents).
+
+  Grouping: a link back to the Permanent Collection page, the name and the introduction.
+{%- endcomment -%}
+{%- liquid
+  assign is_artist = false
+  if metaobject.system.type == 'artist'
+    assign is_artist = true
+    assign title = metaobject.name.value
+    assign back = settings.artists_page
+  else
+    assign title = metaobject.name.value
+    assign back = settings.collection_page
+  endif
+-%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    {%- if back != blank -%}
+      <p class="gs-crumb"><a href="{{ back.url }}">{{ back.title | escape }}</a></p>
+    {%- endif -%}
+    {%- if is_artist -%}
+      {%- liquid
+        assign names = metaobject.other_names.value
+        if metaobject.full_name.value != blank
+          if names != blank
+            assign names = names | append: '. '
+          endif
+          assign names = names | append: metaobject.full_name.value
+        endif
+        assign facts = metaobject.nationality.value
+        if metaobject.life_dates.value != blank
+          if facts != blank
+            assign facts = facts | append: ', '
+          endif
+          assign facts = facts | append: metaobject.life_dates.value
+        endif
+        assign has_aside = false
+        if metaobject.portrait.value != blank
+          assign has_aside = true
+        endif
+      -%}
+      <div class="gs-entry-head">
+        <div class="gs-entry-head__main">
+          <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
+          {%- if names != blank -%}
+            <p class="gs-entry-head__names">{{ names | escape }}</p>
+          {%- endif -%}
+          {%- if facts != blank -%}
+            <p class="gs-deck">{{ facts | escape }}</p>
+          {%- endif -%}
+          {%- if metaobject.biography.value != blank -%}
+            <div class="gs-prose">{{ metaobject.biography | metafield_tag }}</div>
+          {%- endif -%}
+        </div>
+        {%- if has_aside -%}
+          <div class="gs-entry-head__aside">
+            {%- if metaobject.portrait.value != blank -%}
+              {%- render 'gs-media', image: metaobject.portrait.value, sizes: '(min-width: 990px) 320px, 80vw', mode: 'photo', ratio: '4 / 5' -%}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
+      {%- if metaobject.introduction.value != blank -%}
+        <div class="gs-prose">{{ metaobject.introduction.value | escape | newline_to_br }}</div>
+      {%- endif -%}
+    {%- endif -%}
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Artist or grouping header",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Everything here comes from the entry, in Content, Metaobjects."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Artist or grouping header"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,57 @@
+{%- comment -%}
+  More by the artist, after a work (DESIGN.md §7.5, DS-62): one row of three artwork tiles from the
+  first artist's Works list, never the work being shown (as DS-46), and a link to the artist's page.
+  Nothing when the artist has no other work in the collection.
+{%- endcomment -%}
+{%- liquid
+  assign artist = nil
+  for a in metaobject.artists.value limit: 1
+    assign artist = a
+  endfor
+  assign me = metaobject.system.id
+  assign shown = 0
+  if artist != blank
+    capture tiles
+      for work in artist.works.value limit: 4
+        if work.system.id != me and shown < 3
+          assign shown = shown | plus: 1
+          echo '<li>'
+          render 'gs-work-tile', work: work, heading: 'h3'
+          echo '</li>'
+        endif
+      endfor
+    endcapture
+  endif
+-%}
+{%- if shown > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.more_by' | t: name: artist.name.value }}</h2>
+        <a class="gs-cta-link gs-cta-link--more" href="{{ artist.system.url }}">{{ 'collection.all_by' | t: name: artist.name.value }}</a>
+      </div>
+      <ul class="gs-grid gs-grid--artworks">{{ tiles }}</ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "More by the artist",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Up to three other works from the artist's Works list, and a link to their page."
+    }
+  ],
+  "presets": [
+    {
+      "name": "More by the artist"
+    }
+  ]
+}
+{% endschema %}

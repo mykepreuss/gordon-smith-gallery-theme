@@ -10,26 +10,21 @@
 {
   "sections": {
     "hero": {
-      "type": "gs-exhibition-hero"
+      "type": "gs-page-hero"
     },
     "body": {
-      "type": "gs-exhibition-body"
+      "type": "gs-page-body",
+      "settings": {
+        "part": "all"
+      }
     },
-    "views": {
-      "type": "gs-gallery"
-    },
-    "more": {
-      "type": "gs-exhibition-more"
-    },
-    "works": {
-      "type": "gs-work-grid"
+    "index": {
+      "type": "gs-artist-index"
     }
   },
   "order": [
     "hero",
     "body",
-    "views",
-    "works",
-    "more"
+    "index"
   ]
 }

@@ -19,6 +19,8 @@
   - The current section's button says ", current section" to screen readers; in the drawer
     its dropdown starts open, so people see where they are.
   - Only two levels render. A third level in the menu is ignored.
+  - An artist's, work's or grouping's page (DS-62) counts as inside the section that links to the
+    Permanent Collection or Artists page (Theme settings), since menus can't link every entry.
 
   @param {object} menu - A menu (linklist), e.g. section.settings.menu
   @param {string} [variant] - 'bar' (default) or 'drawer'. Editor warnings show once, with the bar
@@ -26,7 +28,13 @@
   @example
   {%- render 'gs-nav', menu: menu, variant: 'drawer' -%}
 {% enddoc %}
-{%- assign variant = variant | default: 'bar' -%}
+{%- liquid
+  assign variant = variant | default: 'bar'
+  assign in_collection = false
+  if request.path contains '/pages/artists/' or request.path contains '/pages/collection/' or request.path contains '/pages/browse/'
+    assign in_collection = true
+  endif
+-%}
 <ul class="gs-nav">
   {%- for link in menu.links -%}
     {%- capture r -%}{%- render 'gs-url', link: link -%}{%- endcapture -%}
@@ -37,6 +45,11 @@
     {%- assign title_key = link.title | strip | downcase -%}
     {%- assign is_current = false -%}
     {%- if link.active or link.child_active -%}{%- assign is_current = true -%}{%- endif -%}
+    {%- if in_collection -%}
+      {%- for child in link.links -%}
+        {%- if child.url == settings.collection_page.url or child.url == settings.artists_page.url -%}{%- assign is_current = true -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
 
     <li class="gs-nav__item{% if is_current %} gs-nav__item--current{% endif %}">
       {%- if link.links.size > 0 -%}

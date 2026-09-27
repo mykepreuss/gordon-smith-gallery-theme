@@ -177,5 +177,51 @@
   },
   "home": {
     "all_events": "All events"
+  },
+  "collection": {
+    "works_heading": "Works in the collection",
+    "works_count": {
+      "one": "{{ count }} work",
+      "other": "{{ count }} works"
+    },
+    "artists_count": {
+      "one": "{{ count }} artist",
+      "other": "{{ count }} artists"
+    },
+    "totals": "{{ works }} works and {{ artists }} artists",
+    "documents": "Documents",
+    "in_the_shop": "In the Shop",
+    "edition_for_sale": "This work is also a limited edition in the Shop.",
+    "exhibitions_heading": "Exhibitions at the gallery",
+    "more_by": "More by {{ name }}",
+    "all_by": "All works by {{ name }}",
+    "and": "and",
+    "medium": "Medium",
+    "dimensions": "Dimensions",
+    "edition": "Edition",
+    "credit": "Credit",
+    "accession": "Accession number",
+    "shown_in": "Shown in",
+    "browse": "Browse",
+    "index_heading": "Artists A to Z",
+    "find_artist": "Find an artist",
+    "artists_found_one": "1 artist matches “{{ terms }}”",
+    "artists_found_other": "{{ number }} artists match “{{ terms }}”",
+    "artists_none": "No artist matches “{{ terms }}”. Try part of a name.",
+    "letters": "Jump to a letter",
+    "search_heading": "Search the collection",
+    "search_label": "Artist, title, medium or theme",
+    "search_loading": "Searching the collection",
+    "works_found_one": "1 work matches “{{ terms }}”",
+    "works_found_other": "{{ number }} works match “{{ terms }}”",
+    "works_none": "No works match “{{ terms }}”. Try another word, or browse by artist or category below.",
+    "show_more": "Show more works",
+    "ways_heading": "Browse the collection",
+    "artists_link": "Artists A to Z",
+    "by_category": "By category",
+    "by_theme": "By theme",
+    "site_heading": "In the collection",
+    "site_all": "See every match in the collection",
+    "exhibition_works": "Works from the collection"
   }
 }

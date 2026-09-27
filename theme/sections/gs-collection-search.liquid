@@ -1,0 +1,75 @@
+{%- comment -%}
+  Search the collection (DESIGN.md §6.13, §7.5, DS-62), on the Permanent Collection page: how many
+  works and artists there are, from the entries, then a field that finds works by artist, title,
+  year, medium, category or theme as you type, showing them as artwork tiles.
+
+  Shopify's own search doesn't look in entries, so the script (gs-collection.js) reads the works
+  from sections/gs-collection-data and searches them in the browser. Without the script the field
+  isn't shown: the ways in below and the Artists page reach every work. A link to this page with
+  ?q= opens with that search done, which is how the site's search page sends people here.
+{%- endcomment -%}
+{%- liquid
+  assign id = 'gs-finder-' | append: section.id
+  paginate metaobjects.artwork.values by 1
+    assign works_total = paginate.items
+  endpaginate
+  paginate metaobjects.artist.values by 1
+    assign artists_total = paginate.items
+  endpaginate
+  capture works_number
+    render 'gs-number', value: works_total
+  endcapture
+  capture artists_number
+    render 'gs-number', value: artists_total
+  endcapture
+-%}
+<section class="gs-section gs-surface-paper" id="collection-search" aria-labelledby="{{ id }}-heading">
+  <div class="gs-container">
+    <div class="gs-finder" data-gs-finder data-gs-limit="48">
+      <div class="gs-section-head">
+        <div class="gs-section-head__text">
+          <h2 class="gs-h2" id="{{ id }}-heading">{{ 'collection.search_heading' | t }}</h2>
+          {%- if works_total > 0 -%}
+            <p class="gs-deck">{{ 'collection.totals' | t: works: works_number, artists: artists_number }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+      <form class="gs-form-row" role="search" action="{{ request.path }}" method="get" data-gs-finder-form hidden>
+        <div class="gs-field">
+          <label class="gs-field__label" for="{{ id }}-q">{{ 'collection.search_label' | t }}</label>
+          <input class="gs-input" id="{{ id }}-q" type="search" name="q" autocomplete="off" spellcheck="false">
+        </div>
+        <button class="gs-button" type="submit">{{ 'search.submit' | t }}</button>
+      </form>
+      <p class="gs-deck gs-finder__count" role="status" data-gs-finder-status
+        data-gs-loading="{{ 'collection.search_loading' | t | escape }}"
+        data-gs-one="{{ 'collection.works_found_one' | t: terms: '[terms]' | escape }}"
+        data-gs-other="{{ 'collection.works_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
+        data-gs-none="{{ 'collection.works_none' | t: terms: '[terms]' | escape }}"></p>
+      <ul class="gs-grid gs-grid--artworks" data-gs-finder-results></ul>
+      <p class="gs-finder__more" data-gs-finder-more hidden><button class="gs-button gs-button--secondary" type="button">{{ 'collection.show_more' | t }}</button></p>
+    </div>
+  </div>
+</section>
+<script src="{{ 'gs-collection.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Search the collection",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Finds works in the collection as you type. The counts come from the Artwork and Artist entries."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Search the collection"
+    }
+  ]
+}
+{% endschema %}

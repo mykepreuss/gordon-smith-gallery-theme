@@ -9,27 +9,27 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "gs-exhibition-hero"
-    },
-    "body": {
-      "type": "gs-exhibition-body"
-    },
-    "views": {
-      "type": "gs-gallery"
-    },
-    "more": {
-      "type": "gs-exhibition-more"
+    "head": {
+      "type": "gs-entry-head"
     },
     "works": {
       "type": "gs-work-grid"
+    },
+    "editions": {
+      "type": "gs-artist-editions"
+    },
+    "exhibitions": {
+      "type": "gs-artist-exhibitions"
+    },
+    "documents": {
+      "type": "gs-artist-documents"
     }
   },
   "order": [
-    "hero",
-    "body",
-    "views",
+    "head",
     "works",
-    "more"
+    "documents",
+    "editions",
+    "exhibitions"
   ]
 }

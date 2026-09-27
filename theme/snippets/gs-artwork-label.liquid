@@ -3,7 +3,13 @@
   title in italics as a real <cite>, then the year. Built from the product's label fields; until
   they're filled, the product title shows instead, so nothing breaks mid-migration.
 
+  On the product page (link: true) the artist's name links to the artist's page in the collection,
+  from the product's Artist pages field (DS-62). With two artists ("Lauren Brevner & James Harry")
+  each name links to its own page when the label names them in the same order. Tiles don't pass
+  link, so a tile stays one link.
+
   @param {object} product - The product
+  @param {boolean} [link] - Link the artist's name to their page in the collection
   @param {string} [tag] - Element for the label: 'h1', 'h2', 'h3' or 'p' (default)
   @param {string} [class] - Classes for that element. Default: gs-artwork-label
 
@@ -18,7 +24,30 @@
 -%}
 <{{ tag }} class="{{ class | default: 'gs-artwork-label' }}">
   {%- if artist != blank and work != blank -%}
-    <span class="gs-artwork-label__artist">{{ artist | escape }}</span>
+    {%- liquid
+      assign entries = product.metafields.custom.artist_entries.value
+      assign parts = artist | split: ' & '
+      assign linked = false
+      if link and entries != blank
+        assign count = 0
+        for e in entries
+          assign count = count | plus: 1
+        endfor
+        if count == parts.size
+          assign linked = true
+        endif
+      endif
+    -%}
+    <span class="gs-artwork-label__artist">
+      {%- if linked -%}
+        {%- for e in entries -%}
+          {%- unless forloop.first %} &amp; {% endunless -%}
+          <a href="{{ e.system.url }}">{{ parts[forloop.index0] | escape }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        {{- artist | escape -}}
+      {%- endif -%}
+    </span>
     <cite>{{ work | escape }}</cite>
     {%- if year != blank -%}, {{ year | escape }}{%- endif -%}
   {%- else -%}
