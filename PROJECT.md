@@ -34,7 +34,7 @@ All the gallery's questions, in one list to send: `proposals/gallery-questions.m
 | Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
 | Land acknowledgement font (Q11): accept Arial for the characters Mulish lacks, or load a font for BC Indigenous languages | Gallery | L-06 |
-| The Permanent Collection: the review sheets (artist names and dates, titles, themes, four chosen names, credit lines, the works on loan), the featured works, and smaller copies of 39 documents over 20 MB (`proposals/gallery-questions.md` 1.7, §5) | Gallery | Nothing; the review shows the catalogue's data as cleaned |
+| The Permanent Collection: the review sheets (artist names and dates, titles, themes, four chosen names, credit lines, the works on loan) and the featured works (`proposals/gallery-questions.md` 1.7, §5) | Gallery | Nothing; the review shows the catalogue's data as cleaned |
 | Checks from the migration and page pass: the Donate "Online Form" card (the form is off), Carl Heywood in *Collect, Assemble, Gather*, a broken *Stitched* credit link, the ceremonial drum and 100 artists, left off the Artists for Kids history, the Paradise Valley photo's year, three artist names that may be misspelled (`proposals/store-writes/README.md`) | Gallery | Nothing; the review shows today's content |
 
 ## Limitation log (REUSE-04)

@@ -59,7 +59,7 @@ The collection is on the review site as of 2026-09-27: 1,174 works, 171 artists,
 | --- | --- | --- |
 | 5.1 | ~~Do the image permissions cover showing the collection on gordonsmithgallery.com?~~ Answered by Michael, 2026-09-26: "We gave all the image rights" | |
 | 5.2 | Credit lines: name donors ("Gift of Alan & Elizabeth Bell"), or the collection credit alone? | The collection credit alone, as the catalogue records it (84 works have none) |
-| 5.3 | Michael asked for everything (2026-09-26), so the Teaching Collection (195 works) is its own grouping, the 6 works "on loan" are in (P-28, see 5.13), and the artists' documents show on their pages as tiles with their covers, as in the catalogue: 113 of them. 39 PDFs are too large to go on the site: see "Documents too large for the site" below | Those 39 aren't on the site |
+| 5.3 | Michael asked for everything (2026-09-26), so the Teaching Collection (195 works) is its own grouping, the 6 works "on loan" are in (P-28, see 5.13), and the artists' documents show on their pages as tiles with their covers, as in the catalogue: 118 of them. The 39 PDFs over Shopify's 20 MB limit are on the site as smaller copies: see "Documents too large for the site" below | Smaller copies of the 39 are on the site |
 | 5.4 | Review the artists sheet (`artists.csv`): names, sort names, full and other names, life dates. 313 spellings became 171 artists. Dates are left off for 10 where the catalogue's disagree or can't be right (Kenojuak Ashevak has 1909 to 1976 and 1927 to 2013; Jackson Beardy and Jean-Paul Riopelle have birth years after their works) | Names as the site or catalogue has them; those 10 without dates |
 | 5.5 | ~~Where are the original image files, and who at the district's IT can help?~~ Answered: the images came from the catalogue's own masters (converted, and the masters left where they are), and Michael, 2026-09-26: "we won't change anything with DNS, that's outside of our scope" | |
 | 5.6 | The catalogue keeps running as the district runs it. Its private records (where each work is, provenance, donors) stay there; nothing private moved. Is that right, or should they live somewhere the gallery controls? | They stay in the catalogue |
@@ -73,51 +73,53 @@ The collection is on the review site as of 2026-09-27: 1,174 works, 171 artists,
 
 ### Documents too large for the site
 
-These 39 PDFs from the catalogue's Text Resources are over 20 MB, the most Shopify accepts for a file, so they aren't on the site. For most, the PDF is the whole document, so the artist's page shows its cover without a link until a smaller copy is uploaded: Gordon Smith's three documents, for example. Five have no cover and don't show at all yet. Together they come to 1.9 GB. The list is also in `proposals/store-writes/collection/sheets/large-documents.csv`.
+**Addressed 2026-09-27.** These 39 PDFs from the catalogue's Text Resources were over 20 MB, the most Shopify accepts for a file. Michael asked for smaller copies ("Can you create the optimized versions of all the Documents too large for the site"), and all 39 are now on the site, each opening from its tile on the artist's page. The 5 without a cover show a plain PDF tile.
 
-**To address:** send copies under 20 MB (a PDF saved for the web, or split into parts), or approve compressing them here, which lowers the quality of their pictures. Then `images.py docs` uploads them, and `import.py documents` links each cover to its file.
+Each is a scan: every page is one picture at 300 dpi, most with the words recognised as text on top. Each picture was resampled and saved as a JPEG, at the gentlest setting that brings the file under 19 MB: 34 keep 200 dpi, 3 have 150, and the two largest have 130 and 120 (Jack Shadbolt's Exhibitions, 215 MB, and David Blackwood's Press, Books, Works, 135 MB). The pages, their order and the text are unchanged, and the type reads cleanly on screen. Together they went from 1.9 GB to 378 MB. The catalogue keeps the originals.
 
-| Artist | Document | Size (MB) | In the catalogue |
-| --- | --- | --- | --- |
-| Latcholassie Akesuk | Document | 38 | [item 4778](https://afkcatalogue.sd44.ca/s/TheCollection/item/4778) |
-| Anne Meredith Barry | Books | 24 | [item 4790](https://afkcatalogue.sd44.ca/s/TheCollection/item/4790) |
-| Anne Meredith Barry | Exhibitions | 30 | [item 4786](https://afkcatalogue.sd44.ca/s/TheCollection/item/4786) |
-| Anne Meredith Barry | Press | 33 | [item 4794](https://afkcatalogue.sd44.ca/s/TheCollection/item/4794) |
-| Anne Meredith Barry | Zines, Art | 22 | [item 4787](https://afkcatalogue.sd44.ca/s/TheCollection/item/4787) |
-| Robert Bateman | Biography | 23 | [item 4800](https://afkcatalogue.sd44.ca/s/TheCollection/item/4800) |
-| Robert Bateman | Press, Books, Exhibitions | 34 | [item 4802](https://afkcatalogue.sd44.ca/s/TheCollection/item/4802) |
-| David Blackwood | Exhibitions | 29 | [item 4828](https://afkcatalogue.sd44.ca/s/TheCollection/item/4828) |
-| David Blackwood | Press, Books, Works | 135 | [item 4830](https://afkcatalogue.sd44.ca/s/TheCollection/item/4830) |
-| Molly Lamb Bobak | Exhibitions, Press, Photos | 32 | [item 4836](https://afkcatalogue.sd44.ca/s/TheCollection/item/4836) |
-| Robert Davidson | Exhibitions, Photos | 36 | [item 4870](https://afkcatalogue.sd44.ca/s/TheCollection/item/4870) |
-| Wayne Eastcott | Exhibitions, Photos | 32 | [item 4880](https://afkcatalogue.sd44.ca/s/TheCollection/item/4880) |
-| Jamie Evrard | 'Painting in Italy' Book | 33 | [item 4886](https://afkcatalogue.sd44.ca/s/TheCollection/item/4886) |
-| Joe Fafard | Exhibitions, Photos | 35 | [item 4894](https://afkcatalogue.sd44.ca/s/TheCollection/item/4894) |
-| Joe Fafard | Press | 42 | [item 4896](https://afkcatalogue.sd44.ca/s/TheCollection/item/4896) |
-| Gathie Falk | Exhibitions, Photos | 66 | [item 4902](https://afkcatalogue.sd44.ca/s/TheCollection/item/4902) |
-| Gathie Falk | Press | 74 | [item 4904](https://afkcatalogue.sd44.ca/s/TheCollection/item/4904) |
-| Angela George | Exhibitions, Photos | 30 | [item 4910](https://afkcatalogue.sd44.ca/s/TheCollection/item/4910) |
-| Graham Gillmore | Exhibitions, Photographs | 53 | [item 4920](https://afkcatalogue.sd44.ca/s/TheCollection/item/4920) |
-| Betty Goodwin | Exhibitions, Photographs | 28 | [item 5341](https://afkcatalogue.sd44.ca/s/TheCollection/item/5341) |
-| Betty Goodwin | Press | 40 | [item 5344](https://afkcatalogue.sd44.ca/s/TheCollection/item/5344) |
-| J. Carl Heywood | Exhibitions, Images | 25 | [item 4984](https://afkcatalogue.sd44.ca/s/TheCollection/item/4984) |
-| E.J. Hughes | Images | 33 | [item 5007](https://afkcatalogue.sd44.ca/s/TheCollection/item/5007) |
-| E.J. Hughes | Press | 35 | [item 5009](https://afkcatalogue.sd44.ca/s/TheCollection/item/5009) |
-| Nuveeya Ipellie | Document | 40 | [item 5028](https://afkcatalogue.sd44.ca/s/TheCollection/item/5028) |
-| Pat and Rosemarie Keough | Press | 43 | [item 5173](https://afkcatalogue.sd44.ca/s/TheCollection/item/5173) |
-| Toni Onley | Press | 28 | [item 5129](https://afkcatalogue.sd44.ca/s/TheCollection/item/5129) |
-| Melia Padluq | Works | 20 | [item 5180](https://afkcatalogue.sd44.ca/s/TheCollection/item/5180) |
-| Ross Penhall | Press | 23 | [item 5140](https://afkcatalogue.sd44.ca/s/TheCollection/item/5140) |
-| Newgaleak Qimirpik | Works | 60 | [item 5199](https://afkcatalogue.sd44.ca/s/TheCollection/item/5199) |
-| Jack Shadbolt | Exhibitions | 215 | [item 4637](https://afkcatalogue.sd44.ca/s/TheCollection/item/4637) |
-| Jack Shadbolt | Press | 84 | [item 4643](https://afkcatalogue.sd44.ca/s/TheCollection/item/4643) |
-| Arnold Shives | Press | 24 | [item 5219](https://afkcatalogue.sd44.ca/s/TheCollection/item/5219) |
-| Gordon Smith | Exhibitions | 120 | [item 4619](https://afkcatalogue.sd44.ca/s/TheCollection/item/4619) |
-| Gordon Smith | Photographs | 38 | [item 4623](https://afkcatalogue.sd44.ca/s/TheCollection/item/4623) |
-| Gordon Smith | Press | 79 | [item 4625](https://afkcatalogue.sd44.ca/s/TheCollection/item/4625) |
-| Takao Tanabe | Exhibitions | 25 | [item 5242](https://afkcatalogue.sd44.ca/s/TheCollection/item/5242) |
-| Kabubuwa Tunnillie | Works | 104 | [item 5253](https://afkcatalogue.sd44.ca/s/TheCollection/item/5253) |
-| Charlene Vickers | Exhibitions, Images | 31 | [item 5272](https://afkcatalogue.sd44.ca/s/TheCollection/item/5272) |
+**For the gallery:** if you have sharper copies under 20 MB (a PDF saved for the web, for example), send them and they can replace these. The list is also in `proposals/store-writes/collection/sheets/large-documents.csv`, and how each file was made in `proposals/store-writes/collection/shrunk-documents.json`.
+
+| Artist | Document | Size (MB) | On the site (MB) | Pictures at | In the catalogue |
+| --- | --- | --- | --- | --- | --- |
+| Latcholassie Akesuk | Document | 38 | 14 | 200 dpi | [item 4778](https://afkcatalogue.sd44.ca/s/TheCollection/item/4778) |
+| Anne Meredith Barry | Books | 24 | 9 | 200 dpi | [item 4790](https://afkcatalogue.sd44.ca/s/TheCollection/item/4790) |
+| Anne Meredith Barry | Exhibitions | 30 | 12 | 200 dpi | [item 4786](https://afkcatalogue.sd44.ca/s/TheCollection/item/4786) |
+| Anne Meredith Barry | Press | 33 | 15 | 200 dpi | [item 4794](https://afkcatalogue.sd44.ca/s/TheCollection/item/4794) |
+| Anne Meredith Barry | Zines, Art | 22 | 9 | 200 dpi | [item 4787](https://afkcatalogue.sd44.ca/s/TheCollection/item/4787) |
+| Robert Bateman | Biography | 23 | 10 | 200 dpi | [item 4800](https://afkcatalogue.sd44.ca/s/TheCollection/item/4800) |
+| Robert Bateman | Press, Books, Exhibitions | 34 | 13 | 200 dpi | [item 4802](https://afkcatalogue.sd44.ca/s/TheCollection/item/4802) |
+| David Blackwood | Exhibitions | 29 | 12 | 200 dpi | [item 4828](https://afkcatalogue.sd44.ca/s/TheCollection/item/4828) |
+| David Blackwood | Press, Books, Works | 135 | 17 | 120 dpi | [item 4830](https://afkcatalogue.sd44.ca/s/TheCollection/item/4830) |
+| Molly Lamb Bobak | Exhibitions, Press, Photos | 32 | 7 | 200 dpi | [item 4836](https://afkcatalogue.sd44.ca/s/TheCollection/item/4836) |
+| Robert Davidson | Exhibitions, Photos | 36 | 7 | 200 dpi | [item 4870](https://afkcatalogue.sd44.ca/s/TheCollection/item/4870) |
+| Wayne Eastcott | Exhibitions, Photos | 32 | 6 | 200 dpi | [item 4880](https://afkcatalogue.sd44.ca/s/TheCollection/item/4880) |
+| Jamie Evrard | 'Painting in Italy' Book | 33 | 5 | 200 dpi | [item 4886](https://afkcatalogue.sd44.ca/s/TheCollection/item/4886) |
+| Joe Fafard | Exhibitions, Photos | 35 | 7 | 200 dpi | [item 4894](https://afkcatalogue.sd44.ca/s/TheCollection/item/4894) |
+| Joe Fafard | Press | 42 | 9 | 200 dpi | [item 4896](https://afkcatalogue.sd44.ca/s/TheCollection/item/4896) |
+| Gathie Falk | Exhibitions, Photos | 66 | 14 | 200 dpi | [item 4902](https://afkcatalogue.sd44.ca/s/TheCollection/item/4902) |
+| Gathie Falk | Press | 74 | 16 | 200 dpi | [item 4904](https://afkcatalogue.sd44.ca/s/TheCollection/item/4904) |
+| Angela George | Exhibitions, Photos | 30 | 6 | 200 dpi | [item 4910](https://afkcatalogue.sd44.ca/s/TheCollection/item/4910) |
+| Graham Gillmore | Exhibitions, Photographs | 53 | 11 | 200 dpi | [item 4920](https://afkcatalogue.sd44.ca/s/TheCollection/item/4920) |
+| Betty Goodwin | Exhibitions, Photographs | 28 | 6 | 200 dpi | [item 5341](https://afkcatalogue.sd44.ca/s/TheCollection/item/5341) |
+| Betty Goodwin | Press | 40 | 9 | 200 dpi | [item 5344](https://afkcatalogue.sd44.ca/s/TheCollection/item/5344) |
+| J. Carl Heywood | Exhibitions, Images | 25 | 6 | 200 dpi | [item 4984](https://afkcatalogue.sd44.ca/s/TheCollection/item/4984) |
+| E.J. Hughes | Images | 33 | 6 | 200 dpi | [item 5007](https://afkcatalogue.sd44.ca/s/TheCollection/item/5007) |
+| E.J. Hughes | Press | 35 | 9 | 200 dpi | [item 5009](https://afkcatalogue.sd44.ca/s/TheCollection/item/5009) |
+| Nuveeya Ipellie | Document | 40 | 6 | 200 dpi | [item 5028](https://afkcatalogue.sd44.ca/s/TheCollection/item/5028) |
+| Pat and Rosemarie Keough | Press | 43 | 10 | 200 dpi | [item 5173](https://afkcatalogue.sd44.ca/s/TheCollection/item/5173) |
+| Toni Onley | Press | 28 | 6 | 200 dpi | [item 5129](https://afkcatalogue.sd44.ca/s/TheCollection/item/5129) |
+| Melia Padluq | Works | 20 | 3 | 200 dpi | [item 5180](https://afkcatalogue.sd44.ca/s/TheCollection/item/5180) |
+| Ross Penhall | Press | 23 | 4 | 200 dpi | [item 5140](https://afkcatalogue.sd44.ca/s/TheCollection/item/5140) |
+| Newgaleak Qimirpik | Works | 60 | 9 | 200 dpi | [item 5199](https://afkcatalogue.sd44.ca/s/TheCollection/item/5199) |
+| Jack Shadbolt | Exhibitions | 215 | 18 | 130 dpi | [item 4637](https://afkcatalogue.sd44.ca/s/TheCollection/item/4637) |
+| Jack Shadbolt | Press | 84 | 15 | 150 dpi | [item 4643](https://afkcatalogue.sd44.ca/s/TheCollection/item/4643) |
+| Arnold Shives | Press | 24 | 6 | 200 dpi | [item 5219](https://afkcatalogue.sd44.ca/s/TheCollection/item/5219) |
+| Gordon Smith | Exhibitions | 120 | 14 | 150 dpi | [item 4619](https://afkcatalogue.sd44.ca/s/TheCollection/item/4619) |
+| Gordon Smith | Photographs | 38 | 7 | 200 dpi | [item 4623](https://afkcatalogue.sd44.ca/s/TheCollection/item/4623) |
+| Gordon Smith | Press | 79 | 17 | 150 dpi | [item 4625](https://afkcatalogue.sd44.ca/s/TheCollection/item/4625) |
+| Takao Tanabe | Exhibitions | 25 | 6 | 200 dpi | [item 5242](https://afkcatalogue.sd44.ca/s/TheCollection/item/5242) |
+| Kabubuwa Tunnillie | Works | 104 | 16 | 200 dpi | [item 5253](https://afkcatalogue.sd44.ca/s/TheCollection/item/5253) |
+| Charlene Vickers | Exhibitions, Images | 31 | 6 | 200 dpi | [item 5272](https://afkcatalogue.sd44.ca/s/TheCollection/item/5272) |
 
 ## 6. Volunteer (DS-58)
 

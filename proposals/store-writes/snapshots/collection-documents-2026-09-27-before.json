@@ -1,0 +1,2109 @@
+{
+ "taken": "2026-09-27T12:56:30-07:00",
+ "why": "Before the smaller copies of the 39 documents over 20 MB are uploaded and linked (Michael, 2026-09-27).",
+ "documents": [
+  {
+   "id": "gid://shopify/Metaobject/608950911273",
+   "handle": "alistair-bell-4816",
+   "updatedAt": "2026-09-27T18:37:21Z",
+   "title": "Biography, Books",
+   "cover": "gid://shopify/MediaImage/46348643926313",
+   "file": "gid://shopify/GenericFile/46348636553513"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951796009",
+   "handle": "angela-george-4910",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Exhibitions, Photos",
+   "cover": "gid://shopify/MediaImage/46348645073193",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951828777",
+   "handle": "angela-george-4912",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348645105961",
+   "file": "gid://shopify/GenericFile/46348639338793"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952058153",
+   "handle": "angela-grossmann-4943",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348648448297",
+   "file": "gid://shopify/GenericFile/46348639535401"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952090921",
+   "handle": "angela-grossmann-4945",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348648481065",
+   "file": "gid://shopify/GenericFile/46348639568169"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950649129",
+   "handle": "anne-meredith-barry-4784",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Biography Related",
+   "cover": "gid://shopify/MediaImage/46348643238185",
+   "file": "gid://shopify/GenericFile/46348636422441"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950681897",
+   "handle": "anne-meredith-barry-4786",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348643729705",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950714665",
+   "handle": "anne-meredith-barry-4787",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Zines, Art",
+   "cover": "gid://shopify/MediaImage/46348643762473",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950747433",
+   "handle": "anne-meredith-barry-4790",
+   "updatedAt": "2026-09-27T18:37:21Z",
+   "title": "Books",
+   "cover": "gid://shopify/MediaImage/46348643795241",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950780201",
+   "handle": "anne-meredith-barry-4792",
+   "updatedAt": "2026-09-27T18:37:21Z",
+   "title": "Photographs",
+   "cover": "gid://shopify/MediaImage/46348643828009",
+   "file": "gid://shopify/GenericFile/46348636455209"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950812969",
+   "handle": "anne-meredith-barry-4794",
+   "updatedAt": "2026-09-27T18:37:21Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348643860777",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953467177",
+   "handle": "arnold-shives-5216",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348647334185",
+   "file": "gid://shopify/GenericFile/46348641894697"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953499945",
+   "handle": "arnold-shives-5219",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348647366953",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953532713",
+   "handle": "arnold-shives-5222",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Cheakamus River print",
+   "cover": "gid://shopify/MediaImage/46348647399721",
+   "file": "gid://shopify/MediaImage/46348647399721"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953565481",
+   "handle": "arnold-shives-5224",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Paradise Valley Print",
+   "cover": "gid://shopify/MediaImage/46348647432489",
+   "file": "gid://shopify/MediaImage/46348647432489"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950944041",
+   "handle": "b-c-binning-4820",
+   "updatedAt": "2026-09-27T18:37:21Z",
+   "title": "Exhibitions, Prints",
+   "cover": "gid://shopify/MediaImage/46348643959081",
+   "file": "gid://shopify/GenericFile/46348636586281"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950976809",
+   "handle": "b-c-binning-4822",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "'Drawings' Book",
+   "cover": "gid://shopify/MediaImage/46348643991849",
+   "file": "gid://shopify/GenericFile/46348637307177"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951009577",
+   "handle": "b-c-binning-4824",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348644024617",
+   "file": "gid://shopify/GenericFile/46348637339945"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608954089769",
+   "handle": "betty-goodwin-5341",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Exhibitions, Photographs",
+   "cover": "gid://shopify/MediaImage/46348649201961",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608954122537",
+   "handle": "betty-goodwin-5344",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348649234729",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950485289",
+   "handle": "bill-reid-4648",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Coin Set",
+   "cover": "gid://shopify/MediaImage/46348643074345",
+   "file": "gid://shopify/GenericFile/46348636291369"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950518057",
+   "handle": "bill-reid-4650",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Photographs",
+   "cover": "gid://shopify/MediaImage/46348643107113",
+   "file": "gid://shopify/GenericFile/46348636324137"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950550825",
+   "handle": "bill-reid-4652",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348643139881",
+   "file": "gid://shopify/GenericFile/46348636356905"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953893161",
+   "handle": "charlene-vickers-5272",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348648087849",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953794857",
+   "handle": "charles-van-sandwyk-5260",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348647989545",
+   "file": "gid://shopify/GenericFile/46348642058537"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953827625",
+   "handle": "charles-van-sandwyk-5263",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348648022313",
+   "file": "gid://shopify/GenericFile/46348642091305"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953860393",
+   "handle": "charles-van-sandwyk-5266",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "New Leaf Images",
+   "cover": "gid://shopify/MediaImage/46348648055081",
+   "file": "gid://shopify/GenericFile/46348642124073"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953336105",
+   "handle": "christopher-pratt-5189",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Chris & Mary Pratt - Images, Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348647170345",
+   "file": "gid://shopify/GenericFile/46348641567017"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953368873",
+   "handle": "christopher-pratt-5192",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Chris & Mary Pratt - Press",
+   "cover": "gid://shopify/MediaImage/46348647203113",
+   "file": "gid://shopify/GenericFile/46348641599785"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951075113",
+   "handle": "david-blackwood-4828",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348868550953",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951107881",
+   "handle": "david-blackwood-4830",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Press, Books, Works",
+   "cover": "gid://shopify/MediaImage/46348868583721",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951140649",
+   "handle": "david-blackwood-4832",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Photographs",
+   "cover": "gid://shopify/MediaImage/46348868616489",
+   "file": "gid://shopify/GenericFile/46348868223273"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951337257",
+   "handle": "douglas-coupland-4856",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Exhibitions, Photographs",
+   "cover": "gid://shopify/MediaImage/46348644548905",
+   "file": "gid://shopify/GenericFile/46348637471017"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951370025",
+   "handle": "douglas-coupland-4858",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348644581673",
+   "file": "gid://shopify/GenericFile/46348637503785"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951402793",
+   "handle": "douglas-coupland-4860",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "'West Coast' Book",
+   "cover": "gid://shopify/MediaImage/46348644614441",
+   "file": "gid://shopify/GenericFile/46348637536553"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951468329",
+   "handle": "douglas-coupland-4862",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Photographs",
+   "cover": "gid://shopify/MediaImage/46348644647209",
+   "file": "gid://shopify/GenericFile/46348637569321"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952385833",
+   "handle": "e-j-hughes-5005",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348649038121",
+   "file": "gid://shopify/GenericFile/46348640387369"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952418601",
+   "handle": "e-j-hughes-5007",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Images",
+   "cover": "gid://shopify/MediaImage/46348649070889",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952451369",
+   "handle": "e-j-hughes-5009",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348649103657",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951238953",
+   "handle": "edward-burtynsky-4844",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Exhibitions, photographs",
+   "cover": "gid://shopify/MediaImage/46348644450601",
+   "file": "gid://shopify/GenericFile/46348637405481"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951271721",
+   "handle": "edward-burtynsky-4846",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348644483369",
+   "file": "gid://shopify/MediaImage/46348644483369"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952910121",
+   "handle": "elizabeth-mcintosh-5101",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Press - Catriona Jeffries",
+   "cover": "gid://shopify/MediaImage/46348646056233",
+   "file": "gid://shopify/GenericFile/46348640944425"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951730473",
+   "handle": "gathie-falk-4902",
+   "updatedAt": "2026-09-27T18:37:27Z",
+   "title": "Exhibitions, Photos",
+   "cover": "gid://shopify/MediaImage/46348645007657",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951763241",
+   "handle": "gathie-falk-4904",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348645040425",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952582441",
+   "handle": "george-littlechild-5052",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Artists For Kids Group Photo",
+   "cover": "gid://shopify/MediaImage/46348645695785",
+   "file": "gid://shopify/MediaImage/46348645695785"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952615209",
+   "handle": "george-littlechild-5056",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Artists For Kids Edition",
+   "cover": "gid://shopify/MediaImage/46348649169193",
+   "file": "gid://shopify/GenericFile/46348640518441"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952647977",
+   "handle": "george-littlechild-5059",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Exhibition Book",
+   "cover": "gid://shopify/MediaImage/46348645728553",
+   "file": "gid://shopify/GenericFile/46348640715049"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952680745",
+   "handle": "george-littlechild-5062",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Exhibition Book 2",
+   "cover": "gid://shopify/MediaImage/46348645761321",
+   "file": "gid://shopify/GenericFile/46348640747817"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952713513",
+   "handle": "george-littlechild-5065",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Exhibition Invitation",
+   "cover": "gid://shopify/MediaImage/46348645892393",
+   "file": "gid://shopify/GenericFile/46348640780585"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952746281",
+   "handle": "george-littlechild-5072",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348645925161",
+   "file": "gid://shopify/GenericFile/46348640813353"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950321449",
+   "handle": "gordon-smith-4619",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348642943273",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950354217",
+   "handle": "gordon-smith-4623",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Photographs",
+   "cover": "gid://shopify/MediaImage/46348642976041",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950386985",
+   "handle": "gordon-smith-4625",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348648382761",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951861545",
+   "handle": "graham-gillmore-4920",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Exhibitions, Photographs",
+   "cover": "gid://shopify/MediaImage/46348645466409",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951894313",
+   "handle": "graham-gillmore-4922",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348645499177",
+   "file": "gid://shopify/GenericFile/46348639371561"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953008425",
+   "handle": "greg-murdock-5116",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348646154537",
+   "file": "gid://shopify/GenericFile/46348641337641"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952942889",
+   "handle": "guido-molinari-5107",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348646089001",
+   "file": "gid://shopify/GenericFile/46348640977193"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952975657",
+   "handle": "guido-molinari-5110",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348646121769",
+   "file": "gid://shopify/GenericFile/46348641009961"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608954024233",
+   "handle": "irene-f-whittome-5296",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348648186153",
+   "file": "gid://shopify/GenericFile/46348642287913"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608954057001",
+   "handle": "irene-f-whittome-5299",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348648218921",
+   "file": "gid://shopify/GenericFile/46348642320681"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952254761",
+   "handle": "j-carl-heywood-4984",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348648644905",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952287529",
+   "handle": "j-carl-heywood-4986",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348648677673",
+   "file": "gid://shopify/GenericFile/46348640289065"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952320297",
+   "handle": "j-carl-heywood-4988",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "'A Life in Layers'",
+   "cover": "gid://shopify/MediaImage/46348649005353",
+   "file": "gid://shopify/GenericFile/46348640321833"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952353065",
+   "handle": "j-carl-heywood-5000",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Press 2",
+   "cover": null,
+   "file": "gid://shopify/GenericFile/46348640354601"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950419753",
+   "handle": "jack-shadbolt-4637",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348643008809",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950452521",
+   "handle": "jack-shadbolt-4643",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348643041577",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951599401",
+   "handle": "jamie-evrard-4884",
+   "updatedAt": "2026-09-27T18:37:25Z",
+   "title": "Exhibitions, Photos",
+   "cover": "gid://shopify/MediaImage/46348644876585",
+   "file": "gid://shopify/MediaImage/46348644876585"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951632169",
+   "handle": "jamie-evrard-4886",
+   "updatedAt": "2026-09-27T18:37:25Z",
+   "title": "'Painting in Italy' Book",
+   "cover": "gid://shopify/MediaImage/46348644909353",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953172265",
+   "handle": "jane-ash-poitras-5152",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348647039273",
+   "file": "gid://shopify/GenericFile/46348641435945"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953205033",
+   "handle": "jane-ash-poitras-5155",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348647072041",
+   "file": "gid://shopify/GenericFile/46348641468713"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952877353",
+   "handle": "jean-mcewan-5095",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348646023465",
+   "file": "gid://shopify/GenericFile/46348640911657"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951664937",
+   "handle": "joe-fafard-4894",
+   "updatedAt": "2026-09-27T18:37:25Z",
+   "title": "Exhibitions, Photos",
+   "cover": "gid://shopify/MediaImage/46348644942121",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951697705",
+   "handle": "joe-fafard-4896",
+   "updatedAt": "2026-09-27T18:37:27Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348644974889",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952221993",
+   "handle": "john-hartman-4973",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Exhibitions, Photographs",
+   "cover": "gid://shopify/MediaImage/46348648612137",
+   "file": "gid://shopify/GenericFile/46348640256297"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950878505",
+   "handle": "judson-beaumont-4809",
+   "updatedAt": "2026-09-27T18:37:21Z",
+   "title": "Images, Projects",
+   "cover": "gid://shopify/MediaImage/46348643893545",
+   "file": "gid://shopify/GenericFile/46348636520745"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951206185",
+   "handle": "karin-bubas-4840",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Exhibitions, Photographs",
+   "cover": "gid://shopify/MediaImage/46348644417833",
+   "file": "gid://shopify/GenericFile/46348637372713"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952516905",
+   "handle": "kenojuak-ashevak-5037",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Images, Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348645663017",
+   "file": "gid://shopify/GenericFile/46348640452905"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952549673",
+   "handle": "kenojuak-ashevak-5040",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348649136425",
+   "file": "gid://shopify/GenericFile/46348640485673"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950583593",
+   "handle": "latcholassie-akesuk-4778",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Document",
+   "cover": "gid://shopify/MediaImage/46348643172649",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953434409",
+   "handle": "marianna-schmidt-5204",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Book Cover",
+   "cover": "gid://shopify/MediaImage/46348647301417",
+   "file": "gid://shopify/GenericFile/46348641632553"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953598249",
+   "handle": "michael-snow-5231",
+   "updatedAt": "2026-09-27T18:37:36Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348647465257",
+   "file": "gid://shopify/GenericFile/46348641927465"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953631017",
+   "handle": "michael-snow-5234",
+   "updatedAt": "2026-09-27T18:37:36Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348647498025",
+   "file": "gid://shopify/GenericFile/46348641960233"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951173417",
+   "handle": "molly-lamb-bobak-4836",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Exhibitions, Press, Photos",
+   "cover": "gid://shopify/MediaImage/46348644385065",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953401641",
+   "handle": "newgaleak-qimirpik-5199",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Works",
+   "cover": "gid://shopify/MediaImage/46348647235881",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950616361",
+   "handle": "ottochie-ashoona-4782",
+   "updatedAt": "2026-09-27T18:37:20Z",
+   "title": "Document",
+   "cover": "gid://shopify/MediaImage/46348643205417",
+   "file": "gid://shopify/GenericFile/46348636389673"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953237801",
+   "handle": "pat-and-rosemarie-keough-5169",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Antarctica Book - Press",
+   "cover": null,
+   "file": "gid://shopify/GenericFile/46348641501481"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953270569",
+   "handle": "pat-and-rosemarie-keough-5173",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348647104809",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953303337",
+   "handle": "pat-and-rosemarie-keough-5176",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Images",
+   "cover": "gid://shopify/MediaImage/46348647137577",
+   "file": "gid://shopify/GenericFile/46348641534249"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608950845737",
+   "handle": "robert-bateman-4803",
+   "updatedAt": "2026-09-27T18:37:21Z",
+   "title": "Photographs",
+   "cover": null,
+   "file": "gid://shopify/GenericFile/46348636487977"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951501097",
+   "handle": "robert-davidson-4870",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Exhibitions, Photos",
+   "cover": "gid://shopify/MediaImage/46348644679977",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951533865",
+   "handle": "robert-davidson-4872",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348644811049",
+   "file": "gid://shopify/GenericFile/46348637602089"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951927081",
+   "handle": "rodney-graham-4930",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348645531945",
+   "file": "gid://shopify/GenericFile/46348639404329"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951959849",
+   "handle": "rodney-graham-4932",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Photographs",
+   "cover": "gid://shopify/MediaImage/46348645564713",
+   "file": "gid://shopify/GenericFile/46348639437097"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951992617",
+   "handle": "rodney-graham-4934",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348645597481",
+   "file": "gid://shopify/GenericFile/46348639469865"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952025385",
+   "handle": "rodney-graham-4940",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Island Thoughts Exhibition Book",
+   "cover": "gid://shopify/MediaImage/46348648415529",
+   "file": "gid://shopify/GenericFile/46348639502633"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953106729",
+   "handle": "ross-penhall-5137",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Images, Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348646973737",
+   "file": "gid://shopify/GenericFile/46348641403177"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953139497",
+   "handle": "ross-penhall-5140",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348647006505",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953925929",
+   "handle": "roy-henry-vickers-5282-1",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Edition Brochure, 1 of 2",
+   "cover": "gid://shopify/MediaImage/46348648120617",
+   "file": "gid://shopify/GenericFile/46348642156841"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953958697",
+   "handle": "roy-henry-vickers-5282-2",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Edition Brochure, 2 of 2",
+   "cover": "gid://shopify/MediaImage/46348648120617",
+   "file": "gid://shopify/GenericFile/46348642189609"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953991465",
+   "handle": "roy-henry-vickers-5285",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348648153385",
+   "file": "gid://shopify/GenericFile/46348642255145"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952779049",
+   "handle": "roz-marshall-5078",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Edition, Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348645957929",
+   "file": "gid://shopify/GenericFile/46348640846121"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952811817",
+   "handle": "roz-marshall-5081",
+   "updatedAt": "2026-09-27T18:37:32Z",
+   "title": "Press (Thumbnail)",
+   "cover": "gid://shopify/MediaImage/46348645990697",
+   "file": "gid://shopify/GenericFile/46348640878889"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952484137",
+   "handle": "russna-kaur-5031",
+   "updatedAt": "2026-09-27T18:37:31Z",
+   "title": "Images, Exhibition Catalogues",
+   "cover": "gid://shopify/MediaImage/46348645630249",
+   "file": "gid://shopify/GenericFile/46348640420137"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953663785",
+   "handle": "takao-tanabe-5242",
+   "updatedAt": "2026-09-27T18:37:36Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348647530793",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953696553",
+   "handle": "takao-tanabe-5245",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348647563561",
+   "file": "gid://shopify/GenericFile/46348641993001"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953729321",
+   "handle": "takao-tanabe-5248",
+   "updatedAt": "2026-09-27T18:37:38Z",
+   "title": "Images",
+   "cover": "gid://shopify/MediaImage/46348647596329",
+   "file": "gid://shopify/GenericFile/46348642025769"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952123689",
+   "handle": "ted-harrison-4956",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "Exhibitions",
+   "cover": "gid://shopify/MediaImage/46348648513833",
+   "file": "gid://shopify/GenericFile/46348639600937"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952156457",
+   "handle": "ted-harrison-4958",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "'A Retrospective' Book",
+   "cover": "gid://shopify/MediaImage/46348648546601",
+   "file": "gid://shopify/GenericFile/46348639633705"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608952189225",
+   "handle": "ted-harrison-4960",
+   "updatedAt": "2026-09-27T18:37:28Z",
+   "title": "'Maggie's Magic Dream' Book",
+   "cover": "gid://shopify/MediaImage/46348648579369",
+   "file": "gid://shopify/GenericFile/46348640223529"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953041193",
+   "handle": "toni-onley-5126",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Exhibitions, Images",
+   "cover": "gid://shopify/MediaImage/46348646187305",
+   "file": "gid://shopify/GenericFile/46348641370409"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608953073961",
+   "handle": "toni-onley-5129",
+   "updatedAt": "2026-09-27T18:37:35Z",
+   "title": "Press",
+   "cover": "gid://shopify/MediaImage/46348646940969",
+   "file": null
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951304489",
+   "handle": "victor-cicansky-4850",
+   "updatedAt": "2026-09-27T18:37:24Z",
+   "title": "Photographs",
+   "cover": "gid://shopify/MediaImage/46348644516137",
+   "file": "gid://shopify/GenericFile/46348637438249"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608951566633",
+   "handle": "wayne-eastcott-4880",
+   "updatedAt": "2026-09-27T18:37:25Z",
+   "title": "Exhibitions, Photos",
+   "cover": "gid://shopify/MediaImage/46348644843817",
+   "file": null
+  }
+ ],
+ "artists": [
+  {
+   "id": "gid://shopify/Metaobject/608896876841",
+   "handle": "a-y-jackson",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "A.Y. Jackson",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899924265",
+   "handle": "alan-wood",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Alan Wood",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898023721",
+   "handle": "albert-normandin",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Albert Normandin",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742408489",
+   "handle": "alistair-bell",
+   "updatedAt": "2026-09-27T18:39:02Z",
+   "name": "Alistair Bell",
+   "documents": "[\"gid://shopify/Metaobject/608950911273\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896909609",
+   "handle": "allen-james",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "Allen James",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895402281",
+   "handle": "amelia-butcher",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Amelia Butcher",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896319785",
+   "handle": "angela-george",
+   "updatedAt": "2026-09-27T18:39:09Z",
+   "name": "Angela George",
+   "documents": "[\"gid://shopify/Metaobject/608951796009\",\"gid://shopify/Metaobject/608951828777\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896483625",
+   "handle": "angela-grossmann",
+   "updatedAt": "2026-09-27T18:39:12Z",
+   "name": "Angela Grossmann",
+   "documents": "[\"gid://shopify/Metaobject/608952058153\",\"gid://shopify/Metaobject/608952090921\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897401129",
+   "handle": "ann-kipling",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Ann Kipling",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895729961",
+   "handle": "anna-binta-diallo",
+   "updatedAt": "2026-09-27T18:39:06Z",
+   "name": "Anna Binta Diallo",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742211881",
+   "handle": "anne-meredith-barry",
+   "updatedAt": "2026-09-27T18:39:01Z",
+   "name": "Anne Meredith Barry",
+   "documents": "[\"gid://shopify/Metaobject/608950649129\",\"gid://shopify/Metaobject/608950681897\",\"gid://shopify/Metaobject/608950714665\",\"gid://shopify/Metaobject/608950747433\",\"gid://shopify/Metaobject/608950780201\",\"gid://shopify/Metaobject/608950812969\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899072297",
+   "handle": "arnold-shives",
+   "updatedAt": "2026-09-27T18:39:25Z",
+   "name": "Arnold Shives",
+   "documents": "[\"gid://shopify/Metaobject/608953467177\",\"gid://shopify/Metaobject/608953499945\",\"gid://shopify/Metaobject/608953532713\",\"gid://shopify/Metaobject/608953565481\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899399977",
+   "handle": "art-thompson",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Art Thompson",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899465513",
+   "handle": "ashevak-tunnillie",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Ashevak Tunnillie",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897597737",
+   "handle": "atilla-lukacs",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Atilla Lukacs",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895861033",
+   "handle": "audrey-capel-doray",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Audrey Capel Doray",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742506793",
+   "handle": "b-c-binning",
+   "updatedAt": "2026-09-27T18:39:02Z",
+   "name": "B.C. Binning",
+   "documents": "[\"gid://shopify/Metaobject/608950944041\",\"gid://shopify/Metaobject/608950976809\",\"gid://shopify/Metaobject/608951009577\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608900153641",
+   "handle": "barbara-zeigler",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Barbara Zeigler",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895762729",
+   "handle": "beau-dick",
+   "updatedAt": "2026-09-27T18:39:06Z",
+   "name": "Beau Dick",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896418089",
+   "handle": "betty-goodwin",
+   "updatedAt": "2026-09-27T18:39:10Z",
+   "name": "Betty Goodwin",
+   "documents": "[\"gid://shopify/Metaobject/608954089769\",\"gid://shopify/Metaobject/608954122537\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898777385",
+   "handle": "bill-reid",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Bill Reid",
+   "documents": "[\"gid://shopify/Metaobject/608950485289\",\"gid://shopify/Metaobject/608950518057\",\"gid://shopify/Metaobject/608950550825\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897106217",
+   "handle": "bonnie-jordan",
+   "updatedAt": "2026-09-27T18:39:14Z",
+   "name": "Bonnie Jordan",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899662121",
+   "handle": "charlene-vickers",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Charlene Vickers",
+   "documents": "[\"gid://shopify/Metaobject/608953893161\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896287017",
+   "handle": "charles-gagon",
+   "updatedAt": "2026-09-27T18:39:09Z",
+   "name": "Charles Gagon",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899596585",
+   "handle": "charles-van-sandwyk",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Charles Van Sandwyk",
+   "documents": "[\"gid://shopify/Metaobject/608953794857\",\"gid://shopify/Metaobject/608953827625\",\"gid://shopify/Metaobject/608953860393\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898580777",
+   "handle": "christopher-pratt",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Christopher Pratt",
+   "documents": "[\"gid://shopify/Metaobject/608953336105\",\"gid://shopify/Metaobject/608953368873\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895795497",
+   "handle": "christos-dikeakos",
+   "updatedAt": "2026-09-27T18:39:06Z",
+   "name": "Christos Dikeakos",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896352553",
+   "handle": "damian-george",
+   "updatedAt": "2026-09-27T18:39:10Z",
+   "name": "Damian George",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897925417",
+   "handle": "damian-moppett",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Damian Moppett",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895598889",
+   "handle": "dana-claxton",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Dana Claxton",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895172905",
+   "handle": "david-blackwood",
+   "updatedAt": "2026-09-27T18:39:04Z",
+   "name": "David Blackwood",
+   "documents": "[\"gid://shopify/Metaobject/608951075113\",\"gid://shopify/Metaobject/608951107881\",\"gid://shopify/Metaobject/608951140649\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898220329",
+   "handle": "david-gerry-partridge",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "David Gerry Partridge",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899891497",
+   "handle": "david-wilson",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "David Wilson",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897564969",
+   "handle": "daylen-luchsinger",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Daylen Luchsinger",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897171753",
+   "handle": "denis-juneau",
+   "updatedAt": "2026-09-27T18:39:16Z",
+   "name": "Denis Juneau",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898875689",
+   "handle": "derek-root",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Derek Root",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742474025",
+   "handle": "douglas-biden",
+   "updatedAt": "2026-09-27T18:39:02Z",
+   "name": "Douglas Biden",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895664425",
+   "handle": "douglas-coupland",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Douglas Coupland",
+   "documents": "[\"gid://shopify/Metaobject/608951337257\",\"gid://shopify/Metaobject/608951370025\",\"gid://shopify/Metaobject/608951402793\",\"gid://shopify/Metaobject/608951468329\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896745769",
+   "handle": "e-j-hughes",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "E.J. Hughes",
+   "documents": "[\"gid://shopify/Metaobject/608952385833\",\"gid://shopify/Metaobject/608952418601\",\"gid://shopify/Metaobject/608952451369\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895369513",
+   "handle": "edward-burtynsky",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Edward Burtynsky",
+   "documents": "[\"gid://shopify/Metaobject/608951238953\",\"gid://shopify/Metaobject/608951271721\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895303977",
+   "handle": "elaine-brewer-white",
+   "updatedAt": "2026-09-27T18:39:04Z",
+   "name": "Elaine Brewer-White",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742080809",
+   "handle": "elizabeth-angrnaqquaq",
+   "updatedAt": "2026-09-27T18:39:00Z",
+   "name": "Elizabeth Angrnaqquaq",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897794345",
+   "handle": "elizabeth-mcintosh",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Elizabeth McIntosh",
+   "documents": "[\"gid://shopify/Metaobject/608952910121\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895435049",
+   "handle": "emma-campbell",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Emma Campbell",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895992105",
+   "handle": "enn-erisalu",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Enn Erisalu",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897827113",
+   "handle": "erin-mcsavaney",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Erin McSavaney",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608900088105",
+   "handle": "etienne-zack",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Etienne Zack",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898416937",
+   "handle": "frank-perry",
+   "updatedAt": "2026-09-27T18:39:22Z",
+   "name": "Frank Perry",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742015273",
+   "handle": "fred-amess",
+   "updatedAt": "2026-09-27T18:39:00Z",
+   "name": "Fred Amess",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896155945",
+   "handle": "gathie-falk",
+   "updatedAt": "2026-09-27T18:39:09Z",
+   "name": "Gathie Falk",
+   "documents": "[\"gid://shopify/Metaobject/608951730473\",\"gid://shopify/Metaobject/608951763241\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896188713",
+   "handle": "geoffrey-farmer",
+   "updatedAt": "2026-09-27T18:39:09Z",
+   "name": "Geoffrey Farmer",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896778537",
+   "handle": "george-hunt-jr",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "George Hunt Jr.",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897532201",
+   "handle": "george-littlechild",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "George Littlechild",
+   "documents": "[\"gid://shopify/Metaobject/608952582441\",\"gid://shopify/Metaobject/608952615209\",\"gid://shopify/Metaobject/608952647977\",\"gid://shopify/Metaobject/608952680745\",\"gid://shopify/Metaobject/608952713513\",\"gid://shopify/Metaobject/608952746281\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898384169",
+   "handle": "george-pennier",
+   "updatedAt": "2026-09-27T18:39:22Z",
+   "name": "George Pennier",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898744617",
+   "handle": "george-rammell",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "George Rammell",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899105065",
+   "handle": "gordon-smith",
+   "updatedAt": "2026-09-27T18:39:27Z",
+   "name": "Gordon Smith",
+   "documents": "[\"gid://shopify/Metaobject/608950321449\",\"gid://shopify/Metaobject/608950354217\",\"gid://shopify/Metaobject/608950386985\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896385321",
+   "handle": "graham-gillmore",
+   "updatedAt": "2026-09-27T18:39:10Z",
+   "name": "Graham Gillmore",
+   "documents": "[\"gid://shopify/Metaobject/608951861545\",\"gid://shopify/Metaobject/608951894313\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897990953",
+   "handle": "greg-murdock",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Greg Murdock",
+   "documents": "[\"gid://shopify/Metaobject/608953008425\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896516393",
+   "handle": "gu-xiong",
+   "updatedAt": "2026-09-27T18:39:12Z",
+   "name": "Gu Xiong",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897892649",
+   "handle": "guido-molinari",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Guido Molinari",
+   "documents": "[\"gid://shopify/Metaobject/608952942889\",\"gid://shopify/Metaobject/608952975657\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742179113",
+   "handle": "heather-aston",
+   "updatedAt": "2026-09-27T18:39:01Z",
+   "name": "Heather Aston",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897204521",
+   "handle": "helen-kalvak",
+   "updatedAt": "2026-09-27T18:39:16Z",
+   "name": "Helen Kalvak",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742310185",
+   "handle": "iain-baxter",
+   "updatedAt": "2026-09-27T18:39:01Z",
+   "name": "Iain Baxter",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899727657",
+   "handle": "ian-wallace",
+   "updatedAt": "2026-09-27T18:39:30Z",
+   "name": "Ian Wallace",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899858729",
+   "handle": "irene-f-whittome",
+   "updatedAt": "2026-09-27T18:39:31Z",
+   "name": "Irene F. Whittome",
+   "documents": "[\"gid://shopify/Metaobject/608954024233\",\"gid://shopify/Metaobject/608954057001\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896647465",
+   "handle": "j-carl-heywood",
+   "updatedAt": "2026-09-27T18:39:12Z",
+   "name": "J. Carl Heywood",
+   "documents": "[\"gid://shopify/Metaobject/608952254761\",\"gid://shopify/Metaobject/608952287529\",\"gid://shopify/Metaobject/608952320297\",\"gid://shopify/Metaobject/608952353065\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896975145",
+   "handle": "jack-jeffrey",
+   "updatedAt": "2026-09-27T18:39:14Z",
+   "name": "Jack Jeffrey",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899006761",
+   "handle": "jack-shadbolt",
+   "updatedAt": "2026-09-27T18:39:25Z",
+   "name": "Jack Shadbolt",
+   "documents": "[\"gid://shopify/Metaobject/608950419753\",\"gid://shopify/Metaobject/608950452521\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742342953",
+   "handle": "jackson-beardy",
+   "updatedAt": "2026-09-27T18:39:02Z",
+   "name": "Jackson Beardy",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896811305",
+   "handle": "jacques-hurtubise",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "Jacques Hurtubise",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896581929",
+   "handle": "james-harry",
+   "updatedAt": "2026-09-27T18:39:12Z",
+   "name": "James Harry",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896221481",
+   "handle": "james-warren-felter",
+   "updatedAt": "2026-09-27T18:39:09Z",
+   "name": "James Warren Felter",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896057641",
+   "handle": "jamie-evrard",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Jamie Evrard",
+   "documents": "[\"gid://shopify/Metaobject/608951599401\",\"gid://shopify/Metaobject/608951632169\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608741916969",
+   "handle": "jane-adams",
+   "updatedAt": "2026-09-27T18:39:00Z",
+   "name": "Jane Adams",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898548009",
+   "handle": "jane-ash-poitras",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Jane Ash Poitras",
+   "documents": "[\"gid://shopify/Metaobject/608953172265\",\"gid://shopify/Metaobject/608953205033\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897728809",
+   "handle": "jean-mcewan",
+   "updatedAt": "2026-09-27T18:39:18Z",
+   "name": "Jean McEwan",
+   "documents": "[\"gid://shopify/Metaobject/608952877353\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897958185",
+   "handle": "jean-morrison",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Jean Morrison",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898842921",
+   "handle": "jean-paul-riopelle",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Jean-Paul Riopelle",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897138985",
+   "handle": "jennifer-judge",
+   "updatedAt": "2026-09-27T18:39:16Z",
+   "name": "Jennifer Judge",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899039529",
+   "handle": "jeremy-shaw",
+   "updatedAt": "2026-09-27T18:39:25Z",
+   "name": "Jeremy Shaw",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898253097",
+   "handle": "jim-paull",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "Jim Paull",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899137833",
+   "handle": "joan-smith",
+   "updatedAt": "2026-09-27T18:39:27Z",
+   "name": "Joan Smith",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896123177",
+   "handle": "joe-fafard",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Joe Fafard",
+   "documents": "[\"gid://shopify/Metaobject/608951664937\",\"gid://shopify/Metaobject/608951697705\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898449705",
+   "handle": "joe-peters",
+   "updatedAt": "2026-09-27T18:39:23Z",
+   "name": "Joe Peters",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896614697",
+   "handle": "john-hartman",
+   "updatedAt": "2026-09-27T18:39:12Z",
+   "name": "John Hartman",
+   "documents": "[\"gid://shopify/Metaobject/608952221993\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896024873",
+   "handle": "john-k-essler",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "John K. Essler",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897466665",
+   "handle": "john-koerner",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "John Koerner",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898187561",
+   "handle": "josie-p-papialuk",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "Josie P. Papialuk",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742375721",
+   "handle": "judson-beaumont",
+   "updatedAt": "2026-09-27T18:39:02Z",
+   "name": "Judson Beaumont",
+   "documents": "[\"gid://shopify/Metaobject/608950878505\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899531049",
+   "handle": "kabubuwa-tunnillie",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Kabubuwa Tunnillie",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897499433",
+   "handle": "kapik-kolola",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Kapik Kolola",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608900120873",
+   "handle": "karen-zalamea",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Karen Zalamea",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895336745",
+   "handle": "karin-bubas",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Karin Bubaš",
+   "documents": "[\"gid://shopify/Metaobject/608951206185\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899760425",
+   "handle": "ken-wallace",
+   "updatedAt": "2026-09-27T18:39:30Z",
+   "name": "Ken Wallace",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896942377",
+   "handle": "kenneth-james",
+   "updatedAt": "2026-09-27T18:39:14Z",
+   "name": "Kenneth James",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742113577",
+   "handle": "kenojuak-ashevak",
+   "updatedAt": "2026-09-27T18:39:01Z",
+   "name": "Kenojuak Ashevak",
+   "documents": "[\"gid://shopify/Metaobject/608952516905\",\"gid://shopify/Metaobject/608952549673\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897630505",
+   "handle": "landon-mackenzie",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Landon MacKenzie",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608741949737",
+   "handle": "latcholassie-akesuk",
+   "updatedAt": "2026-09-27T18:39:00Z",
+   "name": "Latcholassie Akesuk",
+   "documents": "[\"gid://shopify/Metaobject/608950583593\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895271209",
+   "handle": "lauren-brevner",
+   "updatedAt": "2026-09-27T18:39:04Z",
+   "name": "Lauren Brevner",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898711849",
+   "handle": "leah-qumaluk",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Leah Qumaluk",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895959337",
+   "handle": "leonard-epp",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Leonard Epp",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898810153",
+   "handle": "leslie-reid",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Leslie Reid",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898122025",
+   "handle": "lyndal-osborne",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "Lyndal Osborne",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898973993",
+   "handle": "marianna-schmidt",
+   "updatedAt": "2026-09-27T18:39:25Z",
+   "name": "Marianna Schmidt",
+   "documents": "[\"gid://shopify/Metaobject/608953434409\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897859881",
+   "handle": "mario-merola",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Mario Merola",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897040681",
+   "handle": "mark-johnsen",
+   "updatedAt": "2026-09-27T18:39:14Z",
+   "name": "Mark Johnsen",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608900055337",
+   "handle": "marlene-yuen",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Marlene Yuen",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898941225",
+   "handle": "martin-schliessler",
+   "updatedAt": "2026-09-27T18:39:25Z",
+   "name": "Martin Schliessler",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899334441",
+   "handle": "martin-tessler",
+   "updatedAt": "2026-09-27T18:39:28Z",
+   "name": "Martin Tessler",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896254249",
+   "handle": "mary-h-filer",
+   "updatedAt": "2026-09-27T18:39:09Z",
+   "name": "Mary H. Filer",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898613545",
+   "handle": "mary-pratt",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Mary Pratt",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742277417",
+   "handle": "maxwell-bennett-bates",
+   "updatedAt": "2026-09-27T18:39:01Z",
+   "name": "Maxwell Bennett Bates",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898154793",
+   "handle": "melia-padluq",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "Melia Padluq",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897368361",
+   "handle": "michael-kim",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Michael Kim",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899170601",
+   "handle": "michael-snow",
+   "updatedAt": "2026-09-27T18:39:27Z",
+   "name": "Michael Snow",
+   "documents": "[\"gid://shopify/Metaobject/608953598249\",\"gid://shopify/Metaobject/608953631017\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895205673",
+   "handle": "molly-lamb-bobak",
+   "updatedAt": "2026-09-27T18:39:04Z",
+   "name": "Molly Lamb Bobak",
+   "documents": "[\"gid://shopify/Metaobject/608951173417\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898679081",
+   "handle": "newgaleak-qimirpik",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Newgaleak Qimirpik",
+   "documents": "[\"gid://shopify/Metaobject/608953401641\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896844073",
+   "handle": "nuveeya-ipellie",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "Nuveeya Ipellie",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742146345",
+   "handle": "ottochie-ashoona",
+   "updatedAt": "2026-09-27T18:39:01Z",
+   "name": "Ottochie Ashoona",
+   "documents": "[\"gid://shopify/Metaobject/608950616361\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898285865",
+   "handle": "parvin-peivandi",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "Parvin Peivandi",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897270057",
+   "handle": "pat-and-rosemarie-keough",
+   "updatedAt": "2026-09-27T18:39:16Z",
+   "name": "Pat and Rosemarie Keough",
+   "documents": "[\"gid://shopify/Metaobject/608953237801\",\"gid://shopify/Metaobject/608953270569\",\"gid://shopify/Metaobject/608953303337\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895828265",
+   "handle": "pat-dixon",
+   "updatedAt": "2026-09-27T18:39:07Z",
+   "name": "Pat Dixon",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897761577",
+   "handle": "pat-mcguire",
+   "updatedAt": "2026-09-27T18:39:18Z",
+   "name": "Pat McGuire",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897073449",
+   "handle": "patricia-johnston",
+   "updatedAt": "2026-09-27T18:39:14Z",
+   "name": "Patricia Johnston",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898056489",
+   "handle": "patricia-o-hara",
+   "updatedAt": "2026-09-27T18:39:20Z",
+   "name": "Patricia O'Hara",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742048041",
+   "handle": "patrick-amiot",
+   "updatedAt": "2026-09-27T18:39:00Z",
+   "name": "Patrick Amiot",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896090409",
+   "handle": "patterson-ewen",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Patterson Ewen",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742539561",
+   "handle": "penny-birnbaum",
+   "updatedAt": "2026-09-27T18:39:02Z",
+   "name": "Penny Birnbaum",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895631657",
+   "handle": "pierre-coupey",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Pierre Coupey",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897335593",
+   "handle": "pudlo-kilabuk",
+   "updatedAt": "2026-09-27T18:39:16Z",
+   "name": "Pudlo Kilabuk",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898646313",
+   "handle": "pudlo-pudlat",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Pudlo Pudlat",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895238441",
+   "handle": "rachel-brett",
+   "updatedAt": "2026-09-27T18:39:04Z",
+   "name": "Rachel Brett",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742441257",
+   "handle": "rebecca-belmore",
+   "updatedAt": "2026-09-27T18:39:02Z",
+   "name": "Rebecca Belmore",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608742244649",
+   "handle": "robert-bateman",
+   "updatedAt": "2026-09-27T18:39:01Z",
+   "name": "Robert Bateman",
+   "documents": "[\"gid://shopify/Metaobject/608950845737\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895697193",
+   "handle": "robert-davidson",
+   "updatedAt": "2026-09-27T18:39:06Z",
+   "name": "Robert Davidson",
+   "documents": "[\"gid://shopify/Metaobject/608951501097\",\"gid://shopify/Metaobject/608951533865\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608900022569",
+   "handle": "robert-young",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Robert Young",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896450857",
+   "handle": "rodney-graham",
+   "updatedAt": "2026-09-27T18:39:10Z",
+   "name": "Rodney Graham",
+   "documents": "[\"gid://shopify/Metaobject/608951927081\",\"gid://shopify/Metaobject/608951959849\",\"gid://shopify/Metaobject/608951992617\",\"gid://shopify/Metaobject/608952025385\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899203369",
+   "handle": "ron-stonier",
+   "updatedAt": "2026-09-27T18:39:28Z",
+   "name": "Ron Stonier",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898318633",
+   "handle": "ross-penhall",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "Ross Penhall",
+   "documents": "[\"gid://shopify/Metaobject/608953106729\",\"gid://shopify/Metaobject/608953139497\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899694889",
+   "handle": "roy-henry-vickers",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Roy Henry Vickers",
+   "documents": "[\"gid://shopify/Metaobject/608953925929\",\"gid://shopify/Metaobject/608953958697\",\"gid://shopify/Metaobject/608953991465\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897433897",
+   "handle": "roy-kiyooka",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Roy Kiyooka",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897696041",
+   "handle": "roz-marshall",
+   "updatedAt": "2026-09-27T18:39:18Z",
+   "name": "Roz Marshall",
+   "documents": "[\"gid://shopify/Metaobject/608952779049\",\"gid://shopify/Metaobject/608952811817\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897237289",
+   "handle": "russna-kaur",
+   "updatedAt": "2026-09-27T18:39:16Z",
+   "name": "Russna Kaur",
+   "documents": "[\"gid://shopify/Metaobject/608952484137\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898908457",
+   "handle": "samuel-roy-bois",
+   "updatedAt": "2026-09-27T18:39:25Z",
+   "name": "Samuel Roy-Bois",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897007913",
+   "handle": "sandeep-johal",
+   "updatedAt": "2026-09-27T18:39:14Z",
+   "name": "Sandeep Johal",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897302825",
+   "handle": "sara-khan",
+   "updatedAt": "2026-09-27T18:39:16Z",
+   "name": "Sara Khan",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898482473",
+   "handle": "setsuko-piroche",
+   "updatedAt": "2026-09-27T18:39:23Z",
+   "name": "Setsuko Piroche",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895893801",
+   "handle": "stan-douglas",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Stan Douglas",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899957033",
+   "handle": "steve-woodhouse",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Steve Woodhouse",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898515241",
+   "handle": "susan-point",
+   "updatedAt": "2026-09-27T18:39:24Z",
+   "name": "Susan Point",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899268905",
+   "handle": "sylvia-tait",
+   "updatedAt": "2026-09-27T18:39:28Z",
+   "name": "Sylvia Tait",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899236137",
+   "handle": "t-and-t-collective",
+   "updatedAt": "2026-09-27T18:39:28Z",
+   "name": "T&T Collective",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895500585",
+   "handle": "taiga-chiba",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Taiga Chiba",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899301673",
+   "handle": "takao-tanabe",
+   "updatedAt": "2026-09-27T18:39:28Z",
+   "name": "Takao Tanabe",
+   "documents": "[\"gid://shopify/Metaobject/608953663785\",\"gid://shopify/Metaobject/608953696553\",\"gid://shopify/Metaobject/608953729321\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896549161",
+   "handle": "ted-harrison",
+   "updatedAt": "2026-09-27T18:39:12Z",
+   "name": "Ted Harrison",
+   "documents": "[\"gid://shopify/Metaobject/608952123689\",\"gid://shopify/Metaobject/608952156457\",\"gid://shopify/Metaobject/608952189225\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895467817",
+   "handle": "terry-campbell",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Terry Campbell",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896680233",
+   "handle": "tom-hopkins",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "Tom Hopkins",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608896713001",
+   "handle": "tom-hudson",
+   "updatedAt": "2026-09-27T18:39:13Z",
+   "name": "Tom Hudson",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898089257",
+   "handle": "toni-onley",
+   "updatedAt": "2026-09-27T18:39:21Z",
+   "name": "Toni Onley",
+   "documents": "[\"gid://shopify/Metaobject/608953041193\",\"gid://shopify/Metaobject/608953073961\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899432745",
+   "handle": "tukuki",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Tukuki",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899563817",
+   "handle": "unknown-inuit-artist",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Unknown Inuit artist",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899629353",
+   "handle": "vancouver-school-collective",
+   "updatedAt": "2026-09-27T18:39:29Z",
+   "name": "Vancouver School Collective",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895566121",
+   "handle": "victor-cicansky",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Victor Cicansky",
+   "documents": "[\"gid://shopify/Metaobject/608951304489\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608898351401",
+   "handle": "victor-john-penner",
+   "updatedAt": "2026-09-27T18:39:22Z",
+   "name": "Victor John Penner",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608897663273",
+   "handle": "victoria-mamnguqsualuk",
+   "updatedAt": "2026-09-27T18:39:17Z",
+   "name": "Victoria Mamnguqsualuk",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608741982505",
+   "handle": "vikky-alexander",
+   "updatedAt": "2026-09-27T18:39:00Z",
+   "name": "Vikky Alexander",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899367209",
+   "handle": "vivian-thierfelder",
+   "updatedAt": "2026-09-27T18:39:28Z",
+   "name": "Vivian Thierfelder",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895926569",
+   "handle": "wayne-eastcott",
+   "updatedAt": "2026-09-27T18:39:08Z",
+   "name": "Wayne Eastcott",
+   "documents": "[\"gid://shopify/Metaobject/608951566633\"]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899825961",
+   "handle": "west-baffin-eskimo-co-operative",
+   "updatedAt": "2026-09-27T18:39:31Z",
+   "name": "West Baffin Eskimo Co-operative",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608899989801",
+   "handle": "xwalacktun",
+   "updatedAt": "2026-09-27T18:39:32Z",
+   "name": "Xwalacktun",
+   "documents": "[]"
+  },
+  {
+   "id": "gid://shopify/Metaobject/608895533353",
+   "handle": "yung-wing-chow",
+   "updatedAt": "2026-09-27T18:39:05Z",
+   "name": "Yung Wing Chow",
+   "documents": "[]"
+  }
+ ]
+}
