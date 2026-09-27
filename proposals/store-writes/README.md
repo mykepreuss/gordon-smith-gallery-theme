@@ -444,3 +444,5 @@ The cards' text is unchanged; the email address and number stay in it as the gal
 **Effect on the live site:** none. The live theme reads no page fields, cards or card groups; its Donate page still shows its own template.
 
 **Undo:** set the group's heading and cards back to the snapshot's; clear the two card links; set the staged text back to `donate_gm.py donate-staged` and the call to action to the snapshot's value.
+
+**Then, same day:** Michael, "we can improve the presentation of the The impact of your gift and Ways to Support text sections". Donate's staged text written again (`donate.py points`): the two lists get `class="gs-points"`, the example amounts' list `class="gs-amounts"`, and each amount ($75, $150, $500) is in bold. Words unchanged (`donate.py` checks). Undo: `donate.py staged` for the version before, or `donate_gm.py donate-staged` for the one before that.

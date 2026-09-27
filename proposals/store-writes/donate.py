@@ -18,6 +18,13 @@ As on Volunteer (DS-58), the page's ways to act are what visitors can act on:
   to send one.
 - The hero button says what it does, "Make a gift", and still jumps to those cards.
 - A photo of a class visit sits beside "Ways to Support", whose $150 example is exactly that.
+
+Then (Michael, 2026-09-26: "we can improve the presentation of the The impact of your gift and
+Ways to Support text sections"): both sections' lists become lists of points (`gs-points`), and
+the three example amounts a row of amounts (`gs-amounts`), each amount in bold. Only classes and
+the bold on the amounts are added; the words and their order are the same.
+
+  python3 proposals/store-writes/donate.py points   # metafieldsSet: the staged text with them
 """
 import html
 import json
@@ -52,6 +59,28 @@ def staged():
     return new
 
 
+AMOUNTS = ["$75", "$150", "$500"]
+
+
+def presented():
+    """The staged text with its two lists as points and the example amounts as a row of amounts."""
+    body = staged()
+    impact = "<p>Your donation supports programs that:</p>\n<ul>"
+    support = "<p>Every contribution makes a difference:</p>\n<ul>"
+    examples = "For example:\n<ul>"
+    for marker in (impact, support, examples):
+        assert body.count(marker) == 1, marker
+    body = body.replace(impact, impact[:-4] + '<ul class="gs-points">', 1)
+    body = body.replace(support, support[:-4] + '<ul class="gs-points">', 1)
+    body = body.replace(examples, examples[:-4] + '<ul class="gs-amounts">', 1)
+    for amount in AMOUNTS:
+        item = f"<li>{amount} can "
+        assert body.count(item) == 1, amount
+        body = body.replace(item, f"<li><strong>{amount}</strong> can ", 1)
+    assert donate_gm.words(body) == donate_gm.words(staged()), "Words changed"
+    return body
+
+
 def page_fields():
     url = json.loads(PAGE["custom_fields"]["cta"]["value"])["url"]
     return {"metafields": [
@@ -84,7 +113,10 @@ if __name__ == "__main__":
         print(json.dumps(card_links(), indent=2))
     elif step == "group":
         print(json.dumps(group(), indent=2))
+    elif step == "points":
+        print(json.dumps({"metafields": [{"ownerId": PAGE["id"], "namespace": "custom", "key": "release_body",
+                                          "type": "multi_line_text_field", "value": presented()}]}, indent=2, ensure_ascii=False))
     elif step == "review":
-        print(staged())
+        print(presented())
     else:
         sys.exit(__doc__)
