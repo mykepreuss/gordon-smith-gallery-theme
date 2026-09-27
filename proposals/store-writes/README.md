@@ -422,3 +422,27 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 **Effect on the live site:** none. The live theme reads no page fields or cards, and its Volunteer page still shows its own text and "VOLUNTEER FORM" button.
 
 **Undo:** set `cta` back to the snapshot's value; clear `card_groups` and `release_body` on the page; delete the card group, then the two cards.
+
+## 2026-09-26: Donate pass (DS-60)
+
+**Why:** the improvements made to Volunteer (DS-58), applied to Donate. Michael, 2026-09-26: "The improvements we made to /pages/volunteer we need to look at /pages/donate and also improve".
+
+**Checked first:** store `ed35ee-ea.myshopify.com`, live theme `183162372393` role MAIN. Before-snapshot: `snapshots/donate-2026-09-26-before.json` (page fields, the four cards, the card group). The staged text in the store equals `donate_gm.py donate-staged` (DS-53), checked character for character.
+
+**Made through the Shopify connector** (payloads from `donate.py`):
+
+| What | ID | Before | After |
+| --- | --- | --- | --- |
+| Card `donate-email`, field `link` | `gid://shopify/Metaobject/608389398825` | empty | "Email us", `mailto:admin@smithfoundation.ca` |
+| Card `donate-phone`, field `link` | `gid://shopify/Metaobject/608389464361` | empty | "Call us", `tel:+16049988563` |
+| Card group `donate-ways-to-give`, heading and cards | `gid://shopify/Metaobject/608389562665` | "Ways To Give"; Online Form, Email, Mail, Phone | "How to give"; Email, Mail, Phone |
+| Page `donate`, staged text (`release_body`) | `gid://shopify/Metafield/190392604393769` | DS-53's | The same, with `galleryschool-13.jpg` (a class visit) as a figure under "Ways to Support", alt "Students sit on the gallery floor with a guide during a class visit". Words unchanged (`donate.py` checks) |
+| Page `donate`, call to action (`cta`) | `gid://shopify/Metafield/190406558417193` | "Ways to give" | "Make a gift", same address (`#donate-ways-to-give`) |
+
+The cards' text is unchanged; the email address and number stay in it as the gallery wrote them. The Online Form card entry is unchanged and kept, out of the group, until there is a form (`gallery-questions.md` 3.1).
+
+**Effect on the live site:** none. The live theme reads no page fields, cards or card groups; its Donate page still shows its own template.
+
+**Undo:** set the group's heading and cards back to the snapshot's; clear the two card links; set the staged text back to `donate_gm.py donate-staged` and the call to action to the snapshot's value.
+
+**Then, same day:** Michael, "we can improve the presentation of the The impact of your gift and Ways to Support text sections". Donate's staged text written again (`donate.py points`): the two lists get `class="gs-points"`, the example amounts' list `class="gs-amounts"`, and each amount ($75, $150, $500) is in bold. Words unchanged (`donate.py` checks). Undo: `donate.py staged` for the version before, or `donate_gm.py donate-staged` for the one before that.

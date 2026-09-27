@@ -541,6 +541,62 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-prose .gs-quote blockquote { margin: 0; }
 .gs-prose .gs-quote blockquote > * { margin: 0; }
 .gs-prose .gs-quote figcaption { padding-inline-start: calc(var(--gs-space-5) + 4px); }
+/* A list of points (DS-60): <ul class="gs-points">, each item a bold phrase and then its text, as
+   staff write them (Donate's "The impact of your gift", "Ways to Support"). No bullets: each point
+   sits under the rule, like a text card, with its phrase as a small heading, so a list of four long
+   points reads as four things instead of one block. */
+.gs-prose ul.gs-points {
+  display: grid;
+  gap: var(--gs-space-5);
+  padding-inline-start: 0;
+  list-style: none;
+}
+.gs-prose .gs-points > li {
+  margin: 0;
+  padding-block-start: var(--gs-space-4);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+  text-wrap: pretty;
+}
+.gs-prose .gs-points > li > strong:first-child {
+  display: block;
+  margin-block-end: var(--gs-space-2);
+  font-size: var(--gs-text-h4);
+  font-weight: var(--gs-weight-black);
+  line-height: var(--gs-leading-subheading);
+  letter-spacing: var(--gs-tracking-subheading);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.gs-prose .gs-points > li > strong:first-child + br { display: none; }
+/* Gift amounts (DS-60): <ul class="gs-amounts">, each item an amount in bold and then what it does
+   ("$150 can help bring a classroom to the Gallery"). The amounts sit side by side on the tint from
+   750 px, each figure large, so a visitor can see at a glance what a gift of each size does. */
+.gs-prose ul.gs-amounts {
+  display: grid;
+  gap: var(--gs-space-3);
+  margin-block-start: var(--gs-space-4);
+  padding-inline-start: 0;
+  list-style: none;
+}
+@media (min-width: 750px) {
+  .gs-prose ul.gs-amounts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.gs-prose .gs-amounts > li {
+  margin: 0;
+  padding: var(--gs-space-4);
+  border-radius: var(--gs-shape-md);
+  background-color: var(--gs-color-tint);
+  font-size: var(--gs-text-small);
+  text-wrap: pretty;
+}
+.gs-prose .gs-amounts > li > strong:first-child {
+  display: block;
+  margin-block-end: var(--gs-space-2);
+  font-size: var(--gs-text-h2);
+  font-weight: var(--gs-weight-black);
+  line-height: var(--gs-leading-heading);
+  font-variant-numeric: lining-nums;
+}
 /* A picture with its caption. An artwork keeps square corners (DS-05); only photos are rounded. */
 .gs-prose figure { margin-inline: 0; display: grid; gap: var(--gs-space-3); }
 .gs-prose figcaption {
