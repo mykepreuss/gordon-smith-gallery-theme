@@ -143,3 +143,29 @@ Each is a scan: every page is one picture at 300 dpi, most with the words recogn
 ## At release (later)
 
 - The product description clean-up (P-21, P-22): the gallery approves a before-and-after list of the 21 descriptions before anything changes.
+
+## 6. Artists for Kids (`proposals/artists-for-kids-integration.md`)
+
+The Artists for Kids site's pages moved here as written, 2026-09-27. These came up on the way, with the team's questions from the plan.
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 6.1 | Artists for Kids office hours: 8:30 to 4:30 on the old site and on Contact, 8:00 to 3:00 on Plan your visit. Which? | Both as written |
+| 6.2 | The Foundation's phone (604.998.8563), "by appointment", and the summer closure (June 23 to September 18, 2026) are on the old site's Contact page but not on this site. Add them? | Not added |
+| 6.3 | The old Contact page shows `admin@smithfoundation.ca` but its link writes to `info@smithfoundation.ca`. Which is right? | This site uses `admin@smithfoundation.ca`, as its Contact page does |
+| 6.4 | Gallery Program: the self-guided tours text names *Collect, Assemble, Gather*, then "our spring exhibition, One Hundred Artists Deep" and "April through June"; "Class visits can be booked at the button below" has no button; the Spring 2027 text repeats the fall's (Grade 5, *Collect, Assemble, Gather*, September to February) and refers to a Register button that isn't there yet. Please send corrected text | As written |
+| 6.5 | Gallery Program: the self-guided tour instructions (a PDF on the district's old server, which no longer answers). Please send the file | Left out |
+| 6.6 | Learning Guides: "Creating a Paper Mural with Sandeep Johal" has a cover and no PDF. Please send the PDF | Its card is made but not shown |
+| 6.7 | Samuel Roy-Bois, *My Sun*: 2024 in the caption, 2025 in the picture's description. Which? | As written |
+| 6.8 | *The Art of Conversation* offered a 3D tour ("Explore The Art of Conversation in 3D!"), but its link is missing. The address? | No tour link |
+| 6.9 | Names: "Sara Jean Bourget" (Paradise Valley) and "Sara-Jeanne Bourget"; "Mark Johnson" once on Mark Johnsen's page; "Elizabeth MacIntosh" and "McIntosh"; "Becky" and "Rebecca" Bair; "Artist for Kids" three times. Corrections? | As written |
+| 6.10 | "AFK" in body text ("the founders of AFK", "the AFK studios", "the AFK Permanent Collection", "AFK's Paradise Valley"): may it be written out as "Artists for Kids" (P-39)? Titles, labels and headings already are | As written |
+| 6.11 | Works named in lessons that differ from the collection's record: *Harlequin* (2019 in the lesson, 2003 in the collection), *Plains Cree Chiefs* (1996, 1995), *Einstein/Frankenstein* (2009 in one lesson, 2004 in another and the collection), *Pender Harbour* (2009, 2006), "Figure Maquette in Studio at Night" (the collection: *Painting and Figure Maquette in Studio at Night*), "All Kinds of Birds Flying North in Spring" (the collection: *All Kinds of Birds*). Each lesson shows the collection's work beside its own text | As written, work linked |
+| 6.12 | Studio Art Academy isn't offered in 2026/2027. Show its page this year? | Shown, with its note |
+| 6.13 | The Artists for Kids scholarships and the Foundation's scholarships are two sets of three. Should each page say how they differ, or link to the other? | No link |
+| 6.14 | Check the new labels: the menu's Classes and camps, Schools and teachers, Support Artists for Kids; the buttons "Classes and registration", "Camp dates and registration", "This year's camp and registration", "Register a Grade 5 class"; the groups "Also for families" and "Lesson Videos"; "Artists for Kids Classes and Camps" on Public programs and "Artists for Kids" in Donate's How to give | As shown |
+| 6.15 | The team: how are fees collected after a registration form is sent? (T3) | The site says nothing about payment |
+| 6.16 | The team: how do camps and scholarships take registrations when they open? (T4) | The buttons go to the old site's pages |
+| 6.17 | The team: do the Microsoft Forms and the booking calendar get a new address each year? (T5) | The current addresses |
+| 6.18 | The team: who keeps the "Fall 2026 at Artists For Kids" cards up to date each term? (T6) | The team, through the shared login |
+| 6.19 | The After School Art photo (892 px wide) looks soft as a full-width hero. A larger copy? | The old site's copy |

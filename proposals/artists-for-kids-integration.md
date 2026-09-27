@@ -1,6 +1,6 @@
 # Artists for Kids on gordonsmithgallery.com
 
-Status: **Decided, 2026-09-27; in build.** Michael approved every recommendation under "Decisions for Michael" (P-30 to P-40 in `DECISIONS.md`), and the team answered the first two questions: they can take down or cut back the old site's pages (T1), and they share one Shopify login (T2). What the build changed from this plan is under "Build notes".
+Status: **Built, 2026-09-27; in review.** Michael approved every recommendation under "Decisions for Michael" (P-30 to P-40 in `DECISIONS.md`), and the team answered the first two questions: they can take down or cut back the old site's pages (T1), and they share one Shopify login (T2). Everything below is in the store and the theme, on the branch's pull request; the design choices it needed are DS-69 to DS-71, Proposed. What the build changed from this plan is under "Build notes"; what's left is under "Still open".
 
 Michael, 2026-09-27: the Artists for Kids site (artistsforkids.sd44.ca) should become part of gordonsmithgallery.com. "The parts we do not want to transfer is anything related to registration, everything else we believe we can integrate."
 
@@ -282,7 +282,7 @@ One branch and one pull request: the pieces depend on each other, and Michael re
 
 Added to the release change set (`proposals/store-changes.md`):
 
-- The 18 pages: their staged text moves into the page, and `seo.hidden` is removed.
+- The 18 pages: their template (`release.py templates`: programme, or the standard one for the residencies), their staged text into the page (`staged`), then `seo.hidden` off (`unhide`).
 - The live menu gains the Artists for Kids section with the rest of the menu.
 - The lesson pages go live with the theme: until then their addresses return 404 under the live theme, like the exhibitions and the collection.
 - The team cuts the old site back the same day ("What the old site's pages become"), from the list of old and new addresses in the tables above. Until it does, the site's registration links still work: they point at pages that exist today.
@@ -312,3 +312,16 @@ What the build changed from the plan above, and why. Each is small; none changes
 | A new page field, Documents, showing Document entries as tiles after the text | Cards that link to the PDF. A card whose link is a PDF shows its image whole on the mat, as a document tile does, and says "(PDF)" | Card groups have headings, so the guides keep their two groups and each kit keeps its own lesson plans. The team already uses cards, and the Foundation's annual report already works this way. One new structure fewer |
 | The pages get their template at release | New pages get the programme template (or the standard one) when they're made | They're new, so there's nothing to reassign. Under the live theme, which has no programme template, they fall back to its plain page template and show their title only (decision 6) |
 | The copyright note closes the ArtReach page | The note is in Theme settings and shows under every lesson's video and at the end of the list | Every lesson page has a video, so every lesson page needs the note. Typed once |
+| New pages show "a bare title" on the live site | They carry the live theme's On Now template name until release | The live theme's default page template carries the About page's content, so a page it didn't know showed About's text under the new title (found on the test page, L-09). The On Now template shows the title only. The release script renames them |
+| A lesson list section on the programme template | The page text section lists the lessons on the page chosen as ArtReach videos page | As the visit details on Plan your visit (DS-61), so the list shows before release too, when the page has its bridge template name. One section fewer |
+| Residency cards titled "Spring 2027 \| Becky Bair", as the old site | "Becky Bair, Spring 2027" | The bar wrapped to the start of a line; the name first reads better beside the poster |
+| Registration buttons "This term's classes and registration" | "Classes and registration", "Camp dates and registration", "This year's camp and registration", "Register a Grade 5 class" | Shorter, and each says what's behind it. The gallery confirms the labels (`gallery-questions.md` 6.14) |
+| Classes and camps holds only Artists for Kids' programmes | A second group, "Also for families", holds Explore + Create | Explore + Create is the Foundation's; it can't sit under Artists for Kids' Community Programs heading |
+| Donate links to Support Artists for Kids | A fourth card in Donate's "How to give" | The page's other ways to give are cards; the new one uses the old site's own sentence about Artists for Kids |
+
+## Still open
+
+- The gallery's and the team's answers: `proposals/gallery-questions.md` §6 (text corrections for Gallery Program, two missing PDFs, names, "AFK" in body text, the lessons' works, the new labels, and T3 to T6).
+- Michael's review of DS-69 to DS-71 on the review theme once the pull request merges.
+- The undated educators' workshops (a curator's tour of *Against the Latitude of "Progress"*, four printmaking kit introductions, portfolio building): events once they have dates.
+- At release: templates, staged text, `seo.hidden` off, and the team's cut-back of the old site ("At release").

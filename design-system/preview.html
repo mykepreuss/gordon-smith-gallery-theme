@@ -777,8 +777,17 @@
         </article></li>
       </ul>
     </section>
-    <section class="gs-card-group">
-      <ul class="gs-grid gs-grid--cards" id="afk-cards"></ul>
+    <section class="gs-card-group" aria-labelledby="afk-resources-title">
+      <div class="gs-section-head"><h2 class="gs-h2" id="afk-resources-title">Learning &amp; Teaching Resources</h2></div>
+      <ul class="gs-grid gs-grid--cards gs-grid--fours" id="afk-cards"></ul>
+    </section>
+    <section class="gs-card-group" aria-labelledby="afk-guides-title">
+      <div class="gs-section-head"><h2 class="gs-h2" id="afk-guides-title">Learning Guides Created by Artists with Artists For Kids</h2></div>
+      <ul class="gs-grid gs-grid--cards" id="afk-guides"></ul>
+    </section>
+    <section class="gs-card-group" aria-labelledby="afk-lessons-title">
+      <div class="gs-section-head"><h2 class="gs-h2" id="afk-lessons-title">ArtReach videos</h2></div>
+      <ul class="gs-grid gs-grid--cards" id="afk-lessons"></ul>
     </section>
     <section class="gs-card-group">
       <ul class="gs-grid gs-grid--logos">
@@ -805,7 +814,7 @@
         </article></li>
       </ul>
     </section>
-    <p class="pv-note">Card groups, shown after a page&rsquo;s text. Staff don&rsquo;t choose a layout: a card with an image is an image card, one without is a text card under a rule. Ways To Give is the Donate page&rsquo;s group, word for word; its cards have no images or links. A group of four or eight goes two, then four, across, so no card sits alone (DS-44); a group of five starts with two wider cards, and an odd count at two across starts with one wide card (DS-52). The second group is the six programmes on the Artists for Kids page, each linking to the Artists for Kids site. With no link label of its own, the whole card is the link, and its title carries the external arrow. That group has no heading, so its card titles are H2s and no heading level is skipped. The third is About Us (DS-50): each card has a Logo field, so its organisation&rsquo;s logo is the heading, in its colours, and a group of them sets each logo beside its text. Images are placeholders.</p>
+    <p class="pv-note">Card groups, shown after a page&rsquo;s text. Staff don&rsquo;t choose a layout: a card with an image is an image card, one without is a text card under a rule. Ways To Give is the Donate page&rsquo;s group, word for word; its cards have no images or links. A group of four or eight goes two, then four, across, so no card sits alone (DS-44); a group of five starts with two wider cards, and an odd count at two across starts with one wide card (DS-52). The second group is one of the Artists for Kids page's programme groups, since its site moved onto this one (P-30): each card links to the programme's own page here, and with no link label of its own the whole card is the link. The third is a group of document cards (DS-69): each links to a PDF, so its cover shows whole on the mat at the card's 4:3, level with any photo card beside it, and its title says so. The fourth is lesson cards (DS-70): the cover at the video's shape and the suggested grade levels, each opening the lesson's page. The last is About Us (DS-50): each card has a Logo field, so its organisation&rsquo;s logo is the heading, in its colours, and a group of them sets each logo beside its text. Images are placeholders.</p>
   </div>
 </div>
 
@@ -1508,19 +1517,25 @@
   document.getElementById("cart-thumb-1").innerHTML = `<img src="${svg(...art[2])}" alt="">`;
   document.getElementById("cart-thumb-2").innerHTML = `<img src="${frame}" alt="">`;
 
-  // Artists for Kids programmes (live store, Artists for Kids page): each card links off-site, with no label of its own.
-  const afk = [
-    ["After School Art Classes", "https://artistsforkids.sd44.ca/learn/after-school-art/"],
-    ["Artist In Residence Enrichment Workshops", "https://artistsforkids.sd44.ca/learn/artists-in-residence/"],
-    ["Spring and Summer Day Camps", "https://artistsforkids.sd44.ca/learn/spring--summer-day-camps/"],
-    ["Gallery Programs", "https://artistsforkids.sd44.ca/learn/gallery-program/"],
-    ["Paradise Valley Summer School of Visual Art Camp", "https://artistsforkids.sd44.ca/learn/paradise-valley-summer-camps/"],
-    ["Learning Kits and Outreach", "https://artistsforkids.sd44.ca/learn/learning-kits/"],
-  ];
-  document.getElementById("afk-cards").innerHTML = afk.map(([t, url], i) => `
+  // Artists for Kids: a programme group, document cards and lesson cards (the store's cards and lessons, 2026-09-27).
+  const afk = ["Learning Guides", "Learning Kits and Outreach", "ArtReach Videos", "Professional Development"];
+  document.getElementById("afk-cards").innerHTML = afk.map((t, i) => `
     <li><article class="gs-card">
       <div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...tones[i % 3])}" alt=""></div>
-      <h2 class="gs-card__title"><a class="gs-link--external" href="${url}">${t}<span class="gs-visually-hidden"> (external site)</span></a></h2>
+      <h3 class="gs-card__title"><a href="#/pages/${t.toLowerCase().replace(/ and outreach/, "").replace(/ /g, "-")}">${t}</a></h3>
+    </article></li>`).join("");
+  const guides = [["Lessons from Art Camp Sara-Jeanne Bourget 2025", 1380, 1790], ["Charcoal Stencil Prints Inspired by Sara-Jeanne Bourget", 1530, 1920], ["A Mail Art Collaboration - Lesson by Clare Yow", 442, 312]];
+  document.getElementById("afk-guides").innerHTML = guides.map(([t, w, h]) => `
+    <li><article class="gs-card">
+      <div class="gs-media gs-media--artwork gs-shape-md" style="--gs-media-ratio: var(--gs-ratio-card)"><img src="${svg(w, h, `<rect width='${w}' height='${h}' fill='#ffffff'/><rect x='${w * 0.1}' y='${h * 0.1}' width='${w * 0.8}' height='${h * 0.35}' fill='#d9d4c8'/>`)}" alt=""></div>
+      <h3 class="gs-card__title"><a href="#/cdn/shop/files/guide.pdf">${t} (PDF)</a></h3>
+    </article></li>`).join("");
+  const lessons = [["Artists for Kids Trace Monotype Kit: Self Portraits", "Grades K-12"], ["Paths: Abstract Painting", "Grades 8-12"], ["Painting the North Shore", "Grades 4-7"]];
+  document.getElementById("afk-lessons").innerHTML = lessons.map(([t, g], i) => `
+    <li><article class="gs-card gs-lesson-card">
+      <div class="gs-media gs-media--photo gs-shape-md" style="--gs-media-ratio: 16 / 9"><img src="${photo(...tones[(i + 1) % 3])}" alt=""></div>
+      <h3 class="gs-card__title"><a href="#/pages/lessons/">${t}</a></h3>
+      <p class="gs-meta">${g}</p>
     </article></li>`).join("");
 
   // Upcoming events (live store programme pages): title, start, the time as gs-time-range writes it,

@@ -203,6 +203,18 @@ The exhibition entry gained **Works from the collection** (`collection_works`, a
 
 Liquid can't find entries by a field's value, so the lists live where the page needs them: an artist's works on the artist, a grouping's works on the grouping, an exhibition's works on the exhibition. The editions go the other way: a product's Artist pages field (`custom.artist_entries`) names its artists, and the artist's page finds its editions in All limited editions, so an edition is linked once, on the product.
 
+## 8. Artists for Kids: lessons (P-36, DS-70)
+
+Added 2026-09-27, when the Artists for Kids site moved in (`proposals/artists-for-kids-integration.md`). Created the same day; fields in `proposals/store-writes/artists-for-kids/load.py`.
+
+| Type | Page | Holds |
+| --- | --- | --- |
+| `lesson` | `/pages/lessons/<handle>` | Title, video (a YouTube address), posted (a date: the list shows the newest first), cover image, "We're making", "We're inspired by" (rich text), works from the collection (artwork entries), suggested grade levels, "We're wondering" (a list of questions) |
+
+The event entry gained **Keep off the home page** (`keep_off_home`, true or false, P-37): an event for a smaller audience, such as a workshop for teachers, stays out of the home page's What's on and shows on its programme page, its exhibition's page and Upcoming events.
+
+No other new structure: the Artists for Kids pages use page fields, card groups and events. A card whose link is a PDF shows as a document (DS-69), so guides and lesson plans are cards with the PDF's address from Files as their link.
+
 ## Answers, 2026-09-25
 
 1. All three parts are approved (DS-14, DS-15, DS-16).
