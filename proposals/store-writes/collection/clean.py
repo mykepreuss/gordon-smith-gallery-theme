@@ -184,11 +184,13 @@ BARE_EDITION = re.compile(r"\s(\d+\s*/\s*\d+)\s*$")
 DOB = re.compile(r"\s*[\(\[]\s*(?:DOB:?)?\s*(\d{4}\s*(?:-\s*(?:\d{4}|Present))?)?\s*[\)\]]\s*$", re.I)
 # A work's Year shows on the site as written. These forms need no question: a year (1965), a range
 # (1991-96, 1994/1995, 2000 to 2001), no date (ND, n.d.) and circa (circa 1965, circa 1950s,
-# circa 20th century). Any other goes on problems.csv for the gallery to confirm or correct
-# (gallery questions 5.14). Nothing here changes the value.
+# circa 20th century), unless the range looks like the artist's life: the life dates the catalogue
+# records for them, or LIFE_SPAN years or more. Any other goes on problems.csv for the gallery to
+# confirm or correct (gallery questions 5.14). Nothing here changes the value.
 YEAR_OK = re.compile(
     r"\d{4}(?:\s*(?:-|/|to)\s*\d{2,4})?|n\.?\s?d\.?|no date|undated"
     r"|circa\s+(?:\d{4}s?(?:\s*(?:-|to)\s*\d{4}s?)?|\d{1,2}(?:st|nd|rd|th)\s+century)", re.I)
+LIFE_SPAN = 50  # years; the longest range for making one work is 28 (1976/2004)
 MONTH = r"\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
 YEAR_REASONS = [  # (pattern, reason): the first that matches
     (r"^n\.?\s?d\.?\s*\[", "is no date with an estimate in brackets"),
@@ -310,6 +312,15 @@ def year_problem(year):
         return ""
     why = next((w for p, w in YEAR_REASONS if re.search(p, year, re.I)), "isn't a year, a range, no date or circa")
     return f"Year {why}: {year}"
+
+
+def year_span(year):
+    """A Year's range as (first, last), or None: "1991-96" -> (1991, 1996)."""
+    m = re.search(r"(\d{4})s?\s*(?:-|/|to)\s*(\d{2,4})", year or "")
+    if not m:
+        return None
+    a, b = m.groups()
+    return int(a), int(a[:4 - len(b)] + b)
 
 
 def main(export, out):
@@ -541,6 +552,17 @@ def main(export, out):
     # Each exhibition's works from the collection, for its page (Shown in, turned around).
     exhibition_works = {h: [] for h in set(EXHIBITION_SETS.values()) | set(EXHIBITION_PAGES.values())}
 
+    # A Year range that is the artist's life, typed in for the work's date (gallery questions 5.14).
+    for w in works:
+        span = year_span(w["year"]) if not year_problem(w["year"]) else None
+        if not span:
+            continue
+        lives = {tuple(int(y) for y in re.findall(r"\d{4}", d)) for h in w["artists"] for d in by_handle[h]["dates_recorded"]}
+        if span in lives:
+            problems.append((w["accession"], f"Year matches the artist's life dates: {w['year']}", w["item_id"]))
+        elif span[1] - span[0] >= LIFE_SPAN:
+            problems.append((w["accession"], f"Year spans {span[1] - span[0]} years, so it may be the artist's life dates: {w['year']}", w["item_id"]))
+
     # Life dates, sorted work lists, and the artists' sheet rows.
     work_by_handle = {w["handle"]: w for w in works}
     for a in artists.values():
@@ -617,7 +639,7 @@ def main(export, out):
                for a in artist_rows])
     write_csv("titles.csv", ["Accession number", "Title in the catalogue", "Title on the site", "Edition"], titles)
     write_csv("problems.csv", ["Accession number", "Problem", "Catalogue item"],
-              problems)
+              sorted(problems, key=lambda p: p[2]))
     write_csv("large-documents.csv", ["Artist", "Document", "Size (MB)", "In the catalogue"],
               [[by_handle[d["artist"]]["name"], d["title"], f"{d['size'] / 1e6:.0f}",
                 f"https://afkcatalogue.sd44.ca/s/TheCollection/item/{d['item_id']}"]

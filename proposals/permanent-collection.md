@@ -87,7 +87,7 @@ To apply the gallery's corrections: edit the rules or names in `clean.py` (or th
 
 ## Still open
 
-- The gallery's review of the sheets and names (§5 of the gallery questions): artists and dates, titles, 35 years that aren't a plain year, a range, n.d. or circa (5.14), themes, the names chosen for four artists, the featured works, and credit lines.
+- The gallery's review of the sheets and names (§5 of the gallery questions): artists and dates, titles, 41 years to check (5.14), themes, the names chosen for four artists, the featured works, and credit lines.
 - 39 documents over 20 MB aren't on the site (Shopify's limit): listed with a note to address in `proposals/gallery-questions.md`, "Documents too large for the site".
 - The featured works: the gallery chooses them (gallery questions 1.7).
 - The works on loan: their credit lines and whether their pages should say so (5.13).

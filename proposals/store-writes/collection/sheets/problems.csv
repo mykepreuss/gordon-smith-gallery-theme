@@ -1,5 +1,8 @@
 Accession number,Problem,Catalogue item
+BARR017,Year matches the artist's life dates: 1932-2003,19
+BARR018,Year matches the artist's life dates: 1932-2003,20
 BARR025,No category (Format: empty),27
+BARR025,Year matches the artist's life dates: 1932-2003,27
 BATE.M005,"Year has a note after the date: April 17, 1965 (Signed and Dated)",43
 BATE.M014,Year has a note after the date: 1974 (Signed and Dated),52
 BATE.M016,"Year has a note after the date: February 13, 1959 (Signed and Dated)",54
@@ -25,6 +28,9 @@ KENO004,Same address as another work's number; this one is /pages/collection/ken
 MARS003,Catalogue note left off the site: the work is part of a diptych,640
 MOLI007,Catalogue note left off the site: Face Mask of Guido Molinari,705
 PAUL-TC001,Year gives the month too: June 1938,770
+PERR001,"Year spans 83 years, so it may be the artist's life dates: circa 1923-2006",815
+PERR002,"Year spans 83 years, so it may be the artist's life dates: circa 1923-2006",816
+PERR003,"Year spans 83 years, so it may be the artist's life dates: circa 1923-2006",817
 QUMA003,No image in the catalogue,860
 RAMM-TC001,"In the catalogue's ""Things On Loan to AFK""; imported like the rest (P-28). Check its credit line",862
 RAMM-TC001,Year abbreviates the century: circa 20c,862
