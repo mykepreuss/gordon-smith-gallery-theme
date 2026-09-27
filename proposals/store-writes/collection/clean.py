@@ -465,16 +465,15 @@ def main(export, out):
                               "title": first(i, "dcterms:title") or md.get("o:source", ""), "type": md["o:media_type"],
                               "size": md.get("o:size") or 0, "url": md["o:original_url"]})
 
-    # Which files a document shows as. Most catalogue items are a PDF plus a small image of its cover:
-    # the PDF is the document, so it's the one link. Items that are only photographs link their
-    # photographs. A PDF over Shopify's 20 MB limit isn't on the site (large-documents.csv), and its
-    # cover doesn't stand in for it.
+    # Documents as entries (DS-63): one per document, with its cover image and its file, shown as tiles
+    # after the works, as the catalogue shows them. Most catalogue items are a PDF plus a small image
+    # of its cover. An item that is only a photograph is its own cover and file. A PDF over Shopify's
+    # 20 MB limit isn't on the site yet (large-documents.csv): its entry shows the cover, unlinked.
     by_item = collections.defaultdict(list)
     for d in documents:
-        d["show"] = False
         by_item[d["item_id"]].append(d)
-    large = []
-    for item_docs in by_item.values():
+    large, doc_entries = [], []
+    for item_id, item_docs in sorted(by_item.items()):
         artist_handle = item_docs[0]["artist"]
         if not artist_handle:
             continue
@@ -490,22 +489,30 @@ def main(export, out):
         for d in item_docs:
             d["title"] = t
         pdfs = [d for d in item_docs if d["type"] == "application/pdf"]
-        chosen = pdfs or [d for d in item_docs if d["type"].startswith("image/")]
-        for d in chosen:
-            if d["size"] > MAX_DOCUMENT:
-                large.append(d)
-        chosen = [d for d in chosen if d["size"] <= MAX_DOCUMENT]
-        for n, d in enumerate(chosen, 1):
-            d["show"] = True
-            d["title"] = t if len(chosen) == 1 else f"{t}, {n} of {len(chosen)}"
+        images_ = [d for d in item_docs if d["type"].startswith("image/")]
+        cover = images_[0] if images_ else None
+        files_ = pdfs or images_[:1]
+        for n, f in enumerate(files_, 1):
+            too_big = f["size"] > MAX_DOCUMENT
+            if too_big:
+                large.append(f)
+            if too_big and not cover:
+                continue  # nothing to show until a smaller copy is uploaded
+            doc_entries.append({
+                "handle": f"{artist_handle}-{item_id}" + (f"-{n}" if len(files_) > 1 else ""),
+                "artist": artist_handle, "item_id": item_id,
+                "title": t if len(files_) == 1 else f"{t}, {n} of {len(files_)}",
+                "cover": cover["media_id"] if cover else None,
+                "file": None if too_big else f["media_id"],
+            })
     for a in artists.values():
-        # Two links with the same words would be ambiguous: number the repeats ("Press", "Press 2").
+        # Two tiles with the same words would be ambiguous: number the repeats ("Press", "Press 2").
         seen = collections.Counter()
-        for d in sorted((d for d in documents if d["show"] and d["artist"] == a["handle"]), key=lambda d: d["media_id"]):
-            seen[d["title"]] += 1
-            if seen[d["title"]] > 1:
-                d["title"] = f"{d['title']} {seen[d['title']]}"
-            a["documents"].append(d["media_id"])
+        for e in (e for e in doc_entries if e["artist"] == a["handle"]):
+            seen[e["title"]] += 1
+            if seen[e["title"]] > 1:
+                e["title"] = f"{e['title']} {seen[e['title']]}"
+            a["documents"].append(e["handle"])
 
     # Each exhibition's works from the collection, for its page (Shown in, turned around).
     exhibition_works = {h: [] for h in set(EXHIBITION_SETS.values()) | set(EXHIBITION_PAGES.values())}
@@ -573,6 +580,7 @@ def main(export, out):
     (out / "documents.json").write_text(json.dumps(documents, ensure_ascii=False, indent=1))
     (out / "products.json").write_text(json.dumps(store["products"], ensure_ascii=False, indent=1))
     (out / "exhibitions.json").write_text(json.dumps(exhibition_works, ensure_ascii=False, indent=1))
+    (out / "document-entries.json").write_text(json.dumps(doc_entries, ensure_ascii=False, indent=1))
 
     SHEETS.mkdir(exist_ok=True)
     write_csv("artists.csv", ["Name on the site", "Sort name", "Full name", "Other names", "Life dates",
@@ -598,7 +606,7 @@ def main(export, out):
               [[g["name"], g["kind"], f"/pages/browse/{g['handle']}", len(g["works"])] for g in groups.values()])
 
     print(f"works {len(works)} (loans {len(loans)}), artists {len(artists)}, groupings {len(groups)}, images {len(images)}, "
-          f"documents shown {sum(1 for d in documents if d['show'])} of {len(documents)} files, {len(large)} PDFs over 20 MB, "
+          f"document entries {len(doc_entries)} ({sum(1 for e in doc_entries if not e['file'])} without their file), {len(large)} PDFs over 20 MB, "
           f"exhibitions with works {sum(1 for v in exhibition_works.values() if v)}")
     print(f"titles changed {len(titles)}, problems {len(problems)}, dates left off {sum(1 for a in artists.values() if a['dates_conflict'])}")
     print("works in the Shop:", {w["handle"]: w["in_the_shop"] for w in works if w["in_the_shop"]})

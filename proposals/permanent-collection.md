@@ -7,7 +7,7 @@ Michael, 2026-09-26: "I don't like that all of these assets are on an external s
 ## What's on the site now
 
 - **1,174 works**, the 6 "on loan" among them, each with its own page at `/pages/collection/<accession number>`: every image whole on the mat, the museum label (the artists link to their pages), medium, dimensions, edition, credit, accession number, the exhibitions that showed it, its category and themes as links, the edition in the Shop when there is one, and more by the artist.
-- **171 artists**, each with a page at `/pages/artists/<name>`: names and dates, the works 24 to a page, their documents as text links, the editions in the Shop and the exhibitions at the gallery. No link to the artist's own website (DS-63).
+- **171 artists**, each with a page at `/pages/artists/<name>`: names and dates, the works 24 to a page, their documents as tiles with their covers (as the catalogue shows them), the editions in the Shop and the exhibitions at the gallery. No link to the artist's own website (DS-63).
 - **The Artists page** is the index of every artist, A to Z, with dates and the number of works. Every name opens the artist's page on this site, as MoMA's does. The 59 links out to other sites are gone.
 - **26 groupings** at `/pages/browse/<name>`: 8 categories, 13 themes, Indigenous artists, Artists for Kids Published Editions, the Teaching Collection, the Portfolio Collective's 2021 series, and Featured works.
 - **The Permanent Collection page** is the front door: the gallery's introduction, a search that finds works by artist, title, year, medium, category or theme as you type, the groupings as cards, every category and theme with its count, and six featured works. Its Browse button opens the search instead of the catalogue.
@@ -15,7 +15,7 @@ Michael, 2026-09-26: "I don't like that all of these assets are on an external s
 - **The menu** has a Collection section, second after Exhibitions: The collection, Artists. Artists left the Shop and Permanent collection left About (P-26).
 - **Editions** link their artist's name to the artist's page, and appear on it.
 - **Exhibition pages** list their works from the collection after the installation views: *From the Ground* 26, *Playhouse* 25, *The Art of Conversation* 18 (DS-63).
-- **1,420 images** and **180 document files** are in the store's Files. 79 documents are linked from artists' pages; the rest are the catalogue's small cover images of PDFs, which aren't linked (they can be deleted from Files).
+- **1,420 images** and **184 document files** are in the store's Files: 113 documents, each a Document entry with its cover and its file. 34 of them wait for a PDF under 20 MB and show their cover without a link.
 
 Nothing shows on the live site: the live theme has no templates for these pages (`proposals/store-writes/README.md`, "Effect on the live site").
 
@@ -28,6 +28,7 @@ Three entry types and one product field (content model part 7, `design-system/pr
 | Artist (`artist`) | `/pages/artists/<handle>` | Name, sort name, full name, other names, life dates, nationality or Nation, biography, portrait, website, exhibitions, documents, works |
 | Artwork (`artwork`) | `/pages/collection/<handle>` | Title, artists, year, category, medium, dimensions, edition, accession number, credit line, images, themes, about the work, in the Shop, shown in |
 | Collection grouping (`collection_group`) | `/pages/browse/<handle>` | Name, kind (category, theme, grouping), introduction, works |
+| Document (`document`) | none | Title, cover, file: an artist's press, catalogues, books and photographs |
 | Product field `custom.artist_entries` | | The edition's artists |
 
 Entries, not products: nothing leaks to the live site before release, the collection isn't for sale, and it's the model the exhibitions already use.
@@ -49,7 +50,7 @@ The catalogue at afkcatalogue.sd44.ca (Omeka S), read through its public API on 
 | Identifier | Accession number and the page's address |
 | The exhibition sets (*The Art of Conversation*, *Playhouse*, *From the Ground*) and the catalogue's "Works in …" pages | Shown in on the work, and Works from the collection on the exhibition |
 | Indigenous, Published Editions (with its history paragraph), Teaching Collection, Portfolio Collective 2021 | Groupings |
-| Text Resources | The artists' documents: one link per document, its PDF (20 MB and under), or its photographs when it has no PDF |
+| Text Resources | The artists' documents: one Document entry per document, with its cover image and its PDF (20 MB and under), or the photograph itself when it has no PDF |
 | Storage locations, provenance, old identifiers, donors | Not published |
 
 The images are the catalogue's masters, converted once: JPEG, 3,000 px on the long side, sRGB, quality 85, never cropped. The masters stay on the catalogue.
@@ -63,7 +64,7 @@ The images are the catalogue's masters, converted once: JPEG, 3,000 px on the lo
 - **A work lists its artists** (a list, not one artist), for works made together, such as Lauren Brevner and James Harry's.
 - **An edition names its artists on the product**, and the artist's page finds its editions, so an edition is linked once.
 - **Featured works is a grouping** (`featured`) the gallery changes in the admin.
-- **After Michael's review (DS-63):** documents are text links after the works, one per document; no website links; exhibitions list their works from the collection. The works on loan are imported too (P-28).
+- **After Michael's review (DS-63):** documents are tiles with their covers after the works, like the catalogue's; no website links; exhibitions list their works from the collection. The works on loan are imported too (P-28).
 
 ## Scripts
 
@@ -73,7 +74,7 @@ The images are the catalogue's masters, converted once: JPEG, 3,000 px on the lo
 2. `clean.py <export> <data>`: the cleaned artists, works, groupings, images and documents, and the review sheets in `sheets/` (artists, titles, problems, themes, groupings).
 3. `definitions.py`: the definitions (already created).
 4. `images.py convert | upload | docs | alts | docalts`: the web copies, their upload to Files, the documents, and alt text updates.
-5. `import.py artists | works | link | groups | exhibitions | products`: the entries, then the artists' Works and Documents lists, the groupings, the exhibitions' Works from the collection, and the editions' Artist pages field (through the connector).
+5. `import.py artists | works | documents | link | groups | exhibitions | products`: the entries, the Document entries, then the artists' Works and Documents lists, the groupings, the exhibitions' Works from the collection, and the editions' Artist pages field (through the connector).
 
 To apply the gallery's corrections: edit the rules or names in `clean.py` (or the entries in the admin), run `clean.py`, then `import.py artists`, `works`, `link`, `groups` and `exhibitions`, and `images.py alts` if titles or descriptions changed.
 
@@ -81,6 +82,7 @@ To apply the gallery's corrections: edit the rules or names in `clean.py` (or th
 
 - **A new work:** Content, Metaobjects, Artwork, with its images in Files; then add it to its artist's Works list, to any grouping, and to an exhibition's Works from the collection, so it shows there.
 - **A new artist:** one Artist entry; the Artists page picks it up.
+- **A new document:** a Document entry (title, cover image, file, all in Files), then add it to the artist's Documents list.
 - **A new edition in the Shop:** set its Artist pages field, and it shows on the artist's page.
 - **Featured works:** the Collection grouping "Featured works".
 - **Private records** (locations, provenance, donors) stay in the catalogue (gallery question 5.6).

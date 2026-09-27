@@ -58,7 +58,7 @@ The collection is on the review site as of 2026-09-27: 1,174 works, 171 artists,
 | --- | --- | --- |
 | 5.1 | ~~Do the image permissions cover showing the collection on gordonsmithgallery.com?~~ Answered by Michael, 2026-09-26: "We gave all the image rights" | |
 | 5.2 | Credit lines: name donors ("Gift of Alan & Elizabeth Bell"), or the collection credit alone? | The collection credit alone, as the catalogue records it (84 works have none) |
-| 5.3 | Michael asked for everything (2026-09-26), so the Teaching Collection (195 works) is its own grouping, the 6 works "on loan" are in (P-28, see 5.13), and the artists' documents are listed on their pages: 79 of them. Each document shows as one link to its PDF; the small cover images the catalogue shows beside the PDFs aren't linked. 39 PDFs are too large to go on the site: see "Documents too large for the site" below | Those 39 aren't on the site |
+| 5.3 | Michael asked for everything (2026-09-26), so the Teaching Collection (195 works) is its own grouping, the 6 works "on loan" are in (P-28, see 5.13), and the artists' documents show on their pages as tiles with their covers, as in the catalogue: 113 of them. 39 PDFs are too large to go on the site: see "Documents too large for the site" below | Those 39 aren't on the site |
 | 5.4 | Review the artists sheet (`artists.csv`): names, sort names, full and other names, life dates. 313 spellings became 171 artists. Dates are left off for 10 where the catalogue's disagree or can't be right (Kenojuak Ashevak has 1909 to 1976 and 1927 to 2013; Jackson Beardy and Jean-Paul Riopelle have birth years after their works) | Names as the site or catalogue has them; those 10 without dates |
 | 5.5 | ~~Where are the original image files, and who at the district's IT can help?~~ Answered: the images came from the catalogue's own masters (converted, and the masters left where they are), and Michael, 2026-09-26: "we won't change anything with DNS, that's outside of our scope" | |
 | 5.6 | The catalogue keeps running as the district runs it. Its private records (where each work is, provenance, donors) stay there; nothing private moved. Is that right, or should they live somewhere the gallery controls? | They stay in the catalogue |
@@ -72,9 +72,9 @@ The collection is on the review site as of 2026-09-27: 1,174 works, 171 artists,
 
 ### Documents too large for the site
 
-These 39 PDFs from the catalogue's Text Resources are over 20 MB, the most Shopify accepts for a file, so they aren't on the site. For most, the PDF is the whole document (the catalogue shows a small image of its cover beside it), so the artist's page lists nothing for it yet: Gordon Smith's three documents, for example. Together they come to 1.9 GB. The list is also in `proposals/store-writes/collection/sheets/large-documents.csv`.
+These 39 PDFs from the catalogue's Text Resources are over 20 MB, the most Shopify accepts for a file, so they aren't on the site. For most, the PDF is the whole document, so the artist's page shows its cover without a link until a smaller copy is uploaded: Gordon Smith's three documents, for example. Five have no cover and don't show at all yet. Together they come to 1.9 GB. The list is also in `proposals/store-writes/collection/sheets/large-documents.csv`.
 
-**To address:** send copies under 20 MB (a PDF saved for the web, or split into parts), or approve compressing them here, which lowers the quality of their pictures. Then `images.py docs` uploads them and `import.py link` lists them on the artists' pages.
+**To address:** send copies under 20 MB (a PDF saved for the web, or split into parts), or approve compressing them here, which lowers the quality of their pictures. Then `images.py docs` uploads them, and `import.py documents` links each cover to its file.
 
 | Artist | Document | Size (MB) | In the catalogue |
 | --- | --- | --- | --- |

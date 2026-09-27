@@ -513,3 +513,22 @@ The cleaned data follows the gallery-questions defaults (§5) where the gallery 
 **Effect on the live site:** none. The live theme renders none of these entries or fields.
 
 **Undo:** clear the three exhibitions' Works from the collection and delete that field; set the artist fields' names back; delete the 6 loan works and their images; run `import.py link` from the previous commit's `clean.py` for the old document lists.
+
+## 2026-09-27: documents as tiles with their covers (DS-63, corrected)
+
+**Why:** Michael, 2026-09-27, on the text links: "I don't see that updated Documents section on /pages/artists/gordon-smith and I didn't want them as a text list, I wanted the images displayed like the art works as the original catalogue site had them".
+
+**Checked first:** same store and themes. Before: each artist's Documents field was a list of files (the entry above); those values are rebuilt by `import.py link` from `clean.py` at the previous commit.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| 4 files the first upload missed (David Blackwood's three covers and one PDF: his documents found their owner after a clean-up fix) | CLI | `images.py docs`; `created/collection-files.json` |
+| Definition `document` (title, cover, file; publishable, storefront read; no pages of its own) | Connector | `gid://shopify/MetaobjectDefinition/23783571753`; `definitions.py document` |
+| 113 Document entries, active: one per catalogue document, its cover image and its file (the PDF, or the photograph itself). 34 have no file yet: their PDF is over 20 MB | CLI | `created/collection-documents.json`; `import.py documents` |
+| Artist field `documents`: emptied on every artist (`import.py clear-documents`), the empty field deleted, and created again as a list of Document entries | CLI, then connector | The field changes type, which Shopify can't do in place. `definitions.py artist_documents` |
+| Every artist's Documents list: their Document entries | CLI | `import.py link` |
+| The documents' alt text: covers empty (the title is right under them), files their titles | CLI | `images.py docalts` |
+
+**Effect on the live site:** none. The live theme renders none of these.
+
+**Undo:** delete the Document entries and the `document` definition; recreate the artist's `documents` field as a list of files and run `import.py link` from the previous commit.
