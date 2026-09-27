@@ -5,6 +5,11 @@
   the box; a photo is overlapped by the box by a fixed amount. The key image caption (an artwork
   caption, a photo credit or both) sits under it. Without alt text of its own in Files, the image
   is decorative: the title right after it already names the exhibition (DS-58).
+
+  So the page is plainly not the home page's hero again (DS-66): a link back to the list the
+  exhibition is in ("Exhibitions", to On now, Upcoming or Past) sits above the status, and the
+  summary is in the box, the first thing to read. About the exhibition follows with the facts
+  and text.
 {%- endcomment -%}
 {%- liquid
   assign entry = metaobject
@@ -13,15 +18,33 @@
   if entry.key_image_is_artwork.value == true
     assign mode = 'artwork'
   endif
+  capture status
+    render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value
+  endcapture
+  assign status = status | strip
+  case status
+    when 'upcoming'
+      assign back = settings.exhibitions_upcoming_page
+    when 'past'
+      assign back = settings.exhibitions_past_page
+    else
+      assign back = settings.exhibitions_on_now_page
+  endcase
 -%}
 <div class="gs-section gs-section--lead">
   <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
     {%- render 'gs-media', image: entry.key_image.value, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
     <div class="gs-hero__box gs-surface-accent">
+      {%- if back != blank -%}
+        <p class="gs-crumb"><a href="{{ back.url }}">{{ 'exhibitions.crumb' | t }}</a></p>
+      {%- endif -%}
       {%- render 'gs-exhibition-when', entry: entry, show_status: true -%}
       <h1 class="gs-h1"{% render 'gs-fit', text: entry.title.value %}>{{ entry.title.value | escape }}</h1>
       {%- if entry.subtitle.value != blank -%}
         <p class="gs-deck">{{ entry.subtitle.value | escape }}</p>
+      {%- endif -%}
+      {%- if entry.summary.value != blank -%}
+        <p class="gs-hero__summary">{{ entry.summary.value | escape | newline_to_br }}</p>
       {%- endif -%}
     </div>
     {%- if entry.key_image_caption.value != blank -%}
