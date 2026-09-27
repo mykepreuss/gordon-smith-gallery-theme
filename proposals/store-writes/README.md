@@ -464,3 +464,31 @@ The first four sections (Address, Gallery Hours, Artists For Kids Office Hours, 
 **Effect on the live site:** none. The live theme reads neither the staged field nor the new settings.
 
 **Undo:** clear the page's `release_body`; the page then shows its own text again, with the visit details above it.
+
+## 2026-09-26 and 27: the Permanent Collection moves in (P-26, P-27, DS-62)
+
+**Why:** Michael, 2026-09-26: "/pages/artists should not link out to the artist's website, it should link to their associated page", then "I agree with all of this implementation plan, please proceed with delivering the plan", "I think we can do all the artists and everything" and "We gave all the image rights". Plan: `proposals/permanent-collection.md`.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; live theme `183162372393` role MAIN, review theme `184767250729` UNPUBLISHED (`shopify theme list`). Before-snapshots: `snapshots/collection-2026-09-27-before.json` (the Artists page's staged text, the Permanent Collection page's call to action, no collection entries or definitions) and `snapshots/menu-new-theme-main-2026-09-27-before.json`.
+
+**How:** definitions, page and product fields and the review menu through the Shopify connector. Entries and Files through the Shopify CLI's store commands (`shopify store execute`), which Michael authorised for this import on 2026-09-27 with the scopes `read_metaobjects, write_metaobjects, read_files, write_files`: the connector can't upload files. Scripts in `collection/`, in order: `inventory.py`, `clean.py`, `definitions.py`, `images.py convert, upload, docs`, `import.py artists, works, link, groups, products`. Created IDs are in `created/collection-*.json`.
+
+| What | IDs | Notes |
+| --- | --- | --- |
+| Definitions `artist` (12 fields, web pages at `/pages/artists/<handle>`), `artwork` (14 fields, `/pages/collection/<handle>`), `collection_group` (4 fields, `/pages/browse/<handle>`); all publishable, storefront read | `created/collection-definitions.json` | `definitions.py`. The artist's Works field was added after `artwork` existed, since the two refer to each other |
+| Product field `custom.artist_entries` (Artist pages), pinned | `gid://shopify/MetafieldDefinition/272985850153` | |
+| 1,417 images, JPEG 3,000 px on the long side, sRGB, quality 85, from the catalogue's masters (34 GB of TIFF and JPEG, downloaded one at a time and deleted after converting); alt text "Artist, Title, year" and the catalogue's visual description | `created/collection-files.json` (keyed by the catalogue's media ID) | 1.88 GB in all. 55 alt texts corrected the next hour (`images.py alts`) after the clean-up collapsed stray spaces and took cataloguer notes off. None failed processing |
+| 180 documents for 51 artists (73 PDFs, 107 photographs and scans), 20 MB and under, named in their alt text ("Press", "Exhibitions, Photos") | `created/collection-files.json` (`doc-<media ID>`) | 39 PDFs over 20 MB aren't uploaded (Shopify's limit); listed in `collection/sheets/problems.csv` |
+| 171 artist entries, active: name, sort name, full and other names, life dates, website (from today's Artists page), exhibitions, works, documents | `created/collection-artists.json` | 20 of them first through the connector, then all 171 through the CLI (the same entries, by handle) |
+| 1,168 artwork entries, active, handle = accession number | `created/collection-works.json` | The 6 works on loan aren't imported. 16 link to their edition in the Shop |
+| 26 collection groupings, active: 8 categories, 13 themes, 4 groupings (Indigenous artists, Artists for Kids Published Editions with the catalogue's history paragraph, Teaching Collection, the Portfolio Collective's 2021 series), and Featured works (6 works) | `created/collection-groups.json` | |
+| 21 editions' Artist pages field | Products in `snapshots/prints-2026-09-25.json` | Kwikwi's names both artists |
+| Page `artists`, staged text (`release_body`) | `gid://shopify/Metafield/190402028667177` | The two paragraphs only; the list of 59 links out gives way to the A to Z index (DS-62). Words unchanged |
+| Page `permanent-collection`, call to action (`cta`) | `gid://shopify/Metafield/190392604131625` | "Browse" now opens the page's own search (`https://gordonsmithgallery.com/pages/permanent-collection#collection-search`; the theme makes it relative) instead of the catalogue. Link fields refuse a relative address |
+| Review menu `new-theme-main` | `gid://shopify/Menu/305860739369` | A Collection section, second: The collection, Artists. Permanent collection leaves About and Artists leaves Shop (P-26) |
+
+The cleaned data follows the gallery-questions defaults (§5) where the gallery hasn't answered: names as the site or catalogue has them, dates left off where they disagree or don't fit the works, the collection credit alone, no donors named, catalogue notes after "*" left off. The review sheets are in `collection/sheets/`.
+
+**Effect on the live site:** none. The live theme has no templates for the three entry types, so `/pages/collection/<handle>` and `/pages/browse/<handle>` return 404 there (checked 2026-09-27). `/pages/artists/<anything>` shows the live Artists page, as it did before any entry existed (checked with a made-up handle): Shopify serves the page at any address under it, and none of an entry's content appears. The live theme reads neither page field, the product field nor the review menu (`baseline/theme/`).
+
+**Undo:** clear the product field on the 21 editions; set the two page fields back from the snapshot; set the review menu back from its snapshot; delete the entries (Content, Metaobjects: groupings, then artworks, then artists) and the definitions; delete the uploaded files (`created/collection-files.json`). The catalogue is untouched throughout.

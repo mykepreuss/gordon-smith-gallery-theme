@@ -456,6 +456,27 @@
     ]
   },
   {
+    "name": "Permanent Collection",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The collection's artists, works and groupings are entries (Content, Metaobjects: Artist, Artwork, Collection grouping). These pages link to them."
+      },
+      {
+        "type": "page",
+        "id": "collection_page",
+        "label": "Permanent Collection page",
+        "info": "Its search, ways in and featured works. Artist and work pages link back to it."
+      },
+      {
+        "type": "page",
+        "id": "artists_page",
+        "label": "Artists page",
+        "info": "Lists every artist entry, A to Z. Artist pages link back to it."
+      }
+    ]
+  },
+  {
     "name": "Shop",
     "settings": [
       {

@@ -13,7 +13,8 @@
     "pageHead": [
       "gs-page-head",
       "gs-title",
-      "main-page"
+      "main-page",
+      "gs-entry-head"
     ],
     "collectionHead": [
       "gs-collection-head",
@@ -35,7 +36,11 @@
       "main-collection-product-grid",
       "main-list-collections",
       "collage",
-      "multicolumn"
+      "multicolumn",
+      "gs-work-grid",
+      "gs-artist-index",
+      "gs-collection-ways",
+      "gs-collection-featured"
     ],
     "cards": [
       "gs-card-groups"
@@ -71,11 +76,20 @@
     ],
     "related": [
       "related-products",
-      "gs-related"
+      "gs-related",
+      "gs-work-more",
+      "gs-artist-editions",
+      "gs-artist-exhibitions"
     ],
     "legacy": [
       "custom-liquid",
       "apps"
+    ],
+    "finder": [
+      "gs-collection-search"
+    ],
+    "work": [
+      "gs-work-detail"
     ]
   },
   "global": {
@@ -112,7 +126,7 @@
       }
     },
     "page": {
-      "purpose": "Standard page: About, Our Story, Volunteer, Permanent Collection, FAQ, Upcoming Events, Engage, Donate, Gordon and Marion, Plan Your Visit, On Now, Upcoming Exhibitions and Past Exhibitions (their lists come from Theme settings, DS-48)",
+      "purpose": "Standard page: About, Our Story, Volunteer, FAQ, Upcoming Events, Engage, Donate, Gordon and Marion, Plan Your Visit, On Now, Upcoming Exhibitions and Past Exhibitions (their lists come from Theme settings, DS-48)",
       "maxPerGroup": {
         "text": 3,
         "gallery": 1,
@@ -143,6 +157,67 @@
       "maxPerGroup": {
         "text": 1,
         "gallery": 2,
+        "listing": 1
+      }
+    },
+    "page.permanent-collection": {
+      "purpose": "The Permanent Collection's front door (DS-62): introduction, search, ways in, featured works",
+      "require": [
+        "finder"
+      ],
+      "maxPerGroup": {
+        "text": 1,
+        "finder": 1,
+        "listing": 2
+      }
+    },
+    "page.artists": {
+      "purpose": "Artists A to Z (DS-62): the page's text, then every artist entry",
+      "require": [
+        "listing"
+      ],
+      "maxPerGroup": {
+        "text": 1,
+        "listing": 1
+      }
+    },
+    "metaobject/artist": {
+      "purpose": "An artist in the collection (DS-62): header, works, editions in the Shop, exhibitions",
+      "firstGroups": [
+        "pageHead"
+      ],
+      "require": [
+        "pageHead",
+        "listing"
+      ],
+      "maxPerGroup": {
+        "listing": 1,
+        "related": 2
+      }
+    },
+    "metaobject/artwork": {
+      "purpose": "A work in the collection (DS-62): the work and its label, then more by the artist",
+      "firstGroups": [
+        "work"
+      ],
+      "require": [
+        "work"
+      ],
+      "maxPerGroup": {
+        "work": 1,
+        "related": 1
+      }
+    },
+    "metaobject/collection_group": {
+      "purpose": "A category, theme or grouping in the collection (DS-62): header and its works",
+      "firstGroups": [
+        "pageHead"
+      ],
+      "require": [
+        "pageHead",
+        "listing"
+      ],
+      "maxPerGroup": {
         "listing": 1
       }
     },

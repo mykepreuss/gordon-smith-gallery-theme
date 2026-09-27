@@ -1,0 +1,52 @@
+{%- comment -%}
+  An artist's limited editions in the Shop (DESIGN.md §7.5, DS-62): the editions in "All limited
+  editions" (Theme settings, Shop) whose Artist pages field names this artist, as artwork tiles with
+  their prices. Staff set the artist once, on the product; nothing here needs updating by hand.
+{%- endcomment -%}
+{%- liquid
+  assign all = settings.all_editions_collection
+  assign me = metaobject.system.id
+-%}
+{%- if all != blank -%}
+  {%- capture tiles -%}
+    {%- for product in all.products limit: 50 -%}
+      {%- for a in product.metafields.custom.artist_entries.value -%}
+        {%- if a.system.id == me -%}
+          <li>{%- render 'gs-artwork-tile', product: product, heading: 'h3' -%}</li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- if tiles contains '<li' -%}
+    <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+      <div class="gs-container">
+        <div class="gs-section-head">
+          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.in_the_shop' | t }}</h2>
+          <a class="gs-cta-link gs-cta-link--more" href="{{ all.url }}">{{ 'shop.all_editions_link' | t }}</a>
+        </div>
+        <ul class="gs-grid gs-grid--artworks">{{ tiles }}</ul>
+      </div>
+    </section>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Editions in the Shop",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The limited editions whose Artist pages field names this artist."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editions in the Shop"
+    }
+  ]
+}
+{% endschema %}

@@ -51,17 +51,22 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 
 ## 5. The Permanent Collection (`proposals/permanent-collection.md`)
 
+The collection is on the review site as of 2026-09-27: 1,168 works, 171 artists, 26 groupings. The review sheets are in `proposals/store-writes/collection/sheets/`; a correction there goes back into the store by running the import again.
+
 | # | Question | Until then |
 | --- | --- | --- |
-| 5.1 | Do the image permissions (CARFAC or artists' agreements) cover showing the collection on gordonsmithgallery.com? The catalogue shows them today at afkcatalogue.sd44.ca | Nothing from the collection is made public |
-| 5.2 | Credit lines: name donors ("Gift of Alan & Elizabeth Bell"), or the collection credit alone? | The collection credit alone |
-| 5.3 | Publish the Teaching Collection (195 works) and the artists' Text Resources (press, exhibition lists)? Leave out the 6 works on loan? | Teaching Collection and Text Resources left out; loans left out |
-| 5.4 | Review the artist names and life dates: 313 spellings become about 204 artists, and some conflict (Ann Meredith Barry has four sets of dates) | Names as the catalogue has them, dates left off where they conflict |
-| 5.5 | Where are the original image files (the catalogue holds 36 GB of TIFFs), and who at the district's IT can help with the download and, later, the redirects? | The trial uses 20 works' files from the catalogue |
-| 5.6 | Once the catalogue retires, where do the private records live (where each work is, provenance, donors)? | They stay in the catalogue |
-| 5.7 | The Artists page will list every artist with work in the collection or an edition in the Shop, about 208 names, and each name will open the artist's page on the site, with the works, the editions, the exhibitions and one link to the artist's own website. Today's 59 links out (dealers, personal sites, a PDF) move to those pages. Is there anyone who shouldn't be listed, or a website link to drop? | Everyone is listed; the links move as they are (see 3.7) |
+| 5.1 | ~~Do the image permissions cover showing the collection on gordonsmithgallery.com?~~ Answered by Michael, 2026-09-26: "We gave all the image rights" | |
+| 5.2 | Credit lines: name donors ("Gift of Alan & Elizabeth Bell"), or the collection credit alone? | The collection credit alone, as the catalogue records it (84 works have none) |
+| 5.3 | Michael asked for everything (2026-09-26), so the Teaching Collection (195 works) is its own grouping and the artists' Text Resources are on their pages (180 files). Left out: the 6 works on loan, and 39 PDFs over 20 MB, Shopify's limit (listed in `problems.csv`). Are smaller copies of those 39 available? | Those 39 aren't on the site |
+| 5.4 | Review the artists sheet (`artists.csv`): names, sort names, full and other names, life dates. 313 spellings became 171 artists. Dates are left off for 10 where the catalogue's disagree or can't be right (Kenojuak Ashevak has 1909 to 1976 and 1927 to 2013; Jackson Beardy and Jean-Paul Riopelle have birth years after their works) | Names as the site or catalogue has them; those 10 without dates |
+| 5.5 | ~~Where are the original image files, and who at the district's IT can help?~~ Answered: the images came from the catalogue's own masters (converted, and the masters left where they are), and Michael, 2026-09-26: "we won't change anything with DNS, that's outside of our scope" | |
+| 5.6 | The catalogue keeps running as the district runs it. Its private records (where each work is, provenance, donors) stay there; nothing private moved. Is that right, or should they live somewhere the gallery controls? | They stay in the catalogue |
+| 5.7 | The Artists page lists every artist with work in the collection or an edition in the Shop, 171 names, and each name opens the artist's page on the site, with the works, the editions, the exhibitions and one link to the artist's own website. Is there anyone who shouldn't be listed, or a website link to drop? | Everyone is listed; the 59 links moved as they were (see 3.7) |
 | 5.8 | The Artists page's two paragraphs are about the Limited Edition Portfolio artists. With the whole collection listed under them, would the gallery like to adjust the wording? | As written |
-| 5.9 | The catalogue's Published Editions page carries a paragraph on the history of the editions programme (1990, Bill Reid's *Xhuwaji / Haida Grizzly*, "Entering its 37th year"). Carry it over, word for word, as the introduction to the Published Editions browse page? | Carried over as written |
+| 5.9 | The catalogue's Published Editions paragraph (1990, Bill Reid's *Xhuwaji / Haida Grizzly*, "Entering its 37th year") is the introduction to the Artists for Kids Published Editions grouping, word for word. Keep it? | Kept as written |
+| 5.10 | Check the other sheets: `titles.csv` (481 titles whose edition number moved to the Edition field, e.g. "Untitled (30/40)" is now "Untitled", edition 30/40), `problems.csv` (works without a title, image or category; accession numbers used twice; 11 cataloguer notes after "*" left off the site), `themes.csv` (the catalogue's 30 subject words tidied to 15 themes) and `groupings.csv` | As in the sheets |
+| 5.11 | Names chosen where the catalogue has no page for the artist: "Unknown Inuit artist" (catalogue: "Unknown [Inuit Origins]"), "West Baffin Eskimo Co-operative" ("West Baffin Eskimo Coop. LTD"), "T&T Collective" for Tyler Brett and Tony Romano (as *Collect, Assemble, Gather* names them), "Vancouver School Collective". Right? | As chosen |
+| 5.12 | Featured works on the Permanent Collection page: Bill Reid's *Xhuwaji/Haida Grizzly Bear*, Gordon Smith's *Painting After Goya*, Jack Shadbolt's *Winter Garden*, E.J. Hughes's *The Mill at Mesachie Lake*, Robert Davidson's *Crab of the Woods* and Kenojuak Ashevak's *Untitled [Loons Protect The Owl]*. Which six should it show? (Content, Metaobjects, Collection grouping, Featured works) | These six |
 
 ## 6. Volunteer (DS-58)
 

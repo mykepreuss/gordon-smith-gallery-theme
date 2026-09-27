@@ -1,0 +1,130 @@
+{%- comment -%}
+  The header of an artist's page or a grouping's page (DESIGN.md §6.6, §7.5, DS-62), from the entry.
+
+  Artist: a link back to the Artists page, the name, the other names the artist is known by (a
+  Haida or traditional name, the full name), then nationality or Nation and life dates, and the
+  biography when there is one. Beside them: the portrait, the artist's website, named by its address
+  so it's clear where it goes, and the documents (press, exhibition lists). None of these repeat
+  on the page.
+
+  Grouping: a link back to the Permanent Collection page, the name and the introduction.
+{%- endcomment -%}
+{%- liquid
+  assign is_artist = false
+  if metaobject.system.type == 'artist'
+    assign is_artist = true
+    assign title = metaobject.name.value
+    assign back = settings.artists_page
+  else
+    assign title = metaobject.name.value
+    assign back = settings.collection_page
+  endif
+-%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    {%- if back != blank -%}
+      <p class="gs-crumb"><a href="{{ back.url }}">{{ back.title | escape }}</a></p>
+    {%- endif -%}
+    {%- if is_artist -%}
+      {%- liquid
+        assign names = metaobject.other_names.value
+        if metaobject.full_name.value != blank
+          if names != blank
+            assign names = names | append: '. '
+          endif
+          assign names = names | append: metaobject.full_name.value
+        endif
+        assign facts = metaobject.nationality.value
+        if metaobject.life_dates.value != blank
+          if facts != blank
+            assign facts = facts | append: ', '
+          endif
+          assign facts = facts | append: metaobject.life_dates.value
+        endif
+        assign website = metaobject.website.value
+        assign has_aside = false
+        if website.url != blank or metaobject.portrait.value != blank or metaobject.documents.value != blank
+          assign has_aside = true
+        endif
+      -%}
+      <div class="gs-entry-head">
+        <div class="gs-entry-head__main">
+          <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
+          {%- if names != blank -%}
+            <p class="gs-entry-head__names">{{ names | escape }}</p>
+          {%- endif -%}
+          {%- if facts != blank -%}
+            <p class="gs-deck">{{ facts | escape }}</p>
+          {%- endif -%}
+          {%- if metaobject.biography.value != blank -%}
+            <div class="gs-prose">{{ metaobject.biography | metafield_tag }}</div>
+          {%- endif -%}
+        </div>
+        {%- if has_aside -%}
+          <div class="gs-entry-head__aside">
+            {%- if metaobject.portrait.value != blank -%}
+              {%- render 'gs-media', image: metaobject.portrait.value, sizes: '(min-width: 990px) 320px, 80vw', mode: 'photo', ratio: '4 / 5' -%}
+            {%- endif -%}
+            {%- if website.url != blank -%}
+              {%- liquid
+                assign host = website.url | split: '://' | last | split: '/' | first | remove_first: 'www.'
+              -%}
+              <div class="gs-card__meta">
+                <p class="gs-label">{{ 'collection.website' | t }}</p>
+                <p>{%- render 'gs-link', link: website, label: host, class: 'gs-link' -%}</p>
+              </div>
+            {%- endif -%}
+            {%- if metaobject.documents.value != blank -%}
+              <div class="gs-card__meta">
+                <p class="gs-label">{{ 'collection.documents' | t }}</p>
+                <ul class="gs-docs">
+                  {%- for doc in metaobject.documents.value -%}
+                    {%- liquid
+                      assign doc_url = doc.url
+                      if doc.media_type == 'image'
+                        assign doc_url = doc | image_url
+                      endif
+                      assign doc_file = doc.url | default: doc_url | split: '?' | first | split: '/' | last
+                      assign doc_name = doc.alt | default: doc_file
+                      assign doc_ending = doc_file | downcase | slice: -4, 4
+                    -%}
+                    <li>
+                      {%- comment -%} Files are the store's own, so they don't get the external cue (gs-link would give it: the CDN is another host). {%- endcomment -%}
+                      <a class="gs-link" href="{{ doc_url }}">{{ doc_name | escape }}{% if doc_ending == '.pdf' %} {{ 'general.pdf' | t }}{% endif %}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
+      {%- if metaobject.introduction.value != blank -%}
+        <div class="gs-prose">{{ metaobject.introduction.value | escape | newline_to_br }}</div>
+      {%- endif -%}
+    {%- endif -%}
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Artist or grouping header",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Everything here comes from the entry, in Content, Metaobjects."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Artist or grouping header"
+    }
+  ]
+}
+{% endschema %}

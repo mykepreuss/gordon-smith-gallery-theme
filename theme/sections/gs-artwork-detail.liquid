@@ -40,7 +40,7 @@
     </ul>
 
     <div class="gs-artwork__info">
-      {%- render 'gs-artwork-label', product: product, tag: 'h1' -%}
+      {%- render 'gs-artwork-label', product: product, tag: 'h1', link: true -%}
 
       {%- if f.medium.value != blank or f.edition.value != blank or f.dimensions.value != blank -%}
         <div class="gs-card__meta">

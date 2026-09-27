@@ -1,0 +1,37 @@
+{% doc %}
+  A work in the Permanent Collection as a tile (DESIGN.md §6.5, DS-62): the work whole on the mat,
+  then its label in museum order: artist (bold), title (italic) and year, then the medium. The
+  limited edition's tile without a price, so a work looks the same in the Shop and the collection.
+  The whole tile links to the work's page. A work without an image shows its label alone.
+
+  @param {object} work - An artwork entry
+  @param {string} [heading] - Heading element for the title: 'h2' (default) or 'h3'
+  @param {boolean} [hide_artist] - Leave the artist's name off, on that artist's own page
+
+  @example
+  {%- render 'gs-work-tile', work: work, heading: 'h3' -%}
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h2'
+  assign names = ''
+  for a in work.artists.value
+    if forloop.index > 1
+      assign names = names | append: ' and '
+    endif
+    assign names = names | append: a.name.value
+  endfor
+-%}
+<article class="gs-artwork-tile">
+  {%- for image in work.images.value limit: 1 -%}
+    {%- render 'gs-media', image: image, preset: 'tile', mode: 'artwork' -%}
+  {%- endfor -%}
+  {%- if names != blank and hide_artist != true -%}
+    <p class="gs-artwork-tile__artist">{{ names | escape }}</p>
+  {%- endif -%}
+  <{{ tag }} class="gs-artwork-tile__title">
+    <a href="{{ work.system.url }}"><cite>{{ work.title.value | escape }}</cite>{% if work.year.value != blank %}, {{ work.year.value | escape }}{% endif %}</a>
+  </{{ tag }}>
+  {%- if work.medium.value != blank -%}
+    <p class="gs-meta gs-artwork-tile__medium">{{ work.medium.value | escape }}</p>
+  {%- endif -%}
+</article>

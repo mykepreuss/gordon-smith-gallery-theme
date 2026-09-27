@@ -1,0 +1,47 @@
+{%- comment -%}
+  Featured works (DESIGN.md §7.5, DS-62), on the Permanent Collection page: the works in the
+  Collection grouping whose handle is "featured", in its order, as one or two rows of artwork tiles.
+  Staff choose them in Content, Metaobjects, Collection grouping, Featured works. Its name is the
+  heading and its introduction the line under it. Nothing shows when the grouping is empty.
+{%- endcomment -%}
+{%- assign group = metaobjects['collection_group']['featured'] -%}
+{%- if group != blank and group.works.value != blank -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <div class="gs-section-head__text">
+          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ group.name.value | escape }}</h2>
+          {%- if group.introduction.value != blank -%}
+            <p class="gs-meta">{{ group.introduction.value | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+      <ul class="gs-grid gs-grid--artworks">
+        {%- for work in group.works.value limit: 6 -%}
+          <li>{%- render 'gs-work-tile', work: work, heading: 'h3' -%}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured works",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Six works from the Collection grouping with the handle featured. Change them there, in Content, Metaobjects."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured works"
+    }
+  ]
+}
+{% endschema %}

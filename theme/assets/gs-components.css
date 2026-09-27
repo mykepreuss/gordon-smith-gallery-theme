@@ -1859,6 +1859,135 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-footer__cols ul { gap: 0; }
 }
 
+/* ---------- The Permanent Collection (DS-62) ---------- */
+/* The artists, works and groupings moved in from the catalogue: the Artists page's A to Z index,
+   the artist, work and browse pages, and the Permanent Collection page's search and ways in. Works
+   use the artwork tile and the product page's layout, so a work looks the same wherever it shows. */
+
+/* A back link above a page title: Artists over an artist, the collection over a grouping. */
+.gs-crumb {
+  margin: 0;
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-extrabold);
+  line-height: var(--gs-leading-label);
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+}
+.gs-crumb a { color: var(--gs-color-accent-text); text-underline-offset: var(--gs-link-offset); }
+
+/* The artist's header: name, names and dates beside the links out (website, documents). */
+.gs-entry-head { display: grid; gap: var(--gs-space-6) var(--gs-gutter); }
+.gs-entry-head__main { display: grid; gap: var(--gs-space-4); align-content: start; }
+.gs-entry-head__names { margin: 0; font-size: var(--gs-text-deck); line-height: var(--gs-leading-deck); }
+.gs-entry-head__aside { display: grid; gap: var(--gs-space-5); align-content: start; }
+.gs-entry-head__aside > * { margin: 0; }
+.gs-entry-head .gs-media { max-width: 20rem; }
+@media (min-width: 990px) {
+  .gs-entry-head:has(> .gs-entry-head__aside) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; }
+}
+.gs-docs { display: grid; gap: var(--gs-space-2); margin: 0; padding: 0; list-style: none; }
+
+/* A to Z: each letter large beside its names, which run in columns (as DS-45). The letters are the
+   page's one big gesture; names stay body size so 170 of them read as a list, not a poster. */
+.gs-index { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-5); }
+.gs-index > .gs-section-head,
+.gs-finder > .gs-section-head,
+.gs-ways > .gs-section-head { margin-block-end: 0; }
+.gs-index__tools { display: grid; gap: var(--gs-space-3); }
+.gs-index__tools .gs-field { max-width: var(--gs-width-form); }
+.gs-letters ul { display: flex; flex-wrap: wrap; gap: var(--gs-space-1); margin: 0; padding: 0; list-style: none; }
+/* On phones the letters are one row that scrolls sideways, bleeding to the edges with the next
+   letter peeking in, instead of four rows before the first name. */
+@media (max-width: 749px) {
+  .gs-letters { margin-inline: calc(-1 * var(--gs-gutter)); }
+  .gs-letters ul { flex-wrap: nowrap; overflow-x: auto; padding-inline: var(--gs-gutter); scrollbar-width: none; }
+  .gs-letters ul::-webkit-scrollbar { display: none; }
+  .gs-letters li { flex: none; }
+}
+.gs-letters a {
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--gs-tap-target);
+  min-height: var(--gs-tap-target);
+  font-size: var(--gs-text-h4);
+  font-weight: var(--gs-weight-black);
+  color: var(--gs-color-fg);
+  text-decoration: none;
+  border-radius: var(--gs-shape-sm);
+  transition: background-color var(--gs-duration-fast) var(--gs-ease);
+}
+.gs-letters a:active { background-color: var(--gs-color-hover-fill); }
+@media (hover: hover) and (pointer: fine) {
+  .gs-letters a:hover { background-color: var(--gs-color-hover-fill); }
+}
+.gs-index__groups { display: grid; gap: var(--gs-space-6); margin-block-start: var(--gs-space-4); }
+.gs-index__group {
+  display: grid;
+  gap: var(--gs-space-4) var(--gs-gutter);
+  padding-block-start: var(--gs-space-4);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+  scroll-margin-block-start: var(--gs-space-6);
+}
+.gs-index__group[hidden] { display: none; }
+@media (min-width: 990px) {
+  .gs-index__group { grid-template-columns: minmax(0, 1fr) minmax(0, 5fr); }
+}
+.gs-index__letter {
+  margin: 0;
+  font-size: var(--gs-text-display);
+  font-weight: var(--gs-weight-black);
+  line-height: 0.85;
+  text-transform: uppercase;
+  color: var(--gs-color-accent-text);
+}
+.gs-index__list { margin: 0; padding: 0; list-style: none; columns: 3 10rem; column-gap: var(--gs-gutter); }
+.gs-index__item { display: grid; gap: 0.1em; padding-block: var(--gs-space-2); break-inside: avoid; }
+.gs-index__item[hidden] { display: none; }
+.gs-index__name {
+  font-weight: var(--gs-weight-bold);
+  line-height: 1.3;
+  color: inherit;
+  text-decoration-line: none;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: var(--gs-link-thickness);
+  text-underline-offset: var(--gs-link-offset);
+}
+.gs-index__name:active { text-decoration-line: underline; }
+@media (hover: hover) and (pointer: fine) {
+  .gs-index__name:hover { text-decoration-line: underline; }
+}
+
+/* A work's page: the product page's layout (DS-38) without price or cart. The label's facts are a
+   list under rules, one to a row; with no image, the label takes the width. */
+.gs-artwork--text { grid-template-columns: minmax(0, 1fr); }
+.gs-artwork--text .gs-artwork__info { max-width: var(--gs-measure); }
+.gs-details--stack { grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-4); width: 100%; }
+@media (min-width: 750px) { .gs-details--stack { grid-template-columns: minmax(0, 1fr); } }
+.gs-artwork-label a { color: inherit; text-decoration-line: underline; text-decoration-color: var(--gs-color-link-line); text-decoration-thickness: var(--gs-link-thickness); text-underline-offset: var(--gs-link-offset); }
+
+/* Ways into the collection: groupings as cards with a work on the mat, then categories and themes
+   as two lists of links with their counts. */
+.gs-ways { display: grid; gap: var(--gs-stack-lg); }
+/* The grouping cards are two across from the start: four one-per-row cards would push the
+   categories and themes a whole phone screen down. */
+@media (max-width: 749px) {
+  .gs-ways .gs-grid--cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
+}
+.gs-browse { display: grid; gap: var(--gs-space-7) var(--gs-gutter); }
+@media (min-width: 750px) { .gs-browse { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.gs-browse__list { margin: var(--gs-space-4) 0 0; padding: 0; list-style: none; columns: 2 11rem; column-gap: var(--gs-gutter); }
+.gs-browse__list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--gs-space-2); padding-block: var(--gs-space-2); border-block-start: var(--gs-border) solid var(--gs-color-rule); break-inside: avoid; }
+.gs-browse__list a { font-weight: var(--gs-weight-bold); }
+
+/* The collection search: the field, a live count, then works as tiles. */
+.gs-finder { display: grid; gap: var(--gs-space-6); }
+.gs-finder[hidden] { display: none; }
+.gs-finder__count { margin: 0; }
+.gs-finder__count:empty,
+.gs-finder [data-gs-finder-results]:empty,
+.gs-finder__more[hidden] { display: none; }
+.gs-finder__more { margin: 0; }
+
 /* ---------- Forced colours (Windows High Contrast) ---------- */
 /* Icons are CSS masks painted with background-color, which forced colours removes. Repaint them in
    the text colour, and give panels and chips a border so their edges survive. */

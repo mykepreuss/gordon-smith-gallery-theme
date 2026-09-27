@@ -1,0 +1,51 @@
+{%- comment -%}
+  The exhibitions at the gallery that included an artist (DESIGN.md §7.5, DS-62): compact
+  exhibition cards from the artist's Exhibitions list, newest first.
+{%- endcomment -%}
+{%- if metaobject.exhibitions.value != blank -%}
+  {%- liquid
+    # Newest first: each card is keyed by its start date, then the keys are sorted.
+    assign rows = ''
+    for entry in metaobject.exhibitions.value
+      capture card
+        render 'gs-exhibition-card', entry: entry, compact: true, heading: 'h3'
+      endcapture
+      assign rows = rows | append: entry.start_date.value | append: '~~card~~' | append: card | append: '~~row~~'
+    endfor
+    assign rows = rows | split: '~~row~~' | sort | reverse
+  -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.exhibitions_heading' | t }}</h2>
+      </div>
+      <ul class="gs-grid gs-grid--cards">
+        {%- for row in rows -%}
+          {%- assign card = row | split: '~~card~~' | last -%}
+          {%- if card != blank -%}<li>{{ card }}</li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Artist's exhibitions",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The exhibitions in the artist's Exhibitions list, newest first."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Artist's exhibitions"
+    }
+  ]
+}
+{% endschema %}
