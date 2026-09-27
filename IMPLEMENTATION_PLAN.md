@@ -153,7 +153,7 @@ Open while iterating. Add what each review finds; take items off when they merge
 | --- | --- | --- |
 | Set the seven hero focal points in the admin (Content > Files), then check them on the review theme at phone width | Michael, then Agent | `proposals/hero-focal-points.md`, each point tried on the preview first (2026-09-26). Shopify's API can't set focal points. IMG-02, IMG-03 |
 | Send the gallery its questions: values, exhibitions, content checks, brand | Michael | `proposals/gallery-questions.md` collects all of them in one place (2026-09-26) |
-| Bring the Permanent Collection into the site, off the external catalogue | Michael decides; gallery answers; then Agent | Plan: `proposals/permanent-collection.md` (2026-09-26): 1,291 works, 1,530 images, about 204 artists as store entries, a collection search, and redirects from every catalogue address. Starts with a 20-work trial once Michael agrees |
+| Bring the Permanent Collection into the site, off the external catalogue | Michael decides; gallery answers; then Agent | Plan: `proposals/permanent-collection.md` (2026-09-26): 1,291 works, 1,530 images, about 208 artists as store entries, a collection search, and redirects from every catalogue address. Revised the same day: the Artists page becomes the index of every artist, each with a page on the site, and leaves the Shop menu (P-26, DS-62, both Proposed). Starts with a 20-work trial once Michael agrees |
 
 ### Release backlog (on hold until Michael decides to release)
 

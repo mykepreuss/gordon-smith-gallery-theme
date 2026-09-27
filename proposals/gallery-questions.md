@@ -59,6 +59,9 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 5.4 | Review the artist names and life dates: 313 spellings become about 204 artists, and some conflict (Ann Meredith Barry has four sets of dates) | Names as the catalogue has them, dates left off where they conflict |
 | 5.5 | Where are the original image files (the catalogue holds 36 GB of TIFFs), and who at the district's IT can help with the download and, later, the redirects? | The trial uses 20 works' files from the catalogue |
 | 5.6 | Once the catalogue retires, where do the private records live (where each work is, provenance, donors)? | They stay in the catalogue |
+| 5.7 | The Artists page will list every artist with work in the collection or an edition in the Shop, about 208 names, and each name will open the artist's page on the site, with the works, the editions, the exhibitions and one link to the artist's own website. Today's 59 links out (dealers, personal sites, a PDF) move to those pages. Is there anyone who shouldn't be listed, or a website link to drop? | Everyone is listed; the links move as they are (see 3.7) |
+| 5.8 | The Artists page's two paragraphs are about the Limited Edition Portfolio artists. With the whole collection listed under them, would the gallery like to adjust the wording? | As written |
+| 5.9 | The catalogue's Published Editions page carries a paragraph on the history of the editions programme (1990, Bill Reid's *Xhuwaji / Haida Grizzly*, "Entering its 37th year"). Carry it over, word for word, as the introduction to the Published Editions browse page? | Carried over as written |
 
 ## 6. Volunteer (DS-58)
 
