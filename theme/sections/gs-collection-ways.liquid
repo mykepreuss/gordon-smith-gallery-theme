@@ -40,7 +40,7 @@
         {%- assign groupings = groupings | append: key | append: '~~key~~' | append: card | append: '~~row~~' -%}
       {%- else -%}
         {%- capture link -%}
-          <li><a class="gs-link" href="{{ g.system.url }}">{{ name_html }}</a> <span class="gs-meta">{{ count_text }}</span></li>
+          <li><a class="gs-link" href="{{ g.system.url }}">{{ name_html }}</a> <span class="gs-meta"><span aria-hidden="true">{{ count_text }}</span><span class="gs-visually-hidden">{{ 'collection.works_count' | t: count: count }}</span></span></li>
         {%- endcapture -%}
         {%- if g.kind.value == 'Category' -%}
           {%- assign categories = categories | append: key | append: '~~key~~' | append: link | append: '~~row~~' -%}
