@@ -492,3 +492,24 @@ The cleaned data follows the gallery-questions defaults (§5) where the gallery 
 **Effect on the live site:** none. The live theme has no templates for the three entry types, so `/pages/collection/<handle>` and `/pages/browse/<handle>` return 404 there (checked 2026-09-27). `/pages/artists/<anything>` shows the live Artists page, as it did before any entry existed (checked with a made-up handle): Shopify serves the page at any address under it, and none of an entry's content appears. The live theme reads neither page field, the product field nor the review menu (`baseline/theme/`).
 
 **Undo:** clear the product field on the 21 editions; set the two page fields back from the snapshot; set the review menu back from its snapshot; delete the entries (Content, Metaobjects: groupings, then artworks, then artists) and the definitions; delete the uploaded files (`created/collection-files.json`). The catalogue is untouched throughout.
+
+## 2026-09-27: the collection after Michael's review (P-28, DS-63)
+
+**Why:** Michael, 2026-09-27: "display the items we have as text links in Documents below the artist's works. We can also remove the Website labels and links"; "Import The 6 works on loan"; "Exhibition pages: they don't list their works from the collection yet; that needs a new field on the exhibition entry." "Please do this."
+
+**Checked first:** same store and themes as the entry above. Before: the exhibition and artist definitions as in `collection/definitions.py` at the previous commit; the entries as that import left them (`created/collection-*.json`).
+
+| What | Through | Notes |
+| --- | --- | --- |
+| Exhibition definition: new field `collection_works` (Works from the collection, a list of artwork entries) | Connector | `definitions.py exhibition_works`. The live theme doesn't render exhibitions |
+| Artist definition: Website renamed "Website (not shown)", Documents' description | Connector | `definitions.py artist_notes`. The values stay |
+| The 6 works in "Things On Loan to AFK", with their 3 images; "On Loan" taken off two accession numbers (BOBA005, SMIT038) | CLI | `import.py works`. Credit lines as the catalogue records them (gallery question 5.13) |
+| Every artist's Works and Documents lists | CLI | `import.py link`, now always sending both lists so an emptied one clears. Documents: one link per document, its PDF (or its photographs when it has no PDF); 79 in all. The cover images that went up with the first import aren't linked any more and can be deleted from Files |
+| Documents' names (alt text): the catalogue item's title without the artist's name, numbered where one artist has two with the same name | CLI | `images.py docalts` |
+| The groupings again, with the loans in their categories and themes | CLI | `import.py groups` |
+| Works from the collection on *From the Ground* (26), *Playhouse* (25) and *The Art of Conversation* (18), from the works' sets and the catalogue's "Works in …" pages | CLI | `import.py exhibitions` |
+| All works again after the edition rule accepted "AP, 11/14" (483 titles tidied), and their images' alt text | CLI | `import.py works`, `images.py alts` |
+
+**Effect on the live site:** none. The live theme renders none of these entries or fields.
+
+**Undo:** clear the three exhibitions' Works from the collection and delete that field; set the artist fields' names back; delete the 6 loan works and their images; run `import.py link` from the previous commit's `clean.py` for the old document lists.

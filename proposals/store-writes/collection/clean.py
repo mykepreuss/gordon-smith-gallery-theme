@@ -31,7 +31,7 @@ HERE = pathlib.Path(__file__).parent
 SHEETS = HERE / "sheets"
 REPO = HERE.parents[2]
 
-LOANS_SET = 1619  # "Things On Loan to AFK": not the collection's (P-27)
+LOANS_SET = 1619  # "Things On Loan to AFK": imported like the rest (P-28); noted in problems.csv
 CREDIT = "Collection of Artists for Kids and the Gordon Smith Gallery"
 
 # Catalogue item sets that become groupings (kind, handle, name). Categories and themes come from
@@ -47,7 +47,10 @@ THEME_SETS = {3100: "People", 3101: "Architecture", 3102: "Creatures", 3103: "Ac
               3106: "Social change", 3107: "Storytelling", 3108: "Ecology", 3109: "Invention"}
 # Catalogue exhibition sets and the site's exhibition entries.
 EXHIBITION_SETS = {1303: "the-art-of-conversation", 1319: "playhouse", 4517: "from-the-ground"}
+EXHIBITION_PAGES = {"works-in-the-art-of-conversation": "the-art-of-conversation", "worksinplayhouse": "playhouse",
+                    "works-in-from-the-ground": "from-the-ground"}
 MIN_THEME_GROUP = 5
+MAX_DOCUMENT = 20_000_000  # Shopify's limit for a file
 # The Permanent Collection page's featured row (the grouping "featured"): the three founding patrons,
 # then a painting, a sculpture and a print from across the collection. The gallery can change them in
 # the admin (Content, Metaobjects, Collection grouping, Featured works).
@@ -175,7 +178,7 @@ EXHIBITION_NAMES = {
 }
 
 EDITION = re.compile(
-    r"\s*[\(\[]\s*((?:\d+\s*/\s*\d+)|(?:A\.?\s*/?\s*P\.?|PP|P/P|TP|T/P|HC|H/C|BAT|E/A)(?:[\s\-]*[A-Z0-9]+(?:\s*/\s*[A-Z0-9]+)?)?)\s*[\)\]]\s*$",
+    r"\s*[\(\[]\s*((?:\d+\s*/\s*\d+)|(?:A\.?\s*/?\s*P\.?|PP|P/P|TP|T/P|HC|H/C|BAT|E/A),?(?:[\s\-]*[A-Z0-9]+(?:\s*/\s*[A-Z0-9]+)?)?)\s*[\)\]]\s*$",
     re.I)
 BARE_EDITION = re.compile(r"\s(\d+\s*/\s*\d+)\s*$")
 DOB = re.compile(r"\s*[\(\[]\s*(?:DOB:?)?\s*(\d{4}\s*(?:-\s*(?:\d{4}|Present))?)?\s*[\)\]]\s*$", re.I)
@@ -289,9 +292,18 @@ def main(export, out):
     site_links = site_artist_links()
 
     doc_sets = {sid for sid, t in sets.items() if "Text Resource" in t or t in ("Pat and Rosemarie Keough", "Christopher & Mary Pratt")}
-    works_raw = [i for i in items if not (item_sets(i) & doc_sets) and LOANS_SET not in item_sets(i)]
+    works_raw = [i for i in items if not (item_sets(i) & doc_sets)]
     docs_raw = [i for i in items if item_sets(i) & doc_sets]
     loans = [i for i in items if LOANS_SET in item_sets(i) and not (item_sets(i) & doc_sets)]
+    # The catalogue's "Works in …" pages attach works by hand, as well as the exhibition sets.
+    exhibition_items = collections.defaultdict(set)
+    pages_path = export / "site_pages.json"
+    for page in (json.loads(pages_path.read_text()) if pages_path.exists() else []):
+        handle = EXHIBITION_PAGES.get(page.get("o:slug"))
+        for block in page.get("o:block", []) if handle else []:
+            for att in block.get("o:attachment") or []:
+                if (att.get("o:item") or {}).get("o:id"):
+                    exhibition_items[att["o:item"]["o:id"]].add(handle)
 
     # Names the site already uses, by their cleaned catalogue spelling: the Artists page's links,
     # the editions' labels and the exhibitions' artists.
@@ -321,6 +333,10 @@ def main(export, out):
     seen_handles = collections.Counter()
     for i in sorted(works_raw, key=lambda x: x["o:id"]):
         accession = first(i, "dcterms:identifier")
+        if LOANS_SET in item_sets(i):
+            # Two loans carry it in the number itself: "BOBA005 On Loan".
+            accession = re.sub(r"\s*on loan\s*$", "", accession, flags=re.I)
+            problems.append((accession, "In the catalogue's \"Things On Loan to AFK\"; imported like the rest (P-28). Check its credit line", i["o:id"]))
         creators = values(i, "dcterms:creator")
         names = []
         for raw in creators:
@@ -384,7 +400,7 @@ def main(export, out):
             "medium": re.sub(r"\s+", " ", first(i, "dcterms:medium")), "dimensions": re.sub(r"\s+", " ", first(i, "dcterms:spatial")),
             "edition": edition, "credit_line": rights, "images": images, "themes": themes,
             "description": desc,
-            "shown_in": [h for sid, h in EXHIBITION_SETS.items() if sid in item_sets(i)],
+            "shown_in": sorted({h for sid, h in EXHIBITION_SETS.items() if sid in item_sets(i)} | exhibition_items[i["o:id"]]),
             "sets": sorted(item_sets(i)), "in_the_shop": "",
         }
         works.append(work)
@@ -423,38 +439,76 @@ def main(export, out):
             if h:
                 by_handle[h]["exhibitions"].add(e["handle"])
 
-    # Documents: each Text Resources set belongs to one artist.
+    # Documents: each Text Resources set belongs to one artist, named as the catalogue spells them.
+    spelled = {}
+    for a in artists.values():
+        for n in {a["name"], a["full_name"], *a["spellings"]} - {""}:
+            spelled[title_key(re.sub(r"\s*[\(\[]DOB.*$", "", n))] = a["handle"]
     documents = []
     for i in docs_raw:
-        set_names = [sets[s] for s in item_sets(i) if s in doc_sets]
-        owner = None
-        for sn in set_names:
-            n = re.sub(r"\s*\(?Text Resources?\)?\s*$", "", sn).strip()
+        owner, set_name = None, ""
+        for sid in item_sets(i) & doc_sets:
+            n = re.sub(r"\s*\(?Text Resources?\)?\s*$", "", sets[sid]).strip()
             n = {"B.C Binning": "B.C. Binning", "E.J Hughes": "E.J. Hughes", "Angela Grossman": "Angela Grossmann",
                  "Graham Gilmore": "Graham Gillmore", "Christopher & Mary Pratt": "Christopher Pratt",
-                 "Irene Whittome": "Irene F. Whittome", "Jean McEwen": "Jean McEwan", "Ross Penhall": "Ross Penhall",
+                 "Irene Whittome": "Irene F. Whittome", "Jean McEwen": "Jean McEwan",
                  "Kabubuwa (Qavaroak) Tunnillie": "Kabubuwa Tunnillie", "Newgaleak (Nuyaliaq) Qimirpik": "Newgaleak Qimirpik",
-                 "Iain Baxter": "Iain Baxter", "Pat and Rosemarie Keough": "Pat and Rosemarie Keough",
-                 "Karin Bubaš": "Karin Bubaš", "All Artist": ""}.get(n, n)
-            if n and handleize(n) in by_handle:
-                owner = handleize(n)
+                 "All Artist": ""}.get(n, n)
+            h = handleize(n) if n and handleize(n) in by_handle else spelled.get(title_key(n)) if n else None
+            if h:
+                owner, set_name = h, re.sub(r"\s*\(?Text Resources?\)?\s*$", "", sets[sid]).strip()
         for m in i.get("o:media", []):
             md = media.get(m["o:id"])
             if not md:
                 continue
-            documents.append({"media_id": md["o:id"], "item_id": i["o:id"], "artist": owner or "",
+            documents.append({"media_id": md["o:id"], "item_id": i["o:id"], "artist": owner or "", "set_name": set_name,
                               "title": first(i, "dcterms:title") or md.get("o:source", ""), "type": md["o:media_type"],
                               "size": md.get("o:size") or 0, "url": md["o:original_url"]})
+
+    # Which files a document shows as. Most catalogue items are a PDF plus a small image of its cover:
+    # the PDF is the document, so it's the one link. Items that are only photographs link their
+    # photographs. A PDF over Shopify's 20 MB limit isn't on the site (large-documents.csv), and its
+    # cover doesn't stand in for it.
+    by_item = collections.defaultdict(list)
     for d in documents:
-        if d["artist"]:
-            by_handle[d["artist"]]["documents"].append(d["media_id"])
-            # On the artist's own page the name and "(Text Resource)" only repeat: "Robert Davidson -
-            # Press (Text Resource)" reads as "Press".
-            a = by_handle[d["artist"]]
-            t = re.sub(r"\s*\(?Text Resources?\)?\s*$", "", d["title"], flags=re.I).strip()
-            for n in sorted({a["name"], a["full_name"], *a["spellings"]} - {""}, key=len, reverse=True):
-                t = re.sub(r"^" + re.escape(n) + r"\s*[-:]\s*", "", t, flags=re.I)
-            d["title"] = t.rstrip(" -:") or d["title"]
+        d["show"] = False
+        by_item[d["item_id"]].append(d)
+    large = []
+    for item_docs in by_item.values():
+        artist_handle = item_docs[0]["artist"]
+        if not artist_handle:
+            continue
+        a = by_handle[artist_handle]
+        # On the artist's own page the name and "(Text Resource)" only repeat: "Robert Davidson -
+        # Press (Text Resource)" reads as "Press".
+        t = re.sub(r"\s*\(?Text Resources?\)?\s*$", "", item_docs[0]["title"], flags=re.I).strip()
+        names = {a["name"], a["full_name"], item_docs[0]["set_name"], *a["spellings"]} - {""}
+        for n in sorted(names, key=len, reverse=True):
+            t = re.sub(r"^" + re.escape(n) + r"(\s*[-:]\s*|\s+|$)", "", t, flags=re.I)
+        t = t.strip(" -:")
+        t = t[:1].upper() + t[1:] if t else "Document"
+        for d in item_docs:
+            d["title"] = t
+        pdfs = [d for d in item_docs if d["type"] == "application/pdf"]
+        chosen = pdfs or [d for d in item_docs if d["type"].startswith("image/")]
+        for d in chosen:
+            if d["size"] > MAX_DOCUMENT:
+                large.append(d)
+        chosen = [d for d in chosen if d["size"] <= MAX_DOCUMENT]
+        for n, d in enumerate(chosen, 1):
+            d["show"] = True
+            d["title"] = t if len(chosen) == 1 else f"{t}, {n} of {len(chosen)}"
+    for a in artists.values():
+        # Two links with the same words would be ambiguous: number the repeats ("Press", "Press 2").
+        seen = collections.Counter()
+        for d in sorted((d for d in documents if d["show"] and d["artist"] == a["handle"]), key=lambda d: d["media_id"]):
+            seen[d["title"]] += 1
+            if seen[d["title"]] > 1:
+                d["title"] = f"{d['title']} {seen[d['title']]}"
+            a["documents"].append(d["media_id"])
+
+    # Each exhibition's works from the collection, for its page (Shown in, turned around).
+    exhibition_works = {h: [] for h in set(EXHIBITION_SETS.values()) | set(EXHIBITION_PAGES.values())}
 
     # Life dates, sorted work lists, and the artists' sheet rows.
     work_by_handle = {w["handle"]: w for w in works}
@@ -481,6 +535,8 @@ def main(export, out):
 
     theme_counts = collections.Counter(t for w in works for t in w["themes"])
     for w in sorted(works, key=artist_sort):
+        for h in w["shown_in"]:
+            exhibition_works[h].append(w["handle"])
         if w["category"]:
             h, n = CATEGORY_GROUPS[w["category"]]
             group(h, n, "Category")["works"].append(w["handle"])
@@ -516,6 +572,7 @@ def main(export, out):
     (out / "images.json").write_text(json.dumps(images, ensure_ascii=False, indent=1))
     (out / "documents.json").write_text(json.dumps(documents, ensure_ascii=False, indent=1))
     (out / "products.json").write_text(json.dumps(store["products"], ensure_ascii=False, indent=1))
+    (out / "exhibitions.json").write_text(json.dumps(exhibition_works, ensure_ascii=False, indent=1))
 
     SHEETS.mkdir(exist_ok=True)
     write_csv("artists.csv", ["Name on the site", "Sort name", "Full name", "Other names", "Life dates",
@@ -529,17 +586,20 @@ def main(export, out):
                for a in artist_rows])
     write_csv("titles.csv", ["Accession number", "Title in the catalogue", "Title on the site", "Edition"], titles)
     write_csv("problems.csv", ["Accession number", "Problem", "Catalogue item"],
-              problems + [(first(i, "dcterms:identifier"), "On loan: not imported", i["o:id"]) for i in loans]
-              + [("", f"Document over 20 MB, not imported: {d['title']} ({d['size'] / 1e6:.0f} MB)", d["item_id"])
-                 for d in documents if d["size"] > 20e6])
+              problems)
+    write_csv("large-documents.csv", ["Artist", "Document", "Size (MB)", "In the catalogue"],
+              [[by_handle[d["artist"]]["name"], d["title"], f"{d['size'] / 1e6:.0f}",
+                f"https://afkcatalogue.sd44.ca/s/TheCollection/item/{d['item_id']}"]
+               for d in sorted(large, key=lambda d: (ascii_fold(by_handle[d["artist"]]["sort_name"]).lower(), d["title"]))])
     raw_terms = collections.Counter(t.strip().lower() for i in works_raw for s in values(i, "dcterms:subject") for t in re.split(r"[,;]", s) if t.strip())
     write_csv("themes.csv", ["Subject in the catalogue", "Theme on the site", "Works"],
               [[t, (THEMES[t] if t in THEMES else t.capitalize()) or "(not a theme)", n] for t, n in raw_terms.most_common()])
     write_csv("groupings.csv", ["Grouping", "Kind", "Address", "Works"],
               [[g["name"], g["kind"], f"/pages/browse/{g['handle']}", len(g["works"])] for g in groups.values()])
 
-    print(f"works {len(works)}, artists {len(artists)}, groupings {len(groups)}, images {len(images)}, "
-          f"documents {len(documents)} ({sum(1 for d in documents if d['size'] > 20e6)} over 20 MB), loans left out {len(loans)}")
+    print(f"works {len(works)} (loans {len(loans)}), artists {len(artists)}, groupings {len(groups)}, images {len(images)}, "
+          f"documents shown {sum(1 for d in documents if d['show'])} of {len(documents)} files, {len(large)} PDFs over 20 MB, "
+          f"exhibitions with works {sum(1 for v in exhibition_works.values() if v)}")
     print(f"titles changed {len(titles)}, problems {len(problems)}, dates left off {sum(1 for a in artists.values() if a['dates_conflict'])}")
     print("works in the Shop:", {w["handle"]: w["in_the_shop"] for w in works if w["in_the_shop"]})
 

@@ -198,7 +198,9 @@ Added 2026-09-26, when the catalogue at afkcatalogue.sd44.ca moved into the stor
 | `artwork` | `/pages/collection/<accession number>` | Title, artists (a list, for works made together), year, category (one of eight), medium, dimensions, edition, accession number, credit line, images, themes, about the work, the edition in the Shop, shown in (exhibitions) |
 | `collection_group` | `/pages/browse/<handle>` | Name, kind (category, theme or grouping), introduction, works |
 
-Liquid can't find entries by a field's value, so the lists live where the page needs them: an artist's works on the artist, a grouping's works on the grouping. The editions go the other way: a product's Artist pages field (`custom.artist_entries`) names its artists, and the artist's page finds its editions in All limited editions, so an edition is linked once, on the product.
+The exhibition entry gained **Works from the collection** (`collection_works`, a list of artwork entries, 2026-09-27, DS-63), which its page shows after the installation views.
+
+Liquid can't find entries by a field's value, so the lists live where the page needs them: an artist's works on the artist, a grouping's works on the grouping, an exhibition's works on the exhibition. The editions go the other way: a product's Artist pages field (`custom.artist_entries`) names its artists, and the artist's page finds its editions in All limited editions, so an edition is linked once, on the product.
 
 ## Answers, 2026-09-25
 

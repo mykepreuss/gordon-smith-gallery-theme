@@ -79,7 +79,8 @@
       "gs-related",
       "gs-work-more",
       "gs-artist-editions",
-      "gs-artist-exhibitions"
+      "gs-artist-exhibitions",
+      "gs-artist-documents"
     ],
     "legacy": [
       "custom-liquid",
@@ -149,7 +150,7 @@
       }
     },
     "metaobject/exhibition": {
-      "purpose": "A single exhibition, rendered from structured exhibition data (proposals/content-model.md)",
+      "purpose": "A single exhibition, rendered from structured exhibition data (proposals/content-model.md); its works from the collection (DS-63)",
       "require": [
         "hero",
         "text"
@@ -157,7 +158,7 @@
       "maxPerGroup": {
         "text": 1,
         "gallery": 2,
-        "listing": 1
+        "listing": 2
       }
     },
     "page.permanent-collection": {
@@ -182,7 +183,7 @@
       }
     },
     "metaobject/artist": {
-      "purpose": "An artist in the collection (DS-62): header, works, editions in the Shop, exhibitions",
+      "purpose": "An artist in the collection (DS-62, DS-63): header, works, documents, editions in the Shop, exhibitions",
       "firstGroups": [
         "pageHead"
       ],
@@ -192,7 +193,7 @@
       ],
       "maxPerGroup": {
         "listing": 1,
-        "related": 2
+        "related": 3
       }
     },
     "metaobject/artwork": {

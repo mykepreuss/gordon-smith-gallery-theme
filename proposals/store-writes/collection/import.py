@@ -9,6 +9,8 @@ Steps, in order:
   works      every work: label fields, artists, images, themes, the edition in the Shop, exhibitions
   link       each artist's Works list and Documents
   groups     the categories, themes and groupings, with their works
+  exhibitions  each exhibition's Works from the collection (from the works' Shown in and the
+             catalogue's "Works in …" pages)
   --print <folder> writes each batch (mutation and variables) to a file, for running through the
   Shopify connector instead of the CLI; record the returned IDs with `import.py record`.
 
@@ -129,12 +131,15 @@ def main(step, data, dry):
 
     elif step == "link":
         docs = {}
-        for d in json.loads((data / "documents.json").read_text()):
-            if d["artist"] and f"doc-{d['media_id']}" in files:
-                docs.setdefault(d["artist"], []).append(files[f"doc-{d['media_id']}"])
-        rows = [(a["handle"], fields(name=a["name"], sort_name=a["sort_name"],
-                                     works=[work_ids[h] for h in a["works"] if h in work_ids],
-                                     documents=docs.get(a["handle"], []))) for a in artists]
+        documents = {d["media_id"]: d for d in json.loads((data / "documents.json").read_text())}
+        for a in artists:
+            for m in a["documents"]:  # the files clean.py chose to show, in its order
+                if f"doc-{m}" in files and documents[m]["show"]:
+                    docs.setdefault(a["handle"], []).append(files[f"doc-{m}"])
+        # Both lists are always sent, so one that has become empty ("[]") is cleared in the store.
+        rows = [(a["handle"], fields(name=a["name"], sort_name=a["sort_name"])
+                 + [{"key": "works", "value": json.dumps([work_ids[h] for h in a["works"] if h in work_ids])},
+                    {"key": "documents", "value": json.dumps(docs.get(a["handle"], []))}]) for a in artists]
         upsert("artist", rows, "artists", dry)
 
     elif step == "groups":
@@ -142,6 +147,11 @@ def main(step, data, dry):
         rows = [(g["handle"], fields(name=g["name"], kind=g["kind"], introduction=g["introduction"],
                                      works=[work_ids[h] for h in g["works"] if h in work_ids])) for g in groups]
         upsert("collection_group", rows, "groups", dry)
+
+    elif step == "exhibitions":
+        lists = json.loads((data / "exhibitions.json").read_text())
+        rows = [(h, fields(collection_works=[work_ids[w] for w in ws if w in work_ids])) for h, ws in sorted(lists.items())]
+        upsert("exhibition", rows, "exhibition-works", dry)
 
     elif step == "products":
         mf = []

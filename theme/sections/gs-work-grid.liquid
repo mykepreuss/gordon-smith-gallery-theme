@@ -1,27 +1,38 @@
 {%- comment -%}
-  The works on an artist's page or a grouping's page (DESIGN.md §7.5, DS-62): artwork tiles, 24 to a
-  page, in the order of the entry's Works list. On an artist's page they sit under "Works in the
-  collection"; on a grouping's page the grouping's name is the page title, so the heading only
-  counts them. An artist with no works yet (an edition only) shows nothing here.
+  The works on an artist's, a grouping's or an exhibition's page (DESIGN.md §7.5, DS-62, DS-63):
+  artwork tiles, 24 to a page, in the order of the entry's list. On an artist's page they sit under
+  "Works in the collection"; on an exhibition's page under "Works from the collection" (its Works
+  from the collection field); on a grouping's page the grouping's name is the page title, so the
+  heading only counts them. An entry with no works shows nothing here.
 {%- endcomment -%}
 {%- liquid
-  assign is_artist = false
-  if metaobject.system.type == 'artist'
-    assign is_artist = true
+  assign type = metaobject.system.type
+  # An exhibition's selection shows whole (they hold 18 to 26 works); other lists page by 24.
+  assign page_size = 24
+  if type == 'exhibition'
+    assign field = metaobject.collection_works
+    assign page_size = 48
+  else
+    assign field = metaobject.works
   endif
 -%}
 {%- comment -%}
   Paginate before anything else reads the list: once the list has been read (even to test that
   it isn't blank), the paginate tag no longer slices it and every page shows the first 50.
+  Assigning it first is fine; reading it isn't.
 {%- endcomment -%}
-{%- paginate metaobject.works.value by 24 -%}
+{%- if field != nil -%}
+{%- assign list = field.value -%}
+{%- paginate list by page_size -%}
   {%- if paginate.items > 0 -%}
     <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
       <div class="gs-container">
         <div class="gs-section-head">
           <div class="gs-section-head__text">
-            {%- if is_artist -%}
-              <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.works_heading' | t }}</h2>
+            {%- if type == 'artist' or type == 'exhibition' -%}
+              <h2 class="gs-h2" id="{{ section.id }}-heading">
+                {%- if type == 'artist' %}{{ 'collection.works_heading' | t }}{% else %}{{ 'collection.exhibition_works' | t }}{% endif -%}
+              </h2>
               <p class="gs-meta">{{ 'collection.works_count' | t: count: paginate.items }}</p>
             {%- else -%}
               <h2 class="gs-h3" id="{{ section.id }}-heading">{{ 'collection.works_count' | t: count: paginate.items }}</h2>
@@ -29,8 +40,14 @@
           </div>
         </div>
         <ul class="gs-grid gs-grid--artworks">
-          {%- for work in metaobject.works.value -%}
-            <li>{%- render 'gs-work-tile', work: work, heading: 'h3', hide_artist: is_artist -%}</li>
+          {%- for work in list -%}
+            {%- liquid
+              assign hide_artist = false
+              if type == 'artist'
+                assign hide_artist = true
+              endif
+            -%}
+            <li>{%- render 'gs-work-tile', work: work, heading: 'h3', hide_artist: hide_artist -%}</li>
           {%- endfor -%}
         </ul>
         {%- render 'gs-pagination', paginate: paginate -%}
@@ -38,6 +55,7 @@
     </section>
   {%- endif -%}
 {%- endpaginate -%}
+{%- endif -%}
 
 {% schema %}
 {

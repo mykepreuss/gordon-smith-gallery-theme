@@ -20,11 +20,15 @@
     },
     "exhibitions": {
       "type": "gs-artist-exhibitions"
+    },
+    "documents": {
+      "type": "gs-artist-documents"
     }
   },
   "order": [
     "head",
     "works",
+    "documents",
     "editions",
     "exhibitions"
   ]

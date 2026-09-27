@@ -20,12 +20,16 @@
     },
     "more": {
       "type": "gs-exhibition-more"
+    },
+    "works": {
+      "type": "gs-work-grid"
     }
   },
   "order": [
     "hero",
     "body",
     "views",
+    "works",
     "more"
   ]
 }

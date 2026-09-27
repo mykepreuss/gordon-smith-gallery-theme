@@ -189,7 +189,6 @@
       "other": "{{ count }} artists"
     },
     "totals": "{{ works }} works and {{ artists }} artists",
-    "website": "Website",
     "documents": "Documents",
     "in_the_shop": "In the Shop",
     "edition_for_sale": "This work is also a limited edition in the Shop.",
@@ -222,6 +221,7 @@
     "by_category": "By category",
     "by_theme": "By theme",
     "site_heading": "In the collection",
-    "site_all": "See every match in the collection"
+    "site_all": "See every match in the collection",
+    "exhibition_works": "Works from the collection"
   }
 }

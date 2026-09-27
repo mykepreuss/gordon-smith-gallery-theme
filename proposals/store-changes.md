@@ -57,7 +57,7 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Also done 2026-09-25, with Michael's go-ahead ("migrate all content"):** the other 11 exhibitions, the About and Donate card groups, the remaining pages' fields, the staged page text (§8) and the three review menus (§1, §2). Every item in `proposals/content-migration.md` now has its content in the store or the theme. Log: `proposals/store-writes/README.md`.
 
-**Also done 2026-09-26 and 27, with Michael's go-ahead ("please proceed with delivering the plan", "all the artists and everything"):** the collection's three definitions and the product field, 171 artists, 1,168 works, 1,417 images, 180 documents and 26 groupings, all active; the Artists page's staged text without its links out; the Permanent Collection page's Browse button to its own search; the Collection section in the review menu (§1). The entries go live with the site. Log: `proposals/store-writes/README.md`.
+**Also done 2026-09-26 and 27, with Michael's go-ahead ("please proceed with delivering the plan", "all the artists and everything"):** the collection's three definitions and the product field, 171 artists, 1,168 works, 1,417 images, 180 documents and 26 groupings, all active; the Artists page's staged text without its links out; the Permanent Collection page's Browse button to its own search; the Collection section in the review menu (§1). The entries go live with the site. Then, after Michael's review (2026-09-27, P-28, DS-63): the 6 works on loan, the exhibition entry's Works from the collection field (filled for three exhibitions), and one document link per document. Log: `proposals/store-writes/README.md`.
 
 ## 5. Addresses at release (P-10, P-20, P-24, P-25)
 

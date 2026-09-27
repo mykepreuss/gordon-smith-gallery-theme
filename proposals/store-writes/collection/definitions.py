@@ -9,6 +9,10 @@ since the types refer to each other:
   python3 definitions.py works <artist def id> <artwork def id>   metaobjectDefinitionUpdate: adds Works
   python3 definitions.py group <artwork def id>     metaobjectDefinitionCreate
   python3 definitions.py product <artist def id>    metafieldDefinitionCreate (custom.artist_entries)
+  python3 definitions.py exhibition_works <artwork def id>   metaobjectDefinitionUpdate: the exhibition's
+                                                    Works from the collection (DS-63)
+  python3 definitions.py artist_notes <artist def id>        metaobjectDefinitionUpdate: Website isn't shown,
+                                                    Documents follow the works (DS-63)
 """
 import json
 import sys
@@ -115,7 +119,24 @@ def product(artist_id):
         "validations": refs(artist_id)}}
 
 
+def exhibition_works(artwork_id):
+    return {"id": EXHIBITION, "definition": {"fieldDefinitions": [{"create": f(
+        "collection_works", "list.metaobject_reference", "Works from the collection",
+        "Works from the Permanent Collection in the exhibition. They show on its page, after the installation views.",
+        validations=refs(artwork_id))}]}}
+
+
+def artist_notes(artist_id):
+    return {"id": artist_id, "definition": {"fieldDefinitions": [
+        {"update": {"key": "website", "name": "Website (not shown)",
+                    "description": "Kept from the old Artists page's links. The site doesn't show it (DS-63)."}},
+        {"update": {"key": "documents", "name": "Documents",
+                    "description": "Press, catalogues, books and photographs, shown as links after the works, "
+                                   "named by each file's alt text. A PDF over 20 MB can't be uploaded."}}]}}
+
+
 if __name__ == "__main__":
     which, args = sys.argv[1], sys.argv[2:]
-    out = {"artist": artist, "artwork": artwork, "works": works, "group": group, "product": product}[which](*args)
+    out = {"artist": artist, "artwork": artwork, "works": works, "group": group, "product": product,
+           "exhibition_works": exhibition_works, "artist_notes": artist_notes}[which](*args)
     print(json.dumps(out, indent=1, ensure_ascii=False))
