@@ -15,10 +15,20 @@
   A group without a heading has its card titles at H2, so no heading level is skipped after the
   page's H1. Each group can be linked to by its handle, e.g. /pages/donate#donate-ways-to-give, so a
   page's call to action can jump to it (DS-53).
+  When the first group has no heading, the cards continue the text before them ("Current volunteer
+  roles include the following:"), so they follow it at a group's space, not a section's (DS-58).
 {%- endcomment -%}
 {%- assign groups = page.metafields.custom.card_groups.value -%}
 {%- if groups != blank -%}
-  <div class="gs-section gs-surface-paper">
+  {%- liquid
+    assign continues = false
+    for group in groups limit: 1
+      if group.heading.value == blank
+        assign continues = true
+      endif
+    endfor
+  -%}
+  <div class="gs-section gs-surface-paper{% if continues %} gs-section--continues{% endif %}">
     <div class="gs-container">
       {%- for group in groups -%}
         {%- liquid

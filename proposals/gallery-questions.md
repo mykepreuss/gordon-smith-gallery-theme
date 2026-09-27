@@ -59,6 +59,16 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 5.5 | Where are the original image files (the catalogue holds 36 GB of TIFFs), and who at the district's IT can help with the download and, later, the redirects? | The trial uses 20 works' files from the catalogue |
 | 5.6 | Once the catalogue retires, where do the private records live (where each work is, provenance, donors)? | They stay in the catalogue |
 
+## 6. Volunteer (DS-58)
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 6.1 | Where does a filled-in volunteer form go: an email address, dropped off at the gallery, or by mail? The page can say so in its last line | "To apply, fill in the volunteer form (PDF). Questions? Contact us." |
+| 6.2 | Would you take volunteer applications through the site's contact form instead of a PDF, so nobody has to print and scan? | The PDF |
+| 6.3 | Is there a photo of a gallery attendant at work, for example greeting visitors at the front desk? The role cards could show one each; the page's other banner photo shows an Explore + Create apron, which would misrepresent the role | The role cards are text only; an event photo sits beside "Join the team" |
+| 6.4 | Hero photos across the site have no alt text in Files. Descriptions can be added at release (before then the live theme would show them too) | Hero photos are decorative |
+| 6.5 | Check the new heading "Join the team" and the last line "To apply, fill in the volunteer form (PDF). Questions? Contact us." | As written |
+
 ## At release (later)
 
 - The product description clean-up (P-21, P-22): the gallery approves a before-and-after list of the 21 descriptions before anything changes.

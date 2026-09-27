@@ -35,7 +35,6 @@
   if lead
     assign image = lead.key_image.value
     assign is_artwork = lead.key_image_is_artwork.value
-    assign alt_text = lead.title.value
     # A list field's value has no .first here, so the first view comes from a one-item loop.
     for view in lead.installation_views.value limit: 1
       assign image = view
@@ -45,7 +44,6 @@
   else
     assign image = s.image
     assign is_artwork = s.image_is_artwork
-    assign alt_text = s.heading
   endif
   assign mode = 'photo'
   if is_artwork == true
@@ -66,7 +64,7 @@
     <h1 class="gs-visually-hidden">{{ s.heading | escape }}</h1>
   {%- endif -%}
   <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
-    {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media', alt: alt_text -%}
+    {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
     <div class="gs-hero__box gs-surface-accent">
       {%- if lead -%}
         {%- render 'gs-exhibition-when', entry: lead, show_status: true -%}

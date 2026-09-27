@@ -1,0 +1,44 @@
+{
+  "taken": "2026-09-26",
+  "source": "Admin GraphQL, read-only, before the Volunteer pass (DS-58)",
+  "page": {
+    "id": "gid://shopify/Page/155902738729",
+    "handle": "volunteer",
+    "title": "Volunteer",
+    "templateSuffix": "volunteer",
+    "isPublished": true,
+    "updatedAt": "2026-09-26T00:13:49Z",
+    "body": "<p>As a nonprofit organization, the Gordon Smith Gallery relies on the generous support of our wonderful volunteers. Current volunteer roles include the following: <br><br><strong>Gallery Attendant</strong>: greet gallery visitors during open hours and provide general information about the current exhibition, answer questions about the season print portfolios, process donations and gallery shop purchases.<br><br><strong>Event Assistant</strong>: support Artists for Kids and the Gordon and Marion Smith Foundation to set up and take down special events, greet guests, and manage ticket sales. <br><br>We acknowledge, articulate, and support the vital role of volunteers in achieving our mission. It’s important to us that volunteer roles involve people in meaningful ways that reflect their skills, needs, interests, and backgrounds. We’d be pleased to welcome you as a valued and integral member of the Gallery team.</p>\n<p>High school students interested in volunteering may count volunteer time towards service hours.</p>",
+    "custom_fields": [
+      {
+        "id": "gid://shopify/Metafield/190392604164393",
+        "key": "hero_image",
+        "type": "file_reference",
+        "value": "gid://shopify/MediaImage/45689877954857"
+      },
+      {
+        "id": "gid://shopify/Metafield/190392604197161",
+        "key": "cta",
+        "type": "link",
+        "value": "{\"text\":\"Volunteer Form\",\"url\":\"https://gordonsmithgallery.com/cdn/shop/files/GSF-Volunteer-Application-Form_202603.pdf\"}"
+      }
+    ]
+  },
+  "not_set": [
+    "card_groups",
+    "release_body",
+    "programme",
+    "eyebrow",
+    "intro",
+    "hero_caption"
+  ],
+  "cards_with_handle_volunteer": [],
+  "event_photo": {
+    "id": "gid://shopify/MediaImage/45809950916905",
+    "alt": "",
+    "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/khimhipol221129_0389.jpg?v=1786662467",
+    "width": 2504,
+    "height": 1672
+  },
+  "note": "Body as in pages-2026-09-25.json: the read on 2026-09-26 matched it, the tool's output showing its no-break space after \"following:\" as a space."
+}

@@ -397,3 +397,28 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 **Effect on the live site:** none; the live theme doesn't read the staged field.
 
 **Undo:** set the staged text back from the snapshot.
+
+## 2026-09-26: Volunteer pass (DS-58)
+
+**Why:** the review of the Volunteer page found its two roles buried in paragraphs, its only action at the top, and no word on what to do with the form. Michael's go-ahead, 2026-09-26 ("Proceed").
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (Admin API `shop`), live theme `183162372393` "Colorblock: NEW WEBSITE", role MAIN. Before-snapshot: `snapshots/volunteer-2026-09-26-before.json` (the page's text, template, fields; no volunteer cards existed). The page's text still matches `snapshots/pages-2026-09-25.json`.
+
+**Made through the Shopify connector** (payloads from `volunteer.py`; IDs in `created/volunteer-*.json`):
+
+| What | ID |
+| --- | --- |
+| Card `volunteer-gallery-attendant`: title "Gallery Attendant", the role's sentence from the page | `gid://shopify/Metaobject/608724943145` |
+| Card `volunteer-event-assistant`: title "Event Assistant", the role's sentence from the page | `gid://shopify/Metaobject/608724975913` |
+| Card group `volunteer-roles`, no heading, the two cards | `gid://shopify/Metaobject/608725008681` |
+| Page `volunteer` field `card_groups`: the group | `gid://shopify/Metafield/190408730411305` |
+| Page `volunteer` staged text (`release_body`): the opening sentence; "Join the team" (new heading) with the photo `khimhipol221129_0389.jpg` from the page's old banner, alt "Guests are served drinks at a gallery event"; the two closing paragraphs; a new last line, "To apply, fill in the volunteer form (PDF). Questions? Contact us." | `gid://shopify/Metafield/190408730444073` |
+| Page `volunteer` field `cta`: label "Volunteer Form" became "Download the form"; the address is unchanged | `gid://shopify/Metafield/190392604197161` |
+
+`volunteer.py` checks that every word of the page's text is still there, in order. The only change to the gallery's words: each role's sentence starts the card, so its first letter is a capital ("greet" became "Greet", "support" became "Support"). The heading and last line are new, for the gallery to check (`gallery-questions.md` 6.5).
+
+**Not written:** alt text on the hero photo. The live theme's slideshow reads each image's alt text from Files, so it would change the live page. The new theme treats a hero image without alt text as decorative instead (DS-58); descriptions can be added at release (`gallery-questions.md` 6.4).
+
+**Effect on the live site:** none. The live theme reads no page fields or cards, and its Volunteer page still shows its own text and "VOLUNTEER FORM" button.
+
+**Undo:** set `cta` back to the snapshot's value; clear `card_groups` and `release_body` on the page; delete the card group, then the two cards.
