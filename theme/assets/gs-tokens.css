@@ -207,6 +207,7 @@
   --gs-ease-press: cubic-bezier(0.23, 1, 0.32, 1); /* strong ease-out: the press shows at once */
   --gs-ease: cubic-bezier(0.2, 0, 0, 1);
 
+  --gs-z-sticky: 50;    /* a bar that stays at the top while its list scrolls (the A to Z letters); under the header's menus */
   --gs-z-header: 100;
   --gs-z-dropdown: 110;
   --gs-z-drawer: 200;

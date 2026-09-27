@@ -1,8 +1,9 @@
 {%- comment -%}
-  Artists A to Z (DESIGN.md §6.13, §7.5, DS-62): every artist entry, sorted by its sort name
-  (surname first), under a large letter, with life dates and the number of works in the collection.
-  Each name opens the artist's page on this site, never another site: the artist's website is one
-  link on that page. Letter links jump down the list.
+  Artists A to Z (DESIGN.md §6.13, §7.5, DS-62, DS-64): every artist entry, sorted by its sort name
+  (surname first), under a large letter, each name followed by its number of works in the
+  collection ("Dana Claxton 2"), as the categories on the Permanent Collection page.
+  Each name opens the artist's page on this site, never another site. The letter bar stays at the
+  top of the screen and jumps down the list.
 
   The list is built from the entries, so adding an artist entry adds the name; nobody edits it here.
   With the script, a field above the list filters it as you type (gs-collection.js); without it,
@@ -19,22 +20,15 @@
       assign key = a.sort_name.value | default: a.name.value | downcase | strip
       assign search = a.name.value | append: ' ' | append: a.full_name.value | append: ' ' | append: a.other_names.value | downcase | strip
       assign count = a.works.value.size
-      assign meta = a.life_dates.value
-      if count > 0
-        assign works = 'collection.works_count' | t: count: count
-        if meta != blank
-          assign meta = meta | append: ', '
-        endif
-        assign meta = meta | append: works
-      endif
       assign search_attr = search | escape
       assign name_html = a.name.value | escape
-      assign meta_html = meta | escape
       capture row
         echo '<li class="gs-index__item" data-gs-names="' | append: search_attr | append: '">'
-        echo '<a class="gs-index__name" href="' | append: a.system.url | append: '">' | append: name_html | append: '</a>'
-        if meta != blank
-          echo '<span class="gs-meta">' | append: meta_html | append: '</span>'
+        echo '<a class="gs-list-link" href="' | append: a.system.url | append: '">' | append: name_html | append: '</a>'
+        if count > 0
+          # "Dana Claxton 2": the number shows, and a screen reader hears "2 works".
+          assign works = 'collection.works_count' | t: count: count
+          echo ' <span class="gs-meta"><span aria-hidden="true">' | append: count | append: '</span><span class="gs-visually-hidden">' | append: works | append: '</span></span>'
         endif
         echo '</li>'
       endcapture

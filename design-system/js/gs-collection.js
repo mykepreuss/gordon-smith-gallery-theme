@@ -27,6 +27,13 @@
     if (!input) return;
     const items = [...index.querySelectorAll('[data-gs-names]')].map((li) => ({ li, names: fold(li.dataset.gsNames) }));
     const groups = [...index.querySelectorAll('.gs-index__group')];
+    // The letter bar gets its hairline only while it's stuck over the names (DS-65). It sticks at
+    // -1px, so once stuck its top pixel is off screen and it's no longer wholly visible.
+    if (letters && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => {
+        letters.toggleAttribute('data-stuck', entry.intersectionRatio < 1 && entry.boundingClientRect.top < 0);
+      }, { threshold: [1] }).observe(letters);
+    }
     tools.hidden = false;
     let timer;
     input.addEventListener('input', () => {

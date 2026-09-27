@@ -1,19 +1,25 @@
 {%- comment -%}
-  The works on an artist's, a grouping's or an exhibition's page (DESIGN.md §7.5, DS-62, DS-63):
-  artwork tiles, 24 to a page, in the order of the entry's list. On an artist's page they sit under
+  The works on an artist's, a grouping's or an exhibition's page (DESIGN.md §7.5, DS-62 to DS-64):
+  artwork tiles in the order of the entry's list; all of an artist's or an exhibition's on one page,
+  a grouping's 24 to a page. On an artist's page they sit under
   "Works in the collection"; on an exhibition's page under "Works from the collection" (its Works
   from the collection field); on a grouping's page the grouping's name is the page title, so the
   heading only counts them. An entry with no works shows nothing here.
 {%- endcomment -%}
 {%- liquid
   assign type = metaobject.system.type
-  # An exhibition's selection shows whole (they hold 18 to 26 works); other lists page by 24.
+  # An artist's works and an exhibition's selection show whole on one page (DS-64; the most any
+  # artist has is 171, and 250 is the most a page can hold). A grouping's list pages by 24: Prints
+  # has 719.
   assign page_size = 24
   if type == 'exhibition'
     assign field = metaobject.collection_works
-    assign page_size = 48
+    assign page_size = 250
   else
     assign field = metaobject.works
+    if type == 'artist'
+      assign page_size = 250
+    endif
   endif
 -%}
 {%- comment -%}
