@@ -3,13 +3,13 @@
   website logo is a named case. The gs-logo-*.liquid files are generated from design-system/logos/
   by design-system/scripts/sync_theme.py; never edit them by hand.
 
-  @param {string} name - One of the cases below, e.g. 'gallery-simple-stacked-colour-box'
+  @param {string} name - One of the cases below, e.g. 'gallery-full-stacked-colour-box'
   @param {string} [label] - Blank: the organisation's name is the accessible name. 'decorative':
     hidden from assistive tech, for a logo inside a link that already has a name
 
   @example
   <a class="gs-header__logo" href="{{ routes.root_url }}" aria-label="Gordon Smith Gallery, home">
-    {%- render 'gs-logo', name: 'gallery-simple-stacked-colour-box', label: 'decorative' -%}
+    {%- render 'gs-logo', name: 'gallery-full-stacked-colour-box', label: 'decorative' -%}
   </a>
 {% enddoc %}
 {%- case name -%}

@@ -32,7 +32,8 @@
 {%- endcapture -%}
 {%- liquid
   # The logo follows the page's programme (DS-47): Artists for Kids and Foundation pages carry their
-  # own logo, every other page the Gallery's. It always links to the site's home page.
+  # own logo, every other page the Gallery's full lockup, with "of Canadian Art" (DS-68). It always
+  # links to the site's home page.
   capture brand
     render 'gs-brand'
   endcapture
@@ -45,7 +46,7 @@
       assign logo = 'foundation-simple-colour-box'
       assign home_label = 'header.home_foundation' | t
     else
-      assign logo = 'gallery-simple-stacked-colour-box'
+      assign logo = 'gallery-full-stacked-colour-box'
       assign home_label = 'header.home' | t
   endcase
 -%}
