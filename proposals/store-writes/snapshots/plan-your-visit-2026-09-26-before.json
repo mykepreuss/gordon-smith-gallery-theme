@@ -1,0 +1,35 @@
+{
+  "taken": "2026-09-26",
+  "source": "Admin GraphQL, read-only, before the Plan your visit pass (DS-61)",
+  "page": {
+    "id": "gid://shopify/Page/155670151465",
+    "handle": "plan-your-visit",
+    "title": "Plan Your Visit",
+    "templateSuffix": "plan-your-visit",
+    "updatedAt": "2026-09-26T00:13:49Z",
+    "body": "<h2><strong>Address</strong></h2>\n<p>2121 Lonsdale Avenue<br>North Vancouver, BC V7M 2K6</p>\n<h2><strong>Gallery Hours</strong></h2>\n<p>Thursday to Saturday<br>12:00 PM - 4:00 PM</p>\n<h2><strong>Artists For Kids Office Hours</strong></h2>\n<p>Monday to Friday<br>8:00 AM - 3:00 PM</p>\n<h2><strong>Admission</strong></h2>\n<p>Admission to The Gordon Smith Gallery is by donation.</p>\n<h2><strong>Getting Here</strong></h2>\n<p>The Gordon Smith Gallery and Artists For Kids is located on the west side of Lonsdale Avenue, across from London Drugs, Steamworks, and Harry Jerome Community Recreation Centre. It is three blocks south from Exit 18 off Trans Canada Hwy 1.</p>\n<h2><strong>Public Transport</strong></h2>\n<p>The most convenient way to visit The Gordon Smith Gallery by public transport from downtown Vancouver is via the SeaBus to North Shore’s Lonsdale Quay. From the Terminal, take the 230 or 229 bus towards Upper Lonsdale. This will get you to a stop across the street from the gallery on 21st and Lonsdale. Stop ID: 54200</p>\n<h2><strong>Parking</strong></h2>\n<p>One-Hour street parking is available surrounding the Gallery. Pay parking is available on Lonsdale Avenue. There are limited underground parking spaces on P1 and P2, excluding weekends and holidays.</p>\n<h2>\n<strong>Accessibility</strong><br>\n</h2>\n<ul>\n<li>The Gordon Smith Gallery and Artists For Kids is wheelchair accessible, with accessible washrooms on the Main level and level 1.</li>\n<li>There is wheelchair accessible parking on P1 and P2.</li>\n<li>There is an elevator, accessible through underground parking</li>\n<li>There is a ramp to the south facing entrance of the building from the street from Lonsdale Avenue.</li>\n<li>Assistance dogs are welcome. A water bowl is available on request.</li>\n<li>Please ask our staff if you require any assistance or have any questions.</li>\n</ul>",
+    "custom_fields": {
+      "hero_image": {
+        "id": "gid://shopify/Metafield/190392604262697",
+        "value": "gid://shopify/MediaImage/45633125712169"
+      }
+    },
+    "not_set": [
+      "release_body",
+      "cta",
+      "eyebrow",
+      "intro",
+      "programme",
+      "card_groups",
+      "hero_caption"
+    ]
+  },
+  "note": "Body equal to pages-2026-09-25.json, read again 2026-09-26.",
+  "entrance_photo": {
+    "id": "gid://shopify/MediaImage/45809530143017",
+    "alt": "",
+    "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/gordonsmithgallery-exterior-image.jpg?v=1786659500",
+    "width": 1200,
+    "height": 628
+  }
+}

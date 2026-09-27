@@ -446,3 +446,21 @@ The cards' text is unchanged; the email address and number stay in it as the gal
 **Undo:** set the group's heading and cards back to the snapshot's; clear the two card links; set the staged text back to `donate_gm.py donate-staged` and the call to action to the snapshot's value.
 
 **Then, same day:** Michael, "we can improve the presentation of the The impact of your gift and Ways to Support text sections". Donate's staged text written again (`donate.py points`): the two lists get `class="gs-points"`, the example amounts' list `class="gs-amounts"`, and each amount ($75, $150, $500) is in bold. Words unchanged (`donate.py` checks). Undo: `donate.py staged` for the version before, or `donate_gm.py donate-staged` for the one before that.
+
+## 2026-09-26: Plan your visit pass (DS-61)
+
+**Why:** Michael, 2026-09-26: "Let's improve /pages/plan-your-visit using all our design skills - it looks really bad".
+
+**Checked first:** store `ed35ee-ea.myshopify.com`, live theme `183162372393` role MAIN. Before-snapshot: `snapshots/plan-your-visit-2026-09-26-before.json`. The page's text still matches `snapshots/pages-2026-09-25.json`; it had no staged text.
+
+**Made through the Shopify connector** (payload from `visit.py`):
+
+| What | ID | Value |
+| --- | --- | --- |
+| Page `plan-your-visit`, staged text (`release_body`), new | `gid://shopify/Metafield/190408864235817` | "Getting Here" with `gordonsmithgallery-exterior-image.jpg` beside it (alt "The entrance at 2121 Lonsdale Avenue, with the gallery's sign above the doors"), Public Transport and Parking as points (`gs-points`), then Accessibility |
+
+The first four sections (Address, Gallery Hours, Artists For Kids Office Hours, Admission) aren't in the staged text: the theme shows them from Theme settings, in the visit details at the top of the page (`snippets/gs-visit-info`). Address and hours were already there; admission and office hours are new settings (Git, `theme/config/settings_data.json`), holding the page's own words. `visit.py` checks each is in Theme settings word for word, and that the rest of the text is unchanged. The headings lose the bold and line break pasted into them.
+
+**Effect on the live site:** none. The live theme reads neither the staged field nor the new settings.
+
+**Undo:** clear the page's `release_body`; the page then shows its own text again, with the visit details above it.

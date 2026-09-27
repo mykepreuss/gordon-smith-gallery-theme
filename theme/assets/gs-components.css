@@ -1783,6 +1783,36 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-visit--media .gs-visit__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* ---------- Visit details (Plan your visit, DS-61) ---------- */
+/* The brand's box on the tint: today's opening line large, then the address, hours, admission and
+   office hours as the details list, four across from 990px. */
+.gs-visit-info {
+  display: grid;
+  gap: var(--gs-space-6);
+  padding: var(--gs-space-5);
+  border-radius: var(--gs-shape-lg);
+}
+@media (min-width: 750px) { .gs-visit-info { padding: var(--gs-space-6); } }
+@media (min-width: 990px) {
+  .gs-visit-info { padding: var(--gs-space-7); gap: var(--gs-space-7); }
+  .gs-visit-info__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Four across once the address fits on its two lines; its column is a little wider. The labels
+   share a row (subgrid), so a two-line label doesn't push its value below the others. */
+@media (min-width: 1200px) {
+  .gs-visit-info__facts { grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; }
+  .gs-visit-info__facts .gs-details__item { grid-row: span 2; grid-template-rows: subgrid; }
+}
+.gs-visit-info__facts dd { display: grid; justify-items: start; gap: var(--gs-space-3); }
+.gs-visit-info address { font-style: normal; }
+/* Today's line, as the page's answer to "can I go now?": heading size, sentence case. */
+.gs-open.gs-open--lead {
+  font-size: var(--gs-text-h2);
+  font-weight: var(--gs-weight-black);
+  line-height: var(--gs-leading-heading);
+  text-wrap: balance;
+}
+
 /* ---------- Home: What's on, open today, sideways rows (DS-54) ---------- */
 
 /* Whether the gallery is open today (snippets/gs-open-today.liquid, js/gs-open.js). */
