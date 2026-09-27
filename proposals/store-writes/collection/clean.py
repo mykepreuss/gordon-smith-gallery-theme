@@ -182,6 +182,26 @@ EDITION = re.compile(
     re.I)
 BARE_EDITION = re.compile(r"\s(\d+\s*/\s*\d+)\s*$")
 DOB = re.compile(r"\s*[\(\[]\s*(?:DOB:?)?\s*(\d{4}\s*(?:-\s*(?:\d{4}|Present))?)?\s*[\)\]]\s*$", re.I)
+# A work's Year shows on the site as written. These forms need no question: a year (1965), a range
+# (1991-96, 1994/1995, 2000 to 2001), no date (ND, n.d.) and circa (circa 1965, circa 1950s,
+# circa 20th century). Any other goes on problems.csv for the gallery to confirm or correct
+# (gallery questions 5.14). Nothing here changes the value.
+YEAR_OK = re.compile(
+    r"\d{4}(?:\s*(?:-|/|to)\s*\d{2,4})?|n\.?\s?d\.?|no date|undated"
+    r"|circa\s+(?:\d{4}s?(?:\s*(?:-|to)\s*\d{4}s?)?|\d{1,2}(?:st|nd|rd|th)\s+century)", re.I)
+MONTH = r"\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
+YEAR_REASONS = [  # (pattern, reason): the first that matches
+    (r"^n\.?\s?d\.?\s*\[", "is no date with an estimate in brackets"),
+    (r"^n/a$", "says not applicable rather than no date"),
+    (r"\d{3}-$", "is an estimate with the last digit missing"),
+    (r"\d{2}c$", "abbreviates the century"),
+    (r"century", "gives only the century"),
+    (r"\(signed and dated\)", "has a note after the date"),
+    (MONTH + r"\d{1,2}(?:st|nd|rd|th)?,", "is a full date"),
+    (MONTH + r"\d{4}", "gives the month too"),
+    (r"^\d{4}\s+[a-z]", "has words after it that look like a note"),
+    (r"^\D*$", "isn't a date"),
+]
 
 
 def values(item, key):
@@ -284,6 +304,14 @@ def title_key(title):
     return re.sub(r"[^a-z0-9]+", " ", ascii_fold(title).lower()).strip()
 
 
+def year_problem(year):
+    """Why the gallery should check a work's Year, or "" when it's empty or a form in YEAR_OK."""
+    if not year or YEAR_OK.fullmatch(year):
+        return ""
+    why = next((w for p, w in YEAR_REASONS if re.search(p, year, re.I)), "isn't a year, a range, no date or circa")
+    return f"Year {why}: {year}"
+
+
 def main(export, out):
     items = json.loads((export / "items.json").read_text())
     sets = {s["o:id"]: first(s, "dcterms:title") for s in json.loads((export / "item_sets.json").read_text())}
@@ -374,6 +402,9 @@ def main(export, out):
         category = CATEGORIES.get(fmt, "")
         if not category:
             problems.append((accession, f"No category (Format: {fmt or 'empty'})", i["o:id"]))
+        year = first(i, "dcterms:date")
+        if why := year_problem(year):
+            problems.append((accession, why, i["o:id"]))
         themes = []
         for s in values(i, "dcterms:subject"):
             for term in re.split(r"[,;]", s):
@@ -396,7 +427,7 @@ def main(export, out):
         rights = re.sub(r"\s+", " ", first(i, "dcterms:rights")).strip()
         work = {
             "handle": handle, "item_id": i["o:id"], "accession": accession, "title": title,
-            "artists": list(dict.fromkeys(names)), "year": first(i, "dcterms:date"), "category": category,
+            "artists": list(dict.fromkeys(names)), "year": year, "category": category,
             "medium": re.sub(r"\s+", " ", first(i, "dcterms:medium")), "dimensions": re.sub(r"\s+", " ", first(i, "dcterms:spatial")),
             "edition": edition, "credit_line": rights, "images": images, "themes": themes,
             "description": desc,

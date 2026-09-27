@@ -1,34 +1,69 @@
 Accession number,Problem,Catalogue item
 BARR025,No category (Format: empty),27
+BATE.M005,"Year has a note after the date: April 17, 1965 (Signed and Dated)",43
+BATE.M014,Year has a note after the date: 1974 (Signed and Dated),52
+BATE.M016,"Year has a note after the date: February 13, 1959 (Signed and Dated)",54
 BELL.AA020.1,Same address as another work's number; this one is /pages/collection/bell-aa020-1-2,233
 BLAC004,Catalogue note left off the site: the work is an in-progress example.,259
 BLAC005,Catalogue note left off the site: the work is an in-progress example.,260
 BOBA005,"In the catalogue's ""Things On Loan to AFK""; imported like the rest (P-28). Check its credit line",272
+BOBA005,Year says not applicable rather than no date: N/A,272
 COUP.P003.1,Catalogue note left off the site: the work is part of a diptych (1/2),301
 COUP.P003.2,Catalogue note left off the site: the work is part of a diptych (2/2),302
 EAST-TC001,Catalogue note left off the site: EAST003 for related print,334
+EAST-TC001,"Year is a full date: July 25th, 2006",334
+EVRA-TC003.1,Year is no date with an estimate in brackets: N.D. [20--],364
+EVRA-TC003.2,Year is no date with an estimate in brackets: N.D. [20--],365
+FAFA-TC002,Year says not applicable rather than no date: N/A,393
+HEYW-TC001,Year says not applicable rather than no date: N/A,504
+JACK001,Year gives the month too: October 1957,517
+JEFF002,Year isn't a date: Paper,552
+JOHN-TC001.1,Year gives the month too: July 2010,554
+JOHN-TC001.2,Year gives the month too: July 2010,555
+JOHN-TC001.3,Year gives the month too: July 2010,556
 KENO004,Same address as another work's number; this one is /pages/collection/keno004-2,580
 MARS003,Catalogue note left off the site: the work is part of a diptych,640
 MOLI007,Catalogue note left off the site: Face Mask of Guido Molinari,705
+PAUL-TC001,Year gives the month too: June 1938,770
 QUMA003,No image in the catalogue,860
 RAMM-TC001,"In the catalogue's ""Things On Loan to AFK""; imported like the rest (P-28). Check its credit line",862
+RAMM-TC001,Year abbreviates the century: circa 20c,862
 RAMM-TC001,No image in the catalogue,862
 RAMM-TC002,"In the catalogue's ""Things On Loan to AFK""; imported like the rest (P-28). Check its credit line",863
+RAMM-TC002,Year abbreviates the century: circa 20c,863
 RAMM-TC002,No image in the catalogue,863
 RAMM-TC003,"In the catalogue's ""Things On Loan to AFK""; imported like the rest (P-28). Check its credit line",864
+RAMM-TC003,Year abbreviates the century: circa 20c,864
 RAMM-TC003,No image in the catalogue,864
 RAMM001.1,Catalogue note left off the site: part of a diptych (1/2),865
 RAMM001.2,Catalogue note left off the site: part of a diptych (2/2),866
 REID-TC001.10,No image in the catalogue,876
 REID-TC001.11,No image in the catalogue,877
 REID-TC002,"In the catalogue's ""Things On Loan to AFK""; imported like the rest (P-28). Check its credit line",881
+REID001.2,Year has words after it that look like a note: 1988 General note,885
 SHIV011.13,No image in the catalogue,1027
 SMIT038,"In the catalogue's ""Things On Loan to AFK""; imported like the rest (P-28). Check its credit line",1071
 SMIT038,No category (Format: poster),1071
 SMIT039,"Catalogue note left off the site: inscribed with ""To Tim Porteous for his contribution to Canada and to the Arts"".",1072
+SMIT041,Year says not applicable rather than no date: N/A,1074
+SMIT044,Year says not applicable rather than no date: N/A,1077
+SMIT055,Year says not applicable rather than no date: N/A,1088
+SMIT056,Year says not applicable rather than no date: N/A,1089
+STON001,Year is an estimate with the last digit missing: estimated date: 196-,1120
+STON002,Year is an estimate with the last digit missing: estimated date: 196-,1121
 TANA004,Same address as another work's number; this one is /pages/collection/tana004-2,1131
+THOM001,Year is no date with an estimate in brackets: n.d. [circa 20c],1134
 GEOR001,Same address as another work's number; this one is /pages/collection/geor001-2,1187
 WALL.I002,Catalogue note left off the site: it was replaced with 2/35 for the Perm Collection.,1200
+WEST-TC001.1,Year gives only the century: 20th century,1206
+WEST-TC001.2,Year gives only the century: 20th Century,1207
+WEST-TC001.3,Year gives only the century: 20th century,1208
+WEST-TC001.4,Year gives only the century: 20th Century,1209
+WEST-TC001.5,Year gives only the century: 20th century,1210
+WEST-TC001.6,Year gives only the century: 20th century,1211
+WEST-TC001.7,Year gives only the century: 20th century,1212
+WEST-TC001.8,Year gives only the century: 20th century,1213
+WEST-TC001.9,Year gives only the century: 20th century,1214
 SHIV-TC003.1,No title in the catalogue; shown as Untitled,4320
 SHIV-TC003.1,No category (Format: empty),4320
 SHIV-TC003.2,No title in the catalogue; shown as Untitled,4322
