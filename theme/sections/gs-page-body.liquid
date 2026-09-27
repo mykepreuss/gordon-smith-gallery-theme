@@ -9,9 +9,16 @@
   text and the sections part shows nothing, so the default template can carry both parts and still
   lay programme pages out right before their templates are reassigned (gs-is-programme-page, L-08).
   Text with a figure sets each picture beside its paragraphs (gs-text-media). On the page chosen as
-  Plan your visit page in Theme settings, the visit details come first (gs-visit-info, DS-61).
+  Plan your visit page in Theme settings, the visit details come first (gs-visit-info, DS-61). On
+  the page chosen as ArtReach videos page, the lessons follow the opening and the cards
+  (gs-lesson-list, DS-70): the second part lists them before its text, whatever template the page
+  has, so the list shows before release too, when the page still has its old template name.
 {%- endcomment -%}
 {%- liquid
+  assign lessons_here = false
+  if settings.lessons_page != blank and page.id == settings.lessons_page.id
+    assign lessons_here = true
+  endif
   assign part = section.settings.part
   if part == 'opening' or part == 'sections'
     capture programme_page
@@ -35,6 +42,10 @@
     {%- render 'gs-visit-info' -%}
   {%- endif -%}
 {%- endif -%}
+{%- comment -%} The ArtReach videos page lists its lessons after its opening and cards (DS-70). {%- endcomment -%}
+{%- if lessons_here and section.settings.part == 'sections' -%}
+  {%- render 'gs-lesson-list', id: section.id -%}
+{%- endif -%}
 {%- if text != blank -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container">
@@ -47,6 +58,10 @@
       {%- endif -%}
     </div>
   </div>
+{%- endif -%}
+
+{%- if lessons_here and section.settings.part == 'all' -%}
+  {%- render 'gs-lesson-list', id: section.id -%}
 {%- endif -%}
 
 {% schema %}

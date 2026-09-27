@@ -1,0 +1,38 @@
+{% doc %}
+  Every lesson (the ArtReach videos, DESIGN.md §7.5, DS-70), newest first, as lesson cards, with
+  the note that goes with the videos after them. Rendered by the page text section on the page
+  chosen as ArtReach videos page in Theme settings, after the page's opening and its cards,
+  whatever template the page has (as the visit details are on Plan your visit, DS-61). Staff add a
+  lesson in Content, Metaobjects, Lesson; it shows here by itself.
+
+  @param {string} id - A unique prefix for the heading's id: the section's id
+
+  @example
+  {%- render 'gs-lesson-list', id: section.id -%}
+{% enddoc %}
+  {%- liquid
+    capture ids
+      render 'gs-lesson-index'
+    endcapture
+    assign ids = ids | strip | split: ','
+  -%}
+  {%- if ids.size > 0 -%}
+    <section class="gs-section gs-surface-paper" aria-labelledby="{{ id }}-heading">
+      <div class="gs-container">
+        <h2 class="gs-visually-hidden" id="{{ id }}-heading">{{ 'lessons.heading' | t }}</h2>
+        <ul class="gs-grid gs-grid--cards">
+          {%- for pos in ids -%}
+            {%- assign n = pos | plus: 0 -%}
+            {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+              <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3' -%}</li>
+            {%- endfor -%}
+          {%- endfor -%}
+        </ul>
+        {%- if settings.lessons_note != blank -%}
+          <p class="gs-meta gs-lessons__note">{{ settings.lessons_note | escape | newline_to_br }}</p>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- elsif request.design_mode -%}
+    <p class="gs-editor-warning gs-container">{{ 'lessons.none' | t }}</p>
+  {%- endif -%}
