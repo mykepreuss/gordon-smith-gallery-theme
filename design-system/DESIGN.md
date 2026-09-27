@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.6.24 (draft), 2026-09-26. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.6.25 (draft), 2026-09-27. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Every design decision is decided as of 2026-09-27 (DS-01 to DS-67); a new one starts as **Proposed** and needs Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -727,6 +727,7 @@ Since then every page has had a design pass with its real content, on the develo
 
 ## 13. Changelog
 
+- 0.6.25 (2026-09-27): `preview.html` brought up to date: the menu in P-29 order with its Collection section, the heroes after DS-66, the switcher after DS-67, and the Permanent Collection as built (DS-62 to DS-65): its search, featured works and ways in, the Artists page with a working filter, an artist's page, a work's page, and the site search's works from the collection. Samples use the store's names, labels and counts.
 - 0.6.24 (2026-09-27): DS-67, the portfolio switcher: All editions first, season-and-year labels, a smaller gap below 990 px (§6.7).
 - 0.6.23 (2026-09-27): DS-66, the first screen shows there's more: the heading gap after a hero, the artwork hero's caption in the work's column and a height cap (`--gs-hero-art-max-h`), the exhibition hero's link back and summary (`.gs-hero__summary`); About without the summary.
 - 0.6.22 (2026-09-27): DS-65, fewer lines: the collection's lists drop their rules and underlines (`.gs-list-link`), the letter bar gets a hairline only while stuck. P-29, the menu's new order, in the review menu.
