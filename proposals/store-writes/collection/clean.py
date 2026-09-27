@@ -182,6 +182,28 @@ EDITION = re.compile(
     re.I)
 BARE_EDITION = re.compile(r"\s(\d+\s*/\s*\d+)\s*$")
 DOB = re.compile(r"\s*[\(\[]\s*(?:DOB:?)?\s*(\d{4}\s*(?:-\s*(?:\d{4}|Present))?)?\s*[\)\]]\s*$", re.I)
+# A work's Year shows on the site as written. These forms need no question: a year (1965), a range
+# (1991-96, 1994/1995, 2000 to 2001), no date (ND, n.d.) and circa (circa 1965, circa 1950s,
+# circa 20th century), unless the range looks like the artist's life: the life dates the catalogue
+# records for them, or LIFE_SPAN years or more. Any other goes on problems.csv for the gallery to
+# confirm or correct (gallery questions 5.14). Nothing here changes the value.
+YEAR_OK = re.compile(
+    r"\d{4}(?:\s*(?:-|/|to)\s*\d{2,4})?|n\.?\s?d\.?|no date|undated"
+    r"|circa\s+(?:\d{4}s?(?:\s*(?:-|to)\s*\d{4}s?)?|\d{1,2}(?:st|nd|rd|th)\s+century)", re.I)
+LIFE_SPAN = 50  # years; the longest range for making one work is 28 (1976/2004)
+MONTH = r"\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
+YEAR_REASONS = [  # (pattern, reason): the first that matches
+    (r"^n\.?\s?d\.?\s*\[", "is no date with an estimate in brackets"),
+    (r"^n/a$", "says not applicable rather than no date"),
+    (r"\d{3}-$", "is an estimate with the last digit missing"),
+    (r"\d{2}c$", "abbreviates the century"),
+    (r"century", "gives only the century"),
+    (r"\(signed and dated\)", "has a note after the date"),
+    (MONTH + r"\d{1,2}(?:st|nd|rd|th)?,", "is a full date"),
+    (MONTH + r"\d{4}", "gives the month too"),
+    (r"^\d{4}\s+[a-z]", "has words after it that look like a note"),
+    (r"^\D*$", "isn't a date"),
+]
 
 
 def values(item, key):
@@ -284,6 +306,23 @@ def title_key(title):
     return re.sub(r"[^a-z0-9]+", " ", ascii_fold(title).lower()).strip()
 
 
+def year_problem(year):
+    """Why the gallery should check a work's Year, or "" when it's empty or a form in YEAR_OK."""
+    if not year or YEAR_OK.fullmatch(year):
+        return ""
+    why = next((w for p, w in YEAR_REASONS if re.search(p, year, re.I)), "isn't a year, a range, no date or circa")
+    return f"Year {why}: {year}"
+
+
+def year_span(year):
+    """A Year's range as (first, last), or None: "1991-96" -> (1991, 1996)."""
+    m = re.search(r"(\d{4})s?\s*(?:-|/|to)\s*(\d{2,4})", year or "")
+    if not m:
+        return None
+    a, b = m.groups()
+    return int(a), int(a[:4 - len(b)] + b)
+
+
 def main(export, out):
     items = json.loads((export / "items.json").read_text())
     sets = {s["o:id"]: first(s, "dcterms:title") for s in json.loads((export / "item_sets.json").read_text())}
@@ -374,6 +413,9 @@ def main(export, out):
         category = CATEGORIES.get(fmt, "")
         if not category:
             problems.append((accession, f"No category (Format: {fmt or 'empty'})", i["o:id"]))
+        year = first(i, "dcterms:date")
+        if why := year_problem(year):
+            problems.append((accession, why, i["o:id"]))
         themes = []
         for s in values(i, "dcterms:subject"):
             for term in re.split(r"[,;]", s):
@@ -396,7 +438,7 @@ def main(export, out):
         rights = re.sub(r"\s+", " ", first(i, "dcterms:rights")).strip()
         work = {
             "handle": handle, "item_id": i["o:id"], "accession": accession, "title": title,
-            "artists": list(dict.fromkeys(names)), "year": first(i, "dcterms:date"), "category": category,
+            "artists": list(dict.fromkeys(names)), "year": year, "category": category,
             "medium": re.sub(r"\s+", " ", first(i, "dcterms:medium")), "dimensions": re.sub(r"\s+", " ", first(i, "dcterms:spatial")),
             "edition": edition, "credit_line": rights, "images": images, "themes": themes,
             "description": desc,
@@ -510,6 +552,17 @@ def main(export, out):
     # Each exhibition's works from the collection, for its page (Shown in, turned around).
     exhibition_works = {h: [] for h in set(EXHIBITION_SETS.values()) | set(EXHIBITION_PAGES.values())}
 
+    # A Year range that is the artist's life, typed in for the work's date (gallery questions 5.14).
+    for w in works:
+        span = year_span(w["year"]) if not year_problem(w["year"]) else None
+        if not span:
+            continue
+        lives = {tuple(int(y) for y in re.findall(r"\d{4}", d)) for h in w["artists"] for d in by_handle[h]["dates_recorded"]}
+        if span in lives:
+            problems.append((w["accession"], f"Year matches the artist's life dates: {w['year']}", w["item_id"]))
+        elif span[1] - span[0] >= LIFE_SPAN:
+            problems.append((w["accession"], f"Year spans {span[1] - span[0]} years, so it may be the artist's life dates: {w['year']}", w["item_id"]))
+
     # Life dates, sorted work lists, and the artists' sheet rows.
     work_by_handle = {w["handle"]: w for w in works}
     for a in artists.values():
@@ -586,7 +639,7 @@ def main(export, out):
                for a in artist_rows])
     write_csv("titles.csv", ["Accession number", "Title in the catalogue", "Title on the site", "Edition"], titles)
     write_csv("problems.csv", ["Accession number", "Problem", "Catalogue item"],
-              problems)
+              sorted(problems, key=lambda p: p[2]))
     write_csv("large-documents.csv", ["Artist", "Document", "Size (MB)", "In the catalogue"],
               [[by_handle[d["artist"]]["name"], d["title"], f"{d['size'] / 1e6:.0f}",
                 f"https://afkcatalogue.sd44.ca/s/TheCollection/item/{d['item_id']}"]
