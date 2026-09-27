@@ -224,5 +224,18 @@
     "site_heading": "In the collection",
     "site_all": "See every match in the collection",
     "exhibition_works": "Works from the collection"
+  },
+  "lessons": {
+    "heading": "Lessons",
+    "lesson": "The lesson",
+    "making": "We're making",
+    "inspired_by": "We're inspired by",
+    "grades": "Suggested grade levels",
+    "wondering": "We're wondering",
+    "more": "More lessons",
+    "all": "All ArtReach videos",
+    "watch": "Watch the video",
+    "video_title": "Video: {{ title }}",
+    "none": "No lessons yet: add lesson entries in Content, Metaobjects, Lesson."
   }
 }

@@ -6,6 +6,7 @@
 
   A group whose cards all have portrait images (a board, a staff list) shows as a grid of people:
   portrait frames, two to four across, smaller titles (DS-37). Staff don't choose it; the images do.
+  A card that opens a PDF is a document, never a person, whatever its cover's shape (DS-69).
   A group of four or eight cards goes two, then four, across, so no card sits alone (DS-44).
   Any other count that would leave a short last row gives the spare room to its first cards
   (DS-52): five cards go two wider ones, then three, on wide screens; an odd count starts with one
@@ -41,7 +42,8 @@
           assign logos = true
           for card in group.cards.value
             assign ratio = card.image.value.aspect_ratio | default: 1
-            if ratio >= 1
+            assign ending = card.link.value.url | split: '?' | first | downcase | slice: -4, 4
+            if ratio >= 1 or ending == '.pdf'
               assign portrait = false
             endif
             if card.logo.value == blank

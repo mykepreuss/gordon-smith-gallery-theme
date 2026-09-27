@@ -171,6 +171,7 @@
   --gs-ratio-card: 4 / 3;      /* exhibition, program, news cards (photo mode) */
   --gs-ratio-install: 3 / 2;   /* installation-view galleries (photo mode) */
   --gs-ratio-video: 16 / 9;    /* a video embedded in page text (YouTube, Vimeo) */
+  --gs-video-max: 60rem;       /* a lesson's video (DS-70): 960 wide and 540 tall, so it and its title fit a laptop screen */
   --gs-ratio-artwork: 1 / 1;   /* artwork/product tiles (artwork mode, never cropped) */
   --gs-ratio-portrait: 4 / 5;  /* artist portraits */
   --gs-artwork-inset: 8%;      /* mat padding around artwork in tiles */

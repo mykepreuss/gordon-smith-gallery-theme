@@ -1,0 +1,51 @@
+{%- comment -%}
+  More lessons, at the end of a lesson's page (DESIGN.md §7.5, DS-70): the three newest other
+  lessons as lesson cards, and a link to all of them on the ArtReach videos page.
+{%- endcomment -%}
+{%- liquid
+  capture ids
+    render 'gs-lesson-index', exclude: metaobject.system.handle, limit: 3
+  endcapture
+  assign ids = ids | strip | split: ','
+-%}
+{%- if ids.size > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'lessons.more' | t }}</h2>
+        {%- if settings.lessons_page != blank -%}
+          <a class="gs-cta-link gs-cta-link--more" href="{{ settings.lessons_page.url }}">{{ 'lessons.all' | t }}</a>
+        {%- endif -%}
+      </div>
+      <ul class="gs-grid gs-grid--cards">
+        {%- for id in ids -%}
+          {%- assign n = id | plus: 0 -%}
+          {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+            <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3' -%}</li>
+          {%- endfor -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "More lessons",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The three newest other lessons, by their Posted date."
+    }
+  ],
+  "presets": [
+    {
+      "name": "More lessons"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,55 @@
+{%- comment -%}
+  Every lesson (the ArtReach videos, DESIGN.md §7.5, DS-70), newest first, as lesson cards, on the
+  page chosen as ArtReach videos page in Theme settings; the note that goes with the videos
+  follows them. On any other page this section shows nothing, so the programme template can carry
+  it for every page. Staff add a lesson in Content, Metaobjects, Lesson; it shows here by itself.
+{%- endcomment -%}
+{%- if settings.lessons_page != blank and page.id == settings.lessons_page.id -%}
+  {%- liquid
+    capture ids
+      render 'gs-lesson-index'
+    endcapture
+    assign ids = ids | strip | split: ','
+  -%}
+  {%- if ids.size > 0 -%}
+    <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+      <div class="gs-container">
+        <h2 class="gs-visually-hidden" id="{{ section.id }}-heading">{{ 'lessons.heading' | t }}</h2>
+        <ul class="gs-grid gs-grid--cards">
+          {%- for id in ids -%}
+            {%- assign n = id | plus: 0 -%}
+            {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+              <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3' -%}</li>
+            {%- endfor -%}
+          {%- endfor -%}
+        </ul>
+        {%- if settings.lessons_note != blank -%}
+          <p class="gs-meta gs-lessons__note">{{ settings.lessons_note | escape | newline_to_br }}</p>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- elsif request.design_mode -%}
+    <p class="gs-editor-warning gs-container">{{ 'lessons.none' | t }}</p>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "ArtReach videos",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows every lesson, newest first, on the page chosen as ArtReach videos page in Theme settings, Artists for Kids. Other pages show nothing here."
+    }
+  ],
+  "presets": [
+    {
+      "name": "ArtReach videos"
+    }
+  ]
+}
+{% endschema %}

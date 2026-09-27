@@ -21,6 +21,9 @@
     "cards": {
       "type": "gs-card-groups"
     },
+    "lessons": {
+      "type": "gs-lessons"
+    },
     "sections": {
       "type": "gs-page-body",
       "settings": {
@@ -38,6 +41,7 @@
     "hero",
     "body",
     "cards",
+    "lessons",
     "sections",
     "events",
     "gallery"

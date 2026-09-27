@@ -14,7 +14,8 @@
       "gs-page-head",
       "gs-title",
       "main-page",
-      "gs-entry-head"
+      "gs-entry-head",
+      "gs-lesson"
     ],
     "collectionHead": [
       "gs-collection-head",
@@ -40,7 +41,8 @@
       "gs-work-grid",
       "gs-artist-index",
       "gs-collection-ways",
-      "gs-collection-featured"
+      "gs-collection-featured",
+      "gs-lessons"
     ],
     "cards": [
       "gs-card-groups"
@@ -80,7 +82,8 @@
       "gs-work-more",
       "gs-artist-editions",
       "gs-artist-exhibitions",
-      "gs-artist-documents"
+      "gs-artist-documents",
+      "gs-lesson-more"
     ],
     "legacy": [
       "custom-liquid",
@@ -139,7 +142,7 @@
       }
     },
     "page.programme": {
-      "purpose": "Programme landing: Artists for Kids, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company",
+      "purpose": "Programme landing: Artists for Kids and its programme pages, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company, Volunteer. On the ArtReach videos page (Theme settings) it lists the lessons (DS-70)",
       "maxPerGroup": {
         "text": 3,
         "listing": 1,
@@ -159,6 +162,19 @@
         "text": 1,
         "gallery": 2,
         "listing": 2
+      }
+    },
+    "metaobject/lesson": {
+      "purpose": "A lesson, one ArtReach video (DS-70): the lesson and its video, the works that inspired it from the collection, more lessons",
+      "firstGroups": [
+        "pageHead"
+      ],
+      "require": [
+        "pageHead"
+      ],
+      "maxPerGroup": {
+        "listing": 1,
+        "related": 1
       }
     },
     "page.permanent-collection": {

@@ -1,0 +1,83 @@
+{%- comment -%}
+  A lesson's page (an ArtReach video, DESIGN.md §7.5, DS-70): a link back to the ArtReach videos
+  page, the title, the video, the note that goes with every video (Theme settings), then the
+  lesson in the old site's own words: what we're making, what inspired it, the suggested grade
+  levels and the questions we're wondering about. Empty fields show nothing. The works that
+  inspired it follow, from the collection (gs-work-grid), then more lessons (gs-lesson-more).
+{%- endcomment -%}
+{%- liquid
+  assign title = metaobject.title.value
+  assign back = settings.lessons_page
+  assign questions = metaobject.questions.value
+-%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    {%- if back != blank -%}
+      <p class="gs-crumb"><a href="{{ back.url }}">{{ back.title | escape }}</a></p>
+    {%- endif -%}
+    <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
+  </header>
+</div>
+<section class="gs-section gs-surface-paper" aria-label="{{ 'lessons.lesson' | t }}">
+  <div class="gs-container gs-lesson">
+    <div class="gs-lesson__video">
+      {%- render 'gs-video', url: metaobject.video.value, title: title -%}
+      {%- if settings.lessons_note != blank -%}
+        <p class="gs-meta gs-lesson__note">{{ settings.lessons_note | escape | newline_to_br }}</p>
+      {%- endif -%}
+    </div>
+    <dl class="gs-details gs-lesson__details">
+      {%- if metaobject.making.value != blank -%}
+        <div class="gs-details__item">
+          <dt>{{ 'lessons.making' | t }}</dt>
+          <dd>{{ metaobject.making.value | escape | newline_to_br }}</dd>
+        </div>
+      {%- endif -%}
+      {%- if metaobject.inspired_by.value != blank -%}
+        <div class="gs-details__item">
+          <dt>{{ 'lessons.inspired_by' | t }}</dt>
+          <dd class="gs-lesson__rich">{{ metaobject.inspired_by | metafield_tag }}</dd>
+        </div>
+      {%- endif -%}
+      {%- if metaobject.grades.value != blank -%}
+        <div class="gs-details__item">
+          <dt>{{ 'lessons.grades' | t }}</dt>
+          <dd>{{ metaobject.grades.value | escape }}</dd>
+        </div>
+      {%- endif -%}
+      {%- if questions != blank -%}
+        <div class="gs-details__item gs-details__item--wide">
+          <dt>{{ 'lessons.wondering' | t }}</dt>
+          <dd>
+            <ul class="gs-lesson__questions">
+              {%- for question in questions -%}
+                <li>{{ question | escape }}</li>
+              {%- endfor -%}
+            </ul>
+          </dd>
+        </div>
+      {%- endif -%}
+    </dl>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lesson",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Everything here comes from the lesson entry, in Content, Metaobjects, Lesson. The note under the video is in Theme settings, Artists for Kids."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lesson"
+    }
+  ]
+}
+{% endschema %}

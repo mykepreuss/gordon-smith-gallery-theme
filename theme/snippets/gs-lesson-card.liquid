@@ -1,0 +1,24 @@
+{% doc %}
+  A lesson (an ArtReach video, DS-70) as a card: its cover at the video's shape, the title, the
+  suggested grade levels. The whole card links to the lesson's page, where the video plays. A
+  lesson without a cover is a text card, as any card without an image is.
+
+  @param {object} lesson - A lesson entry
+  @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
+
+  @example
+  {%- render 'gs-lesson-card', lesson: lesson -%}
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h3'
+  assign cover = lesson.cover.value
+-%}
+<article class="gs-card gs-lesson-card{% if cover == blank %} gs-card--text{% endif %}">
+  {%- if cover != blank -%}
+    {%- render 'gs-media', image: cover, preset: 'card', mode: 'photo', ratio: '16 / 9', alt: lesson.title.value -%}
+  {%- endif -%}
+  <{{ tag }} class="gs-card__title"><a href="{{ lesson.system.url }}">{{ lesson.title.value | escape }}</a></{{ tag }}>
+  {%- if lesson.grades.value != blank -%}
+    <p class="gs-meta">{{ lesson.grades.value | escape }}</p>
+  {%- endif -%}
+</article>

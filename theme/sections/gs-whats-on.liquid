@@ -42,6 +42,10 @@
   for id in ev_ids
     assign n = id | plus: 0
     for event in shop.metaobjects.event.values offset: n limit: 1
+      # Workshops for teachers stay off the home page (P-37); their own pages list them.
+      if event.keep_off_home.value == true
+        continue
+      endif
       assign title_key = event.title.value | strip | downcase | prepend: '|' | append: '|'
       if seen contains title_key
         continue

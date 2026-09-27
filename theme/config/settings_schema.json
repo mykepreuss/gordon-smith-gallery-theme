@@ -456,6 +456,27 @@
     ]
   },
   {
+    "name": "Artists for Kids",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The ArtReach videos are lesson entries (Content, Metaobjects, Lesson), each with its own page."
+      },
+      {
+        "type": "page",
+        "id": "lessons_page",
+        "label": "ArtReach videos page",
+        "info": "Lists every lesson, newest first. Lesson pages link back to it."
+      },
+      {
+        "type": "textarea",
+        "id": "lessons_note",
+        "label": "Note under the videos",
+        "info": "Shows under every lesson's video and at the end of the list of lessons."
+      }
+    ]
+  },
+  {
     "name": "Permanent Collection",
     "settings": [
       {

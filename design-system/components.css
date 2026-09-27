@@ -2038,6 +2038,29 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-finder__more[hidden] { display: none; }
 .gs-finder__more { margin: 0; }
 
+/* ---------- Lessons: the ArtReach videos (DS-70) ---------- */
+/* A lesson's page: the video at the width of a laptop screen with the note that goes with every
+   video under it, then the lesson as a details list (what we're making, what inspired it, grade
+   levels, the questions). The list of lessons uses cards (gs-lesson-card): the cover at the
+   video's shape, the title, the grade levels. */
+.gs-lesson { display: grid; gap: var(--gs-space-7); }
+.gs-lesson__video { display: grid; gap: var(--gs-space-3); width: 100%; max-width: var(--gs-video-max); }
+.gs-lesson__note,
+.gs-lessons__note { max-width: var(--gs-measure); }
+.gs-lessons__note { margin-block-start: var(--gs-space-7); }
+.gs-video iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--gs-ratio-video);
+  border: 0;
+  border-radius: var(--gs-shape-md);
+  background-color: var(--gs-color-tint);
+}
+.gs-lesson__rich > * { margin: 0; }
+.gs-lesson__rich > * + * { margin-block-start: var(--gs-space-2); }
+.gs-lesson__questions { display: grid; gap: var(--gs-space-2); margin: 0; padding-inline-start: 1.25em; max-width: var(--gs-measure); }
+
 /* ---------- Forced colours (Windows High Contrast) ---------- */
 /* Icons are CSS masks painted with background-color, which forced colours removes. Repaint them in
    the text colour, and give panels and chips a border so their edges survive. */
