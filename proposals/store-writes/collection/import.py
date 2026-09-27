@@ -9,6 +9,8 @@ Steps, in order:
   works      every work: label fields, artists, images, themes, the edition in the Shop, exhibitions
   link       each artist's Works list and Documents
   groups     the categories, themes and groupings, with their works
+  documents  one Document entry per document: title, cover image, file (DS-63)
+  clear-documents  empty every artist's Documents list (once, before that field changed type)
   exhibitions  each exhibition's Works from the collection (from the works' Shown in and the
              catalogue's "Works in …" pages)
   --print <folder> writes each batch (mutation and variables) to a file, for running through the
@@ -129,17 +131,25 @@ def main(step, data, dry):
         print(f"images not yet in Files: {missing}")
         upsert("artwork", rows, "works", dry)
 
+    elif step == "documents":
+        entries = json.loads((data / "document-entries.json").read_text())
+        rows = [(e["handle"], fields(title=e["title"],
+                                     cover=files.get(f"doc-{e['cover']}") if e["cover"] else None,
+                                     file=files.get(f"doc-{e['file']}") if e["file"] else None)) for e in entries]
+        upsert("document", rows, "documents", dry)
+
+    elif step == "clear-documents":
+        rows = [(a["handle"], fields(name=a["name"], sort_name=a["sort_name"]) + [{"key": "documents", "value": "[]"}])
+                for a in artists]
+        upsert("artist", rows, "artists", dry)
+
     elif step == "link":
-        docs = {}
-        documents = {d["media_id"]: d for d in json.loads((data / "documents.json").read_text())}
-        for a in artists:
-            for m in a["documents"]:  # the files clean.py chose to show, in its order
-                if f"doc-{m}" in files and documents[m]["show"]:
-                    docs.setdefault(a["handle"], []).append(files[f"doc-{m}"])
+        doc_ids = ids("documents")
         # Both lists are always sent, so one that has become empty ("[]") is cleared in the store.
         rows = [(a["handle"], fields(name=a["name"], sort_name=a["sort_name"])
                  + [{"key": "works", "value": json.dumps([work_ids[h] for h in a["works"] if h in work_ids])},
-                    {"key": "documents", "value": json.dumps(docs.get(a["handle"], []))}]) for a in artists]
+                    {"key": "documents", "value": json.dumps([doc_ids[h] for h in a["documents"] if h in doc_ids])}])
+                for a in artists]
         upsert("artist", rows, "artists", dry)
 
     elif step == "groups":

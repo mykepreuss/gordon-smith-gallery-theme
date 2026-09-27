@@ -13,6 +13,11 @@ since the types refer to each other:
                                                     Works from the collection (DS-63)
   python3 definitions.py artist_notes <artist def id>        metaobjectDefinitionUpdate: Website isn't shown,
                                                     Documents follow the works (DS-63)
+  python3 definitions.py document                   metaobjectDefinitionCreate: a document, with its cover (DS-63)
+  python3 definitions.py artist_documents <artist def id> <document def id>
+                                                    metaobjectDefinitionUpdate: Documents becomes a list of
+                                                    document entries (run after the old list is emptied
+                                                    and its field deleted)
 """
 import json
 import sys
@@ -135,8 +140,31 @@ def artist_notes(artist_id):
                                    "named by each file's alt text. A PDF over 20 MB can't be uploaded."}}]}}
 
 
+def document():
+    return {"definition": {
+        "type": "document", "name": "Document",
+        "description": "A document about an artist: press, a catalogue, a book, photographs. It shows on the artist's "
+                       "page as a tile with its cover, after the works, and opens its file.",
+        "displayNameKey": "title", "access": {"storefront": "PUBLIC_READ"},
+        "capabilities": {"publishable": {"enabled": True}},
+        "fieldDefinitions": [
+            f("title", "single_line_text_field", "Title", "As it reads under the cover, for example: Press.", required=True),
+            f("cover", "file_reference", "Cover", "An image of the cover or first page. Its alt text describes it.",
+              validations=IMAGE),
+            f("file", "file_reference", "File", "The PDF, or the photograph itself. Files can be 20 MB at most; "
+              "without one, the tile shows its cover and doesn't open."),
+        ]}}
+
+
+def artist_documents(artist_id, document_id):
+    return {"id": artist_id, "definition": {"fieldDefinitions": [{"create": f(
+        "documents", "list.metaobject_reference", "Documents", "Press, catalogues, books and photographs, shown as "
+        "tiles with their covers after the works.", validations=refs(document_id))}]}}
+
+
 if __name__ == "__main__":
     which, args = sys.argv[1], sys.argv[2:]
     out = {"artist": artist, "artwork": artwork, "works": works, "group": group, "product": product,
-           "exhibition_works": exhibition_works, "artist_notes": artist_notes}[which](*args)
+           "exhibition_works": exhibition_works, "artist_notes": artist_notes, "document": document,
+           "artist_documents": artist_documents}[which](*args)
     print(json.dumps(out, indent=1, ensure_ascii=False))

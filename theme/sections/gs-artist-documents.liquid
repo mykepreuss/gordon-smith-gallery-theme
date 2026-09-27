@@ -1,8 +1,11 @@
 {%- comment -%}
-  An artist's documents (DESIGN.md §7.5, DS-63): press, exhibition catalogues, books and photographs
-  from the catalogue's archive, as a list of text links after the works. Each is named by its file's
-  alt text ("Press", "Exhibitions, Photos"); a PDF says so. They're the store's own files, so they
-  don't get the external cue.
+  An artist's documents (DESIGN.md §6.13, §7.5, DS-63): press, exhibition catalogues, books and
+  photographs from the catalogue's archive, after the works, as tiles like the works: each cover
+  whole on the mat, its title under it, as the catalogue showed them. The whole tile opens the
+  document's file, and a PDF says so. A document whose file isn't uploaded yet (a PDF over 20 MB)
+  shows its cover without a link. A document without a cover gets a plain mat with "PDF".
+
+  From the artist's Documents field: a list of Document entries (title, cover, file).
 {%- endcomment -%}
 {%- if metaobject.documents.value != blank -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
@@ -10,18 +13,40 @@
       <div class="gs-section-head">
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.documents' | t }}</h2>
       </div>
-      <ul class="gs-docs">
+      <ul class="gs-grid gs-grid--artworks">
         {%- for doc in metaobject.documents.value -%}
           {%- liquid
-            assign doc_url = doc.url
-            if doc.media_type == 'image'
-              assign doc_url = doc | image_url
+            assign file = doc.file.value
+            assign doc_url = ''
+            assign is_pdf = false
+            if file != blank
+              if file.media_type == 'image'
+                assign doc_url = file | image_url
+              else
+                assign doc_url = file.url
+                assign ending = doc_url | split: '?' | first | downcase | slice: -4, 4
+                if ending == '.pdf'
+                  assign is_pdf = true
+                endif
+              endif
             endif
-            assign doc_file = doc_url | split: '?' | first | split: '/' | last
-            assign doc_name = doc.alt | default: doc_file
-            assign doc_ending = doc_file | downcase | slice: -4, 4
           -%}
-          <li><a class="gs-link" href="{{ doc_url }}">{{ doc_name | escape }}{% if doc_ending == '.pdf' %} {{ 'general.pdf' | t }}{% endif %}</a></li>
+          <li>
+            <article class="gs-artwork-tile gs-doc-tile">
+              {%- if doc.cover.value != blank -%}
+                {%- render 'gs-media', image: doc.cover.value, preset: 'tile', mode: 'artwork' -%}
+              {%- else -%}
+                <div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">PDF</span></div>
+              {%- endif -%}
+              <h3 class="gs-artwork-tile__title">
+                {%- if doc_url != blank -%}
+                  <a href="{{ doc_url }}">{{ doc.title.value | escape }}{% if is_pdf %} {{ 'general.pdf' | t }}{% endif %}</a>
+                {%- else -%}
+                  {{- doc.title.value | escape -}}
+                {%- endif -%}
+              </h3>
+            </article>
+          </li>
         {%- endfor -%}
       </ul>
     </div>
@@ -38,7 +63,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "The files in the artist's Documents field, as links named by each file's alt text."
+      "content": "The Document entries in the artist's Documents field, as tiles with their covers."
     }
   ],
   "presets": [

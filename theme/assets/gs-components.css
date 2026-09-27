@@ -1885,9 +1885,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 @media (min-width: 990px) {
   .gs-entry-head:has(> .gs-entry-head__aside) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; }
 }
-/* An artist's documents: text links under rules, two columns when there are several (DS-63). */
-.gs-docs { margin: 0; padding: 0; list-style: none; columns: 2 18rem; column-gap: var(--gs-gutter); max-width: var(--gs-width-wide); }
-.gs-docs li { padding-block: var(--gs-space-3); border-block-start: var(--gs-border) solid var(--gs-color-rule); break-inside: avoid; }
+/* An artist's documents are tiles like the works, each cover whole on the mat (DS-63). One without a
+   cover gets the mat with "PDF", so the row keeps one shape. */
+.gs-doc-tile__blank { display: grid; place-items: center; }
 
 /* A to Z: each letter large beside its names, which run in columns (as DS-45). The letters are the
    page's one big gesture; names stay body size so 170 of them read as a list, not a poster. */
