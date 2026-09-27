@@ -8,7 +8,8 @@
   headings, level with the programmes' heading. On any other page the opening part is all of the
   text and the sections part shows nothing, so the default template can carry both parts and still
   lay programme pages out right before their templates are reassigned (gs-is-programme-page, L-08).
-  Text with a figure sets each picture beside its paragraphs (gs-text-media).
+  Text with a figure sets each picture beside its paragraphs (gs-text-media). On the page chosen as
+  Plan your visit page in Theme settings, the visit details come first (gs-visit-info, DS-61).
 {%- endcomment -%}
 {%- liquid
   assign part = section.settings.part
@@ -27,6 +28,12 @@
 -%}
 {%- if part != 'none' -%}
   {%- capture text -%}{% render 'gs-page-text', part: part %}{%- endcapture -%}
+{%- endif -%}
+{%- comment -%} The Plan your visit page starts with its visit details (DS-61). {%- endcomment -%}
+{%- if part == 'all' or part == 'opening' -%}
+  {%- if settings.visit_page != blank and page.id == settings.visit_page.id -%}
+    {%- render 'gs-visit-info' -%}
+  {%- endif -%}
 {%- endif -%}
 {%- if text != blank -%}
   <div class="gs-section gs-surface-paper">

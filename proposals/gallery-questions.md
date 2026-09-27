@@ -70,6 +70,14 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 6.4 | Hero photos across the site have no alt text in Files. Descriptions can be added at release (before then the live theme would show them too) | Hero photos are decorative |
 | 6.5 | Check the new heading "Join the team" and the last line "To apply, fill in the volunteer form (PDF). Questions? Contact us." | As written |
 
+## 7. Plan your visit (DS-61)
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 7.1 | The page's address, gallery hours, admission and Artists for Kids office hours now come from Theme settings, Gallery details, so staff change them there, once, for this page, the home page, the contact page and the footer. Is that the right place for them? | As moved, words unchanged |
+| 7.2 | Check the new wording: "Get directions" (opens Google Maps), and the visit details' labels "Gallery hours", "Admission", "Artists for Kids office hours" | As written |
+| 7.3 | Holidays and one-off closures aren't known to the "open today" line. Is there a list of closures for the year, so the line can say "Closed for the holiday"? | The line follows the weekly days and times |
+
 ## At release (later)
 
 - The product description clean-up (P-21, P-22): the gallery approves a before-and-after list of the 21 descriptions before anything changes.

@@ -1,0 +1,58 @@
+{% doc %}
+  The Plan your visit page's details (DS-61): first whether the gallery is open today, large, since
+  it is open three afternoons a week and that is what most visitors come to check; then the address
+  with a link for directions, the gallery's hours, admission and the Artists for Kids office hours.
+  All from Theme settings, Gallery details, so they are typed once for this page, the home page,
+  the contact page and the footer. The page text below carries how to get here and accessibility.
+
+  gs-page-body renders it before the page text, on the page chosen as Plan your visit page in Theme
+  settings, like the exhibition lists on their pages (DS-48). "Get directions" opens Google Maps
+  with the address as the destination (Maps URLs, api=1).
+
+  @example
+  {%- render 'gs-visit-info' -%}
+{% enddoc %}
+{%- if settings.address != blank -%}
+  {%- liquid
+    assign destination = settings.address | newline_to_br | replace: '<br />', ', ' | strip_newlines | url_encode
+    assign directions = 'https://www.google.com/maps/dir/?api=1&destination=' | append: destination
+    assign directions_label = 'visit.directions' | t
+  -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="visit-info-heading">
+    <div class="gs-container">
+      <div class="gs-visit-info gs-surface-tint">
+        <h2 class="gs-visually-hidden" id="visit-info-heading">{{ 'visit.details' | t }}</h2>
+        {%- render 'gs-open-today', class: 'gs-open--lead' -%}
+        <dl class="gs-details gs-visit-info__facts">
+          <div class="gs-details__item">
+            <dt>{{ 'visit.address' | t }}</dt>
+            <dd>
+              <address>{{ settings.address | escape | newline_to_br }}</address>
+              {%- render 'gs-link', url: directions, label: directions_label, class: 'gs-cta-link' -%}
+            </dd>
+          </div>
+          {%- if settings.hours != blank -%}
+            <div class="gs-details__item">
+              <dt>{{ 'visit.gallery_hours' | t }}</dt>
+              <dd>{{ settings.hours | escape | newline_to_br }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if settings.admission != blank -%}
+            <div class="gs-details__item">
+              <dt>{{ 'visit.admission' | t }}</dt>
+              <dd>{{ settings.admission | escape | newline_to_br }}</dd>
+            </div>
+          {%- endif -%}
+          {%- if settings.office_hours != blank -%}
+            <div class="gs-details__item">
+              <dt>{{ 'visit.office_hours' | t }}</dt>
+              <dd>{{ settings.office_hours | escape | newline_to_br }}</dd>
+            </div>
+          {%- endif -%}
+        </dl>
+      </div>
+    </div>
+  </section>
+{%- elsif request.design_mode -%}
+  <p class="gs-editor-warning gs-container">Add the address in Theme settings, Gallery details.</p>
+{%- endif -%}

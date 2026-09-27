@@ -27,6 +27,18 @@
         "info": "One line per day or group of days."
       },
       {
+        "type": "textarea",
+        "id": "admission",
+        "label": "Admission",
+        "info": "Shown on the Plan your visit page, under Admission."
+      },
+      {
+        "type": "textarea",
+        "id": "office_hours",
+        "label": "Artists for Kids office hours",
+        "info": "Shown on the Plan your visit page. One line per day or group of days."
+      },
+      {
         "type": "header",
         "content": "Opening days and times"
       },

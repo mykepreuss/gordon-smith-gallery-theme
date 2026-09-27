@@ -157,7 +157,12 @@
   "visit": {
     "address": "Address",
     "hours": "Hours",
-    "plan_link": "{{ title }}"
+    "plan_link": "{{ title }}",
+    "details": "Visit details",
+    "gallery_hours": "Gallery hours",
+    "admission": "Admission",
+    "office_hours": "Artists for Kids office hours",
+    "directions": "Get directions"
   },
   "open": {
     "days_times": "Open {{ days }}, {{ times }}",
