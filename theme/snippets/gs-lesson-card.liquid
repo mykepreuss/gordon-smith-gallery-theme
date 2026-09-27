@@ -1,7 +1,8 @@
 {% doc %}
   A lesson (an ArtReach video, DS-70) as a card: its cover at the video's shape, the title, the
   suggested grade levels. The whole card links to the lesson's page, where the video plays. A
-  lesson without a cover is a text card, as any card without an image is.
+  lesson without a cover is a text card, as any card without an image is. The cover is decorative:
+  the title follows it (DS-58).
 
   @param {object} lesson - A lesson entry
   @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
@@ -15,7 +16,7 @@
 -%}
 <article class="gs-card gs-lesson-card{% if cover == blank %} gs-card--text{% endif %}">
   {%- if cover != blank -%}
-    {%- render 'gs-media', image: cover, preset: 'card', mode: 'photo', ratio: '16 / 9', alt: lesson.title.value -%}
+    {%- render 'gs-media', image: cover, preset: 'card', mode: 'photo', ratio: 'var(--gs-ratio-video)' -%}
   {%- endif -%}
   <{{ tag }} class="gs-card__title"><a href="{{ lesson.system.url }}">{{ lesson.title.value | escape }}</a></{{ tag }}>
   {%- if lesson.grades.value != blank -%}

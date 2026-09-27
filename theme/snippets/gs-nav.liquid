@@ -21,8 +21,12 @@
   - Only two levels render. A third level in the menu is ignored.
   - An artist's, work's or grouping's page (DS-62) counts as inside the section that links to the
     Permanent Collection or Artists page (Theme settings), since menus can't link every entry.
+  - A page or lesson the menu doesn't list counts as inside the section whose main page (its own
+    link, else its first item) belongs to the same programme: After School Art or a lesson marks
+    Artists for Kids. At most one section; exhibition and event pages never trigger it.
 
   @param {object} menu - A menu (linklist), e.g. section.settings.menu
+  @param {string} [brand] - The page's programme as a brand scope (gs-brand), from gs-header
   @param {string} [variant] - 'bar' (default) or 'drawer'. Editor warnings show once, with the bar
 
   @example
@@ -34,6 +38,20 @@
   if request.path contains '/pages/artists/' or request.path contains '/pages/collection/' or request.path contains '/pages/browse/'
     assign in_collection = true
   endif
+  assign listed = false
+  for l in menu.links
+    if l.active or l.child_active
+      assign listed = true
+      break
+    endif
+  endfor
+  assign find_programme = false
+  if listed == false and in_collection == false and brand != blank and brand != 'gallery'
+    if template.name == 'page' or metaobject.system.type == 'lesson'
+      assign find_programme = true
+    endif
+  endif
+  assign programme_marked = false
 -%}
 <ul class="gs-nav">
   {%- for link in menu.links -%}
@@ -49,6 +67,26 @@
       {%- for child in link.links -%}
         {%- if child.url == settings.collection_page.url or child.url == settings.artists_page.url -%}{%- assign is_current = true -%}{%- endif -%}
       {%- endfor -%}
+    {%- endif -%}
+    {%- if find_programme and programme_marked == false and link.links.size > 0 -%}
+      {%- liquid
+        assign main = nil
+        if link.type == 'page_link'
+          assign main = link.object
+        elsif link.links.first.type == 'page_link'
+          assign main = link.links.first.object
+        endif
+        if main != nil
+          capture main_brand
+            render 'gs-programme', value: main.metafields.custom.programme.value
+          endcapture
+          assign main_brand = main_brand | strip
+          if main_brand == brand
+            assign is_current = true
+            assign programme_marked = true
+          endif
+        endif
+      -%}
     {%- endif -%}
 
     <li class="gs-nav__item{% if is_current %} gs-nav__item--current{% endif %}">

@@ -6,6 +6,11 @@
                                              under 19 MB of the PDFs over Shopify's 20 MB limit
   python3 files.py upload <export folder>    upload what isn't in Files yet; IDs to ../created/afk-files.json
   python3 files.py urls                      each uploaded file's address, into the same file
+  python3 files.py revise <export folder>    after the design review (2026-09-27): the program guide's and
+                                             Mini Monster's covers rendered from their PDFs' first page, the
+                                             collage without its white border, the black bars cut from seven
+                                             lesson covers (all replaced in place, same IDs), and the lesson
+                                             covers' alt text cleared: each cover's title follows it (DS-58)
   python3 files.py replace <export folder>   upload fresh web copies over pictures already in Files
                                              (fileUpdate, same IDs): used once, 2026-09-27, when the
                                              first upload had enlarged the smaller pictures to 3,000 px
@@ -221,7 +226,8 @@ def prepare(export):
 
 
 def cover_alt(lesson_title):
-    return f"The video for {lesson_title}"
+    """None: the lesson's title follows its cover, so the cover is decorative (DS-58)."""
+    return ""
 
 
 def upload(export):
@@ -284,6 +290,41 @@ def replace(export):
         print(f"replaced {min(i + 20, len(todo))}/{len(todo)}", flush=True)
 
 
+def revise(export):
+    """Replace the revised pictures in place and clear the lesson covers' alt text."""
+    from images import STAGE
+    export = pathlib.Path(export)
+    folder = export / "revise"
+    created = json.loads(CREATED.read_text())
+    todo = [("img:program-guide", "afk-program-guide-2026-2027.jpg"), ("img:guide-mini-monster", "afk-guide-mini-monster.jpg"),
+            ("img:paradise-valley", "afk-paradise-valley-camp.jpg")]
+    todo += [(f"cover:{f.stem.replace('afk-lesson-cover-', '')}", f.name) for f in sorted(folder.glob("afk-lesson-cover-*.jpg"))]
+    stage = execute(STAGE, {"input": [{"filename": name, "mimeType": "image/jpeg", "resource": "IMAGE", "httpMethod": "POST",
+                                       "fileSize": str((folder / name).stat().st_size)} for _k, name in todo]})["stagedUploadsCreate"]
+    if stage["userErrors"]:
+        raise RuntimeError(stage["userErrors"])
+    files = []
+    for (key, name), t in zip(todo, stage["stagedTargets"]):
+        args = ["curl", "-s", "-f", "-o", "/dev/null", "-w", "%{http_code}"]
+        for prm in t["parameters"]:
+            args += ["-F", f"{prm['name']}={prm['value']}"]
+        args += ["-F", f"file=@{folder / name}", t["url"]]
+        code = subprocess.run(args, capture_output=True, text=True).stdout
+        if not code.startswith("2"):
+            raise RuntimeError(f"upload of {name} returned {code}")
+        files.append({"id": created[key]["id"], "originalSource": t["resourceUrl"]})
+    made = execute(REPLACE, {"files": files})["fileUpdate"]
+    if made["userErrors"]:
+        raise RuntimeError(made["userErrors"])
+    print(f"replaced {len(files)}", flush=True)
+    covers = [{"id": v["id"], "alt": ""} for k, v in created.items() if k.startswith("cover:")]
+    for i in range(0, len(covers), 25):
+        made = execute(REPLACE, {"files": covers[i:i + 25]})["fileUpdate"]
+        if made["userErrors"]:
+            raise RuntimeError(made["userErrors"])
+    print(f"cleared alt on {len(covers)} covers", flush=True)
+
+
 URLS = """query($ids: [ID!]!) { nodes(ids: $ids) {
   ... on MediaImage { id fileStatus image { url width height } }
   ... on GenericFile { id fileStatus url } } }"""
@@ -315,3 +356,5 @@ if __name__ == "__main__":
         urls()
     elif step == "replace":
         replace(sys.argv[2])
+    elif step == "revise":
+        revise(sys.argv[2])

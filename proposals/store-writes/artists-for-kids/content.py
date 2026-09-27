@@ -29,6 +29,10 @@ Text is the old site's, moved as written (AGENTS.md, "Gallery-facing work"). Wha
   for the gallery to send the file.
 - Creating a Paper Mural with Sandeep Johal has a cover and no PDF on the old site: its card is made but
   kept out of the group until the file comes.
+- After the design review (2026-09-27): notes that stood apart from the text become the page's intro
+  (Studio Art Academy's, Paradise Valley's "5 days, 4 nights, inclusive", Awards' closed line), with
+  their asterisks and bold dropped; phone numbers become links; a list typed with line breaks becomes
+  a list; typographic quotes in the workshop titles and the pull quote; "**" markers dropped.
 
 Pages get the live theme's On Now template name until release (`current-on-now-exhibition`), the only
 live template besides Artists that shows a page's title and nothing else; the new theme has no template
@@ -59,6 +63,7 @@ PROD_OCT23_FORM = FORMS + "URTIxOE9SRllIN0dEMUlWUEY3N1U3MTM2Ty4u"
 CANADAHELPS = "https://www.canadahelps.org/en/dn/66477"
 SCHOOLCASH = "https://sd44.schoolcashonline.com/Fee/Details/299/69/false/true"
 EMAIL = '<a href="mailto:artistsforkids@sd44.ca">artistsforkids@sd44.ca</a>'
+PHONE = "tel:+16049033798"
 
 # Entries already in the store.
 EXHIBITIONS = {"collect-assemble-gather": "gid://shopify/Metaobject/608352043305",
@@ -70,6 +75,10 @@ EXISTING_IMAGES = {  # already in Files
     "card-after-school-art": 45746713854249,
 }
 EXPLORE_CREATE_CARD = "gid://shopify/Metaobject/608366526761"
+EXPLORE_CREATE_IMAGE = 45668902568233  # the Explore + Create card's picture
+ASA_SECOND = ('<figure><img src="https://cdn.shopify.com/s/files/1/0895/9580/5993/files/3f3a59bf-f00d-dbb9-09dd-3d3706847ae4.jpg?v=1785953065" '
+              'alt="Two children sharing art materials at a paint-spattered studio table in an After School Art class" '
+              'width="1080" height="721" loading="lazy"></figure>')
 
 
 def files():
@@ -139,46 +148,48 @@ def pages():
         {"handle": "schools-and-teachers", "title": "Schools and teachers", "template": "programme",
          "groups": ["afk-school-programs", "afk-learning-resources"]},
         {"handle": "after-school-art", "title": "After School Art", "template": "programme",
-         "hero": "after-school-art", "cta": (ASA_REG, "Classes and registration"),
+         "hero": "after-school-art", "cta": (ASA_REG, "Register for classes"),
          "body": "\n".join([
              "<p>Artists for Kids offers After School Art classes for students each Fall, Winter and Spring term.</p>",
              "<p>Led by BC certified art specialist teachers and assisted by secondary art students, our classes provide the opportunity to build skills and foster creative growth within the visual arts. Students will have the opportunity to expand their artistic abilities in a multitude of different mediums, including painting, felting, printmaking, and sculpting.</p>",
              "<p>Classes vary in duration, price, and medium. All art materials are included in the price of the program.</p>",
+             ASA_SECOND,
              "<h2>Important Notes</h2>",
              "<ul>",
              "<li>Artists for Kids does not provide supervision before class start times. Parents/Guardians are responsible for the supervision of their child from the end of the school day until the start of the After School Art class.</li>",
              "<li>Class start times do not change on professional development days or early dismissal days.</li>",
              f"<li>Artists for Kids is unable to provide 1:1 support. If you child requires support at school, or will be attending classes with a support worker, please contact {EMAIL} as soon as possible after registering.</li>",
-             "<li>A limited number of bursaries of up to 50% of program fees are available for those in need of financial support. In an effort to support as many families as possible, there is a limit of one bursary per child, per term for After School Art classes. Please contact Artists for Kids for more information on bursaries.</li>",
+             "<li>A limited number of bursaries of up to 50% of program fees are available for those in need of financial support. In an effort to support as many families as possible, there is a limit of one bursary per child, per term for After School Art classes. Please <a href=\"mailto:artistsforkids@sd44.ca\">contact Artists for Kids</a> for more information on bursaries.</li>",
              "</ul>"])},
         {"handle": "day-camps", "title": "Spring & Summer Day Camps", "template": "programme",
-         "hero": "day-camps", "caption": "Photo by Khim Mata Hipol", "cta": (CAMPS_REG, "Camp dates and registration"),
+         "hero": "day-camps", "caption": "Photo by Khim Mata Hipol", "cta": (CAMPS_REG, "Register for camps"),
+         "groups": ["afk-more-classes-and-camps"],
          "body": "<p>Students enjoy a week full of studio art activities including drawing, painting and printmaking taught by BC certified art specialist teachers. Each week is unique and campers learn in small cohorts. Campers experiment with many art materials and techniques while having opportunity to explore outdoor art making and recreation time.</p>"},
         {"handle": "paradise-valley-summer-camp", "title": "Paradise Valley Summer Camps", "template": "programme",
-         "cta": (PV_REG, "This year's camp and registration"),
+         "cta": (PV_REG, "Register for camp"), "intro": "5 days, 4 nights, inclusive",
          "body": "\n".join([
-             "<p><strong>5 days, 4 nights, inclusive</strong></p>",
              "<p>Young artists ages 9 - 15 will explore their surroundings in the beautiful setting of Paradise Valley. This environment provides an ideal source to explore concepts of form and colour. Students will receive in-depth instruction in collage, drawing, painting and printmaking. Working in small studio groups, teachers support individual skill development and artistic voice. This week long camp is thoughtfully balanced with outdoor recreation and studio time.</p>",
              figure("paradise-valley"),
-             "<h2>Bursaries</h2>",
-             f"<p>Bursaries are available for families in need of financial support. Please contact {EMAIL} for more information.</p>",
              "<h2>Past camps</h2>",
              video("-by8rt8rGvM", "Sara Jean Bourget was the visiting Artist In Residence in July 2025. Campers focused on drawing and printmaking."),
              video("C7jmm9VTn6g", "Paradise Valley Summer School of Visual Art Camp 2024 with artist Samuel Roy-Bois"),
              video("bExdIeVLnLg", "Paradise Valley Summer School of Visual Art Camp 2023 with artist Charlene Vickers"),
-             video("cBllGmwNrgw", "Paradise Valley Summer School of Visual Art Camp 2022 with artist Annie Canto")])},
+             video("cBllGmwNrgw", "Paradise Valley Summer School of Visual Art Camp 2022 with artist Annie Canto"),
+             "<h2>Bursaries</h2>",
+             f"<p>Bursaries are available for families in need of financial support. Please contact {EMAIL} for more information.</p>"])},
         {"handle": "gallery-program", "title": "Gallery Program", "template": "programme",
          "hero": "gallery-program", "caption": "Photo by Khim Mata Hipol, Spring 2025 Gallery Program.",
          "cta": (GALLERY_BOOKING, "Register a Grade 5 class"),
          "body": "\n".join([
              "<p>Artists for Kids' Gallery Program brings contemporary Canadian Art to a class full of eager young people which introduces the students to the art and culture of our country. Our Gallery Program offers students a deep, engaged dive into responding to and making art. Classes spend time in both the gallery and in the studio making work that responds to the exhibition they have studied in the gallery. All sessions are co-taught by the classroom teacher and an art expert teacher provided by Artists for Kids.</p>",
-             "<h2>Grade 5 Gallery Program | Fall 2026 - Winter 2027</h2>",
+             "<h2>Grade 5 Gallery Program&nbsp;| Fall 2026 - Winter 2027</h2>",
              f"<p>We are excited to welcome Grade 5 classes to the Gordon Smith Gallery of Canadian Art for the Fall 2026 exhibition {CAG}. Teachers can sign up for a full-day gallery visit during which Artists for Kids art educators will lead classes in an interactive tour of the exhibition and a hands-on artmaking activity. Classes can visit from 9:30am - 2:30pm on select dates from October to February.</p>",
              "<p>The program fee for North Vancouver School District classes is covered by NVSD.</p>",
              "<p><strong>North Vancouver School District</strong> classes can register September 11, 2026.</p>",
-             f'<p><a href="{html.escape(GALLERY_BOOKING)}">Register</a></p>',
+             f'<p><a class="gs-cta-link" href="{html.escape(GALLERY_BOOKING)}">Register</a></p>',
              "<h2>Out of District Schools</h2>",
-             "<p>Registration for <strong>out-of-district schools</strong> opens September 24th, 2026.<br>TOUR + WORKSHOP (4 hours of instructional time plus 1 hour break time)<br>The fee for out-of-district schools: $500</p>",
+             "<p>Registration for <strong>out-of-district schools</strong> opens September 24th, 2026.</p>",
+             "<ul><li>TOUR + WORKSHOP (4 hours of instructional time plus 1 hour break time)</li><li>The fee for out-of-district schools: $500</li></ul>",
              f"<p>Please email {EMAIL} or call to inquire about availability.</p>",
              "<h2>Self-Guided Tours of <em>Collect, Assemble, Gather</em></h2>",
              "<p>Artists for Kids invites K-12 teachers to use the Gordon Smith Gallery as their classroom, by booking a time to bring a class for a half day self-guided tour at our spring exhibition, <em>One Hundred Artists Deep</em>.</p>",
@@ -186,7 +197,7 @@ def pages():
              "<p>Teachers can book self-guided tour slots (morning or afternoon) that are available on select dates in April through June.</p>",
              "<p>We encourage teachers to attend an orientation of <em>Collect, Assemble, Gather</em> prior to visiting with your class.</p>",
              "<p><strong>Orientation for teachers will take place on September 28th at 1:00 - 3:30pm.</strong></p>",
-             "<p>Class visits can be booked at the button below or by calling 604-903-3798.</p>",
+             f'<p>Class visits can be booked at the button below or by calling <a href="{PHONE}">604-903-3798</a>.</p>',
              "<h2>Spring K - 12 Gallery Program 2027</h2>",
              "<p>We are excited to welcome Grade 5 classes to the Gordon Smith Gallery of Canadian Art for the Fall 2026 exhibition <em>Collect, Assemble, Gather.</em> Teachers can sign up for a half-day gallery visits. Artists for Kids art educators will lead classes in an interactive tour of the exhibition and a hands-on artmaking activity. Classes can visit from 9:30am-11:45am or 12:30pm-2:30pm on select dates from September to February.</p>",
              "<p>Registration for <strong>North Vancouver School District schools</strong> is available by clicking the <strong>Register</strong> button below. The program fee for North Vancouver School District classes is covered by NVSD.</p>",
@@ -211,7 +222,7 @@ def pages():
              "<p>Amelia Butcher is a visual artist based in British Columbia with a sculptural and drawing practice centered in clay.</p>",
              "<p>She graduated from Emily Carr University in 2013 and is a founding member of the Dusty Babes Collective. From 2015-2021 she lived and worked out of their communal studio, built by the late great Don Hutchinson, in Surrey, BC.</p>",
              "<p>She has exhibited widely and instructs classes and workshops in ceramics, sculpture and comic-making for all ages. She is a board member of the BC Potters Guild and currently works out of a studio in Vancouver, the unceded, ancestral territories of the xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), and səlilwətaɬ (Tsleil-Waututh) Nations.</p>",
-             f"<p>{artist('amelia-butcher', 'Amelia Butcher in the Permanent Collection')}</p>",
+             f"<p>{artist('amelia-butcher', 'Amelia Butcher at the gallery')}</p>",
              "<h2>Past Workshops with Amelia Butcher</h2>",
              "<p><strong>February 2026</strong></p>",
              '<p>This winter grade 7 students will have the privilege of working with Amelia Butcher. They will respond to the current exhibition <a href="/pages/exhibitions/from-the-ground"><em>From The Ground</em></a>. The artworks illustrate the natural world and the varying types of views we have of the world around us.</p>',
@@ -233,26 +244,27 @@ def pages():
          "body": "\n".join([
              "<p><strong>May 2027</strong></p>",
              "<p>This spring, grade 8 and 9 students will have the privilege of working with Becky Bair on a photography project. They will respond to the exhibition in the Gordon Smith Gallery of Canadian Art, with a focus on cyanotypes.</p>",
-             "<h2>Becky Bair Biography</h2>",
              figure("becky-bair-workshop-1", "Photo by Khim Mata Hipol"),
+             "<h2>Becky Bair Biography</h2>",
              "<p>Rebecca Bair (b. 1995, Toronto, Canada) is an interdisciplinary artist based in Vancouver - the traditional and ancestral territories of the Coast Salish peoples. Her research aims to explore the possibilities of specific representation and of identity through abstraction and non-figuration. Bair uses multimedia approaches and Sun collaborations to illustrate her exploration of identity and intersectionality, through the lens of her own experience as a Black Woman on Turtle Island. Her artistic, professional and educational goals revolve around common themes of celebrating Black plurality, as well as enabling interpersonal and intercultural care, and her work acts as a vehicle through which the complexities of history and identity can be uncovered, redefined and expressed.</p>",
              figure("becky-bair-workshop-2", "Photo by Khim Mata Hipol"),
              figure("becky-bair-workshop-3", "Photo by Khim Mata Hipol")])},
         {"handle": "artist-in-residence-sara-jeanne-bourget", "title": "Sara-Jeanne Bourget", "template": "",
-         "eyebrow": "Artists in Residence",
+         "eyebrow": "Artists in Residence", "groups": ["afk-air-sara-jeanne-bourget-guides"],
          "body": "\n".join([
              "<h2>Drawing Artist-in-Residence Sara-Jeanne Bourget</h2>",
-             "<h3>November 2025</h3>",
+             "<p><strong>November 2025</strong></p>",
+             figure("air-2025-sara-jeanne-bourget"),
              "<p>This November, Artists for Kids is excited to offer an Artist-in-Residence program for secondary students in grades 10, 11, and 12. During two school days, students who are nominated will have the opportunity to work with artist Sara-Jeanne Bourget at the Artists for Kids Studios.</p>",
              "<p>Traditionally, drawing has been used to record and make sense of the world. In this workshop, we will use drawing to reveal the often overlooked or unseen details of our immediate environment. Moving from observation to imagination, drawing becomes a tool to discover new perspectives. Participants will begin with direct observational techniques, gradually transitioning to material- and process-based approaches. Through this progression, students will create a series of works that engage with and respond to their natural surroundings. The workshop is an invitation to explore the expanded possibilities of drawing, with a particular focus on working with charcoal.</p>",
-             "<h3>Artist Bio</h3>",
+             "<h2>Artist Bio</h2>",
              "<p>Artist Sara-Jeanne Bourget’s drawing and printmaking practice engages with cyclical processes that echo natural rhythms and phenomena. Through this work, the artist explores how the act of “mining”—traditionally associated with extraction and destruction—can be re-imagined as a method of uncovering ideas, relationships, and possibilities.</p>",
              "<p>Observing how non-human individuals mine their environment offers new perspectives to foster relationships with the world. A fascination with surfaces altered by animal/plant/human/time-based erosion creates space for new forms and future possibilities.</p>",
              "<p>In Bourget’s practice, materials and methods intrinsic to drawing and printmaking intertwine, creating hybrid images that blur the boundaries of both disciplines. The artist often works by “mining” from old or discarded charcoal drawings, using them as the foundation for new matrices. These are built through layering, covering, and excavating marks—actions that mirror natural and emotional cycles. Repeated patterns and forms appear seasonally, evolving through intuitive gestures and sustained repetition.</p>",
              "<p>Bourget is currently an assistant professor in Drawing at Emily Carr University.</p>"])},
         {"handle": "studio-art-academy", "title": "Studio Art Academy", "template": "programme",
+         "intro": "Please note that this academy is not offered for the 2026/2027 school year.",
          "body": "\n".join([
-             "<p>*Please note that this academy is not offered for the 2026/2027 school year.*</p>",
              figure("studio-art-academy"),
              "<p>Artists for Kids Studio Art Academy offers young artists immersive experiences where they develop thoughtful, independent perspectives on visual arts and culture. Through hands‑on learning with professional artists, visits to galleries, and access to high‑quality studio materials, students build a personalized portfolio that reflects their voice, skill, and growth.</p>",
              "<p>This advanced Academy places art‑making at the centre of inquiry—encouraging creativity, communication, critical thinking, and collaboration. Working in the Artists for Kids’ Shadbolt Studio and the Gordon Smith Gallery, students gain the skills, independence, and confidence needed to thrive as emerging art practitioners. The year culminates in a professionally mounted exhibition showcasing their work.</p>",
@@ -275,33 +287,33 @@ def pages():
         {"handle": "artreach-videos", "title": "ArtReach Videos", "template": "programme",
          "body": "\n".join([
              "<p>This series of videos guides classrooms or individuals at home through art activities focused on principles of creative inquiry and play. Videos are posted to our website throughout the school year. Enjoy!</p>",
-             '<p><a href="/pages/learning-guides">Download Artists for Kids Learning Guides</a></p>',
-             '<p><a href="/pages/learning-kits">Register to borrow Artists for Kids Learning Kits</a></p>'])},
+             '<p><a class="gs-cta-link" href="/pages/learning-guides">Download Artists for Kids Learning Guides</a></p>',
+             '<p><a class="gs-cta-link" href="/pages/learning-kits">Register to borrow Artists for Kids Learning Kits</a></p>'])},
         {"handle": "professional-development", "title": "Professional Development", "template": "programme",
          "body": "\n".join([
              "<p>Each year, Artists For Kids hosts professional development opportunities for K - 12 educators to enhance learning through the lens of the visual arts.</p>",
              "<p><strong>Mark your calendars!</strong></p>"])},
         {"handle": "awards-and-scholarships", "title": "Awards and Scholarships", "template": "programme",
+         "intro": "Applications have closed for the 2025/2026 school year.",
          "body": "\n".join([
-             "<p>Applications have closed for the 2025/2026 school year.</p>",
              "<p>Artists for Kids is pleased to offer the following three Scholarships for North Vancouver School District graduating students who have completed or are enrolled in Grade 12 level Visual and Performing Arts courses.</p>",
-             "<ul>",
-             f'<li><p>The $1,000 Jack Shadbolt Multiple Arts Excellence award is available to a graduating student who has demonstrated excellence in two or more of the Visual and/or Performing Arts disciplines (i.e. art &amp; music, film &amp; theatre, drama &amp; dance) and is planning to continue their education in the arts.</p><p><a href="{pdf_path("award-shadbolt")}">Requirements (PDF)</a></p></li>',
-             f'<li><p>The $1,000 Robert Bateman Future Teacher award is available to a graduating student who has demonstrated excellence in Visual Arts and is planning to pursue a future teaching career in the field of Elementary or Secondary education.</p><p><a href="{pdf_path("award-bateman")}">Requirements (PDF)</a></p></li>',
-             f'<li><p>The $1,000 North Shore Community Foundation - Gordon Smith Outstanding Visual Artist award is available to a graduating student who has demonstrated excellence in the Visual Arts and is planning to continue their education in the Visual Arts (visual arts include traditional media as well as photographic and digital media).</p><p><a href="{pdf_path("award-gordon-smith")}">Requirements (PDF)</a></p></li>',
+             '<ul class="gs-points">',
+             f'<li><p><strong>The $1,000 Jack Shadbolt Multiple Arts Excellence award</strong> is available to a graduating student who has demonstrated excellence in two or more of the Visual and/or Performing Arts disciplines (i.e. art &amp; music, film &amp; theatre, drama &amp; dance) and is planning to continue their education in the arts.</p><p><a href="{pdf_path("award-shadbolt")}">Requirements (PDF)</a></p></li>',
+             f'<li><p><strong>The $1,000 Robert Bateman Future Teacher award</strong> is available to a graduating student who has demonstrated excellence in Visual Arts and is planning to pursue a future teaching career in the field of Elementary or Secondary education.</p><p><a href="{pdf_path("award-bateman")}">Requirements (PDF)</a></p></li>',
+             f'<li><p><strong>The $1,000 North Shore Community Foundation - Gordon Smith Outstanding Visual Artist award</strong> is available to a graduating student who has demonstrated excellence in the Visual Arts and is planning to continue their education in the Visual Arts (visual arts include traditional media as well as photographic and digital media).</p><p><a href="{pdf_path("award-gordon-smith")}">Requirements (PDF)</a></p></li>',
              "</ul>",
-             f"<p>If you have questions or encounter any problems with the application process, please email {EMAIL} or call (604) 903-3798.</p>"])},
-        {"handle": "support-artists-for-kids", "title": "Support Artists for Kids", "template": "programme",
-         "cta": (CANADAHELPS, "Donate"),
+             f'<p>If you have questions or encounter any problems with the application process, please email {EMAIL} or call <a href="{PHONE}">(604) 903-3798</a>.</p>'])},
+        {"handle": "support-artists-for-kids", "title": "Support Artists for Kids", "template": "",
+         "cta": (CANADAHELPS, "Donate"), "groups": ["afk-how-to-give"],
          "body": "\n".join([
              "<p>Artists for Kids is a unique, not-for-profit, self-sustaining art education program operated by the North Vancouver School District (NVSD) in British Columbia. In addition to receiving support through the NVSD, we rely on the generosity of our donors to offer a range of Artist- and Educator-led programs in schools and the community, as well as scholarships for students pursuing post-secondary studies in arts education.</p>",
              "<p>Your contribution helps make quality arts education accessible to all children and youth and enables us to continue creating meaningful, life-changing opportunities through the arts.</p>",
              "<p>Your donations help make quality art education accessible to all and ensure that we can continue creating life changing opportunities to children and youth.</p>",
-             f'<p>Donations can be made with an <a href="{SCHOOLCASH}">NVSD School Cash Online account</a>, or through <a href="{CANADAHELPS}">CanadaHelps</a>. To make a donation over the phone, please call (604) 903-3798.</p>',
+             f'<p>Donations can be made with an <a href="{SCHOOLCASH}">NVSD School Cash Online account</a>, or through <a href="{CANADAHELPS}">CanadaHelps</a>. To make a donation over the phone, please call <a href="{PHONE}">(604) 903-3798</a>.</p>',
              "<p>Every donation makes a difference. Thank you for supporting arts education in our community.</p>",
              "<h2>A heartfelt thank you to our donors and sponsors</h2>",
              "<p>Artists for Kids has been fortunate to have a variety of donors and supporters who have embraced the work we do and the programs we offer. With their generosity and contributions, we have been able to expand our offerings, and provide financial assistance for those families whose kids could otherwise not discover the untapped creativity inside of them.</p>",
-             "<figure class=\"gs-quote\"><blockquote><p>\"...opened Oliver's most wonderful thank you note to my parents' memorial fund for some scholarship assistance to him...Please tell him how much I appreciated and enjoyed all parts of his note. And to you: this is why we give support to your summer camp. I hope Gordon Smith gets as much enjoyment from his support as I do from ours.\"</p></blockquote><figcaption>Irene</figcaption></figure>",
+             "<figure class=\"gs-quote\"><blockquote><p>“…opened Oliver’s most wonderful thank you note to my parents’ memorial fund for some scholarship assistance to him…Please tell him how much I appreciated and enjoyed all parts of his note. And to you: this is why we give support to your summer camp. I hope Gordon Smith gets as much enjoyment from his support as I do from ours.”</p></blockquote><figcaption><strong>Irene</strong></figcaption></figure>",
              "<p>Our Donors and Sponsors contribute in a variety of ways. Whether it's with financial support, in-kind donations, or gifts of significant pieces of work for the AFK Permanent Collection, we are grateful for our community's continued trust and support of our programs and gallery.</p>",
              '<ul class="gs-points">',
              '<li><strong>The Gordon and Marion Smith Foundation for Young Artists</strong><br><a href="/pages/the-smith-foundation">The Gordon and Marion Smith Foundation for Young Artists</a> established a permanent endowment fund, whose increasing annual revenues is granted to Artists for Kids, to ensure the success and viability of Artists for Kids and their programs and to support the Gordon Smith Gallery of Canadian Art in perpetuity.</li>',
@@ -330,20 +342,26 @@ AFK_HISTORY_ADD = "\n".join([
 AFK_HISTORY_AFTER = "<p>Artists for Kids was founded in 1989 with the singular intent to support art education, for all.</p>"
 
 
-def afk_team_and_report():
+def afk_report():
+    """The annual report, at the end of the History (a subheading), as a standalone link."""
     return "\n".join([
-        "<h2>Meet the Artists for Kids Team</h2>",
-        figure("team"),
-        "<p>From left to right:</p>",
-        "<ul>",
-        "<li>Allison Kerr, Director, Artist for Kids and Gordon Smith Gallery, and District Principal, Arts Education</li>",
-        "<li>Amelia Epp, District Visual Arts Teacher, Educational Coordinator</li>",
-        "<li>Chantal Pinard, Artists For Kids Administrative and Program Assistant</li>",
-        "<li>Emily Neufeld, Artists for Kids Studio Technician, Gallery Collection Preparator</li>",
-        "</ul>",
-        "<h2>Annual Report</h2>",
-        f'<p><a href="{pdf_path("annual-report")}">Annual Report 2024-2025 (PDF)</a></p>',
+        "<h3>Annual Report</h3>",
+        f'<p><a class="gs-cta-link" href="{pdf_path("annual-report")}">Annual Report 2024-2025 (PDF)</a></p>',
     ])
+
+
+def afk_team():
+    """The team: the photo with the old page's words as its caption, the names in bold. A part with
+    only a picture shows it at the reading width under its heading (DS-78)."""
+    caption = "".join([
+        "<p>From left to right:</p><ul>",
+        "<li><strong>Allison Kerr</strong>, Director, Artist for Kids and Gordon Smith Gallery, and District Principal, Arts Education</li>",
+        "<li><strong>Amelia Epp</strong>, District Visual Arts Teacher, Educational Coordinator</li>",
+        "<li><strong>Chantal Pinard</strong>, Artists For Kids Administrative and Program Assistant</li>",
+        "<li><strong>Emily Neufeld</strong>, Artists for Kids Studio Technician, Gallery Collection Preparator</li>",
+        "</ul>",
+    ])
+    return "\n".join(["<h2>Meet the Artists for Kids Team</h2>", figure("team", caption)])
 
 
 def afk_release_body(current):
@@ -352,7 +370,7 @@ def afk_release_body(current):
     if "In 1989, the founders of AFK" in current:
         return current  # already added
     body = current.replace(AFK_HISTORY_AFTER, AFK_HISTORY_AFTER + "\n" + AFK_HISTORY_ADD, 1)
-    return body.rstrip() + "\n" + afk_team_and_report()
+    return body.rstrip() + "\n" + afk_report() + "\n" + afk_team()
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -370,22 +388,42 @@ def card(title, image=None, text=None, url=None, link_text=""):
     return fields
 
 
-def relink(url):
-    """An existing card's link, changed to the site's page (the card keeps its title and image)."""
-    return [{"key": "link", "value": link(url)}]
+def relink(url, text=None):
+    """An existing card's link, changed to the site's page (the card keeps its title and image), and
+    its text when given: its page's opening line, word for word."""
+    fields = [{"key": "link", "value": link(url)}]
+    if text:
+        fields.append({"key": "text", "value": text})
+    return fields
 
 
 def cards():
     c = {
         # Existing programme cards: now the site's own pages (were artistsforkids.sd44.ca).
-        "afk-after-school-art": relink(page_url("after-school-art")),
-        "afk-day-camps": relink(page_url("day-camps")),
-        "afk-paradise-valley": relink(page_url("paradise-valley-summer-camp")),
+        "afk-after-school-art": relink(page_url("after-school-art"),
+            "Artists for Kids offers After School Art classes for students each Fall, Winter and Spring term."),
+        "afk-day-camps": relink(page_url("day-camps"),
+            "Students enjoy a week full of studio art activities including drawing, painting and printmaking taught by BC certified art specialist teachers."),
+        "afk-paradise-valley": relink(page_url("paradise-valley-summer-camp"),
+            "5 days, 4 nights, inclusive\nYoung artists ages 9 - 15 will explore their surroundings in the beautiful setting of Paradise Valley."),
         "afk-gallery-programs": relink(page_url("gallery-program")),
         "afk-artists-in-residence": relink(page_url("artists-in-residence")),
         "afk-learning-kits": relink(page_url("learning-kits")),
         # New programme cards.
-        "afk-studio-art-academy": card("Studio Art Academy", "studio-art-academy", url=page_url("studio-art-academy")),
+        "afk-studio-art-academy": card("Studio Art Academy", "studio-art-academy",
+            "Please note that this academy is not offered for the 2026/2027 school year.", page_url("studio-art-academy")),
+        # The section's other two pages, so the front door reaches all five.
+        "afk-card-awards": card("Awards and Scholarships", url=page_url("awards-and-scholarships")),
+        "afk-card-support": card("Support Artists for Kids", url=page_url("support-artists-for-kids")),
+        # Explore + Create for families, with its page's own sentence (the Public programs card stays as it is).
+        "afk-explore-create": [{"key": "title", "value": "Explore + Create Saturdays"},
+            {"key": "image", "value": f"gid://shopify/MediaImage/{EXPLORE_CREATE_IMAGE}"},
+            {"key": "text", "value": "Families with children ages 5 – 12 are invited to join us on Saturdays from 1 – 3 PM for drop-in art activities inspired by works in the Gordon Smith Gallery’s current exhibition."},
+            {"key": "link", "value": link(page_url("explore-create"))}],
+        # Support Artists for Kids: how to give, as on Donate.
+        "afk-give-online": card("Give online through CanadaHelps", url=CANADAHELPS),
+        "afk-give-school-cash": card("Give with a School Cash Online account", url=SCHOOLCASH),
+        "afk-give-phone": card("Give by phone", text="(604) 903-3798", url=PHONE, link_text="Call us"),
         "afk-learning-guides": card("Learning Guides", "guide-paper-mural", url=page_url("learning-guides")),
         "afk-artreach-videos": card("ArtReach Videos", "cover:paths-abstract-painting", url=page_url("artreach-videos")),
         "afk-professional-development": card("Professional Development", "event-clay-kit", url=page_url("professional-development")),
@@ -473,7 +511,11 @@ GROUPS = [
     ("afk-this-season", "Fall 2026 at Artists For Kids",
      ["afk-season-after-school-art", "afk-season-program-guide", "afk-season-artists-in-residence"]),
     ("afk-community-programs", "Community Programs", ["afk-after-school-art", "afk-day-camps", "afk-paradise-valley"]),
-    ("afk-also-for-families", "Also for families", [EXPLORE_CREATE_CARD]),
+    ("afk-also-for-families", "Also for families", ["afk-explore-create"]),
+    ("afk-more-classes-and-camps", "More classes and camps", ["afk-after-school-art", "afk-paradise-valley", "afk-explore-create"]),
+    ("afk-awards-and-support", "Awards and support", ["afk-card-awards", "afk-card-support"]),
+    ("afk-air-sara-jeanne-bourget-guides", "Learning guides", ["afk-guide-art-camp", "afk-guide-charcoal"]),
+    ("afk-how-to-give", "How to give", ["afk-give-online", "afk-give-school-cash", "afk-give-phone"]),
     ("afk-school-programs", "School Programs", ["afk-gallery-programs", "afk-artists-in-residence", "afk-studio-art-academy"]),
     ("afk-learning-resources", "Learning & Teaching Resources",
      ["afk-learning-guides", "afk-learning-kits", "afk-artreach-videos", "afk-professional-development"]),
@@ -495,7 +537,8 @@ GROUPS = [
 ]
 # Existing groups that gain a card: (handle, card added at the end).
 GROUPS_EXTENDED = [("public-programs", "programs-afk-classes-and-camps"), ("donate-ways-to-give", "donate-artists-for-kids")]
-AFK_PAGE_GROUPS = ["afk-this-season", "afk-community-programs", "afk-school-programs", "afk-learning-resources"]
+AFK_PAGE_GROUPS = ["afk-this-season", "afk-community-programs", "afk-school-programs", "afk-learning-resources",
+                   "afk-awards-and-support"]
 
 
 def card_entries():
@@ -550,19 +593,19 @@ def event_entries(pages_made):
             "2026-10-19T17:00:00-07:00", pd, CLAY_SUMMARY, studios, "event-clay-kit", CLAY_WORKSHOP_FORM)),
         ("pd-printmaking-transfer-assemblage-2026-10-23", event("Printmaking, Transfer, and Assemblage: A Gallery Workshop",
             "2026-10-23T09:00:00-07:00", "2026-10-23T11:30:00-07:00", pd,
-            "This hands-on workshop introduces \"Collect, Assemble, Gather\", the Gordon Smith Gallery’s Fall 2026 exhibition. Participants will use linocut printmaking, rubbing, and image transfer to create an assembled artwork exploring memory, consumer culture, resources, and sustainability, with Social Studies connections.\n\nLed by Raph Choi",
+            "This hands-on workshop introduces “Collect, Assemble, Gather”, the Gordon Smith Gallery’s Fall 2026 exhibition. Participants will use linocut printmaking, rubbing, and image transfer to create an assembled artwork exploring memory, consumer culture, resources, and sustainability, with Social Studies connections.\n\nLed by Raph Choi",
             tickets=PROD_OCT23_FORM, exhibition="collect-assemble-gather")),
         ("pd-print-repeat-collect-2026-10-23", event("Print, Repeat, Collect: A Block Printmaking Workshop",
             "2026-10-23T12:30:00-07:00", "2026-10-23T15:00:00-07:00", pd,
             "Join artist Marlene Yuen for a hands-on block-printing workshop inspired by her artwork Pockets of Time, on exhibit at the Gordon Smith Gallery. You will learn about Marlene’s block-printing process and explore how repetition and collections can be used to tell visual stories. You will learn the fundamentals of transferring an image to linoleum, carving a printing block, and producing a unique print inspired by a meaningful collection.\n\nLed by artist Marlene Yuen",
             tickets=PROD_OCT23_FORM, exhibition="collect-assemble-gather")),
-        ("pd-hands-on-collect-assemble-gather-2027-02-12", event("Hands-On Pro-D Art Workshop \"Collect, Assemble, Gather\"",
+        ("pd-hands-on-collect-assemble-gather-2027-02-12", event("Hands-On Pro-D Art Workshop “Collect, Assemble, Gather”",
             "2027-02-12T09:00:00-08:00", "2027-02-12T15:00:00-08:00", pd,
-            "With art specialist teachers and artists exhibited in Collect, Assemble, Gather.\n\nFor Elementary and Secondary Teachers\n\n**More Information to come September 2026**",
+            "With art specialist teachers and artists exhibited in Collect, Assemble, Gather.\n\nFor Elementary and Secondary Teachers\n\nMore Information to come September 2026",
             exhibition="collect-assemble-gather")),
-        ("pd-hands-on-against-the-latitude-2027-04-26", event("Hands-On Pro-D Art Workshop \"Against the Latitude of 'Progress'\"",
+        ("pd-hands-on-against-the-latitude-2027-04-26", event("Hands-On Pro-D Art Workshop “Against the Latitude of ‘Progress’”",
             "2027-04-26T09:00:00-07:00", "2027-04-26T15:00:00-07:00", pd,
-            "With art specialist teacher and artists exhibited in Against the Latitude of “Progress” at the Gordon Smith Gallery of Canadian Art.\n\n**More information to come January 2027**",
+            "With art specialist teacher and artists exhibited in Against the Latitude of “Progress” at the Gordon Smith Gallery of Canadian Art.\n\nMore information to come January 2027",
             exhibition="against-the-latitude-of-progress")),
         # The curator's tour is already an event (from On Now): it gains Professional development as its page, and
         # stays on the home page, named by its exhibition there (DS-71).
@@ -689,6 +732,8 @@ def page_fields():
             rows.append((owner, "hero_caption", "single_line_text_field", p["caption"]))
         if p.get("eyebrow"):
             rows.append((owner, "eyebrow", "single_line_text_field", p["eyebrow"]))
+        if p.get("intro"):
+            rows.append((owner, "intro", "multi_line_text_field", p["intro"]))
         if p.get("cta"):
             rows.append((owner, "cta", "link", link(*p["cta"])))
         if p.get("groups"):

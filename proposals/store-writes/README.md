@@ -595,3 +595,24 @@ Text is the old site's, moved as written; what changed and why is in `artists-fo
 **Effect on the live site:** 18 new addresses that show a page title and nothing else, hidden from search engines, the sitemap and the store's search, linked from nowhere on the live site (P-35). Nothing else the live theme renders changed.
 
 **Undo:** hide or delete the 18 pages; set the Artists for Kids page's card groups, button and staged text back from the snapshot; restore the six programme cards' links and the two extended groups' card lists from the snapshot; delete the 40 new cards, 15 groups, 27 lessons and 6 events, and clear the tour's programme page; `menuUpdate` the review menu with Artists for Kids as a plain link; delete the files in `created/afk-files.json`; delete the `keep_off_home` field and the `lesson` definition.
+
+## 2026-09-27: Artists for Kids after the design review (DS-73 to DS-83)
+
+**Why:** Michael, 2026-09-27: "Spawn an agent per new page to review the design ... to ensure each page is as great as it can be while sticking to our design system." The review's content changes (`artists-for-kids/content.py` docstring, "After the design review"); the theme changes and Proposed rules are in `design-system/DESIGN.md` 0.6.28.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 and the review theme 184767250729, neither touched. Before-snapshot: everything this round writes was made earlier the same day, from `content.py` and `files.py` at commit `aea9961`, whose values are the before-state; the Artists for Kids page's own previous values are in `snapshots/afk-2026-09-27-before.json`. No file, card or group the live theme shows was changed.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| 10 pictures replaced in place (the program guide's and Mini Monster's covers rendered from their PDFs, the Paradise Valley collage without its white border, the black bars cut from seven lesson covers); the 27 lesson covers' alt text cleared, since each cover's title follows it | CLI (`files.py revise`) | Same IDs, `created/afk-files.json` |
+| 6 new cards (Explore + Create Saturdays for families; Awards and scholarships and Support Artists for Kids as text cards; the three ways to give) and text on the community programme cards; 4 new groups (`afk-more-classes-and-camps`, `afk-awards-and-support`, `afk-air-sara-jeanne-bourget-guides`, `afk-how-to-give`); `afk-also-for-families` holds the new Explore + Create card | CLI (`load.py cards`) | `created/afk-cards.json`, `afk-card-groups.json`; 52 cards and 19 groups upserted by handle, the two extended groups unchanged |
+| The 6 educators' workshops: typographic quotes in two titles, "**" markers dropped | CLI (`load.py events`) | `created/afk-events.json` |
+| Page fields on the 18 pages and the Artists for Kids page: intros (Studio Art Academy, Paradise Valley, Awards), buttons ("Register for classes", "Register for camps", "Register for camp"), card groups (Day camps, Sara-Jeanne Bourget, Support, Artists for Kids), staged text (phone links, lists, standalone links, figures moved, the team's names as the photo's caption) | Connector | 62 values in three `metafieldsSet` calls |
+
+Support Artists for Kids now goes to the standard page template at release (`release.py`, `AFK_STANDARD`), so its ways to give follow all its text, as on Donate.
+
+**Checked after:** the 20 pages on the development theme at 1440, 768 and 390; Paradise Valley, the home page, Donate, The Smith Foundation, Plan your visit, Volunteer, Gordon and Marion and an exhibition page at the same widths.
+
+**Effect on the live site:** none. The 18 pages still show their title only; the Artists for Kids page's staged text and fields aren't read by the live theme.
+
+**Undo:** rebuild the earlier copies from the old site with `files.py prepare` and put them back with `files.py replace` (same IDs), and set the covers' alt text from `cover_alt` at `aea9961`; delete the 6 new cards and 4 new groups; run `load.py cards`, `load.py events` and the page-field batches from `content.py` at `aea9961`.

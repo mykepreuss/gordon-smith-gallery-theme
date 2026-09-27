@@ -18,6 +18,12 @@
   @param {object} card - A card entry
   @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
   @param {boolean} [portrait] - A card in a group of portraits (people): 4:5 image, compact title
+  @param {boolean} [compact] - A card in a shelf of documents: compact title (DS-75)
+  @param {string} [sizes] - The picture's sizes when the group's layout isn't three across (four
+    across, the wide first cards, a shelf, a row), so the browser fetches the right width
+
+  The picture has no alt text of its own unless Files gives it one: the card's title follows it,
+  so repeating the title would say it twice (as heroes, DS-58).
 
   @example
   {%- render 'gs-card', card: card -%}
@@ -84,21 +90,21 @@
     </div>
   </article>
 {%- else -%}
-  <article class="gs-card{% if image == blank %} gs-card--text{% endif %}{% if portrait %} gs-card--compact{% endif %}">
+  <article class="gs-card{% if image == blank %} gs-card--text{% endif %}{% if portrait or compact %} gs-card--compact{% endif %}">
     {%- if image != blank -%}
       {%- if portrait -%}
-        {%- render 'gs-media', image: image, preset: 'tile', mode: 'photo', ratio: '4 / 5', alt: card.title.value -%}
+        {%- render 'gs-media', image: image, preset: 'tile', mode: 'photo', ratio: 'var(--gs-ratio-portrait)', sizes: sizes -%}
       {%- elsif is_pdf -%}
-        {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', ratio: 'var(--gs-ratio-card)', alt: card.title.value -%}
+        {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', ratio: 'var(--gs-ratio-card)', sizes: sizes -%}
       {%- else -%}
-        {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: card.title.value -%}
+        {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', sizes: sizes -%}
       {%- endif -%}
     {%- endif -%}
     <{{ tag }} class="gs-card__title">
       {%- if stretch -%}
         {%- render 'gs-link', link: link, label: card.title.value -%}
       {%- else -%}
-        {{- card.title.value | escape -}}
+        {{- card.title.value | escape | replace: ' - ', '&nbsp;- ' | replace: ' | ', '&nbsp;| ' -}}
       {%- endif -%}
     </{{ tag }}>
     {%- if card.text.value != blank -%}

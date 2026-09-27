@@ -59,7 +59,7 @@
     <summary class="gs-header__menu-toggle">{{ 'header.menu' | t }}</summary>
     <div class="gs-drawer__panel">
       <nav aria-label="{{ 'header.main_nav' | t }}">
-        {%- render 'gs-nav', menu: menu, variant: 'drawer' -%}
+        {%- render 'gs-nav', menu: menu, variant: 'drawer', brand: brand -%}
       </nav>
       {{ utility }}
     </div>
@@ -68,7 +68,7 @@
   <div class="gs-header__bar">
     {{ utility }}
     <nav aria-label="{{ 'header.main_nav' | t }}">
-      {%- render 'gs-nav', menu: menu, variant: 'bar' -%}
+      {%- render 'gs-nav', menu: menu, variant: 'bar', brand: brand -%}
     </nav>
   </div>
 </header>

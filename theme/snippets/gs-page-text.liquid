@@ -7,6 +7,11 @@
   - A heading at the very start that only repeats the page title isn't shown: the hero or page
     header already says it (DS-41).
   - An embedded video's width and height set its shape (DS-53).
+  - A link to another site gets the external cue, as menus and cards do (§6.1): the arrow and
+    "(external site)" for screen readers. A store address typed in full becomes relative.
+  - A picture from Shopify's CDN gets a srcset, so a phone fetches a small file; its width and
+    height become --gs-img-ratio, so a photo can stop at --gs-figure-max-h without the page
+    jumping as it loads (DS-77, Proposed).
   - A template can show the text in two parts (DS-51): the opening, up to the first H2, and the
     sections from the first H2 on. The programme template puts the programmes between them.
 
@@ -75,6 +80,102 @@
         assign fixed = piece | replace_first: tag, new_tag
       endif
       assign out = out | append: '<iframe' | append: fixed
+    endfor
+    assign body = out
+  endif
+
+  # Links to other sites get the external cue (§6.1); store addresses typed in full become relative.
+  if body contains 'href="http'
+    assign ext_label = 'general.external_site' | t
+    assign marked = '|' | append: body
+    assign pieces = marked | split: '<a '
+    assign out = pieces.first | remove_first: '|'
+    for piece in pieces offset: 1
+      assign fixed = piece
+      assign tag = piece | split: '>' | first
+      if tag contains 'href="http'
+        unless tag contains 'gs-link--external'
+          assign href = tag | split: 'href="' | last | split: '"' | first
+          capture r
+            render 'gs-url', url: href
+          endcapture
+          assign r = r | strip | split: '|'
+          if r[1] == '1'
+            if tag contains 'class="'
+              assign new_tag = tag | replace_first: 'class="', 'class="gs-link--external '
+            else
+              assign new_tag = tag | append: ' class="gs-link--external"'
+            endif
+            assign fixed = piece | replace_first: tag, new_tag
+            assign hidden = '<span class="gs-visually-hidden"> ' | append: ext_label | append: '</span></a>'
+            assign fixed = fixed | replace_first: '</a>', hidden
+          else
+            assign old_href = 'href="' | append: href | append: '"'
+            assign new_href = 'href="' | append: r[0] | append: '"'
+            assign new_tag = tag | replace_first: old_href, new_href
+            assign fixed = piece | replace_first: tag, new_tag
+          endif
+        endunless
+      endif
+      assign out = out | append: '<a ' | append: fixed
+    endfor
+    assign body = out
+  endif
+
+  # Pictures: a srcset for pictures on Shopify's CDN, and their shape as --gs-img-ratio (DS-77).
+  if body contains '<img'
+    assign marked = '|' | append: body
+    assign pieces = marked | split: '<img'
+    assign out = pieces.first | remove_first: '|'
+    for piece in pieces offset: 1
+      assign fixed = piece
+      assign tag = piece | split: '>' | first
+      assign closing = ''
+      assign new_tag = tag
+      assign last_char = tag | slice: -1
+      if last_char == '/'
+        assign closing = ' /'
+        assign new_tag = tag | slice: 0, tag.size | remove_last: '/' | rstrip
+      endif
+      assign w = 0
+      assign h = 0
+      if tag contains ' width="' and tag contains ' height="'
+        assign w = tag | split: ' width="' | last | split: '"' | first | plus: 0
+        assign h = tag | split: ' height="' | last | split: '"' | first | plus: 0
+      endif
+      if w > 0 and h > 0
+        unless tag contains 'style="'
+          assign new_tag = new_tag | append: ' style="--gs-img-ratio: ' | append: w | append: ' / ' | append: h | append: ';"'
+        endunless
+      endif
+      if w > 0 and tag contains 'cdn.shopify.com'
+        unless tag contains 'srcset="'
+          assign src = tag | split: 'src="' | last | split: '"' | first
+          assign base = src | split: '&amp;width=' | first | split: '&width=' | first
+          assign join = '?'
+          if base contains '?'
+            assign join = '&amp;'
+          endif
+          assign srcset = ''
+          assign steps = '480,720,960,1440' | split: ','
+          for step in steps
+            assign sw = step | plus: 0
+            if sw <= w
+              assign srcset = srcset | append: base | append: join | append: 'width=' | append: sw | append: ' ' | append: sw | append: 'w, '
+            endif
+          endfor
+          if w < 1440
+            assign srcset = srcset | append: base | append: join | append: 'width=' | append: w | append: ' ' | append: w | append: 'w, '
+          endif
+          assign srcset = srcset | remove_last: ', '
+          if srcset != blank
+            assign new_tag = new_tag | append: ' srcset="' | append: srcset | append: '" sizes="(min-width: 1200px) 576px, (min-width: 990px) 47vw, calc(100vw - 2rem)"'
+          endif
+        endunless
+      endif
+      assign new_tag = new_tag | append: closing
+      assign fixed = piece | replace_first: tag, new_tag
+      assign out = out | append: '<img' | append: fixed
     endfor
     assign body = out
   endif

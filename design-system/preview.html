@@ -779,15 +779,23 @@
     </section>
     <section class="gs-card-group" aria-labelledby="afk-resources-title">
       <div class="gs-section-head"><h2 class="gs-h2" id="afk-resources-title">Learning &amp; Teaching Resources</h2></div>
-      <ul class="gs-grid gs-grid--cards gs-grid--fours" id="afk-cards"></ul>
+      <ul class="gs-grid gs-grid--cards gs-grid--fours gs-grid--links" id="afk-cards"></ul>
     </section>
     <section class="gs-card-group" aria-labelledby="afk-guides-title">
       <div class="gs-section-head"><h2 class="gs-h2" id="afk-guides-title">Learning Guides Created by Artists with Artists For Kids</h2></div>
-      <ul class="gs-grid gs-grid--cards" id="afk-guides"></ul>
+      <ul class="gs-grid gs-grid--docs" id="afk-guides"></ul>
     </section>
     <section class="gs-card-group" aria-labelledby="afk-lessons-title">
       <div class="gs-section-head"><h2 class="gs-h2" id="afk-lessons-title">ArtReach videos</h2></div>
       <ul class="gs-grid gs-grid--cards" id="afk-lessons"></ul>
+    </section>
+    <section class="gs-card-group" aria-labelledby="afk-kits-title">
+      <div class="gs-section-head"><h2 class="gs-h2" id="afk-kits-title">Learning Kits</h2></div>
+      <ul class="gs-grid gs-grid--cards gs-grid--rows" id="afk-kits"></ul>
+    </section>
+    <section class="gs-card-group" aria-labelledby="afk-single-title">
+      <div class="gs-section-head"><h2 class="gs-h2" id="afk-single-title">Also for families</h2></div>
+      <ul class="gs-grid gs-grid--cards gs-grid--single" id="afk-single"></ul>
     </section>
     <section class="gs-card-group">
       <ul class="gs-grid gs-grid--logos">
@@ -814,7 +822,7 @@
         </article></li>
       </ul>
     </section>
-    <p class="pv-note">Card groups, shown after a page&rsquo;s text. Staff don&rsquo;t choose a layout: a card with an image is an image card, one without is a text card under a rule. Ways To Give is the Donate page&rsquo;s group, word for word; its cards have no images or links. A group of four or eight goes two, then four, across, so no card sits alone (DS-44); a group of five starts with two wider cards, and an odd count at two across starts with one wide card (DS-52). The second group is one of the Artists for Kids page's programme groups, since its site moved onto this one (P-30): each card links to the programme's own page here, and with no link label of its own the whole card is the link. The third is a group of document cards (DS-69): each links to a PDF, so its cover shows whole on the mat at the card's 4:3, level with any photo card beside it, and its title says so. The fourth is lesson cards (DS-70): the cover at the video's shape and the suggested grade levels, each opening the lesson's page. The last is About Us (DS-50): each card has a Logo field, so its organisation&rsquo;s logo is the heading, in its colours, and a group of them sets each logo beside its text. Images are placeholders.</p>
+    <p class="pv-note">Card groups, shown after a page&rsquo;s text. Staff don&rsquo;t choose a layout: a card with an image is an image card, one without is a text card under a rule. Ways To Give is the Donate page&rsquo;s group, word for word; its cards have no images or links. A group of four or eight goes two, then four, across, so no card sits alone (DS-44); a group of five starts with two wider cards, and an odd count at two across starts with one wide card (DS-52). The second group is one of the Artists for Kids page's programme groups, since its site moved onto this one (P-30): each card links to the programme's own page here, and with no link label of its own the whole card is the link. On a phone its cards, only a picture and a title each, are rows, the picture beside the title (DS-73, Proposed). The third is a group of document cards (DS-69): each links to a PDF, so its cover shows whole on the mat at the card's 4:3, and its title says so; a group of only documents is a shelf, two, then three across, every cover the same size, compact titles (DS-75, Proposed). The fourth is lesson cards (DS-70): the cover at the video's shape and the suggested grade levels, each opening the lesson's page. Learning Kits' cards each carry their own action, so they are offers, one per row, the picture beside the text from 750 px (DS-76, Proposed). A card alone in its group takes the spare room, its title level with the middle of its picture (DS-74, Proposed). The last is About Us (DS-50): each card has a Logo field, so its organisation&rsquo;s logo is the heading, in its colours, and a group of them sets each logo beside its text. Images are placeholders.</p>
   </div>
 </div>
 
@@ -1526,7 +1534,7 @@
     </article></li>`).join("");
   const guides = [["Lessons from Art Camp Sara-Jeanne Bourget 2025", 1380, 1790], ["Charcoal Stencil Prints Inspired by Sara-Jeanne Bourget", 1530, 1920], ["A Mail Art Collaboration - Lesson by Clare Yow", 442, 312]];
   document.getElementById("afk-guides").innerHTML = guides.map(([t, w, h]) => `
-    <li><article class="gs-card">
+    <li><article class="gs-card gs-card--compact">
       <div class="gs-media gs-media--artwork gs-shape-md" style="--gs-media-ratio: var(--gs-ratio-card)"><img src="${svg(w, h, `<rect width='${w}' height='${h}' fill='#ffffff'/><rect x='${w * 0.1}' y='${h * 0.1}' width='${w * 0.8}' height='${h * 0.35}' fill='#d9d4c8'/>`)}" alt=""></div>
       <h3 class="gs-card__title"><a href="#/cdn/shop/files/guide.pdf">${t} (PDF)</a></h3>
     </article></li>`).join("");
@@ -1537,6 +1545,19 @@
       <h3 class="gs-card__title"><a href="#/pages/lessons/">${t}</a></h3>
       <p class="gs-meta">${g}</p>
     </article></li>`).join("");
+  const kits = [["Clay Kit", "Explore clay with your class: tools, clay and a lesson plan for grades K to 7."], ["Printmaking Kit", "Everything a class needs to make monoprints, with a lesson plan."]];
+  document.getElementById("afk-kits").innerHTML = kits.map(([t, x], i) => `
+    <li><article class="gs-card">
+      <div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...tones[i % 3])}" alt=""></div>
+      <h3 class="gs-card__title">${t}</h3>
+      <p class="gs-card__text">${x}</p>
+      <a class="gs-cta-link" href="#/pages/learning-kits">Reserve a ${t.toLowerCase()}</a>
+    </article></li>`).join("");
+  document.getElementById("afk-single").innerHTML = `
+    <li><article class="gs-card">
+      <div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...tones[2])}" alt=""></div>
+      <h3 class="gs-card__title"><a href="#/pages/explore-create">Explore + Create Saturdays</a></h3>
+    </article></li>`;
 
   // Upcoming events (live store programme pages): title, start, the time as gs-time-range writes it,
   // place (blank means the gallery), summary, image tones, and whether to show a ticket link.

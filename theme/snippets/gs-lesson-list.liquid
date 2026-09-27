@@ -15,12 +15,15 @@
       render 'gs-lesson-index'
     endcapture
     assign ids = ids | strip | split: ','
+    capture mods
+      render 'gs-grid-modifiers', count: ids.size
+    endcapture
   -%}
   {%- if ids.size > 0 -%}
-    <section class="gs-section gs-surface-paper" aria-labelledby="{{ id }}-heading">
+    <section class="gs-section gs-surface-paper{% if page.metafields.custom.card_groups.value == blank %} gs-section--continues{% endif %}" aria-labelledby="{{ id }}-heading">
       <div class="gs-container">
         <h2 class="gs-visually-hidden" id="{{ id }}-heading">{{ 'lessons.heading' | t }}</h2>
-        <ul class="gs-grid gs-grid--cards">
+        <ul class="gs-grid gs-grid--cards{{ mods | strip_newlines }}">
           {%- for pos in ids -%}
             {%- assign n = pos | plus: 0 -%}
             {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}

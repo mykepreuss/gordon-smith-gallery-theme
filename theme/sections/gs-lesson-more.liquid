@@ -1,12 +1,45 @@
 {%- comment -%}
-  More lessons, at the end of a lesson's page (DESIGN.md §7.5, DS-70): the three newest other
-  lessons as lesson cards, and a link to all of them on the ArtReach videos page.
+  More lessons, at the end of a lesson's page (DESIGN.md §7.5, DS-70): the next three lessons after
+  this one in the list's order (newest first), wrapping round to the newest, as lesson cards, and a
+  link to all of them on the ArtReach videos page. So each lesson leads somewhere different.
 {%- endcomment -%}
 {%- liquid
-  capture ids
-    render 'gs-lesson-index', exclude: metaobject.system.handle, limit: 3
+  capture order
+    render 'gs-lesson-index'
   endcapture
-  assign ids = ids | strip | split: ','
+  assign order = order | strip | split: ','
+  assign here = ''
+  for lesson in shop.metaobjects.lesson.values
+    if lesson.system.handle == metaobject.system.handle
+      assign here = forloop.index0 | append: ''
+      break
+    endif
+  endfor
+  assign at = 0
+  for pos in order
+    if pos == here
+      assign at = forloop.index0
+      break
+    endif
+  endfor
+  assign picked = ''
+  assign taken = 0
+  if order.size > 1
+    for step in (1..4)
+      assign k = at | plus: step | modulo: order.size
+      assign candidate = order[k]
+      if candidate != here and taken < 3
+        unless picked contains candidate
+          assign picked = picked | append: candidate | append: ','
+          assign taken = taken | plus: 1
+        endunless
+      endif
+    endfor
+  endif
+  assign ids = picked | split: ','
+  capture mods
+    render 'gs-grid-modifiers', count: ids.size
+  endcapture
 -%}
 {%- if ids.size > 0 -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
@@ -17,7 +50,7 @@
           <a class="gs-cta-link gs-cta-link--more" href="{{ settings.lessons_page.url }}">{{ 'lessons.all' | t }}</a>
         {%- endif -%}
       </div>
-      <ul class="gs-grid gs-grid--cards">
+      <ul class="gs-grid gs-grid--cards{{ mods | strip_newlines }}">
         {%- for id in ids -%}
           {%- assign n = id | plus: 0 -%}
           {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}

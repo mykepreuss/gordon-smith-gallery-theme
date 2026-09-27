@@ -1,6 +1,6 @@
 # Artists for Kids on gordonsmithgallery.com
 
-Status: **Built, 2026-09-27; in review.** Michael approved every recommendation under "Decisions for Michael" (P-30 to P-40 in `DECISIONS.md`), and the team answered the first two questions: they can take down or cut back the old site's pages (T1), and they share one Shopify login (T2). Everything below is in the store and the theme, on the branch's pull request; the design choices it needed are DS-69 to DS-71, Proposed. What the build changed from this plan is under "Build notes"; what's left is under "Still open".
+Status: **Built, 2026-09-27; in review.** Michael approved every recommendation under "Decisions for Michael" (P-30 to P-40 in `DECISIONS.md`), and the team answered the first two questions: they can take down or cut back the old site's pages (T1), and they share one Shopify login (T2). Everything below is in the store and the theme, on the branch's pull request; the design choices it needed are DS-69 to DS-71, Proposed. A design review of the 20 pages followed (one reviewer a page, each finding checked by a second): its fixes are built, with DS-73 to DS-83 Proposed (DESIGN.md 0.6.28). What the build and the review changed from this plan is under "Build notes"; what's left is under "Still open".
 
 Michael, 2026-09-27: the Artists for Kids site (artistsforkids.sd44.ca) should become part of gordonsmithgallery.com. "The parts we do not want to transfer is anything related to registration, everything else we believe we can integrate."
 
@@ -315,13 +315,19 @@ What the build changed from the plan above, and why. Each is small; none changes
 | New pages show "a bare title" on the live site | They carry the live theme's On Now template name until release | The live theme's default page template carries the About page's content, so a page it didn't know showed About's text under the new title (found on the test page, L-09). The On Now template shows the title only. The release script renames them |
 | A lesson list section on the programme template | The page text section lists the lessons on the page chosen as ArtReach videos page | As the visit details on Plan your visit (DS-61), so the list shows before release too, when the page has its bridge template name. One section fewer |
 | Residency cards titled "Spring 2027 \| Becky Bair", as the old site | "Becky Bair, Spring 2027" | The bar wrapped to the start of a line; the name first reads better beside the poster |
-| Registration buttons "This term's classes and registration" | "Classes and registration", "Camp dates and registration", "This year's camp and registration", "Register a Grade 5 class" | Shorter, and each says what's behind it. The gallery confirms the labels (`gallery-questions.md` 6.14) |
+| Registration buttons "This term's classes and registration" | "Register for classes", "Register for camps", "Register for camp", "Register a Grade 5 class" | Verb first, one to three words (§6.2), after the design review. The gallery confirms the labels (`gallery-questions.md` 6.14) |
 | Classes and camps holds only Artists for Kids' programmes | A second group, "Also for families", holds Explore + Create | Explore + Create is the Foundation's; it can't sit under Artists for Kids' Community Programs heading |
 | Donate links to Support Artists for Kids | A fourth card in Donate's "How to give" | The page's other ways to give are cards; the new one uses the old site's own sentence about Artists for Kids |
+| Support Artists for Kids on the programme template | The standard page template, with a "How to give" group (CanadaHelps, School Cash Online, phone) after its text | As Donate: the ways to give end the page. On the programme template the group would have split the giving text from the thanks to donors |
+| Day camps and the About page link on to other programmes through the menu | Day camps ends with "More classes and camps"; About Artists for Kids gets "Awards and support"; Sara-Jeanne Bourget's page shows her two learning guides | Each page ends with somewhere to go next (design review) |
+| Notes typed as separate lines ("5 days, 4 nights, inclusive", "not offered this year", "Applications have closed") | The page's intro, under the title | They're what a visitor needs first; the intro is the page field for it |
+| Registration and the annual report as plain links in the text | Standalone links (DS-82) | A section's one action, at a touch target's size |
 
 ## Still open
 
 - The gallery's and the team's answers: `proposals/gallery-questions.md` §6 (text corrections for Gallery Program, two missing PDFs, names, "AFK" in body text, the lessons' works, the new labels, and T3 to T6).
-- Michael's review of DS-69 to DS-71 on the review theme once the pull request merges.
+- Michael's review of DS-69 to DS-71 and DS-73 to DS-83 on the review theme once the pull request merges, and his choice on the rules the design review proposed but didn't build: DS-72 (a 58ch measure), DS-79 (pictures stay in the reading order on phones), DS-81 (the rule-colour hover fill), DS-70a (three lesson options), and Q12 (the Foundation logo and the navigation from 1200 to 1400 px).
+- Held from the design review for a later pass across the site: the hero title's measure token, the hero photo's corner below 990 px, and the standalone link's arrow following its last word.
+- Focal points to set by hand in Files: the Paradise Valley camp photo `pvssa_25` at about 50% across, 75% down; the 2026 residency hero at about 30%, 35%.
 - The undated educators' workshops (a curator's tour of *Against the Latitude of "Progress"*, four printmaking kit introductions, portfolio building): events once they have dates.
 - At release: templates, staged text, `seo.hidden` off, and the team's cut-back of the old site ("At release").

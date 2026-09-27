@@ -1,8 +1,8 @@
 {%- comment -%}
   A lesson's page (an ArtReach video, DESIGN.md §7.5, DS-70): a link back to the ArtReach videos
-  page, the title, the video, the note that goes with every video (Theme settings), then the
-  lesson in the old site's own words: what we're making, what inspired it, the suggested grade
-  levels and the questions we're wondering about. Empty fields show nothing. The works that
+  page, the title, the video, then the lesson in the old site's own words: what we're making, what inspired it, the suggested grade
+  levels and the questions we're wondering about, then the note that goes with every video (Theme
+  settings). Empty fields show nothing. The works that
   inspired it follow, from the collection (gs-work-grid), then more lessons (gs-lesson-more).
 {%- endcomment -%}
 {%- liquid
@@ -22,9 +22,6 @@
   <div class="gs-container gs-lesson">
     <div class="gs-lesson__video">
       {%- render 'gs-video', url: metaobject.video.value, title: title -%}
-      {%- if settings.lessons_note != blank -%}
-        <p class="gs-meta gs-lesson__note">{{ settings.lessons_note | escape | newline_to_br }}</p>
-      {%- endif -%}
     </div>
     <dl class="gs-details gs-lesson__details">
       {%- if metaobject.making.value != blank -%}
@@ -58,6 +55,9 @@
         </div>
       {%- endif -%}
     </dl>
+    {%- if settings.lessons_note != blank -%}
+      <p class="gs-meta gs-lesson__note">{{ settings.lessons_note | escape | newline_to_br }}</p>
+    {%- endif -%}
   </div>
 </section>
 

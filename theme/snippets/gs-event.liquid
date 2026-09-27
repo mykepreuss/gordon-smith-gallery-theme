@@ -32,7 +32,7 @@
 -%}
 <li class="gs-event{% if has_media %} gs-event--media{% endif %}">
   {%- if has_media -%}
-    {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: event.title.value -%}
+    {%- render 'gs-media', image: image, preset: 'card', mode: 'photo' -%}
   {%- endif -%}
   <div class="gs-event__text">
     {%- if date_led -%}
@@ -49,11 +49,26 @@
         </time>
       </p>
     {%- endif -%}
+    {%- comment -%} The exhibition it belongs to, linked when the exhibition has a page (DS-71); not on the exhibition's own page (compact). {%- endcomment -%}
+    {%- assign exhibition = event.exhibition.value -%}
+    {%- if compact != true and exhibition != blank -%}
+      <p class="gs-meta">
+        {%- if exhibition.summary.value != blank -%}
+          <a href="{{ exhibition.system.url }}">{{ exhibition.title.value | escape }}</a>
+        {%- else -%}
+          {{- exhibition.title.value | escape -}}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
     {%- if event.location.value != blank -%}
       <p class="gs-meta">{{ event.location.value | escape }}</p>
     {%- endif -%}
+    {%- comment -%} A blank line in the summary starts a new paragraph; a single line break stays a break (Part 1 / Part 2). {%- endcomment -%}
     {%- if compact != true and event.summary.value != blank -%}
-      <p>{{ event.summary.value | escape | newline_to_br }}</p>
+      {%- assign paras = event.summary.value | escape | newline_to_br | strip_newlines | split: '<br /><br />' -%}
+      <div class="gs-event__summary">
+        {%- for para in paras -%}<p>{{ para }}</p>{%- endfor -%}
+      </div>
     {%- endif -%}
     {%- if event.tickets.value.url != blank -%}
       {%- liquid

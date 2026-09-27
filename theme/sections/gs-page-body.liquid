@@ -9,7 +9,10 @@
   text and the sections part shows nothing, so the default template can carry both parts and still
   lay programme pages out right before their templates are reassigned (gs-is-programme-page, L-08).
   Text with a figure sets each picture beside its paragraphs (gs-text-media). On the page chosen as
-  Plan your visit page in Theme settings, the visit details come first (gs-visit-info, DS-61). On
+  Plan your visit page in Theme settings, the visit details come first (gs-visit-info, DS-61).
+  A programme page with nothing between its parts (no card groups or lessons) shows its text as one
+  part. A long page (text with H2s) whose button leaves the site, with no card groups, shows its
+  button again after its text, so the way to act is at the end too (DS-83, Proposed). On
   the page chosen as ArtReach videos page, the lessons follow the opening and the cards
   (gs-lesson-list, DS-70): the second part lists them before its text, whatever template the page
   has, so the list shows before release too, when the page still has its old template name.
@@ -24,7 +27,15 @@
     capture programme_page
       render 'gs-is-programme-page'
     endcapture
-    unless programme_page contains 'true'
+    # A programme page splits its text only when something sits between the parts (card groups,
+    # the lessons); otherwise its text reads as one part, its H2s at the page-text size (DS-40).
+    assign split = false
+    if programme_page contains 'true'
+      if page.metafields.custom.card_groups.value != blank or lessons_here
+        assign split = true
+      endif
+    endif
+    unless split
       if part == 'opening'
         assign part = 'all'
       else
@@ -55,6 +66,23 @@
         {%- render 'gs-text-media', text: text -%}
       {%- else -%}
         <div class="gs-prose">{{ text }}</div>
+      {%- endif -%}
+      {%- liquid
+        assign repeat_cta = false
+        assign cta = page.metafields.custom.cta.value
+        if part == 'all' and cta.url != blank and text contains '<h2' and page.metafields.custom.card_groups.value == blank
+          capture cr
+            render 'gs-url', link: cta
+          endcapture
+          assign cr = cr | strip | split: '|'
+          assign cta_end = cr[0] | split: '?' | first | downcase | slice: -4, 4
+          if cr[1] == '1' and cta_end != '.pdf'
+            assign repeat_cta = true
+          endif
+        endif
+      -%}
+      {%- if repeat_cta -%}
+        <div class="gs-actions gs-page-body__actions">{%- render 'gs-link', link: cta, class: 'gs-button' -%}</div>
       {%- endif -%}
     </div>
   </div>

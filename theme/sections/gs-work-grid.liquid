@@ -43,7 +43,9 @@
               <h2 class="gs-h2" id="{{ section.id }}-heading">
                 {%- if type == 'artist' %}{{ 'collection.works_heading' | t }}{% else %}{{ 'collection.exhibition_works' | t }}{% endif -%}
               </h2>
-              <p class="gs-meta">{{ 'collection.works_count' | t: count: paginate.items }}</p>
+              {%- unless type == 'lesson' -%}
+                <p class="gs-meta">{{ 'collection.works_count' | t: count: paginate.items }}</p>
+              {%- endunless -%}
             {%- else -%}
               <h2 class="gs-h3" id="{{ section.id }}-heading">{{ 'collection.works_count' | t: count: paginate.items }}</h2>
             {%- endif -%}

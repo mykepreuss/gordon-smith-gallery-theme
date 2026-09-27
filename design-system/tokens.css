@@ -142,6 +142,7 @@
   --gs-width-prose: 45rem;    /* 720: long-form text column */
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
   --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px */
+  --gs-nav-gap: clamp(1.25rem, 4.6vw - 2.2rem, 2.25rem); /* main nav item gap from 1200 px: 20 at 1200, 31 at 1440, 36 from about 1550, so seven section labels fit on one line at 1200 (§6.1) */
   --gs-header-logo-h-foundation: 4.5rem; /* 72: the Foundation logo's minimum height (§8.3), on phones */
   --gs-org-logo-h: 7rem;           /* 112: a square logo beside its organisation's text (DS-50); the Gallery full stacked minimum (§8.3) */
   --gs-org-logo-h-lg: 9rem;        /* 144 at ≥ 990px */
@@ -166,6 +167,7 @@
   --gs-ratio-hero-md: 4 / 3;   /* 750 to 989 */
   --gs-ratio-hero-lg: 21 / 9;  /* ≥ 990 */
   --gs-hero-max-h: 80svh;
+  --gs-figure-max-h: min(32rem, 80svh); /* a photo in page text stays inside the screen (DS-77, Proposed) */
   --gs-hero-art-max-h: calc(100svh - 16rem); /* artwork hero: header, caption, the gap and a glimpse of what follows stay on the first screen (DS-66) */
   --gs-hero-overlap: clamp(3rem, 1.886rem + 4.571vw, 6rem); /* title box overlaps the image by exactly this: 48 to 96 */
   --gs-ratio-card: 4 / 3;      /* exhibition, program, news cards (photo mode) */
@@ -196,6 +198,7 @@
   --gs-border: 1px;
   --gs-border-strong: 2px;
   --gs-link-thickness: 2px;
+  --gs-link-thickness-hover: 3px; /* hover and press on standalone links, crumbs and card titles: the line thickens, so the cue shows where the line is already the text colour (Artists for Kids and Foundation pages) */
   --gs-link-offset: 0.22em;
   --gs-focus-width: 3px;
   --gs-focus-offset: 3px;

@@ -3,7 +3,8 @@
   link, or a section's link setting (a feature's button). Off-site addresses get the external cue:
   the arrow and "(external site)" for screen readers (DESIGN.md §6.1, §6.2). Store addresses typed
   in full are made relative (gs-url). A link to a PDF says so, "(PDF)", so nobody opens a large
-  file by surprise.
+  file by surprise. A spaced hyphen or bar between two parts of a label, and "(PDF)", stay on the
+  line before, so neither starts a line.
 
   @param {object} [link] - A link field's value (url, text) or a menu link (url, title)
   @param {string} [url] - A section's link setting, which is the address alone. Pass label with it
@@ -34,7 +35,7 @@
   endif
 -%}
 <a{% if classes != blank %} class="{{ classes }}"{% endif %} href="{{ r[0] }}">
-  {{- text | escape -}}
-  {%- if is_pdf %} {{ 'general.pdf' | t }}{% endif -%}
+  {{- text | escape | replace: ' - ', '&nbsp;- ' | replace: ' | ', '&nbsp;| ' -}}
+  {%- if is_pdf %}&nbsp;{{ 'general.pdf' | t }}{% endif -%}
   {%- if r[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
 </a>

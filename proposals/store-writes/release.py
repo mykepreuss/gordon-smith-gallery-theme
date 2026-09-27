@@ -48,9 +48,11 @@ PROGRAMME = {"artists-for-kids", "the-smith-foundation", "public-programs-1", "s
 AFK_PROGRAMME = {"classes-and-camps", "schools-and-teachers", "after-school-art", "day-camps",
                  "paradise-valley-summer-camp", "gallery-program", "artists-in-residence", "studio-art-academy",
                  "learning-guides", "learning-kits", "artreach-videos", "professional-development",
-                 "awards-and-scholarships", "support-artists-for-kids"}
+                 "awards-and-scholarships"}
+# Support Artists for Kids: its ways to give follow all of its text, as on Donate (design review 2026-09-27).
 AFK_STANDARD = {"artist-in-residence-amelia-butcher", "artist-in-residence-mark-johnsen",
-                "artist-in-residence-becky-bair", "artist-in-residence-sara-jeanne-bourget"}
+                "artist-in-residence-becky-bair", "artist-in-residence-sara-jeanne-bourget",
+                "support-artists-for-kids"}
 AFK_NEW = AFK_PROGRAMME | AFK_STANDARD
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
