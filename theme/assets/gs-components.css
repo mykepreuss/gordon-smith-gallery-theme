@@ -405,6 +405,13 @@
 }
 /* The page opens with its hero close under the header. */
 .gs-section--lead { margin-block-start: var(--gs-space-5); }
+/* After a hero the page carries on at the heading gap, not a whole section's (DS-66), so the next
+   heading shows on the first screen and it's plain there is more below. Sections that render
+   nothing between them are skipped, as for the page header below. */
+.gs-section.gs-section--lead { margin-block-end: var(--gs-stack-lg); }
+:where(.shopify-section):has(> .gs-section--lead) + :where(.shopify-section) > .gs-section:not(.gs-surface-tint, .gs-surface-ink, .gs-surface-accent),
+:where(.shopify-section):has(> .gs-section--lead) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section:not(.gs-surface-tint, .gs-surface-ink, .gs-surface-accent),
+:where(.shopify-section):has(> .gs-section--lead) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section:not(.gs-surface-tint, .gs-surface-ink, .gs-surface-accent) { margin-block-start: var(--gs-stack-lg); }
 /* Cards without a heading continue the text before them (DS-58): a group's space, not a section's,
    so the sentence that introduces them reads with them. After anything else (a hero, nothing),
    the margins collapse to the larger one and the usual space stays. */
@@ -753,6 +760,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
    square of empty mat (DS-55). --gs-art-ratio is the image's ratio, set by the hero. */
 .gs-hero--artwork .gs-hero__media {
   --gs-media-ratio: max(0.8, min(1.3333, var(--gs-art-ratio, 1)));
+  max-height: var(--gs-hero-art-max-h);
   border-radius: var(--gs-shape-lg);
 }
 .gs-hero--artwork .gs-hero__box { margin: 0; }
@@ -765,9 +773,13 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-hero--artwork {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     align-items: end;
-    gap: var(--gs-gutter);
+    gap: var(--gs-space-3) var(--gs-gutter);
   }
-  .gs-hero--artwork .gs-hero__box { width: auto; margin: 0; }
+  /* The caption sits under the work in the work's column, and the box spans beside both, so the
+     caption adds no row of its own under the hero (DS-66). */
+  .gs-hero--artwork .gs-hero__media { grid-column: 1; grid-row: 1; }
+  .gs-hero--artwork .gs-hero__caption { grid-column: 1; grid-row: 2; margin-block-start: 0; }
+  .gs-hero--artwork .gs-hero__box { grid-column: 2; grid-row: 1 / span 2; width: auto; margin: 0; }
 }
 
 /* ---------- Cards ---------- */
@@ -1379,6 +1391,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 
 /* Photo credit or artwork caption under a hero. */
 .gs-hero__caption { margin-block-start: var(--gs-space-3); max-width: var(--gs-measure); }
+/* An exhibition's summary in its hero box (DS-66): reading size, so the box stays a title box. */
+.gs-hero__summary { margin: 0; max-width: var(--gs-measure); line-height: var(--gs-leading-body); text-wrap: pretty; }
+.gs-hero__box .gs-crumb a { color: inherit; }
 .gs-hero__caption > * { margin: 0; }
 @media (min-width: 990px) {
   .gs-hero:not(.gs-hero--artwork) .gs-hero__caption { margin-inline-start: max(var(--gs-space-7), (100% - var(--gs-width-content)) / 2); }
@@ -1555,10 +1570,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-about {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "deck" "facts" "body" "credits";
+  grid-template-areas: "facts" "body" "credits";
   gap: var(--gs-space-6) var(--gs-gutter);
 }
-.gs-about__deck { grid-area: deck; max-width: none; }
 .gs-about__facts { grid-area: facts; }
 .gs-about__body { grid-area: body; }
 .gs-about__credits {
@@ -1579,11 +1593,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 990px) {
   .gs-about {
     grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas: "deck facts" "body facts" "credits facts";
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "body facts" "credits facts";
     column-gap: var(--gs-space-8);
   }
-  .gs-about--no-facts { grid-template-areas: "deck ." "body ." "credits ."; }
+  .gs-about--no-facts { grid-template-areas: "body ." "credits ."; }
   .gs-about__facts, .gs-about__credits { align-self: start; }
   .gs-details--stack { grid-template-columns: minmax(0, 1fr); }
 }

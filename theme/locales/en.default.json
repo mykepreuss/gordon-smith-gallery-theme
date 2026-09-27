@@ -68,7 +68,8 @@
     "installation_views": "Installation views",
     "more": "More exhibitions",
     "about": "About the exhibition",
-    "all": "All exhibitions"
+    "all": "All exhibitions",
+    "crumb": "Exhibitions"
   },
   "events": {
     "time_range": "{{ start }} to {{ end }}",

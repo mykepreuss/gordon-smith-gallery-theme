@@ -1,8 +1,9 @@
 {%- comment -%}
-  About the exhibition (DESIGN.md §7.5, content model parts 2 and 5): the summary as the deck,
-  the text, and the credits with funder logos, beside the facts (reception, events, curator,
-  artists; gs-exhibition-facts). On a phone the facts follow the summary, so the reception time
-  and the artists come before the long text. On wide screens they sit in a column beside it.
+  About the exhibition (DESIGN.md §7.5, content model parts 2 and 5): the text, and the credits
+  with funder logos, beside the facts (reception, events, curator, artists; gs-exhibition-facts).
+  The summary is in the hero's box, so it's on the first screen (DS-66). On a phone the facts come
+  first, so the reception time and the artists come before the long text. On wide screens they
+  sit in a column beside it.
 
   The text is a rich text field, so page-builder markup and Word formatting from the old pages
   don't come across (TYPE-03). Funder logos show as supplied, with no box or corner.
@@ -18,13 +19,9 @@
     assign has_credits = true
   endif
 -%}
-{%- if entry.summary.value != blank or entry.body.value != blank or facts != blank or has_credits -%}
+{%- if entry.body.value != blank or facts != blank or has_credits -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container gs-about{% if facts == blank %} gs-about--no-facts{% endif %}">
-      {%- if entry.summary.value != blank -%}
-        <p class="gs-deck gs-about__deck">{{ entry.summary.value | escape | newline_to_br }}</p>
-      {%- endif -%}
-
       {%- if facts != blank -%}
         <aside class="gs-about__facts" aria-label="{{ 'exhibitions.details_label' | t }}">{{ facts }}</aside>
       {%- endif -%}
