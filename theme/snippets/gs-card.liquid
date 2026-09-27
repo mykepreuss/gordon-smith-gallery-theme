@@ -12,7 +12,8 @@
   addresses get the external cue.
 
   A card whose link is a PDF (a learning guide, a lesson plan) is a document: its image, the
-  cover, shows whole on the mat, as a document tile does, and the link says "(PDF)" (DS-69).
+  cover, shows whole on the mat, as a document tile does, and the link says "(PDF)" (DS-69). The
+  mat keeps the card's 4:3, so its title lines up with the photo cards beside it.
 
   @param {object} card - A card entry
   @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
@@ -88,7 +89,7 @@
       {%- if portrait -%}
         {%- render 'gs-media', image: image, preset: 'tile', mode: 'photo', ratio: '4 / 5', alt: card.title.value -%}
       {%- elsif is_pdf -%}
-        {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', alt: card.title.value -%}
+        {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', ratio: 'var(--gs-ratio-card)', alt: card.title.value -%}
       {%- else -%}
         {%- render 'gs-media', image: image, preset: 'card', mode: 'photo', alt: card.title.value -%}
       {%- endif -%}
