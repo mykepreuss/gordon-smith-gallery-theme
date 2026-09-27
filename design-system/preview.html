@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="components.css">
 <script src="js/gs-nav.js" defer></script>
+<script src="js/gs-collection.js" defer></script>
 <style>
   /* Preview-only scaffolding. Not part of the system. */
   body { margin: 0; }
@@ -86,16 +87,13 @@
           </li>
           <li class="gs-nav__item">
             <details class="gs-nav__details" name="gs-nav-drawer">
-              <summary class="gs-nav__trigger">About</summary>
+              <summary class="gs-nav__trigger">Collection</summary>
               <ul class="gs-nav__panel">
-                <li><a href="#about">About the gallery</a></li>
-                <li><a href="#visit">Plan your visit</a></li>
-                <li><a href="#permanent-collection">Permanent collection</a></li>
-                <li><a href="#volunteer">Volunteer</a></li>
+                <li><a href="#collection">The collection</a></li>
+                <li><a href="#artists">Artists</a></li>
               </ul>
             </details>
           </li>
-          <li class="gs-nav__item"><a class="gs-nav__link" href="#artists-for-kids">Artists for Kids</a></li>
           <li class="gs-nav__item">
             <details class="gs-nav__details" name="gs-nav-drawer">
               <summary class="gs-nav__trigger">Programs</summary>
@@ -108,6 +106,17 @@
               </ul>
             </details>
           </li>
+          <li class="gs-nav__item">
+            <details class="gs-nav__details" name="gs-nav-drawer">
+              <summary class="gs-nav__trigger">About</summary>
+              <ul class="gs-nav__panel">
+                <li><a href="#about">About the gallery</a></li>
+                <li><a href="#visit">Plan your visit</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+              </ul>
+            </details>
+          </li>
+          <li class="gs-nav__item"><a class="gs-nav__link" href="#artists-for-kids">Artists for Kids</a></li>
           <li class="gs-nav__item">
             <details class="gs-nav__details" name="gs-nav-drawer">
               <summary class="gs-nav__trigger">Smith Foundation</summary>
@@ -128,8 +137,6 @@
                 <li><a href="#p3">2025 Fall Portfolio</a></li>
                 <li><a href="#p4">2025 Spring Portfolio</a></li>
                 <li><a href="#p5">2024 Fall Portfolio</a></li>
-                <li><a href="#our-story">Our story</a></li>
-                <li><a href="#artists">Artists</a></li>
               </ul>
             </details>
           </li>
@@ -162,16 +169,13 @@
         </li>
         <li class="gs-nav__item">
           <details class="gs-nav__details" name="gs-nav-bar">
-            <summary class="gs-nav__trigger">About</summary>
+            <summary class="gs-nav__trigger">Collection</summary>
             <ul class="gs-nav__panel">
-              <li><a href="#about">About the gallery</a></li>
-              <li><a href="#visit">Plan your visit</a></li>
-              <li><a href="#permanent-collection">Permanent collection</a></li>
-              <li><a href="#volunteer">Volunteer</a></li>
+              <li><a href="#collection">The collection</a></li>
+              <li><a href="#artists">Artists</a></li>
             </ul>
           </details>
         </li>
-        <li class="gs-nav__item"><a class="gs-nav__link" href="#artists-for-kids">Artists for Kids</a></li>
         <li class="gs-nav__item">
           <details class="gs-nav__details" name="gs-nav-bar">
             <summary class="gs-nav__trigger">Programs</summary>
@@ -184,6 +188,17 @@
             </ul>
           </details>
         </li>
+        <li class="gs-nav__item">
+          <details class="gs-nav__details" name="gs-nav-bar">
+            <summary class="gs-nav__trigger">About</summary>
+            <ul class="gs-nav__panel">
+              <li><a href="#about">About the gallery</a></li>
+              <li><a href="#visit">Plan your visit</a></li>
+              <li><a href="#volunteer">Volunteer</a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="gs-nav__item"><a class="gs-nav__link" href="#artists-for-kids">Artists for Kids</a></li>
         <li class="gs-nav__item">
           <details class="gs-nav__details" name="gs-nav-bar">
             <summary class="gs-nav__trigger">Smith Foundation</summary>
@@ -204,8 +219,6 @@
               <li><a href="#p3">2025 Fall Portfolio</a></li>
               <li><a href="#p4">2025 Spring Portfolio</a></li>
               <li><a href="#p5">2024 Fall Portfolio</a></li>
-              <li><a href="#our-story">Our story</a></li>
-              <li><a href="#artists">Artists</a></li>
             </ul>
           </details>
         </li>
@@ -213,7 +226,7 @@
     </nav>
   </div>
 </header>
-<div class="gs-container"><p class="pv-note">The new theme&rsquo;s main menu, as created in the store (proposals/store-changes.md §1). A section with a dropdown is one button: click, tap, Enter or Space opens it, and the section&rsquo;s main page is the first link inside. Artists for Kids is a plain link. Everything works without JavaScript; the script adds Escape, outside click and closing when focus leaves. Narrow the window below 1200 px for the Menu drawer.</p></div>
+<div class="gs-container"><p class="pv-note">The new theme&rsquo;s main menu, as in the review menu (proposals/store-changes.md §1): Exhibitions, Collection, Programs, About, Artists for Kids, Smith Foundation, Shop (P-26, P-29). A section with a dropdown is one button: click, tap, Enter or Space opens it, and the section&rsquo;s main page is the first link inside. Artists for Kids is a plain link. Everything works without JavaScript; the script adds Escape, outside click and closing when focus leaves. Narrow the window below 1200 px for the Menu drawer.</p></div>
 
 <main id="top" class="gs-main" tabindex="-1">
 
@@ -234,7 +247,7 @@
     </div>
     <div class="gs-hero__caption gs-caption"><p>Samuel Roy-Bois, <em>My Sun</em>, 2024. Wood, Paint, Object. Photo by Michael Love.</p></div>
   </div>
-  <div class="gs-container"><p class="pv-note">The home page leads with the exhibition on now, from its entry: status, dates, title, one button and the key image caption (DS-30). This key image is an artwork, so it shows whole beside the title box. The page&rsquo;s H1 is the gallery&rsquo;s name, visually hidden here; the exhibition title is set at H1 size, as on its own page. When nothing is on, the gallery&rsquo;s name shows at display size with the image from the section&rsquo;s settings. Placeholder image.</p></div>
+  <div class="gs-container"><p class="pv-note">The home page leads with the exhibition on now, from its entry: status, dates, title, one button and the key image caption (DS-30). This key image is an artwork, so it shows whole beside the title box. The page&rsquo;s H1 is the gallery&rsquo;s name, visually hidden here; the exhibition title is set at H1 size, as on its own page. When nothing is on, the gallery&rsquo;s name shows at display size with the image from the section&rsquo;s settings. From 990 px the caption sits under the work in the work&rsquo;s own column, and the hero is at most the screen&rsquo;s height less 16rem, so the next section&rsquo;s heading shows on the first screen; after any hero the page carries on at the heading gap, not a section&rsquo;s (DS-66). Placeholder image.</p></div>
 </div>
 
 <!-- ============ COLOUR ============ -->
@@ -453,18 +466,18 @@
   </div>
   <nav class="gs-container gs-switcher gs-lead-in" aria-label="Portfolios">
     <ul class="gs-switcher__list">
-      <li><a href="#portfolio" aria-current="page">2026 Fall Portfolio</a></li>
-      <li><a href="#p2">2026 Spring Portfolio</a></li>
-      <li><a href="#p3">2025 Fall Portfolio</a></li>
-      <li><a href="#p4">2025 Spring Portfolio</a></li>
-      <li><a href="#p5">2024 Fall Portfolio</a></li>
       <li><a href="#x">All editions</a></li>
+      <li><a href="#portfolio" aria-current="page">Fall 2026</a></li>
+      <li><a href="#p2">Spring 2026</a></li>
+      <li><a href="#p3">Fall 2025</a></li>
+      <li><a href="#p4">Spring 2025</a></li>
+      <li><a href="#p5">Fall 2024</a></li>
     </ul>
   </nav>
   <section class="gs-section gs-surface-paper" aria-label="Works in 2026 Fall Portfolio">
     <div class="gs-container">
       <ul class="gs-grid gs-grid--artworks" id="tiles"></ul>
-      <p class="pv-note">A portfolio&rsquo;s page: the collection&rsquo;s image as a photo hero with its photo credit under it (the title is the page&rsquo;s H1 in the theme), the switcher, then its works. Each tile is a museum label from the product&rsquo;s fields: artist, title and year, medium, edition, price (DS-16). A long medium stops at two lines; the product page shows it whole. Labels, prices and the credit from the live store (CAD); images are placeholders.</p>
+      <p class="pv-note">A portfolio&rsquo;s page: the collection&rsquo;s image as a photo hero with its photo credit under it (the title is the page&rsquo;s H1 in the theme), the switcher, then its works. The switcher is a row of links, not a dropdown: All editions first, then each portfolio as its season and year, taken from its title, so it stays on one row from 768 px (DS-67). Each tile is a museum label from the product&rsquo;s fields: artist, title and year, medium, edition, price (DS-16). A long medium stops at two lines; the product page shows it whole. Labels, prices and the credit from the live store (CAD); images are placeholders.</p>
     </div>
   </section>
 </section>
@@ -593,15 +606,17 @@
       <img alt="Placeholder for an installation view of One Hundred Artists Deep" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 1000'%3E%3Crect width='1600' height='1000' fill='%23ecebe8'/%3E%3Crect y='760' width='1600' height='240' fill='%23c9c3ba'/%3E%3Crect x='170' y='300' width='330' height='420' fill='%23fff'/%3E%3Crect x='195' y='325' width='280' height='370' fill='%235f6f63'/%3E%3Crect x='195' y='505' width='280' height='190' fill='%23b88a4e'/%3E%3Crect x='720' y='220' width='560' height='440' fill='%23fff'/%3E%3Crect x='750' y='250' width='500' height='380' fill='%2334424f'/%3E%3Ccircle cx='1000' cy='430' r='120' fill='%23d9b24c'/%3E%3Crect x='1380' y='360' width='150' height='200' fill='%23fff'/%3E%3Crect x='1395' y='375' width='120' height='170' fill='%23a3503c'/%3E%3C/svg%3E">
     </div>
     <div class="gs-hero__box gs-surface-accent">
+      <p class="gs-crumb"><a href="#past">Exhibitions</a></p>
       <div class="gs-status">
         <span class="gs-chip">Past</span>
         <p class="gs-status__dates">April 11 to June 20, 2026</p>
       </div>
       <h2 class="gs-h1" style="--gs-fit-chars: 7">One Hundred Artists Deep</h2>
+      <p class="gs-hero__summary">In One Hundred Artists Deep, eight local artists were invited to create new work in response to artworks from the Artists for Kids and Gordon Smith Gallery Permanent Collection by founders Bill Reid (1920–1998), Jack Shadbolt (1909–1998), and Gordon Smith (1919–2020). Each of these founding artists left an enduring legacy, not only through their artistic practices but through their deep commitment to arts education.</p>
     </div>
     <div class="gs-hero__caption gs-caption"><p>Photo by Rachel Topham</p></div>
   </div>
-  <div class="gs-container"><p class="pv-note">An exhibition&rsquo;s page opens with its hero: status and dates from the entry, the title, and the key image caption under it, lined up with the title box. This key image is a photo, so the box overlaps its bottom edge by a fixed amount; an artwork shows whole beside the box, as in the home hero. The title is the page&rsquo;s H1 in the theme. Placeholder image.</p></div>
+  <div class="gs-container"><p class="pv-note">An exhibition&rsquo;s page opens with its hero: &ldquo;Exhibitions&rdquo;, linking back to the list it&rsquo;s in (On now, Upcoming or Past), status and dates from the entry, the title and its summary, then the key image caption under it, lined up with the title box. The summary in the box makes the first screen plainly this exhibition&rsquo;s, not the home page&rsquo;s hero again (DS-66). This key image is a photo, so the box overlaps its bottom edge by a fixed amount; an artwork shows whole beside the box, as in the home hero. The title is the page&rsquo;s H1 in the theme. Placeholder image.</p></div>
 </div>
 
 <!-- ============ ABOUT THE EXHIBITION (metaobject/exhibition: sections/gs-exhibition-body, snippets/gs-exhibition-facts) ============ -->
@@ -610,7 +625,6 @@
     <div class="gs-section-head"><h2 class="gs-h2" id="about-title">About the exhibition</h2></div>
   </div>
   <div class="gs-container gs-about">
-    <p class="gs-deck gs-about__deck">Collect, Assemble, Gather explores acts of collecting as both artistic process and everyday ritual. From the gathering of people in shared spaces to the sorting of materials such as seeds, stones, and fabric scraps, the exhibition presents work about assembling meaning, sustenance, and connection through creative and communal acts.</p>
     <aside class="gs-about__facts" aria-label="About the exhibition">
       <dl class="gs-details gs-details--stack">
         <div class="gs-details__item">
@@ -826,50 +840,34 @@
   </div>
 </section>
 
-<!-- ============ THE PERMANENT COLLECTION (DS-62: sections/gs-artist-index, gs-collection-ways) ============ -->
-<section class="gs-section gs-surface-paper" aria-labelledby="index-title">
+<!-- ============ THE PERMANENT COLLECTION PAGE (page.permanent-collection: sections/gs-collection-search, gs-collection-featured, gs-collection-ways) ============ -->
+<section class="gs-section gs-surface-paper" id="collection" aria-labelledby="finder-title">
   <div class="gs-container">
-    <div class="gs-index">
+    <div class="gs-finder">
       <div class="gs-section-head">
         <div class="gs-section-head__text">
-          <h2 class="gs-h2" id="index-title">Artists A to Z</h2>
-          <p class="gs-meta">171 artists</p>
+          <h2 class="gs-h2" id="finder-title">Search the collection</h2>
+          <p class="gs-deck">1,174 works and 171 artists</p>
         </div>
       </div>
-      <div class="gs-index__tools">
+      <form class="gs-form-row" role="search" action="#collection" method="get" onsubmit="return false">
         <div class="gs-field">
-          <label class="gs-field__label" for="index-filter">Find an artist</label>
-          <input class="gs-input" id="index-filter" type="search" autocomplete="off">
+          <label class="gs-field__label" for="pv-finder-q">Artist, title, medium or theme</label>
+          <input class="gs-input" id="pv-finder-q" type="search" name="q" value="heron" autocomplete="off" spellcheck="false">
         </div>
-      </div>
-      <nav class="gs-letters" aria-label="Jump to a letter"><ul><li><a href="#index-r">R</a></li><li><a href="#index-s">S</a></li></ul></nav>
-      <div class="gs-index__groups">
-        <section class="gs-index__group" id="index-r" aria-labelledby="index-r-h">
-          <h3 class="gs-index__letter" id="index-r-h">R</h3>
-          <ul class="gs-index__list">
-            <li class="gs-index__item"><a class="gs-list-link" href="#index-title">Bill Reid</a> <span class="gs-meta"><span aria-hidden="true">22</span><span class="gs-visually-hidden">22 works</span></span></li>
-            <li class="gs-index__item"><a class="gs-list-link" href="#index-title">Samuel Roy-Bois</a> <span class="gs-meta"><span aria-hidden="true">2</span><span class="gs-visually-hidden">2 works</span></span></li>
-          </ul>
-        </section>
-        <section class="gs-index__group" id="index-s" aria-labelledby="index-s-h">
-          <h3 class="gs-index__letter" id="index-s-h">S</h3>
-          <ul class="gs-index__list">
-            <li class="gs-index__item"><a class="gs-list-link" href="#index-title">Jack Shadbolt</a> <span class="gs-meta"><span aria-hidden="true">45</span><span class="gs-visually-hidden">45 works</span></span></li>
-            <li class="gs-index__item"><a class="gs-list-link" href="#index-title">Arnold Shives</a> <span class="gs-meta"><span aria-hidden="true">57</span><span class="gs-visually-hidden">57 works</span></span></li>
-            <li class="gs-index__item"><a class="gs-list-link" href="#index-title">Gordon Smith</a> <span class="gs-meta"><span aria-hidden="true">60</span><span class="gs-visually-hidden">60 works</span></span></li>
-          </ul>
-        </section>
-      </div>
+        <button class="gs-button" type="submit">Search</button>
+      </form>
+      <p class="gs-deck gs-finder__count" role="status">5 works match &ldquo;heron&rdquo;</p>
+      <ul class="gs-grid gs-grid--artworks" id="finder-results"></ul>
     </div>
+    <p class="pv-note">The Permanent Collection page, after its own heading and introduction (P-26, P-27, DS-62). The search finds works by artist, title, year, category, medium or theme as you type, 48 at a time with a Show more works button after them. Shopify&rsquo;s search doesn&rsquo;t look in entries, so the page reads the works from the store in the background, 250 to a request, the first time the field is used. Without JavaScript the field isn&rsquo;t shown; the ways in below and the Artists page reach every work. A link with ?q= opens with the search done. The five works for &ldquo;heron&rdquo; are the store&rsquo;s; here the results are fixed. Images are placeholders.</p>
   </div>
 </section>
-<section class="gs-section gs-surface-paper" aria-labelledby="docs-title">
+<section class="gs-section gs-surface-paper" aria-labelledby="featured-title">
   <div class="gs-container">
-    <div class="gs-section-head"><h2 class="gs-h2" id="docs-title">Documents</h2></div>
-    <ul class="gs-grid gs-grid--artworks">
-      <li><article class="gs-artwork-tile gs-doc-tile"><div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">PDF</span></div><h3 class="gs-artwork-tile__title"><a href="#docs-title">Press (PDF)</a></h3></article></li>
-      <li><article class="gs-artwork-tile gs-doc-tile"><div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">PDF</span></div><h3 class="gs-artwork-tile__title"><a href="#docs-title">Exhibitions, Photos (PDF)</a></h3></article></li>
-    </ul>
+    <div class="gs-section-head"><div class="gs-section-head__text"><h2 class="gs-h2" id="featured-title">Featured works</h2></div></div>
+    <ul class="gs-grid gs-grid--artworks" id="featured"></ul>
+    <p class="pv-note">Featured works: the works in the Collection grouping &ldquo;Featured works&rdquo;, in its order, six at most. Its name is the heading and its introduction, when it has one, the line under it. Staff change them in the admin. These six stand in until the gallery chooses its own (gallery questions 1.7). Images are placeholders.</p>
   </div>
 </section>
 <section class="gs-section gs-surface-paper" aria-labelledby="ways-title">
@@ -878,27 +876,158 @@
       <h2 class="gs-h2" id="ways-title">Browse the collection</h2>
       <a class="gs-cta-link gs-cta-link--more" href="#index-title">Artists A to Z</a>
     </div>
+    <ul class="gs-grid gs-grid--cards gs-grid--fours" id="groupings"></ul>
     <div class="gs-browse">
       <div>
         <h3 class="gs-h4">By category</h3>
-        <ul class="gs-browse__list">
-          <li><a class="gs-list-link" href="#ways-title">Drawings</a> <span class="gs-meta">132</span></li>
-          <li><a class="gs-list-link" href="#ways-title">Paintings</a> <span class="gs-meta">151</span></li>
-          <li><a class="gs-list-link" href="#ways-title">Prints</a> <span class="gs-meta">719</span></li>
-          <li><a class="gs-list-link" href="#ways-title">Sculptures</a> <span class="gs-meta">59</span></li>
-        </ul>
+        <ul class="gs-browse__list" id="by-category"></ul>
       </div>
       <div>
         <h3 class="gs-h4">By theme</h3>
-        <ul class="gs-browse__list">
-          <li><a class="gs-list-link" href="#ways-title">Creatures</a> <span class="gs-meta">175</span></li>
-          <li><a class="gs-list-link" href="#ways-title">Ecology</a> <span class="gs-meta">197</span></li>
-          <li><a class="gs-list-link" href="#ways-title">Landscape</a> <span class="gs-meta">168</span></li>
-          <li><a class="gs-list-link" href="#ways-title">Storytelling</a> <span class="gs-meta">179</span></li>
-        </ul>
+        <ul class="gs-browse__list" id="by-theme"></ul>
       </div>
     </div>
+    <p class="pv-note">Ways into the collection: the four groupings as cards, each with its first work on the mat, then every category and every theme with its number of works. The names are bold links without a line, underlined on hover, and the lists have no rules: space groups them (DS-65). All from the Collection grouping entries, so a new grouping shows here without editing the page. Names and counts from the store; images are placeholders.</p>
   </div>
+</section>
+
+<!-- ============ THE ARTISTS PAGE (page.artists: sections/gs-artist-index) ============ -->
+<section class="gs-section gs-surface-paper" id="artists" aria-labelledby="index-title">
+  <div class="gs-container">
+    <div class="gs-index" data-gs-index>
+      <div class="gs-section-head">
+        <div class="gs-section-head__text">
+          <h2 class="gs-h2" id="index-title">Artists A to Z</h2>
+          <p class="gs-meta">171 artists</p>
+        </div>
+      </div>
+      <div class="gs-index__tools" data-gs-index-tools hidden>
+        <div class="gs-field">
+          <label class="gs-field__label" for="index-filter">Find an artist</label>
+          <input class="gs-input" id="index-filter" type="search" autocomplete="off" spellcheck="false" aria-describedby="index-status">
+        </div>
+        <p class="gs-meta" id="index-status" role="status"
+          data-gs-one="1 artist matches &ldquo;[terms]&rdquo;"
+          data-gs-other="[count] artists match &ldquo;[terms]&rdquo;"
+          data-gs-none="No artist matches &ldquo;[terms]&rdquo;. Try part of a name."></p>
+      </div>
+      <nav class="gs-letters" aria-label="Jump to a letter" data-gs-letters><ul><li><a href="#index-a">A</a></li><li><a href="#index-b">B</a></li><li><a href="#index-c">C</a></li><li><a href="#index-d">D</a></li><li><a href="#index-e">E</a></li><li><a href="#index-f">F</a></li><li><a href="#index-g">G</a></li><li><a href="#index-h">H</a></li><li><a href="#index-i">I</a></li><li><a href="#index-j">J</a></li><li><a href="#index-k">K</a></li><li><a href="#index-l">L</a></li><li><a href="#index-m">M</a></li><li><a href="#index-n">N</a></li><li><a href="#index-o">O</a></li><li><a href="#index-p">P</a></li><li><a href="#index-q">Q</a></li><li><a href="#index-r">R</a></li><li><a href="#index-s">S</a></li><li><a href="#index-t">T</a></li><li><a href="#index-u">U</a></li><li><a href="#index-v">V</a></li><li><a href="#index-w">W</a></li><li><a href="#index-x">X</a></li><li><a href="#index-y">Y</a></li><li><a href="#index-z">Z</a></li></ul></nav>
+      <div class="gs-index__groups">
+        <section class="gs-index__group" id="index-r" aria-labelledby="index-r-h">
+          <h3 class="gs-index__letter" id="index-r-h">R</h3>
+          <ul class="gs-index__list">
+            <li class="gs-index__item" data-gs-names="george rammell"><a class="gs-list-link" href="#index-title">George Rammell</a> <span class="gs-meta"><span aria-hidden="true">5</span><span class="gs-visually-hidden">5 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="bill reid william ronald reid yaahl sgwansung"><a class="gs-list-link" href="#index-title">Bill Reid</a> <span class="gs-meta"><span aria-hidden="true">23</span><span class="gs-visually-hidden">23 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="leslie reid"><a class="gs-list-link" href="#index-title">Leslie Reid</a> <span class="gs-meta"><span aria-hidden="true">1</span><span class="gs-visually-hidden">1 work</span></span></li>
+            <li class="gs-index__item" data-gs-names="jean-paul riopelle"><a class="gs-list-link" href="#index-title">Jean-Paul Riopelle</a> <span class="gs-meta"><span aria-hidden="true">1</span><span class="gs-visually-hidden">1 work</span></span></li>
+            <li class="gs-index__item" data-gs-names="derek root"><a class="gs-list-link" href="#index-title">Derek Root</a> <span class="gs-meta"><span aria-hidden="true">2</span><span class="gs-visually-hidden">2 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="samuel roy-bois"><a class="gs-list-link" href="#index-title">Samuel Roy-Bois</a> <span class="gs-meta"><span aria-hidden="true">2</span><span class="gs-visually-hidden">2 works</span></span></li>
+          </ul>
+        </section>
+        <section class="gs-index__group" id="index-s" aria-labelledby="index-s-h">
+          <h3 class="gs-index__letter" id="index-s-h">S</h3>
+          <ul class="gs-index__list">
+            <li class="gs-index__item" data-gs-names="martin schliessler"><a class="gs-list-link" href="#index-title">Martin Schliessler</a> <span class="gs-meta"><span aria-hidden="true">1</span><span class="gs-visually-hidden">1 work</span></span></li>
+            <li class="gs-index__item" data-gs-names="marianna schmidt"><a class="gs-list-link" href="#index-title">Marianna Schmidt</a> <span class="gs-meta"><span aria-hidden="true">7</span><span class="gs-visually-hidden">7 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="jack shadbolt jack leonard shadbolt"><a class="gs-list-link" href="#index-title">Jack Shadbolt</a> <span class="gs-meta"><span aria-hidden="true">45</span><span class="gs-visually-hidden">45 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="jeremy shaw"><a class="gs-list-link" href="#index-title">Jeremy Shaw</a> <span class="gs-meta"><span aria-hidden="true">4</span><span class="gs-visually-hidden">4 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="arnold shives"><a class="gs-list-link" href="#index-title">Arnold Shives</a> <span class="gs-meta"><span aria-hidden="true">57</span><span class="gs-visually-hidden">57 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="gordon smith gordon appelbe smith"><a class="gs-list-link" href="#artist">Gordon Smith</a> <span class="gs-meta"><span aria-hidden="true">60</span><span class="gs-visually-hidden">60 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="joan smith"><a class="gs-list-link" href="#index-title">Joan Smith</a> <span class="gs-meta"><span aria-hidden="true">3</span><span class="gs-visually-hidden">3 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="michael snow"><a class="gs-list-link" href="#index-title">Michael Snow</a> <span class="gs-meta"><span aria-hidden="true">2</span><span class="gs-visually-hidden">2 works</span></span></li>
+            <li class="gs-index__item" data-gs-names="ron stonier"><a class="gs-list-link" href="#index-title">Ron Stonier</a> <span class="gs-meta"><span aria-hidden="true">2</span><span class="gs-visually-hidden">2 works</span></span></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <p class="pv-note">The Artists page (DS-64, DS-65): every artist A to Z by surname, each name followed by its number of works (&ldquo;Gordon Smith 60&rdquo;; a screen reader hears &ldquo;60 works&rdquo;). No life dates here; they&rsquo;re on the artist&rsquo;s page. Every name opens the artist&rsquo;s page on this site, never another site. The letter bar stays at the top of the screen while you scroll the names, and gets its hairline only once it&rsquo;s stuck over them; on a phone it scrolls sideways. The field narrows the list as you type: every word must appear in one of the artist&rsquo;s names, accents ignored. Without JavaScript the field isn&rsquo;t shown and the whole list is on the page. Only R and S are here; names and counts from the store.</p>
+  </div>
+</section>
+
+<!-- ============ AN ARTIST'S PAGE (metaobject/artist: sections/gs-entry-head, gs-work-grid, gs-artist-documents, gs-artist-editions, gs-artist-exhibitions) ============ -->
+<section id="artist" aria-labelledby="artist-title">
+  <div class="gs-container gs-lead-in">
+    <header class="gs-page-head">
+      <p class="gs-crumb"><a href="#artists">Artists</a></p>
+      <div class="gs-entry-head">
+        <div class="gs-entry-head__main">
+          <h2 class="gs-h1" id="artist-title" style="--gs-fit-chars: 6">Gordon Smith</h2>
+          <p class="gs-entry-head__names">Gordon Appelbe Smith</p>
+          <p class="gs-deck">1919 to 2020</p>
+        </div>
+      </div>
+    </header>
+  </div>
+  <section class="gs-section gs-surface-paper" aria-labelledby="artist-works">
+    <div class="gs-container">
+      <div class="gs-section-head"><div class="gs-section-head__text"><h3 class="gs-h2" id="artist-works">Works in the collection</h3><p class="gs-meta">60 works</p></div></div>
+      <ul class="gs-grid gs-grid--artworks" id="artist-tiles"></ul>
+      <p class="pv-note">An artist&rsquo;s page (DS-62 to DS-64). &ldquo;Artists&rdquo; links back to the index. Then the name, the other names the artist is known by (a Haida or traditional name, the full name), nationality or Nation and life dates, the biography when there is one, and the portrait beside them when there is one. No link to the artist&rsquo;s own website (DS-63). All the artist&rsquo;s works follow on one page, without the artist&rsquo;s name on each tile: Gordon Smith has 60, and the first eight are here. Gordon Smith&rsquo;s entry from the store; images are placeholders.</p>
+    </div>
+  </section>
+  <section class="gs-section gs-surface-paper" aria-labelledby="artist-docs">
+    <div class="gs-container">
+      <div class="gs-section-head"><h3 class="gs-h2" id="artist-docs">Documents</h3></div>
+      <ul class="gs-grid gs-grid--artworks" id="artist-doc-tiles"></ul>
+      <p class="pv-note">Documents come after the works, as tiles like the works: the cover whole on the mat and the title under it, as the catalogue showed them (DS-63). Gordon Smith&rsquo;s three PDFs are over Shopify&rsquo;s 20 MB limit, so their covers show without a link until smaller copies are made (gallery questions, &ldquo;Documents too large for the site&rdquo;). Placeholder covers.</p>
+      <ul class="gs-grid gs-grid--artworks" id="doc-states"></ul>
+      <p class="pv-note">The three states, from Robert Davidson&rsquo;s and J. Carl Heywood&rsquo;s pages: a document with its file opens it from anywhere on the tile, and a PDF says so in its title; one waiting for its file shows the cover alone; one without a cover gets a plain mat that says PDF. Placeholder covers.</p>
+    </div>
+  </section>
+  <section class="gs-section gs-surface-paper" aria-labelledby="artist-shop">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h3 class="gs-h2" id="artist-shop">In the Shop</h3>
+        <a class="gs-cta-link gs-cta-link--more" href="#shop">All limited editions</a>
+      </div>
+      <ul class="gs-grid gs-grid--artworks" id="artist-editions"></ul>
+      <p class="pv-note">The artist&rsquo;s limited editions: those in All limited editions whose Artist pages field names this artist, as the Shop shows them, with their prices. Staff set the artist once, on the product. Labels and prices from the store; images are placeholders.</p>
+    </div>
+  </section>
+  <section class="gs-section gs-surface-paper" aria-labelledby="artist-exhibitions">
+    <div class="gs-container">
+      <div class="gs-section-head"><h3 class="gs-h2" id="artist-exhibitions">Exhibitions at the gallery</h3></div>
+      <ul class="gs-grid gs-grid--cards" id="artist-exhibition-cards"></ul>
+      <p class="pv-note">The gallery&rsquo;s exhibitions that included the artist, from the artist&rsquo;s Exhibitions list, newest first, as compact cards. Images are placeholders.</p>
+    </div>
+  </section>
+</section>
+
+<!-- ============ A WORK'S PAGE (metaobject/artwork: sections/gs-work-detail, gs-work-more) ============ -->
+<section id="work" aria-labelledby="work-title">
+  <div class="gs-container--wide gs-container">
+    <div class="gs-artwork">
+      <ul class="gs-artwork__media" id="work-media"></ul>
+      <div class="gs-artwork__info">
+        <p class="gs-crumb"><a href="#collection">Permanent Collection</a></p>
+        <h2 class="gs-artwork-label" id="work-title"><span class="gs-artwork-label__artist"><a href="#artist">Gordon Smith</a></span> <cite>Pender Harbour</cite>, 2006</h2>
+        <dl class="gs-details gs-details--stack">
+          <div class="gs-details__item"><dt>Medium</dt><dd>Serigraph &amp; Acrylic on Paper</dd></div>
+          <div class="gs-details__item"><dt>Dimensions</dt><dd>36.5&quot; x 48.5&quot; x 1.5&quot; (framed), 30&quot; x 44&quot; (unframed)</dd></div>
+          <div class="gs-details__item"><dt>Edition</dt><dd>AP</dd></div>
+          <div class="gs-details__item"><dt>Credit</dt><dd>Collection of Artists for Kids and the Gordon Smith Gallery</dd></div>
+          <div class="gs-details__item"><dt>Accession number</dt><dd>SMIT028</dd></div>
+          <div class="gs-details__item"><dt>Browse</dt><dd><a class="gs-link" href="#ways-title">Prints</a>, <a class="gs-link" href="#ways-title">Landscape</a>, <a class="gs-link" href="#ways-title">Ecology</a></dd></div>
+        </dl>
+        <section class="gs-panel gs-surface-tint" aria-labelledby="work-shop">
+          <h3 class="gs-h4" id="work-shop">In the Shop</h3>
+          <p>This work is also a limited edition in the Shop.</p>
+          <p><a class="gs-link" href="#shop">Pender Harbour</a>, $2,200</p>
+        </section>
+      </div>
+    </div>
+    <p class="pv-note">A work&rsquo;s page (DS-62): the product page&rsquo;s layout without price or cart. Every image whole on the mat; beside it, &ldquo;Permanent Collection&rdquo; linking back, the museum label with the artist linking to their page, then its facts one to a row. Shown in, when the work was in an exhibition here, links the exhibitions (Winter Pond&rsquo;s says From the Ground); Browse links its category and themes. When the work is also an edition in the Shop, a panel on tint links to it. About the work follows at reading width when there is text. The label is the page&rsquo;s H1 in the theme. Gordon Smith&rsquo;s Pender Harbour from the store; images are placeholders.</p>
+  </div>
+  <section class="gs-section gs-surface-paper" aria-labelledby="work-more">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h3 class="gs-h2" id="work-more">More by Gordon Smith</h3>
+        <a class="gs-cta-link gs-cta-link--more" href="#artist">All works by Gordon Smith</a>
+      </div>
+      <ul class="gs-grid gs-grid--artworks" id="work-more-tiles"></ul>
+      <p class="pv-note">More by the artist: one row of three from the artist&rsquo;s works, never the work being shown, and a link to the artist&rsquo;s page. Images are placeholders.</p>
+    </div>
+  </section>
 </section>
 
 <!-- ============ SEARCH, RESULTS, PAGINATION (search: sections/gs-search, snippets/gs-pagination) ============ -->
@@ -936,6 +1065,19 @@
         </ul>
       </nav>
       <p class="pv-note">The live store&rsquo;s search for &ldquo;smith&rdquo; finds 39 results: two pages at 24 a page, so this is page one. Pages and articles list with their title and first 30 words, as here; limited editions in the results show as artwork tiles above the list, like the portfolio. Pagination is real links with the current page marked; a list of one page shows none.</p>
+    </div>
+  </section>
+  <section class="gs-section gs-surface-paper" aria-labelledby="pv-search-collection">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <div class="gs-section-head__text">
+          <h3 class="gs-h2" id="pv-search-collection">In the collection</h3>
+          <p class="gs-meta" role="status">64 works match &ldquo;smith&rdquo;</p>
+        </div>
+        <a class="gs-cta-link gs-cta-link--more" href="#collection">See every match in the collection</a>
+      </div>
+      <ul class="gs-grid gs-grid--artworks" id="search-collection"></ul>
+      <p class="pv-note">Works in the Permanent Collection that match, after the site&rsquo;s results: the first six, and a link that opens every match in the collection&rsquo;s search. Shopify&rsquo;s search doesn&rsquo;t look in entries, so the script finds them. The section stays hidden when none match, and without JavaScript. 64 works in the store match &ldquo;smith&rdquo;; images are placeholders.</p>
     </div>
   </section>
 </section>
@@ -1249,6 +1391,97 @@
       <h3 class="gs-card__title"><a href="#x">${t}</a></h3>
       <p class="gs-meta">${n} ${n === 1 ? "edition" : "editions"}</p>
     </article></li>`; }).join("");
+
+  // The Permanent Collection (store entries): works as snippets/gs-work-tile.liquid renders them,
+  // [artist, title, year, medium]. The artist's own page leaves the artist off.
+  const workTile = ([artist, title, year, medium], i, { tag = "h3", hideArtist = false } = {}) => {
+    const [w, h, b] = art[i % art.length];
+    return `<li><article class="gs-artwork-tile">
+      <div class="gs-media gs-media--artwork gs-shape-md"><img src="${svg(w, h, b)}" alt="Placeholder for ${title} by ${artist}"></div>
+      ${hideArtist ? "" : `<p class="gs-artwork-tile__artist">${artist}</p>`}
+      <${tag} class="gs-artwork-tile__title"><a href="#work"><cite>${title}</cite>${year ? `, ${year}` : ""}</a></${tag}>
+      <p class="gs-meta gs-artwork-tile__medium">${medium}</p>
+    </article></li>`; };
+  const heron = [
+    ["Robert Bateman", "Great Blue Heron [Working Copy]", "1991", "Lithograph on Paper"],
+    ["Robert Bateman", "Great Blue Heron [Working Copy]", "1991", "Lithograph on Paper"],
+    ["Robert Bateman", "Great Blue Heron", "1991", "Lithograph on Paper"],
+    ["Robert Bateman", "Great Blue Heron - Preliminary Proof", "1991", "Lithograph on Paper"],
+    ["Alistair Bell", "Night Heron III", "1980", "Woodcut"],
+  ];
+  const featured = [
+    ["Bill Reid", "Xhuwaji/Haida Grizzly Bear", "1990", "Serigraph on Paper"],
+    ["Gordon Smith", "Painting After Goya", "1989", "Acrylic on Canvas"],
+    ["Jack Shadbolt", "Winter Garden", "1990", "Acrylic on Canvas"],
+    ["E.J. Hughes", "The Mill at Mesachie Lake", "1986", "Oil on Canvas"],
+    ["Robert Davidson", "Crab of the Woods", "2000", "Bronze & Patina"],
+    ["Kenojuak Ashevak", "Untitled [Loons Protect The Owl]", "N.D.", "Stonecut & Stencil on Paper"],
+  ];
+  const gordon = [
+    ["Gordon Smith", "Beach", "1950-1959", "Serigraph on Paper"],
+    ["Gordon Smith", "Gulf Islands", "1978", "Serigraph on Paper"],
+    ["Gordon Smith", "Long Beach, For Kitty Christmas", "1978", "Serigraph on Paper"],
+    ["Gordon Smith", "NS IV", "1978", "Silkscreen on Paper"],
+    ["Gordon Smith", "October Sea", "1978", "Serigraph on Paper"],
+    ["Gordon Smith", "Ninstints", "1987", "Lithograph on Paper"],
+    ["Gordon Smith", "Forest Skedans", "1988", "Serigraph on Paper"],
+    ["Gordon Smith", "North Shore Rain Forest", "1989-1994", "Acrylic on Canvas"],
+  ];
+  const smith = [
+    ["Victor John Penner", "Gordon Smith", "2015", "Epson Archival Photograph"],
+    ["Gordon Smith", "Untitled [No. 1]", "2007", "Styrofoam Relief Print - Abstract"],
+    ["Gordon Smith", "Untitled [No. 2, AP]", "2007", "Styrofoam Relief Print - Abstract"],
+    ["Gordon Smith", "Untitled [Forest Section]", "2007", "Charcoal Drawing on Paper"],
+    ["Gordon Smith", "Untitled [Landscape]", "2007", "Coloured Pencil & Pastel Drawing on Paper"],
+    ["Gordon Smith", "Painting After Goya", "1989", "Acrylic on Canvas"],
+  ];
+  document.getElementById("finder-results").innerHTML = heron.map((w, i) => workTile(w, i)).join("");
+  document.getElementById("featured").innerHTML = featured.map((w, i) => workTile(w, i)).join("");
+  document.getElementById("artist-tiles").innerHTML = gordon.map((w, i) => workTile(w, i, { tag: "h4", hideArtist: true })).join("");
+  document.getElementById("work-more-tiles").innerHTML = gordon.slice(0, 3).map((w, i) => workTile(w, i, { tag: "h4" })).join("");
+  document.getElementById("search-collection").innerHTML = smith.map((w, i) => workTile(w, i, { tag: "h4" })).join("");
+  document.getElementById("work-media").innerHTML = `<li><div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[1])}" alt="Placeholder for Pender Harbour by Gordon Smith"></div></li>`;
+
+  // Ways in: the groupings as cards with their first work, then categories and themes with counts.
+  const worksCount = n => `${n.toLocaleString("en-CA")} ${n === 1 ? "work" : "works"}`;
+  const groupings = [["Artists for Kids Published Editions", 103], ["Indigenous artists", 147], ["Teaching Collection", 195], ["The Portfolio Collective&rsquo;s 2021 Artist for Artist Edition series", 8]];
+  document.getElementById("groupings").innerHTML = groupings.map(([t, n], i) => {
+    const [w, h, b] = art[(i + 2) % art.length];
+    return `<li><article class="gs-card gs-card--compact">
+      <div class="gs-media gs-media--artwork gs-shape-md" style="--gs-media-ratio: 4 / 3"><img src="${svg(w, h, b)}" alt=""></div>
+      <h3 class="gs-card__title"><a href="#ways-title">${t}</a></h3>
+      <p class="gs-meta">${worksCount(n)}</p>
+    </article></li>`; }).join("");
+  const browseList = list => list.map(([t, n]) => `<li><a class="gs-list-link" href="#ways-title">${t}</a> <span class="gs-meta"><span aria-hidden="true">${n.toLocaleString("en-CA")}</span><span class="gs-visually-hidden">${worksCount(n)}</span></span></li>`).join("");
+  document.getElementById("by-category").innerHTML = browseList([["Books", 4], ["Ceramics", 21], ["Drawings", 132], ["Paintings", 152], ["Photography", 67], ["Prints", 720], ["Sculptures", 62], ["Textiles", 6]]);
+  document.getElementById("by-theme").innerHTML = browseList([["Abstract", 210], ["Architecture", 48], ["Creatures", 175], ["Ecology", 198], ["Invention", 21], ["Landscape", 169], ["People", 119], ["Plants", 50], ["Portrait", 15], ["Social change", 12], ["Still life", 19], ["Storytelling", 180], ["Text", 15]]);
+
+  // Documents: the cover whole on the mat (alt left empty: the title says what it is), the title
+  // under it, linked when the file is on the site.
+  const cover = svg(600, 800, "<rect width='600' height='800' fill='#fbfaf7'/><rect x='70' y='90' width='320' height='40' fill='#231f20'/><rect x='70' y='170' width='460' height='12' fill='#a39d94'/><rect x='70' y='200' width='420' height='12' fill='#a39d94'/><rect x='70' y='260' width='460' height='300' fill='#c9c3b8'/><rect x='70' y='600' width='460' height='12' fill='#a39d94'/><rect x='70' y='630' width='380' height='12' fill='#a39d94'/>");
+  const docTile = ([t, linked, hasCover]) => `<li><article class="gs-artwork-tile gs-doc-tile">
+      ${hasCover ? `<div class="gs-media gs-media--artwork gs-shape-md"><img src="${cover}" alt=""></div>`
+        : `<div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">PDF</span></div>`}
+      <h4 class="gs-artwork-tile__title">${linked ? `<a href="#artist-docs">${t} (PDF)</a>` : t}</h4>
+    </article></li>`;
+  document.getElementById("artist-doc-tiles").innerHTML = [["Exhibitions", false, true], ["Photographs", false, true], ["Press", false, true]].map(docTile).join("");
+  document.getElementById("doc-states").innerHTML = [["Press", true, true], ["Exhibitions, Photos", false, true], ["Press 2", true, false]].map(docTile).join("");
+
+  // The artist's editions in the Shop (store products, CAD) and exhibitions (newest first).
+  document.getElementById("artist-editions").innerHTML = [
+    ["Gordon Smith", "Pender Harbour", "2006", "17-colour serigraph", "AP", "$2,200"],
+    ["Gordon Smith", "The Byway", "2009", "16-colour serigraph", "Edition of 200", "$1,200"],
+  ].map(([artist, title, year, medium, edition, price], i) => {
+    const [w, h, b] = art[(i + 1) % art.length];
+    return `<li><article class="gs-artwork-tile">
+      <div class="gs-media gs-media--artwork gs-shape-md"><img src="${svg(w, h, b)}" alt="Placeholder for ${title} by ${artist}"></div>
+      <p class="gs-artwork-tile__artist">${artist}</p>
+      <h4 class="gs-artwork-tile__title"><a href="#x"><cite>${title}</cite>, ${year}</a></h4>
+      <p class="gs-meta gs-artwork-tile__medium">${medium}</p>
+      <p class="gs-meta">${edition}</p>
+      <p class="gs-artwork-tile__price">${price}</p>
+    </article></li>`; }).join("");
+  document.getElementById("artist-exhibition-cards").innerHTML = [cag, past[0], past[1]].map(e => exCard(e, { compact: true, tag: "h4" })).join("");
 
   // A funder logo, shown as supplied: no box, no corner. Placeholder shapes, not the real mark.
   document.getElementById("funder-logo").src = svg(360, 120, "<rect width='360' height='120' fill='#fff'/><rect x='6' y='6' width='108' height='108' fill='none' stroke='#231f20' stroke-width='10'/><rect x='140' y='30' width='200' height='18' fill='#231f20'/><rect x='140' y='72' width='150' height='18' fill='#231f20'/>");

@@ -4,19 +4,33 @@
 
   On exhibition list pages: On now, Upcoming, Past, with counts from the exhibition entries
   (hidden when zero). The pages are the ones chosen in Theme settings, Exhibitions and events.
-  On portfolio pages: each portfolio in Theme settings, Shop, then All editions.
+  On portfolio pages: All editions, then each portfolio in Theme settings, Shop, newest first
+  (DS-67). The row is labelled Portfolios, so each link names its season and year, "Fall 2026",
+  taken from the collection's title ("2026 Fall Portfolio"); a title in another form shows as
+  it is. Short labels keep the row on one line: five "Portfolio"s made it wrap and strand the
+  last link.
 {%- endcomment -%}
 {%- if collection != blank -%}
   {%- assign nav_label = 'shop.portfolios' | t -%}
   <nav class="gs-container gs-switcher gs-lead-in" aria-label="{{ nav_label }}">
     <ul class="gs-switcher__list">
-      {%- for item in settings.portfolio_collections -%}
-        <li><a href="{{ item.url }}"{% if item.handle == collection.handle %} aria-current="page"{% endif %}>{{ item.title | escape }}</a></li>
-      {%- endfor -%}
       {%- assign all = settings.all_editions_collection -%}
       {%- if all != blank -%}
         <li><a href="{{ all.url }}"{% if all.handle == collection.handle %} aria-current="page"{% endif %}>{{ 'shop.all_editions' | t }}</a></li>
       {%- endif -%}
+      {%- for item in settings.portfolio_collections -%}
+        {%- liquid
+          assign label = item.title | remove: ' Portfolio' | remove: ' portfolio' | strip
+          assign words = label | split: ' '
+          if words.size == 2
+            assign year = words[0] | plus: 0
+            if year > 1900
+              assign label = words[1] | append: ' ' | append: words[0]
+            endif
+          endif
+        -%}
+        <li><a href="{{ item.url }}"{% if item.handle == collection.handle %} aria-current="page"{% endif %}>{{ label | escape }}</a></li>
+      {%- endfor -%}
     </ul>
   </nav>
 {%- else -%}

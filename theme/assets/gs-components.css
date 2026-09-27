@@ -918,7 +918,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   list-style: none;
   box-shadow: inset 0 calc(-1 * var(--gs-border-strong)) 0 var(--gs-color-rule);
 }
-@media (max-width: 749.98px) {
+/* Below 990 the links sit a little closer, so the six portfolio links (DS-67) stay on one row on a
+   tablet and wrap three and three on a phone. */
+@media (max-width: 989.98px) {
   .gs-switcher__list { column-gap: var(--gs-space-5); }
 }
 .gs-switcher__list a {

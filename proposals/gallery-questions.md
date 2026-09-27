@@ -40,6 +40,7 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 3.6 | Our Story's sentence "This print by Bill Reid, based on a ceremonial drum, marked the beginning of an extraordinary partnership with now more than 100 Canadian artists - from Kenojuak Ashevak to Ian Wallace - …" was left off the Artists for Kids history because it repeated the sentences around it (P-25). Would the gallery like the ceremonial drum and the more than 100 artists mentioned in the history, in its own words? | Not mentioned |
 | 3.7 | ~~Roz Marshall's link on the Artists page goes to `rozmarshall-artist.com`, which no longer exists.~~ No longer applies: artists' websites aren't shown on the site (DS-63, Michael, 2026-09-27) | |
 | 3.8 | The Paradise Valley photo on the Artists for Kids page: its description says 1994, its caption 1996. Which year? | Both as written |
+| 3.9 | The portfolio pages' switcher now reads "All editions, Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024" instead of repeating "Portfolio" five times (DS-67). The portfolios' own titles are unchanged. Is that wording right? | As shown |
 
 ## 4. Brand
 
