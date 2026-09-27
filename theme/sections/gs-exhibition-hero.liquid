@@ -21,6 +21,7 @@
   capture status
     render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value
   endcapture
+  assign status = status | strip
   case status
     when 'upcoming'
       assign back = settings.exhibitions_upcoming_page
