@@ -405,6 +405,11 @@
 }
 /* The page opens with its hero close under the header. */
 .gs-section--lead { margin-block-start: var(--gs-space-5); }
+/* Cards without a heading continue the text before them (DS-58): a group's space, not a section's,
+   so the sentence that introduces them reads with them. After anything else (a hero, nothing),
+   the margins collapse to the larger one and the usual space stays. */
+.gs-section.gs-section--continues { margin-block-start: var(--gs-space-7); }
+:where(.shopify-section):has(+ :where(.shopify-section) > .gs-section--continues) > .gs-section:not(.gs-section--lead) { margin-block-end: var(--gs-space-7); }
 /* A page header or switcher sets its own gap to the content after it (--gs-stack-lg). */
 .gs-lead-in + .gs-section,
 :where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section) > .gs-section,

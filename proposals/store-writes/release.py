@@ -39,7 +39,8 @@ CLEARED_PREFIX = "<!--"
 # shows correctly on the template it falls back to; this puts the right name on it for staff.
 
 PROGRAMME = {"artists-for-kids", "the-smith-foundation", "public-programs-1", "speaker-series",
-             "music-at-the-smith", "explore-create", "art-in-good-company"}
+             "music-at-the-smith", "explore-create", "art-in-good-company",
+             "volunteer"}  # Volunteer: its roles are cards between its text's parts (DS-58)
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
