@@ -1,0 +1,246 @@
+{
+ "id": "gid://shopify/Menu/305860739369",
+ "handle": "new-theme-main",
+ "title": "Main menu (new theme)",
+ "taken": "2026-09-27, after P-26, before the order change (P-29)",
+ "items": [
+  {
+   "id": "gid://shopify/MenuItem/767489311017",
+   "title": "Exhibitions",
+   "type": "PAGE",
+   "url": "/pages/on-now",
+   "resourceId": "gid://shopify/Page/155763999017",
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767489343785",
+     "title": "On now",
+     "type": "PAGE",
+     "url": "/pages/on-now",
+     "resourceId": "gid://shopify/Page/155763999017",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489376553",
+     "title": "Upcoming",
+     "type": "PAGE",
+     "url": "/pages/upcoming-exhibitions",
+     "resourceId": "gid://shopify/Page/155763376425",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489409321",
+     "title": "Past exhibitions",
+     "type": "PAGE",
+     "url": "/pages/past-exhibitions",
+     "resourceId": "gid://shopify/Page/155763736873",
+     "items": []
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/MenuItem/767633785129",
+   "title": "Collection",
+   "type": "PAGE",
+   "url": "/pages/permanent-collection",
+   "resourceId": "gid://shopify/Page/155720548649",
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767633817897",
+     "title": "The collection",
+     "type": "PAGE",
+     "url": "/pages/permanent-collection",
+     "resourceId": "gid://shopify/Page/155720548649",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767633850665",
+     "title": "Artists",
+     "type": "PAGE",
+     "url": "/pages/artists",
+     "resourceId": "gid://shopify/Page/140886573353",
+     "items": []
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/MenuItem/767489442089",
+   "title": "About",
+   "type": "PAGE",
+   "url": "/pages/about-us",
+   "resourceId": "gid://shopify/Page/155687813417",
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767489474857",
+     "title": "About the gallery",
+     "type": "PAGE",
+     "url": "/pages/about-us",
+     "resourceId": "gid://shopify/Page/155687813417",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489507625",
+     "title": "Plan your visit",
+     "type": "PAGE",
+     "url": "/pages/plan-your-visit",
+     "resourceId": "gid://shopify/Page/155670151465",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489573161",
+     "title": "Volunteer",
+     "type": "PAGE",
+     "url": "/pages/volunteer",
+     "resourceId": "gid://shopify/Page/155902738729",
+     "items": []
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/MenuItem/767489605929",
+   "title": "Artists for Kids",
+   "type": "PAGE",
+   "url": "/pages/artists-for-kids",
+   "resourceId": "gid://shopify/Page/155720810793",
+   "items": []
+  },
+  {
+   "id": "gid://shopify/MenuItem/767489638697",
+   "title": "Programs",
+   "type": "PAGE",
+   "url": "/pages/public-programs-1",
+   "resourceId": "gid://shopify/Page/155718943017",
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767489671465",
+     "title": "Public programs",
+     "type": "PAGE",
+     "url": "/pages/public-programs-1",
+     "resourceId": "gid://shopify/Page/155718943017",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489704233",
+     "title": "Speaker series",
+     "type": "PAGE",
+     "url": "/pages/speaker-series",
+     "resourceId": "gid://shopify/Page/155719434537",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489737001",
+     "title": "Music at the Smith",
+     "type": "PAGE",
+     "url": "/pages/music-at-the-smith",
+     "resourceId": "gid://shopify/Page/155719696681",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489769769",
+     "title": "Explore + Create",
+     "type": "PAGE",
+     "url": "/pages/explore-create",
+     "resourceId": "gid://shopify/Page/155720089897",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489802537",
+     "title": "Art in Good Company",
+     "type": "PAGE",
+     "url": "/pages/art-in-good-company",
+     "resourceId": "gid://shopify/Page/155720253737",
+     "items": []
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/MenuItem/767489835305",
+   "title": "Smith Foundation",
+   "type": "PAGE",
+   "url": "/pages/the-smith-foundation",
+   "resourceId": "gid://shopify/Page/155705409833",
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767489868073",
+     "title": "About the Foundation",
+     "type": "PAGE",
+     "url": "/pages/the-smith-foundation",
+     "resourceId": "gid://shopify/Page/155705409833",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489900841",
+     "title": "Gordon and Marion",
+     "type": "PAGE",
+     "url": "/pages/gordon-and-marion",
+     "resourceId": "gid://shopify/Page/155692957993",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489933609",
+     "title": "Donate",
+     "type": "PAGE",
+     "url": "/pages/donate",
+     "resourceId": "gid://shopify/Page/155885863209",
+     "items": []
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/MenuItem/767489966377",
+   "title": "Shop",
+   "type": "PAGE",
+   "url": "/pages/shop",
+   "resourceId": "gid://shopify/Page/155762786601",
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767489999145",
+     "title": "Limited editions",
+     "type": "PAGE",
+     "url": "/pages/shop",
+     "resourceId": "gid://shopify/Page/155762786601",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490031913",
+     "title": "2026 Fall Portfolio",
+     "type": "COLLECTION",
+     "url": "/collections/2026-fall-portfolio",
+     "resourceId": "gid://shopify/Collection/505736429865",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490064681",
+     "title": "2026 Spring Portfolio",
+     "type": "COLLECTION",
+     "url": "/collections/2026-spring-portfolio",
+     "resourceId": "gid://shopify/Collection/501485797673",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490097449",
+     "title": "2025 Fall Portfolio",
+     "type": "COLLECTION",
+     "url": "/collections/2025-fall-portfolio",
+     "resourceId": "gid://shopify/Collection/495640445225",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490130217",
+     "title": "2025 Spring Portfolio",
+     "type": "COLLECTION",
+     "url": "/collections/2025-spring-portfolio",
+     "resourceId": "gid://shopify/Collection/484250386729",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490162985",
+     "title": "2024 Fall Portfolio",
+     "type": "COLLECTION",
+     "url": "/collections/2024-fall-portfolio",
+     "resourceId": "gid://shopify/Collection/479152668969",
+     "items": []
+    }
+   ]
+  }
+ ]
+}

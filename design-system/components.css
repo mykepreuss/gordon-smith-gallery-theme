@@ -1899,15 +1899,19 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-index__tools .gs-field { max-width: var(--gs-width-form); }
 /* The letter bar (DS-64): every letter in one row across the list from 1200 px, two even rows of 13
    from 750 px, one row that scrolls sideways on phones. It stays at the top of the screen while the
-   names scroll under it, so any letter is one tap away however far down the list you are. */
+   names scroll under it, so any letter is one tap away however far down the list you are. No rules
+   at rest; once it's stuck over the names (gs-collection.js sets data-stuck) a hairline under it
+   says where the list slides beneath (DS-65). */
 .gs-letters {
   position: sticky;
-  top: 0;
+  top: calc(-1 * var(--gs-border));
   z-index: var(--gs-z-sticky);
   padding-block: var(--gs-space-2);
   background-color: var(--gs-color-bg);
-  border-block: var(--gs-border) solid var(--gs-color-rule);
+  box-shadow: 0 var(--gs-border) 0 transparent;
+  transition: box-shadow var(--gs-duration-fast) var(--gs-ease);
 }
+.gs-letters[data-stuck] { box-shadow: 0 var(--gs-border) 0 var(--gs-color-rule); }
 .gs-letters[hidden] { display: none; }
 .gs-letters ul { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
@@ -1937,12 +1941,11 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 @media (hover: hover) and (pointer: fine) {
   .gs-letters a:hover { background-color: var(--gs-color-hover-fill); color: var(--gs-color-hover-fill-fg); }
 }
-.gs-index__groups { display: grid; gap: var(--gs-space-6); }
+/* Letters are grouped by space, not rules (DS-65): the big letter starts each group. */
+.gs-index__groups { display: grid; gap: var(--gs-space-7); }
 .gs-index__group {
   display: grid;
-  gap: var(--gs-space-4) var(--gs-gutter);
-  padding-block-start: var(--gs-space-4);
-  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+  gap: var(--gs-space-3) var(--gs-gutter);
   /* A jump lands the letter just under the sticky bar, not behind it. */
   scroll-margin-block-start: calc(var(--gs-tap-target) + var(--gs-space-2) * 2 + var(--gs-space-4));
 }
@@ -1962,7 +1965,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   color: var(--gs-color-accent-text);
 }
 /* Each name with its number of works after it, as the categories and themes on the Permanent
-   Collection page (DS-64): "Dana Claxton 2", under a hairline. */
+   Collection page (DS-64): "Dana Claxton 2". No rules and no underlines (DS-65): in a list where every
+   name is a link, space groups the rows and bold marks the names; the underline comes on hover, as a
+   card title's does, and the count stays quiet beside it. */
 .gs-index__list { margin: 0; padding: 0; list-style: none; columns: 3 11rem; column-gap: var(--gs-gutter); }
 .gs-index__item,
 .gs-browse__list li {
@@ -1971,12 +1976,22 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   align-items: baseline;
   gap: 0 var(--gs-space-2);
   padding-block: var(--gs-space-2);
-  border-block-start: var(--gs-border) solid var(--gs-color-rule);
   break-inside: avoid;
 }
 .gs-index__item[hidden] { display: none; }
-.gs-index__item a,
-.gs-browse__list a { font-weight: var(--gs-weight-bold); }
+.gs-list-link {
+  font-weight: var(--gs-weight-bold);
+  line-height: 1.35;
+  color: var(--gs-color-fg);
+  text-decoration-line: none;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: var(--gs-link-thickness);
+  text-underline-offset: var(--gs-link-offset);
+}
+.gs-list-link:active { text-decoration-line: underline; }
+@media (hover: hover) and (pointer: fine) {
+  .gs-list-link:hover { text-decoration-line: underline; }
+}
 
 /* A work's page: the product page's layout (DS-38) without price or cart. The label's facts are a
    list under rules, one to a row; with no image, the label takes the width. */

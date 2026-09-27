@@ -24,7 +24,7 @@
       assign name_html = a.name.value | escape
       capture row
         echo '<li class="gs-index__item" data-gs-names="' | append: search_attr | append: '">'
-        echo '<a class="gs-link" href="' | append: a.system.url | append: '">' | append: name_html | append: '</a>'
+        echo '<a class="gs-list-link" href="' | append: a.system.url | append: '">' | append: name_html | append: '</a>'
         if count > 0
           # "Dana Claxton 2": the number shows, and a screen reader hears "2 works".
           assign works = 'collection.works_count' | t: count: count

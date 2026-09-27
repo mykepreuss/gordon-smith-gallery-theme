@@ -12,7 +12,7 @@ Michael, 2026-09-26: "I don't like that all of these assets are on an external s
 - **26 groupings** at `/pages/browse/<name>`: 8 categories, 13 themes, Indigenous artists, Artists for Kids Published Editions, the Teaching Collection, the Portfolio Collective's 2021 series, and Featured works.
 - **The Permanent Collection page** is the front door: the gallery's introduction, a search that finds works by artist, title, year, medium, category or theme as you type, the groupings as cards, every category and theme with its count, and six featured works. Its Browse button opens the search instead of the catalogue.
 - **The site's search page** shows the first six matching works from the collection, with a link to all of them.
-- **The menu** has a Collection section, second after Exhibitions: The collection, Artists. Artists left the Shop and Permanent collection left About (P-26).
+- **The menu** has a Collection section, second after Exhibitions: The collection, Artists. Artists left the Shop and Permanent collection left About (P-26). The order is now Exhibitions, Collection, Programs, About, Artists for Kids, Smith Foundation, Shop (P-29).
 - **Editions** link their artist's name to the artist's page, and appear on it.
 - **Exhibition pages** list their works from the collection after the installation views: *From the Ground* 26, *Playhouse* 25, *The Art of Conversation* 18 (DS-63).
 - **1,420 images** and **184 document files** are in the store's Files: 113 documents, each a Document entry with its cover and its file. 34 of them wait for a PDF under 20 MB and show their cover without a link.

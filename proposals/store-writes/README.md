@@ -532,3 +532,15 @@ The cleaned data follows the gallery-questions defaults (§5) where the gallery 
 **Effect on the live site:** none. The live theme renders none of these.
 
 **Undo:** delete the Document entries and the `document` definition; recreate the artist's `documents` field as a list of files and run `import.py link` from the previous commit.
+
+## 2026-09-27: the review menu's order (P-29)
+
+**Why:** Michael, 2026-09-27: "the main navigation should be: Exhibitions, Collection, Programs, About, Artists for Kids, Smith Foundation, Shop".
+
+**Checked first:** same store and themes. Before-snapshot: `snapshots/menu-new-theme-main-2026-09-27-before-order.json` (Exhibitions, Collection, About, Artists for Kids, Programs, Smith Foundation, Shop).
+
+**Made through the Shopify connector:** `menuUpdate` on the review menu `new-theme-main` (`gid://shopify/Menu/305860739369`): the same items with the same IDs, in the new order. Nothing inside a section changed.
+
+**Effect on the live site:** none. The live header uses `new-website-menu-1`, which is untouched.
+
+**Undo:** `menuUpdate` with the snapshot's order.
