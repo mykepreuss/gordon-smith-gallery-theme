@@ -1238,7 +1238,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
    side by side from 990 px (DS-57). Both rows share one column gap, so the columns below line up
    with the acknowledgement. */
 .gs-footer__top { display: grid; gap: var(--gs-space-6); align-items: start; }
-.gs-footer__logos { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--gs-space-5) var(--gs-space-7); }
+.gs-footer__logos { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--gs-space-6); }
 /* The columns keep their places: two across (Visit alone on top on phones), four from 1200 px, so
    Follow fills the fourth when the gallery adds its social links and nothing else moves. From
    990 px a column starts where the acknowledgement does. */
@@ -1275,9 +1275,16 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-footer__legal a { color: inherit; }
 /* The copyright on its own line, the links together under it, so no link is left alone on a line. */
 .gs-footer__legal > :first-child { flex-basis: 100%; }
-.gs-footer__logos svg { display: block; height: var(--gs-footer-logo-h); width: auto; }
-.gs-footer__logos > svg:first-child,
-.gs-footer__logos > :first-child svg { height: var(--gs-footer-logo-h-lead); }
+/* The three logos at one letter size, on one baseline (DS-59). Each is as tall as it needs to be
+   for its lowercase letters to match the Foundation's at its 72 px minimum, and it hangs below the
+   row by as much as it reaches under its last line (the Gallery's y, the Artists for Kids brush),
+   so "Gallery", "Kids" and "Foundation" sit on the same line. Metrics: see Logo metrics. */
+.gs-footer__logos svg {
+  display: block;
+  width: auto;
+  height: calc(var(--gs-footer-logo-x) / var(--gs-logo-x));
+  margin-block-end: calc(var(--gs-footer-logo-x) / var(--gs-logo-x) * var(--gs-logo-descent) * -1);
+}
 .gs-footer__ack { max-width: var(--gs-measure); margin: 0; }
 .gs-footer__ack > * { margin-block: 0; }
 .gs-footer__cols address { font-style: normal; }
@@ -1413,6 +1420,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 .gs-card-group + .gs-card-group { margin-block-start: var(--gs-section-space); }
 .gs-card-group { scroll-margin-block-start: var(--gs-space-6); } /* a call to action can jump here (DS-53) */
+
+/* ---------- Logo metrics (DS-59) ---------- */
+/* Measured from the white logo files, as shares of each logo's height: its lowercase letters' height
+   (the "o") and how far the artwork reaches below its last baseline. With them, logos of different
+   shapes can be set at one letter size and on one baseline, as in the footer. */
+.gs-logo--gallery-simple-stacked-white { --gs-logo-x: 0.192; --gs-logo-descent: 0.086; }
+.gs-logo--artists-for-kids-full-white { --gs-logo-x: 0.207; --gs-logo-descent: 0.031; }
+.gs-logo--foundation-simple-white { --gs-logo-x: 0.323; --gs-logo-descent: 0.008; }
 
 /* ---------- Logo cards (DS-50) ---------- */
 /* A card about one of the three organisations: its logo is the heading (the title is there for

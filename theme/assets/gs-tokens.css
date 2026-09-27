@@ -152,8 +152,7 @@
   --gs-rail-item: min(82%, 20rem); /* a card in a sideways row on phones: the next one peeks in (DS-54) */
   --gs-feature-logo-h: 4.5rem;     /* 72: a programme's logo in a feature panel; the Foundation logo's minimum (§8.3, DS-55) */
   --gs-tap-target: 2.75rem;   /* 44 */
-  --gs-footer-logo-h: 4.5rem;      /* 72: partner logos in the footer; the Foundation simple lockup's minimum (DESIGN.md §8.3) */
-  --gs-footer-logo-h-lead: 6rem;   /* 96: the Gallery logo leads the footer row (§6.10) */
+  --gs-footer-logo-x: 1.4535rem;   /* 23.3: the lowercase letter height the three footer logos share: the Foundation simple lockup's at its 72 px minimum (DESIGN.md §8.3, §6.10, DS-59) */
   --gs-programme-logo-h: 5rem;     /* 80: programme logo in a page header (§8.2), above both programme minimums */
   --gs-funder-logo-h: 3.5rem;      /* 56: funder logos on exhibition pages */
   --gs-thumb: 6rem;                /* 96: artwork thumbnails in the cart */
