@@ -2,7 +2,7 @@
   "generated": "2026-09-25",
   "note": "SVGs converted from the supplied print PDFs (vector), fills remapped from CMYK builds to the official web sRGB values, unboxed variants cropped to artwork bounds. Original files remain in reference/GS Logos New/.",
   "websiteDefaults": {
-    "header": "logos/gallery-simple-stacked-colour-box.svg",
+    "header": "logos/gallery-full-stacked-colour-box.svg",
     "headerCondensed": "logos/gallery-simple-horizontal-colour-box.svg",
     "footerOnInk": [
       "logos/gallery-simple-stacked-white.svg",
@@ -431,7 +431,7 @@
       ],
       "aspectRatio": 1.0388,
       "minDisplayHeightPx": 112,
-      "brandUse": "Signage and official documents (brand guide p.6). Website: footer or About only, at large size.",
+      "brandUse": "Signage and official documents (brand guide p.6). Website default: the header and password page at their sizes (DS-68), About and logo cards at 112 px or more.",
       "status": "supplied",
       "source": "reference/GS Logos New/1 GSG - Logos/Full Stacked/Colour Box/Print/GSG-Full-Logo-Stacked-ColourBox.pdf"
     },
@@ -599,7 +599,7 @@
       ],
       "aspectRatio": 1.1383,
       "minDisplayHeightPx": 48,
-      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website default.",
+      "brandUse": "Primary use: most assets, logo clusters, sponsorship (brand guide p.6). Website: kept for places too small for the full lockup; the header uses the full lockup (DS-68).",
       "status": "supplied",
       "source": "reference/GS Logos New/1 GSG - Logos/Simple Stacked/Colour Box/Print/GSG-LogoSimple-ColourBox.pdf"
     },
