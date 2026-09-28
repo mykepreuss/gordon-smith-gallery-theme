@@ -1,6 +1,7 @@
 /*
  * Gordon Smith Gallery: reference components
- * Requires tokens.css. Uses only semantic roles (--gs-color-*, --gs-text-*, ...), never raw palette.
+ * Requires tokens.css. Uses only semantic roles (--gs-color-*, --gs-text-*, ...), never raw palette:
+ * an element that keeps its colours on every surface uses a fixed role (--gs-color-field-*, DS-84).
  * Prefix gs- avoids collisions with the Colorblock/Dawn classes. Unlayered on purpose:
  * the theme's CSS is unlayered, and layered rules would lose to it.
  * Theme copy: theme/assets/gs-components.css. Spec and usage: DESIGN.md §5 and §6.
@@ -27,7 +28,7 @@
 /* Selection uses the rule colour: the box colour is kept for the brand's boxes (brand guide p.11). */
 .gs-type ::selection {
   background: var(--gs-color-rule);
-  color: var(--gs-ink);
+  color: var(--gs-color-selection-fg);
 }
 
 .gs-type :focus-visible {
@@ -41,8 +42,8 @@
   margin-block: var(--gs-space-2);
   padding: var(--gs-space-2) var(--gs-space-3);
   font: var(--gs-weight-bold) var(--gs-text-caption) / 1.4 var(--gs-font-sans);
-  color: var(--gs-ink);
-  background: var(--gs-afk-rule);
+  color: var(--gs-color-editor-warning-fg);
+  background: var(--gs-color-editor-warning);
   border-radius: var(--gs-shape-sm);
 }
 
@@ -68,9 +69,34 @@
 /* Third-party embeds (e.g. Mailchimp) ship their own CSS. Wrap them in .gs-embed. */
 .gs-embed :where(*) { font-family: var(--gs-font-sans) !important; }
 .gs-embed :where(input[type="email"], input[type="text"]) {
-  min-height: 3rem;
+  min-height: var(--gs-control-h);
   border: var(--gs-border-strong) solid var(--gs-color-control-border) !important;
   border-radius: var(--gs-shape-sm) !important;
+}
+/* Shopify's own form on the "Do not sell" page (data-sale-opt-out) comes with its own CSS, which
+   removes the field's focus outline (WCAG 2.4.7). Give its label and field the site's form style. */
+.gs-prose .pc--opt-out-form-wrapper .pc--opt-out-form-field label {
+  display: block;
+  margin-block-end: var(--gs-space-2); /* as .gs-field's gap */
+  font-size: var(--gs-text-label);
+  font-weight: var(--gs-weight-extrabold);
+  line-height: var(--gs-leading-label);
+  letter-spacing: var(--gs-tracking-label);
+  text-transform: uppercase;
+}
+.gs-prose .pc--opt-out-form-wrapper .pc--opt-out-form-field input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--gs-width-form);
+  height: auto;
+  max-height: none;
+  min-height: var(--gs-control-h);
+  border: var(--gs-border-strong) solid var(--gs-color-control-border);
+  border-radius: var(--gs-shape-sm);
+}
+.gs-prose .pc--opt-out-form-wrapper .pc--opt-out-form-field input:focus-visible {
+  outline: var(--gs-focus-width) solid var(--gs-color-focus);
+  outline-offset: var(--gs-border);
 }
 
 /* ---------- Type roles ---------- */
@@ -108,6 +134,7 @@
   line-height: var(--gs-leading-subheading);
   letter-spacing: var(--gs-tracking-subheading);
   text-transform: uppercase;
+  text-wrap: balance;
   overflow-wrap: break-word;
 }
 
@@ -164,8 +191,9 @@
 .gs-meta {
   margin: 0;
   font-size: var(--gs-text-small);
-  line-height: 1.5;
+  line-height: var(--gs-leading-small);
   color: var(--gs-color-fg-muted);
+  text-wrap: pretty;
 }
 
 /* ---------- Links ---------- */
@@ -232,24 +260,43 @@
   mask: var(--gs-icon-arrow) center / contain no-repeat;
   transition: transform var(--gs-duration-fast) var(--gs-ease);
 }
-.gs-cta-link:active { text-decoration-color: currentColor; text-decoration-thickness: var(--gs-link-thickness-hover); }
 .gs-cta-link--more:active::after { transform: translateX(0.25em); }
 @media (hover: hover) and (pointer: fine) {
-  .gs-cta-link:hover { text-decoration-color: currentColor; text-decoration-thickness: var(--gs-link-thickness-hover); }
   .gs-cta-link--more:hover::after { transform: translateX(0.25em); }
 }
 
+/* Standalone links, written once: the standalone link, a crumb, a page number, the artist's name in a
+   museum label and a card's cue. On hover and press the underline takes the text colour and
+   thickens (§6.2), so the cue shows where the line is already ink. */
+.gs-crumb a {
+  color: var(--gs-color-accent-text);
+  text-decoration-line: underline;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: var(--gs-link-thickness);
+  text-underline-offset: var(--gs-link-offset);
+}
+.gs-artwork-label a { color: inherit; text-decoration-line: underline; text-decoration-color: var(--gs-color-link-line); text-decoration-thickness: var(--gs-link-thickness); text-underline-offset: var(--gs-link-offset); }
+.gs-crumb a,
+.gs-pagination a,
+.gs-artwork-label a { transition: text-decoration-color var(--gs-duration-fast) var(--gs-ease), text-decoration-thickness var(--gs-duration-fast) var(--gs-ease); }
+:is(.gs-cta-link, .gs-crumb a, .gs-pagination a, .gs-artwork-label a):active,
+.gs-card:active .gs-card__cue { text-decoration-color: currentColor; text-decoration-thickness: var(--gs-link-thickness-hover); }
+@media (hover: hover) and (pointer: fine) {
+  :is(.gs-cta-link, .gs-crumb a, .gs-pagination a, .gs-artwork-label a):hover,
+  .gs-card:hover .gs-card__cue { text-decoration-color: currentColor; text-decoration-thickness: var(--gs-link-thickness-hover); }
+}
+.gs-card .gs-card__cue { transition: none; } /* changes with the title, whose underline can't fade */
+
 /* A link staff mark as a standalone link (class="gs-cta-link") keeps that style in page text,
    without the inline link's fill (DS-82, Proposed). */
-.gs-prose a.gs-cta-link { color: var(--gs-color-fg); }
+.gs-prose a.gs-cta-link { color: var(--gs-color-fg); transition: text-decoration-color var(--gs-duration-fast) var(--gs-ease), text-decoration-thickness var(--gs-duration-fast) var(--gs-ease); }
 .gs-prose a.gs-cta-link:active { background-color: transparent; color: var(--gs-color-fg); }
 @media (hover: hover) and (pointer: fine) {
   .gs-prose a.gs-cta-link:hover { background-color: transparent; color: var(--gs-color-fg); }
 }
 
 /* External destination cue (e.g. Artists for Kids site). Pair with visually hidden "(external site)". */
-.gs-link--external::after,
-.gs-cta-link.gs-link--external::after {
+.gs-link--external::after {
   content: "";
   display: inline-block;
   width: 0.7em;
@@ -260,20 +307,28 @@
   mask: var(--gs-icon-external) center / contain no-repeat;
   vertical-align: 0.05em;
 }
-
-:root {
-  --gs-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 14'%3E%3Cpath d='M0 7h17.5M11.5 1l6 6-6 6' fill='none' stroke='%23000' stroke-width='2.6'/%3E%3C/svg%3E");
-  --gs-icon-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 12L12 2M4.5 2H12v7.5' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
-  --gs-icon-menu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14'%3E%3Cpath d='M0 2h18M0 7h18M0 12h18' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
-  --gs-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M1.5 1.5l11 11M12.5 1.5l-11 11' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
-  --gs-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5L7 7l5.5-5.5' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
-  --gs-icon-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8.6' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3Cpath d='M10 5v6.2' stroke='%23000' stroke-width='2.6'/%3E%3Ccircle cx='10' cy='14.6' r='1.5'/%3E%3C/svg%3E");
-  --gs-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8.6' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3Cpath d='M5.8 10.2l2.9 2.9 5.5-5.8' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+/* In a standalone link or a button the flex gap spaces the arrow, as it does the "more" arrow. */
+:is(.gs-cta-link, .gs-button).gs-link--external::after { margin-inline-start: 0; }
+/* In running text the arrow is glued to the last word (a word joiner), so it never starts a line on
+   its own: an inline box whose padding holds the arrow, drawn as a masked background. */
+:is(.gs-link, .gs-prose a:not(.gs-cta-link, .gs-button), .gs-card__title a).gs-link--external::after {
+  content: "\2060";
+  display: inline;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding-inline-start: 1em;
+  background: linear-gradient(currentColor, currentColor) 100% 50% / 0.7em 0.7em no-repeat;
+  -webkit-mask: var(--gs-icon-external) 100% 50% / 0.7em 0.7em no-repeat;
+  mask: var(--gs-icon-external) 100% 50% / 0.7em 0.7em no-repeat;
+  vertical-align: baseline;
 }
 
 /* ---------- Buttons ---------- */
 /* One size. Primary = brand box colour with ink text: a small version of the brand's box.
-   Hover and press invert it to the surface's fg/bg. Shape = the brand's single rounded corner. */
+   Hover and press invert it to the surface's fg/bg. Shape = the brand's single rounded corner.
+   A label too long for the screen wraps inside its button, in balanced lines, instead of making the
+   page wider than a phone (reflow at 320 px). One line wherever it fits. */
 
 .gs-button {
   --_bg: var(--gs-color-accent);
@@ -283,16 +338,18 @@
   align-items: center;
   justify-content: center;
   gap: 0.6em;
-  min-height: 3rem;
-  padding: 0 1.5rem;
+  min-height: var(--gs-control-h);
+  padding: var(--gs-space-2) var(--gs-space-5);
   font-family: var(--gs-font-sans);
   font-size: var(--gs-text-label);
   font-weight: var(--gs-weight-black);
-  line-height: 1;
+  line-height: var(--gs-leading-label);
   letter-spacing: var(--gs-tracking-label);
+  text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  white-space: nowrap;
+  white-space: normal;
+  text-wrap: balance;
   color: var(--_fg);
   background-color: var(--_bg);
   border: var(--gs-border-strong) solid var(--_border);
@@ -306,7 +363,7 @@
 }
 /* Pressed, a button gives a little under the finger (DS-55). Not with reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .gs-button:active { transform: scale(0.97); }
+  .gs-button:not([disabled], [aria-disabled="true"], [aria-busy="true"]):active { transform: scale(0.97); }
 }
 .gs-button--secondary {
   --_bg: transparent;
@@ -314,27 +371,27 @@
   --_border: var(--gs-color-fg);
 }
 
-/* Hover and press. Disabled buttons don't react. */
-.gs-button:not([disabled], [aria-disabled="true"]):active {
+/* Hover and press. Disabled and busy buttons don't react (§6.2). */
+.gs-button:not([disabled], [aria-disabled="true"], [aria-busy="true"]):active {
   --_bg: var(--gs-color-fg);
   --_fg: var(--gs-color-bg);
   --_border: var(--gs-color-fg);
 }
-:is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):active {
-  --_bg: var(--gs-paper);
-  --_fg: var(--gs-ink);
-  --_border: var(--gs-ink);
+:is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"], [aria-busy="true"]):active {
+  --_bg: var(--gs-color-on-colour-hover-bg);
+  --_fg: var(--gs-color-on-colour-hover-fg);
+  --_border: var(--gs-color-on-colour-hover-fg);
 }
 @media (hover: hover) and (pointer: fine) {
-  .gs-button:not([disabled], [aria-disabled="true"]):hover {
+  .gs-button:not([disabled], [aria-disabled="true"], [aria-busy="true"]):hover {
     --_bg: var(--gs-color-fg);
     --_fg: var(--gs-color-bg);
     --_border: var(--gs-color-fg);
   }
-  :is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"]):hover {
-    --_bg: var(--gs-paper);
-    --_fg: var(--gs-ink);
-    --_border: var(--gs-ink);
+  :is(.gs-surface-accent, .gs-surface-tint) .gs-button:not(.gs-button--secondary, [disabled], [aria-disabled="true"], [aria-busy="true"]):hover {
+    --_bg: var(--gs-color-on-colour-hover-bg);
+    --_fg: var(--gs-color-on-colour-hover-fg);
+    --_border: var(--gs-color-on-colour-hover-fg);
   }
 }
 
@@ -357,15 +414,6 @@
   align-items: center;
   gap: var(--gs-space-3) var(--gs-space-5);
 }
-/* A label too long for the screen wraps inside its button, in balanced lines, instead of making the
-   page wider than a phone (reflow at 320 px). One line wherever it fits. */
-.gs-actions > .gs-button {
-  white-space: normal;
-  text-align: center;
-  text-wrap: balance;
-  line-height: var(--gs-leading-label);
-  padding-block: var(--gs-space-2);
-}
 /* A long programme page repeats its button after its text (DS-83, Proposed). */
 .gs-page-body__actions { margin-block-start: var(--gs-space-6); }
 
@@ -380,7 +428,7 @@
   line-height: 1;
   letter-spacing: var(--gs-tracking-label);
   text-transform: uppercase;
-  color: var(--gs-ink);
+  color: var(--gs-color-field-fg);
   background-color: var(--gs-color-tint);
   border-radius: var(--gs-shape-sm);
 }
@@ -389,11 +437,11 @@
   color: var(--gs-color-bg);
   background-color: var(--gs-color-fg);
 }
-.gs-surface-tint .gs-chip:not(.gs-chip--strong) { background-color: var(--gs-paper); }
+.gs-surface-tint .gs-chip:not(.gs-chip--strong) { background-color: var(--gs-color-field-bg); }
 
 /* Status and dates: a chip, then the dates on their own line. No "A · B" strings. */
 .gs-status { display: grid; justify-items: start; gap: var(--gs-space-2); margin: 0; }
-.gs-status__dates { margin: 0; font-size: var(--gs-text-small); font-weight: var(--gs-weight-bold); line-height: 1.4; }
+.gs-status__dates { margin: 0; font-size: var(--gs-text-small); font-weight: var(--gs-weight-bold); line-height: var(--gs-leading-small); text-wrap: balance; }
 
 /* ---------- Rules ---------- */
 
@@ -425,27 +473,24 @@
 /* The page opens with its hero close under the header. */
 .gs-section--lead { margin-block-start: var(--gs-space-5); }
 /* After a hero the page carries on at the heading gap, not a whole section's (DS-66), so the next
-   heading shows on the first screen and it's plain there is more below. Sections that render
-   nothing between them are skipped, as for the page header below. */
+   heading shows on the first screen and it's plain there is more below. */
 .gs-section.gs-section--lead { margin-block-end: var(--gs-stack-lg); }
-:where(.shopify-section):has(> .gs-section--lead) + :where(.shopify-section) > .gs-section:not(.gs-surface-tint, .gs-surface-ink, .gs-surface-accent),
-:where(.shopify-section):has(> .gs-section--lead) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section:not(.gs-surface-tint, .gs-surface-ink, .gs-surface-accent),
-:where(.shopify-section):has(> .gs-section--lead) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section:not(.gs-surface-tint, .gs-surface-ink, .gs-surface-accent) { margin-block-start: var(--gs-stack-lg); }
 /* Cards without a heading continue the text before them (DS-58): a group's space, not a section's,
-   so the sentence that introduces them reads with them. After anything else (a hero, nothing),
-   the margins collapse to the larger one and the usual space stays. */
-.gs-section.gs-section--continues { margin-block-start: var(--gs-space-7); }
-:where(.shopify-section):has(+ :where(.shopify-section) > .gs-section--continues) > .gs-section:not(.gs-section--lead),
-:where(.shopify-section):has(+ :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section--continues) > .gs-section:not(.gs-section--lead) { margin-block-end: var(--gs-space-7); }
-/* A page header or switcher sets its own gap to the content after it (--gs-stack-lg). */
-.gs-lead-in + .gs-section,
-:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section) > .gs-section,
-/* Sections that render nothing on this page (the switcher on most pages, a page with no text or
-   cards) don't break the lead-in: up to four are skipped. */
-:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section,
-:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section,
-:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section,
-:where(.shopify-section):has(> .gs-lead-in) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section:not(:has(*))) + :where(.shopify-section) > .gs-section { margin-block-start: 0; }
+   so the sentence that introduces them reads with them. The negative margin collapses with the
+   previous paper section's --gs-section-space, leaving --gs-space-7, however many empty sections sit
+   between. It relies on the section before being paper: the only band in the page, the newsletter,
+   is outside <main>. After a hero or a page header the rules below set the gap instead. */
+.gs-section.gs-section--continues { margin-block-start: calc(var(--gs-space-7) - var(--gs-section-space)); }
+/* DS-66: the first section that renders anything after a hero, however many sections that render
+   nothing sit between (the switcher on most pages, a page with no text or cards). */
+:where(.shopify-section):has(> .gs-section--lead) ~ :where(.shopify-section) > .gs-section:not(:where(.shopify-section):has(> .gs-section--lead) ~ :where(.shopify-section):has(*) ~ * > *, .gs-surface-tint, .gs-surface-ink, .gs-surface-accent) { margin-block-start: var(--gs-stack-lg); }
+/* A page header or switcher sets its own gap to the content after it (--gs-stack-lg), skipping
+   sections that render nothing; a second lead-in (a switcher under a page header) is not content. */
+:where(.shopify-section):has(> .gs-lead-in) ~ :where(.shopify-section) > .gs-section:not(:where(.shopify-section):has(> .gs-lead-in) ~ :where(.shopify-section):has(> :not(.gs-lead-in)) ~ * > *) { margin-block-start: 0; }
+.gs-lead-in + .gs-section { margin-block-start: 0; }
+/* A page that ends on its header (search before a search, the page not found) keeps a whole
+   section's space above the newsletter band. */
+.gs-main > .shopify-section:last-child > .gs-lead-in:last-child { margin-block-end: calc(var(--gs-section-space) - var(--gs-stack-lg)); }
 
 .gs-section-head {
   display: flex;
@@ -461,7 +506,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--gs-space-4);
-  padding-block: var(--gs-space-8) var(--gs-stack-lg);
+  padding-block: var(--gs-stack-lg);
 }
 .gs-page-head .gs-h1,
 .gs-page-head h1 { max-width: var(--gs-measure-heading); }
@@ -552,7 +597,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-grid--docs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
 @media (min-width: 750px) { .gs-grid--docs { gap: var(--gs-space-7) var(--gs-gutter); } }
 @media (min-width: 990px) { .gs-grid--docs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.gs-grid--docs .gs-card__text { font-size: var(--gs-text-small); color: var(--gs-color-fg-muted); }
+.gs-grid--docs .gs-card__text { font-size: var(--gs-text-small); line-height: var(--gs-leading-small); color: var(--gs-color-fg-muted); }
 /* On phones a group of cards that are only a picture and a title (ways to other pages) is a list:
    each card a row, its picture beside its title (DS-73, Proposed). */
 @media (max-width: 749px) {
@@ -578,10 +623,17 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* ---------- Prose (rich text from staff) ---------- */
 
 .gs-prose { max-width: var(--gs-measure); }
-.gs-prose > * { margin-block: 0; }
-.gs-prose > * + * { margin-block-start: 1em; }
-.gs-prose > * + :is(h2, h3, h4) { margin-block-start: 1.8em; }
-.gs-prose > :is(h2, h3, h4) + * { margin-block-start: 0.6em; }
+/* The rhythm also reaches text Shopify wraps in its own div (a rich text field's
+   .metafield-rich_text_field, a Word paste), and skips the <link> and <meta> tags Shopify can put
+   before the first paragraph. Selector lists, not :is() on the wrapper, so each rule stays (0,1,0). */
+.gs-prose > *,
+.gs-prose > :where(div:not([class^="gs-"])) > * { margin-block: 0; }
+.gs-prose > :where(:not(link, meta, style, script)) ~ *,
+.gs-prose > :where(div:not([class^="gs-"])) > :where(:not(link, meta, style, script)) ~ * { margin-block-start: 1em; }
+.gs-prose > :where(:not(link, meta, style, script)) ~ :is(h2, h3, h4),
+.gs-prose > :where(div:not([class^="gs-"])) > :where(:not(link, meta, style, script)) ~ :is(h2, h3, h4) { margin-block-start: 1.8em; }
+.gs-prose > :is(h2, h3, h4) + *,
+.gs-prose > :where(div:not([class^="gs-"])) > :is(h2, h3, h4) + * { margin-block-start: 0.6em; }
 /* Headings in page text sit one step below the page's section headings (DS-40): they organise a
    page's reading, they don't open a new part of the page. */
 .gs-prose h2 { font-size: var(--gs-text-h3); }
@@ -610,7 +662,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-prose blockquote {
   margin-inline: 0;
   padding-inline-start: var(--gs-space-5);
-  border-inline-start: 4px solid var(--gs-color-rule); /* brand guide p.11: the rule colour is for rules */
+  border-inline-start: var(--gs-border-bar) solid var(--gs-color-rule); /* brand guide p.11: the rule colour is for rules */
   font-size: var(--gs-text-deck);
   font-weight: var(--gs-weight-bold);
   line-height: var(--gs-leading-deck);
@@ -622,7 +674,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
    As a figure it sits beside the text it belongs to from 990px, as a pull quote (.gs-text-media). */
 .gs-prose .gs-quote blockquote { margin: 0; }
 .gs-prose .gs-quote blockquote > * { margin: 0; }
-.gs-prose .gs-quote figcaption { padding-inline-start: calc(var(--gs-space-5) + 4px); }
+/* Who said it: level with the quote's words, in bold whether or not staff typed <strong>. */
+.gs-prose .gs-quote figcaption { padding-inline-start: calc(var(--gs-space-5) + var(--gs-border-bar)); font-weight: var(--gs-weight-bold); }
+.gs-prose .gs-quote blockquote { hanging-punctuation: first; }
 /* A list of points (DS-60): <ul class="gs-points">, each item a bold phrase and then its text, as
    staff write them (Donate's "The impact of your gift", "Ways to Support"). No bullets: each point
    sits under the rule, like a text card, with its phrase as a small heading, so a list of four long
@@ -650,6 +704,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   text-wrap: balance;
 }
 .gs-prose .gs-points > li > strong:first-child + br { display: none; }
+/* Whatever follows a list of points starts further from it than the points sit from each other. */
+.gs-prose ul.gs-points + * { margin-block-start: var(--gs-space-7); }
 /* Gift amounts (DS-60): <ul class="gs-amounts">, each item an amount in bold and then what it does
    ("$150 can help bring a classroom to the Gallery"). The amounts sit side by side on the tint from
    750 px, each figure large, so a visitor can see at a glance what a gift of each size does. */
@@ -669,6 +725,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   border-radius: var(--gs-shape-md);
   background-color: var(--gs-color-tint);
   font-size: var(--gs-text-small);
+  line-height: var(--gs-leading-small);
   text-wrap: pretty;
 }
 .gs-prose .gs-amounts > li > strong:first-child {
@@ -709,7 +766,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* ---------- Text with pictures (DS-51) ---------- */
 /* Page text split at its H2 headings; each part's figures sit beside its paragraphs from 990px
    (text in 7 columns, pictures in 5) and follow them on smaller screens. */
-.gs-text-media-list { display: grid; gap: max(var(--gs-space-7), var(--gs-stack-lg)); }
+.gs-text-media-list { display: grid; gap: calc(1.8 * var(--gs-text-h3)); } /* the gap before a heading in page text (1.8em at H3 size), with or without a picture */
 /* The headed sections after a programme page's programmes are parts of the page: section spacing,
    and their H2 is a section heading (.gs-section-head .gs-h2) above the text and its pictures. */
 .gs-text-media-list--sections { gap: var(--gs-section-space); }
@@ -756,6 +813,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   font-family: inherit !important;
   color: inherit !important;
   background-color: transparent !important;
+  text-align: inherit !important;
+  letter-spacing: inherit !important;
 }
 .gs-prose :is(span, font, p, li, div, strong, em, b, i, a)[style] {
   font-size: inherit !important;
@@ -900,6 +959,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   gap: var(--gs-space-3);
 }
 .gs-card .gs-media { margin-block-end: var(--gs-space-2); }
+/* A card's own link is as wide as its words, so its focus ring fits them. */
+.gs-card > .gs-cta-link { justify-self: start; }
 .gs-card__title {
   margin: 0;
   font-size: var(--gs-text-h3);
@@ -927,14 +988,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   text-decoration-line: underline;
   text-decoration-color: var(--gs-color-link-line);
   text-decoration-thickness: var(--gs-link-thickness-hover);
-  text-underline-offset: 0.16em;
+  text-underline-offset: var(--gs-link-offset-heading);
 }
 @media (hover: hover) and (pointer: fine) {
   .gs-card:hover .gs-card__title a {
     text-decoration-line: underline;
     text-decoration-color: var(--gs-color-link-line);
     text-decoration-thickness: var(--gs-link-thickness-hover);
-    text-underline-offset: 0.16em;
+    text-underline-offset: var(--gs-link-offset-heading);
   }
 }
 
@@ -949,13 +1010,13 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-artwork-tile__artist {
   margin: 0;
   font-weight: var(--gs-weight-bold);
-  line-height: 1.35;
+  line-height: var(--gs-leading-tight);
 }
 .gs-artwork-tile__title {
   margin: 0;
   font-size: var(--gs-text-body);
   font-weight: var(--gs-weight-regular);
-  line-height: 1.35;
+  line-height: var(--gs-leading-tight);
   text-transform: none;
 }
 .gs-artwork-tile__title a { color: inherit; text-decoration: none; }
@@ -964,14 +1025,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-artwork-tile:active .gs-artwork-tile__title a {
   text-decoration-line: underline;
   text-decoration-color: var(--gs-color-link-line);
-  text-decoration-thickness: var(--gs-link-thickness);
+  text-decoration-thickness: var(--gs-link-thickness-hover);
   text-underline-offset: var(--gs-link-offset);
 }
 @media (hover: hover) and (pointer: fine) {
   .gs-artwork-tile:hover .gs-artwork-tile__title a {
     text-decoration-line: underline;
     text-decoration-color: var(--gs-color-link-line);
-    text-decoration-thickness: var(--gs-link-thickness);
+    text-decoration-thickness: var(--gs-link-thickness-hover);
     text-underline-offset: var(--gs-link-offset);
   }
 }
@@ -1043,7 +1104,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   text-transform: uppercase;
   color: var(--gs-color-fg-muted);
   text-decoration: none;
-  border-bottom: 4px solid transparent;
+  border-bottom: var(--gs-border-bar) solid transparent;
 }
 .gs-switcher__list a:active { color: var(--gs-color-fg); border-bottom-color: var(--gs-color-rule); }
 @media (hover: hover) and (pointer: fine) {
@@ -1101,24 +1162,37 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-input {
   box-sizing: border-box;
   width: 100%;
-  min-height: 3rem;
-  padding: 0 1rem;
+  min-height: var(--gs-control-h);
+  padding: 0 var(--gs-space-4);
   font: inherit;
   font-size: var(--gs-text-body);
-  color: var(--gs-ink);
-  background-color: var(--gs-paper);
+  color: var(--gs-color-field-fg);
+  background-color: var(--gs-color-field-bg);
   border: var(--gs-border-strong) solid var(--gs-color-control-border);
   border-radius: var(--gs-shape-sm);
 }
-.gs-input::placeholder { color: var(--gs-ink-soft); opacity: 1; }
-.gs-input:focus-visible { outline-offset: 1px; }
+.gs-input::placeholder { color: var(--gs-color-field-placeholder); opacity: 1; }
+.gs-input:focus-visible { outline-offset: var(--gs-border); }
+/* A search field's clear button is the site's close icon in the text colour, not the browser's blue. */
+.gs-input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+.gs-input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: 1rem;
+  block-size: 1rem;
+  margin-inline-start: var(--gs-space-2);
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-close) center / contain no-repeat;
+  mask: var(--gs-icon-close) center / contain no-repeat;
+  cursor: pointer;
+}
 
 /* Error: the field's border thickens in the error colour, and a message under it says what to do.
    Link them: <input aria-invalid="true" aria-describedby="ID"> + <p class="gs-field__error" id="ID">.
    The message and icon carry the error; colour is never the only signal. */
 .gs-input[aria-invalid="true"] {
   border-color: var(--gs-color-error);
-  box-shadow: inset 0 0 0 1px var(--gs-color-error);
+  box-shadow: inset 0 0 0 var(--gs-border) var(--gs-color-error);
 }
 .gs-field__error,
 .gs-form-status {
@@ -1128,7 +1202,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   margin: 0;
   font-size: var(--gs-text-small);
   font-weight: var(--gs-weight-bold);
-  line-height: 1.4;
+  line-height: var(--gs-leading-small);
 }
 .gs-field__error { color: var(--gs-color-error); }
 .gs-field__error::before,
@@ -1148,11 +1222,13 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 .gs-field__error[hidden],
 .gs-form-status[hidden] { display: none; }
+.gs-form-status:focus { outline: none; } /* the script moves focus to the line so it's read; it isn't a control */
 
 .gs-signup { display: grid; gap: var(--gs-space-4); max-width: var(--gs-width-form); }
 .gs-signup__row,
 .gs-form-row { display: flex; flex-wrap: wrap; gap: var(--gs-space-3); align-items: end; }
 :is(.gs-signup__row, .gs-form-row) .gs-field { flex: 1 1 16rem; }
+.gs-form-row { max-width: var(--gs-width-form); } /* site search and the collection finder stop where every other form does */
 /* In the one-line sign-up form the error message goes under the whole row (after .gs-signup__row),
    so the button stays level with the input. */
 
@@ -1165,15 +1241,23 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   z-index: var(--gs-z-header);
   display: flex;
   align-items: flex-start;
-  gap: var(--gs-space-5) var(--gs-space-7);
+  column-gap: var(--gs-space-5); /* the bar never wraps; 24 px lets the Foundation logo and Menu fit 320 px */
   padding-inline-end: var(--gs-gutter);
   background-color: var(--gs-color-bg);
+  --_logo-h: var(--gs-header-logo-h); /* the logo's height, which the drawer also reads */
+}
+/* The Foundation logo can't go below 72 px tall (§8.3), so on phones it's taller than the others (DS-47). */
+@media (max-width: 989px) {
+  [data-gs-brand="foundation"] .gs-header { --_logo-h: var(--gs-header-logo-h-foundation); }
+}
+@media (min-width: 990px) {
+  .gs-header { --_logo-h: var(--gs-header-logo-h-lg); }
 }
 /* The boxed logo hangs flush from the top-left corner of the page, rounded corner facing in. */
 .gs-header__logo { display: block; flex: none; line-height: 0; }
-.gs-header__logo :is(img, svg) { display: block; height: var(--gs-header-logo-h); width: auto; }
-/* The Foundation logo can't go below 72 px tall (§8.3), so on phones it's taller than the others (DS-47). */
-.gs-header__logo--foundation :is(img, svg) { height: var(--gs-header-logo-h-foundation); }
+/* The logo is flush with the page's corner, so its ring goes inside it, where nothing cuts it off. */
+.gs-header__logo:focus-visible { outline-offset: calc(-1 * var(--gs-focus-width)); }
+.gs-header__logo :is(img, svg) { display: block; height: var(--_logo-h); width: auto; }
 
 /* Summaries used as buttons: no disclosure triangle. */
 :is(.gs-header__menu-toggle, .gs-nav__trigger) { list-style: none; }
@@ -1184,23 +1268,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   align-self: center;
   margin-inline-start: auto;
 }
+/* The Menu button is a secondary button (gs-button gs-button--secondary), a little smaller: the
+   header's 44 px target, not the 48 px of buttons in the page. */
 .gs-header__menu-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
   min-height: var(--gs-tap-target);
   padding: 0 var(--gs-space-3);
-  font-family: var(--gs-font-sans);
-  font-size: var(--gs-text-label);
-  font-weight: var(--gs-weight-black);
-  line-height: 1;
-  letter-spacing: var(--gs-tracking-label);
-  text-transform: uppercase;
-  color: var(--gs-color-fg);
-  background: transparent;
-  border: var(--gs-border-strong) solid var(--gs-color-fg);
-  border-radius: var(--gs-shape-sm);
-  cursor: pointer;
   user-select: none;
 }
 .gs-header__menu-toggle::after {
@@ -1215,10 +1287,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   -webkit-mask-image: var(--gs-icon-close);
   mask-image: var(--gs-icon-close);
 }
-.gs-header__menu-toggle:active {
-  color: var(--gs-color-bg);
-  background-color: var(--gs-color-fg);
-}
 
 /* Opens over the page, under the header, and scrolls inside itself if it's taller than the screen. */
 .gs-drawer__panel {
@@ -1230,8 +1298,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   display: flex;
   flex-direction: column;
   gap: var(--gs-space-5);
-  max-height: calc(100vh - var(--gs-header-logo-h));
-  max-height: calc(100dvh - var(--gs-header-logo-h));
+  max-height: calc(100vh - var(--_logo-h));
+  max-height: calc(100dvh - var(--_logo-h));
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: var(--gs-space-2) var(--gs-gutter) var(--gs-space-6);
@@ -1268,7 +1336,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   letter-spacing: var(--gs-tracking-label);
   text-transform: uppercase;
 }
-.gs-utility a { color: var(--gs-color-fg); text-decoration: none; }
+.gs-utility a { color: var(--gs-color-fg); }
 
 /* Two kinds of top-level item, never mixed:
    .gs-nav__link     a plain link, for a section with no dropdown
@@ -1318,7 +1386,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 :is(.gs-nav__link, .gs-nav__trigger):active {
   text-decoration-line: underline;
   text-decoration-color: var(--gs-color-link-line);
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: var(--gs-nav-line);
   text-underline-offset: 0.5em;
 }
 
@@ -1333,8 +1401,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   margin: 0;
   padding: var(--gs-space-3) var(--gs-space-5) var(--gs-space-4);
   list-style: none;
-  background-color: var(--gs-paper);
-  border-top: 4px solid var(--gs-color-rule); /* brand guide p.11: the rule colour is for rules */
+  background-color: var(--gs-color-field-bg);
+  border-top: var(--gs-border-bar) solid var(--gs-color-rule); /* brand guide p.11: the rule colour is for rules */
   border-radius: var(--gs-shape-md);
   box-shadow: var(--gs-shadow-dropdown);
 }
@@ -1344,22 +1412,17 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
   min-height: 2.5rem;
-  color: var(--gs-ink);
-  text-decoration: none;
-}
-.gs-nav__panel a[aria-current="page"],
-.gs-nav__panel a:active,
-.gs-utility a:active {
-  text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
-  text-underline-offset: var(--gs-link-offset);
+  color: var(--gs-color-field-fg);
 }
 
-/* Opening answers a click, so it may move: the panel fades in and drops 4px, 120ms.
-   Closing is instant. Reduced motion sets the duration to 0. */
+/* Opening answers a click, so it may move: what floats over the page (a bar dropdown, the Menu
+   drawer) fades in and drops 4px, 120ms. What opens in place (a section inside the drawer) opens
+   instantly, so the drawer's own reveal never runs twice at once. Closing is instant. Reduced
+   motion sets the duration to 0. */
 @keyframes gs-reveal {
   from { opacity: 0; transform: translateY(-0.25rem); }
 }
-.gs-nav__details[open] > .gs-nav__panel,
+.gs-header__bar .gs-nav__details[open] > .gs-nav__panel,
 .gs-drawer[open] > .gs-drawer__panel {
   animation: gs-reveal var(--gs-duration-fast) var(--gs-ease);
 }
@@ -1369,31 +1432,35 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-nav__trigger:hover {
     text-decoration-line: underline;
     text-decoration-color: var(--gs-color-link-line);
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: var(--gs-nav-line);
     text-underline-offset: 0.5em;
-  }
-  .gs-nav__panel a:hover,
-  .gs-utility a:hover {
-    text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
-    text-underline-offset: var(--gs-link-offset);
-  }
-  .gs-header__menu-toggle:hover {
-    color: var(--gs-color-bg);
-    background-color: var(--gs-color-fg);
   }
 }
 
-@media (min-width: 990px) {
-  .gs-header__logo :is(img, svg) { height: var(--gs-header-logo-h-lg); }
-  .gs-drawer__panel {
-    max-height: calc(100vh - var(--gs-header-logo-h-lg));
-    max-height: calc(100dvh - var(--gs-header-logo-h-lg));
-  }
+/* Quiet links, written once: dropdown, utility, footer and list links (a name in the A to Z). No
+   underline at rest: they sit in lists where every item is a link. The underline comes on hover and
+   press, in the link-line colour, and stays on the current page's link. Instant, no fade: a
+   transparent underline fading in would vanish in forced colours. */
+:is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a,
+.gs-list-link {
+  text-decoration-line: none;
+  text-decoration-color: var(--gs-color-link-line);
+  text-decoration-thickness: var(--gs-link-thickness);
+  text-underline-offset: var(--gs-link-offset);
 }
+:is(.gs-nav__panel, .gs-utility) a[aria-current="page"],
+:is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a:active,
+.gs-list-link:active { text-decoration-line: underline; }
+@media (hover: hover) and (pointer: fine) {
+  :is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a:hover,
+  .gs-list-link:hover { text-decoration-line: underline; }
+}
+
 
 /* Desktop: the inline nav needs room for six or seven section labels, so the drawer is used up
    to 1199px. Utility links sit in a small row above the nav (and come first in the markup). */
 @media (min-width: 1200px) {
+  .gs-header { column-gap: var(--gs-space-7); }
   .gs-drawer { display: none; }
   .gs-header__bar {
     display: flex;
@@ -1438,25 +1505,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-footer__cols > * { display: grid; align-content: start; gap: var(--gs-space-3); }
 .gs-footer__cols p { margin: 0; }
 .gs-footer__cols ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--gs-space-2); }
-.gs-footer__cols a { color: inherit; text-decoration: none; }
-.gs-footer__cols a:active {
-  text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
-  text-underline-offset: var(--gs-link-offset);
-}
-@media (hover: hover) and (pointer: fine) {
-  .gs-footer__cols a:hover {
-    text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line);
-    text-underline-offset: var(--gs-link-offset);
-  }
-}
-.gs-footer__legal { display: flex; flex-wrap: wrap; gap: var(--gs-space-2) var(--gs-space-5); margin: 0; padding: 0; list-style: none; color: var(--gs-color-fg-muted); font-size: var(--gs-text-caption); }
+.gs-footer__cols a { color: inherit; }
+.gs-footer__legal { display: flex; flex-wrap: wrap; gap: var(--gs-space-2) var(--gs-space-5); margin: 0; padding: 0; list-style: none; color: var(--gs-color-fg-muted); font-size: var(--gs-text-caption); line-height: var(--gs-leading-caption); }
 .gs-footer__legal a { color: inherit; }
 /* The copyright on its own line, the links together under it, so no link is left alone on a line. */
 .gs-footer__legal > :first-child { flex-basis: 100%; }
 /* The three logos at one letter size, on one baseline (DS-59). Each is as tall as it needs to be
    for its lowercase letters to match the Foundation's at its 72 px minimum, and it hangs below the
    row by as much as it reaches under its last line (the Gallery's y, the Artists for Kids brush),
-   so "Gallery", "Kids" and "Foundation" sit on the same line. Metrics: see Logo metrics. */
+   so "Gallery", "Kids" and "Foundation" sit on the same line. Metrics: see Logo metrics in tokens.css. */
 .gs-footer__logos svg {
   display: block;
   width: auto;
@@ -1484,14 +1541,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   position: absolute;
   inset-inline-start: var(--gs-space-4);
   top: var(--gs-space-2);
-  z-index: var(--gs-z-toast);
+  z-index: var(--gs-z-skip);
   padding: var(--gs-space-3) var(--gs-space-4);
   font-size: var(--gs-text-label);
   font-weight: var(--gs-weight-black);
   letter-spacing: var(--gs-tracking-label);
   text-transform: uppercase;
-  color: var(--gs-paper);
-  background-color: var(--gs-ink);
+  color: var(--gs-color-skip-fg);
+  background-color: var(--gs-color-skip-bg);
   border-radius: var(--gs-shape-sm);
   transform: translateY(-200%);
 }
@@ -1503,8 +1560,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-hero__caption { margin-block-start: var(--gs-space-3); max-width: var(--gs-measure); }
 /* An exhibition's summary in its hero box (DS-66): reading size, so the box stays a title box. */
 .gs-hero__summary { margin: 0; max-width: var(--gs-measure); line-height: var(--gs-leading-body); text-wrap: pretty; }
-.gs-hero__box .gs-crumb a { color: inherit; }
-.gs-hero__caption > * { margin: 0; }
+.gs-hero__caption > *,
+.gs-hero__caption > .metafield-rich_text_field > * { margin: 0; }
 @media (min-width: 990px) {
   .gs-hero:not(.gs-hero--artwork) .gs-hero__caption { margin-inline-start: max(var(--gs-space-7), (100% - var(--gs-width-content)) / 2); }
 }
@@ -1512,7 +1569,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* A programme's own logo above its page title (DESIGN.md §8.2). Artwork, so no box or corner. */
 .gs-page-head__logo { display: block; line-height: 0; }
 .gs-page-head__logo svg { display: block; height: var(--gs-programme-logo-h); width: auto; }
-.gs-page-head .gs-actions { margin-block-start: var(--gs-space-2); }
+/* Text to actions: 24 px (this and the box's 16 px gap), in every box that ends on its actions (§5.1). */
+:is(.gs-page-head, .gs-hero__box, .gs-feature__text) > .gs-actions,
+.gs-visit__head > .gs-cta-link { margin-block-start: var(--gs-space-2); }
 
 /* ---------- Feature panel ---------- */
 /* One box: text beside an image (photo or artwork). The box takes the surface; the section around
@@ -1527,6 +1586,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 .gs-feature__text { display: grid; gap: var(--gs-space-4); justify-items: start; align-content: center; }
 .gs-feature__text > * { margin: 0; }
+.gs-feature__text .gs-prose,
+.gs-newsletter__text .gs-prose { text-wrap: pretty; }
 /* A programme's logo leads a panel in its colours (DS-55): the programme is seen, not only named. */
 .gs-feature__logo { line-height: 0; margin-block-end: var(--gs-space-2); }
 .gs-feature__logo .gs-logo { display: block; height: var(--gs-feature-logo-h); width: auto; }
@@ -1601,22 +1662,16 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-card__meta > * { margin: 0; }
 .gs-card__text { margin: 0; text-wrap: pretty; }
 /* People cards: the line about the person is in the small size, so the name leads (DS-37). */
-.gs-grid--people .gs-card__text { font-size: var(--gs-text-small); line-height: 1.5; }
+.gs-grid--people .gs-card__text { font-size: var(--gs-text-small); line-height: var(--gs-leading-small); }
 /* A card without an image: the rule marks where it starts. */
 .gs-card--text {
   padding-block-start: var(--gs-space-4);
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-card-group + .gs-card-group { margin-block-start: var(--gs-section-space); }
-.gs-card-group { scroll-margin-block-start: var(--gs-space-6); } /* a call to action can jump here (DS-53) */
+.gs-card-group,
+.gs-section[id] { scroll-margin-block-start: var(--gs-space-6); } /* a call to action or an in-page link can jump here (DS-53) */
 
-/* ---------- Logo metrics (DS-59) ---------- */
-/* Measured from the white logo files, as shares of each logo's height: its lowercase letters' height
-   (the "o") and how far the artwork reaches below its last baseline. With them, logos of different
-   shapes can be set at one letter size and on one baseline, as in the footer. */
-.gs-logo--gallery-simple-stacked-white { --gs-logo-x: 0.192; --gs-logo-descent: 0.086; }
-.gs-logo--artists-for-kids-full-white { --gs-logo-x: 0.207; --gs-logo-descent: 0.031; }
-.gs-logo--foundation-simple-white { --gs-logo-x: 0.323; --gs-logo-descent: 0.008; }
 
 /* ---------- Logo cards (DS-50) ---------- */
 /* A card about one of the three organisations: its logo is the heading (the title is there for
@@ -1653,8 +1708,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   }
 }
 /* A portfolio's description sits under its hero, and the switcher follows at the page header's gap. */
-.gs-collection-head { margin-block-end: var(--gs-stack-lg); }
-.gs-collection-intro { padding-block-start: var(--gs-space-6); }
+.gs-collection-intro { padding-block-start: var(--gs-stack-lg); }
 /* A link after a list to a related page ("Exhibitions" overview under the exhibition lists). */
 .gs-list-more { margin: var(--gs-stack-lg) 0 0; }
 .gs-gallery__credit { margin: var(--gs-space-4) 0 0; }
@@ -1668,6 +1722,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-grid--features { grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-8); }
 .gs-card--wide .gs-card__title { font-size: var(--gs-text-h2); }
 .gs-card__cue { margin-block-start: var(--gs-space-2); }
+/* With a mouse, where links don't grow to the touch target, a card's link keeps the same distance. */
+@media (pointer: fine) {
+  .gs-card > .gs-cta-link,
+  .gs-card__cue { margin-block-start: var(--gs-space-3); }
+}
 @media (min-width: 750px) {
   .gs-card--wide {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -1675,10 +1734,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
     align-items: center;
   }
   .gs-card--wide > .gs-media { margin: 0; }
-}
-.gs-card:active .gs-card__cue { text-decoration-color: currentColor; }
-@media (hover: hover) and (pointer: fine) {
-  .gs-card:hover .gs-card__cue { text-decoration-color: currentColor; }
 }
 
 /* ---------- About the exhibition ---------- */
@@ -1697,12 +1752,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   grid-area: credits;
   display: grid;
   justify-items: start;
-  gap: var(--gs-space-4);
-  padding-block-start: var(--gs-space-4);
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-about__credits > * { margin: 0; }
-.gs-events--compact { gap: var(--gs-space-4); }
+.gs-events--compact { gap: var(--gs-space-6); }
+.gs-events--compact .gs-event__text > .gs-cta-link { margin-block-start: 0; }
 .gs-events--compact .gs-event { padding: 0; border: 0; gap: var(--gs-space-1); }
 /* Two columns of names only where each column holds a whole name (12rem fits nine in ten of the
    artists' names in the entries). In the facts beside the text on wide screens that means one
@@ -1751,12 +1805,13 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* About the work: the description at reading width under both columns (DS-38). */
 .gs-artwork__about {
   display: grid;
-  gap: var(--gs-space-4);
   max-width: var(--gs-measure);
-  padding-block-start: var(--gs-space-5);
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-artwork__about > * { margin: 0; }
+/* Rule, caps label, text: spaced as a fact in the details list (.gs-details__item). */
+:is(.gs-artwork__about, .gs-about__credits) { padding-block-start: var(--gs-space-3); row-gap: var(--gs-space-2); }
+:is(.gs-artwork__about, .gs-about__credits) > .gs-label ~ * + * { margin-block-start: var(--gs-space-2); }
 @media (min-width: 990px) { .gs-artwork__about { grid-column: 1 / -1; } }
 
 /* Museum label: artist in bold, title in italics (a real <cite>), then year. Sentence case (DS-10). */
@@ -1764,7 +1819,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   margin: 0;
   font-size: var(--gs-text-h3);
   font-weight: var(--gs-weight-regular);
-  line-height: 1.25;
+  line-height: var(--gs-leading-art-label);
   letter-spacing: 0;
   text-transform: none;
   text-wrap: balance;
@@ -1783,17 +1838,21 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-select-wrap::after {
   content: "";
   position: absolute;
-  inset-inline-end: 1rem;
+  inset-inline-end: var(--gs-space-4);
   top: 50%;
   width: 0.8em;
   height: 0.5em;
-  background-color: var(--gs-ink);
+  background-color: var(--gs-color-field-fg);
   -webkit-mask: var(--gs-icon-chevron) center / contain no-repeat;
   mask: var(--gs-icon-chevron) center / contain no-repeat;
   transform: translateY(-50%);
   pointer-events: none;
 }
 textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize: vertical; }
+/* Where the browser can, the box grows with the message instead of showing a grip in the brand's corner. */
+@supports (field-sizing: content) {
+  textarea.gs-input { field-sizing: content; resize: none; max-block-size: 24rem; }
+}
 
 /* A panel inside a paper section (framing offer, contact details). Put a surface class on it. */
 .gs-panel {
@@ -1851,7 +1910,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-cart__item > * { margin: 0; }
 .gs-cart__details { display: grid; gap: var(--gs-space-2); justify-items: start; }
 .gs-cart__details > * { margin: 0; }
-.gs-cart__name { font-size: var(--gs-text-body); font-weight: var(--gs-weight-regular); line-height: 1.35; letter-spacing: 0; text-transform: none; }
+.gs-cart__name { font-size: var(--gs-text-body); font-weight: var(--gs-weight-regular); line-height: var(--gs-leading-tight); letter-spacing: 0; text-transform: none; }
 .gs-cart__name cite { font-style: italic; }
 .gs-cart__controls { grid-column: 2; display: flex; flex-wrap: wrap; align-items: end; gap: var(--gs-space-3) var(--gs-space-5); }
 .gs-cart__controls .gs-field { width: 6rem; }
@@ -1874,8 +1933,8 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0 var(--gs-space-5);
-  margin: var(--gs-stack-lg) 0 0;
+  gap: 0;
+  margin: var(--gs-stack-lg) 0 0 calc(-1 * var(--gs-space-3)); /* each number's padding widens its target; the first one's text keeps the column edge */
   padding: 0;
   list-style: none;
   font-size: var(--gs-text-label);
@@ -1883,9 +1942,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   letter-spacing: var(--gs-tracking-label);
   text-transform: uppercase;
 }
-.gs-pagination :is(a, span) { display: inline-flex; align-items: center; min-height: var(--gs-tap-target); color: inherit; }
+.gs-pagination > li > :is(a, span) { display: inline-flex; align-items: center; min-height: var(--gs-tap-target); padding-inline: var(--gs-space-3); color: inherit; }
 .gs-pagination a { text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line); text-underline-offset: var(--gs-link-offset); }
-.gs-pagination [aria-current="page"] { text-decoration: underline 4px var(--gs-color-link-line); text-underline-offset: var(--gs-link-offset); }
+.gs-pagination [aria-current="page"] { text-decoration: underline var(--gs-border-bar) var(--gs-color-link-line); text-underline-offset: var(--gs-link-offset); }
 
 .gs-results { display: grid; gap: var(--gs-space-5); margin: 0; padding: 0; list-style: none; }
 .gs-results > li { display: grid; gap: var(--gs-space-2); padding-block-start: var(--gs-space-4); border-block-start: var(--gs-border) solid var(--gs-color-rule); }
@@ -1893,7 +1952,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 
 /* ---------- Newsletter band and contact ---------- */
 
-.gs-newsletter { display: grid; gap: var(--gs-space-5) var(--gs-gutter); align-items: end; }
+.gs-newsletter { display: grid; gap: var(--gs-space-5) var(--gs-gutter); align-items: start; } /* start, so a message under the field doesn't move the field */
 .gs-newsletter__text { display: grid; gap: var(--gs-space-3); }
 .gs-newsletter__text > * { margin: 0; }
 @media (min-width: 990px) { .gs-newsletter { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
@@ -1948,7 +2007,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 /* ---------- Home: What's on, open today, sideways rows (DS-54) ---------- */
 
 /* Whether the gallery is open today (snippets/gs-open-today.liquid, js/gs-open.js). */
-.gs-open { margin: 0; font-weight: var(--gs-weight-bold); }
+.gs-open { margin: 0; font-weight: var(--gs-weight-bold); text-wrap: balance; }
 /* Links beside a section heading ("All exhibitions", "All events"). */
 .gs-whats-on__links { margin: 0; display: flex; flex-wrap: wrap; gap: var(--gs-space-3) var(--gs-space-6); }
 /* A row of cards that scrolls sideways on phones, bleeding to the screen's edges with the next card
@@ -1965,7 +2024,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
     scroll-padding-inline: var(--gs-gutter);
     margin-inline: calc(-1 * var(--gs-gutter));
     padding-inline: var(--gs-gutter);
-    padding-block-end: var(--gs-space-3);
+    /* Room above for a focused card's ring, which the sideways scroll would otherwise cut off. */
+    padding-block: calc(var(--gs-focus-width) + var(--gs-focus-offset)) var(--gs-space-3);
+    margin-block-start: calc(-1 * (var(--gs-focus-width) + var(--gs-focus-offset)));
     scrollbar-width: thin;
   }
   .gs-rail > li { scroll-snap-align: start; }
@@ -2006,17 +2067,10 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   letter-spacing: var(--gs-tracking-label);
   text-transform: uppercase;
 }
-.gs-crumb a {
-  color: var(--gs-color-accent-text);
-  text-decoration-line: underline;
-  text-decoration-color: var(--gs-color-link-line);
-  text-decoration-thickness: var(--gs-link-thickness);
-  text-underline-offset: var(--gs-link-offset);
-  transition: text-decoration-color var(--gs-duration-fast) var(--gs-ease), text-decoration-thickness var(--gs-duration-fast) var(--gs-ease);
-}
-.gs-crumb a:active { text-decoration-color: currentColor; text-decoration-thickness: var(--gs-link-thickness-hover); }
-@media (hover: hover) and (pointer: fine) {
-  .gs-crumb a:hover { text-decoration-color: currentColor; text-decoration-thickness: var(--gs-link-thickness-hover); }
+/* The crumb link's own style is with the standalone links (Links). On touch screens the link grows
+   to the 44 px target; the crumb gives the growth back, so it keeps its place over the title. */
+@media (pointer: coarse) {
+  .gs-crumb { margin-block: calc((var(--gs-tap-target) - var(--gs-leading-label) * 1em) / -2); }
 }
 
 /* The artist's header: name, names and dates beside the links out (website, documents). */
@@ -2057,6 +2111,13 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 }
 .gs-letters[data-stuck] { box-shadow: 0 var(--gs-border) 0 var(--gs-color-rule); }
 .gs-letters[hidden] { display: none; }
+/* While the letter bar shows, anything scrolled into view (a letter's jump, a name reached with Tab or
+   Shift+Tab) stops just under it, never behind it (WCAG 2.4.11). One row on phones and from 1200 px;
+   two rows between. */
+:root:has(.gs-letters:not([hidden])) { scroll-padding-block-start: calc(var(--gs-tap-target) + var(--gs-space-2) * 2 + var(--gs-space-4)); }
+@media (min-width: 750px) and (max-width: 1199px) {
+  :root:has(.gs-letters:not([hidden])) { scroll-padding-block-start: calc(var(--gs-tap-target) * 2 + var(--gs-space-2) * 2 + var(--gs-space-4)); }
+}
 .gs-letters ul { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
   .gs-letters ul { grid-template-columns: repeat(26, minmax(0, 1fr)); }
@@ -2064,8 +2125,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 /* On phones the letters are one row that scrolls sideways, bleeding to the edges with the next
    letter peeking in, instead of four rows before the first name. */
 @media (max-width: 749px) {
-  .gs-letters { margin-inline: calc(-1 * var(--gs-gutter)); }
-  .gs-letters ul { display: flex; overflow-x: auto; padding-inline: var(--gs-gutter); scrollbar-width: none; }
+  /* The padding sits inside the row that scrolls, so a focused letter's ring isn't cut off. */
+  .gs-letters { margin-inline: calc(-1 * var(--gs-gutter)); padding-block: 0; }
+  .gs-letters ul { display: flex; overflow-x: auto; padding-block: var(--gs-space-2); padding-inline: var(--gs-gutter); scrollbar-width: none; }
   .gs-letters ul::-webkit-scrollbar { display: none; }
   .gs-letters li { flex: none; }
 }
@@ -2090,11 +2152,6 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-index__group {
   display: grid;
   gap: var(--gs-space-3) var(--gs-gutter);
-  /* A jump lands the letter just under the sticky bar, not behind it. */
-  scroll-margin-block-start: calc(var(--gs-tap-target) + var(--gs-space-2) * 2 + var(--gs-space-4));
-}
-@media (min-width: 750px) and (max-width: 1199px) {
-  .gs-index__group { scroll-margin-block-start: calc(var(--gs-tap-target) * 2 + var(--gs-space-2) * 2 + var(--gs-space-4)); }
 }
 .gs-index__group[hidden] { display: none; }
 @media (min-width: 990px) {
@@ -2104,7 +2161,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   margin: 0;
   font-size: var(--gs-text-display);
   font-weight: var(--gs-weight-black);
-  line-height: 0.85;
+  line-height: var(--gs-leading-index);
   text-transform: uppercase;
   color: var(--gs-color-accent-text);
 }
@@ -2125,16 +2182,8 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-index__item[hidden] { display: none; }
 .gs-list-link {
   font-weight: var(--gs-weight-bold);
-  line-height: 1.35;
+  line-height: var(--gs-leading-tight);
   color: var(--gs-color-fg);
-  text-decoration-line: none;
-  text-decoration-color: var(--gs-color-link-line);
-  text-decoration-thickness: var(--gs-link-thickness);
-  text-underline-offset: var(--gs-link-offset);
-}
-.gs-list-link:active { text-decoration-line: underline; }
-@media (hover: hover) and (pointer: fine) {
-  .gs-list-link:hover { text-decoration-line: underline; }
 }
 
 /* A work's page: the product page's layout (DS-38) without price or cart. The label's facts are a
@@ -2143,7 +2192,6 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-artwork--text .gs-artwork__info { max-width: var(--gs-measure); }
 .gs-details--stack { grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-4); width: 100%; }
 @media (min-width: 750px) { .gs-details--stack { grid-template-columns: minmax(0, 1fr); } }
-.gs-artwork-label a { color: inherit; text-decoration-line: underline; text-decoration-color: var(--gs-color-link-line); text-decoration-thickness: var(--gs-link-thickness); text-underline-offset: var(--gs-link-offset); }
 
 /* Ways into the collection: groupings as cards with a work on the mat, then categories and themes
    as two lists of links with their counts. */
@@ -2189,7 +2237,8 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
    level with the plain values beside them. */
 .gs-lesson__rich p { margin: 0; }
 .gs-lesson__rich p + p { margin-block-start: var(--gs-space-2); }
-.gs-lesson__questions { display: grid; gap: var(--gs-space-2); margin: 0; padding-inline-start: 1.25em; max-width: var(--gs-measure); }
+.gs-lesson__questions { display: grid; gap: 0.75em; margin: 0; padding-inline-start: 1.25em; max-width: var(--gs-measure); }
+.gs-lesson__questions li::marker { color: var(--gs-color-fg-muted); }
 /* Two across, three short facts would leave the third alone: the questions take the column beside it. */
 @media (min-width: 750px) and (max-width: 989px) {
   .gs-lesson__details > .gs-details__item--wide:nth-child(even) { grid-column: auto; }
@@ -2206,12 +2255,14 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-field__error::before,
   .gs-form-status::before,
   .gs-disclosure > summary::after,
-  .gs-select-wrap::after {
+  .gs-select-wrap::after,
+  .gs-input[type="search"]::-webkit-search-cancel-button {
     forced-color-adjust: none;
     background-color: CanvasText;
   }
   a.gs-link--external::after,
   .gs-cta-link--more::after { background-color: LinkText; }
+  :is(.gs-link, .gs-prose a:not(.gs-cta-link, .gs-button), .gs-card__title a).gs-link--external::after { background-image: linear-gradient(LinkText, LinkText); }
   .gs-nav__panel,
   .gs-drawer__panel,
   .gs-chip { border: 1px solid CanvasText; }

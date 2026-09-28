@@ -5,6 +5,7 @@
     "pagination": "Pages",
     "previous": "Previous",
     "next": "Next",
+    "page": "Page",
     "pdf": "(PDF)"
   },
   "header": {
