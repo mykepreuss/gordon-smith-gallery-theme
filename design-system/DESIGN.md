@@ -373,7 +373,7 @@ Two modes, chosen by the component. Sections render images only through `snippet
 
 ### 6.8 Image gallery
 
-Image lists use the grid (`.gs-grid`), so their rows and columns are spaced like every other grid. No lightbox in v1 (Q8).
+Image lists use the grid (`.gs-grid`), so their rows and columns are spaced like every other grid. No lightbox yet: one is wanted for artworks and exhibition photos (Q8, P-60), to be designed.
 
 - Installation views (`.gs-grid.gs-gallery--installation`): photo mode 3:2, `--gs-shape-md`, one, two, then three across, with the exhibition's one credit under the list in caption style ("Photos by Name").
 - Works: `.gs-grid--artworks` with work tiles (§6.5, DS-46, DS-63): two, then three across, never more; each work whole on the mat with its label under it.
@@ -848,10 +848,10 @@ Since then every page has had a design pass with its real content, on the develo
 | Q5 | Artists for Kids external site address and which links go there. Answered 2026-09-25 by the approved menu map: Artists for Kids stays one menu link; its programme links to https://artistsforkids.sd44.ca/ stay on the Artists for Kids page as cards | NAV-04 |
 | Q6 | Accept the system rules for logo minimum size and clear space (the guides set none)? | §8.3 |
 | Q7 | Must the current exhibition page URLs stay unchanged? Answered 2026-09-25: no, redirect them | Proposal part 2 (entries chosen) |
-| Q8 | Is an enlarge/lightbox view wanted for gallery images? | §6.8 |
+| Q8 | Is an enlarge/lightbox view wanted for gallery images? Answered 2026-09-28 by P-60: yes, for artworks and the exhibition installation photos; to be designed and proposed | §6.8 |
 | Q9 | Approval of the three parts of `proposals/content-model.md`. Answered 2026-09-25: all approved | DS-14 to DS-16 |
-| Q10 | Room names for the exhibition `venue` field, the label for the second artist group, and the start date of *Stitched* | `proposals/content-model.md` "Still open" |
-| Q11 | The land acknowledgement's place names use characters Mulish doesn't have (ʔ, ɬ, θ, some combining marks), so those letters render in Arial. Accept that, or load a font made for BC Indigenous languages for that text (for example BC Sans, SIL OFL)? | L-06, §4.1 |
+| Q10 | Room names for the exhibition `venue` field, the label for the second artist group, and the start date of *Stitched* (April 3, 2025, from the old site's post, 2026-09-28) | `proposals/content-model.md` "Still open" |
+| Q11 | The land acknowledgement's place names use characters Mulish doesn't have (ʔ, ɬ, θ, some combining marks), so those letters render in Arial. Accept that, or load a font made for BC Indigenous languages for that text (for example BC Sans, SIL OFL)? Answered 2026-09-28 by P-58: accept Arial | L-06, §4.1 |
 | Q12 | On Foundation pages the Foundation's wider logo still wraps the header's navigation up to about 1340 to 1400 px, after the nav gap change. Put the Foundation lockup at its minimum in the bar, or use the Menu drawer until the navigation fits? Measured 2026-09-27: the Foundation bar wraps from 1200 to 1340 and fits one row from 1350; the other programmes fit with 36 to 39 px to spare. Answered by DS-97 (decided by Michael, 2026-09-28) | §6.1, DS-47 |
 
 ## 13. Changelog
