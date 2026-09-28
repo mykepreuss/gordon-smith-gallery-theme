@@ -35,7 +35,7 @@
               {%- endif -%}
               <h3 class="gs-artwork-tile__title">
                 {%- if doc_url != blank -%}
-                  {%- render 'gs-link', url: doc_url, label: doc.title.value -%}
+                  {%- render 'gs-link', url: doc_url, label: doc.title.value, cue_wraps: true -%}
                 {%- else -%}
                   {{- doc.title.value | escape -}}
                 {%- endif -%}

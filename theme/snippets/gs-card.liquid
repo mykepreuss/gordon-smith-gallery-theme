@@ -103,7 +103,7 @@
     {%- endif -%}
     <{{ tag }} class="gs-card__title">
       {%- if stretch -%}
-        {%- render 'gs-link', link: link, label: card.title.value -%}
+        {%- render 'gs-link', link: link, label: card.title.value, cue_wraps: true -%}
       {%- else -%}
         {{- card.title.value | escape | replace: ' - ', '&nbsp;- ' | replace: ' | ', '&nbsp;| ' -}}
       {%- endif -%}

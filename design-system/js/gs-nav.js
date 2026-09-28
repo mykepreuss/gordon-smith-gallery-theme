@@ -1,5 +1,5 @@
 /*
- * Gordon Smith Gallery: header navigation behaviour (DESIGN.md §6.1, DS-11).
+ * Gordon Smith Gallery: header navigation and sideways rows (DESIGN.md §6.1, DS-11).
  * Theme copy: theme/assets/gs-nav.js, loaded with `defer`.
  *
  * The header works without this file. The Menu drawer and every dropdown are <details>
@@ -15,6 +15,7 @@
  *   - Choosing a link in the drawer closes the drawer (matters for links within the page).
  *   - Crossing the 1200px breakpoint closes everything.
  *   - One-open-at-a-time for browsers without <details name> support.
+ *   - A card in a sideways row (.gs-rail) that gets keyboard focus scrolls into view whole.
  *
  * Markup contract:
  *   <header class="gs-header" data-gs-header>
@@ -90,8 +91,16 @@
 
       drawer.addEventListener("focusout", function (event) {
         var next = event.relatedTarget;
-        /* No next target: a click or tap, which the outside-click rule handles. */
-        if (DESKTOP.matches || !next || drawer.contains(next)) return;
+        if (DESKTOP.matches || (next && drawer.contains(next))) return;
+        if (!next) {
+          /* A click or tap (focus stays on the page body or in the drawer; the outside-click rule
+             handles the rest), or focus moving into an embedded video's frame, which reports no target. */
+          setTimeout(function () {
+            var now = document.activeElement;
+            if (now && now !== document.body && !drawer.contains(now)) close(drawer);
+          }, 0);
+          return;
+        }
         close(drawer);
       });
     }
@@ -102,6 +111,18 @@
 
   function init() {
     document.querySelectorAll("[data-gs-header]").forEach(initHeader);
+
+    /* A sideways row on phones (.gs-rail): a card reached with the keyboard scrolls into view whole.
+       Keyboard focus only: scrolling under a click or tap moves the card before the click lands. */
+    document.addEventListener("focusin", function (event) {
+      var target = event.target, item;
+      if (!(target instanceof Element)) return;
+      try { if (!target.matches(":focus-visible")) return; } catch (err) { return; }
+      item = target.closest(".gs-rail > li");
+      if (item && getComputedStyle(item.parentNode).overflowX !== "visible") {
+        item.scrollIntoView({ block: "nearest", inline: "start" });
+      }
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

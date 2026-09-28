@@ -152,7 +152,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-98 | From 1200 px the main nav aligns right, so labels stay put between programmes (not built) | **Proposed**, 2026-09-27 |
 | DS-97 | The Foundation header logo is the simple lockup at 72 px at every width, with a 32 px gap from 1200, so the bar fits one row from 1240 (option B: the full lockup per brand guide p.8) (not built) | **Proposed**, 2026-09-27 |
 | DS-96 | Footer, Visit, Plan your visit and Contact render the hours from the structured opening settings; the free-text field is only a fallback | **Proposed**, 2026-09-27; built |
-| DS-95 | When the lead exhibition has no installation views, its event card tries the programme page's hero before the key image | **Proposed**, 2026-09-27; built |
+| DS-95 | When the lead exhibition has no installation views, its event card tries the programme page's hero before the key image | **Proposed**, 2026-09-27; built; no visible effect until the Professional development page has a hero image or the curatorial tour its own image |
 | DS-94 | A page-text part whose text opens with a figure shows the figure first below 990 px; DS-79's record is corrected to say what is true | **Proposed**, 2026-09-27; built |
 | DS-93 | The work page lists medium, edition, dimensions, as the product page and tiles do | **Proposed**, 2026-09-27; built |
 | DS-92 | Any grid of cards with one card uses the single-card layout, not only card groups | **Proposed**, 2026-09-27; built |
@@ -160,7 +160,7 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-90 | §6.13 records that .gs-details--stack is one column at every width (the built behaviour), with two across at tablet width as Michael's alternative | **Proposed**, 2026-09-27; built |
 | DS-89 | Videos in text stop at the photo cap, and on phones the cap is 80svh so photos fill the column | **Proposed**, 2026-09-27; built |
 | DS-88 | Once any event in a full list has a picture, every row uses the picture column, so titles share one left edge (extends DS-51) | **Proposed**, 2026-09-27; built |
-| DS-87 | From 990 px Visit, the newsletter band and the footer use two equal columns and the gutter gap, so their right columns start on one line | **Proposed**, 2026-09-27; built |
+| DS-87 | From 990 px Visit, the newsletter band and the footer use two equal columns and the gutter gap, so their right columns start on one line (the footer's logos now share one row from 1264 px) | **Proposed**, 2026-09-27; built |
 | DS-86 | Below 990 px the title box runs the image's full width, so only its own rounded corner shows | **Proposed**, 2026-09-27; built |
 | DS-85 | The hero box title uses --gs-measure-heading (20ch) like the page header, replacing the raw 16ch | **Proposed**, 2026-09-27; built |
 | DS-84 | Components use named fixed roles (field, on-colour hover, skip link, editor warning) instead of raw --gs-ink, --gs-paper and --gs-afk-rule, and the lint flags primitives outside tokens.css | **Proposed**, 2026-09-27; built |

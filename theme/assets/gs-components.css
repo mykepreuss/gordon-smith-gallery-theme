@@ -99,6 +99,9 @@
   outline: var(--gs-focus-width) solid var(--gs-color-focus);
   outline-offset: var(--gs-border);
 }
+/* Shopify's own stylesheet caps the form (495 px) and its container (375 px); the field takes the form width. */
+.gs-prose .pc--opt-out-form,
+.gs-prose .pc--opt-out-form-container { width: 100%; max-width: var(--gs-width-form); }
 
 /* ---------- Type roles ---------- */
 /* Brand: headings and subheadings are extra-bold/black and ALL CAPS (brand guide p.15). */
@@ -526,7 +529,6 @@
   display: grid;
   justify-items: start;
   gap: var(--gs-space-4);
-  max-width: var(--gs-measure-deck);
   margin: 0;
   padding-block: var(--gs-space-5);
 }
@@ -650,6 +652,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-prose > :where(div:not([class^="gs-"])) > * { margin-block: 0; }
 .gs-prose > :where(:not(link, meta, style, script)) ~ *,
 .gs-prose > :where(div:not([class^="gs-"])) > :where(:not(link, meta, style, script)) ~ * { margin-block-start: 1em; }
+/* A Word paste can follow a paragraph with bare inline text ("<p>...</p><strong>PRINT DETAILS:</strong>"), which a
+   start margin can't space; the paragraph keeps its own end margin, which collapses with the next block's. */
+.gs-prose > :where(div:not([class^="gs-"])) > p:not(:last-child) { margin-block-end: 1em; }
 .gs-prose > :where(:not(link, meta, style, script)) ~ :is(h2, h3, h4),
 .gs-prose > :where(div:not([class^="gs-"])) > :where(:not(link, meta, style, script)) ~ :is(h2, h3, h4) { margin-block-start: 1.8em; }
 .gs-prose > :is(h2, h3, h4) + *,
@@ -1047,6 +1052,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-artwork-tile {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr); /* a long title can't widen the tile past its column, as .gs-card */
   align-content: start;
   gap: var(--gs-space-1);
 }
@@ -1130,7 +1136,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 .gs-switcher__list a {
   display: inline-flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: baseline; /* the count sits on the label's baseline; the Nav role's tight line box would lift it */
   gap: 0.5em;
   min-height: var(--gs-tap-target);
   white-space: nowrap;
@@ -1931,6 +1939,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-pagination > li > :is(a, span) { display: inline-flex; align-items: center; min-height: var(--gs-tap-target); padding-inline: var(--gs-space-3); color: inherit; }
 .gs-pagination a { text-decoration: underline var(--gs-link-thickness) var(--gs-color-link-line); text-underline-offset: var(--gs-link-offset); }
 .gs-pagination [aria-current="page"] { text-decoration: underline var(--gs-border-bar) var(--gs-color-link-line); text-underline-offset: var(--gs-link-offset); }
+/* The list is pulled into the gutter so the first number's text keeps the column edge; its ring goes
+   inside the padded target, as the header logo's does, so the screen edge can't cut it off. */
+.gs-pagination a:focus-visible { outline-offset: calc(-1 * var(--gs-focus-width)); }
 
 .gs-results { display: grid; gap: var(--gs-space-5); margin: 0; padding: 0; list-style: none; }
 .gs-results > li { display: grid; gap: var(--gs-space-2); padding-block-start: var(--gs-space-4); border-block-start: var(--gs-border) solid var(--gs-color-rule); }
@@ -1992,7 +2003,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 /* ---------- Home: What's on, open today, sideways rows (DS-54) ---------- */
 
 /* A row of cards that scrolls sideways on phones, bleeding to the screen's edges with the next card
-   peeking in, so it's clear there's more; the card grid from 750px. No script, no autoplay. */
+   peeking in, so it's clear there's more; the card grid from 750px. No autoplay; gs-nav.js only brings a card reached with the keyboard into view. */
 @media (max-width: 749px) {
   .gs-grid.gs-rail {
     grid-template-columns: none;
@@ -2163,6 +2174,8 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   line-height: var(--gs-leading-tight);
   color: var(--gs-color-fg);
 }
+/* The ring hugs the name, not the padded target, so on a wrapped name it can't cross the count. */
+.gs-list-link:focus-visible { padding-block: 0; }
 
 /* A work's page: the product page's layout (DS-38) without price or cart. The label's facts are a
    list under rules, one to a row; with no image, the label takes the width. */
