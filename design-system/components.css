@@ -820,10 +820,29 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-text-media:not(.gs-text-media--text, .gs-text-media--media),
   .gs-text-media-list:has(.gs-text-media__aside) .gs-text-media--text { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 }
-/* A part whose text opens with a picture shows its pictures first below 990 px, as the text does
-   (DS-94, Proposed). A figure partway through a part still follows the part's text. */
+/* A part with pictures is split into passages (DS-142, Proposed), each with its own pictures beside
+   it. Passages continue the text: the next one starts a paragraph's space below the last, or a
+   heading's (1.8em at the H4 size, as h3 in page text) when it opens with one. */
+.gs-text-media + .gs-text-media { margin-block-start: 1em; }
+.gs-text-media + .gs-text-media--head { margin-block-start: calc(1.8 * var(--gs-text-h4)); }
+/* A passage whose text opens with a picture shows its pictures first below 990 px, after its
+   heading, as the text does (DS-94, Proposed; DS-142). */
 @media (max-width: 989.98px) {
   .gs-text-media--lead > .gs-text-media__aside { order: -1; }
+  .gs-text-media--lead > .gs-text-media__head { order: -2; }
+}
+/* From 990 px its heading heads the text column, and its pictures start level with the heading. */
+@media (min-width: 990px) {
+  .gs-text-media--lead:has(> .gs-text-media__head) { grid-template-rows: auto 1fr; row-gap: 0; }
+  .gs-text-media--lead > .gs-text-media__head { grid-column: 1; grid-row: 1; }
+  .gs-text-media--lead > .gs-text-media__head + .gs-prose { grid-column: 1; grid-row: 2; margin-block-start: 0.6em; }
+  .gs-text-media--lead:has(> .gs-text-media__head) > .gs-text-media__aside { grid-column: 2; grid-row: 1 / span 2; }
+}
+/* A passage's only picture or quote stays in view while its longer text scrolls past, and stops
+   with the passage (DS-142, Proposed). Only on a screen tall enough for a capped photo and its
+   caption; the header never sticks (DS-23), so it sits a small margin from the top. */
+@media (min-width: 990px) and (min-height: 50rem) {
+  .gs-text-media:not(.gs-text-media--media) > .gs-text-media__aside:not(:has(> * + *)) { position: sticky; top: var(--gs-space-6); }
 }
 /* Two tall photos in a row sit side by side (DS-77, Proposed). */
 @media (min-width: 750px) {
@@ -851,6 +870,79 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   border: 0;
   border-radius: var(--gs-shape-md);
   background-color: var(--gs-color-tint);
+}
+
+/* ---------- Story (DS-145, Proposed) ---------- */
+/* A long-read page's text (page.story, snippets/gs-story): one reading column in the middle of the
+   content width, with its pictures set into it by the snippet. Pictures reach out of the column
+   into its margins, measured from the story's own width (container query units). */
+.gs-story { container-type: inline-size; }
+.gs-story__flow { margin-inline: auto; display: flow-root; }
+/* The lede: the page's first paragraph, in the deck size, regular weight. */
+.gs-story__flow > .gs-story__lede { font-size: var(--gs-text-deck); line-height: var(--gs-leading-deck); }
+/* A part of the story starts clear of the pictures before it. */
+.gs-story__flow > h2 { clear: both; }
+/* A row or the text beside its picture stands apart from the running text. */
+.gs-story__flow > :is(.gs-story__row, .gs-story__split) { clear: both; margin-block: var(--gs-space-8); }
+.gs-story__flow > :is(.gs-story__row, .gs-story__split) + * { margin-block-start: 0; }
+.gs-story__row { display: grid; gap: var(--gs-space-6); }
+/* A row's credit ("Photography by ...", a short paragraph straight after it) sits under it. */
+.gs-story__flow > .gs-story__row:has(+ .gs-story__credit) { margin-block-end: var(--gs-space-3); }
+.gs-story__flow > .gs-story__credit { margin-block-end: var(--gs-space-8); font-size: var(--gs-text-caption); font-weight: var(--gs-weight-light); line-height: var(--gs-leading-caption); }
+.gs-story__flow > .gs-story__credit + * { margin-block-start: 0; }
+.gs-story__split { display: grid; gap: var(--gs-space-5); }
+.gs-story :is(.gs-story__row, .gs-story__split) figure { margin: 0; }
+/* A list of points in a story keeps clear of an offset picture point by point, not as a whole, so
+   the points below the picture take the column again (Plan your visit's Public transport and
+   Parking beside the entrance photo). Each point's rule then stops at the picture. */
+.gs-story__flow > ul.gs-points { display: block; }
+.gs-story__flow > ul.gs-points > li { display: flow-root; }
+.gs-story__flow > ul.gs-points > li + li { margin-block-start: var(--gs-space-5); }
+/* Gift amounts in a story answer the room they have (container query), not the screen: beside an
+   offset picture they stack, each amount beside its words, the amounts in one column (subgrid); with
+   the column to themselves they sit three across, as elsewhere (Donate's Ways to Support). */
+.gs-story__flow .gs-points > li { container-type: inline-size; }
+.gs-story__flow ul.gs-amounts { grid-template-columns: max-content minmax(0, 1fr); }
+.gs-story__flow .gs-amounts > li { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; column-gap: var(--gs-space-4); align-items: baseline; }
+.gs-story__flow .gs-amounts > li > strong:first-child { margin-block-end: 0; }
+@container (min-width: 34rem) {
+  .gs-story__flow ul.gs-amounts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .gs-story__flow .gs-amounts > li { display: block; grid-column: auto; }
+  .gs-story__flow .gs-amounts > li > strong:first-child { margin-block-end: var(--gs-space-2); }
+}
+/* A quote that ends its part stands in the column between the parts, clear of the pictures above. */
+.gs-story__flow > .gs-story__pull { clear: both; margin-block: var(--gs-space-8); }
+.gs-story__pull > .gs-quote { margin: 0; }
+/* A pull quote keeps clear of the text above and below it. */
+.gs-story__flow > .gs-quote[data-gs-story] { margin-block: var(--gs-space-6); }
+/* From 750 px a picture or quote in the running text is offset: half the column, the text wrapping
+   round it, alternating sides down the page (the first to the right). */
+@media (min-width: 750px) {
+  /* Each starts below the one before, so the text never runs in a channel between two. */
+  .gs-story__flow > [data-gs-story="offset"] { width: 50%; margin-block: 0.4em var(--gs-space-5); float: right; clear: both; margin-inline: var(--gs-space-6) 0; }
+  .gs-story__flow > [data-gs-story="offset"]:nth-of-type(even) { float: left; margin-inline: 0 var(--gs-space-6); }
+  .gs-story__flow > [data-gs-story="offset"] :is(img, iframe) { width: 100%; max-width: none; }
+  /* A row: its pictures side by side across the story's width, each as wide as its shape needs for
+     them all to stand the same height (--gs-r, its width over its height, from the snippet). */
+  .gs-story__row { display: flex; align-items: flex-start; justify-content: center; gap: var(--gs-space-4); width: 100cqi; margin-inline-start: calc((100% - 100cqi) / 2); }
+  .gs-story__row > figure { flex: var(--gs-r, 1) 1 0; min-width: 0; }
+  .gs-story__row > figure:only-child { flex: 0 1 auto; }
+  .gs-story__row > figure:not(:only-child) :is(img, iframe) { width: 100%; max-width: none; }
+  .gs-story__flow > .gs-story__credit { margin-inline-start: calc((100% - 100cqi) / 2); }
+}
+/* From 990 px an offset picture hangs out of the column to the edge of the content width, where the
+   rows and the hero's title box end; the text keeps about 40ch beside it. A tall photo is narrower. */
+@media (min-width: 990px) {
+  .gs-story__flow > [data-gs-story="offset"] { width: calc(40% + (100cqi - 100%) / 2); margin-inline-end: calc((100% - 100cqi) / 2); }
+  .gs-story__flow > [data-gs-story="offset"][data-gs-tall] { width: calc(32% + (100cqi - 100%) / 2); }
+  .gs-story__flow > [data-gs-story="offset"]:nth-of-type(even) { margin-inline: calc((100% - 100cqi) / 2) var(--gs-space-6); }
+  /* Short text beside its picture: from the column's left edge to the right edge of the content
+     width, half each. */
+  .gs-story__split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gs-gutter); align-items: center; width: calc(100% + (100cqi - 100%) / 2); max-width: none; }
+  .gs-story__split > figure :is(img, iframe) { width: 100%; max-width: none; }
+  /* After an offset on the right, the picture goes left, into the left margin. */
+  .gs-story__split--flip { margin-inline-start: calc((100% - 100cqi) / 2); }
+  .gs-story__split--flip > figure { order: -1; }
 }
 /* Text pasted from Word or email arrives with inline fonts, sizes and colours. Neutralise them. */
 .gs-prose [style]:not(iframe, img),

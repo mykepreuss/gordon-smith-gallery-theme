@@ -63,6 +63,8 @@ HOLD_AT_RELEASE = {"smith-foundation-supporters"}
 # Past events (DS-147) and Current events (DS-149): made empty and hidden from search engines, 2026-09-28.
 EVENTS_NEW = {"past-events", "current-events"}
 NEW_PAGES = AFK_NEW | FOUNDATION_NEW | EVENTS_NEW
+# Story pages: long reads whose text is one column with its pictures set into it (DS-145, Proposed).
+STORY = {"gordon-and-marion", "brilliance-gala", "plan-your-visit", "donate"}
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
@@ -77,6 +79,8 @@ def new_template(page):
         return None  # left as it is: hidden at release, or already unpublished
     if h in PROGRAMME or h in AFK_PROGRAMME:
         return "programme"
+    if h in STORY:
+        return "story"
     if h == "contact":
         return "contact"
     if h == "shop":
