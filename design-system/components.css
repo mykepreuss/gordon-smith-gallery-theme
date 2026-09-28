@@ -592,14 +592,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 750px) {
   .gs-grid--single { --_beside: repeat(2, minmax(0, 1fr)); }
   .gs-grid--rows,
-  .gs-events, .gs-programme-intro { --_beside: minmax(0, 1fr) minmax(0, 2fr); }
+  .gs-events { --_beside: minmax(0, 1fr) minmax(0, 2fr); }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) { grid-template-columns: var(--_beside); grid-template-rows: repeat(3, auto) 1fr; column-gap: var(--gs-gutter); }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) > :not(.gs-media) { grid-column: 2 / -1; }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card > :not(.gs-media) { max-width: var(--gs-measure); }
 }
 @media (min-width: 990px) {
-  :is(.gs-grid--single, .gs-grid--rows, .gs-events, .gs-programme-intro) { --_beside: repeat(3, minmax(0, 1fr)); }
+  :is(.gs-grid--single, .gs-grid--rows, .gs-events) { --_beside: repeat(3, minmax(0, 1fr)); }
 }
 /* A count that would leave a short last row gives the spare room to its first cards (DS-52).
    Two across: an odd count starts with one wide card, its image beside its text, half and half. */
@@ -1217,10 +1217,43 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   color: var(--gs-color-fg);
   border-bottom-color: var(--gs-color-link-line);
 }
-/* A link that ends the row (Past events, DS-147) sits at its far end from 990 px, apart from the filters. */
-@media (min-width: 990px) {
-  .gs-switcher__end { margin-inline-start: auto; }
+/* Two rows (DS-149): the main row, then a quieter row of filters under its rule, in sentence
+   case at the small size, closer together, so a long set of names wraps as a paragraph of links
+   does and no name is left alone at the far end of a row. The current one is bold over the
+   link-line colour. */
+.gs-switcher__sub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--gs-space-5);
+  margin: var(--gs-space-2) 0 0;
+  padding: 0;
+  list-style: none;
 }
+.gs-switcher__sub a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--gs-tap-target);
+  font-size: var(--gs-text-small);
+  color: var(--gs-color-fg-muted);
+  text-decoration: underline transparent;
+  text-decoration-thickness: var(--gs-border-strong);
+  text-underline-offset: 0.4em;
+}
+.gs-switcher__sub a:active { color: var(--gs-color-fg); text-decoration-color: var(--gs-color-rule); }
+@media (hover: hover) and (pointer: fine) {
+  .gs-switcher__sub a:hover { color: var(--gs-color-fg); text-decoration-color: var(--gs-color-rule); }
+}
+.gs-switcher__sub a[aria-current="page"] {
+  color: var(--gs-color-fg);
+  font-weight: var(--gs-weight-bold);
+  text-decoration-color: var(--gs-color-link-line);
+}
+/* The list under the rows starts with its first event, not a second rule. */
+.gs-events--led > .gs-event:first-child { padding-block-start: 0; border-block-start: 0; }
+/* A programme's groups (Current, Upcoming, Past): the heading sits close over its list's first rule. */
+.gs-events-group > .gs-section-head { margin-block-end: var(--gs-space-4); }
+/* A programme's past events: no pictures, closer together. */
+.gs-events--quiet { gap: var(--gs-space-5); }
 .gs-switcher__count {
   font-size: var(--gs-text-label);
   font-weight: var(--gs-weight-bold);
@@ -1883,17 +1916,6 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event { grid-template-columns: var(--_beside); }
   .gs-event--media > .gs-event__text,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event > .gs-event__text { grid-column: 2 / -1; }
-}
-
-/* A programme's words above its events (DS-146): the page's picture beside them, in the
-   events' own columns, so the words start where the events' text does. Without a picture the
-   words start at the page's edge. The picture's credit sits under it. */
-.gs-programme-intro { display: grid; gap: var(--gs-space-4) var(--gs-gutter); align-items: start; }
-.gs-programme-intro__media { display: grid; gap: var(--gs-space-2); }
-.gs-programme-intro__media > .gs-caption { margin: 0; }
-@media (min-width: 750px) {
-  .gs-programme-intro--media { grid-template-columns: var(--_beside); }
-  .gs-programme-intro--media > .gs-prose { grid-column: 2 / -1; }
 }
 
 /* ---------- Logo cards (DS-50) ---------- */
