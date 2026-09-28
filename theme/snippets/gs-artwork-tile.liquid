@@ -1,7 +1,8 @@
 {% doc %}
   Artwork tile (DESIGN.md §6.5): the work whole on the mat, then the museum label in order:
   artist (bold), title (italic) and year; medium; edition; price. No badges over the image: sold
-  out, or not yet on sale, is said in the text. Label fields fall back to the product title.
+  out, or not yet on sale, is said in the text. Label fields fall back to the product title. The
+  picture is decorative: the label under it names the work (DS-120).
 
   @param {object} product - The product
   @param {string} [heading] - Heading element for the title: 'h2' (default) or 'h3'
@@ -22,7 +23,7 @@
   assign edition = product.metafields.custom.edition.value
 -%}
 <article class="gs-artwork-tile">
-  {%- render 'gs-media', image: product.featured_media, preset: 'tile', sizes: sizes, mode: 'artwork', alt: product.title -%}
+  {%- render 'gs-media', image: product.featured_media, preset: 'tile', sizes: sizes, mode: 'artwork', decorative: true -%}
   {%- if artist != blank and work != blank -%}
     {%- unless hide_artist -%}<p class="gs-artwork-tile__artist">{{ artist | escape }}</p>{%- endunless -%}
     <{{ tag }} class="gs-artwork-tile__title">

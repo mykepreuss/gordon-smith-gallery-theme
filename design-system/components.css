@@ -562,11 +562,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
    between groups stays larger than the gap inside one. */
 @media (max-width: 989.98px) { .gs-grid--cards { row-gap: var(--gs-space-6); } }
 /* Grids of pictures that start two across on phones: people (a board, staff: portraits two, three,
-   then four across, DS-37), artworks (two, then three, DS-46) and documents (two, then three, DS-75).
+   then four across, DS-37) and artworks and documents (two, then three, DS-46, DS-108).
    They sit a little closer on phones, where two share a narrow row. */
-:is(.gs-grid--people, .gs-grid--artworks, .gs-grid--docs) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
+:is(.gs-grid--people, .gs-grid--artworks) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); }
 @media (min-width: 750px) {
-  :is(.gs-grid--people, .gs-grid--artworks, .gs-grid--docs) { gap: var(--gs-space-7) var(--gs-gutter); }
+  :is(.gs-grid--people, .gs-grid--artworks) { gap: var(--gs-space-7) var(--gs-gutter); }
 }
 @media (min-width: 750px) {
   .gs-grid--cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -581,57 +581,57 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
   .gs-grid--cards.gs-grid--fours { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-/* A count that would leave a short last row gives the spare room to its first cards (DS-52).
-   Two across: an odd count starts with one wide card, its image beside its text. */
-@media (min-width: 750px) and (max-width: 989.98px) {
-  .gs-grid--cards.gs-grid--odd > li:first-child { grid-column: 1 / -1; }
-  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card:has(> .gs-media) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: repeat(3, auto) 1fr; /* the image's extra height goes below the text */
-    column-gap: var(--gs-gutter);
-  }
-  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card:has(> .gs-media) > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
-  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card:has(> .gs-media) > :not(.gs-media) { grid-column: 2; }
-}
-/* A wide first card that is only a picture and its title: the title sits level with the middle of
-   the picture, so the row reads as a picture and its name, not a title over an empty column. */
-@media (min-width: 750px) and (max-width: 989.98px) {
-  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card:has(> .gs-media):not(:has(> :not(.gs-media, .gs-card__title))) { grid-template-rows: auto; align-items: center; }
-  .gs-grid--cards.gs-grid--odd > li:first-child > .gs-card:not(:has(> :not(.gs-media, .gs-card__title))) > .gs-media { grid-row: 1; }
-}
-/* A card alone in any grid of cards takes the spare room: its picture beside its text, the picture
-   the size of a card in a row of three from 990 px (DS-74, DS-92, Proposed). */
+/* The picture beside its text (DS-117). One layout, written once: the picture in the first column,
+   the text beside it, the picture's extra height below the text. Each use only sets its columns
+   (--_beside): a card alone in any grid of cards (DS-74, DS-92), a group of offers, one per row,
+   each with its own action (DS-76), and events (.gs-events, with the event rules). From 990 px all
+   three are a row of three with the text over the last two, so the picture is the size of a card in
+   a row of three and lines up with the grids around it. */
+.gs-grid--cards:is(.gs-grid--single, .gs-grid--rows) { grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 750px) {
-  .gs-grid--cards.gs-grid--single { grid-template-columns: minmax(0, 1fr); }
-  .gs-grid--cards.gs-grid--single > li > .gs-card:has(> .gs-media) { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, auto) 1fr; column-gap: var(--gs-gutter); }
-  .gs-grid--cards.gs-grid--single > li > .gs-card:has(> .gs-media) > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
-  .gs-grid--cards.gs-grid--single > li > .gs-card:has(> .gs-media) > :not(.gs-media) { grid-column: 2 / -1; }
-  .gs-grid--cards.gs-grid--single > li > .gs-card > :not(.gs-media) { max-width: var(--gs-measure); }
-  .gs-grid--cards.gs-grid--single > li > .gs-card:has(> .gs-media):not(:has(> :not(.gs-media, .gs-card__title))) { grid-template-rows: auto; align-items: center; }
-  .gs-grid--cards.gs-grid--single > li > .gs-card:not(:has(> :not(.gs-media, .gs-card__title))) > .gs-media { grid-row: 1; }
+  .gs-grid--single { --_beside: repeat(2, minmax(0, 1fr)); }
+  .gs-grid--rows,
+  .gs-events { --_beside: minmax(0, 1fr) minmax(0, 2fr); }
+  :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) { grid-template-columns: var(--_beside); grid-template-rows: repeat(3, auto) 1fr; column-gap: var(--gs-gutter); }
+  :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
+  :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) > :not(.gs-media) { grid-column: 2 / -1; }
+  :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card > :not(.gs-media) { max-width: var(--gs-measure); }
 }
 @media (min-width: 990px) {
-  .gs-grid--cards.gs-grid--single > li > .gs-card:has(> .gs-media) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  :is(.gs-grid--single, .gs-grid--rows, .gs-events) { --_beside: repeat(3, minmax(0, 1fr)); }
 }
-/* A group whose cards each carry their own action is a list of offers: one per row, the picture
-   beside its text and action from 750 px, as events are (DS-76, Proposed). */
-.gs-grid--cards.gs-grid--rows { grid-template-columns: minmax(0, 1fr); }
+/* A count that would leave a short last row gives the spare room to its first cards (DS-52).
+   Two across: an odd count starts with one wide card, its image beside its text, half and half. */
+@media (min-width: 750px) and (max-width: 989.98px) {
+  .gs-grid--cards.gs-grid--odd > li:first-child { grid-column: 1 / -1; }
+  .gs-grid--odd > li:first-child > .gs-card:has(> .gs-media) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: repeat(3, auto) 1fr;
+    column-gap: var(--gs-gutter);
+  }
+  .gs-grid--odd > li:first-child > .gs-card:has(> .gs-media) > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
+  .gs-grid--odd > li:first-child > .gs-card:has(> .gs-media) > :not(.gs-media) { grid-column: 2; }
+}
+/* A card beside its text that is only a picture and its title (a card alone, or the odd count's
+   wide first card): the title sits level with the middle of the picture, so it reads as a picture
+   and its name, not a title over an empty column. From 990 px the odd count's first card is an
+   ordinary card, where these change nothing. */
 @media (min-width: 750px) {
-  .gs-grid--rows > li > .gs-card:has(> .gs-media) { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); grid-template-rows: repeat(3, auto) 1fr; column-gap: var(--gs-gutter); }
-  .gs-grid--rows > li > .gs-card > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
-  .gs-grid--rows > li > .gs-card > :not(.gs-media) { grid-column: 2; max-width: var(--gs-measure); }
+  :is(.gs-grid--single > li, .gs-grid--odd > li:first-child) > .gs-card:has(> .gs-media):not(:has(> :not(.gs-media, .gs-card__title))) { grid-template-rows: auto; align-items: center; }
+  :is(.gs-grid--single > li, .gs-grid--odd > li:first-child) > .gs-card:not(:has(> :not(.gs-media, .gs-card__title))) > .gs-media { grid-row: 1; }
 }
-/* A group of documents is a shelf: two, then three across, each cover the same size whatever the
-   count, compact titles (DS-75, Proposed; a document among photo cards keeps DS-69). */
-@media (min-width: 990px) { .gs-grid--docs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.gs-grid--docs .gs-card__text { font-size: var(--gs-text-small); line-height: var(--gs-leading-small); color: var(--gs-color-fg-muted); }
-/* On phones a group of cards that are only a picture and a title (ways to other pages) is a list:
-   each card a row, its picture beside its title (DS-73, Proposed). */
+/* On phones a group of cards that are a picture, a title and at most a short note (ways to other
+   pages) is a list: each card a row, its picture beside its title (DS-73). A note sits under the
+   title in the small size, and the row starts at the top (DS-116). */
 @media (max-width: 749px) {
   .gs-grid--cards.gs-grid--links { row-gap: var(--gs-space-4); }
   .gs-grid--links > li > .gs-card { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: center; column-gap: var(--gs-space-4); }
+  .gs-grid--links > li > .gs-card:has(> .gs-card__text) { grid-template-rows: auto 1fr; align-items: start; }
+  .gs-grid--links > li > .gs-card:has(> .gs-card__text) > .gs-media { grid-row: 1 / span 2; }
+  .gs-grid--links > li > .gs-card > :not(.gs-media) { grid-column: 2; }
   .gs-grid--links .gs-card > .gs-media { margin-block-end: 0; border-radius: var(--gs-shape-sm); }
   .gs-grid--links .gs-card__title { font-size: var(--gs-text-h4); letter-spacing: var(--gs-tracking-subheading); line-height: var(--gs-leading-subheading); }
+  .gs-grid--links .gs-card__text { font-size: var(--gs-text-small); line-height: var(--gs-leading-small); }
 }
 /* Three across: five (or eleven) cards start with two wider ones, then threes. */
 @media (min-width: 990px) {
@@ -909,6 +909,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   object-fit: contain;
   object-position: 50% 50% !important; /* beats image_tag's inline focal point: artworks are never shifted */
 }
+/* The blank mat: a tile whose work or document has no image keeps the mat, with a word on it
+   ("No image", "PDF"), so every label in the row starts at the same height (DS-63, DS-109). */
+.gs-media--blank { display: grid; place-items: center; }
 
 .gs-shape-sm { border-radius: var(--gs-shape-sm); }
 .gs-shape-md { border-radius: var(--gs-shape-md); }
@@ -1083,13 +1086,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-card-group,
 .gs-section[id] { scroll-margin-block-start: var(--gs-space-6); } /* a call to action or an in-page link can jump here (DS-53) */
 
-/* Artwork tile (Shop / Limited Editions). Museum-label order: artist, title (italic), year; medium; edition; price. */
+/* Artwork tile (Shop / Limited Editions). Museum-label order: artist, title (italic), year; medium; edition; price.
+   The tile fills its row, and the price keeps to the bottom, so the prices in a row sit level
+   however many lines a medium takes (DS-118). */
 .gs-artwork-tile {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr); /* a long title can't widen the tile past its column, as .gs-card */
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   gap: var(--gs-space-1);
+  block-size: 100%;
 }
 .gs-artwork-tile .gs-media { margin-block-end: var(--gs-space-3); }
 .gs-artwork-tile__artist {
@@ -1136,6 +1141,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   font-size: var(--gs-text-small);
   font-weight: var(--gs-weight-bold);
 }
+.gs-artwork-tile__price { margin-block-start: auto; padding-block-start: var(--gs-space-2); }
 
 /* The whole card or tile shows the focus ring. Only where :has() works: elsewhere the link keeps
    its own ring, so focus is never invisible. */
@@ -1705,12 +1711,15 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (pointer: fine) {
   .gs-event__text > .gs-cta-link { margin-block-start: var(--gs-space-3); }
 }
+/* An event with a picture is the beside layout (DS-117): its columns come from --_beside on the
+   list, a third for the picture, then a row of three from 990 px. Once any event in a list has a
+   picture, every event's text starts in the same column, so the list has one reading edge (DS-88,
+   as DS-51 for text with pictures). */
 @media (min-width: 750px) {
-  .gs-event--media { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-  /* Once any event in a list has a picture, every event's text starts in the same column, so the
-     list has one reading edge (DS-88, Proposed, as DS-51 for text with pictures). */
-  .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-  .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event:not(.gs-event--media) > .gs-event__text { grid-column: 2; }
+  .gs-event--media,
+  .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event { grid-template-columns: var(--_beside); }
+  .gs-event--media > .gs-event__text,
+  .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event > .gs-event__text { grid-column: 2 / -1; }
 }
 
 
@@ -1767,7 +1776,10 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-card > .gs-cta-link,
   .gs-card__cue { margin-block-start: var(--gs-space-3); }
 }
-@media (min-width: 750px) {
+/* Image beside text from 990 px, as the other 7:5 splits (the artwork hero, the feature panel);
+   below that the image leads and the text keeps the reading measure (DS-107). */
+.gs-card--wide .gs-card__body { max-inline-size: var(--gs-measure); }
+@media (min-width: 990px) {
   .gs-card--wide {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     column-gap: var(--gs-gutter);
@@ -2114,9 +2126,6 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 @media (min-width: 990px) {
   .gs-entry-head:has(> .gs-entry-head__aside) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; }
 }
-/* An artist's documents are tiles like the works, each cover whole on the mat (DS-63). One without a
-   cover gets the mat with "PDF", so the row keeps one shape. */
-.gs-doc-tile__blank { display: grid; place-items: center; }
 
 /* A to Z: each letter large beside its names, which run in columns (as DS-45). The big letters are
    the page's one gesture; names stay body size so 170 of them read as a list, not a poster. */

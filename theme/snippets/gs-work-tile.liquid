@@ -2,7 +2,9 @@
   A work in the Permanent Collection as a tile (DESIGN.md §6.5, DS-62): the work whole on the mat,
   then its label in museum order: artist (bold), title (italic) and year, then the medium. The
   limited edition's tile without a price, so a work looks the same in the Shop and the collection.
-  The whole tile links to the work's page. A work without an image shows its label alone.
+  The whole tile links to the work's page. The picture is decorative: the label under it names the
+  work (DS-120). A work without an image gets the blank mat with "No image", so every label in the
+  row starts at the same height (DS-109). gs-collection.js builds the same tile for the finder.
 
   @param {object} work - An artwork entry
   @param {string} [heading] - Heading element for the title: 'h2' (default) or 'h3'
@@ -20,9 +22,13 @@
   assign names = names | strip
 -%}
 <article class="gs-artwork-tile">
-  {%- for image in work.images.value limit: 1 -%}
-    {%- render 'gs-media', image: image, preset: 'tile', sizes: sizes, mode: 'artwork' -%}
-  {%- endfor -%}
+  {%- assign image = nil -%}
+  {%- for i in work.images.value limit: 1 -%}{%- assign image = i -%}{%- endfor -%}
+  {%- if image != blank -%}
+    {%- render 'gs-media', image: image, preset: 'tile', sizes: sizes, mode: 'artwork', decorative: true -%}
+  {%- else -%}
+    <div class="gs-media gs-media--artwork gs-shape-md gs-media--blank" aria-hidden="true"><span class="gs-label">{{ 'collection.no_image' | t }}</span></div>
+  {%- endif -%}
   {%- if names != blank and hide_artist != true -%}
     <p class="gs-artwork-tile__artist">{{ names | escape }}</p>
   {%- endif -%}

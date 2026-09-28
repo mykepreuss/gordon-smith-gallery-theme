@@ -213,6 +213,7 @@
     "totals": "{{ works }} works and {{ artists }} artists",
     "documents": "Documents",
     "document_blank": "PDF",
+    "no_image": "No image",
     "in_the_shop": "In the Shop",
     "edition_for_sale": "This work is also a limited edition in the Shop.",
     "exhibitions_heading": "Exhibitions at the gallery",

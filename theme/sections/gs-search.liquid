@@ -89,7 +89,7 @@
   Permanent Collection page.
 {%- endcomment -%}
 {%- if search.performed and search.terms != blank and settings.collection_page != blank -%}
-  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-collection" data-gs-finder data-gs-finder-site data-gs-limit="6" data-gs-query="{{ search.terms | escape }}" hidden>
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-collection" data-gs-finder data-gs-finder-site data-gs-limit="6" data-gs-no-image="{{ 'collection.no_image' | t }}" data-gs-query="{{ search.terms | escape }}" hidden>
     <div class="gs-container">
       <div class="gs-section-head">
         <div class="gs-section-head__text">

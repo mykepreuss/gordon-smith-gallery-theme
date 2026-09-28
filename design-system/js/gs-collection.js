@@ -85,22 +85,31 @@
     return works;
   }
 
-  function tile(w) {
+  // A work tile, as snippets/gs-work-tile. The picture is decorative: the label under it names the
+  // work (DS-120). A work without an image gets the blank mat, so the row keeps one shape (DS-109).
+  function tile(w, noImage) {
     const li = document.createElement('li');
     const art = document.createElement('article');
     art.className = 'gs-artwork-tile';
+    const media = document.createElement('div');
+    media.className = 'gs-media gs-media--artwork gs-shape-md';
     if (w.i) {
-      const media = document.createElement('div');
-      media.className = 'gs-media gs-media--artwork gs-shape-md';
       const img = document.createElement('img');
       img.src = w.i;
-      img.alt = w.l || '';
+      img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
       if (w.r) { img.width = 600; img.height = Math.round(600 / Number(w.r)); }
       media.append(img);
-      art.append(media);
+    } else {
+      media.classList.add('gs-media--blank');
+      media.setAttribute('aria-hidden', 'true');
+      const word = document.createElement('span');
+      word.className = 'gs-label';
+      word.textContent = noImage;
+      media.append(word);
     }
+    art.append(media);
     if (w.a) {
       const artist = document.createElement('p');
       artist.className = 'gs-artwork-tile__artist';
@@ -143,7 +152,7 @@
     // button goes away after the last batch, and the next Tab doesn't skip the new works.
     const showMore = (fromClick) => {
       const first = shown;
-      matches.slice(shown, shown + limit).forEach((w) => list.append(tile(w)));
+      matches.slice(shown, shown + limit).forEach((w) => list.append(tile(w, finder.dataset.gsNoImage || '')));
       shown = Math.min(matches.length, shown + limit);
       if (more) more.hidden = site || shown >= matches.length;
       const link = fromClick === true && list.children[first] && list.children[first].querySelector('a');

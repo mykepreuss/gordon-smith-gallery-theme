@@ -1,7 +1,8 @@
 {%- comment -%}
-  More exhibitions, at the end of an exhibition's page (DESIGN.md §7.5): up to three compact
-  cards for what's on now and coming up, or, when there's nothing else current, the most recent
-  past exhibitions that have their own page. Never the exhibition being shown.
+  More exhibitions, at the end of an exhibition's page (DESIGN.md §7.5): three compact cards,
+  first what's on now and coming up, then, to fill the row, the most recent past exhibitions that
+  have their own page (DS-130). A row with a current show says each card's status. Never the
+  exhibition being shown.
 {%- endcomment -%}
 {%- liquid
   assign handle = metaobject.system.handle
@@ -11,11 +12,15 @@
   assign ids = ids | strip | split: ','
   assign show_status = true
   if ids.size == 0
-    capture ids
-      render 'gs-exhibition-index', status: 'past', order: 'desc', exclude: handle, linked_only: true, limit: 3
-    endcapture
-    assign ids = ids | strip | split: ','
     assign show_status = false
+  endif
+  if ids.size < 3
+    assign need = 3 | minus: ids.size
+    capture past
+      render 'gs-exhibition-index', status: 'past', order: 'desc', exclude: handle, linked_only: true, limit: need
+    endcapture
+    assign past = past | strip | split: ','
+    assign ids = ids | concat: past
   endif
   capture mods
     render 'gs-grid-modifiers', count: ids.size
@@ -59,7 +64,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Up to three other exhibitions: on now and upcoming first, otherwise the most recent past ones."
+      "content": "Three other exhibitions: on now and upcoming first, then the most recent past ones."
     }
   ],
   "presets": [

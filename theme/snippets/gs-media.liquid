@@ -23,9 +23,11 @@
   @param {string} [sizes] - Explicit sizes attribute, only for a layout no preset fits
   @param {string} [loading] - 'lazy' (default; 'eager' for the hero preset)
   @param {string} [alt] - Alt text when the image has none and nothing beside it names it, e.g. a
-    product's title. Never a title that follows the image: pass it as title (DS-58)
+    product page's gallery. Never a title that follows the image: pass it as title (DS-58)
   @param {string} [title] - The title that follows the image, as on a card. An image alt that only
     repeats it is dropped, so a screen reader doesn't hear the title twice (DS-58)
+  @param {boolean} [decorative] - A label follows that names the image (an artwork or document
+    tile, a cart row), so it has empty alt even when Files gives it one (DS-63, DS-120)
   @param {string} [class] - Extra wrapper classes
 
   @example
@@ -75,6 +77,9 @@
     assign alt_text = ''
   endif
   assign alt_text = alt_text | default: alt | default: ''
+  if decorative
+    assign alt_text = ''
+  endif
 -%}
 {%- if image != blank -%}
   <div

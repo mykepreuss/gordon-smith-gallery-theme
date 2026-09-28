@@ -3,7 +3,8 @@
   photographs from the catalogue's archive, after the works, as tiles like the works: each cover
   whole on the mat, its title under it, as the catalogue showed them. The whole tile opens the
   document's file, and a PDF says so. A document whose file isn't uploaded yet (a PDF over 20 MB)
-  shows its cover without a link. A document without a cover gets a plain mat with "PDF".
+  shows its cover without a link. A document without a cover gets a plain mat with "PDF". The tile
+  is snippets/gs-doc-tile, which a card group of documents uses too (DS-108).
 
   From the artist's Documents field: a list of Document entries (title, cover, file).
 {%- endcomment -%}
@@ -26,22 +27,7 @@
               endif
             endif
           -%}
-          <li>
-            <article class="gs-artwork-tile gs-doc-tile">
-              {%- if doc.cover.value != blank -%}
-                {%- render 'gs-media', image: doc.cover.value, preset: 'tile', mode: 'artwork' -%}
-              {%- else -%}
-                <div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">{{ 'collection.document_blank' | t }}</span></div>
-              {%- endif -%}
-              <h3 class="gs-artwork-tile__title">
-                {%- if doc_url != blank -%}
-                  {%- render 'gs-link', url: doc_url, label: doc.title.value, cue_wraps: true -%}
-                {%- else -%}
-                  {{- doc.title.value | escape -}}
-                {%- endif -%}
-              </h3>
-            </article>
-          </li>
+          <li>{%- render 'gs-doc-tile', title: doc.title.value, cover: doc.cover.value, url: doc_url -%}</li>
         {%- endfor -%}
       </ul>
     </div>

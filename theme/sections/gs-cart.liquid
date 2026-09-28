@@ -16,7 +16,7 @@
         <ul class="gs-cart__items">
           {%- for item in cart.items -%}
             <li class="gs-cart__item">
-              {%- render 'gs-media', image: item.image, sizes: '96px', mode: 'artwork', shape: 'sm', alt: item.product.title -%}
+              {%- render 'gs-media', image: item.image, sizes: '96px', mode: 'artwork', shape: 'sm', decorative: true -%}
               <div class="gs-cart__details">
                 <h2 class="gs-cart__name">
                   <a class="gs-link" href="{{ item.url }}">
