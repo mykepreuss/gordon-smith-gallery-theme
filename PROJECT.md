@@ -10,7 +10,7 @@ Plan: `IMPLEMENTATION_PLAN.md`. Requirements: `REQUIREMENTS.md`. Decisions: `DEC
 | --- | --- | --- | --- |
 | 0 | Design specification (`design-system/`, v0.5) | Done; structural parts approved 2026-09-25 (P-15); §9 rewritten for the new theme | `design-system/DESIGN.md`, `design-system/preview.html` |
 | 1 | Source of truth: Git repo, untouched live-theme baseline, records | Done 2026-09-25 | `BASELINE.md`, first theme commit |
-| 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | Done 2026-09-25, except Mailchimp app settings (need access) | `baseline/` |
+| 1a | Baseline evidence: screenshots, store manifest, Mailchimp audit, Theme Check and linter baselines | Done 2026-09-25; Mailchimp settings read 2026-09-28 | `baseline/` |
 | 1b | Gallery approval package: menu map, page hierarchy, editor model, access placement, store-level field proposal, inputs list | Approved 2026-09-25: content model parts 1 to 3, menu map and labels, page types, editing model, contact and newsletter placement. Content model parts 4 to 6 approved the same day (P-16) | `proposals/`, shared doc, `DECISIONS.md` P-10 to P-16 |
 | 1c | Content inventory of the current theme, for the new build | Done 2026-09-25 | `proposals/content-migration.md` |
 | 2 | Build the new theme on a feature branch (P-13), from Shopify's Skeleton theme (P-14) | Template set built on `build-new-theme`, 2026-09-25, then design passes with real content for Home, Exhibitions, the programme pages and Shop. All content migrated 2026-09-25: every page, exhibition, card and menu is in the store or the theme, with the page text that changes at release staged (DS-39). Checked in development theme 184755814697. Design pass on every remaining page and the review fixes done 2026-09-26. Every design decision decided 2026-09-26 (DS-01 to DS-67) | `theme/`, DESIGN.md §9.6, `proposals/store-writes/` |
@@ -31,7 +31,7 @@ All the gallery's questions, in one list to send: `proposals/gallery-questions.m
 | Item | From | Blocks |
 | --- | --- | --- |
 | Signup wording, consent wording, the site email, social URLs; confirming the hours and phone taken from the current site | Gallery | ACCESS-01 to ACCESS-04 |
-| Mailchimp for Shopify app settings (customer sync, audience, consent) | Gallery or Michael | ACCESS-01 |
+| Mailchimp: approve the app's permission update or not; turn on its app embed to keep site tracking after 2027-03-01 or not; check Shopify's spam protection for storefront forms (`baseline/mailchimp-audit.md`, "Open from this check") | Michael | Nothing for review; decide before release |
 | Room names for the exhibition venue field, the label for the second artist group, *Stitched* start date (content model "Still open") | Gallery | Exhibition entries (defaults apply until answered) |
 | Land acknowledgement font (Q11): accept Arial for the characters Mulish lacks, or load a font for BC Indigenous languages | Gallery | L-06 |
 | The Permanent Collection: the review sheets (artist names and dates, titles, years, themes, four chosen names, credit lines, the works on loan) and the featured works (`proposals/gallery-questions.md` 1.7, §5) | Gallery | Nothing; the review shows the catalogue's data as cleaned |

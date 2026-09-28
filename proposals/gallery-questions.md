@@ -12,7 +12,7 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 1.2 | Are these right: gallery hours "Thursday to Saturday, 12:00 PM - 4:00 PM" (from Plan Your Visit) and phone "(604) 903-3798" (from the Contact page)? | Shown in the footer as they are |
 | 1.3 | The addresses of the gallery's social accounts: Instagram, Facebook, YouTube, Vimeo, LinkedIn, any that apply | No social links in the footer |
 | 1.4 | The newsletter sign-up's wording and its consent sentence. It uses "Join Our Newsletter" and "Be the first to know about new programs, upcoming exhibitions, public events, limited edition releases and other exclusive offers." from the old Contact page | That wording, with no consent sentence |
-| 1.5 | Access to the Mailchimp for Shopify app's settings, or someone to check them: customer sync on, the right audience, consent carried over, double opt-in | The sign-up form can't be tested end to end |
+| 1.5 | ~~Access to the Mailchimp for Shopify app's settings, or someone to check them: customer sync on, the right audience, consent carried over, double opt-in~~ Answered: Michael signed in and the settings were read, 2026-09-28 (`baseline/mailchimp-audit.md`) | |
 | 1.6 | A staff member for the editing test: about half an hour in the review theme's editor, changing an exhibition, an event, a card, a page's fields and a product's label | Staff editing isn't verified |
 | 1.7 | **Choose the featured works** for the Permanent Collection page: six works from the collection that the gallery wants people to see first. To change them: Shopify admin, Content, Metaobjects, Collection grouping, "Featured works", then pick the works in its Works field (the first six show, in that order). Details in 5.12 | Six chosen for the review (5.12) |
 
@@ -41,6 +41,7 @@ Sources: `PROJECT.md` "Waiting on", the plan's "Inputs, exclusions, and known li
 | 3.7 | ~~Roz Marshall's link on the Artists page goes to `rozmarshall-artist.com`, which no longer exists.~~ No longer applies: artists' websites aren't shown on the site (DS-63, Michael, 2026-09-27) | |
 | 3.8 | The Paradise Valley photo on the Artists for Kids page: its description says 1994, its caption 1996. Which year? | Both as written |
 | 3.9 | The portfolio pages' switcher now reads "All editions, Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024" instead of repeating "Portfolio" five times (DS-67). The portfolios' own titles are unchanged. Is that wording right? | As shown |
+| 3.10 | The newsletter audience in Mailchimp has recent sign-ups that look automated (made-up names with numbers). Should someone clean them up? The new site's sign-up form will need spam protection too (`baseline/mailchimp-audit.md`) | Left as they are |
 
 ## 4. Brand
 
