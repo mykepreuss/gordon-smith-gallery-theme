@@ -1,8 +1,8 @@
 {% doc %}
   The site header (DESIGN.md §6.1). Works without JavaScript: the Menu drawer and every dropdown
   are <details> elements, so all links are reachable even if assets/gs-nav.js fails to load. The
-  script adds Escape, closing on an outside click, and (desktop) closing when focus leaves a
-  dropdown.
+  script adds Escape, closing on an outside click, and closing when focus leaves a dropdown on
+  the bar, or the Menu drawer.
 
   The main menu renders twice: in the drawer (below 1200px) and in the bar (1200px and up). CSS
   shows only one, so assistive tech only ever finds one "Main" navigation. In each, the markup

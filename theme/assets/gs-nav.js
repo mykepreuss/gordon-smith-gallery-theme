@@ -11,6 +11,7 @@
  *     no dropdown open) it closes the Menu drawer and returns focus to the Menu button.
  *   - A click outside the header closes any open dropdown and the drawer.
  *   - Desktop bar (1200px and up): focus leaving a dropdown closes it.
+ *   - Focus leaving the Menu drawer closes it.
  *   - Choosing a link in the drawer closes the drawer (matters for links within the page).
  *   - Crossing the 1200px breakpoint closes everything.
  *   - One-open-at-a-time for browsers without <details name> support.
@@ -85,6 +86,13 @@
     if (drawer) {
       drawer.addEventListener("click", function (event) {
         if (event.target instanceof Element && event.target.closest(".gs-drawer__panel a[href]")) close(drawer);
+      });
+
+      drawer.addEventListener("focusout", function (event) {
+        var next = event.relatedTarget;
+        /* No next target: a click or tap, which the outside-click rule handles. */
+        if (DESKTOP.matches || !next || drawer.contains(next)) return;
+        close(drawer);
       });
     }
 

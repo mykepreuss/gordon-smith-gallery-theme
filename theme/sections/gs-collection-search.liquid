@@ -43,6 +43,7 @@
       </form>
       <p class="gs-deck gs-finder__count" role="status" data-gs-finder-status
         data-gs-loading="{{ 'collection.search_loading' | t | escape }}"
+        data-gs-error="{{ 'collection.search_error' | t }}"
         data-gs-one="{{ 'collection.works_found_one' | t: terms: '[terms]' | escape }}"
         data-gs-other="{{ 'collection.works_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
         data-gs-none="{{ 'collection.works_none' | t: terms: '[terms]' | escape }}"></p>

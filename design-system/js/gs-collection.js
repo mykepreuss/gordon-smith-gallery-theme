@@ -36,19 +36,21 @@
     }
     tools.hidden = false;
     let timer;
+    // The list narrows on every keystroke (it takes a few milliseconds); only the spoken count
+    // waits for a pause in typing, so it isn't read out letter by letter.
     input.addEventListener('input', () => {
+      const want = words(input.value);
+      let shown = 0;
+      items.forEach(({ li, names }) => {
+        const match = want.every((w) => names.includes(w));
+        li.hidden = !match;
+        if (match) shown += 1;
+      });
+      groups.forEach((g) => { g.hidden = !g.querySelector('.gs-index__item:not([hidden])'); });
+      if (letters) letters.hidden = want.length > 0;
+      const terms = input.value.trim();
       clearTimeout(timer);
       timer = setTimeout(() => {
-        const want = words(input.value);
-        let shown = 0;
-        items.forEach(({ li, names }) => {
-          const match = want.every((w) => names.includes(w));
-          li.hidden = !match;
-          if (match) shown += 1;
-        });
-        groups.forEach((g) => { g.hidden = !g.querySelector('.gs-index__item:not([hidden])'); });
-        if (letters) letters.hidden = want.length > 0;
-        const terms = input.value.trim();
         status.textContent = !want.length ? '' : shown === 0 ? say(status, 'gsNone', 0, terms)
           : say(status, shown === 1 ? 'gsOne' : 'gsOther', shown, terms);
       }, 120);
@@ -72,13 +74,14 @@
       if (data.dataset.param) param = data.dataset.param;
       return { pages: Number(data.dataset.pages) || 1, list: JSON.parse(data.textContent) };
     };
+    // A failed load isn't kept: the next search (or focus) tries again.
     works = (async () => {
       const first = await page(1);
       const rest = await Promise.all(Array.from({ length: first.pages - 1 }, (_, i) => page(i + 2)));
       return [first, ...rest].flatMap((p) => p.list).map((w) => ({
         ...w, text: fold([w.a, w.t, w.y, w.c, w.m, w.k].join(' ')),
       }));
-    })();
+    })().catch((e) => { works = null; throw e; });
     return works;
   }
 
@@ -136,10 +139,15 @@
     let shown = 0;
     let run = 0;
 
-    const showMore = () => {
+    // From the Show more button, focus moves to the first new work, so it isn't lost when the
+    // button goes away after the last batch, and the next Tab doesn't skip the new works.
+    const showMore = (fromClick) => {
+      const first = shown;
       matches.slice(shown, shown + limit).forEach((w) => list.append(tile(w)));
       shown = Math.min(matches.length, shown + limit);
       if (more) more.hidden = site || shown >= matches.length;
+      const link = fromClick === true && list.children[first] && list.children[first].querySelector('a');
+      if (link) link.focus({ preventScroll: true });
     };
 
     async function search(q, push) {
@@ -151,13 +159,18 @@
       if (!want.length) { status.textContent = ''; matches = []; return; }
       status.textContent = status.dataset.gsLoading || '';
       let all;
-      try { all = await loadWorks(); } catch (e) { status.textContent = ''; return; }
+      try { all = await loadWorks(); } catch (e) {
+        if (mine === run) status.textContent = status.dataset.gsError || '';
+        return;
+      }
       if (mine !== run) return;
       matches = all.filter((w) => want.every((x) => w.text.includes(x)));
       const terms = q.trim();
       status.textContent = matches.length === 0 ? say(status, 'gsNone', 0, terms)
         : say(status, matches.length === 1 ? 'gsOne' : 'gsOther', matches.length, terms);
       if (site) finder.hidden = matches.length === 0;
+      // The search page's own "Nothing found" gives way when the collection has matches.
+      if (site) document.querySelector('[data-gs-finder-empty]')?.toggleAttribute('hidden', matches.length > 0);
       showMore();
       if (push) {
         const url = new URL(window.location.href);
@@ -183,7 +196,7 @@
       clearTimeout(timer);
       search(input.value, true);
     });
-    if (more) more.querySelector('button').addEventListener('click', showMore);
+    if (more) more.querySelector('button').addEventListener('click', () => showMore(true));
     const q = new URL(window.location.href).searchParams.get('q');
     if (q) { input.value = q; search(q, false); }
   });

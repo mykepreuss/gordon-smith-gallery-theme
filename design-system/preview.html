@@ -1116,7 +1116,7 @@
       </div>
       <div class="gs-field">
         <label class="gs-field__label" for="pv-contact-email">Email address</label>
-        <input class="gs-input" id="pv-contact-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="pv-contact-email-error">
+        <input class="gs-input" id="pv-contact-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required>
         <p class="gs-field__error" id="pv-contact-email-error" hidden>Enter an email address like name@example.com.</p>
       </div>
       <div class="gs-field">
@@ -1125,7 +1125,7 @@
       </div>
       <div class="gs-field">
         <label class="gs-field__label" for="pv-contact-body">Message</label>
-        <textarea class="gs-input" id="pv-contact-body" name="contact[body]" required aria-describedby="pv-contact-body-error"></textarea>
+        <textarea class="gs-input" id="pv-contact-body" name="contact[body]" required></textarea>
         <p class="gs-field__error" id="pv-contact-body-error" hidden>Write a message before sending.</p>
       </div>
       <button class="gs-button" type="submit">Send</button>
@@ -1146,12 +1146,12 @@
       <div class="gs-signup__row">
         <div class="gs-field">
           <label class="gs-field__label" for="nl-email">Email address</label>
-          <input class="gs-input" id="nl-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="nl-error nl-consent">
+          <input class="gs-input" id="nl-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required aria-describedby="nl-consent">
         </div>
         <button class="gs-button" type="submit">Sign up</button>
       </div>
-      <p class="gs-field__error" id="nl-error" hidden>Enter an email address like name@example.com.</p>
-      <p class="gs-form-status" role="status" id="nl-status" hidden>You&rsquo;re signed up for the newsletter.</p>
+      <p class="gs-field__error" id="nl-email-error" hidden>Enter an email address like name@example.com.</p>
+      <p class="gs-form-status" role="status" tabindex="-1" id="nl-status" hidden>You&rsquo;re signed up for the newsletter.</p>
       <div class="gs-caption" id="nl-consent"><p>Consent wording from the gallery goes here.</p></div>
     </form>
   </div>
@@ -1600,20 +1600,24 @@
   form.addEventListener("submit", e => {
     e.preventDefault();
     const input = form.querySelector('input[type="email"]'), button = form.querySelector("button"),
-          error = document.getElementById("nl-error"), status = document.getElementById("nl-status");
+          error = document.getElementById("nl-email-error"), status = document.getElementById("nl-status");
     if (button.getAttribute("aria-busy") === "true") return; // one submission at a time
     status.hidden = true;
     if (!input.checkValidity() || !/@[^.]+\./.test(input.value)) {
-      input.setAttribute("aria-invalid", "true"); // the error and consent are always linked (aria-describedby)
+      input.setAttribute("aria-invalid", "true"); // the error is linked only while it shows
+      input.setAttribute("aria-describedby", "nl-email-error nl-consent");
       error.hidden = false;
       input.focus();
       return;
     }
     input.removeAttribute("aria-invalid"); error.hidden = true;
+    input.setAttribute("aria-describedby", "nl-consent");
+    button.style.minWidth = button.getBoundingClientRect().width + "px"; // keeps its width while busy
     button.setAttribute("aria-busy", "true"); button.textContent = "Signing up";
     setTimeout(() => {
       button.removeAttribute("aria-busy"); button.textContent = "Sign up";
-      status.hidden = false; input.value = "";
+      button.style.minWidth = "";
+      status.hidden = false; status.focus(); input.value = "";
     }, 900);
   });
 

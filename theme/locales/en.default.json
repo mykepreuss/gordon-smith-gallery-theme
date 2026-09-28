@@ -99,6 +99,7 @@
     "adding": "Adding",
     "frame_heading": "Add a frame",
     "add_frame": "Add frame to cart",
+    "adding_frame": "Adding frame",
     "frame_sold_out": "This frame is sold out.",
     "disclosure": "Disclosure",
     "about_work": "About the work"
@@ -214,6 +215,7 @@
     "search_heading": "Search the collection",
     "search_label": "Artist, title, medium or theme",
     "search_loading": "Searching the collection",
+    "search_error": "The collection didn't load. Try again, or browse by artist or category below.",
     "works_found_one": "1 work matches “{{ terms }}”",
     "works_found_other": "{{ number }} works match “{{ terms }}”",
     "works_none": "No works match “{{ terms }}”. Try another word, or browse by artist or category below.",

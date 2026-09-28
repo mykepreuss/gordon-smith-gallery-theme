@@ -3,7 +3,9 @@
   the store's sender address. The details are the Contact page's own text when it has some, so the
   gallery's words (both email addresses, office hours) show once, beside the form (DS-42). A page
   without text gets the address, hours, email and phone from Theme settings, Gallery details.
-  Works without JavaScript; gs-forms.js adds the inline email check and the "Sending" state.
+  Works without JavaScript; gs-forms.js adds the inline check of the email and message, the
+  "Sending" state, and focus on the error or done line after a post. A field's error has the
+  field's id plus "-error" and is linked only while it shows.
 {%- endcomment -%}
 {%- assign form_id = 'gs-contact-' | append: section.id -%}
 {%- capture page_text -%}{% render 'gs-page-text' %}{%- endcapture -%}
@@ -34,7 +36,7 @@
     {%- form 'contact', id: form_id, class: 'gs-form', data-gs-form: '' -%}
       <h2 class="gs-h3">{{ section.settings.heading | escape }}</h2>
       {%- if form.posted_successfully? -%}
-        <p class="gs-form-status" role="status">{{ 'contact.done' | t }}</p>
+        <p class="gs-form-status" role="status" tabindex="-1">{{ 'contact.done' | t }}</p>
       {%- endif -%}
       {%- liquid
         assign email_error = false
@@ -62,9 +64,8 @@
           spellcheck="false"
           required
           value="{{ form.email | escape }}"
-          aria-describedby="{{ form_id }}-email-error"
           {% if email_error %}
-            aria-invalid="true" autofocus
+            aria-invalid="true" aria-describedby="{{ form_id }}-email-error" autofocus
           {% endif %}
         >
         <p class="gs-field__error" id="{{ form_id }}-email-error"{% unless email_error %} hidden{% endunless %}>{{ 'newsletter.error_email' | t }}</p>
@@ -80,9 +81,9 @@
           id="{{ form_id }}-body"
           name="contact[body]"
           required
-          aria-describedby="{{ form_id }}-body-error"
           {% if body_error %}
-            aria-invalid="true"
+            aria-invalid="true" aria-describedby="{{ form_id }}-body-error"
+            {%- unless email_error %} autofocus{% endunless %}
           {% endif %}
         >{{ form.body | escape }}</textarea>
         <p class="gs-field__error" id="{{ form_id }}-body-error"{% unless body_error %} hidden{% endunless %}>{{ 'contact.error_message' | t }}</p>

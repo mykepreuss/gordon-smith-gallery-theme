@@ -114,7 +114,7 @@
           {%- if frame.available -%}
             {%- form 'product', frame, class: 'gs-form', data-gs-form: '' -%}
               <input type="hidden" name="id" value="{{ frame_variant.id }}">
-              <button class="gs-button gs-button--secondary" type="submit" data-gs-busy-label="{{ 'products.adding' | t }}">{{ 'products.add_frame' | t }}</button>
+              <button class="gs-button gs-button--secondary" type="submit" data-gs-busy-label="{{ 'products.adding_frame' | t }}">{{ 'products.add_frame' | t }}</button>
             {%- endform -%}
           {%- else -%}
             <p class="gs-note">{{ 'products.frame_sold_out' | t }}</p>
