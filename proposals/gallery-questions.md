@@ -210,3 +210,27 @@ The menu is now sorted by what visitors come to do: Exhibitions, Collection, Pro
 | 9.1 | Menu labels: "Support"; "Give to the Smith Foundation" (Donate) and "Give to Artists for Kids" (Support Artists for Kids), which say where each gift goes; "Scholarships and awards", with "Smith Foundation scholarships" and "Artists for Kids awards" (the page keeps its title, Awards and Scholarships); "Gordon and Marion Smith"; "About the gallery"; "Upcoming events" | As written |
 | 9.2 | Gordon and Marion's button "See Gordon Smith's works", and "About Gordon Smith" on his artist page, linking to Gordon and Marion | As written |
 | 9.3 | The footer's "Support" goes to the Foundation's Donate page, which links on to Support Artists for Kids. Is that the right first stop, or should it be the page that shows both? | Donate |
+
+## 10. The Smith Foundation's old website (`proposals/smith-foundation-site.md`)
+
+Added 2026-09-28, from a WordPress export of smithfoundation.co. Each answer lets part of the plan go ahead; until then that part waits.
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 10.1 | The old Supporters page lists donors by level, sponsors, foundations and volunteers. Is it current? Anyone to add, remove or leave unnamed? It repeats some names across levels ("Richard and Annette Savage" and "Annette & Richard Savage", "Lisa Turner") and has misspellings ("Dr Marla Kiess" and "Dr. Marla Keiss", "Misson Hill Winery", "The Benevity Community Impact Fun") | No Supporters page |
+| 10.2 | The Foundation's online donation form ("Give Now", on eTapestry) still works. Is it the one to use? If so, Donate's "Online Form" card can link to it (see 3.1) | The card stays out |
+| 10.3 | The Foundation's scholarships: when do applications open for 2027, and where will the forms be? | The Scholarships page describes the three scholarships, without forms |
+| 10.4 | Are these still true: the vision, the four values and the three "We advance the public's appreciation of the visual arts…" lines; 95% of revenue from non-governmental sources; "close to 3 million dollars" to the endowment since 2010; "over 3 million dollars to Artists For Kids since 2002, supporting over 55,000 young artists"? | Left off the Foundation page |
+| 10.5 | Are event sponsorship, exhibition and program sponsorship, and naming a space still offered? The old site sent people to development@smithfoundation.ca | Left off Donate |
+| 10.6 | Admission: is the $5 suggested donation still right? And the rule that backpacks, large bags, food, drinks and umbrellas stay outside the exhibition spaces? | "Admission by donation", no bag rule |
+| 10.7 | Are gallery docents still a volunteer role? | Two roles on Volunteer |
+| 10.8 | Which of the Foundation's addresses should Contact show: info@, executivedirector@, programs@, coordinator@ (with 1.1) | admin@smithfoundation.ca only |
+| 10.9 | Photo credits the old site doesn't give: Brilliance 2023 (its credit was an image), the Spring Luncheons, and the exhibitions from 2013 to 2019. Is `young-smitysmall.jpg` Robert Young's work? | No credit shown |
+| 10.10 | Past Speaker Series talks from 2025 and earlier, and past Music at the Smith concerts, beyond the ones on the old site (2024, 2026; fall 2023, 2026) | Only those |
+| 10.11 | Does the gallery still sell the 11 publications the old shop listed? If so, their prices and how many are left | Not in the Shop |
+| 10.12 | The 3D tours of five exhibitions are gone from Matterport. Can they be restored from the gallery's account? | No 3D tours |
+| 10.13 | Dates and titles: *Victor John Penner* ran "January 15 to February 29, 2014" (2014 had no February 29); did *Dwelling* end at the closure of March 19, 2020 or on its planned April 16? "Spatial" or "Spacial Understanding"? "Thirteen" or "13 Ways to Summon Ghosts"? | February 28; April 16; "Spatial"; "Thirteen", as the old texts write them |
+| 10.14 | The curator lines for the older exhibitions come from sentences, e.g. "Guest-curated by Robin Laurence". Right? | As shown |
+| 10.15 | The Off the Wall auction's press quote ("more than $115,000 raised"): who wrote it? | Left out |
+| 10.16 | Every old smithfoundation.co address except the home page gives an error. Should old addresses forward to their new pages? That needs the Foundation's domain settings | Nothing forwards |
+| 10.17 | The three new pages' titles, as the old site had them: Scholarships ("Smith Foundation scholarships" in the menu, 9.1), Brilliance Gala, Supporters | As written |
