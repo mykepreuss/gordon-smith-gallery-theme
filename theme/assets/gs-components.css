@@ -530,9 +530,9 @@
   gap: var(--gs-space-4);
   padding-block: var(--gs-stack-lg);
 }
-/* A description of one paragraph under the title (a portfolio without an image, a grouping's
-   introduction) is the header's deck, as on every other page header; longer ones stay text (DS-106). */
-.gs-page-head > .gs-prose:has(> p:only-child) > p {
+/* A portfolio's description of one paragraph under the title (a portfolio without an image) is the
+   header's deck, as on every other page header; longer ones stay text (DS-106). */
+.gs-page-head > .gs-page-head__deck:has(> p:only-child) > p {
   max-width: var(--gs-measure-deck);
   font-size: var(--gs-text-deck);
   font-weight: var(--gs-weight-bold);
@@ -999,6 +999,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
   .gs-hero:not(.gs-hero--artwork) { --_hero-box-w: min(var(--gs-hero-box-w-xl), 60%); }
 }
+/* In the band where the hero is capped (DS-99) the box keeps 60% of the hero's width before DS-99,
+   so a title that took one line still does. */
+@media (min-width: 1200px) and (max-width: 1391.98px) {
+  .gs-hero:not(.gs-hero--artwork) { --_hero-box-w: min(var(--gs-hero-box-w-xl), 0.6 * (100vw - 2 * var(--gs-gutter))); }
+}
 
 /* Artwork hero: the work is never covered, cropped or rounded. */
 .gs-hero--artwork { gap: var(--gs-space-3); }
@@ -1086,19 +1091,26 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
 .gs-card-group + .gs-card-group { margin-block-start: var(--gs-section-space); }
+/* A group without a heading after another group starts a new part: a rule marks it, so it doesn't
+   read as part of the heading above (Learning kits: each kit after the last kit's video; DS-131). */
+.gs-card-group + .gs-card-group:not([aria-labelledby]) {
+  padding-block-start: var(--gs-space-7);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+}
 .gs-card-group,
 .gs-section[id] { scroll-margin-block-start: var(--gs-space-6); } /* a call to action or an in-page link can jump here (DS-53) */
 
 /* Artwork tile (Shop / Limited Editions). Museum-label order: artist, title (italic), year; medium; edition; price.
-   The tile fills its row, and the price keeps to the bottom, so the prices in a row sit level
-   however many lines a medium takes (DS-118). */
+   A tile with a price fills its row, and the price keeps to the bottom, so the prices in a row sit
+   level however many lines a medium takes (DS-118). Tiles without a price (works, documents) fit
+   their label, so their focus ring does too. */
 .gs-artwork-tile {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--gs-space-1);
-  block-size: 100%;
 }
+.gs-artwork-tile:has(> .gs-artwork-tile__price) { block-size: 100%; }
 .gs-artwork-tile .gs-media { margin-block-end: var(--gs-space-3); }
 .gs-artwork-tile__artist {
   margin: 0;
@@ -1860,6 +1872,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   gap: var(--gs-space-7) var(--gs-gutter);
   margin-block: var(--gs-space-5) var(--gs-section-space);
 }
+.gs-artwork__media { display: grid; gap: var(--gs-space-4); margin: 0; padding: 0; list-style: none; }
 @media (min-width: 990px) {
   .gs-artwork {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -1874,9 +1887,12 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 /* A view stops short of the screen's height, so the whole work shows at once (DS-111). The mat
    keeps the column's width (without it the cap would narrow a tall mat), and the work sits whole
-   in its middle. */
-:is(.gs-artwork__lead, .gs-artwork__media) .gs-media--artwork { width: 100%; max-height: var(--gs-artwork-detail-max-h); }
-.gs-artwork__media { display: grid; gap: var(--gs-space-4); margin: 0; padding: 0; list-style: none; }
+   in its middle. Only on a screen at least 40rem tall: on a short one (zoomed in, a phone on its
+   side) the cap would shrink the work, so the mat keeps its shape. */
+:is(.gs-artwork__lead, .gs-artwork__media) .gs-media--artwork { width: 100%; }
+@media (min-height: 40rem) {
+  :is(.gs-artwork__lead, .gs-artwork__media) .gs-media--artwork { max-height: var(--gs-artwork-detail-max-h); }
+}
 .gs-artwork__info { display: grid; align-content: start; justify-items: start; gap: var(--gs-space-5); }
 /* On a tall enough screen a work's label stays in view beside a long run of views, ending with
    them, before About the work (DS-112). Only the work page: its label has no form and always fits
@@ -2002,8 +2018,10 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-cart__item { grid-template-columns: var(--gs-thumb) minmax(0, 1fr) auto; align-items: center; }
   .gs-cart__controls { grid-column: auto; }
 }
-/* A print's frame offered under its row, beside the thumbnail's column (DS-125). */
-.gs-cart__offer { grid-column: 2 / -1; }
+/* A print's frame offered under its row: the row's full width on a phone, beside the thumbnail's
+   column from 750 px (DS-125). */
+.gs-cart__offer { grid-column: 1 / -1; }
+@media (min-width: 750px) { .gs-cart__offer { grid-column: 2 / -1; } }
 .gs-cart__foot { display: grid; gap: var(--gs-space-6) var(--gs-gutter); margin-block-start: var(--gs-space-6); }
 .gs-cart__summary { display: grid; justify-items: start; align-content: start; gap: var(--gs-space-4); }
 .gs-cart__summary > * { margin: 0; }

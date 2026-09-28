@@ -1,6 +1,6 @@
 # Whole-site design review
 
-Status: **Built on the branch, 2026-09-27; in review.** Every page of the new site was reviewed with the design skills and the fixes are built on `claude/site-design-review`, which sits on the Artists for Kids branch (pull request 42). The new rules are **Proposed** (DS-84 to DS-130) for Michael. Nothing the live site shows has changed.
+Status: **Built on the branch, 2026-09-27 and 28; in review.** Michael decided DS-97 to DS-130 on 2026-09-28 and they are built too (see "Decided and built, 2026-09-28"). Every page of the new site was reviewed with the design skills and the fixes are built on `claude/site-design-review`, which sits on the Artists for Kids branch (pull request 42). The new rules are **Proposed** (DS-84 to DS-130) for Michael. Nothing the live site shows has changed.
 
 ## Why
 
@@ -148,6 +148,32 @@ Waiting for Michael:
 - DS-95 changes nothing visible until Professional development has a hero image or the curatorial tour its own image.
 - Theme settings and `templates/index.json` changed (hours format, the What's on heading, the home rows' link settings). Before the review theme is updated, compare its editor JSON as usual.
 - The password page can't be shown on this store; its logo rule was checked in code only.
+
+## Decided and built, 2026-09-28
+
+Michael, 2026-09-28: "DS-97 to DS-130 all look like great improvements, proceed with implementation." Built in five batches, each tested and checked (commits `7f8ae14`, `97c97e1`, `eb24c16`, `f2c0e69`, `976b979`), where the plan offered a choice, as it recommended:
+- **Header, navigation, titles:** the Foundation's simple lockup at 72 px, so its nav fits one row from 1240 px (DS-97, option A; Q12 answered); the nav ends at the utility row's right edge (DS-98); only the current section is underlined while a dropdown is open (DS-103); drawer sections open independently (DS-104); chevrons turn with their panels, two durations instead of four (DS-123); tab titles end with the programme the header shows (DS-121).
+- **Heroes and page heads:** from 990 to 1391 px the photo hero, its box and the text share one left edge (DS-99); a photo hero's credit sits under the photo beside the box (DS-100); both artist header lines are decks (DS-101); product and frame pages open with a crumb to the Shop page (DS-102); the heading measure is 22ch, so the three exhibition lists' titles take one line and the switcher stays put (DS-105); a portfolio's one-paragraph description is the deck (DS-106); section-head links sit under the heading below 990 px (DS-119); the eyebrow rhythm is recorded as built (DS-126); the switcher sits closer to its title (DS-127); the On now chip is ink on the accent box (DS-128).
+- **Cards and tiles:** the wide exhibition card goes side by side from 990 px (DS-107); one document tile everywhere (DS-108); a work without an image gets the blank mat (DS-109); link cards with a short note are rows on phones (DS-116); the picture-beside-text layout is written once (DS-117); prices in a row sit level (DS-118); tile and cart images are decorative, the label follows (DS-120); More exhibitions fills its row with recent past shows (DS-130); event rows name their programme elsewhere (DS-115).
+- **Work and product pages, cart:** below 990 px the first view, then the label, price and action, then the other views (DS-110); mats take the work's shape between 4:5 and 4:3 (DS-111); a work's label follows long runs of views (DS-112); the cart's summary comes before the policy on small screens (DS-124) and offers a print's frame (DS-125).
+- **Search and collection:** search finds exhibitions, lessons and artists (DS-113); page and article results are text cards (DS-114); Browse lands on "Browse the collection" (DS-122, option B, with a store write); Engage is hidden and forwarded to Public programs at release, and Learning kits shows each kit, then its plans and video (DS-129, with a store write).
+
+Then every page was captured again and compared with captures taken just before this build. 17 checkers reported 16 regressions, 13 confirmed by a second agent, merged into 10 fixes:
+- On short screens (zoomed in, a phone on its side) the new height cap shrank the art: it now applies on screens at least 40rem tall.
+- The gap between the first view and the others from 990 px is back.
+- The one-paragraph deck applies to portfolios only; a long grouping introduction had turned into a deck.
+- From 1200 to 1391 px the hero's title box keeps its width, so "Gordon and Marion" stays on one line.
+- Learning kits: a kit after the previous kit's video read as part of its heading. A group without a heading after another group now starts under a rule (DS-131, Proposed; the alternative is a heading on each kit in the gallery's words).
+- Tiles without a price fit their label again, so their focus ring does.
+- The cart's frame offer takes the row's full width on phones.
+- Search terms with an apostrophe or ampersand ("O'Hara", "T&T") find exhibitions, lessons and artists.
+- The home page's tab title is "Gordon Smith Gallery" (DS-121).
+
+For Michael:
+- DS-120 makes every tile's image decorative, including collection works whose alt text in Files describes them. The descriptions still show on each work's own page. Restoring them on work tiles is a two-line change if wanted.
+- The product crumb shows the Shop page's title, "Shop", while the menu calls it "Limited editions" (gallery question 8.5 covers the Shop labels).
+- The review theme's Browse button will jump to `#collection-browse`, which it gets only when `main` is pushed to it after this merges.
+- Cup and Saucer's description has words joined by no-break spaces (pasted from Word), which still scrolls sideways at 320 px. That's a copy fix for the gallery, from before this build.
 
 ## Verification
 

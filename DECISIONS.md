@@ -117,40 +117,41 @@ Approved and proposed decisions for the Gordon Smith Gallery site. Full reasonin
 | DS-60 | Donate pass: "How to give" (Email, Mail, Phone) with "Email us" and "Call us" links, Online Form out of the group until there is a form, the hero button "Make a gift", a class-visit photo beside "Ways to Support"; its two lists as lists of points and its example amounts as a row of amount tiles | **Decided by Michael, 2026-09-26** ("Create a pr for all the work done and merge into main") |
 | DS-61 | Plan your visit opens with its visit details (today's opening line large; address with directions, gallery hours, admission, Artists for Kids office hours, from Theme settings); the page text keeps Getting Here beside an entrance photo, with Public Transport and Parking as points, then Accessibility | **Decided by Michael, 2026-09-26** ("Create a pr for all the work done and merge into main") |
 | DS-62 | The collection's five templates join the closed set: `page.permanent-collection` (the front door: hero, the gallery's introduction, collection search, ways in, featured works, the count), `page.artists` (the page's text, then an A to Z index of every artist entry with dates and counts, three columns), `metaobject/artist` (name and dates, works as artwork tiles, editions in the Shop, exhibitions, documents, the artist's website), `metaobject/artwork` (the work whole on the mat, the museum label, more by the artist) and `metaobject/collection_group` (a grouping's works). The Artists page's names link to the artists' pages on the site, not out to their websites; the website becomes one link on the artist's page. The two page templates take the pages' existing template names, so nothing is reassigned at release | **Decided by Michael, 2026-09-26** ("Sounds good, let's start there") |
-| DS-130 | When fewer than three current shows remain, More exhibitions tops up with recent past shows | **Decided by Michael, 2026-09-28** |
-| DS-129 | Engage is hidden and forwarded to Public programs at release, and Learning kits groups each kit with its plans | **Decided by Michael, 2026-09-28** |
-| DS-128 | The strong chip is ink with paper text on paper and accent | **Decided by Michael, 2026-09-28** |
-| DS-127 | The switcher sits closer to the page title than to the content | **Decided by Michael, 2026-09-28** |
-| DS-126 | §5.1 records the built 12 px above H2s and 16 px above H1s (recommended), or the CSS builds §5.1's 12/16/24 | **Decided by Michael, 2026-09-28** |
-| DS-125 | A cart line whose print has a linked frame offers 'Add its frame' under it | **Decided by Michael, 2026-09-28** |
-| DS-124 | Below 990 px the cart shows subtotal and Check out before the policy text | **Decided by Michael, 2026-09-28** |
-| DS-123 | Two durations: 120 ms for every reveal and state change, 160 ms for the press | **Decided by Michael, 2026-09-28** |
-| DS-122 | The Permanent Collection button either keeps opening the search (A) or lands on Browse the collection (B, store write) | **Decided by Michael, 2026-09-28** |
-| DS-121 | Browser titles end with the header logo's programme name instead of the store name | **Decided by Michael, 2026-09-28** |
-| DS-120 | Tile and cart images have empty alt because the museum label follows (as DS-63), amending §6.4 | **Decided by Michael, 2026-09-28** |
-| DS-119 | Below 990 px a section head's 'more' links sit under the heading | **Decided by Michael, 2026-09-28** |
-| DS-118 | Prices in a row of artwork tiles align to the tile bottom | **Decided by Michael, 2026-09-28** |
-| DS-117 | The single, rows and event picture-beside-text layouts share one rule keyed on a column variable | **Decided by Michael, 2026-09-28** |
-| DS-116 | Below 750 px a link card with a short note is a row like the others | **Decided by Michael, 2026-09-28** |
-| DS-115 | Outside its own programme page, an event row names and links its programme page | **Decided by Michael, 2026-09-28** |
-| DS-114 | Page and article results render as compact text cards in a one-column list | **Decided by Michael, 2026-09-28** |
-| DS-113 | Search page 1 adds exhibition, lesson and artist matches | **Decided by Michael, 2026-09-28** |
-| DS-112 | From 990 px on tall screens the collection work page's label sticks while views scroll | **Decided by Michael, 2026-09-28** |
-| DS-111 | Detail mats take the work's ratio between 4:5 and 4:3, with a height cap, as the artwork hero does | **Decided by Michael, 2026-09-28** |
-| DS-110 | Below 990 px work and product pages show the first image, then the label, price and action, then the other views | **Decided by Michael, 2026-09-28** |
-| DS-109 | A work tile without an image shows the blank mat, as a document tile does | **Decided by Michael, 2026-09-28** |
-| DS-108 | Document shelves use the Decided DS-63 tile; a document among photo cards keeps the 4:3 card | **Decided by Michael, 2026-09-28** |
-| DS-107 | The wide card stacks below 990 px and goes 7:5 from 990, as the other 7:5 splits do | **Decided by Michael, 2026-09-28** |
-| DS-106 | A single-paragraph description in a page header renders as the deck | **Decided by Michael, 2026-09-28** |
-| DS-105 | --gs-measure-heading goes from 20ch to 22ch | **Decided by Michael, 2026-09-28** |
-| DS-104 | In the Menu drawer several sections can be open; the bar keeps one at a time | **Decided by Michael, 2026-09-28** |
-| DS-103 | On the bar only the current section is underlined; the chevron and panel edge show which dropdown is open | **Decided by Michael, 2026-09-28** |
-| DS-102 | Product pages open with a crumb to Limited editions (or the product's portfolio), as the work page does | **Decided by Michael, 2026-09-28** |
-| DS-101 | Both header lines are decks (recommended), replacing the one-off regular-weight deck | **Decided by Michael, 2026-09-28** |
-| DS-100 | From 990 px a photo hero's credit sits under the photo, right of the title box | **Decided by Michael, 2026-09-28** |
-| DS-99 | In that band image, box, credit and text share one left edge | **Decided by Michael, 2026-09-28** |
-| DS-98 | From 1200 px the main nav aligns right, so labels stay put between programmes | **Decided by Michael, 2026-09-28** |
-| DS-97 | The Foundation header logo is the simple lockup at 72 px at every width, with a 32 px gap from 1200, so the bar fits one row from 1240 (option B: the full lockup per brand guide p.8) | **Decided by Michael, 2026-09-28** |
+| DS-131 | A card group without a heading after another group starts under a rule (Learning kits) | **Proposed**, 2026-09-28; built |
+| DS-130 | When fewer than three current shows remain, More exhibitions tops up with recent past shows | **Decided by Michael, 2026-09-28**; built |
+| DS-129 | Engage is hidden and forwarded to Public programs at release, and Learning kits groups each kit with its plans | **Decided by Michael, 2026-09-28**; built |
+| DS-128 | The strong chip is ink with paper text on paper and accent | **Decided by Michael, 2026-09-28**; built |
+| DS-127 | The switcher sits closer to the page title than to the content | **Decided by Michael, 2026-09-28**; built |
+| DS-126 | §5.1 records the built 12 px above H2s and 16 px above H1s (recommended), or the CSS builds §5.1's 12/16/24 | **Decided by Michael, 2026-09-28**; built |
+| DS-125 | A cart line whose print has a linked frame offers 'Add its frame' under it | **Decided by Michael, 2026-09-28**; built |
+| DS-124 | Below 990 px the cart shows subtotal and Check out before the policy text | **Decided by Michael, 2026-09-28**; built |
+| DS-123 | Two durations: 120 ms for every reveal and state change, 160 ms for the press | **Decided by Michael, 2026-09-28**; built |
+| DS-122 | The Permanent Collection button either keeps opening the search (A) or lands on Browse the collection (B, store write) | **Decided by Michael, 2026-09-28**; built |
+| DS-121 | Browser titles end with the header logo's programme name instead of the store name | **Decided by Michael, 2026-09-28**; built |
+| DS-120 | Tile and cart images have empty alt because the museum label follows (as DS-63), amending §6.4 | **Decided by Michael, 2026-09-28**; built |
+| DS-119 | Below 990 px a section head's 'more' links sit under the heading | **Decided by Michael, 2026-09-28**; built |
+| DS-118 | Prices in a row of artwork tiles align to the tile bottom | **Decided by Michael, 2026-09-28**; built |
+| DS-117 | The single, rows and event picture-beside-text layouts share one rule keyed on a column variable | **Decided by Michael, 2026-09-28**; built |
+| DS-116 | Below 750 px a link card with a short note is a row like the others | **Decided by Michael, 2026-09-28**; built |
+| DS-115 | Outside its own programme page, an event row names and links its programme page | **Decided by Michael, 2026-09-28**; built |
+| DS-114 | Page and article results render as compact text cards in a one-column list | **Decided by Michael, 2026-09-28**; built |
+| DS-113 | Search page 1 adds exhibition, lesson and artist matches | **Decided by Michael, 2026-09-28**; built |
+| DS-112 | From 990 px on tall screens the collection work page's label sticks while views scroll | **Decided by Michael, 2026-09-28**; built |
+| DS-111 | Detail mats take the work's ratio between 4:5 and 4:3, with a height cap, as the artwork hero does | **Decided by Michael, 2026-09-28**; built |
+| DS-110 | Below 990 px work and product pages show the first image, then the label, price and action, then the other views | **Decided by Michael, 2026-09-28**; built |
+| DS-109 | A work tile without an image shows the blank mat, as a document tile does | **Decided by Michael, 2026-09-28**; built |
+| DS-108 | Document shelves use the Decided DS-63 tile; a document among photo cards keeps the 4:3 card | **Decided by Michael, 2026-09-28**; built |
+| DS-107 | The wide card stacks below 990 px and goes 7:5 from 990, as the other 7:5 splits do | **Decided by Michael, 2026-09-28**; built |
+| DS-106 | A single-paragraph description in a page header renders as the deck | **Decided by Michael, 2026-09-28**; built |
+| DS-105 | --gs-measure-heading goes from 20ch to 22ch | **Decided by Michael, 2026-09-28**; built |
+| DS-104 | In the Menu drawer several sections can be open; the bar keeps one at a time | **Decided by Michael, 2026-09-28**; built |
+| DS-103 | On the bar only the current section is underlined; the chevron and panel edge show which dropdown is open | **Decided by Michael, 2026-09-28**; built |
+| DS-102 | Product pages open with a crumb to Limited editions (or the product's portfolio), as the work page does | **Decided by Michael, 2026-09-28**; built |
+| DS-101 | Both header lines are decks (recommended), replacing the one-off regular-weight deck | **Decided by Michael, 2026-09-28**; built |
+| DS-100 | From 990 px a photo hero's credit sits under the photo, right of the title box | **Decided by Michael, 2026-09-28**; built |
+| DS-99 | In that band image, box, credit and text share one left edge | **Decided by Michael, 2026-09-28**; built |
+| DS-98 | From 1200 px the main nav aligns right, so labels stay put between programmes | **Decided by Michael, 2026-09-28**; built |
+| DS-97 | The Foundation header logo is the simple lockup at 72 px at every width, with a 32 px gap from 1200, so the bar fits one row from 1240 (option B: the full lockup per brand guide p.8) | **Decided by Michael, 2026-09-28**; built |
 | DS-96 | Footer, Visit, Plan your visit and Contact render the hours from the structured opening settings; the free-text field is only a fallback | **Proposed**, 2026-09-27; built |
 | DS-95 | When the lead exhibition has no installation views, its event card tries the programme page's hero before the key image | **Proposed**, 2026-09-27; built; no visible effect until the Professional development page has a hero image or the curatorial tour its own image |
 | DS-94 | A page-text part whose text opens with a figure shows the figure first below 990 px; DS-79's record is corrected to say what is true | **Proposed**, 2026-09-27; built |

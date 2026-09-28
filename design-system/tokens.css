@@ -190,7 +190,7 @@
   --gs-hero-max-h: 80svh;
   --gs-figure-max-h: min(32rem, 80svh); /* a photo in page text stays inside the screen (DS-77, Proposed) */
   --gs-hero-art-max-h: calc(100svh - 16rem); /* artwork hero: header, caption, the gap and a glimpse of what follows stay on the first screen (DS-66) */
-  --gs-artwork-detail-max-h: calc(100svh - 8rem); /* a view on a work or product page: the header and the whole work fit the first screen (DS-111) */
+  --gs-artwork-detail-max-h: calc(100svh - 8rem); /* a view on a work or product page: the header and the whole work fit the first screen, on screens at least 40rem tall (DS-111) */
   --gs-hero-overlap: clamp(3rem, 1.886rem + 4.571vw, 6rem); /* title box overlaps the image by exactly this: 48 to 96 */
   --gs-ratio-card: 4 / 3;      /* exhibition, program, news cards (photo mode) */
   --gs-ratio-install: 3 / 2;   /* installation-view galleries (photo mode) */

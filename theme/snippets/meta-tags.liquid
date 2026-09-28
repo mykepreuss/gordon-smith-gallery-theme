@@ -160,7 +160,14 @@
     else
       assign site_name = 'general.site_title.gallery' | t
   endcase
-  assign title_key = page_title | downcase
+  # A page with no title of its own (the home page by default) shows the programme's name, not the
+  # store's (DS-121).
+  assign tab_title = page_title | strip
+  assign store_name = shop.name | replace: '&amp;', '&'
+  if tab_title == store_name or tab_title == shop.name
+    assign tab_title = site_name
+  endif
+  assign title_key = tab_title | downcase
   assign name_key = site_name | downcase
   assign tags = current_tags | join: ', '
 -%}
@@ -185,7 +192,7 @@
         {{- 'search.title' | t -}}
       {%- endif -%}
     {%- else -%}
-      {{- page_title | strip | escape_once -}}
+      {{- tab_title | escape_once -}}
   {%- endcase -%}
   {%- if current_tags %}, {{ 'general.title_tagged' | t: tags: tags }}{% endif -%}
   {%- if current_page != 1 %}, {{ 'general.title_page' | t: number: current_page }}{% endif -%}

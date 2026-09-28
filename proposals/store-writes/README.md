@@ -653,4 +653,6 @@ Support Artists for Kids now goes to the standard page template at release (`rel
 
 **Effect on the live site:** none. Card groups and these page fields aren't read by the live theme.
 
+**Effect on the review theme:** its Browse button jumps nowhere until it has the new section id (`theme/sections/gs-collection-ways.liquid`, `id="collection-browse"`); push `main` to it after this branch merges.
+
 **Undo:** set both page fields back from the snapshot; the six new groups can stay or be deleted.

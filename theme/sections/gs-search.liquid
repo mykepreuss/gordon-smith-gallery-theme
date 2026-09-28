@@ -8,6 +8,8 @@
   fields are filled (DS-16), which is what lets "Seven Sisters" find Seven Sisters Range.
 {%- endcomment -%}
 {%- assign form_id = 'gs-search-' | append: section.id -%}
+{%- comment -%} search.terms arrives HTML-escaped: decoded for the addresses that carry it on. {%- endcomment -%}
+{%- assign terms_plain = search.terms | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' | replace: '&amp;', '&' -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
     {%- assign title = 'search.title' | t -%}
@@ -118,7 +120,7 @@
                     </p>
                   </div>
                   {%- if artist_ids.size > 12 and settings.artists_page != blank -%}
-                    <a class="gs-cta-link gs-cta-link--more" href="{{ settings.artists_page.url }}?q={{ search.terms | url_encode }}">{{ 'collection.artists_link' | t }}</a>
+                    <a class="gs-cta-link gs-cta-link--more" href="{{ settings.artists_page.url }}?q={{ terms_plain | url_encode }}">{{ 'collection.artists_link' | t }}</a>
                   {%- endif -%}
                 </div>
                 <ul class="gs-index__list" role="list">{{ artist_items }}</ul>
@@ -232,7 +234,7 @@
             data-gs-other="{{ 'collection.works_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
             data-gs-none=""></p>
         </div>
-        <a class="gs-cta-link gs-cta-link--more" href="{{ settings.collection_page.url }}?q={{ search.terms | url_encode }}#collection-search">{{ 'collection.site_all' | t }}</a>
+        <a class="gs-cta-link gs-cta-link--more" href="{{ settings.collection_page.url }}?q={{ terms_plain | url_encode }}#collection-search">{{ 'collection.site_all' | t }}</a>
       </div>
       <ul class="gs-grid gs-grid--artworks" role="list" data-gs-finder-results></ul>
     </div>
