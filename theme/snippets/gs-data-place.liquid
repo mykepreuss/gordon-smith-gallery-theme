@@ -1,0 +1,106 @@
+{% doc %}
+  The gallery as structured data (schema.org ArtGallery), one JSON object without its script tag,
+  so gs-data prints it whole and an exhibition or an event names it as its location (DS-154). Everything comes from Theme settings, Gallery details, as the footer and Plan your
+  visit do, so the hours and address are typed once.
+
+  - The address is two lines: the street, then "City, Province Postal code". A second line in
+    another form is given as typed, in one piece.
+  - The short form is the name, address and web address: what a location needs.
+  - The full form adds the other names the gallery goes by, telephone, email, opening hours and
+    the social profiles.
+
+  @param {boolean} [full] - The full form
+
+  @example
+  <script type="application/ld+json">{% render 'gs-data-place', full: true %}</script>
+{% enddoc %}
+{%- liquid
+  assign home = shop.url | append: routes.root_url
+  assign gallery_id = home | append: '#gallery'
+  assign name = 'general.site_title.gallery' | t
+
+  assign lines = settings.address | newline_to_br | strip_newlines | split: '<br />'
+  assign street = lines[0] | strip
+  assign city = ''
+  assign region = ''
+  assign postal = ''
+  assign second = lines[1] | strip
+  if lines.size == 2 and second contains ', '
+    assign parts = second | split: ', '
+    assign tail = parts.last | strip | split: ' '
+    if parts.size == 2 and tail.size > 1
+      assign city = parts.first | strip
+      assign region = tail.first
+      assign postal = tail | join: ' ' | remove_first: region | strip
+    endif
+  endif
+
+  assign keys = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday' | split: ','
+  assign open_days = ''
+  for key in keys
+    assign setting = 'open_' | append: key
+    if settings[setting]
+      assign open_days = open_days | append: key | append: ','
+    endif
+  endfor
+  assign open_days = open_days | split: ','
+
+  assign profiles = ''
+  assign socials = 'social_instagram,social_facebook,social_youtube,social_vimeo,social_linkedin' | split: ','
+  for key in socials
+    if settings[key] != blank
+      assign profiles = profiles | append: settings[key] | append: '|'
+    endif
+  endfor
+  assign profiles = profiles | split: '|'
+-%}
+{
+  "@type": "ArtGallery",
+  "@id": {{ gallery_id | json }},
+  "name": {{ name | json }},
+  "url": {{ home | json }}
+  {%- if street != blank -%}
+    ,"address":
+    {%- if city != blank -%}
+      {
+        "@type": "PostalAddress",
+        "streetAddress": {{ street | json }},
+        "addressLocality": {{ city | json }},
+        "addressRegion": {{ region | json }},
+        "postalCode": {{ postal | json }}
+        {%- if shop.address.country_code != blank -%}
+          ,"addressCountry": {{ shop.address.country_code | json }}
+        {%- endif -%}
+      }
+    {%- else -%}
+      {{ lines | join: ', ' | json }}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if full -%}
+    ,"alternateName": [{{ 'general.site_title.gallery_full' | t | json }}, {{ shop.name | replace: '&amp;', '&' | json }}]
+    {%- if settings.phone != blank -%}
+      ,"telephone": {{ settings.phone | json }}
+    {%- endif -%}
+    {%- if settings.email != blank -%}
+      ,"email": {{ settings.email | json }}
+    {%- endif -%}
+    {%- if page_image -%}
+      ,"image": {{ page_image | image_url: width: 1200 | prepend: 'https:' | json }}
+    {%- endif -%}
+    {%- if open_days.size > 0 and settings.opens_at != blank and settings.closes_at != blank -%}
+      ,"openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          {%- for day in open_days -%}
+            {{ day | capitalize | prepend: 'https://schema.org/' | json }}{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ],
+        "opens": {{ settings.opens_at | json }},
+        "closes": {{ settings.closes_at | json }}
+      }
+    {%- endif -%}
+    {%- if profiles.size > 0 -%}
+      ,"sameAs": {{ profiles | json }}
+    {%- endif -%}
+  {%- endif -%}
+}

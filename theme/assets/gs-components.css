@@ -142,8 +142,10 @@
   overflow-wrap: break-word;
 }
 /* The subheading step, for headings that are set as one: h3 and h4 in page text, a compact card's
-   title and the phrase that leads a point (DS-40, DS-60). */
+   title and the phrase that leads a point (DS-40, DS-60). Page text whose headings start at h3
+   has them raised to h2 so no level is skipped, and they keep this look (DS-157). */
 .gs-prose :is(h3, h4),
+.gs-prose h2.gs-prose__raised,
 .gs-card--compact .gs-card__title,
 .gs-prose .gs-points > li > strong:first-child {
   font-size: var(--gs-text-h4);

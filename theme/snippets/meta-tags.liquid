@@ -9,8 +9,17 @@
     image, a work's first image, an artist's portrait, a lesson's cover. Else the store's.
   - A frame's page (product type Frame) asks search engines not to list it (DS-137).
   - Without a description of its own, an entry describes itself: a work by its label, an artist
-    by name, nationality, dates and the start of the biography, a grouping by its introduction. Other
-    pages print no description rather than the store's.
+    by name, nationality, dates and the start of the biography, a grouping by its introduction, a
+    page by its intro or the start of its text. An artist without a biography and a grouping
+    without an introduction say how many works the collection holds. An exhibition's description
+    starts with its dates. A page with nothing to say prints no description, and only the home
+    page uses the store's (DS-155).
+  - A work's and an edition's title is its label in plain letters, "Artist, Title, year", from
+    the entry's or the product's fields, never the product title, whose italics are Unicode
+    letters a search engine can't read (DS-156).
+  - The link preview names the programme, as the title does, and says what its picture shows and
+    how large it is (DS-155).
+  - Structured data for search and answer engines comes from gs-data (DS-154).
 
   @example
   {% render 'meta-tags' %}
@@ -27,12 +36,42 @@
   # The entry's own picture and words, used when the page has none of its own.
   assign own_image = nil
   assign entry_text = ''
+  assign entry_label = ''
+  assign lead_in = ''
+  assign works_note = ''
   if request.page_type == 'page'
     assign own_image = page.metafields.custom.hero_image.value
+    assign entry_text = page.metafields.custom.intro.value
+    if entry_text == blank
+      # The start of the page's text, as gs-page-text picks it (DS-39). A space before each tag
+      # keeps the words of two paragraphs apart.
+      assign body = page.content
+      if page.metafields.custom.release_body != blank
+        assign body = page.metafields.custom.release_body.value
+      endif
+      assign entry_text = body | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | truncatewords: 30
+    endif
+  elsif request.page_type == 'product'
+    assign f = product.metafields.custom
+    if f.artist.value != blank and f.artwork_title.value != blank
+      assign entry_label = f.artist.value | append: ', ' | append: f.artwork_title.value
+      if f.year.value != blank
+        assign entry_label = entry_label | append: ', ' | append: f.year.value
+      endif
+    endif
   elsif metaobject != blank
     case metaobject.system.type
       when 'exhibition'
         assign own_image = metaobject.key_image.value
+        if metaobject.start_date.value != blank
+          capture lead_in
+            render 'gs-date-range', start: metaobject.start_date.value, end: metaobject.end_date.value
+          endcapture
+          # The dates' no-break spaces (U+00A0) are for the page, not for a description.
+          assign nb = ' '
+          assign lead_in = lead_in | strip | replace: nb, ' ' | append: '. '
+        endif
+        assign entry_text = metaobject.summary.value | newline_to_br | strip_newlines | replace: '<br />', ' '
       when 'artwork'
         for image in metaobject.images.value limit: 1
           assign own_image = image
@@ -48,6 +87,7 @@
         if metaobject.year.value != blank
           assign entry_text = entry_text | append: ', ' | append: metaobject.year.value
         endif
+        assign entry_label = entry_text
         if metaobject.medium.value != blank
           assign entry_text = entry_text | append: '. ' | append: metaobject.medium.value
         endif
@@ -66,15 +106,40 @@
             assign entry_text = entry_text | append: '. '
           endif
           assign entry_text = entry_text | append: bio
+        else
+          assign works_note = 'artist'
         endif
       when 'lesson'
         assign own_image = metaobject.cover.value
       when 'collection_group'
         assign entry_text = metaobject.introduction.value | strip_newlines | truncatewords: 30
+        if entry_text == blank
+          assign works_note = 'group'
+        endif
     endcase
   endif
   assign description = page_description | default: entry_text
-  assign og_description = description | default: shop.description | default: shop.name
+  if works_note != blank and page_description == blank
+    # How many works the collection holds. The count comes from the entry looked up by its handle,
+    # so the page's own list is still unread when gs-work-grid pages it.
+    assign counted = metaobjects[metaobject.system.type][metaobject.system.handle]
+    assign works_total = counted.works.value.size | default: 0
+    if works_total > 0
+      if works_note == 'artist'
+        assign note = 'collection.meta.artist_works' | t: count: works_total
+        assign description = description | append: '. ' | append: note
+      else
+        assign description = 'collection.meta.group_works' | t: count: works_total, name: metaobject.name.value
+      endif
+    endif
+  endif
+  if description != blank and lead_in != blank
+    assign description = lead_in | append: description
+  endif
+  assign og_description = description
+  if og_description == blank and request.page_type == 'index'
+    assign og_description = shop.description | default: shop.name
+  endif
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -87,9 +152,42 @@
   assign og_image = own_image | default: page_image
 %}
 
+{%- liquid
+  # The name after the bar: the programme whose logo the header shows (DS-121, gs-header).
+  capture brand
+    render 'gs-brand'
+  endcapture
+  assign brand = brand | strip
+  case brand
+    when 'artists-for-kids'
+      assign site_name = 'general.site_title.artists_for_kids' | t
+    when 'foundation'
+      assign site_name = 'general.site_title.foundation' | t
+    else
+      assign site_name = 'general.site_title.gallery' | t
+  endcase
+  # A page with no title of its own (the home page by default) shows the programme's name, not the
+  # store's (DS-121).
+  assign tab_title = page_title | strip
+  if entry_label != blank
+    assign tab_title = entry_label
+  endif
+  assign store_name = shop.name | replace: '&amp;', '&'
+  if tab_title == store_name or tab_title == shop.name
+    assign tab_title = site_name
+  endif
+  # The link preview's title is the tab's, without the programme's name after the bar.
+  if tab_title != blank
+    assign og_title = tab_title
+  endif
+  assign title_key = tab_title | downcase
+  assign name_key = site_name | downcase
+  assign tags = current_tags | join: ', '
+-%}
+
 <meta
   property="og:site_name"
-  content="{{ shop.name }}"
+  content="{{ site_name | escape }}"
 >
 <meta
   property="og:url"
@@ -103,10 +201,12 @@
   property="og:type"
   content="{{ og_type }}"
 >
-<meta
-  property="og:description"
-  content="{{ og_description | escape }}"
->
+{%- if og_description != blank %}
+  <meta
+    property="og:description"
+    content="{{ og_description | escape }}"
+  >
+{%- endif %}
 
 {%- if og_image -%}
   <meta
@@ -117,6 +217,26 @@
     property="og:image:secure_url"
     content="https:{{ og_image | image_url: width: 1200 }}"
   >
+  {%- if og_image.width and og_image.aspect_ratio -%}
+    {%- liquid
+      assign og_width = og_image.width | at_most: 1200
+      assign og_height = og_width | divided_by: og_image.aspect_ratio | round
+    -%}
+    <meta
+      property="og:image:width"
+      content="{{ og_width }}"
+    >
+    <meta
+      property="og:image:height"
+      content="{{ og_height }}"
+    >
+  {%- endif -%}
+  {%- if og_image.alt != blank -%}
+    <meta
+      property="og:image:alt"
+      content="{{ og_image.alt | escape }}"
+    >
+  {%- endif -%}
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}
@@ -142,36 +262,13 @@
   name="twitter:title"
   content="{{ og_title | escape }}"
 >
-<meta
-  name="twitter:description"
-  content="{{ og_description | escape }}"
->
+{%- if og_description != blank %}
+  <meta
+    name="twitter:description"
+    content="{{ og_description | escape }}"
+  >
+{%- endif %}
 
-{%- liquid
-  # The name after the bar: the programme whose logo the header shows (DS-121, gs-header).
-  capture brand
-    render 'gs-brand'
-  endcapture
-  assign brand = brand | strip
-  case brand
-    when 'artists-for-kids'
-      assign site_name = 'general.site_title.artists_for_kids' | t
-    when 'foundation'
-      assign site_name = 'general.site_title.foundation' | t
-    else
-      assign site_name = 'general.site_title.gallery' | t
-  endcase
-  # A page with no title of its own (the home page by default) shows the programme's name, not the
-  # store's (DS-121).
-  assign tab_title = page_title | strip
-  assign store_name = shop.name | replace: '&amp;', '&'
-  if tab_title == store_name or tab_title == shop.name
-    assign tab_title = site_name
-  endif
-  assign title_key = tab_title | downcase
-  assign name_key = site_name | downcase
-  assign tags = current_tags | join: ', '
--%}
 <title>
   {%- case template.name -%}
     {%- when 'cart' -%}
@@ -216,3 +313,5 @@
     content="{{ description | escape }}"
   >
 {% endif %}
+
+{% render 'gs-data', description: description, label: entry_label %}

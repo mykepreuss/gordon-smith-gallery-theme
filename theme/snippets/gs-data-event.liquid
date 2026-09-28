@@ -1,0 +1,70 @@
+{% doc %}
+  An event as structured data (schema.org Event), printed with the event wherever it shows: a row
+  in a list (gs-event) or a card (gs-event-card) (DS-154). It says what the row says:
+  the title, when, where, the sentence about it, what it belongs to and where to register.
+
+  - A blank location means the gallery (content model part 5), so the gallery is the place.
+  - An event has no page of its own. Its address is its exhibition's page, else its programme's.
+  - An event of an exhibition names it as the larger event.
+
+  @param {object} event - An event entry
+
+  @example
+  {%- render 'gs-data-event', event: event -%}
+{% enddoc %}
+{%- liquid
+  assign exhibition = event.exhibition.value
+  assign programme = event.programme_page.value
+  assign url = ''
+  if exhibition != blank
+    assign url = exhibition.system.url
+  elsif programme != blank
+    assign url = programme.url
+  endif
+  assign image = event.image.value
+  if image == blank and exhibition != blank
+    assign image = exhibition.key_image.value
+  endif
+  if image == blank and programme != blank
+    assign image = programme.metafields.custom.hero_image.value
+  endif
+  assign starts = event.starts.value | append: ''
+  assign ends = event.ends.value | append: ''
+-%}
+{%- if event.title.value != blank and starts != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": {{ event.title.value | json }},
+      "startDate": {{ starts | json }},
+      {%- if ends != blank -%}
+        "endDate": {{ ends | json }},
+      {%- endif -%}
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location":
+      {%- if event.location.value != blank -%}
+        { "@type": "Place", "name": {{ event.location.value | json }} }
+      {%- else -%}
+        {% render 'gs-data-place' %}
+      {%- endif -%},
+      "organizer": {% render 'gs-data-place' %}
+      {%- if url != blank -%}
+        ,"url": {{ url | prepend: shop.url | json }}
+      {%- endif -%}
+      {%- if event.summary.value != blank -%}
+        ,"description": {{ event.summary.value | newline_to_br | strip_newlines | replace: '<br />', ' ' | json }}
+      {%- endif -%}
+      {%- if image != blank -%}
+        ,"image": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+      {%- if exhibition != blank -%}
+        ,"superEvent": {
+          "@type": "ExhibitionEvent",
+          "name": {{ exhibition.title.value | json }},
+          "url": {{ exhibition.system.url | prepend: shop.url | json }}
+        }
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}
