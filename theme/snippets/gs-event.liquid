@@ -3,6 +3,11 @@
   location means the gallery, so nothing shows. The compact form (on an exhibition's page) leaves
   out the image and summary.
 
+  The picture is the event's own, else its exhibition's key image, else its programme page's
+  picture, as on the event card, so a row in the full lists has a picture without anyone adding
+  one twice (DS-150, Proposed). On its own programme page an event shows only its own picture:
+  the programme's is beside the page's words already.
+
   On a programme page, an event titled like the page itself (a run of "Explore + Create"
   drop-ins) leads with its date and time instead of repeating the title (DS-36).
 
@@ -23,6 +28,25 @@
 {%- liquid
   assign tag = heading | default: 'h3'
   assign image = event.image.value
+  assign mode = 'photo'
+  assign own_page = false
+  if event.programme_page.value != blank and event.programme_page.value.id == page.id
+    assign own_page = true
+  endif
+  if image == blank and compact != true and own_page == false
+    if event.exhibition.value != blank
+      assign image = event.exhibition.value.key_image.value
+      if image != blank and event.exhibition.value.key_image_is_artwork.value == true
+        assign mode = 'artwork'
+      endif
+    endif
+    if image == blank and event.programme_page.value != blank
+      assign image = event.programme_page.value.metafields.custom.hero_image.value
+      if image != blank and event.programme_page.value.metafields.custom.hero_is_artwork.value == true
+        assign mode = 'artwork'
+      endif
+    endif
+  endif
   assign has_media = false
   if compact != true and image != blank
     assign has_media = true
@@ -38,7 +62,7 @@
 -%}
 <li class="gs-event{% if has_media %} gs-event--media{% endif %}">
   {%- if has_media -%}
-    {%- render 'gs-media', image: image, preset: 'card', mode: 'photo' -%}
+    {%- render 'gs-media', image: image, preset: 'card', mode: mode -%}
   {%- endif -%}
   <div class="gs-event__text">
     {%- if date_led -%}
