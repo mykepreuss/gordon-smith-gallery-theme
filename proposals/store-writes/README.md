@@ -800,3 +800,20 @@ The custom profile stays in the store, empty (no products, zones or rates), so n
 **Effect on the live site:** checkout now offers "Shipping within Canada" ($20) and pickup for all four prints. *Prairie Girl* and *Diamonds* now ask for a shipping address. The apartment field can be left empty, and the marketing checkbox starts unticked for buyers in Canada, the only market that can check out.
 
 **Undo:** `deliveryProfileUpdate` on the custom profile with `variantsToAssociate` and the two variant IDs; `productVariantsBulkUpdate` with `requiresShipping: false` on the other two. Fixes 3 and 4: set both back in Settings, Checkout, from the snapshot.
+
+## 2026-09-28: the US and International shipping zones deleted (`proposals/store-settings-review.md`, item 7)
+
+**Why:** Michael, 2026-09-28: "delete the unused US and International shipping zones". Canada is the only market, so neither zone could be reached at checkout. The US zone carried what look like Shopify's starter rates, with free shipping on orders of $100 or more, which would have applied to every print if anyone added a market.
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (through the connector); the live theme 183162372393 "Colorblock: NEW WEBSITE" (MAIN), not touched; markets: Canada only, active. Before-snapshot: `snapshots/shipping-zones-2026-09-28-before.json` (the general profile's three zones, their countries, and every rate with its price and conditions).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Zone "International" (26 countries, Canada Post calculated rates) deleted | Connector | `deliveryProfileUpdate` on `gid://shopify/DeliveryProfile/120347820329`, `zonesToDelete`: `gid://shopify/DeliveryZone/528002416937` |
+| Zone "US Cross-border" (United States, five flat rates) deleted | Connector | The same call: `gid://shopify/DeliveryZone/528002384169` |
+
+**Checked after:** read back through the connector: the general profile has one zone, "Domestic" (Canada), with one rate, "Shipping within Canada", $20.00; it still holds 40 variants. The store ships to Canada only.
+
+**Effect on the live site:** none for buyers in Canada, who see the same $20 rate and pickup. Buyers elsewhere couldn't check out before and can't now.
+
+**Undo:** a deleted zone can't be restored, so recreate both from the snapshot: `deliveryProfileUpdate` with `locationGroupsToUpdate` on `gid://shopify/DeliveryLocationGroup/122038845737` and `zonesToCreate`, or in the admin under Settings, Shipping and delivery, General profile. The new zones and rates get new IDs.
