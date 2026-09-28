@@ -1,0 +1,25 @@
+{
+ "taken": "2026-09-28, before Richard Savage left the Board of Directors (Michael: \"Remove Richard Savage from Board of Directors\")",
+ "card_group": {
+  "id": "gid://shopify/Metaobject/608367477033",
+  "handle": "foundation-board",
+  "updatedAt": "2026-09-25T23:34:28Z",
+  "fields": {
+   "heading": "Board of Directors",
+   "cards": "[\"gid://shopify/Metaobject/608366821673\",\"gid://shopify/Metaobject/608366854441\",\"gid://shopify/Metaobject/608366887209\",\"gid://shopify/Metaobject/608366919977\",\"gid://shopify/Metaobject/608366952745\",\"gid://shopify/Metaobject/608366985513\",\"gid://shopify/Metaobject/608367018281\",\"gid://shopify/Metaobject/608367051049\",\"gid://shopify/Metaobject/608367083817\",\"gid://shopify/Metaobject/608367116585\",\"gid://shopify/Metaobject/608367149353\",\"gid://shopify/Metaobject/608367182121\",\"gid://shopify/Metaobject/608367214889\",\"gid://shopify/Metaobject/608367247657\"]"
+  }
+ },
+ "card": [
+  {
+   "id": "gid://shopify/Metaobject/608367083817",
+   "handle": "board-richard-savage",
+   "fields": {
+    "image": "gid://shopify/MediaImage/45739198382377",
+    "title": "Richard Savage",
+    "text": "Director",
+    "link": null,
+    "logo": null
+   }
+  }
+ ]
+}
