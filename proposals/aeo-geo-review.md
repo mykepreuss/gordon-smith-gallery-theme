@@ -1,6 +1,6 @@
 # Review for answer engines and generative engines
 
-Status: **Step 1 built on `claude/shopify-aeo-geo-review-b9a78d`, 2026-09-28, for Michael's review** (DS-154 to DS-157, Proposed; see "Built in step 1"). Michael, 2026-09-28: "Yes, start on step 1". Nothing in the store changed. Steps 2 to 4 wait for his go-ahead and the gallery's words.
+Status: **Step 1 built and decided by Michael, 2026-09-28** (DS-154 to DS-157; see "Built in step 1"). Michael, 2026-09-28: "Yes, start on step 1", then "DS-154 to DS-157 approved, merge the PR". Nothing in the store changed. Steps 2 to 4 wait for his go-ahead and the gallery's words.
 
 ## What this review asks
 
