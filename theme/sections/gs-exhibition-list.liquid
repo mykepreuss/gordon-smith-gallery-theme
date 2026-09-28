@@ -94,17 +94,17 @@
         <div class="gs-empty">
           {%- case status -%}
             {%- when 'on-now' -%}
-              <p class="gs-empty__text">{{ 'exhibitions.empty_on_now' | t }}</p>
+              <p class="gs-empty__text gs-deck">{{ 'exhibitions.empty_on_now' | t }}</p>
               {%- if settings.exhibitions_upcoming_page != blank -%}
                 <a class="gs-cta-link" href="{{ settings.exhibitions_upcoming_page.url }}">{{ 'exhibitions.empty_on_now_link' | t }}</a>
               {%- endif -%}
             {%- when 'upcoming' -%}
-              <p class="gs-empty__text">{{ 'exhibitions.empty_upcoming' | t }}</p>
+              <p class="gs-empty__text gs-deck">{{ 'exhibitions.empty_upcoming' | t }}</p>
               {%- if settings.exhibitions_on_now_page != blank -%}
                 <a class="gs-cta-link" href="{{ settings.exhibitions_on_now_page.url }}">{{ 'exhibitions.empty_upcoming_link' | t }}</a>
               {%- endif -%}
             {%- else -%}
-              <p class="gs-empty__text">{{ 'exhibitions.empty_past' | t }}</p>
+              <p class="gs-empty__text gs-deck">{{ 'exhibitions.empty_past' | t }}</p>
           {%- endcase -%}
         </div>
       {%- endif -%}

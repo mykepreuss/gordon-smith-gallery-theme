@@ -57,7 +57,7 @@
       </form>
     {%- else -%}
       <div class="gs-empty">
-        <p class="gs-empty__text">{{ 'cart.empty' | t }}</p>
+        <p class="gs-empty__text gs-deck">{{ 'cart.empty' | t }}</p>
         {%- assign shop_url = settings.shop_page.url | default: settings.all_editions_collection.url -%}
         {%- if shop_url != blank -%}
           <a class="gs-cta-link" href="{{ shop_url }}">{{ 'shop.empty_portfolio_link' | t }}</a>
