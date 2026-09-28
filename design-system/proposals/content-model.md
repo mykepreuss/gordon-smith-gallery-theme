@@ -176,7 +176,7 @@ Status: **Approved 2026-09-25** (P-16). Four programme pages list dated events t
 | `programme_page` | Page | The programme page it belongs to (Explore + Create, Music at the Smith...) |
 | `exhibition` | Exhibition entry | For tours and talks tied to an exhibition |
 
-Each programme page lists its upcoming events; the Upcoming Events page lists all of them; an exhibition page lists its own. A row of links joins the Upcoming Events page and the programmes (DS-142, 2026-09-28): the pages in the Programs filter menu (Theme settings), then any other page an upcoming event names as its programme page. An event that has ended moves to the Past events page by itself (DS-145), so entries are kept, not deleted. No new field: the programme page is the event's tag and its filter. An event drops off every list once it has ended. This **replaces the approved exhibition field `events`** (P-11): one place for all events instead of a rich text field on exhibitions.
+Each programme page lists its upcoming events; the Upcoming Events page lists all of them; an exhibition page lists its own. A row of links joins the Upcoming Events page and the programmes (DS-143, 2026-09-28): the pages in the Programs filter menu (Theme settings), then any other page an upcoming event names as its programme page. An event that has ended moves to the Past events page by itself (DS-147), so entries are kept, not deleted. No new field: the programme page is the event's tag and its filter. An event drops off every list once it has ended. This **replaces the approved exhibition field `events`** (P-11): one place for all events instead of a rich text field on exhibitions.
 
 ## 6. Smaller field additions
 

@@ -13,7 +13,7 @@
   A programme page with nothing between its parts (no card groups or lessons) shows its text as one
   part. A long page (text with H2s) whose button leaves the site, with no card groups, shows its
   button again after its text, so the way to act is at the end too (DS-83, Proposed). A programme
-  in the events switcher has its events between the parts (DS-142), whatever template it has. On
+  in the events switcher has its events between the parts (DS-143), whatever template it has. On
   the page chosen as ArtReach videos page, the lessons follow the opening and the cards
   (gs-lesson-list, DS-70): the second part lists them before its text, whatever template the page
   has, so the list shows before release too, when the page still has its old template name.
@@ -37,7 +37,7 @@
         assign split = true
       endif
     endif
-    # A programme in the events switcher: its events follow its opening (DS-142).
+    # A programme in the events switcher: its events follow its opening (DS-143).
     capture filtered
       render 'gs-programme-index', check: page
     endcapture
@@ -67,7 +67,7 @@
 {%- if lessons_here and section.settings.part == 'sections' -%}
   {%- render 'gs-lesson-list', id: section.id -%}
 {%- endif -%}
-{%- comment -%} A programme in the events switcher: its picture beside its words (DS-144). {%- endcomment -%}
+{%- comment -%} A programme in the events switcher: its picture beside its words (DS-146). {%- endcomment -%}
 {%- liquid
   assign intro_image = nil
   if filtered_view and part == 'opening'

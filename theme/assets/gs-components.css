@@ -1217,7 +1217,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   color: var(--gs-color-fg);
   border-bottom-color: var(--gs-color-link-line);
 }
-/* A link that ends the row (Past events, DS-145) sits at its far end from 990 px, apart from the filters. */
+/* A link that ends the row (Past events, DS-147) sits at its far end from 990 px, apart from the filters. */
 @media (min-width: 990px) {
   .gs-switcher__end { margin-inline-start: auto; }
 }
@@ -1885,7 +1885,7 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event > .gs-event__text { grid-column: 2 / -1; }
 }
 
-/* A programme's words above its events (DS-144): the page's picture beside them, in the
+/* A programme's words above its events (DS-146): the page's picture beside them, in the
    events' own columns, so the words start where the events' text does. Without a picture the
    words start at the page's edge. The picture's credit sits under it. */
 .gs-programme-intro { display: grid; gap: var(--gs-space-4) var(--gs-gutter); align-items: start; }
