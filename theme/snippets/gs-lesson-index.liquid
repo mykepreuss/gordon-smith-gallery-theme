@@ -1,11 +1,17 @@
 {% doc %}
   Orders the lessons (the ArtReach videos, DS-70), newest first by their Posted date; lessons
   without one come last. Outputs comma-separated positions in shop.metaobjects.lesson.values.
-  Read a lesson back with:
+  Read a lesson back inside the same paginate tag (a plain loop stops at 50 entries, and the tag
+  doesn't reach into a rendered snippet, DS-152):
 
-    for lesson in shop.metaobjects.lesson.values offset: n limit: 1
+    paginate shop.metaobjects.lesson.values by 250
+      for lesson in shop.metaobjects.lesson.values offset: n limit: 1
 
-  Only active entries exist on the storefront. Reads up to 50 entries (L-07).
+  The tag must be the innermost one around the loop: inside another array's paginate tag the
+  entries are read 50 at a time again.
+
+  Only active entries exist on the storefront. Reads the first 250 entries, A to Z by handle,
+  which is Shopify's order (L-07).
 
   @param {string} [exclude] - A lesson's handle to leave out (the page's own lesson)
   @param {number} [limit] - At most this many
@@ -14,8 +20,9 @@
   {%- capture ids -%}{% render 'gs-lesson-index', exclude: metaobject.system.handle, limit: 3 %}{%- endcapture -%}
 {% enddoc %}
 {%- liquid
-  assign limit = limit | default: 50
+  assign limit = limit | default: 250
   assign keys = ''
+  paginate shop.metaobjects.lesson.values by 250
   for lesson in shop.metaobjects.lesson.values
     if exclude != blank and lesson.system.handle == exclude
       continue
@@ -29,6 +36,7 @@
     assign order = 999 | minus: forloop.index0 | prepend: '000' | slice: -3, 3
     assign keys = keys | append: posted | append: order | append: '-' | append: pos | append: ','
   endfor
+  endpaginate
 
   assign sorted = keys | split: ',' | sort | reverse
   for key in sorted limit: limit

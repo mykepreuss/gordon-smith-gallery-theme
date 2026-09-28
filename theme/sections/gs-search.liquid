@@ -41,8 +41,9 @@
     assign total = search.results_count | plus: exhibition_ids.size | plus: lesson_ids.size | plus: artist_ids.size
   -%}
   {%- comment -%}
-    The artists' names are written here, in their own pagination: it can't sit inside the
-    search's, and a loop without one stops at 50 entries.
+    The artists' names are written here, in their own pagination: a loop without one stops at
+    50 entries. The exhibitions and lessons have theirs around their cards, inside the search's:
+    the innermost tag is the one in force, and the search's is back once it closes (DS-152).
   {%- endcomment -%}
   {%- capture artist_items -%}
     {%- if artist_ids.size > 0 -%}
@@ -90,18 +91,20 @@
                   {%- endif -%}
                 </div>
                 <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
-                  {%- for pos in shown -%}
-                    {%- liquid
-                      assign n = pos | plus: 0
-                      capture card_sizes
-                        render 'gs-grid-sizes', mods: mods, index: forloop.index
-                      endcapture
-                      assign card_sizes = card_sizes | strip
-                    -%}
-                    {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
-                      <li>{%- render 'gs-exhibition-card', entry: entry, show_status: true, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+                  {%- paginate shop.metaobjects.exhibition.values by 250 -%}
+                    {%- for pos in shown -%}
+                      {%- liquid
+                        assign n = pos | plus: 0
+                        capture card_sizes
+                          render 'gs-grid-sizes', mods: mods, index: forloop.index
+                        endcapture
+                        assign card_sizes = card_sizes | strip
+                      -%}
+                      {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+                        <li>{%- render 'gs-exhibition-card', entry: entry, show_status: true, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+                      {%- endfor -%}
                     {%- endfor -%}
-                  {%- endfor -%}
+                  {%- endpaginate -%}
                 </ul>
               </div>
             {%- endif -%}
@@ -146,18 +149,20 @@
                   {%- endif -%}
                 </div>
                 <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
-                  {%- for pos in shown -%}
-                    {%- liquid
-                      assign n = pos | plus: 0
-                      capture card_sizes
-                        render 'gs-grid-sizes', mods: mods, index: forloop.index
-                      endcapture
-                      assign card_sizes = card_sizes | strip
-                    -%}
-                    {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
-                      <li>{%- render 'gs-lesson-card', lesson: lesson, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+                  {%- paginate shop.metaobjects.lesson.values by 250 -%}
+                    {%- for pos in shown -%}
+                      {%- liquid
+                        assign n = pos | plus: 0
+                        capture card_sizes
+                          render 'gs-grid-sizes', mods: mods, index: forloop.index
+                        endcapture
+                        assign card_sizes = card_sizes | strip
+                      -%}
+                      {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+                        <li>{%- render 'gs-lesson-card', lesson: lesson, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+                      {%- endfor -%}
                     {%- endfor -%}
-                  {%- endfor -%}
+                  {%- endpaginate -%}
                 </ul>
               </div>
             {%- endif -%}
