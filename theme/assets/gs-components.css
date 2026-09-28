@@ -2316,8 +2316,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
    name is a link, space groups the rows and bold marks the names; the underline comes on hover, as a
    card title's does, and the count stays quiet beside it. */
 .gs-index__list { margin: 0; padding: 0; list-style: none; columns: 3 11rem; column-gap: var(--gs-gutter); }
-.gs-index__item,
-.gs-browse__list li {
+.gs-index__item {
   display: block;
   line-height: var(--gs-leading-tight);
   padding-block: var(--gs-space-2);
@@ -2357,7 +2356,11 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 }
 .gs-browse { display: grid; gap: var(--gs-space-7) var(--gs-gutter); }
 @media (min-width: 750px) { .gs-browse { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.gs-browse__list { margin: var(--gs-space-4) 0 0; padding: 0; list-style: none; columns: 2 9rem; column-gap: var(--gs-gutter); }
+/* Categories and themes read as a long list in page text (DS-45, DS-139): names in body type as
+   ordinary underlined links (.gs-link), no bullets, in columns, rows grouped by a small space. Up to
+   three columns, none narrower than 9rem, so a half-width list keeps two until there's room for three. */
+.gs-browse__list { margin: var(--gs-space-4) 0 0; padding: 0; list-style: none; columns: 3 9rem; column-gap: var(--gs-gutter); }
+.gs-browse__list > li { break-inside: avoid; margin-block: 0 0.4em; }
 
 /* The collection search: the field, a live count, then works as tiles. */
 .gs-finder { display: grid; gap: var(--gs-space-6); }

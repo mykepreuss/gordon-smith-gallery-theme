@@ -954,7 +954,7 @@
         <ul class="gs-browse__list" id="by-theme"></ul>
       </div>
     </div>
-    <p class="pv-note">Ways into the collection: the four groupings as cards, each with its first work on the mat, then every category and every theme with its number of works. The names are bold links without a line, underlined on hover, and the lists have no rules: space groups them (DS-65). All from the Collection grouping entries, so a new grouping shows here without editing the page. Names and counts from the store; images are placeholders.</p>
+    <p class="pv-note">Ways into the collection: the four groupings as cards, each with its first work on the mat, then every category and every theme with its number of works, styled as a long list in page text: underlined links in body type, no bullets, in columns (DS-139). All from the Collection grouping entries, so a new grouping shows here without editing the page. Names and counts from the store; images are placeholders.</p>
   </div>
 </section>
 
@@ -1557,7 +1557,7 @@
       <h3 class="gs-card__title"><a href="#ways-title">${t}</a></h3>
       <p class="gs-meta">${worksCount(n)}</p>
     </article></li>`; }).join("");
-  const browseList = list => list.map(([t, n]) => `<li><a class="gs-list-link" href="#ways-title">${t}</a>&nbsp;<span class="gs-meta"><span aria-hidden="true">${n.toLocaleString("en-CA")}</span><span class="gs-visually-hidden">${worksCount(n)}</span></span></li>`).join("");
+  const browseList = list => list.map(([t, n]) => `<li><a class="gs-link" href="#ways-title">${t}</a>&nbsp;<span class="gs-meta"><span aria-hidden="true">${n.toLocaleString("en-CA")}</span><span class="gs-visually-hidden">${worksCount(n)}</span></span></li>`).join("");
   document.getElementById("by-category").innerHTML = browseList([["Books", 4], ["Ceramics", 21], ["Drawings", 132], ["Paintings", 152], ["Photography", 67], ["Prints", 720], ["Sculptures", 62], ["Textiles", 6]]);
   document.getElementById("by-theme").innerHTML = browseList([["Abstract", 210], ["Architecture", 48], ["Creatures", 175], ["Ecology", 198], ["Invention", 21], ["Landscape", 169], ["People", 119], ["Plants", 50], ["Portrait", 15], ["Social change", 12], ["Still life", 19], ["Storytelling", 180], ["Text", 15]]);
 
