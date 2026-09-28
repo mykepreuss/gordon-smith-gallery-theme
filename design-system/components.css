@@ -1267,15 +1267,17 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   column-gap: var(--gs-space-5); /* the bar never wraps; 24 px lets the Foundation logo and Menu fit 320 px */
   padding-inline-end: var(--gs-gutter);
   background-color: var(--gs-color-bg);
-  --_logo-h: var(--gs-header-logo-h); /* the logo's height, which the drawer also reads */
+  --_logo-h: var(--gs-header-logo-h); /* the logo's height */
+  --_header-h: var(--_logo-h);         /* the header's height, which the drawer reads */
+  min-height: var(--_header-h);
 }
-/* The Foundation logo can't go below 72 px tall (§8.3), so on phones it's taller than the others (DS-47). */
-@media (max-width: 989.98px) {
-  [data-gs-brand="foundation"] .gs-header { --_logo-h: var(--gs-header-logo-h-foundation); }
-}
+/* The Foundation logo is 72 px tall at every width (DS-47, DS-97): its minimum (§8.3), so on phones
+   it's taller than the others, and from 990 px shorter, so its wide box leaves the nav room for one
+   row. From 990 px the header is 96 px tall on every page, so the page starts at the same place. */
 @media (min-width: 990px) {
-  .gs-header { --_logo-h: var(--gs-header-logo-h-lg); }
+  .gs-header { --_logo-h: var(--gs-header-logo-h-lg); --_header-h: var(--gs-header-logo-h-lg); }
 }
+[data-gs-brand="foundation"] .gs-header { --_logo-h: var(--gs-header-logo-h-foundation); }
 /* The boxed logo hangs flush from the top-left corner of the page, rounded corner facing in. */
 .gs-header__logo { display: block; flex: none; line-height: 0; }
 /* The logo is flush with the page's corner, so its ring goes inside it, where nothing cuts it off. */
@@ -1321,8 +1323,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   display: flex;
   flex-direction: column;
   gap: var(--gs-space-5);
-  max-height: calc(100vh - var(--_logo-h));
-  max-height: calc(100dvh - var(--_logo-h));
+  max-height: calc(100vh - var(--_header-h));
+  max-height: calc(100dvh - var(--_header-h));
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: var(--gs-space-2) var(--gs-gutter) var(--gs-space-6);
@@ -1365,7 +1367,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
    .gs-nav__link     a plain link, for a section with no dropdown
    .gs-nav__trigger  the <summary> of a section's <details>: one button (label + chevron) that opens
                      the dropdown. It never navigates; the section's main page is the first link
-                     inside (DS-11). Dropdowns in one menu share a `name`, so one is open at a time. */
+                     inside (DS-11). The bar's dropdowns share a `name`, so one is open at a time;
+                     the drawer's sections open independently, in place (DS-104). */
 .gs-nav { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gs-space-1) var(--gs-space-6); margin: 0; padding: 0; list-style: none; }
 .gs-nav__item { position: relative; display: flex; align-items: center; }
 /* The nav label, written once: the menu's links and buttons and the switcher's links. */
@@ -1402,15 +1405,18 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   background-color: currentColor;
   -webkit-mask: var(--gs-icon-chevron) center / contain no-repeat;
   mask: var(--gs-icon-chevron) center / contain no-repeat;
-  transition: transform var(--gs-duration) var(--gs-ease);
 }
-.gs-nav__details[open] > .gs-nav__trigger::after { transform: rotate(180deg); }
+/* The chevron turns with its panel: 120 ms as it opens, and back at once as it closes (DS-123). */
+.gs-nav__details[open] > .gs-nav__trigger::after,
+.gs-disclosure[open] > summary::after {
+  transform: rotate(180deg);
+  transition: transform var(--gs-duration-fast) var(--gs-ease);
+}
 
-/* Underline: the current section, and on the bar the open dropdown's button. In the drawer the
-   chevron shows open/closed, so only the current section is underlined there. */
+/* Underline: the current section, and press and hover. The chevron and the panel's rule-colour
+   edge show which dropdown is open, so only the current section looks current (DS-103). */
 .gs-nav__link[aria-current="page"],
 .gs-nav__item--current :is(.gs-nav__link, .gs-nav__trigger),
-.gs-header__bar .gs-nav__details[open] > .gs-nav__trigger,
 :is(.gs-nav__link, .gs-nav__trigger):active {
   text-decoration-line: underline;
   text-decoration-color: var(--gs-color-link-line);
@@ -1488,7 +1494,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* Desktop: the inline nav needs room for six or seven section labels, so the drawer is used up
    to 1199px. Utility links sit in a small row above the nav (and come first in the markup). */
 @media (min-width: 1200px) {
-  .gs-header { column-gap: var(--gs-space-7); }
+  .gs-header { column-gap: var(--gs-space-6); } /* 32 px: with the Foundation logo at 72 px, its nav fits one row from 1240 px (DS-97) */
   .gs-drawer { display: none; }
   .gs-header__bar {
     display: flex;
@@ -1497,9 +1503,10 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
     align-items: stretch;
     justify-content: center;
     gap: var(--gs-space-1);
-    min-height: var(--gs-header-logo-h-lg);
+    min-height: var(--_header-h);
   }
-  .gs-header__bar .gs-utility { justify-content: flex-end; }
+  /* Both rows end at the same right edge, so the section labels stay put between programmes (DS-98). */
+  .gs-header__bar :is(.gs-utility, .gs-nav) { justify-content: flex-end; }
   .gs-header__bar .gs-utility a { display: inline-flex; align-items: center; min-height: 2rem; }
   .gs-nav { gap: var(--gs-space-1) var(--gs-nav-gap); }
 }
@@ -1881,6 +1888,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   cursor: pointer;
 }
 .gs-disclosure > summary::-webkit-details-marker { display: none; }
+/* It turns open with the nav's chevrons (header section, DS-123). */
 .gs-disclosure > summary::after {
   content: "";
   flex: none;
@@ -1889,9 +1897,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   background-color: currentColor;
   -webkit-mask: var(--gs-icon-chevron) center / contain no-repeat;
   mask: var(--gs-icon-chevron) center / contain no-repeat;
-  transition: transform var(--gs-duration) var(--gs-ease);
 }
-.gs-disclosure[open] > summary::after { transform: rotate(180deg); }
 .gs-disclosure__body { padding-block-end: var(--gs-space-4); }
 
 /* ---------- Cart ---------- */

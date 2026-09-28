@@ -159,10 +159,10 @@
   --gs-width-content: 75rem;  /* 1200: card grids, footer (the header runs full width, DS-07) */
   --gs-width-prose: 45rem;    /* 720: the logo cards' text (text columns use --gs-measure) */
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
-  --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px */
+  --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px; the header's height there on every page */
   --gs-nav-gap: clamp(1.25rem, 4.6vw - 2.2rem, 2.25rem); /* main nav item gap from 1200 px: 20 at 1200, 31 at 1440, 36 from about 1550, so seven section labels fit on one line at 1200 (§6.1) */
   --gs-logo-min-foundation: 4.5rem; /* 72: the Foundation logo's minimum height (§8.3) */
-  --gs-header-logo-h-foundation: var(--gs-logo-min-foundation); /* the Foundation logo in the header on phones (DS-47) */
+  --gs-header-logo-h-foundation: var(--gs-logo-min-foundation); /* the Foundation logo in the header, at every width (DS-47, DS-97) */
   --gs-org-logo-h: 7rem;           /* 112: a square logo beside its organisation's text (DS-50); the Gallery full stacked minimum (§8.3) */
   --gs-org-logo-h-lg: 9rem;        /* 144 at ≥ 990px */
   --gs-org-logo-h-wide: 5.5rem;    /* 88: the Foundation full lockup (about 2:1) at its minimum */
@@ -230,9 +230,7 @@
   --gs-shadow-dropdown: 0 10px 28px rgb(35 31 32 / 0.12); /* the only shadow in the system: dropdown panels and the Menu drawer */
 
   /* Motion answers a person's action only (DESIGN.md §5.4). */
-  --gs-duration-fast: 120ms; /* link fill, underline, arrow nudge, button colour, dropdown reveal */
-  --gs-duration: 200ms;      /* chevron rotation */
-  --gs-duration-slow: 320ms; /* reserved; nothing uses it yet */
+  --gs-duration-fast: 120ms; /* every reveal and state change: link fill, underline, arrow nudge, button colour, dropdown reveal, chevron (DS-123) */
   --gs-duration-press: 160ms; /* a button shrinking while pressed (DS-55) */
   --gs-ease-press: cubic-bezier(0.23, 1, 0.32, 1); /* strong ease-out: the press shows at once */
   --gs-ease: cubic-bezier(0.2, 0, 0, 1);
@@ -270,8 +268,6 @@
 @media (prefers-reduced-motion: reduce) {
   :root {
     --gs-duration-fast: 0ms;
-    --gs-duration: 0ms;
-    --gs-duration-slow: 0ms;
     --gs-duration-press: 0ms;
   }
 }

@@ -4,8 +4,8 @@
  *
  * The header works without this file. The Menu drawer and every dropdown are <details>
  * elements (snippets/gs-header.liquid, gs-nav.liquid): a click, tap, Enter or Space on a
- * section's button opens its dropdown, and dropdowns in one menu share a `name`, so opening
- * one closes the others. Nothing opens on hover. This file adds what <details> can't do alone:
+ * section's button opens its dropdown, and the bar's dropdowns share a `name`, so opening
+ * one closes the others; the drawer's sections open independently (DS-104). Nothing opens on hover. This file adds what <details> can't do alone:
  *
  *   - Escape closes the open dropdown and returns focus to its button; pressed again (or with
  *     no dropdown open) it closes the Menu drawer and returns focus to the Menu button.
@@ -14,7 +14,7 @@
  *   - Focus leaving the Menu drawer closes it.
  *   - Choosing a link in the drawer closes the drawer (matters for links within the page).
  *   - Crossing the 1200px breakpoint closes everything.
- *   - One-open-at-a-time for browsers without <details name> support.
+ *   - One-open-at-a-time on the bar for browsers without <details name> support.
  *   - A card in a sideways row (.gs-rail) that gets keyboard focus scrolls into view whole.
  *
  * Markup contract:
@@ -22,7 +22,7 @@
  *     <details class="gs-drawer"><summary class="gs-header__menu-toggle">Menu</summary>
  *       <div class="gs-drawer__panel"> nav (variant drawer) + utility </div></details>
  *     <div class="gs-header__bar"> utility + nav (variant bar) </div>
- *   Each dropdown: <details class="gs-nav__details" name="gs-nav-bar|gs-nav-drawer">
+ *   Each dropdown: <details class="gs-nav__details" name="gs-nav-bar"> (no name in the drawer)
  *                    <summary class="gs-nav__trigger">Exhibitions</summary>
  *                    <ul class="gs-nav__panel">…</ul></details>
  */
@@ -56,6 +56,7 @@
         details.addEventListener("toggle", function () {
           if (!details.open) return;
           var group = details.getAttribute("name");
+          if (!group) return; /* the drawer's sections have no name: they open independently */
           dropdowns.forEach(function (other) {
             if (other !== details && other.getAttribute("name") === group) close(other);
           });

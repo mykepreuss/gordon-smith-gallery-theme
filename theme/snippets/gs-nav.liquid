@@ -5,8 +5,9 @@
   Model: a top-level item is either a plain link (no children) or one button that opens its
   dropdown (has children). The button is the <summary> of a <details>, so it works without
   JavaScript and never navigates. The section's main page must be one of the dropdown's links,
-  normally the first, with its own label (e.g. "About the Foundation"). Dropdowns in one menu
-  share a name, so opening one closes the others.
+  normally the first, with its own label (e.g. "About the Foundation"). The bar's dropdowns
+  share a name, so opening one closes the others; the drawer's sections open independently, in
+  place, so a tapped row never jumps away (DS-104).
 
   Enforced here, because the menu editor can't enforce it:
   - A parent whose link points to a page that isn't in its dropdown gets a theme-editor
@@ -109,7 +110,7 @@
       {%- if link.links.size > 0 -%}
         {%- assign parent_listed = false -%}
         {%- assign repeated_label = false -%}
-        <details class="gs-nav__details" name="gs-nav-{{ variant }}"{% if variant == 'drawer' and is_current %} open{% endif %}>
+        <details class="gs-nav__details"{% if variant == 'bar' %} name="gs-nav-bar"{% endif %}{% if variant == 'drawer' and is_current %} open{% endif %}>
           <summary class="gs-nav__trigger">
             {{- title -}}
             {%- if is_current -%}<span class="gs-visually-hidden">{{ 'header.current_section' | t }}</span>{%- endif -%}

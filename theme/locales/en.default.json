@@ -8,7 +8,12 @@
     "page": "Page",
     "pdf": "(PDF)",
     "title_tagged": "tagged {{ tags }}",
-    "title_page": "page {{ number }}"
+    "title_page": "page {{ number }}",
+    "site_title": {
+      "gallery": "Gordon Smith Gallery",
+      "artists_for_kids": "Artists for Kids",
+      "foundation": "The Gordon and Marion Smith Foundation"
+    }
   },
   "header": {
     "home": "Gordon Smith Gallery, home",

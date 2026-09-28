@@ -2,7 +2,9 @@
   Page title, description, canonical address and link-preview tags, from Shopify's Skeleton theme.
 
   - The tab title uses the site's words for the cart, search and 404 pages, joins its parts with
-    commas and one bar before the store name, and names the store once (DESIGN.md §0: no dashes).
+    commas and one bar before the name, and names it once (DESIGN.md §0: no dashes). The name is
+    the programme the header logo shows: Gordon Smith Gallery, Artists for Kids or The Gordon and
+    Marion Smith Foundation (DS-121). Checkout and emails keep the store name.
   - A page shares its own picture as the link preview: a page's hero image, an exhibition's key
     image, a work's first image, an artist's portrait, a lesson's cover. Else the store's.
   - Without a description of its own, an entry describes itself: a work by its label, an artist
@@ -144,8 +146,24 @@
   content="{{ og_description | escape }}"
 >
 
-{%- assign site_name = shop.name | replace: '&amp;', '&' -%}
-{%- assign tags = current_tags | join: ', ' -%}
+{%- liquid
+  # The name after the bar: the programme whose logo the header shows (DS-121, gs-header).
+  capture brand
+    render 'gs-brand'
+  endcapture
+  assign brand = brand | strip
+  case brand
+    when 'artists-for-kids'
+      assign site_name = 'general.site_title.artists_for_kids' | t
+    when 'foundation'
+      assign site_name = 'general.site_title.foundation' | t
+    else
+      assign site_name = 'general.site_title.gallery' | t
+  endcase
+  assign title_key = page_title | downcase
+  assign name_key = site_name | downcase
+  assign tags = current_tags | join: ', '
+-%}
 <title>
   {%- case template.name -%}
     {%- when 'cart' -%}
@@ -163,7 +181,7 @@
   {%- endcase -%}
   {%- if current_tags %}, {{ 'general.title_tagged' | t: tags: tags }}{% endif -%}
   {%- if current_page != 1 %}, {{ 'general.title_page' | t: number: current_page }}{% endif -%}
-  {%- unless page_title contains site_name or page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
+  {%- unless title_key contains name_key %} | {{ site_name }}{% endunless -%}
 </title>
 
 <link
