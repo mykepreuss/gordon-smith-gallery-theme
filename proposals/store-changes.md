@@ -169,9 +169,9 @@ Rollback: set `seo.hidden` back to 1 on each page, or hide the pages. The lesson
 
 Script: `release.py frames` (dry run: `dry-runs/2026-09-26/frames.md`).
 
-Each print's frame is its own product (product type Frame, collection `framing`), so search results fill with frames. At release, after publishing, the 16 active frames become **Unlisted**: still buyable, still offered on each print's page through `custom.featured_frame` (a metafield reference, which Liquid still returns), but out of search, collections and recommendations. The draft Michael Snow frame stays a draft. Snapshot: `proposals/store-writes/snapshots/frames-2026-09-26.json`.
+Each print's frame is its own product (product type Frame, collection `framing`), so search results fill with frames. At release, after publishing, the 16 active frames become **Unlisted**: still buyable, still offered on each print's page through `custom.featured_frame` (a metafield reference, which Liquid still returns) as the Framing choice that nests the frame under the print (DS-137), but out of search, collections and recommendations. The new theme already treats a frame as sold only with its print: a frame's own page points to its print and isn't listed by search engines. The draft Michael Snow frame stays a draft. Snapshot: `proposals/store-writes/snapshots/frames-2026-09-26.json`.
 
-This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's "Add a frame" still adds its frame to the cart.
+This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's Framed choice still adds its frame, nested under the print in the cart and at checkout.
 
 Rollback: set the 16 back to Active from the snapshot.
 

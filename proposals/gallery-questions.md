@@ -200,6 +200,7 @@ Questions from the review of every page, 2026-09-27. Until the gallery answers, 
 | 8.12 | Past exhibitions: are the Paths and Unfixed key images artworks or photos of the room? If photos, clear key_image_is_artwork on both (store write), update migration.py:281, 284 and preview.html:301. |
 | 8.13 | From the Ground: list one entry per multi-part work (eight identical Charlene Vickers tiles today), or keep the parts? |
 | 8.14 | Artists for Kids team: four separate portraits at least 800 px wide (then a people grid) and meanwhile a copy of the composite without its baked-in white frame? |
+| 8.15 | Framing (DS-137): a photo of each work in its frame, to show as a view on the print's page? The frame products' own photos are generic (several share one) and one file is named like an Adobe Stock preview (`360_F_355702664…jpg`, on the Russna Kaur frame); please confirm it's licensed or replace it. The frame titles show at checkout under the print, so the title pattern in 8.5 ('Frame for Pender Harbour') matters more now. And the wording: 'Framing', 'Unframed', 'Framed, add $575.00', 'Also offered framed', and a frame page's 'This frame is sold with its print' and 'Framing a print you already own? Contact the gallery.' |
 
 ## 9. The main menu (`proposals/navigation-review.md`, P-50 to P-57)
 

@@ -1969,6 +1969,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-form { display: grid; justify-items: start; gap: var(--gs-space-5); width: 100%; max-width: var(--gs-width-form); }
 .gs-form > .gs-field { width: 100%; }
 
+/* A choice between a few options, such as a print's Framing (DS-137): a fieldset whose legend reads
+   as a field label, each option a native radio beside its words, the whole row a control-high target.
+   The radio takes the text colour, so it reads on paper and tint alike. */
+.gs-choice { display: grid; gap: 0; width: 100%; min-width: 0; margin: 0; padding: 0; border: 0; }
+.gs-choice > legend { padding: 0; margin-block-end: var(--gs-space-2); }
+.gs-choice__option { display: flex; align-items: center; gap: var(--gs-space-3); min-height: var(--gs-control-h); cursor: pointer; }
+.gs-choice__option input { flex: none; width: 1.25em; height: 1.25em; margin: 0; accent-color: var(--gs-color-field-fg); cursor: inherit; }
+
 /* A native select dressed as an input, with the chevron icon. */
 .gs-select { appearance: none; padding-inline-end: 2.75rem; cursor: pointer; }
 .gs-select-wrap { position: relative; display: block; }
@@ -2050,9 +2058,23 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-cart__item { grid-template-columns: var(--gs-thumb) minmax(0, 1fr) auto; align-items: center; }
   .gs-cart__controls { grid-column: auto; }
 }
-/* A print's frame offered under its row: the row's full width on a phone, beside the thumbnail's
-   column from 750 px (DS-125). */
+/* Under a print: its frame, nested under it (DS-137), or the offer to add one (DS-125). The frame
+   has no thumbnail of its own and sits in the print's text column at every width, so it reads as
+   part of the work above it. The offer takes the row's full width on a phone, beside the
+   thumbnail's column from 750 px. */
 .gs-cart__offer { grid-column: 1 / -1; }
+.gs-cart__addon {
+  grid-column: 2 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--gs-space-3) var(--gs-space-5);
+  padding-block-start: var(--gs-space-3);
+  border-block-start: var(--gs-border) solid var(--gs-color-rule);
+}
+.gs-cart__addon > * { margin: 0; }
+.gs-cart__addon .gs-cart__details { gap: var(--gs-space-1); }
 @media (min-width: 750px) { .gs-cart__offer { grid-column: 2 / -1; } }
 .gs-cart__foot { display: grid; gap: var(--gs-space-6) var(--gs-gutter); margin-block-start: var(--gs-space-6); }
 .gs-cart__summary { display: grid; justify-items: start; align-content: start; gap: var(--gs-space-4); }
