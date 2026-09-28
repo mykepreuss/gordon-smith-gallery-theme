@@ -163,14 +163,14 @@ Then every page was captured again and compared with captures taken just before 
 - The gap between the first view and the others from 990 px is back.
 - The one-paragraph deck applies to portfolios only; a long grouping introduction had turned into a deck.
 - From 1200 to 1391 px the hero's title box keeps its width, so "Gordon and Marion" stays on one line.
-- Learning kits: a kit after the previous kit's video read as part of its heading. A group without a heading after another group now starts under a rule (DS-131, Proposed; the alternative is a heading on each kit in the gallery's words).
+- Learning kits: a kit after the previous kit's video read as part of its heading. A group without a heading after another group now starts under a rule (DS-131, approved by Michael 2026-09-28).
 - Tiles without a price fit their label again, so their focus ring does.
 - The cart's frame offer takes the row's full width on phones.
 - Search terms with an apostrophe or ampersand ("O'Hara", "T&T") find exhibitions, lessons and artists.
 - The home page's tab title is "Gordon Smith Gallery" (DS-121).
 
 For Michael:
-- DS-120 makes every tile's image decorative, including collection works whose alt text in Files describes them. The descriptions still show on each work's own page. Restoring them on work tiles is a two-line change if wanted.
+- Michael, 2026-09-28: "DS-131 approved, restore the alt text on work tiles". Work tiles, in the collection and the finder, keep their images' own alt text from Files again (amending DS-120); edition and document tiles and the cart stay decorative.
 - The product crumb shows the Shop page's title, "Shop", while the menu calls it "Limited editions" (gallery question 8.5 covers the Shop labels).
 - The review theme's Browse button will jump to `#collection-browse`, which it gets only when `main` is pushed to it after this merges.
 - Cup and Saucer's description has words joined by no-break spaces (pasted from Word), which still scrolls sideways at 320 px. That's a copy fix for the gallery, from before this build.

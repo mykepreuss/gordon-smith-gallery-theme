@@ -2,8 +2,8 @@
   The works for the collection search (DS-62), as data for gs-collection.js: 250 works a page,
   requested through Shopify's section rendering (/?section_id=gs-collection-data&page=2). It isn't
   in any template and shows nothing to visitors. Per work: address, title, artists, year,
-  category, medium, themes, and a small image with its shape. The image needs no alt text: the
-  tile's label names the work (DS-120).
+  category, medium, themes, and a small image with its shape and alt text, which describes the work
+  on its tile (Michael, 2026-09-28, amending DS-120).
 {%- endcomment -%}
 {%- paginate metaobjects.artwork.values by 250 -%}
 <script type="application/json" data-gs-collection-data data-pages="{{ paginate.pages }}" data-param="{{ paginate.page_param }}">[
@@ -15,14 +15,16 @@
       assign names = names | strip
       assign img = ''
       assign ratio = ''
+      assign alt = ''
       for image in w.images.value limit: 1
         assign img = image | image_url: width: 600
         assign ratio = image.aspect_ratio
+        assign alt = image.alt
       endfor
       assign themes = w.themes.value | join: ' '
     -%}
     {%- unless forloop.first -%},{%- endunless -%}
-    {"u":{{ w.system.url | json }},"t":{{ w.title.value | json }},"a":{{ names | json }},"y":{{ w.year.value | json }},"c":{{ w.category.value | json }},"m":{{ w.medium.value | json }},"k":{{ themes | json }},"i":{{ img | json }},"r":{{ ratio | json }}}
+    {"u":{{ w.system.url | json }},"t":{{ w.title.value | json }},"a":{{ names | json }},"y":{{ w.year.value | json }},"c":{{ w.category.value | json }},"m":{{ w.medium.value | json }},"k":{{ themes | json }},"i":{{ img | json }},"r":{{ ratio | json }},"l":{{ alt | json }}}
   {%- endfor -%}
 ]</script>
 {%- endpaginate -%}

@@ -1512,12 +1512,12 @@
 
   // The Permanent Collection (store entries): works as snippets/gs-work-tile.liquid renders them,
   // [artist, title, year, medium, no image]. The artist's own page leaves the artist off. The image
-  // is decorative, since the label names the work (DS-120); a work without one gets the blank mat (DS-109).
+  // keeps its own alt text, which describes the work (amending DS-120); a work without one gets the blank mat (DS-109).
   const workTile = ([artist, title, year, medium, noImage], i, { tag = "h3", hideArtist = false } = {}) => {
     const [w, h, b] = art[i % art.length];
     return `<li><article class="gs-artwork-tile">
       ${noImage ? `<div class="gs-media gs-media--artwork gs-shape-md gs-media--blank" aria-hidden="true"><span class="gs-label">No image</span></div>`
-        : `<div class="gs-media gs-media--artwork gs-shape-md"><img src="${svg(w, h, b)}" alt=""></div>`}
+        : `<div class="gs-media gs-media--artwork gs-shape-md"><img src="${svg(w, h, b)}" alt="Placeholder for ${title} by ${artist}"></div>`}
       ${hideArtist ? "" : `<p class="gs-artwork-tile__artist">${artist}</p>`}
       <${tag} class="gs-artwork-tile__title"><a href="#work"><cite>${title}</cite>${year ? `, ${year}` : ""}</a></${tag}>
       <p class="gs-meta gs-artwork-tile__medium">${medium}</p>

@@ -89,8 +89,9 @@
     return works;
   }
 
-  // A work tile, as snippets/gs-work-tile. The picture is decorative: the label under it names the
-  // work (DS-120). A work without an image gets the blank mat, so the row keeps one shape (DS-109).
+  // A work tile, as snippets/gs-work-tile. The picture keeps its own alt text, which describes the
+  // work (amending DS-120); an alt that only repeats the title is dropped (DS-58). A work without
+  // an image gets the blank mat, so the row keeps one shape (DS-109).
   function tile(w, noImage) {
     const li = document.createElement('li');
     const art = document.createElement('article');
@@ -100,7 +101,7 @@
     if (w.i) {
       const img = document.createElement('img');
       img.src = w.i;
-      img.alt = '';
+      img.alt = w.l && w.l !== w.t ? w.l : '';
       img.loading = 'lazy';
       img.decoding = 'async';
       if (w.r) { img.width = 600; img.height = Math.round(600 / Number(w.r)); }
