@@ -636,3 +636,21 @@ Support Artists for Kids now goes to the standard page template at release (`rel
 **Effect on the live site:** none. Staged text, buttons, cards, exhibition entries and the review menu aren't read by the live theme.
 
 **Undo:** set the values in the before-snapshot back (staged text: the generators at the commits named there; FAQ and Contact: delete `custom.release_body`); `menuUpdate` the review menu without the Upcoming events item.
+
+## 2026-09-28: DS-122 and DS-129, decided by Michael
+
+**Why:** Michael, 2026-09-28: "DS-97 to DS-130 all look like great improvements, proceed with implementation". Two of them need store content: DS-122 (the Permanent Collection's Browse button lands on "Browse the collection") and DS-129 (Learning kits shows each kit, then its lesson plans, then its video).
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 and the review theme 184767250729, neither touched. Before-snapshot: `snapshots/site-review-decided-2026-09-28-before.json`.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Six new card groups: one for each kit (no heading) and one for each kit's video ("Clay Lesson Video", "Trace Monotype Lesson Video", headings for the gallery to confirm) | CLI | `artists-for-kids/load.py cards` (upserts by handle; the other cards and groups were written with the values they already had); IDs in `created/afk-card-groups.json`. The old `afk-kits` and `afk-kit-videos` groups stay in the store, on no page |
+| Learning kits' card groups in the new order: each kit, its plans, its video | Connector | `metafieldsSet` on gid://shopify/Page/165838127401 (`content.py` page-fields, that row only) |
+| The Permanent Collection's button: "Browse" now goes to `#collection-browse` (was `#collection-search`) | Connector | Same call, gid://shopify/Page/155720548649 `custom.cta` |
+
+**Checked after:** Learning kits at 390 and 1440 on the development theme (kit, plans, video, for each of the four kits).
+
+**Effect on the live site:** none. Card groups and these page fields aren't read by the live theme.
+
+**Undo:** set both page fields back from the snapshot; the six new groups can stay or be deleted.
