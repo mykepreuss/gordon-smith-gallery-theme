@@ -647,7 +647,7 @@ Staff edit words, images (with focal point and alt text), links, page fields, en
 | Closed template set, composition, no disabled leftovers | `scripts/lint_theme.py` + `templates.rules.json` |
 | No design controls in section schemas | `scripts/lint_theme.py` |
 | No raw colours or px font sizes in `gs-` code; palette primitives only in `tokens.css`, components use roles, fixed roles where a colour never follows the surface (DS-84, Proposed) | `scripts/lint_theme.py` (raw colour and palette value rules), `tokens.css` |
-| No raw durations, unitless line heights (other than 0 and 1) or typed ratios; no transition on all; no `:has()` inside `:has()`; `:hover` only inside the mouse media query; grids and event lists keep `role="list"` | `scripts/lint_theme.py` (`codeRules` in `templates.rules.json`, each with its own message) |
+| No raw durations, unitless line heights (other than 0 and 1) or typed ratios; no transition on all; no `:has()` inside `:has()`; no closing brace inside `{{ }}`, which Shopify refuses on upload though Theme Check passes it; `:hover` only inside the mouse media query; grids and event lists keep `role="list"` | `scripts/lint_theme.py` (`codeRules` in `templates.rules.json`, each with its own message) |
 | No link falls back to the browser's style | `scripts/audit_links.py` |
 | Theme copies match the design system | `scripts/sync_theme.py --check` |
 | Text actually renders in Mulish; no Unicode styled letters | `scripts/audit_fonts.py` |

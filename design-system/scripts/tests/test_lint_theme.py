@@ -170,6 +170,14 @@ class LintTheme(unittest.TestCase):
         self.assertNotIn("gs-thing.liquid:2", out)
         self.assertNotIn("gs-thing.liquid:4", out)
 
+    def test_brace_in_output_tag(self):
+        self.write("snippets/gs-thing.liquid",
+                   "<p data-text=\"{{ 'count' | t: number: '{n}' }}\"></p>\n"
+                   "<p data-text=\"{{ 'count' | t: number: '[n]' }}\">{{ a }}{{ b }}</p>\n")
+        code, out = self.run_lint()
+        self.assertIn("snippets/gs-thing.liquid:1: a closing brace inside", out)
+        self.assertNotIn("gs-thing.liquid:2", out)
+
     def test_unitless_line_height(self):
         self.write("assets/gs-components.css",
                    ".a { line-height: 1.4; }\n.b { line-height: 0; }\n.c { line-height: 1; }\n"
