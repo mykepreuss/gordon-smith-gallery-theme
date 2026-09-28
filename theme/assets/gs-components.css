@@ -1616,8 +1616,8 @@ html:has(.gs-lightbox[open]) { overflow: hidden; }
 /* Link or heading, told apart at a glance (DS-141). Caps alone read as a heading, and a link alone
    above a rule reads as an introduction, so what leads to a page carries the standalone link's arrow:
    a group's title that links to its page, and a link across the top ("Upcoming events"), which is
-   also bold. A title that is plain text is only a heading: muted, no arrow. The group's own links
-   stay plain: a list under a heading is a list of links. */
+   also bold. A title that is plain text is only a heading: the same ink, no arrow. The group's own
+   links stay plain: a list under a heading is a list of links. */
 .gs-nav__panel--groups > li:not(.gs-nav__group) > a { font-weight: var(--gs-weight-bold); }
 a.gs-nav__group-title,
 .gs-nav__panel--groups > li:not(.gs-nav__group) > a { gap: 0.55em; }
@@ -1636,7 +1636,6 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
 @media (hover: hover) and (pointer: fine) {
   :is(a.gs-nav__group-title, .gs-nav__panel--groups > li:not(.gs-nav__group) > a):hover::after { transform: translateX(0.25em); }
 }
-span.gs-nav__group-title { color: var(--gs-color-fg-muted); }
 
 /* Opening answers a click, so it may move: what floats over the page (a bar dropdown, the Menu
    drawer) fades in and drops 4px, 120ms. What opens in place (a section inside the drawer) opens
