@@ -67,7 +67,8 @@
   endif
 -%}
 {%- if groupings.size > 0 or categories.size > 0 or themes.size > 0 -%}
-  <section class="gs-section gs-surface-paper" aria-labelledby="{{ id }}-heading">
+  {%- comment -%} The page's Browse button lands here, on "Browse the collection" (DS-122). {%- endcomment -%}
+  <section class="gs-section gs-surface-paper" id="collection-browse" aria-labelledby="{{ id }}-heading">
     <div class="gs-container gs-ways">
       <div class="gs-section-head">
         <h2 class="gs-h2" id="{{ id }}-heading">{{ 'collection.ways_heading' | t }}</h2>

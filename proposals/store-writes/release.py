@@ -58,7 +58,8 @@ HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
                      "about",       # About: its history joins Artists for Kids (P-24)
-                     "our-story"}   # Our Story: removed from the Shop (P-25)
+                     "our-story",   # Our Story: removed from the Shop (P-25)
+                     "engage"}      # Engage: its one paragraph is Public programs' opening, and nothing links to it (DS-129)
 
 
 def new_template(page):
@@ -93,7 +94,7 @@ def templates(pages, want_vars):
 
 
 # ---------------------------------------------------------------------------
-# 2. Addresses (store-changes §5): hide nine pages, then nine redirects.
+# 2. Addresses (store-changes §5): hide ten pages, then ten redirects.
 
 REDIRECTS = [
     ("/pages/exhibition-one-hundred-artists-deep", "/pages/exhibitions/one-hundred-artists-deep"),
@@ -105,6 +106,7 @@ REDIRECTS = [
     ("/pages/exhibitions-1", "/pages/on-now"),
     ("/pages/about", "/pages/about-us"),                 # P-24, Michael 2026-09-26
     ("/pages/our-story", "/pages/artists-for-kids"),     # P-25: its history is on Artists for Kids
+    ("/pages/engage", "/pages/public-programs-1"),       # DS-129: Public programs opens with its text
 ]
 
 

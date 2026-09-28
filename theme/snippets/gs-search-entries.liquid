@@ -1,0 +1,96 @@
+{% doc %}
+  The entries a site search finds (DS-113). Shopify's search looks only in products, pages and
+  articles, so exhibitions, lessons and artists are matched here, on the server. As in the
+  collection search (gs-collection.js), every word of the search must appear in the entry's text,
+  in any order, ignoring capitals and accents.
+
+  Outputs comma-separated positions, in the order the entries are shown:
+  - exhibition: positions in shop.metaobjects.exhibition.values, newest first. Its text is the
+    title, the curator credit and the artists.
+  - lesson: positions in shop.metaobjects.lesson.values, newest first. Its text is the title and
+    "We're making".
+  - artist: positions in the first page of metaobjects.artist.values paginated by 250, A to Z by
+    sort name, as the Artists page. Its text is the artist's names.
+  Exhibitions and lessons are fewer than 50, Liquid's limit for a loop without pagination; artists
+  (171) are read through their own pagination, so this is rendered outside the search's.
+
+  Its output starts with a line break: capture it and strip it.
+
+  @param {string} kind - 'exhibition', 'lesson' or 'artist'
+  @param {string} terms - The words searched for (search.terms)
+
+  @example
+  {%- capture ids -%}{% render 'gs-search-entries', kind: 'lesson', terms: search.terms %}{%- endcapture -%}
+  {%- assign ids = ids | strip | split: ',' -%}
+{% enddoc %}
+{%- liquid
+  # Each entry's text, joined with ~~ so the lot is folded once, and its position, in the same order.
+  assign texts = ''
+  assign keys = ''
+  case kind
+    when 'exhibition'
+      capture order
+        render 'gs-exhibition-index', status: 'all', order: 'desc'
+      endcapture
+      assign order = order | strip | split: ','
+      for pos in order
+        assign n = pos | plus: 0
+        for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+          assign artists = entry.artists.value | join: ' '
+          assign texts = texts | append: entry.title.value | append: ' ' | append: entry.curator_credit.value | append: ' ' | append: artists | append: ' ~~'
+          assign keys = keys | append: n | append: ','
+        endfor
+      endfor
+    when 'lesson'
+      capture order
+        render 'gs-lesson-index'
+      endcapture
+      assign order = order | strip | split: ','
+      for pos in order
+        assign n = pos | plus: 0
+        for lesson in shop.metaobjects.lesson.values offset: n limit: 1
+          assign texts = texts | append: lesson.title.value | append: ' ' | append: lesson.making.value | append: ' ~~'
+          assign keys = keys | append: n | append: ','
+        endfor
+      endfor
+  endcase
+-%}
+{%- if kind == 'artist' -%}
+  {%- paginate metaobjects.artist.values by 250 -%}
+    {%- liquid
+      # Sorted as the Artists page is: each row starts with its sort key, the rows are sorted as
+      # text, then split again.
+      assign rows = ''
+      for a in metaobjects.artist.values
+        assign key = a.sort_name.value | default: a.name.value | downcase | strip
+        assign rows = rows | append: key | append: '~pos~' | append: forloop.index0 | append: '~pos~' | append: a.name.value | append: ' ' | append: a.full_name.value | append: ' ' | append: a.other_names.value | append: '~row~'
+      endfor
+      assign rows = rows | split: '~row~' | sort
+      for row in rows
+        assign parts = row | split: '~pos~'
+        assign texts = texts | append: parts[2] | append: ' ~~'
+        assign keys = keys | append: parts[1] | append: ','
+      endfor
+    -%}
+  {%- endpaginate -%}
+{%- endif -%}
+{%- liquid
+  # Accents are ignored both ways: "bubas" finds Bubaš, and "Métis" finds Metis.
+  assign want = terms | downcase | replace: 'à', 'a' | replace: 'á', 'a' | replace: 'â', 'a' | replace: 'ä', 'a' | replace: 'ã', 'a' | replace: 'å', 'a' | replace: 'ç', 'c' | replace: 'č', 'c' | replace: 'è', 'e' | replace: 'é', 'e' | replace: 'ê', 'e' | replace: 'ë', 'e' | replace: 'ì', 'i' | replace: 'í', 'i' | replace: 'î', 'i' | replace: 'ï', 'i' | replace: 'ñ', 'n' | replace: 'ò', 'o' | replace: 'ó', 'o' | replace: 'ô', 'o' | replace: 'ö', 'o' | replace: 'õ', 'o' | replace: 'ø', 'o' | replace: 'š', 's' | replace: 'ù', 'u' | replace: 'ú', 'u' | replace: 'û', 'u' | replace: 'ü', 'u' | replace: 'ý', 'y' | replace: 'ÿ', 'y' | replace: 'ž', 'z' | split: ' '
+  assign texts = texts | downcase | replace: 'à', 'a' | replace: 'á', 'a' | replace: 'â', 'a' | replace: 'ä', 'a' | replace: 'ã', 'a' | replace: 'å', 'a' | replace: 'ç', 'c' | replace: 'č', 'c' | replace: 'è', 'e' | replace: 'é', 'e' | replace: 'ê', 'e' | replace: 'ë', 'e' | replace: 'ì', 'i' | replace: 'í', 'i' | replace: 'î', 'i' | replace: 'ï', 'i' | replace: 'ñ', 'n' | replace: 'ò', 'o' | replace: 'ó', 'o' | replace: 'ô', 'o' | replace: 'ö', 'o' | replace: 'õ', 'o' | replace: 'ø', 'o' | replace: 'š', 's' | replace: 'ù', 'u' | replace: 'ú', 'u' | replace: 'û', 'u' | replace: 'ü', 'u' | replace: 'ý', 'y' | replace: 'ÿ', 'y' | replace: 'ž', 'z' | split: '~~'
+  assign keys = keys | split: ','
+  if want.size > 0
+    for text in texts
+      assign hit = true
+      for word in want
+        unless text contains word
+          assign hit = false
+          break
+        endunless
+      endfor
+      if hit
+        echo keys[forloop.index0] | append: ','
+      endif
+    endfor
+  endif
+-%}

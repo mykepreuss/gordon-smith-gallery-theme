@@ -3,7 +3,8 @@
    every work.
 
    1. Artists A to Z ([data-gs-index]): a field that narrows the list as you type. Every word must
-      appear in the artist's names (name, full name, other names), accents ignored.
+      appear in the artist's names (name, full name, other names), accents ignored. A link with
+      ?q= opens with the list narrowed.
    2. Collection search ([data-gs-finder]): works found by artist, title, year, category, medium or
       theme, shown as artwork tiles 48 at a time. Shopify's search doesn't look in entries, so the
       works come from sections/gs-collection-data, 250 to a request, the first time they're needed.
@@ -55,6 +56,9 @@
           : say(status, shown === 1 ? 'gsOne' : 'gsOther', shown, terms);
       }, 120);
     });
+    // The site search's Artists group links here with its words (?q=, DS-113).
+    const q = new URL(window.location.href).searchParams.get('q');
+    if (q) { input.value = q; input.dispatchEvent(new Event('input')); }
   });
 
   /* ---------- 2. Collection search ---------- */

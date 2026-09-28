@@ -285,9 +285,13 @@ def pages():
              "</ul>"])},
         {"handle": "learning-guides", "title": "Learning Guides", "template": "programme",
          "groups": ["afk-guides-by-artists", "afk-guides-primary"]},
+        # Each kit, then its lesson plans, then its video (DS-129, after the whole-site design review,
+        # 2026-09-28): the Collagraph kit's "Lesson plans are linked, below" now leads straight to them.
         {"handle": "learning-kits", "title": "Learning Kits", "template": "programme",
-         "groups": ["afk-kits", "afk-kit-clay-plans", "afk-kit-collagraph-plans", "afk-kit-trace-monotype-plan",
-                    "afk-kit-gel-plate-plan", "afk-kit-videos"]},
+         "groups": ["afk-kit-clay-kit", "afk-kit-clay-plans", "afk-kit-clay-video",
+                    "afk-kit-collagraph-kit", "afk-kit-collagraph-plans",
+                    "afk-kit-trace-monotype-kit", "afk-kit-trace-monotype-plan", "afk-kit-trace-monotype-video",
+                    "afk-kit-gel-plate-kit", "afk-kit-gel-plate-plan"]},
         {"handle": "artreach-videos", "title": "ArtReach Videos", "template": "programme",
          "body": "\n".join([
              "<p>This series of videos guides classrooms or individuals at home through art activities focused on principles of creative inquiry and play. Videos are posted to our website throughout the school year. Enjoy!</p>",
@@ -531,13 +535,21 @@ GROUPS = [
      ["afk-guide-art-camp", "afk-guide-charcoal", "afk-guide-mail-art", "afk-guide-mini-monster", "afk-guide-zine-collage",
       "afk-guide-zine-frottage", "afk-guide-narrative-scrolls"]),
     ("afk-guides-primary", "Primary (K - Grade 3) Resources", ["afk-guide-fragmented-faces"]),
-    ("afk-kits", "", ["afk-kit-clay", "afk-kit-collagraph", "afk-kit-trace-monotype", "afk-kit-gel-plate"]),
+    # Learning kits (DS-129): each kit is a group of its own, without a heading (the kit's card is its
+    # heading, and a one-card offer stays a row, DS-76), followed by its plans and its video. The first
+    # load had all four kits in one group ("afk-kits") and both videos in another ("afk-kit-videos",
+    # "Lesson Videos"); those two entries stay in the store, on no page, until someone removes them.
+    ("afk-kit-clay-kit", "", ["afk-kit-clay"]),
     ("afk-kit-clay-plans", "Clay Lesson Plans", ["afk-plan-clay-tile", "afk-plan-clay-log"]),
+    ("afk-kit-clay-video", "Clay Lesson Video", ["afk-kit-video-clay"]),
+    ("afk-kit-collagraph-kit", "", ["afk-kit-collagraph"]),
     ("afk-kit-collagraph-plans", "Collagraph Lesson Plans",
      ["afk-plan-foam-butterflies", "afk-plan-garbage-press", "afk-plan-lego-press", "afk-plan-textured-landscapes"]),
+    ("afk-kit-trace-monotype-kit", "", ["afk-kit-trace-monotype"]),
     ("afk-kit-trace-monotype-plan", "Trace Monotype Lesson Plan", ["afk-plan-trace-monotype"]),
+    ("afk-kit-trace-monotype-video", "Trace Monotype Lesson Video", ["afk-kit-video-trace-monotype"]),
+    ("afk-kit-gel-plate-kit", "", ["afk-kit-gel-plate"]),
     ("afk-kit-gel-plate-plan", "Gel Plate Lesson Plan", ["afk-plan-gel-plate"]),
-    ("afk-kit-videos", "Lesson Videos", ["afk-kit-video-clay", "afk-kit-video-trace-monotype"]),
 ]
 # Existing groups that gain a card: (handle, card added at the end).
 GROUPS_EXTENDED = [("public-programs", "programs-afk-classes-and-camps"), ("donate-ways-to-give", "donate-artists-for-kids")]

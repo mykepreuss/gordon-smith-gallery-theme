@@ -61,14 +61,14 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Also done 2026-09-27, with Michael's go-ahead ("all recommendations are approved ... let's get started on implementation"):** the Artists for Kids site's content (P-30 to P-40): the `lesson` definition and the event's `keep_off_home` field (content model part 8), 92 files, 27 lessons, 46 cards, 15 card groups and two extended ones, 6 events and the curatorial tour's programme page, 18 pages published with their title only and hidden from search engines (P-35), their fields and staged text, the Artists for Kids page's new card groups, button and history, and the review menu's Artists for Kids section. Log: `proposals/store-writes/README.md`.
 
-## 5. Addresses at release (P-10, P-20, P-24, P-25)
+## 5. Addresses at release (P-10, P-20, P-24, P-25, DS-129)
 
 Script: `release.py addresses` (dry run: `dry-runs/2026-09-26/addresses.md`).
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
-1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20), About (P-24) and Our Story (P-25), keeping them for rollback.
-2. Create nine URL redirects:
+1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20), About (P-24), Our Story (P-25) and Engage (DS-129), keeping them for rollback.
+2. Create ten URL redirects:
 
 | From | To |
 | --- | --- |
@@ -81,13 +81,14 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibitions-1` | `/pages/on-now` |
 | `/pages/about` | `/pages/about-us` |
 | `/pages/our-story` | `/pages/artists-for-kids` |
+| `/pages/engage` | `/pages/public-programs-1` |
 
 3. Open each old address and check it lands on its entry.
 4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
 The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 
-Rollback: republish the baseline theme, unhide the nine pages, delete the nine redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the ten pages, delete the ten redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
@@ -170,6 +171,13 @@ Each print's frame is its own product (product type Frame, collection `framing`)
 This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's "Add a frame" still adds its frame to the cart.
 
 Rollback: set the 16 back to Active from the snapshot.
+
+## 9b. Page fields from the whole-site design review (DS-122, DS-129)
+
+Decided by Michael on 2026-09-28; each waits for his go-ahead to write, with a before-snapshot, and is logged in `proposals/store-writes/README.md`. The theme is ready for both.
+
+- **Permanent Collection's Browse button (DS-122):** the page's call to action (`custom.cta`, `gid://shopify/Metafield/190392604131625`) changes from `https://gordonsmithgallery.com/pages/permanent-collection#collection-search` to `https://gordonsmithgallery.com/pages/permanent-collection#collection-browse`, so "Browse" lands on "Browse the collection" (the theme gives that section the ID and makes the address relative). The label stays. Rollback: set the old address back.
+- **Learning kits order (DS-129):** each kit, then its lesson plans, then its video. `load.py cards` creates the four one-kit groups and the two one-video groups ("Clay Lesson Video", "Trace Monotype Lesson Video"; headings for the gallery to confirm), then the Learning kits page's Card groups field takes the new order: only that row of `content.py page-fields` (the page `learning-kits`), since the rest are unchanged. No card changes. The old "afk-kits" and "afk-kit-videos" groups leave the page and stay in the store. Rollback: set the field back from the snapshot.
 
 ## 10. Not proposed
 

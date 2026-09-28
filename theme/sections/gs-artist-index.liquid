@@ -7,7 +7,8 @@
 
   The list is built from the entries, so adding an artist entry adds the name; nobody edits it here.
   With the script, a field above the list filters it as you type (gs-collection.js); without it,
-  the whole list is on the page.
+  the whole list is on the page. The site search's Artists group links here with its words
+  (?q=), which fill the field (DS-113).
 
   Sorting: Liquid can't sort entries by a field, so each row is written once with its sort key in
   front, the rows are sorted as text, and the key is taken off again.
@@ -18,20 +19,11 @@
     assign rows = ''
     for a in metaobjects.artist.values
       assign key = a.sort_name.value | default: a.name.value | downcase | strip
-      assign search = a.name.value | append: ' ' | append: a.full_name.value | append: ' ' | append: a.other_names.value | downcase | strip
-      assign count = a.works.value.size
-      assign search_attr = search | escape
-      assign name_html = a.name.value | escape
+      # The name and its number of works, as in the site search's Artists group (DS-113).
       capture row
-        echo '<li class="gs-index__item" data-gs-names="' | append: search_attr | append: '">'
-        echo '<a class="gs-list-link" href="' | append: a.system.url | append: '">' | append: name_html | append: '</a>'
-        if count > 0
-          # "Dana Claxton 2": the number shows, and a screen reader hears "2 works".
-          assign works = 'collection.works_count' | t: count: count
-          echo '&nbsp;<span class="gs-meta"><span aria-hidden="true">' | append: count | append: '</span><span class="gs-visually-hidden">' | append: works | append: '</span></span>'
-        endif
-        echo '</li>'
+        render 'gs-artist-item', artist: a
       endcapture
+      assign row = row | strip
       assign rows = rows | append: key | append: '~~key~~' | append: row | append: '~~row~~'
     endfor
     assign rows = rows | split: '~~row~~' | sort

@@ -146,10 +146,21 @@
     "title": "Search",
     "label": "Search the site",
     "submit": "Search",
-    "no_results": "No pages or limited editions match “{{ terms }}”.",
+    "no_results": "Nothing on the site matches “{{ terms }}”.",
     "results": {
       "one": "1 result for “{{ terms }}”",
       "other": "{{ count }} results for “{{ terms }}”"
+    },
+    "exhibitions_heading": "Exhibitions",
+    "exhibitions_found": {
+      "one": "1 exhibition matches “{{ terms }}”",
+      "other": "{{ count }} exhibitions match “{{ terms }}”"
+    },
+    "artists_heading": "Artists",
+    "lessons_heading": "Lessons",
+    "lessons_found": {
+      "one": "1 lesson matches “{{ terms }}”",
+      "other": "{{ count }} lessons match “{{ terms }}”"
     },
     "pages_heading": "Pages",
     "editions_heading": "Limited editions"

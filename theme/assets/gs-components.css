@@ -2034,9 +2034,10 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
    inside the padded target, as the header logo's does, so the screen edge can't cut it off. */
 .gs-pagination a:focus-visible { outline-offset: calc(-1 * var(--gs-focus-width)); }
 
+/* Search results for pages and articles: compact text cards in one column (DS-114), each whole card
+   the link, as every other card. The excerpt keeps to reading width. */
 .gs-results { display: grid; gap: var(--gs-space-5); margin: 0; padding: 0; list-style: none; }
-.gs-results > li { display: grid; gap: var(--gs-space-2); padding-block-start: var(--gs-space-4); border-block-start: var(--gs-border) solid var(--gs-color-rule); }
-.gs-results > li > * { margin: 0; max-width: var(--gs-measure); }
+.gs-results .gs-card__text { max-width: var(--gs-measure); }
 
 /* ---------- Newsletter band and contact ---------- */
 

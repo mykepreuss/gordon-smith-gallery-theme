@@ -952,7 +952,7 @@
     <p class="pv-note">Featured works: the works in the Collection grouping &ldquo;Featured works&rdquo;, in its order, six at most. Its name is the heading and its introduction, when it has one, the line under it. Staff change them in the admin. These six stand in until the gallery chooses its own (gallery questions 1.7). Images are placeholders.</p>
   </div>
 </section>
-<section class="gs-section gs-surface-paper" aria-labelledby="ways-title">
+<section class="gs-section gs-surface-paper" id="collection-browse" aria-labelledby="ways-title">
   <div class="gs-container gs-ways">
     <div class="gs-section-head">
       <h2 class="gs-h2" id="ways-title">Browse the collection</h2>
@@ -1132,7 +1132,28 @@
   <section class="gs-section gs-surface-paper" aria-labelledby="pv-search-summary">
     <div class="gs-container">
       <div class="gs-section-head">
-        <p class="gs-deck" id="pv-search-summary" role="status">39 results for &ldquo;smith&rdquo;</p>
+        <p class="gs-deck" id="pv-search-summary" role="status">43 results for &ldquo;smith&rdquo;</p>
+      </div>
+      <div class="gs-card-group">
+        <div class="gs-section-head">
+          <div class="gs-section-head__text">
+            <h3 class="gs-h2">Exhibitions</h3>
+            <p class="gs-meta">2 exhibitions match &ldquo;smith&rdquo;</p>
+          </div>
+        </div>
+        <ul class="gs-grid gs-grid--cards gs-grid--lead" role="list" id="search-exhibitions"></ul>
+      </div>
+      <div class="gs-card-group">
+        <div class="gs-section-head">
+          <div class="gs-section-head__text">
+            <h3 class="gs-h2">Artists</h3>
+            <p class="gs-meta">2 artists match &ldquo;smith&rdquo;</p>
+          </div>
+        </div>
+        <ul class="gs-index__list" role="list">
+          <li class="gs-index__item" data-gs-names="gordon smith gordon appelbe smith"><a class="gs-list-link" href="#x">Gordon Smith</a>&nbsp;<span class="gs-meta"><span aria-hidden="true">60</span><span class="gs-visually-hidden">60 works</span></span></li>
+          <li class="gs-index__item" data-gs-names="joan smith"><a class="gs-list-link" href="#x">Joan Smith</a>&nbsp;<span class="gs-meta"><span aria-hidden="true">3</span><span class="gs-visually-hidden">3 works</span></span></li>
+        </ul>
       </div>
       <div class="gs-card-group">
         <div class="gs-section-head">
@@ -1140,12 +1161,16 @@
         </div>
         <ul class="gs-results" role="list">
           <li>
-            <h4 class="gs-h4"><a class="gs-link" href="#x">The Smith Foundation</a></h4>
-            <p class="gs-meta">The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from&hellip;</p>
+            <article class="gs-card gs-card--text gs-card--compact">
+              <h4 class="gs-card__title"><a href="#x">The Smith Foundation</a></h4>
+              <p class="gs-card__text gs-meta">The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from&hellip;</p>
+            </article>
           </li>
           <li>
-            <h4 class="gs-h4"><a class="gs-link" href="#x">Music At The Smith</a></h4>
-            <p class="gs-meta">Music At The Smith is a seasonal concert series dedicated to showcasing highly accomplished musical ensembles across a spectrum of genres, including jazz, folk, indie, classical, and world music. Set&hellip;</p>
+            <article class="gs-card gs-card--text gs-card--compact">
+              <h4 class="gs-card__title"><a href="#x">Music At The Smith</a></h4>
+              <p class="gs-card__text gs-meta">Music At The Smith is a seasonal concert series dedicated to showcasing highly accomplished musical ensembles across a spectrum of genres, including jazz, folk, indie, classical, and world music. Set&hellip;</p>
+            </article>
           </li>
         </ul>
       </div>
@@ -1156,7 +1181,7 @@
           <li><a href="#x">Next</a></li>
         </ul>
       </nav>
-      <p class="pv-note">The live store&rsquo;s search for &ldquo;smith&rdquo; finds 39 results: two pages at 24 a page, so this is page one. The results come in headed groups: Pages first (pages and articles, each with its title and first 30 words, or the page&rsquo;s intro when it has one, at the reading measure), then Limited editions as artwork tiles, like the portfolio, then In the collection. With nothing found, an empty state says so and links to the collection. Pagination is real links with the current page marked; a list of one page shows none.</p>
+      <p class="pv-note">The live store&rsquo;s search for &ldquo;smith&rdquo; finds 43 results: 39 from Shopify&rsquo;s search, two exhibitions and two artists. This is page one of two. On the first page, the entries Shopify&rsquo;s search doesn&rsquo;t look in come first (DS-113): Exhibitions as compact cards with their status (up to six), Artists as names in the A to Z style with their works (up to twelve), and Lessons (up to six; none match here). Each group&rsquo;s head says how many match and, when it shows fewer, links to the whole list. Every word must appear in the entry&rsquo;s title, credits or names, accents ignored. Then Pages as compact text cards (DS-114): the whole card is the link, with its title and first 30 words, or the page&rsquo;s intro when it has one, at the reading measure. Then Limited editions as artwork tiles, like the portfolio, then In the collection. With nothing found, an empty state says so and links to the collection. Pagination is real links with the current page marked; a list of one page shows none.</p>
     </div>
   </section>
   <section class="gs-section gs-surface-paper" aria-labelledby="pv-search-collection">
@@ -1449,6 +1474,7 @@
   document.getElementById("list-upcoming").innerHTML = upcoming.map(e => exCard(e, { wide: true, tag: "h4" })).join("");
   document.getElementById("home-cards").innerHTML = upcoming.map(e => exCard(e, { status: "Upcoming", tag: "h3" })).join("");
   document.getElementById("more-cards").innerHTML = exCard(cag, { status: "On now", compact: true, tag: "h3" });
+  document.getElementById("search-exhibitions").innerHTML = [[cag, "On now"], [past[3], "Past"]].map(([e, s]) => exCard(e, { status: s, compact: true, tag: "h4" })).join("");
 
   // Heroes: the home hero leads with Collect, Assemble, Gather, whose key image is an artwork;
   // the portfolio's image is a photo.

@@ -172,7 +172,15 @@
       {{- 'not_found.title' | t -}}
     {%- when 'search' -%}
       {%- if search.performed -%}
-        {{- 'search.results' | t: count: search.results_count, terms: search.terms -}}
+        {%- comment -%} The same count as the page's summary: Shopify's results and the entries (DS-113). {%- endcomment -%}
+        {%- assign search_count = search.results_count -%}
+        {%- assign entry_kinds = 'exhibition,lesson,artist' | split: ',' -%}
+        {%- for kind in entry_kinds -%}
+          {%- capture ids -%}{%- render 'gs-search-entries', kind: kind, terms: search.terms -%}{%- endcapture -%}
+          {%- assign ids = ids | strip | split: ',' -%}
+          {%- assign search_count = search_count | plus: ids.size -%}
+        {%- endfor -%}
+        {{- 'search.results' | t: count: search_count, terms: search.terms -}}
       {%- else -%}
         {{- 'search.title' | t -}}
       {%- endif -%}
