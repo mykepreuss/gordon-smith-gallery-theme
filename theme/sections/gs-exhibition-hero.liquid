@@ -3,7 +3,8 @@
   chip and dates (or the dates note), the title and the subtitle. Status and dates come from the
   entry's dates, never typed (DS-15, DS-18). A key image that is an artwork shows whole beside
   the box; a photo is overlapped by the box by a fixed amount. The key image caption (an artwork
-  caption, a photo credit or both) sits under it. Without alt text of its own in Files, the image
+  caption, a photo credit or both) sits under it: for an artwork it comes before the box in the
+  markup, so it reads and tabs in the order it shows. Without alt text of its own in Files, the image
   is decorative: the title right after it already names the exhibition (DS-58).
 
   So the page is plainly not the home page's hero again (DS-66): a link back to the list the
@@ -33,7 +34,13 @@
 -%}
 <div class="gs-section gs-section--lead">
   <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
+    {%- capture caption -%}
+      {%- if entry.key_image_caption.value != blank -%}
+        <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ entry.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+      {%- endif -%}
+    {%- endcapture -%}
     {%- render 'gs-media', image: entry.key_image.value, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
+    {%- if mode == 'artwork' -%}{{ caption }}{%- endif -%}
     <div class="gs-hero__box gs-surface-accent">
       {%- if back != blank -%}
         <p class="gs-crumb"><a href="{{ back.url }}">{{ 'exhibitions.crumb' | t }}</a></p>
@@ -47,9 +54,7 @@
         <p class="gs-hero__summary">{{ entry.summary.value | escape | newline_to_br }}</p>
       {%- endif -%}
     </div>
-    {%- if entry.key_image_caption.value != blank -%}
-      <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ entry.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
-    {%- endif -%}
+    {%- if mode != 'artwork' -%}{{ caption }}{%- endif -%}
   </div>
 </div>
 

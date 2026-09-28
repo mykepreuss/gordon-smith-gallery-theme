@@ -10,8 +10,13 @@
   both, such as a curator's tour listed on Professional development, is named and linked by its
   exhibition, which is what visitors know it by (DS-71).
 
+  Beside the home hero, an event of the exhibition the hero leads with doesn't show the hero's
+  picture again: when the hero shows that exhibition's key image (it has no installation views),
+  the event's programme page hero comes before the key image (DS-95, Proposed).
+
   @param {object} event - An event entry
   @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
+  @param {string} [lead] - The handle of the exhibition the home hero leads with (gs-lead-exhibition)
 
   @example
   {%- render 'gs-event-card', event: event -%}
@@ -22,6 +27,15 @@
   assign exhibition = event.exhibition.value
   assign image = event.image.value
   assign mode = 'photo'
+  # The hero already shows this exhibition's key image: the programme's picture comes first (DS-95).
+  if image == blank and exhibition != blank and programme != blank and lead != blank
+    if exhibition.system.handle == lead and exhibition.installation_views.value == blank
+      assign image = programme.metafields.custom.hero_image.value
+      if programme.metafields.custom.hero_is_artwork.value == true
+        assign mode = 'artwork'
+      endif
+    endif
+  endif
   if image == blank and exhibition != blank
     assign image = exhibition.key_image.value
     if exhibition.key_image_is_artwork.value == true

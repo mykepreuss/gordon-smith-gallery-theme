@@ -66,7 +66,7 @@
         <p class="gs-form-status" role="status" tabindex="-1">{{ 'newsletter.done' | t }}</p>
       {%- endif -%}
       {%- if section.settings.consent != blank -%}
-        <div class="gs-caption" id="{{ form_id }}-consent">{{ section.settings.consent }}</div>
+        <div class="gs-caption gs-prose" id="{{ form_id }}-consent">{{ section.settings.consent }}</div>
       {%- elsif request.design_mode -%}
         <p class="gs-editor-warning">Add the consent wording from the gallery (ACCESS-04). Visitors see nothing here until you do.</p>
       {%- endif -%}

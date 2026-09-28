@@ -28,7 +28,7 @@
         if count > 0
           # "Dana Claxton 2": the number shows, and a screen reader hears "2 works".
           assign works = 'collection.works_count' | t: count: count
-          echo ' <span class="gs-meta"><span aria-hidden="true">' | append: count | append: '</span><span class="gs-visually-hidden">' | append: works | append: '</span></span>'
+          echo '&nbsp;<span class="gs-meta"><span aria-hidden="true">' | append: count | append: '</span><span class="gs-visually-hidden">' | append: works | append: '</span></span>'
         endif
         echo '</li>'
       endcapture
@@ -64,7 +64,7 @@
             <label class="gs-field__label" for="{{ id }}-filter">{{ 'collection.find_artist' | t }}</label>
             <input class="gs-input" id="{{ id }}-filter" type="search" autocomplete="off" spellcheck="false" aria-describedby="{{ id }}-status">
           </div>
-          <p class="gs-meta" id="{{ id }}-status" role="status"
+          <p class="gs-deck" id="{{ id }}-status" role="status"
             data-gs-one="{{ 'collection.artists_found_one' | t: terms: '[terms]' | escape }}"
             data-gs-other="{{ 'collection.artists_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
             data-gs-none="{{ 'collection.artists_none' | t: terms: '[terms]' | escape }}"></p>

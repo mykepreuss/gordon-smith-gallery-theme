@@ -8,7 +8,7 @@
 {%- liquid
   assign s = section.settings
   assign portfolio = settings.portfolio_collections | first
-  assign all_url = settings.shop_page.url | default: settings.all_editions_collection.url
+  assign all_url = settings.all_editions_collection.url | default: settings.shop_page.url
 -%}
 {%- if portfolio != blank and portfolio.products_count > 0 -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
@@ -18,8 +18,8 @@
           <p class="gs-eyebrow">{{ portfolio.title | escape }}</p>
           <h2 class="gs-h2" id="{{ section.id }}-heading">{{ s.heading | escape }}</h2>
         </div>
-        <p class="gs-whats-on__links">
-          <a class="gs-cta-link gs-cta-link--more" href="{{ portfolio.url }}">{{ 'shop.see_portfolio' | t: title: portfolio.title }}</a>
+        <p class="gs-section-head__links">
+          <a class="gs-cta-link gs-cta-link--more" href="{{ portfolio.url }}">{{ 'home.see_portfolio' | t }}</a>
           {%- if all_url != blank -%}
             <a class="gs-cta-link gs-cta-link--more" href="{{ all_url }}">{{ 'shop.all_editions_link' | t }}</a>
           {%- endif -%}

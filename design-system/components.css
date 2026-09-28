@@ -66,7 +66,8 @@
   letter-spacing: inherit;
 }
 
-/* Third-party embeds (e.g. Mailchimp) ship their own CSS. Wrap them in .gs-embed. */
+/* Third-party embeds (e.g. Mailchimp) ship their own CSS. Wrap them in .gs-embed. Unused until an
+   embedded form exists (§6.9 names it). */
 .gs-embed :where(*) { font-family: var(--gs-font-sans) !important; }
 .gs-embed :where(input[type="email"], input[type="text"]) {
   min-height: var(--gs-control-h);
@@ -423,9 +424,6 @@
 /* Busy: while a form submits, the button says so ("Signing up") and keeps its colours. */
 .gs-button[aria-busy="true"] { cursor: progress; }
 
-.gs-button--block { width: 100%; }
-@media (min-width: 750px) { .gs-button--block { width: auto; } }
-
 .gs-actions {
   display: flex;
   flex-wrap: wrap;
@@ -459,15 +457,6 @@
 .gs-status { display: grid; justify-items: start; gap: var(--gs-space-2); margin: 0; }
 .gs-status__dates { margin: 0; font-size: var(--gs-text-small); font-weight: var(--gs-weight-bold); line-height: var(--gs-leading-small); text-wrap: balance; }
 
-/* ---------- Rules ---------- */
-
-.gs-rule {
-  height: var(--gs-border-strong);
-  margin: 0;
-  border: 0;
-  background-color: var(--gs-color-rule);
-}
-
 /* ---------- Layout ---------- */
 
 .gs-container {
@@ -475,7 +464,6 @@
   margin-inline: auto;
 }
 .gs-container--wide { width: min(100% - 2 * var(--gs-gutter), var(--gs-width-wide)); }
-.gs-container--prose { width: min(100% - 2 * var(--gs-gutter), var(--gs-width-prose)); }
 
 /* Paper sections are spaced with margins, which collapse: two paper sections in a row share one
    gap, not two, even across Shopify's section wrappers and sections that render nothing (a page
@@ -518,6 +506,8 @@
   margin-block-end: var(--gs-stack-lg);
 }
 .gs-section-head__text { display: grid; gap: var(--gs-space-3); }
+/* Links beside a section heading ("All exhibitions", "All events"). */
+.gs-section-head__links { margin: 0; display: flex; flex-wrap: wrap; gap: var(--gs-space-3) var(--gs-space-6); }
 
 .gs-page-head {
   display: grid;
@@ -525,9 +515,9 @@
   gap: var(--gs-space-4);
   padding-block: var(--gs-stack-lg);
 }
-/* A programme's own logo above its page title (DESIGN.md §8.2). Artwork, so no box or corner. */
-.gs-page-head__logo { display: block; line-height: 0; }
-.gs-page-head__logo svg { display: block; height: var(--gs-programme-logo-h); width: auto; }
+/* The password page's Gallery logo above its heading (§7.5). Artwork, so no box or corner. */
+.gs-password__logo { display: block; line-height: 0; }
+.gs-password__logo svg { display: block; height: var(--gs-password-logo-h); width: auto; }
 
 /* Empty list: say what's missing and where to go instead. Never a heading over nothing. */
 .gs-empty {
@@ -803,6 +793,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-text-media:not(.gs-text-media--text, .gs-text-media--media),
   .gs-text-media-list:has(.gs-text-media__aside) .gs-text-media--text { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 }
+/* A part whose text opens with a picture shows its pictures first below 990 px, as the text does
+   (DS-94, Proposed). A figure partway through a part still follows the part's text. */
+@media (max-width: 989.98px) {
+  .gs-text-media--lead > .gs-text-media__aside { order: -1; }
+}
 /* Two tall photos in a row sit side by side (DS-77, Proposed). */
 @media (min-width: 750px) {
   .gs-text-media__aside:has(> [data-gs-tall] + [data-gs-tall]) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); align-items: start; }
@@ -893,7 +888,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-shape-md { border-radius: var(--gs-shape-md); }
 .gs-shape-lg { border-radius: var(--gs-shape-lg); }
 
-.gs-figure { margin: 0; display: grid; gap: var(--gs-space-3); }
 
 /* ---------- Hero ---------- */
 /* Two variants, chosen by what the image is, never by taste:
@@ -972,12 +966,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* Until the box moves beside it, the credit sits straight under the work it names. */
 .gs-hero--artwork .gs-hero__caption { margin-block-start: 0; }
 .gs-hero--artwork .gs-hero__box { margin: var(--gs-space-3) 0 0; }
-/* The sections still print the caption after the box; until they print it first, order puts it
-   under the work. */
-@media (max-width: 989.98px) {
-  .gs-hero--artwork .gs-hero__caption { order: 1; }
-  .gs-hero--artwork .gs-hero__box { order: 2; }
-}
 @media (min-width: 990px) {
   .gs-hero--artwork {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -1099,7 +1087,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   line-clamp: 2;
   overflow: hidden;
 }
-.gs-artwork-tile__price {
+.gs-artwork-tile__price,
+.gs-price--line {
   margin: var(--gs-space-2) 0 0;
   font-size: var(--gs-text-small);
   font-weight: var(--gs-weight-bold);
@@ -1179,11 +1168,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
   .gs-gallery--installation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-/* Museum label: artist, title (italic) and year, then medium, dimensions, credit. */
-.gs-label-block { display: grid; gap: 0.15em; font-size: var(--gs-text-caption); line-height: var(--gs-leading-caption); }
-.gs-label-block__artist { font-weight: var(--gs-weight-bold); }
-.gs-label-block cite { font-style: italic; }
-.gs-label-block__meta { font-weight: var(--gs-weight-light); }
 
 /* ---------- Forms ---------- */
 
@@ -1710,8 +1694,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 /* A portfolio's description sits under its hero, and the switcher follows at the page header's gap. */
 .gs-collection-intro { padding-block-start: var(--gs-stack-lg); }
-/* A link after a list to a related page ("Exhibitions" overview under the exhibition lists). */
-.gs-list-more { margin: var(--gs-stack-lg) 0 0; }
 .gs-gallery__credit { margin: var(--gs-space-4) 0 0; }
 
 /* ---------- Wide exhibition card and feature list (DS-34) ---------- */
@@ -2007,8 +1989,6 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 
 /* ---------- Home: What's on, open today, sideways rows (DS-54) ---------- */
 
-/* Links beside a section heading ("All exhibitions", "All events"). */
-.gs-whats-on__links { margin: 0; display: flex; flex-wrap: wrap; gap: var(--gs-space-3) var(--gs-space-6); }
 /* A row of cards that scrolls sideways on phones, bleeding to the screen's edges with the next card
    peeking in, so it's clear there's more; the card grid from 750px. No script, no autoplay. */
 @media (max-width: 749px) {
@@ -2220,9 +2200,8 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
    video's shape, the title, the grade levels. */
 .gs-lesson { display: grid; gap: var(--gs-space-7); }
 .gs-lesson__video { width: 100%; max-width: var(--gs-video-max); }
-.gs-lesson__note,
-.gs-lessons__note { max-width: var(--gs-measure); }
-.gs-lessons__note { margin-block-start: var(--gs-space-7); }
+.gs-lessons-note { max-width: var(--gs-measure); }
+.gs-grid + .gs-lessons-note { margin-block-start: var(--gs-space-7); } /* under the list of lessons */
 .gs-video iframe {
   display: block;
   width: 100%;

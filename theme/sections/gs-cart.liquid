@@ -26,11 +26,11 @@
                 {%- unless item.product.has_only_default_variant -%}
                   <p class="gs-meta">{{ item.variant.title | escape }}</p>
                 {%- endunless -%}
-                <p class="gs-artwork-tile__price">{{ item.final_line_price | money }}</p>
+                <p class="gs-price--line">{{ item.final_line_price | money }}</p>
               </div>
               <div class="gs-cart__controls">
                 <div class="gs-field">
-                  <label class="gs-field__label" for="gs-cart-qty-{{ forloop.index }}">{{ 'cart.quantity' | t }}</label>
+                  <label class="gs-field__label" for="gs-cart-qty-{{ forloop.index }}">{{ 'cart.quantity' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></label>
                   <input class="gs-input" id="gs-cart-qty-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric">
                 </div>
                 <a class="gs-cta-link" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></a>

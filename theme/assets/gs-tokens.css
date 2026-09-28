@@ -40,7 +40,7 @@
   --gs-ink-faint: #bfb9ba;  /* secondary text on ink surfaces only */
   --gs-paper: #ffffff;
   --gs-mat: #f2f5f6;        /* artwork mat: 50% mix of --gs-gsg-tint and white */
-  --gs-logo-black: #000000; /* only inside logo artwork */
+  --gs-logo-black: #000000; /* only inside logo artwork; reserved: the logo files carry it, no gs- code uses it */
 
   /* Error (system-derived; the brand guide has no error colour). Text and field borders only,
      never a fill, so it can't compete with the brand boxes. */
@@ -143,8 +143,8 @@
   --gs-space-6: 2rem;    /* 32 */
   --gs-space-7: 3rem;    /* 48 */
   --gs-space-8: 4rem;    /* 64 */
-  --gs-space-9: 6rem;    /* 96 */
-  --gs-space-10: 8rem;   /* 128 */
+  --gs-space-9: 6rem;    /* 96; reserved, completes the scale */
+  --gs-space-10: 8rem;   /* 128; reserved, completes the scale */
 
   --gs-gutter: clamp(1rem, 0.257rem + 3.048vw, 3rem);       /* page side padding + grid gap: 16 → 48 */
   --gs-section-space: clamp(3rem, 1.514rem + 6.095vw, 7rem); /* between page sections: 48 → 112 */
@@ -173,7 +173,7 @@
   --gs-feature-logo-h: var(--gs-logo-min-foundation); /* 72: a programme's logo in a feature panel; the Foundation logo's minimum (§8.3, DS-55) */
   --gs-tap-target: 2.75rem;   /* 44 */
   --gs-footer-logo-x: 1.4535rem;   /* 23.3: the lowercase letter height the three footer logos share: the Foundation simple lockup's at its 72 px minimum (DESIGN.md §8.3, §6.10, DS-59) */
-  --gs-programme-logo-h: 5rem;     /* 80: programme logo in a page header (§8.2), above both programme minimums */
+  --gs-password-logo-h: 5rem;      /* 80: the Gallery logo on the password page (§7.5) */
   --gs-funder-logo-h: 3.5rem;      /* 56: funder logos on exhibition pages */
   --gs-thumb: 6rem;                /* 96: artwork thumbnails in the cart */
   --gs-width-form: 40rem;          /* 640: one-column forms */

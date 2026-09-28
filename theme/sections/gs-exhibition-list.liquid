@@ -2,26 +2,20 @@
   Exhibition list (DESIGN.md §7.5, DS-15, DS-24, DS-25): cards built from exhibition entries,
   with status from their dates, so a list never needs editing when a show opens or closes.
 
-  Which exhibitions depends on where the list is, never on a setting per page:
-  - The On now, Upcoming and Past pages chosen in Theme settings, Exhibitions and events: what's
-    on now; upcoming ones, soonest first; every past exhibition, newest first (DS-24, DS-25).
-    These pages use the standard page template, which carries this section; on any other page
-    it shows nothing (DS-48). So the lists don't depend on each page's template assignment.
-  - Home: on now and upcoming together, with a status chip on each card, leaving out the
-    exhibition the home hero leads with (DS-30).
+  Which exhibitions depends on the page, never on a setting per page: on the On now, Upcoming and
+  Past pages chosen in Theme settings, Exhibitions and events, what's on now; upcoming ones,
+  soonest first; every past exhibition, newest first (DS-24, DS-25). These pages use the standard
+  page template, which carries this section; on any other page it shows nothing (DS-48). So the
+  lists don't depend on each page's template assignment. Home has What's on instead (DS-54).
   On now and Upcoming show each exhibition as a wide card, image beside its dates, title, curator
-  and summary (DS-34): there are rarely more than two, and each deserves room. Home and Past use
-  the grid of cards.
+  and summary (DS-34): there are rarely more than two, and each deserves room. Past uses the grid
+  of cards.
   An empty list says so and points somewhere useful (§6.12).
 {%- endcomment -%}
 {%- liquid
   assign order = 'asc'
-  assign show_status = false
   assign status = ''
-  if template.name == 'index'
-    assign status = 'current'
-    assign show_status = true
-  elsif page != blank
+  if page != blank
     if settings.exhibitions_past_page != blank and page.id == settings.exhibitions_past_page.id
       assign status = 'past'
       assign order = 'desc'
@@ -32,26 +26,18 @@
     endif
   endif
 
-  assign exclude = ''
-  if template.name == 'index'
-    capture exclude
-      render 'gs-lead-exhibition'
-    endcapture
-    assign exclude = exclude | strip
-  endif
-
   assign ids = ''
   if status != blank
     capture ids
-      render 'gs-exhibition-index', status: status, order: order, exclude: exclude
+      render 'gs-exhibition-index', status: status, order: order
     endcapture
   endif
   assign ids = ids | strip | split: ','
   assign wide = false
-  if template.name != 'index' and status != 'past'
+  if status != 'past'
     assign wide = true
   endif
-  # Home and Past use the grid of cards, with the count classes (DS-44, DS-52).
+  # Past uses the grid of cards, with the count classes (DS-44, DS-52).
   assign mods = ''
   if wide == false
     capture mods
@@ -59,30 +45,12 @@
     endcapture
     assign mods = mods | strip_newlines
   endif
-  assign heading = section.settings.heading
-  assign heading_tag = 'h2'
-  if heading != blank
-    assign heading_tag = 'h3'
-  endif
 -%}
 {%- if status == blank -%}
   {%- comment -%} Not an exhibition list page: nothing to show. {%- endcomment -%}
-{%- elsif template.name == 'index' and ids.size == 0 -%}
-  {%- if request.design_mode -%}
-    <p class="gs-editor-warning gs-container">No other exhibition is on now or upcoming, so this list is hidden. It shows again when an exhibition entry's dates are current.</p>
-  {%- endif -%}
 {%- else -%}
-  <section class="gs-section gs-surface-paper"{% if heading != blank %} aria-labelledby="{{ section.id }}-heading"{% else %} aria-label="{{ 'exhibitions.list_label' | t }}"{% endif %}>
+  <section class="gs-section gs-surface-paper" aria-label="{{ 'exhibitions.list_label' | t }}">
     <div class="gs-container">
-      {%- if heading != blank -%}
-        <div class="gs-section-head">
-          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ heading | escape }}</h2>
-          {%- if template.name == 'index' and settings.exhibitions_on_now_page != blank -%}
-            <a class="gs-cta-link gs-cta-link--more" href="{{ settings.exhibitions_on_now_page.url }}">{{ 'exhibitions.all' | t }}</a>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
-
       {%- if ids.size > 0 -%}
         <ul class="gs-grid {% if wide %}gs-grid--features{% else %}gs-grid--cards{{ mods }}{% endif %}" role="list">
           {%- for id in ids -%}
@@ -94,7 +62,7 @@
               assign card_sizes = card_sizes | strip
             -%}
             {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
-              <li>{%- render 'gs-exhibition-card', entry: entry, show_status: show_status, wide: wide, heading: heading_tag, sizes: card_sizes -%}</li>
+              <li>{%- render 'gs-exhibition-card', entry: entry, wide: wide, heading: 'h2', sizes: card_sizes -%}</li>
             {%- endfor -%}
           {%- endfor -%}
         </ul>
@@ -124,18 +92,12 @@
   "name": "Exhibition list",
   "tag": "div",
   "enabled_on": {
-    "templates": ["index", "page"]
+    "templates": ["page"]
   },
   "settings": [
     {
       "type": "paragraph",
-      "content": "Lists exhibition entries by their dates: on now, upcoming or past, depending on the page. Home shows on now and upcoming."
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "info": "Used on the home page. Exhibition list pages already have their page title."
+      "content": "Lists exhibition entries by their dates: on now, upcoming or past, depending on the page chosen in Theme settings, Exhibitions and events. On other pages it shows nothing."
     }
   ],
   "presets": [

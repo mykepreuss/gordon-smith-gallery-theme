@@ -20,7 +20,6 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 # The logos the website uses (DESIGN.md §8.2). Add here, then add a `when` to gs-logo.liquid.
 WEBSITE_LOGOS = [
-    "gallery-simple-stacked-colour-box",
     "gallery-simple-horizontal-colour-box",
     "gallery-full-stacked-colour-box",
     "gallery-simple-stacked-white",

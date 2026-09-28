@@ -54,6 +54,10 @@
     "switcher_on_now": "On now",
     "switcher_upcoming": "Upcoming",
     "switcher_past": "Past",
+    "count": {
+      "one": "1 exhibition",
+      "other": "{{ count }} exhibitions"
+    },
     "list_label": "Exhibitions",
     "all_past": "All past exhibitions",
     "empty_on_now": "No exhibitions are on right now.",
@@ -62,7 +66,7 @@
     "empty_upcoming_link": "See what's on now",
     "empty_past": "No past exhibitions to show yet.",
     "empty_past_link": "See what's on now",
-    "details_label": "About the exhibition",
+    "details_label": "Exhibition details",
     "curator": "Curator",
     "venue": "Where",
     "reception": "Opening reception",
@@ -112,7 +116,7 @@
   },
   "contact": {
     "details_heading": "Visit and contact",
-    "name": "Name",
+    "name": "Name (optional)",
     "email": "Email address",
     "phone": "Phone (optional)",
     "message": "Message",
@@ -188,7 +192,8 @@
     "weekdays": "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
   },
   "home": {
-    "all_events": "All events"
+    "all_events": "All events",
+    "see_portfolio": "See the portfolio"
   },
   "collection": {
     "works_heading": "Works in the collection",

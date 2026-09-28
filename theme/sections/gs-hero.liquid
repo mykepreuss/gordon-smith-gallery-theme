@@ -13,6 +13,8 @@
   Photo hero: the image fills the frame around its focal point, and the title box overlaps its
   bottom-left edge by a fixed amount (DS-12). Artwork hero: the work shows whole on the mat with
   the title box beside it, never over it (DS-05). One image, no carousel, no autoplay.
+  An artwork's caption comes before the box in the markup, so it reads and tabs in the order it
+  shows; a photo's comes after the box.
 
   When the exhibition has installation views, the first one leads, as a photo of the art in the
   room, with the installation credit as its caption (DS-54). Until there are some, the key image.
@@ -52,7 +54,7 @@
     assign has_button = true
   endif
   assign has_link = false
-  if s.button2_label != blank and s.button2_link != blank
+  if s.link_label != blank and s.link_url != blank
     assign has_link = true
   endif
 -%}
@@ -61,7 +63,21 @@
     <h1 class="gs-visually-hidden">{{ s.heading | escape }}</h1>
   {%- endif -%}
   <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
+    {%- capture caption -%}
+      {%- if room_view -%}
+        {%- if lead.installation_credit.value != blank -%}
+          <p class="gs-hero__caption gs-caption">{{ lead.installation_credit.value | escape }}</p>
+        {%- endif -%}
+      {%- elsif lead -%}
+        {%- if lead.key_image_caption.value != blank -%}
+          <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ lead.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+        {%- endif -%}
+      {%- elsif s.caption != blank -%}
+        <p class="gs-hero__caption gs-caption">{{ s.caption | escape }}</p>
+      {%- endif -%}
+    {%- endcapture -%}
     {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
+    {%- if mode == 'artwork' -%}{{ caption }}{%- endif -%}
     <div class="gs-hero__box gs-surface-accent">
       {%- if lead -%}
         {%- render 'gs-exhibition-when', entry: lead, show_status: true -%}
@@ -98,23 +114,13 @@
               {%- render 'gs-link', url: s.button_link, label: s.button_label, class: 'gs-button' -%}
             {%- endif -%}
             {%- if has_link -%}
-              {%- render 'gs-link', url: s.button2_link, label: s.button2_label, class: 'gs-cta-link' -%}
+              {%- render 'gs-link', url: s.link_url, label: s.link_label, class: 'gs-cta-link' -%}
             {%- endif -%}
           </div>
         {%- endif -%}
       {%- endif -%}
     </div>
-    {%- if room_view -%}
-      {%- if lead.installation_credit.value != blank -%}
-        <p class="gs-hero__caption gs-caption">{{ lead.installation_credit.value | escape }}</p>
-      {%- endif -%}
-    {%- elsif lead -%}
-      {%- if lead.key_image_caption.value != blank -%}
-        <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ lead.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
-      {%- endif -%}
-    {%- elsif s.caption != blank -%}
-      <p class="gs-hero__caption gs-caption">{{ s.caption | escape }}</p>
-    {%- endif -%}
+    {%- if mode != 'artwork' -%}{{ caption }}{%- endif -%}
   </div>
 </div>
 
@@ -173,12 +179,12 @@
     },
     {
       "type": "text",
-      "id": "button2_label",
+      "id": "link_label",
       "label": "Second link label"
     },
     {
       "type": "url",
-      "id": "button2_link",
+      "id": "link_url",
       "label": "Second link"
     },
     {
