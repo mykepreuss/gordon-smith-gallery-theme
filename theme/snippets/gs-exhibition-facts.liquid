@@ -60,12 +60,14 @@
         <dt>{{ 'exhibitions.events' | t }}</dt>
         <dd>
           <ul class="gs-events gs-events--compact" role="list">
-            {%- for id in event_ids -%}
-              {%- assign n = id | plus: 0 -%}
-              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-                {%- render 'gs-event', event: event, compact: true, heading: 'p' -%}
+            {%- paginate shop.metaobjects.event.values by 250 -%}
+              {%- for id in event_ids -%}
+                {%- assign n = id | plus: 0 -%}
+                {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                  {%- render 'gs-event', event: event, compact: true, heading: 'p' -%}
+                {%- endfor -%}
               {%- endfor -%}
-            {%- endfor -%}
+            {%- endpaginate -%}
           </ul>
         </dd>
       </div>
