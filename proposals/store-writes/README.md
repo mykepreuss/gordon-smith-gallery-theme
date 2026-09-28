@@ -745,3 +745,21 @@ His card (`gid://shopify/Metaobject/608367083817`: name, "Director", portrait) s
 **Effect on the live site:** one new address. `/pages/past-events` shows the page's title with nothing under it, marked `noindex,nofollow`; no live page links to it (the home page and Upcoming events checked). The live menus are untouched. On the review theme the footer's Programs link now goes to Upcoming events, which has no row of links there until pull request 69 merges and the review theme is pushed.
 
 **Undo:** delete the menu `new-theme-programmes` and the page Past events; set the two Programs items back to `gid://shopify/Page/155718943017` from the snapshot.
+
+## 2026-09-28: the Current events page (DS-149)
+
+**Why:** Michael, 2026-09-28: "Go ahead with the Current events page". The main row of the Programming lists is Current, Upcoming and Past, each a page.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 (live) and the review theme 184767250729 (unpublished), by `shopify theme list`. Before: no page with the handle `current-events` existed.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| New page Current events, `/pages/current-events`, no text, `seo.hidden` = 1 | Connector, `pageCreate` | `gid://shopify/Page/165858115881` |
+
+`release.py` lists `current-events` among the new pages, so it loses `seo.hidden` at release with the others.
+
+**Checked after:** on the development theme 184804704553 the main row reads Current, Upcoming, Past, and the Current page says nothing is on today.
+
+**Effect on the live site:** one new address. `/pages/current-events` shows the page's title with nothing under it, marked `noindex,nofollow`; no live page links to it. Nothing else changed.
+
+**Undo:** delete the page Current events.
