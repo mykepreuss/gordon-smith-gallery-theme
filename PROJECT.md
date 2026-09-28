@@ -31,7 +31,7 @@ All the gallery's questions, in one list to send: `proposals/gallery-questions.m
 | Item | From | Blocks |
 | --- | --- | --- |
 | Signup wording, consent wording, the site email, social URLs; confirming the hours and phone taken from the current site | Gallery | ACCESS-01 to ACCESS-04 |
-| Mailchimp: approve the app's permission update or not; turn on its app embed to keep site tracking after 2027-03-01 or not; turn on Shopify's spam protection for storefront forms, a store setting (P-59; `baseline/mailchimp-audit.md`, "Open from this check") | Michael | Nothing for review; decide before release |
+| Mailchimp: approve the app's permission update or not; turn on its app embed to keep site tracking after 2027-03-01 or not (`baseline/mailchimp-audit.md`, "Open from this check"). Shopify's spam protection is already on (P-59, checked 2026-09-28) | Michael | Nothing for review; decide before release |
 | Room names for the exhibition venue field and the label for the second artist group (content model "Still open"; *Stitched* opened April 3, as the old site's post says) | Gallery | Exhibition entries (defaults apply until answered) |
 | The Permanent Collection: the review sheets (artist names and dates, titles, years, themes, four chosen names, credit lines, the works on loan) and the featured works (`proposals/gallery-questions.md` 1.9, §5) | Gallery | Nothing; the review shows the catalogue's data as cleaned |
 | The main menu's labels: Support, the two "Give to" labels, Scholarships and awards, Gordon and Marion Smith, and the Gordon Smith links (`proposals/gallery-questions.md` §3) | Gallery | Nothing; the menu shows our wording (P-50 to P-57) |
