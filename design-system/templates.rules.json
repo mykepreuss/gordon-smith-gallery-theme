@@ -150,6 +150,15 @@
         "events": 1
       }
     },
+    "page.story": {
+      "purpose": "Story: a long read, its text one reading column with its own pictures and quotes set into it as a magazine would (DS-145): Gordon and Marion, Brilliance Gala",
+      "maxPerGroup": {
+        "text": 1,
+        "gallery": 1,
+        "cards": 1,
+        "events": 1
+      }
+    },
     "metaobject/exhibition": {
       "purpose": "A single exhibition, rendered from structured exhibition data (proposals/content-model.md); its works from the collection (DS-63)",
       "require": [
