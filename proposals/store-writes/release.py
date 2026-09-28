@@ -63,7 +63,7 @@ HOLD_AT_RELEASE = {"smith-foundation-supporters"}
 # Past events (DS-147) and Current events (DS-149): made empty and hidden from search engines, 2026-09-28.
 EVENTS_NEW = {"past-events", "current-events"}
 NEW_PAGES = AFK_NEW | FOUNDATION_NEW | EVENTS_NEW
-# Story pages: long reads whose text is one column with its pictures set into it (DS-145, Proposed).
+# Story pages: long reads whose text is one column with its pictures set into it (DS-145).
 STORY = {"gordon-and-marion", "brilliance-gala", "plan-your-visit", "donate"}
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",

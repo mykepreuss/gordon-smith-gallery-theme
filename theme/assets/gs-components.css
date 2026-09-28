@@ -820,7 +820,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-text-media:not(.gs-text-media--text, .gs-text-media--media),
   .gs-text-media-list:has(.gs-text-media__aside) .gs-text-media--text { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 }
-/* A part with pictures is split into passages (DS-142, Proposed), each with its own pictures beside
+/* A part with pictures is split into passages (DS-142), each with its own pictures beside
    it. Passages continue the text: the next one starts a paragraph's space below the last, or a
    heading's (1.8em at the H4 size, as h3 in page text) when it opens with one. */
 .gs-text-media + .gs-text-media { margin-block-start: 1em; }
@@ -839,7 +839,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-text-media--lead:has(> .gs-text-media__head) > .gs-text-media__aside { grid-column: 2; grid-row: 1 / span 2; }
 }
 /* A passage's only picture or quote stays in view while its longer text scrolls past, and stops
-   with the passage (DS-142, Proposed). Only on a screen tall enough for a capped photo and its
+   with the passage (DS-142). Only on a screen tall enough for a capped photo and its
    caption; the header never sticks (DS-23), so it sits a small margin from the top. */
 @media (min-width: 990px) and (min-height: 50rem) {
   .gs-text-media:not(.gs-text-media--media) > .gs-text-media__aside:not(:has(> * + *)) { position: sticky; top: var(--gs-space-6); }
@@ -872,7 +872,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   background-color: var(--gs-color-tint);
 }
 
-/* ---------- Story (DS-145, Proposed) ---------- */
+/* ---------- Story (DS-145) ---------- */
 /* A long-read page's text (page.story, snippets/gs-story): one reading column in the middle of the
    content width, with its pictures set into it by the snippet. Pictures reach out of the column
    into its margins, measured from the story's own width (container query units). */
