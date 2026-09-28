@@ -1217,7 +1217,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   color: var(--gs-color-fg);
   border-bottom-color: var(--gs-color-link-line);
 }
-/* Two rows (DS-148): the main row, then a quieter row of filters under its rule, in sentence
+/* Two rows (DS-149): the main row, then a quieter row of filters under its rule, in sentence
    case at the small size, closer together, so a long set of names wraps as a paragraph of links
    does and no name is left alone at the far end of a row. The current one is bold over the
    link-line colour. */

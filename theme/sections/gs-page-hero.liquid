@@ -18,7 +18,7 @@
 {%- endcomment -%}
 {%- liquid
   assign f = page.metafields.custom
-  # The events lists share one title (Theme settings), whatever their pages are called (DS-148).
+  # The events lists share one title (Theme settings), whatever their pages are called (DS-149).
   assign title = page.title
   if settings.events_title != blank
     if page.id == settings.events_page.id or page.id == settings.events_current_page.id or page.id == settings.events_past_page.id
