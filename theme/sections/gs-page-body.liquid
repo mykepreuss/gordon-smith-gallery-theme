@@ -8,7 +8,8 @@
   headings, level with the programmes' heading. On any other page the opening part is all of the
   text and the sections part shows nothing, so the default template can carry both parts and still
   lay programme pages out right before their templates are reassigned (gs-is-programme-page, L-08).
-  Text with a figure sets each picture beside its paragraphs (gs-text-media). On the page chosen as
+  Text with a figure sets each picture beside its paragraphs (gs-text-media); on a story page the
+  text is one column with its pictures set into it (gs-story, DS-145, Proposed). On the page chosen as
   Plan your visit page in Theme settings, the visit details come first (gs-visit-info, DS-61).
   A programme page with nothing between its parts (no card groups or lessons) shows its text as one
   part. A long page (text with H2s) whose button leaves the site, with no card groups, shows its
@@ -68,7 +69,14 @@
 {%- if text != blank -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container">
-      {%- if part == 'sections' -%}
+      {%- liquid
+        capture story_page
+          render 'gs-is-story-page'
+        endcapture
+      -%}
+      {%- if story_page contains 'true' and part == 'all' -%}
+        {%- render 'gs-story', text: text -%}
+      {%- elsif part == 'sections' -%}
         {%- render 'gs-text-media', text: text, heads: true -%}
       {%- elsif text contains '<figure' -%}
         {%- render 'gs-text-media', text: text -%}
