@@ -1,6 +1,6 @@
 # The Smith Foundation's old website on gordonsmithgallery.com
 
-Status: **Decided by Michael, 2026-09-28** ("Yes to everything except integrating the older Year in Review content - the desire is to only show the most recent one for simplicity"); not built yet. Every recommendation under "Decisions for Michael" is approved except the Year in Review shelf: only the newest report shows (P-47). Recorded as P-41 to P-49 and DS-137 in `DECISIONS.md`. The plan was revised the same day for the new menu; what that changed is under "After the menu review". Nothing is built or written to the store.
+Status: **Built, 2026-09-28; in review.** Decided by Michael ("Yes to everything except integrating the older Year in Review content - the desire is to only show the most recent one for simplicity"), then "Proceed with implementation". Every recommendation under "Decisions for Michael" is approved except the Year in Review shelf: only the newest report shows (P-47). Recorded as P-41 to P-49 and DS-138 in `DECISIONS.md`. The content is in the store and the Videos and publications section in the theme, on this branch's pull request; what the build changed from the plan is under "Build notes", and what's left under "Still open". The plan was revised the same day for the new menu ("After the menu review").
 
 Michael, 2026-09-28, sharing a WordPress export of the old Gordon and Marion Smith Foundation site: "is there any valuable content we are missing in our new Shopify Gordon Smith Gallery site?", then "let's create a plan for what content gets integrated where (text and images)". After the menu review merged (pull request #45): "I've updated the navigation and IA of our site - please review and update our content integration plan".
 
@@ -33,7 +33,7 @@ The menu review (`proposals/navigation-review.md`, P-50 to P-57, DS-132 to DS-13
 | Donate and Gordon and Marion as the Foundation's menu items | "Give to the Smith Foundation" (Donate) in Support and "Gordon and Marion Smith" in About. Both already carry the eyebrow back to the Foundation's page, and Gordon and Marion has a button to Gordon Smith's works (P-57) | Their staged text additions here are unchanged; the new video goes in the text, not in place of the button |
 | The next gala as an event on the gala page | The same, and as an event it also shows in Upcoming events (first in Programs) and the home page's What's on (N11) | Nothing new to build |
 | Pull request #42 still open | Merged. P-35, P-39, P-40 are decided; DS-69, DS-77 and DS-80 are built and Proposed | This plan's steps no longer wait for it |
-| DS-131 for Videos and publications | DS-137. DS-131 went to the whole-site review | Numbering |
+| DS-131 for Videos and publications | DS-138. DS-131 went to the whole-site review, and DS-137 to selling a print with its frame (#48) | Numbering |
 
 Nothing about the exhibitions changes. Exhibitions is now a plain link to On now and Past is one step away on its switcher (P-51); the older exhibitions with text also show in More exhibitions when fewer than three current shows remain (DS-130).
 
@@ -196,7 +196,7 @@ Reused as built:
 | Past talks, concerts, galas | Page text, staged (DS-39), with photos (DS-77) and videos |
 | The next gala | An event entry for the Brilliance Gala page |
 
-New (P-46, DS-137):
+New (P-46, DS-138):
 
 | Structure | What it is | Why |
 | --- | --- | --- |
@@ -206,7 +206,7 @@ The field and its display go into `DESIGN.md` and `preview.html` first, as a Pro
 
 ## Decisions for Michael
 
-Michael, 2026-09-28: "Yes to everything except integrating the older Year in Review content - the desire is to only show the most recent one for simplicity". Every row below is decided as recommended except P-47. They are P-41 to P-49 and DS-137 in `DECISIONS.md`.
+Michael, 2026-09-28: "Yes to everything except integrating the older Year in Review content - the desire is to only show the most recent one for simplicity". Every row below is decided as recommended except P-47. They are P-41 to P-49 and DS-138 in `DECISIONS.md`.
 
 | # | Decision | Recommended | The other way |
 | --- | --- | --- | --- |
@@ -215,7 +215,7 @@ Michael, 2026-09-28: "Yes to everything except integrating the older Year in Rev
 | P-43 | The donor list | Published as the old site had it, once the gallery confirms it's current. The Donate page already promises it | No list, and the gallery rewords the Donate page's promise |
 | P-44 | Past talks and concerts | On Speaker Series and Music at the Smith, under "Past talks" and "Past concerts": title, date, speakers or performers, the talk's description and its video. Bios stay behind | With the speakers' bios; or no past programmes |
 | P-45 | An exhibition's own past programmes and bios | In its text under "Public Programs", "Artists" or "Curator" headings, as written, without RSVP or ticket links | Left out |
-| P-46 | Videos and catalogues on exhibition pages | A new field, Videos and publications, that plays videos in the page (DS-137) | A last paragraph of links in the exhibition's text; videos open on Vimeo or YouTube |
+| P-46 | Videos and catalogues on exhibition pages | A new field, Videos and publications, that plays videos in the page (DS-138) | A last paragraph of links in the exhibition's text; videos open on Vimeo or YouTube |
 | P-47 | The Year in Review reports | ~~A document shelf on the Foundation page, 2019 to 2025 (DS-69, DS-75)~~ **Decided otherwise: only the newest report, from the page's button, as today** | Links in the Foundation page's text |
 | P-48 | Publications | Ask the gallery. If they still sell them, Shop products in a Publications collection | A list on the Foundation page now |
 | P-49 | Facts that may be out of date: the mission lines, the impact figures, the suggested donation, the bag rule, docents, sponsorship and naming, the Foundation's emails, the online form | In only once the gallery confirms each one | In now, as written |
@@ -224,11 +224,11 @@ Michael, 2026-09-28: "Yes to everything except integrating the older Year in Rev
 
 One branch and one pull request after the decisions, as the Artists for Kids work did. Each step is its own commit.
 
-1. **Decide.** Done 2026-09-28: P-41 to P-49 and DS-137.
+1. **Decide.** Done 2026-09-28: P-41 to P-49 and DS-138.
 2. **Ask.** The new questions go to the gallery (`gallery-questions.md` §10), with the rest.
 3. **Review sheet.** A read-only script, `proposals/store-writes/foundation/inventory.py`, reads the export and the manifest. It writes every entry's fields and each page's staged text to a sheet, with the chosen images. Michael checks the sheet before anything is written.
 4. **Photos to choose.** For each gala and for *Unfixed*, a contact sheet of the proposed photos; Michael swaps any.
-5. **Design.** The Videos and publications section, in the design system first (DS-137).
+5. **Design.** The Videos and publications section, in the design system first (DS-138).
 6. **Definitions.** The exhibition field.
 7. **Files.** About 100 images with alt text, made smaller where Shopify needs it. 3 PDFs: the *Endless Summer* booklet, the *Unfixed* book in a smaller copy and the 2019 auction catalogue.
 8. **Entries.** 17 exhibitions; fields on nine existing ones; the Supporters card on the Foundation page.
@@ -266,7 +266,29 @@ One branch and one pull request after the decisions, as the Artists for Kids wor
 | 11 | The *Unfixed* book is 20.2 MB, just over Shopify's limit | Smaller copy (P-40) |
 | 12 | The exhibition field `programme` exists but no page shows it. The old site's label "Artists for Kids Teaching Exhibition" (*Beyond the Horizon*, *Paths*, *The Art of Conversation*) has no home until it does | Later, not in this plan |
 
+## Build notes
+
+Built 2026-09-28 on branch `claude/gordon-smith-content-audit-dc74c6`. Scripts in `proposals/store-writes/foundation/`: `source.py` reads the export, `content.py` says what goes where, `files.py` prepares and uploads the files, `load.py` writes the entries and cards (and undoes them). Log: `proposals/store-writes/README.md`.
+
+What the build changed from the plan:
+
+| Plan | Built | Why |
+| --- | --- | --- |
+| Four to six photos a gala | Two at most (a video counts as one); the Spring Luncheons have 2019's photo only | At 1440 the photos stacked beside the text far past its words; the page went from 11,276 to 5,072 px. The 2018 and 2013 luncheons were photos alone on the old site. The other photos are in Files, unused, for the gallery to swap in |
+| *Unfixed*: about 30 installation views | 12 | Chosen from contact sheets for variety: the room, each artist's main works. The rest stay on the download |
+| *Dwelling*'s key image from the old site (1024 px) | Christopher Pratt's *Christmas Eve at 12 O'Clock*, 1995, from the collection, with its record's caption; it is also *Dwelling*'s work from the collection | Looking at the old picture showed it is his print, which the collection holds at full size |
+| Three older shows' key images from the collection | Alistair Bell's *Tall Bird*, 1961; Yung Wing Chow's *Flux I*, 2013 (*Work Is Art*); Robert Young's *The Jazz Player/ Sounds Inside*, 1973 (his show was inspired by jazz) | The old site has no picture for them. Captions from the collection's records; the gallery checks the choice (10.18) |
+| *Phantoms in the Front Yard*: curator line | None | The old text says the collective "collaborated with curator Pennylane Shen"; a curator line would say more than that. The sentence stays in the text |
+| The Donate page links "donor page" to Supporters | Not yet | Supporters goes live only when the gallery confirms the list (P-43, 10.1); the link goes in with it (`proposals/store-changes.md` §8c) |
+| Foundation page: scholarship and gala cards linked | Also a sixth card, Supporters, with the old page's first line and a 2019 luncheon photo | So the hub reaches all six Foundation pages (P-57, N13) |
+| Music at the Smith: the Steinway | Under a heading of ours, "The Steinway", with Kathryn Allison's words as a quote naming her | The old page had the paragraphs with no heading; the quote is hers, as the paragraph before it says |
+| Speaker Series: *Art Education Unveiled* | Without its last sentence, "Reception to follow, supported by Polygon Homes." | Dated (P-45) |
+| Alt text written from looking at each picture | Written by a reviewer who looked at each of the 52 photos, then checked | For the gallery to review with the rest (10.19) |
+
+Checked on the review theme (it follows `main`, so it shows the content and not yet the new section): Past exhibitions lists 29, back to 2013; an older exhibition's page; the three new pages; every staged paragraph and heading on its rendered page; the Foundation page's cards and the menu link to the three pages; the new pages' header shows the Foundation's logo and marks Support or Programs. The Videos and publications section was checked in `design-system/preview.html` at 1440 (two across) and 390 (one column, no sideways scrolling); the shared development theme was in use by another session, so the section waits for the review theme after merge. Theme Check, the linter and its tests, contrast and sync pass. The live site shows the three new pages' titles only (`noindex`, not in the sitemap); nothing else changed there.
+
 ## Still open
 
-- The gallery's answers (`gallery-questions.md` §10), and its word on the menu labels (§9.1).
+- The gallery's answers (`gallery-questions.md` §10), and its word on the menu labels (§9.1). Supporters and Donate's link to it wait for 10.1 (`proposals/store-changes.md` §8c).
+- The Videos and publications section on the review theme once this merges: *Unfixed*, *We Can Only Hint at This with Words*, *Endless Summer*, *Prevailing Landscapes*, *Playhouse*, *Stitched*.
 - Michael's decisions on DS-69, DS-77 and DS-80, which are built and Proposed. This plan uses all three.

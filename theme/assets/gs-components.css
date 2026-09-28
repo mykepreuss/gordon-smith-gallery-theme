@@ -2364,6 +2364,21 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   border-radius: var(--gs-shape-md);
   background-color: var(--gs-color-tint);
 }
+/* ---------- Videos and publications on an exhibition's page (DS-138) ---------- */
+/* The exhibition's talks and tours play in the page, each captioned with its label, one at the
+   lesson video's width; from 990 px two or more sit two across, an odd count's first spanning
+   (as pictures do in a text part, DS-78). Catalogues and other links follow as standalone links. */
+.gs-media-links { display: grid; gap: var(--gs-space-7); }
+.gs-media-links__videos,
+.gs-media-links__list { display: grid; margin: 0; padding: 0; list-style: none; }
+.gs-media-links__videos { gap: var(--gs-space-6) var(--gs-gutter); }
+.gs-media-links__list { gap: var(--gs-space-4); justify-items: start; }
+.gs-media-links__video { display: grid; gap: var(--gs-space-3); max-width: var(--gs-video-max); margin: 0; }
+@media (min-width: 990px) {
+  .gs-media-links__videos:has(> li + li) { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .gs-media-links__videos > li:first-child:nth-last-child(odd):not(:only-child) { grid-column: 1 / -1; }
+}
+
 /* Rich text arrives wrapped (<div class="metafield-rich_text_field"><p>…), so its paragraphs sit
    level with the plain values beside them. */
 .gs-lesson__rich p { margin: 0; }

@@ -57,6 +57,9 @@
     "gallery": [
       "gs-gallery"
     ],
+    "media": [
+      "gs-exhibition-media"
+    ],
     "feature": [
       "gs-feature"
     ],
@@ -155,6 +158,7 @@
       ],
       "maxPerGroup": {
         "text": 1,
+        "media": 1,
         "gallery": 2,
         "listing": 2
       }

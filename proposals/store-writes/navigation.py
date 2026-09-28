@@ -9,9 +9,9 @@ through the Shopify connector. They sit beside the review menus (`new-theme-main
 menu until its code can show the new one. The development theme reads the new menus from
 `theme/sections/header-group.json` and `footer-group.json`. Neither is read by the live theme.
 
-The three Foundation pages planned in `proposals/smith-foundation-site.md` (Scholarships, Brilliance
-Gala, Supporters) don't exist yet. `LATER` lists where each goes when it does: add it with
-`menuUpdate`, keeping the other items' IDs.
+The three Foundation pages from `proposals/smith-foundation-site.md` (Scholarships, Brilliance Gala,
+Supporters) were made on 2026-09-28 and added where `MAIN` has them, with `menuUpdate` keeping the
+other items' IDs. `LATER` is empty.
 
 Run: python3 proposals/store-writes/navigation.py
 """
@@ -55,6 +55,9 @@ GORDON_MARION = 155692957993
 FOUNDATION = 155705409833
 SHOP = 155762786601
 FAQ = 154942865705
+FOUNDATION_SCHOLARSHIPS = 165856379177  # made 2026-09-28 (proposals/smith-foundation-site.md, P-42)
+BRILLIANCE_GALA = 165856444713
+FOUNDATION_SUPPORTERS = 165856477481
 
 MAIN = {
     "title": "Main menu (new theme, 2026-09-28)",
@@ -78,13 +81,16 @@ MAIN = {
                 page("Schools and teachers", SCHOOLS_TEACHERS),
             ]),
             heading("Scholarships and awards", [
+                page("Smith Foundation scholarships", FOUNDATION_SCHOLARSHIPS),
                 page("Artists for Kids awards", AWARDS),
             ]),
         ]),
         page("Support", DONATE, [
             page("Give to the Smith Foundation", DONATE),
             page("Give to Artists for Kids", SUPPORT_AFK),
+            page("Brilliance Gala", BRILLIANCE_GALA),
             page("Volunteer", VOLUNTEER),
+            page("Supporters", FOUNDATION_SUPPORTERS),
         ]),
         page("About", ABOUT_US, [
             page("About the gallery", ABOUT_US),
@@ -111,14 +117,9 @@ EXPLORE = {
     ],
 }
 
-# Where the planned Foundation pages go once they exist (proposals/navigation-review.md, N11, N12).
-LATER = [
-    {"page": "/pages/smith-foundation-scholarships", "title": "Smith Foundation scholarships",
-     "where": "Programs, Scholarships and awards, first"},
-    {"page": "/pages/brilliance-gala", "title": "Brilliance Gala",
-     "where": "Support, after Give to Artists for Kids"},
-    {"page": "/pages/smith-foundation-supporters", "title": "Supporters", "where": "Support, last"},
-]
+# The three Foundation pages joined the menu when they were made (2026-09-28, menuUpdate keeping every
+# other item's ID; proposals/store-writes/README.md). Nothing waits here now.
+LATER = []
 
 if __name__ == "__main__":
     out = HERE / "created" / "navigation-menus-input.json"
