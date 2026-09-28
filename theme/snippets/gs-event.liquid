@@ -5,8 +5,8 @@
 
   The picture is the event's own, else its exhibition's key image, else its programme page's
   picture, as on the event card, so a row in the full lists has a picture without anyone adding
-  one twice (DS-150, Proposed). On its own programme page an event shows only its own picture:
-  the programme's is beside the page's words already.
+  one twice (DS-150, Proposed), on the programme's own page too (DS-151). The compact form has
+  no picture.
 
   On a programme page, an event titled like the page itself (a run of "Explore + Create"
   drop-ins) leads with its date and time instead of repeating the title (DS-36).
@@ -29,11 +29,7 @@
   assign tag = heading | default: 'h3'
   assign image = event.image.value
   assign mode = 'photo'
-  assign own_page = false
-  if event.programme_page.value != blank and event.programme_page.value.id == page.id
-    assign own_page = true
-  endif
-  if image == blank and compact != true and own_page == false
+  if image == blank and compact != true
     if event.exhibition.value != blank
       assign image = event.exhibition.value.key_image.value
       if image != blank and event.exhibition.value.key_image_is_artwork.value == true
