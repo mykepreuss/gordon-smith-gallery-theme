@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+"""Tests for check_structured_data.py against small synthetic pages.
+
+  python3 design-system/scripts/tests/test_check_structured_data.py
+"""
+import json
+import pathlib
+import sys
+import unittest
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+import check_structured_data as check  # noqa: E402
+
+PLACE = {"@type": "ArtGallery", "name": "Gordon Smith Gallery", "url": "https://example.com/",
+         "address": "2121 Lonsdale Avenue"}
+
+
+def page(*blocks, title="A page | Gordon Smith Gallery", h1=1, canonical=True, description=True):
+    head = f"<title>{title}</title>"
+    if canonical:
+        head += '<link rel="canonical" href="https://example.com/a">'
+    if description:
+        head += '<meta name="description" content="About the page.">'
+    scripts = "".join(
+        '<script type="application/ld+json">' + (b if isinstance(b, str) else json.dumps(b)) + "</script>"
+        for b in blocks
+    )
+    return f"<html><head>{head}{scripts}</head><body>{'<h1>A page</h1>' * h1}</body></html>"
+
+
+class CheckStructuredData(unittest.TestCase):
+    def test_a_good_exhibition_passes(self):
+        block = {"@context": "https://schema.org", "@type": "ExhibitionEvent", "name": "Playhouse",
+                 "url": "https://example.com/a", "startDate": "2026-09-25", "endDate": "2027-02-20",
+                 "location": PLACE}
+        found, errors, warnings = check.check_page(page(block), ["ExhibitionEvent"])
+        self.assertEqual(found, ["ExhibitionEvent"])
+        self.assertEqual(errors, [])
+        self.assertEqual(warnings, [])
+
+    def test_a_block_that_does_not_parse(self):
+        _, errors, _ = check.check_page(page('{"@type": "Person", "name": "A",}'))
+        self.assertTrue(any("doesn't parse" in e for e in errors))
+
+    def test_a_missing_field(self):
+        block = {"@type": "ExhibitionEvent", "name": "Playhouse", "url": "https://example.com/a",
+                 "location": PLACE}
+        _, errors, _ = check.check_page(page(block))
+        self.assertIn("ExhibitionEvent: no startDate", errors)
+
+    def test_a_nested_mention_may_be_short(self):
+        block = {"@type": "Event", "name": "Tour", "startDate": "2026-10-26T15:30:00-07:00",
+                 "location": PLACE, "superEvent": {"@type": "ExhibitionEvent", "name": "Playhouse"}}
+        found, errors, _ = check.check_page(page(block))
+        self.assertEqual(found, ["Event"])
+        self.assertEqual(errors, [])
+
+    def test_a_date_that_is_not_a_date(self):
+        block = {"@type": "VisualArtwork", "name": "Beach", "url": "https://example.com/a",
+                 "dateCreated": "n.d."}
+        _, errors, _ = check.check_page(page(block))
+        self.assertTrue(any("dateCreated is not a date" in e for e in errors))
+
+    def test_an_address_that_is_not_full(self):
+        block = {"@type": "Person", "name": "A", "url": "/pages/artists/a"}
+        _, errors, _ = check.check_page(page(block))
+        self.assertTrue(any("not a full web address" in e for e in errors))
+
+    def test_styled_letters_in_a_title_and_a_name(self):
+        styled = "Gordon Smith, \U0001D617\U0001D626\U0001D62F\U0001D625\U0001D626\U0001D633, 2006"
+        block = {"@type": "Product", "name": styled, "offers": {"@type": "Offer"}}
+        _, errors, _ = check.check_page(page(block, title=styled))
+        self.assertTrue(any(e.startswith("title has Unicode styled letters") for e in errors))
+        self.assertTrue(any(e.startswith("Product: name has Unicode styled letters") for e in errors))
+
+    def test_the_graph_is_opened_up(self):
+        block = {"@context": "https://schema.org", "@graph": [PLACE, {"@type": "WebSite", "name": "G",
+                                                                         "url": "https://example.com/"}]}
+        found, errors, _ = check.check_page(page(block), ["ArtGallery", "WebSite"])
+        self.assertEqual(found, ["ArtGallery", "WebSite"])
+        self.assertEqual(errors, [])
+
+    def test_breadcrumb_positions(self):
+        block = {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com/"},
+            {"@type": "ListItem", "position": 3, "name": "Here", "item": "https://example.com/a"}]}
+        _, errors, _ = check.check_page(page(block))
+        self.assertTrue(any("positions are [1, 3]" in e for e in errors))
+
+    def test_an_expected_type_that_is_missing(self):
+        _, errors, _ = check.check_page(page(), ["Person"])
+        self.assertIn("expected Person, found no structured data", errors)
+
+    def test_head_tags(self):
+        _, errors, warnings = check.check_page(page(h1=2, canonical=False, description=False))
+        self.assertIn("no canonical address", errors)
+        self.assertIn("2 h1 headings, not 1", errors)
+        self.assertIn("no description", warnings)
+
+
+if __name__ == "__main__":
+    unittest.main()

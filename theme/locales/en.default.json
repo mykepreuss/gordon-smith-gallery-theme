@@ -12,7 +12,8 @@
     "site_title": {
       "gallery": "Gordon Smith Gallery",
       "artists_for_kids": "Artists for Kids",
-      "foundation": "The Gordon and Marion Smith Foundation"
+      "foundation": "The Gordon and Marion Smith Foundation",
+      "gallery_full": "The Gordon Smith Gallery of Canadian Art"
     }
   },
   "header": {
@@ -289,7 +290,17 @@
     "site_heading": "In the collection",
     "site_all": "See every match in the collection",
     "exhibition_works": "Works from the collection",
-    "see_edition": "See the edition"
+    "see_edition": "See the edition",
+    "meta": {
+      "artist_works": {
+        "one": "{{ count }} work in the permanent collection of the Gordon Smith Gallery.",
+        "other": "{{ count }} works in the permanent collection of the Gordon Smith Gallery."
+      },
+      "group_works": {
+        "one": "{{ name }}: {{ count }} work in the permanent collection of the Gordon Smith Gallery.",
+        "other": "{{ name }}: {{ count }} works in the permanent collection of the Gordon Smith Gallery."
+      }
+    }
   },
   "lessons": {
     "heading": "Lessons",

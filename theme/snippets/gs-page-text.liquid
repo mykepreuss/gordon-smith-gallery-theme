@@ -7,6 +7,8 @@
   - A heading at the very start that only repeats the page title isn't shown: the hero or page
     header already says it (DS-41).
   - Videos, links and pictures go through gs-rich-text, as every staff rich text does.
+  - Text whose headings start at H3, with no H2 (the FAQ's questions), has them raised to H2, so
+    the outline doesn't skip a level under the page title. They look the same (DS-157, Proposed).
   - A template can show the text in two parts (DS-51): the opening, up to the first H2, and the
     sections from the first H2 on. The programme template puts the programmes between them.
 
@@ -45,6 +47,13 @@
     else
       assign body = body | slice: opening.size, body.size | strip
     endif
+  endif
+
+  # Headings that start at H3 become H2 and keep their look (DS-157).
+  if body contains '<h3'
+    unless body contains '<h2'
+      assign body = body | replace: '<h3>', '<h2 class="gs-prose__raised">' | replace: '<h3 ', '<h2 class="gs-prose__raised" ' | replace: '</h3>', '</h2>'
+    endunless
   endif
 
   assign text = body | strip_html | strip

@@ -116,5 +116,6 @@
       -%}
       {%- render 'gs-link', link: event.tickets.value, label: ticket_label, class: 'gs-cta-link' -%}
     {%- endif -%}
+    {%- unless past -%}{%- render 'gs-data-event', event: event -%}{%- endunless -%}
   </div>
 </li>
