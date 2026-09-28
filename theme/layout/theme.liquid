@@ -8,6 +8,7 @@
     <script src="{{ 'gs-nav.js' | asset_url }}" defer></script>
     <script src="{{ 'gs-forms.js' | asset_url }}" defer></script>
     <script src="{{ 'gs-open.js' | asset_url }}" defer></script>
+    <script src="{{ 'gs-lightbox.js' | asset_url }}" defer></script>
 
     {{ content_for_header }}
   </head>
@@ -29,5 +30,6 @@
     </main>
 
     {% sections 'footer-group' %}
+    {%- render 'gs-lightbox' -%}
   </body>
 </html>

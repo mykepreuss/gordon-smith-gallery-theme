@@ -1,8 +1,9 @@
 {%- comment -%}
   Image gallery (DESIGN.md §6.8): installation views on an exhibition's page, or the page's
-  Gallery images field on other pages. Photo mode at one ratio, no lightbox (Q8). The content
-  model has one credit per gallery (installation_credit), shown under it; each image's alt text
-  describes it for screen readers. No images, no section.
+  Gallery images field on other pages. Photo mode at one ratio; each opens larger, whole and
+  uncropped, in the larger view (DS-139), captioned with the exhibition's title (or the page's) and
+  the credit. The content model has one credit per gallery (installation_credit), shown under it;
+  each image's alt text describes it for screen readers. No images, no section.
 {%- endcomment -%}
 {%- liquid
   if metaobject != blank
@@ -10,6 +11,7 @@
     assign credit = metaobject.installation_credit.value
     assign heading = 'exhibitions.installation_views' | t
     assign image_title = metaobject.title.value
+    assign is_exhibition = true
   else
     assign images = page.metafields.custom.gallery_images.value
     assign credit = ''
@@ -19,7 +21,11 @@
 -%}
 {%- if images != blank -%}
   <section class="gs-section gs-surface-paper"{% if heading != blank %} aria-labelledby="{{ section.id }}-heading"{% endif %}>
-    <div class="gs-container">
+    <div class="gs-container" data-gs-lightbox>
+      <template data-gs-lightbox-caption>
+        <p class="gs-lightbox__label">{% if is_exhibition %}<cite>{{ image_title | escape }}</cite>{% else %}{{ image_title | escape }}{% endif %}</p>
+        {%- if credit != blank -%}<p>{{ credit | escape }}</p>{%- endif -%}
+      </template>
       {%- if heading != blank -%}
         <div class="gs-section-head">
           <h2 class="gs-h2" id="{{ section.id }}-heading">{{ heading | escape }}</h2>
@@ -27,7 +33,7 @@
       {%- endif -%}
       <ul class="gs-grid gs-gallery--installation" role="list">
         {%- for image in images -%}
-          <li>{%- render 'gs-media', image: image, preset: 'gallery', mode: 'photo', title: image_title -%}</li>
+          <li>{%- render 'gs-media', image: image, preset: 'gallery', mode: 'photo', title: image_title, enlarge: true, number: forloop.index, total: forloop.length -%}</li>
         {%- endfor -%}
       </ul>
       {%- if request.design_mode -%}

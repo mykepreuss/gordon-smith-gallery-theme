@@ -1,0 +1,31 @@
+{% doc %}
+  The larger view's dialog (DESIGN.md §6.8, DS-139), as a template: gs-lightbox.js copies it into
+  the page the first time an image is opened, and adds the image. Rendered once, in
+  layout/theme.liquid, so its words come from the locale file like every other label. The count's
+  {n} and {t} are filled in by the script.
+
+  @example
+  {%- render 'gs-lightbox' -%}
+{% enddoc %}
+<template data-gs-lightbox-template>
+  <dialog class="gs-lightbox" aria-label="{{ 'lightbox.label' | t }}">
+    <div class="gs-lightbox__bar">
+      <p class="gs-lightbox__count gs-label" aria-live="polite" data-text="{{ 'lightbox.count' | t: number: '{n}', total: '{t}' | escape }}"></p>
+      <button type="button" class="gs-button gs-button--secondary gs-lightbox__close" data-gs-lightbox-action="close" autofocus>
+        {{- 'lightbox.close' | t -}}
+      </button>
+    </div>
+    <div class="gs-lightbox__stage"></div>
+    <div class="gs-lightbox__foot">
+      <div class="gs-lightbox__caption gs-caption"></div>
+      <div class="gs-lightbox__nav">
+        <button type="button" class="gs-button gs-button--secondary gs-lightbox__step gs-lightbox__step--previous" data-gs-lightbox-action="previous">
+          <span class="gs-visually-hidden">{{ 'lightbox.previous' | t }}</span>
+        </button>
+        <button type="button" class="gs-button gs-button--secondary gs-lightbox__step" data-gs-lightbox-action="next">
+          <span class="gs-visually-hidden">{{ 'lightbox.next' | t }}</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+</template>

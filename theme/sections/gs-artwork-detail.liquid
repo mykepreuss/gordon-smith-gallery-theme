@@ -85,14 +85,14 @@
     {%- if image_number == 1 -%}
       {%- capture lead_view -%}
         <div class="gs-artwork__lead"{% if art_ratio %} style="--gs-art-ratio: {{ art_ratio }}"{% endif %}>
-          {%- render 'gs-media', image: media, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title -%}
+          {%- render 'gs-media', image: media, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title, enlarge: true -%}
         </div>
       {%- endcapture -%}
     {%- else -%}
       {%- capture more_views -%}
         {{- more_views -}}
         <li{% if art_ratio %} style="--gs-art-ratio: {{ art_ratio }}"{% endif %}>
-          {%- render 'gs-media', image: media, preset: 'detail', mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title -%}
+          {%- render 'gs-media', image: media, preset: 'detail', mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title, enlarge: true -%}
         </li>
       {%- endcapture -%}
     {%- endif -%}
@@ -133,7 +133,11 @@
   {%- endif -%}
 {%- else -%}
 <div class="gs-container--wide gs-container">
-  <div class="gs-artwork{% if image_total == 0 %} gs-artwork--text{% endif %}">
+  <div class="gs-artwork{% if image_total == 0 %} gs-artwork--text{% endif %}"{% if image_total > 0 %} data-gs-lightbox{% endif %}>
+    {%- comment -%} The larger view's caption, the museum label (DS-139). {%- endcomment -%}
+    {%- if image_total > 0 -%}
+      <template data-gs-lightbox-caption>{%- render 'gs-artwork-label', product: product, class: 'gs-lightbox__label' -%}</template>
+    {%- endif -%}
     {{- lead_view -}}
 
     <div class="gs-artwork__info">

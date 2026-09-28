@@ -13,6 +13,7 @@
 <script src="js/gs-nav.js" defer></script>
 <script src="js/gs-open.js" defer></script>
 <script src="js/gs-collection.js" defer></script>
+<script src="js/gs-lightbox.js" defer></script>
 <style>
   /* Preview-only scaffolding. Not part of the system. */
   body { margin: 0; }
@@ -447,7 +448,8 @@
 <!-- ============ ARTWORK DETAIL (product: sections/gs-artwork-detail, snippets/gs-artwork-label) ============ -->
 <div class="gs-container--wide gs-container">
   <p class="pv-note pv-note--before">Artwork detail, the product page: Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store. The first view leads; below 990 px the label, price and action follow it, then the other views (DS-110). Each mat takes the work&rsquo;s shape between 4:5 and 4:3 (DS-111): the portrait first view here gets a 4:5 mat. Beside the work sits only what it takes to decide and buy: a crumb back to the Shop (DS-102), label, medium, edition, size, price, the three colour variants (named without a price, since all three cost the same), the Framing choice with the gallery&rsquo;s framing text under it (DS-137), one Add to cart and the archive note. Framed adds the frame nested under the print, so the cart shows it as part of the work. The description follows under About the work, at reading width, with any disclosures (DS-38). Its two paragraphs about the work show here; on the store it also opens with lines that repeat the label. The label is the page&rsquo;s H1 in the theme, and the select appears only when a work has more than one variant, named after the product&rsquo;s option as the store calls it. No limited edition has a disclosure yet, so the one shown has the default label and stand-in text. Images are placeholders.</p>
-  <div class="gs-artwork">
+  <div class="gs-artwork" data-gs-lightbox>
+    <template data-gs-lightbox-caption><p class="gs-lightbox__label"><span class="gs-artwork-label__artist">Marlene Yuen</span><span class="gs-visually-hidden">,</span> <cite>Short Gumboots</cite>, 2026</p></template>
     <div class="gs-artwork__lead" id="artwork-lead"></div>
     <div class="gs-artwork__info">
       <div class="gs-artwork__head">
@@ -696,11 +698,14 @@
   <div class="gs-container">
     <div class="gs-section-head"><h2 class="gs-h2" id="gallery-title">Image gallery</h2></div>
     <h3 class="gs-h4 pv-sub">Installation views</h3>
-    <ul class="gs-grid gs-gallery--installation" id="install"></ul>
-    <p class="gs-caption gs-gallery__credit">Photos by Rachel Topham</p>
+    <div data-gs-lightbox>
+      <template data-gs-lightbox-caption><p class="gs-lightbox__label"><cite>One Hundred Artists Deep</cite></p><p>Photos by Rachel Topham</p></template>
+      <ul class="gs-grid gs-gallery--installation" id="install" role="list"></ul>
+      <p class="gs-caption gs-gallery__credit">Photos by Rachel Topham</p>
+    </div>
     <h3 class="gs-h4 pv-sub">Works</h3>
     <ul class="gs-grid gs-grid--artworks" id="works"></ul>
-    <p class="pv-note">Installation views: one ratio, no caption on each image, and the exhibition&rsquo;s one photo credit under the list. Six placeholders stand in for the nine views of <cite>One Hundred Artists Deep</cite>. Works in the collection are work tiles, the same as a limited edition&rsquo;s tile without a price (DS-46, DS-63).</p>
+    <p class="pv-note">Installation views: one ratio, no caption on each image, and the exhibition&rsquo;s one photo credit under the list. Each opens larger when clicked (DS-139): the whole photo, uncropped, on the mat, captioned with the exhibition&rsquo;s title and the credit, with Previous and Next through the six; a work&rsquo;s views on its page open the same way, captioned with its label. Six placeholders stand in for the nine views of <cite>One Hundred Artists Deep</cite>. Works in the collection are work tiles, the same as a limited edition&rsquo;s tile without a price (DS-46, DS-63).</p>
   </div>
 </section>
 
@@ -1609,9 +1614,11 @@
   // Artwork detail: every image of the work, whole on the mat. The cart repeats the first as a thumbnail.
   // The first view leads, the others follow the label (DS-110); each mat takes its view's shape (DS-111).
   document.getElementById("artwork-lead").style.setProperty("--gs-art-ratio", art[0][0] / art[0][1]);
-  document.getElementById("artwork-lead").innerHTML = `<div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[0])}" alt="Placeholder for Short Gumboots by Marlene Yuen. View 1 of 2"></div>`;
+  // Each view opens larger when clicked (DS-139): a link to the full-size file, which gs-lightbox.js opens.
+  const enlarge = (src, alt) => `<a class="gs-media gs-media--artwork gs-media--enlarge gs-shape-lg" href="${src}" data-gs-lightbox-item><img src="${src}" alt="${alt}"><span class="gs-visually-hidden">Open larger view</span></a>`;
+  document.getElementById("artwork-lead").innerHTML = enlarge(svg(...art[0]), "Placeholder for Short Gumboots by Marlene Yuen. View 1 of 2");
   document.getElementById("artwork-media").innerHTML = `
-    <li style="--gs-art-ratio: 1"><div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[2])}" alt="Placeholder for Short Gumboots by Marlene Yuen. View 2 of 2"></div></li>`;
+    <li style="--gs-art-ratio: 1">${enlarge(svg(...art[2]), "Placeholder for Short Gumboots by Marlene Yuen. View 2 of 2")}</li>`;
   document.getElementById("cart-thumb-1").innerHTML = `<img src="${svg(...art[0])}" alt="">`;
   document.getElementById("cart-thumb-3").innerHTML = `<img src="${svg(...art[1])}" alt="">`;
 
@@ -1676,8 +1683,8 @@
     </li>`).join("");
 
   // Installation views: photos at one ratio, no caption on each; one credit follows the list.
-  document.getElementById("install").innerHTML = [0, 1, 2, 1, 2, 0].map(t => `
-    <li><div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...tones[t])}" alt="Placeholder for an installation view of One Hundred Artists Deep"></div></li>`).join("");
+  document.getElementById("install").innerHTML = [0, 1, 2, 1, 2, 0].map((t, i, all) => `
+    <li><a class="gs-media gs-media--photo gs-media--enlarge gs-shape-md" href="${photo(...tones[t])}" data-gs-lightbox-item><img src="${photo(...tones[t])}" alt="Placeholder for an installation view of One Hundred Artists Deep"><span class="gs-visually-hidden">Open larger view, image ${i + 1} of ${all.length}</span></a></li>`).join("");
 
   const labels = [["Samuel Roy-Bois", "My Sun", "2024", "Wood, paint, object"], ...works.slice(0, 3).map(([a, t, y]) => [a, t, y, "Limited edition print"])];
   document.getElementById("works").innerHTML = labels.map(([a, t, y, m], i) => {
@@ -1732,5 +1739,22 @@
     img.src = `logos/${file}.svg`;
   }));
 </script>
+<!-- The larger view's dialog (snippets/gs-lightbox.liquid, DS-139), copied into the page by js/gs-lightbox.js. -->
+<template data-gs-lightbox-template>
+  <dialog class="gs-lightbox" aria-label="Larger view">
+    <div class="gs-lightbox__bar">
+      <p class="gs-lightbox__count gs-label" aria-live="polite" data-text="{n} of {t}"></p>
+      <button type="button" class="gs-button gs-button--secondary gs-lightbox__close" data-gs-lightbox-action="close" autofocus>Close</button>
+    </div>
+    <div class="gs-lightbox__stage"></div>
+    <div class="gs-lightbox__foot">
+      <div class="gs-lightbox__caption gs-caption"></div>
+      <div class="gs-lightbox__nav">
+        <button type="button" class="gs-button gs-button--secondary gs-lightbox__step gs-lightbox__step--previous" data-gs-lightbox-action="previous"><span class="gs-visually-hidden">Previous image</span></button>
+        <button type="button" class="gs-button gs-button--secondary gs-lightbox__step" data-gs-lightbox-action="next"><span class="gs-visually-hidden">Next image</span></button>
+      </div>
+    </div>
+  </dialog>
+</template>
 </body>
 </html>

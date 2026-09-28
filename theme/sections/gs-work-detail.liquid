@@ -19,14 +19,27 @@
   assign id = 'gs-work-' | append: section.id
 -%}
 <div class="gs-container--wide gs-container">
-  <div class="gs-artwork{% unless has_image %} gs-artwork--text{% endunless %}">
+  <div class="gs-artwork{% unless has_image %} gs-artwork--text{% endunless %}"{% if has_image %} data-gs-lightbox{% endif %}>
+    {%- if has_image -%}
+      {%- comment -%} The larger view's caption: the label without its links (DS-139). {%- endcomment -%}
+      <template data-gs-lightbox-caption>
+        <p class="gs-lightbox__label">
+          {%- if work.artists.value != blank -%}
+            {%- capture names -%}{%- render 'gs-names', entries: work.artists.value -%}{%- endcapture -%}
+            <span class="gs-artwork-label__artist">{{ names | strip | escape }}</span><span class="gs-visually-hidden">,</span>{{ ' ' }}
+          {%- endif -%}
+          <cite>{{ work.title.value | escape }}</cite>
+          {%- if work.year.value != blank -%}, {{ work.year.value | escape }}{%- endif -%}
+        </p>
+      </template>
+    {%- endif -%}
     {%- comment -%}
       The first view, then the label, then the other views: below 990 px the label follows the
       work, however many views it has (DS-110). Each mat takes its view's shape (DS-111).
     {%- endcomment -%}
     {%- for image in work.images.value limit: 1 -%}
       <div class="gs-artwork__lead"{% if image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
-        {%- render 'gs-media', image: image, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg' -%}
+        {%- render 'gs-media', image: image, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg', enlarge: true -%}
       </div>
     {%- endfor -%}
 
@@ -139,7 +152,7 @@
       <ul class="gs-artwork__media">
         {%- for image in work.images.value offset: 1 -%}
           <li{% if image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
-            {%- render 'gs-media', image: image, preset: 'detail', mode: 'artwork', shape: 'lg' -%}
+            {%- render 'gs-media', image: image, preset: 'detail', mode: 'artwork', shape: 'lg', enlarge: true -%}
           </li>
         {%- endfor -%}
       </ul>
