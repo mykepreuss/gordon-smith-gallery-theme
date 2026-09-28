@@ -9,8 +9,9 @@
  *
  *   - Escape closes the open dropdown and returns focus to its button; pressed again (or with
  *     no dropdown open) it closes the Menu drawer and returns focus to the Menu button.
- *   - A click outside the header closes any open dropdown and the drawer.
- *   - Desktop bar (1200px and up): focus leaving a dropdown closes it.
+ *   - A click outside the header closes any open dropdown and the drawer; a click elsewhere in
+ *     the header closes the bar's open dropdown. A click inside a dropdown never closes it.
+ *   - Desktop bar (1200px and up): focus moving out of a dropdown to another element closes it.
  *   - Focus leaving the Menu drawer closes it.
  *   - Choosing a link in the drawer closes the drawer (matters for links within the page).
  *   - Crossing the 1200px breakpoint closes everything.
@@ -63,9 +64,13 @@
         });
       }
 
+      /* Focus moving to somewhere else on the page (Tab, Shift+Tab) closes a bar dropdown. A click on
+         a spot that can't take focus (a heading, the space between links) reports no target: the
+         dropdown stays open, and the click rule below closes it when the spot is outside. Closing
+         it mid-click crashed Chrome 154 ("Aw, Snap!"). */
       details.addEventListener("focusout", function (event) {
         if (!DESKTOP.matches || !details.closest(".gs-header__bar")) return;
-        if (event.relatedTarget && details.contains(event.relatedTarget)) return;
+        if (!event.relatedTarget || details.contains(event.relatedTarget)) return;
         close(details);
       });
     });
@@ -82,7 +87,15 @@
     });
 
     document.addEventListener("click", function (event) {
-      if (!header.contains(event.target)) closeAll();
+      if (!header.contains(event.target)) {
+        closeAll();
+        return;
+      }
+      /* A click elsewhere in the header (the utility row, the gap between sections) closes the bar's
+         open dropdown; a click inside it leaves it open. */
+      dropdowns.forEach(function (d) {
+        if (d.closest(".gs-header__bar") && !d.contains(event.target)) close(d);
+      });
     });
 
     if (drawer) {
