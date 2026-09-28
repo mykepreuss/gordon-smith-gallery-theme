@@ -1,0 +1,66 @@
+{
+  "read": "2026-09-28, through the connector (Admin API) and the admin's Checkout settings page",
+  "store": "ed35ee-ea.myshopify.com",
+  "live_theme": "gid://shopify/OnlineStoreTheme/183162372393 (MAIN, not touched)",
+  "delivery_profiles": [
+    {
+      "id": "gid://shopify/DeliveryProfile/120347820329",
+      "name": "General profile",
+      "default": true,
+      "product_variants": 38
+    },
+    {
+      "id": "gid://shopify/DeliveryProfile/120468111657",
+      "name": "2024 Fall Portfolio (Unframed Prints)",
+      "default": false,
+      "zones": 0,
+      "rates": 0,
+      "product_variants": 2,
+      "items": [
+        {
+          "product": "gid://shopify/Product/9501302128937",
+          "handle": "anna-binta-diallo",
+          "title": "Anna Binta Diallo, Red Feather, 2024",
+          "variant": "gid://shopify/ProductVariant/49338095501609"
+        },
+        {
+          "product": "gid://shopify/Product/9501322969385",
+          "handle": "sandeep-johal-i-am-easy-to-find-2024",
+          "title": "Sandeep Johal, I am easy to find, 2024",
+          "variant": "gid://shopify/ProductVariant/49338153271593"
+        }
+      ]
+    }
+  ],
+  "requires_shipping": [
+    {
+      "product": "gid://shopify/Product/9501310124329",
+      "handle": "prairie-girl",
+      "title": "Anna Binta Diallo, Prairie Girl, 2024",
+      "variant": "gid://shopify/ProductVariant/53226473390377",
+      "inventory_item": "gid://shopify/InventoryItem/55305302737193",
+      "requiresShipping": false,
+      "weight_kg": 0
+    },
+    {
+      "product": "gid://shopify/Product/10049873903913",
+      "handle": "elizabeth-mcintosh-diamonds-2019",
+      "title": "Elizabeth McIntosh, Diamonds, 2019",
+      "variant": "gid://shopify/ProductVariant/52900916986153",
+      "inventory_item": "gid://shopify/InventoryItem/54969808978217",
+      "requiresShipping": false,
+      "weight_kg": 0
+    }
+  ],
+  "checkout": {
+    "configuration": "My Store configuration (active, last saved Sep 8 at 11:32 a.m.)",
+    "full_name": "Require first and last name",
+    "company_name": "Don't include",
+    "address_line_2": "Required",
+    "shipping_address_phone": "Required",
+    "marketing_email": "Checkout and sign-in",
+    "marketing_email_preselect": "On, all regions",
+    "marketing_sms": "Don't show",
+    "marketing_whatsapp": "Don't show"
+  }
+}

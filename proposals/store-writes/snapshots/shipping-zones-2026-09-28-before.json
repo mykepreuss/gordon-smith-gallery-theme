@@ -1,0 +1,68 @@
+{
+  "read": "2026-09-28, through the connector (Admin API), before the US and International zones were deleted",
+  "store": "ed35ee-ea.myshopify.com",
+  "live_theme": "gid://shopify/OnlineStoreTheme/183162372393 (MAIN, not touched)",
+  "markets": [{ "name": "Canada", "status": "ACTIVE" }],
+  "profile": {
+    "id": "gid://shopify/DeliveryProfile/120347820329",
+    "name": "General profile",
+    "default": true,
+    "location_group": "gid://shopify/DeliveryLocationGroup/122038845737",
+    "zone_country_count": 28,
+    "active_rates": 7
+  },
+  "zones": [
+    {
+      "id": "gid://shopify/DeliveryZone/528002351401",
+      "name": "Domestic",
+      "kept": true,
+      "countries": ["CA"],
+      "rates": [
+        {
+          "id": "gid://shopify/DeliveryMethodDefinition/889484902697",
+          "name": "Shipping within Canada",
+          "description": "See FAQ for details.",
+          "price": "20.00 CAD",
+          "conditions": []
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/DeliveryZone/528002416937",
+      "name": "International",
+      "kept": false,
+      "countries": ["AE", "AT", "AU", "BE", "CH", "CZ", "DE", "DK", "ES", "FI", "FR", "GB", "HK", "IE", "IL", "IT", "JP", "KR", "MY", "NL", "NO", "NZ", "PL", "PT", "SE", "SG"],
+      "rates": [
+        {
+          "id": "gid://shopify/DeliveryMethodDefinition/889485164841",
+          "name": "canada_post",
+          "type": "carrier calculated",
+          "carrier_service": "gid://shopify/DeliveryCarrierService/91063746857",
+          "percentage_fee": 0,
+          "fixed_fee": "0.00",
+          "services": [
+            "International Parcel Air",
+            "International Parcel Surface",
+            "Small Packet International Air",
+            "Small Packet International Surface",
+            "Tracked Packet International",
+            "Xpresspost International"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/DeliveryZone/528002384169",
+      "name": "US Cross-border",
+      "kept": false,
+      "countries": ["US"],
+      "rates": [
+        { "id": "gid://shopify/DeliveryMethodDefinition/889485001001", "name": "Standard International", "price": "0.00 CAD", "conditions": ["order total at least 100.00 CAD"] },
+        { "id": "gid://shopify/DeliveryMethodDefinition/889485033769", "name": "Standard International", "price": "7.90 CAD", "conditions": ["weight 0 to 0.5 kg"] },
+        { "id": "gid://shopify/DeliveryMethodDefinition/889485066537", "name": "Standard International", "price": "19.90 CAD", "conditions": ["weight 0.5 to 1.5 kg"] },
+        { "id": "gid://shopify/DeliveryMethodDefinition/889485099305", "name": "Standard International", "price": "29.90 CAD", "conditions": ["weight 1.5 to 30 kg"] },
+        { "id": "gid://shopify/DeliveryMethodDefinition/889485132073", "name": "Express International", "price": "34.90 CAD", "conditions": ["weight 0 to 1.5 kg"] }
+      ]
+    }
+  ]
+}

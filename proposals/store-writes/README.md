@@ -779,3 +779,41 @@ His card (`gid://shopify/Metaobject/608367083817`: name, "Director", portrait) s
 **Effect on the live site:** none. gordonsmithgallery.com/pages/gordon-and-marion returns 200 with the same text and no quote; the live theme shows the page's own text, which this didn't touch. At release the staged text replaces it (store-changes §8), quote and all.
 
 **Undo:** set `custom.release_body` on `gid://shopify/Page/155692957993` back to the snapshot's value (`metafieldsSet`, type `multi_line_text_field`).
+
+## 2026-09-28: store settings review, fixes 1 to 4 (`proposals/store-settings-review.md`)
+
+**Why:** Michael, 2026-09-28: "Apply fixes 1 to 4". Four prints couldn't be bought with shipping on the live site: two sat in a shipping profile with no rates, and two were set as not needing shipping.
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (through the connector); the live theme 183162372393 "Colorblock: NEW WEBSITE" (MAIN), not touched. Before-snapshot: `snapshots/store-settings-2026-09-28-before.json` (the two shipping profiles and their products, the two variants' shipping setting, and the checkout settings as read in the admin).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Anna Binta Diallo, *Red Feather* and Sandeep Johal, *I am easy to find* move from the profile "2024 Fall Portfolio (Unframed Prints)" to the general profile | Connector | `deliveryProfileUpdate` on `gid://shopify/DeliveryProfile/120468111657`, `variantsToDissociate`: `gid://shopify/ProductVariant/49338095501609`, `gid://shopify/ProductVariant/49338153271593` |
+| Anna Binta Diallo, *Prairie Girl* and Elizabeth McIntosh, *Diamonds* are physical products (`requiresShipping` true) | Connector | `productVariantsBulkUpdate` on `gid://shopify/ProductVariant/53226473390377` and `gid://shopify/ProductVariant/52900916986153` |
+
+The custom profile stays in the store, empty (no products, zones or rates), so nothing was deleted. It can be deleted in the admin once no one needs it.
+
+**Fixes 3 and 4, made by Michael in the admin (Settings, Checkout), 2026-09-28:** Address line 2 from Required to Optional; "Preselect checkbox in certain regions" from All regions to Automated, which preselects in the United States only. The Admin API has no checkout settings, so these were made by hand. Their values before are in the snapshot.
+
+**Checked after:** read back through the connector: all four variants are in the general profile and need shipping; the general profile holds 40 variants, the custom one none. Fixes 3 and 4 read back on the admin's Checkout page after Michael saved them: Address line 2 "Optional"; preselection "Automated, United States".
+
+**Effect on the live site:** checkout now offers "Shipping within Canada" ($20) and pickup for all four prints. *Prairie Girl* and *Diamonds* now ask for a shipping address. The apartment field can be left empty, and the marketing checkbox starts unticked for buyers in Canada, the only market that can check out.
+
+**Undo:** `deliveryProfileUpdate` on the custom profile with `variantsToAssociate` and the two variant IDs; `productVariantsBulkUpdate` with `requiresShipping: false` on the other two. Fixes 3 and 4: set both back in Settings, Checkout, from the snapshot.
+
+## 2026-09-28: the US and International shipping zones deleted (`proposals/store-settings-review.md`, item 7)
+
+**Why:** Michael, 2026-09-28: "delete the unused US and International shipping zones". Canada is the only market, so neither zone could be reached at checkout. The US zone carried what look like Shopify's starter rates, with free shipping on orders of $100 or more, which would have applied to every print if anyone added a market.
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (through the connector); the live theme 183162372393 "Colorblock: NEW WEBSITE" (MAIN), not touched; markets: Canada only, active. Before-snapshot: `snapshots/shipping-zones-2026-09-28-before.json` (the general profile's three zones, their countries, and every rate with its price and conditions).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Zone "International" (26 countries, Canada Post calculated rates) deleted | Connector | `deliveryProfileUpdate` on `gid://shopify/DeliveryProfile/120347820329`, `zonesToDelete`: `gid://shopify/DeliveryZone/528002416937` |
+| Zone "US Cross-border" (United States, five flat rates) deleted | Connector | The same call: `gid://shopify/DeliveryZone/528002384169` |
+
+**Checked after:** read back through the connector: the general profile has one zone, "Domestic" (Canada), with one rate, "Shipping within Canada", $20.00; it still holds 40 variants. The store ships to Canada only.
+
+**Effect on the live site:** none for buyers in Canada, who see the same $20 rate and pickup. Buyers elsewhere couldn't check out before and can't now.
+
+**Undo:** a deleted zone can't be restored, so recreate both from the snapshot: `deliveryProfileUpdate` with `locationGroupsToUpdate` on `gid://shopify/DeliveryLocationGroup/122038845737` and `zonesToCreate`, or in the admin under Settings, Shipping and delivery, General profile. The new zones and rates get new IDs.
