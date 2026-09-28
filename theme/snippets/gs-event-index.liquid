@@ -7,9 +7,9 @@
   An event drops off every list once it has ended (its end time, or its start time when it has
   no end). Only active entries exist on the storefront. Reads up to 50 entries.
 
-  With when, one of the three lists of DS-147: 'current', events today or under way (started on
-  or before today, not yet ended); 'upcoming', events that start after today; 'past', events that
-  have ended, newest first. Without it, every event that hasn't ended, as before.
+  With when, one of the three lists of DS-149: 'current', events this week (under way, or starting
+  today or in the six days after, DS-153); 'upcoming', events that start after that; 'past',
+  events that have ended, newest first. Without it, every event that hasn't ended, as before.
 
   Pass one of for_page or exhibition, or neither for every upcoming event. (Not "page": inside a
   snippet that name is also the current page, so leaving it out would still filter by it.)
@@ -25,7 +25,8 @@
 {%- liquid
   assign limit = limit | default: 50
   assign now = 'now' | date: '%s' | plus: 0
-  assign today = 'now' | date: '%Y%m%d' | plus: 0
+  # The last day of this week's events: today and the six days after (DS-153), in the shop's time zone.
+  assign week_end = now | plus: 518400 | date: '%Y%m%d' | plus: 0
   assign keys = ''
   for event in shop.metaobjects.event.values
     if for_page != blank
@@ -49,10 +50,10 @@
     endif
     if when == 'current' or when == 'upcoming'
       assign start_day = event.starts.value | date: '%Y%m%d' | plus: 0
-      if when == 'current' and start_day > today
+      if when == 'current' and start_day > week_end
         continue
       endif
-      if when == 'upcoming' and start_day <= today
+      if when == 'upcoming' and start_day <= week_end
         continue
       endif
     endif

@@ -445,7 +445,7 @@
         "type": "page",
         "id": "events_page",
         "label": "Upcoming events page",
-        "info": "Lists the events that start after today, soonest first. A programme's page lists only its own."
+        "info": "Lists the events that start after this week, soonest first. A programme's page lists only its own."
       },
       {
         "type": "text",
@@ -458,7 +458,7 @@
         "type": "page",
         "id": "events_current_page",
         "label": "Current events page",
-        "info": "Lists the events on today or under way."
+        "info": "Lists this week's events: under way, or starting today or in the six days after."
       },
       {
         "type": "page",
