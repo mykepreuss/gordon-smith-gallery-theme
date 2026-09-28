@@ -1,0 +1,66 @@
+{% doc %}
+  A page as schema.org data (DS-154): a WebPage (the contact page a ContactPage) with its title,
+  introduction, picture and the organisation it belongs to, from its programme field. Then the
+  events the page lists: every event that hasn't ended on Upcoming events and Current events, a
+  programme's own on its page. Past events are left out.
+
+  @param {string} base - The site's address, without a closing slash
+
+  @example
+  {%- render 'gs-schema-page', base: shop.url -%}
+{% enddoc %}
+{%- liquid
+  assign f = page.metafields.custom
+  assign page_kind = 'WebPage'
+  if page.id == settings.contact_page.id
+    assign page_kind = 'ContactPage'
+  endif
+  assign intro = page_description | default: f.intro.value | newline_to_br | strip_newlines | replace: '<br />', ' ' | split: ' ' | join: ' '
+
+  # The events the page lists: every one on the two lists of what's on and coming, a
+  # programme's own on its page. Past events are left out.
+  if page.id == settings.events_page.id or page.id == settings.events_current_page.id
+    capture event_ids
+      render 'gs-event-index', limit: 50
+    endcapture
+  elsif page.id == settings.events_past_page.id
+    assign event_ids = ''
+  else
+    capture event_ids
+      render 'gs-event-index', for_page: page, limit: 50
+    endcapture
+  endif
+  assign event_ids = event_ids | strip | split: ','
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {{ page_kind | json }},
+    "@id": {{ base | append: page.url | json }},
+    "url": {{ base | append: page.url | json }},
+    "name": {{ page.title | json }},
+    "inLanguage": {{ request.locale.iso_code | json }},
+    "isPartOf": {"@id": {{ base | append: '/#website' | json }}}
+    {%- if intro != blank -%},"description": {{ intro | json }}{%- endif -%}
+    {%- if f.hero_image.value != blank -%},"primaryImageOfPage": {{ f.hero_image.value | image_url: width: 1200 | prepend: 'https:' | json }}{%- endif -%}
+    ,"publisher": {%- render 'gs-schema-org', base: base, programme: f.programme.value -%}
+  }
+</script>
+{%- if event_ids.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {%- paginate shop.metaobjects.event.values by 250 -%}
+          {%- for id in event_ids -%}
+            {%- assign n = id | plus: 0 -%}
+            {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+              {%- unless forloop.parentloop.first -%},{%- endunless -%}
+              {%- render 'gs-schema-event', event: event, base: base -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      ]
+    }
+  </script>
+{%- endif -%}

@@ -1,6 +1,6 @@
 # Gordon Smith Gallery website design system
 
-Version 0.6.56 (draft), 2026-09-28. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
+Version 0.6.57 (draft), 2026-09-28. Built from `reference/GordonSmith-BrandGuide_sm.pdf` (17 pp.), `reference/GS-Logo-Guide.pdf` (3 pp.), the supplied logo files in `reference/GS Logos New/`, the requirements in `IMPLEMENTATION_PLAN.md` and the developer notes, and a read-only snapshot of the live store's pages, menus, collections and products (Admin API, 2026-09-25). Page numbers below (p.N) refer to the brand guide unless marked "logo guide".
 
 Nothing here changes the live store. Every design decision to DS-68 is decided as of 2026-09-27; DS-69 to DS-96 (the Artists for Kids pages, their design review and the whole-site design review) are **Proposed**; DS-97 to DS-131, from the whole-site review, were decided by Michael on 2026-09-28 and are built; a new one starts as **Proposed** and needs Michael's approval before release (P-17); items marked **Input needed** are blocked on the gallery.
 
@@ -678,6 +678,30 @@ Since then every page has had a design pass with its real content, on the develo
 5. The contact form's delivery address: the store's contact email, `artistsforkids@sd44.ca` (Settings, Store details), checked 2026-09-26; a test message waits for the gallery.
 6. Staff editing: two pages on one template with different fields, content stays separate (REUSE-03).
 
+### 9.7 Structured data (DS-154, Proposed)
+
+Each page describes itself as schema.org data (JSON-LD) in the head, from `snippets/gs-schema.liquid`, which `layout/theme.liquid` renders after the meta tags. Rules:
+
+- **The data says what the page says.** Every value comes from the field the page shows. An empty field is left out. Nothing is guessed: a year that isn't a plain year ("ND", "1932-2003") gives no date, and an opening reception is given until it has ended, as on the page.
+- **One name for each thing.** The gallery is `/#gallery`, the site `/#website`, an exhibition its address plus `#exhibition`, a work `#work`, an artist `#artist`, an event `/#event-<handle>`. Addresses start with the store's own domain (`shop.url`), so a preview says the same as the live site.
+- **Facts are typed once.** The gallery's address, phone, hours and social links come from Theme settings, Gallery details and Social links, as the footer's do.
+
+| Page | Data | Snippet |
+| --- | --- | --- |
+| Home | WebSite; the gallery (ArtGallery) with address, phone, opening hours, directions, social links | `gs-schema`, `gs-schema-place` |
+| Plan your visit, Contact | The gallery; WebPage or ContactPage | `gs-schema-place`, `gs-schema-page` |
+| Exhibition | ExhibitionEvent: dates, place, organisation, summary, pictures, artists, works from the collection, reception and coming events | `gs-schema-exhibition` |
+| Upcoming events, Current events, a programme's page | Each event that hasn't ended (Event) | `gs-schema-page`, `gs-schema-event` |
+| Work in the collection | VisualArtwork | `gs-schema-work` |
+| Artist | ProfilePage about a Person | `gs-schema-artist` |
+| Grouping, portfolio | CollectionPage; a portfolio lists its works | `gs-schema` |
+| Lesson | LearningResource with a VideoObject | `gs-schema-lesson` |
+| Limited edition | Product and VisualArtwork, one Offer for each option; a frame has none (DS-137) | `gs-schema-product` |
+| Article | BlogPosting | `gs-schema` |
+| Any page with a crumb | BreadcrumbList | `gs-schema-crumbs` |
+
+Cart, search, 404 and the password page have no data. To check a page: Google's Rich Results Test and validator.schema.org, against the preview link.
+
 ## 10. Quality checks
 
 | Check | Command | When |
@@ -842,6 +866,7 @@ Since then every page has had a design pass with its real content, on the develo
 | DS-151 | A programme's page shows no picture beside its words (amends DS-146): the words start at the page's edge under the rows of links. The page's picture still serves its events' rows and Home's event cards, on the programme's own page too (amends DS-150), so a filtered view looks like the full list, filtered | Decided by Michael, 2026-09-28 ("We don't need the image beside the blurb on /pages/speaker-series and similar"); the rows' picture on the programme's own page approved ("DS-144, DS-147, DS-149, DS-150 and DS-151 approved, merge the PR") |
 | DS-152 | The exhibition and lesson lists read up to 250 entries, as the event lists do (DS-148). Every loop over the exhibition or lesson entries, and every place that reads one back by its position, sits inside its own `paginate` tag, `by 250` so the positions match: `gs-exhibition-index`, `gs-lead-exhibition`, `gs-lesson-index`, `gs-lesson-list`, `gs-search-entries`, `gs-exhibition-list`, `gs-exhibition-more`, `gs-switcher`, `gs-whats-on`, `gs-search` and `gs-lesson-more`. Tags for two arrays can sit one inside the other, but only the innermost is in force: inside it the outer array is read 50 at a time again, and the outer tag is back once the inner one closes. So each tag sits directly around its own loop. What's on, which mixes exhibitions and events in one row, has a tag around each card's read-back; the search has the exhibitions' and lessons' around their cards, inside its own. The tags have their own page numbers: `?page=2` on a search doesn't move them. Without a limit the two index snippets now give up to 250 positions, not 50. From 200 exhibition entries the theme editor says so on the Past page; no tidy-up is asked of the gallery, since at about five exhibitions a year 250 is decades away. Tested on a development theme with the store's 171 artist entries for the nesting, and 19 pages (home, the three exhibition lists, the events pages, ArtReach videos, three exhibitions, three lessons, six searches) compared before and after: the same, apart from Shopify's own search tracking and product order, which also differ between two loads of the same theme | Decided by Michael, 2026-09-28 ("DS-152 approved, merge when it's ready"); extends DS-148 |
 | DS-153 | Current is this week (§6.7; amends DS-149): the events under way, or starting today or in the six days after, soonest first. Upcoming starts after that. Current's empty line reads "Nothing is on this week." A rolling seven days, not a calendar week, so on a Sunday it still shows the next Saturday | Decided by Michael, 2026-09-28 ("if anything is on in the coming week, it should show") |
+| DS-154 | Structured data (§9.7): every page describes itself as schema.org JSON-LD from the fields it shows, in place of Shopify's product-only `structured_data` filter. The gallery, exhibitions, events, works, artists, lessons, editions, articles and crumbs each have their type. Nothing is guessed; an empty field is left out. | **Proposed**, 2026-09-28; built |
 | DS-138 | Videos and publications on an exhibition's page (`sections/gs-exhibition-media`), after its text and before the installation views, from the entry's Videos and publications field (a list of links). A YouTube or Vimeo link plays in the page through `snippets/gs-video` (privacy-enhanced: nothing loads until it's scrolled to; Vimeo asked not to track), captioned with the link's label, at the lesson video's width (`--gs-video-max`); two or more sit two across from 990 px, an odd count's first spanning, as pictures in a text part do (DS-78). Any other link (a catalogue's PDF, a zine online) follows as a standalone link, with "(PDF)" or the external cue from `gs-link`. The heading is "Videos and publications" (`exhibitions.media`). Reason: six exhibitions from the Smith Foundation's old site have talks, a described tour or catalogues; the text field can't hold a video, and links buried in paragraphs are hard to find (`proposals/smith-foundation-site.md`, P-46) | Decided by Michael, 2026-09-28 ("Yes to everything except integrating the older Year in Review content"); built |
 | DS-139 | The collection's lists of names read as a long list in page text (DS-45): Artists A to Z, the site search's Artists group (both `snippets/gs-artist-item`) and the Permanent Collection page's categories and themes. Names in body type as ordinary underlined links (`.gs-link`, the brand line and the hover fill), no bullets, rows grouped by a small space, each count quiet after its name. One rule for the rows of `.gs-index__list` and `.gs-browse__list`; `.gs-list-link` is retired. Artists A to Z keeps its columns (three, none narrower than 11rem); the categories and themes, half the width each, have up to three, none narrower than 9rem, so two until there's room for three (from about 1150 px). Replaces DS-65's bold names without a line; its letter bar stays. Reason: Michael, 2026-09-28: "Should use the A long list style from our preview.html design system", then of Artists A to Z: "All of these should use the same display style" | Decided by Michael, 2026-09-28 |
 | DS-68 | The Gallery's main logo is its full stacked lockup, with "of Canadian Art" (`gallery-full-stacked-colour-box`), in place of the simple stacked one: in the header on every page that isn't an Artists for Kids or Foundation page, and on the password page. The heights stay as they were (64 px, 96 px from 990 px; 80 px on the password page), so the header keeps its height and matches the other programmes' logos; the box is about 9% narrower. "of Canadian Art" is then about 4 px tall on phones and 6.5 px from 990 px, below the lockup's 112 px minimum (§8.3). The footer's white logo is unchanged. (Michael, 2026-09-27: "We should use gallery-full-stacked-colour-box.svg as our main logo instead of gallery-simple-stacked-colour-box.svg.") | Decided by Michael, 2026-09-27 |
@@ -879,6 +904,7 @@ Since then every page has had a design pass with its real content, on the develo
 
 ## 13. Changelog
 
+- 0.6.57 (2026-09-28): structured data (DS-154, Proposed; §9.7). Every page describes itself as schema.org JSON-LD: `snippets/gs-schema.liquid` and its parts, rendered in `layout/theme.liquid`. Shopify's `structured_data` filter is no longer used. No change to what any page shows.
 - 0.6.56 (2026-09-28): DS-142 (text with pictures in passages) and DS-145 (the story template) decided by Michael; DS-79 is superseded by DS-142.
 - 0.6.55 (2026-09-28): DS-152 decided by Michael.
 - 0.6.54 (2026-09-28): The exhibition and lesson lists read up to 250 entries, not 50 (DS-152): their loops and read-backs sit inside `paginate ... by 250`, each tag directly around its own loop. The theme editor warns from 200 exhibition entries on the Past page. No change to what any page shows today.

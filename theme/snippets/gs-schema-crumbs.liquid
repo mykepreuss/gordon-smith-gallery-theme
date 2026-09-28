@@ -1,0 +1,25 @@
+{% doc %}
+  The way back a page shows (its crumb), then the page itself, as a schema.org BreadcrumbList
+  (DS-154). Prints nothing when the page shows no way back.
+
+  @param {string} base - The site's address, without a closing slash
+  @param {string} here - This page's address
+  @param {string} [name] - The crumb's words
+  @param {string} [url] - The crumb's address, from the site's root
+  @param {string} [leaf] - This page's name
+
+  @example
+  {%- render 'gs-schema-crumbs', base: base, here: here, name: back.title, url: back.url, leaf: page.title -%}
+{% enddoc %}
+{%- if name != blank and url != blank and leaf != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": {{ name | json }}, "item": {{ base | append: url | json }}},
+        {"@type": "ListItem", "position": 2, "name": {{ leaf | json }}, "item": {{ here | json }}}
+      ]
+    }
+  </script>
+{%- endif -%}

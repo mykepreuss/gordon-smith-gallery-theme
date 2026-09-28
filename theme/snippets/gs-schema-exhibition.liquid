@@ -1,0 +1,160 @@
+{% doc %}
+  An exhibition as schema.org data (DS-154): an ExhibitionEvent with its dates, the gallery as its
+  place (the venue field before its name), the organisation behind it, summary, key image and
+  installation views, artists, works from the collection, and its opening reception and coming
+  events as its parts. Then the way back the page shows, as a BreadcrumbList.
+
+  A dates note means the day isn't set yet ("Opens fall 2027"), so only the month is given.
+  Artists are names typed on the entry, so each is given as a person, and a name with
+  "Collective" in it as an organisation. The opening reception is given until it has ended, as
+  on the page.
+
+  @param {string} base - The site's address, without a closing slash
+  @param {string} here - This page's address
+
+  @example
+  {%- render 'gs-schema-exhibition', base: shop.url, here: here -%}
+{% enddoc %}
+{%- liquid
+  assign entry = metaobject
+  assign leaf_name = entry.title.value
+  capture status
+    render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value
+  endcapture
+  assign status = status | strip
+  case status
+    when 'upcoming'
+      assign back = settings.exhibitions_upcoming_page
+    when 'past'
+      assign back = settings.exhibitions_past_page
+    else
+      assign back = settings.exhibitions_on_now_page
+  endcase
+  if back != blank
+    assign crumb_name = 'exhibitions.crumb' | t
+    assign crumb_url = back.url
+  endif
+  assign description = entry.summary.value | newline_to_br | strip_newlines | replace: '<br />', ' ' | split: ' ' | join: ' '
+  if description == blank
+    assign description = entry.body | metafield_text | truncatewords: 60
+  endif
+  capture event_ids
+    render 'gs-event-index', exhibition: entry
+  endcapture
+  assign event_ids = event_ids | strip | split: ','
+  # The opening reception until it has ended, as the page shows it (gs-exhibition-facts).
+  assign now = 'now' | date: '%s' | plus: 0
+  assign show_reception = false
+  if entry.reception_start.value != blank
+    assign reception_over = entry.reception_end.value | default: entry.reception_start.value
+    assign reception_over_s = reception_over | date: '%s' | plus: 0
+    if reception_over_s >= now
+      assign show_reception = true
+    endif
+  endif
+  assign has_sub = false
+  if show_reception or event_ids.size > 0
+    assign has_sub = true
+  endif
+  # Artists, then artists from the collection, as one list of names.
+  assign names = entry.artists.value | join: '|'
+  assign more_names = entry.collection_artists.value | join: '|'
+  if names != blank and more_names != blank
+    assign names = names | append: '|'
+  endif
+  assign names = names | append: more_names | split: '|'
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ExhibitionEvent",
+    "@id": {{ here | append: '#exhibition' | json }},
+    "name": {{ entry.title.value | json }},
+    "url": {{ here | json }}
+    {%- if entry.subtitle.value != blank -%},"alternateName": {{ entry.title.value | append: ': ' | append: entry.subtitle.value | json }}{%- endif -%}
+    {%- comment -%} A dates note means the day isn't set yet ("Opens fall 2027"), so only the month is given. {%- endcomment -%}
+    {%- if entry.dates_note.value != blank -%}
+      ,"startDate": {{ entry.start_date.value | date: '%Y-%m' | json }}
+    {%- else -%}
+      ,"startDate": {{ entry.start_date.value | date: '%Y-%m-%d' | json }}
+      {%- if entry.end_date.value != blank -%},"endDate": {{ entry.end_date.value | date: '%Y-%m-%d' | json }}{%- endif -%}
+    {%- endif -%}
+    ,"eventStatus": "https://schema.org/EventScheduled"
+    ,"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+    ,"location": {%- render 'gs-schema-place', base: base, room: entry.venue.value -%}
+    ,"organizer": {%- render 'gs-schema-org', base: base, programme: entry.programme.value -%}
+    {%- if description != blank -%},"description": {{ description | json }}{%- endif -%}
+    {%- if entry.key_image.value != blank -%}
+      ,"image": [
+        {{- entry.key_image.value | image_url: width: 1200 | prepend: 'https:' | json -}}
+        {%- for image in entry.installation_views.value limit: 5 -%}
+          ,{{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+        {%- endfor -%}
+      ]
+    {%- endif -%}
+    {%- if names.size > 0 -%}
+      ,"performer": [
+        {%- for name in names -%}
+          {%- liquid
+            assign who = 'Person'
+            assign lower = name | downcase
+            if lower contains 'collective'
+              assign who = 'Organization'
+            endif
+          -%}
+          {%- unless forloop.first -%},{%- endunless -%}
+          {"@type": {{ who | json }}, "name": {{ name | json }}}
+        {%- endfor -%}
+      ]
+    {%- endif -%}
+    {%- if entry.collection_works.value != blank -%}
+      ,"workFeatured": [
+        {%- for work in entry.collection_works.value limit: 25 -%}
+          {%- unless forloop.first -%},{%- endunless -%}
+          {
+            "@type": "VisualArtwork",
+            "@id": {{ base | append: work.system.url | append: '#work' | json }},
+            "name": {{ work.title.value | json }},
+            "url": {{ base | append: work.system.url | json }}
+            {%- if work.artists.value != blank -%}
+              {%- capture names -%}{%- render 'gs-names', entries: work.artists.value -%}{%- endcapture -%}
+              ,"creator": {"@type": "Person", "name": {{ names | strip | json }}}
+            {%- endif -%}
+          }
+        {%- endfor -%}
+      ]
+    {%- endif -%}
+    {%- if has_sub -%}
+      ,"subEvent": [
+        {%- assign first = true -%}
+        {%- if show_reception -%}
+          {%- assign first = false -%}
+          {
+            "@type": "Event",
+            "@id": {{ here | append: '#reception' | json }},
+            "name": {{ 'exhibitions.reception' | t | append: ', ' | append: entry.title.value | json }},
+            "startDate": {{ entry.reception_start.value | date: '%Y-%m-%dT%H:%M:%S%:z' | json }}
+            {%- if entry.reception_end.value != blank -%},"endDate": {{ entry.reception_end.value | date: '%Y-%m-%dT%H:%M:%S%:z' | json }}{%- endif -%}
+            ,"eventStatus": "https://schema.org/EventScheduled"
+            ,"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+            ,"location": {%- render 'gs-schema-place', base: base -%}
+            ,"url": {{ here | json }}
+            {%- if entry.reception_note.value != blank -%},"description": {{ entry.reception_note.value | json }}{%- endif -%}
+            {%- if entry.key_image.value != blank -%},"image": {{ entry.key_image.value | image_url: width: 1200 | prepend: 'https:' | json }}{%- endif -%}
+            ,"organizer": {%- render 'gs-schema-org', base: base, programme: entry.programme.value -%}
+          }
+        {%- endif -%}
+        {%- paginate shop.metaobjects.event.values by 250 -%}
+          {%- for id in event_ids limit: 25 -%}
+            {%- assign n = id | plus: 0 -%}
+            {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+              {%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+              {%- render 'gs-schema-event', event: event, base: base -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      ]
+    {%- endif -%}
+  }
+</script>
+{%- render 'gs-schema-crumbs', base: base, here: here, name: crumb_name, url: crumb_url, leaf: leaf_name -%}

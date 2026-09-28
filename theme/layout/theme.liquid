@@ -2,6 +2,7 @@
 <html lang="{{ request.locale.iso_code }}">
   <head>
     {% render 'meta-tags' %}
+    {% render 'gs-schema' %}
     {% render 'gs-fonts' %}
     {{ 'gs-tokens.css' | asset_url | stylesheet_tag }}
     {{ 'gs-components.css' | asset_url | stylesheet_tag }}

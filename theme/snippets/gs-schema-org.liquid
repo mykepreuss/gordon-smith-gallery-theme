@@ -1,0 +1,28 @@
+{% doc %}
+  The organisation behind a page, an exhibition or an event as schema.org data (DS-154): a short
+  JSON object naming the Gallery, Artists for Kids or The Gordon and Marion Smith Foundation, from
+  a programme field's value. Blank is the Gallery, as everywhere else (gs-programme). The names
+  are the ones the tab title uses (DS-121).
+
+  Prints the object alone, without a script tag or @context.
+
+  @param {string} base - The site's address, without a closing slash
+  @param {string} [programme] - A programme field's value: Gallery, Smith Foundation or Artists for Kids
+
+  @example
+  "organizer": {%- render 'gs-schema-org', base: shop.url, programme: entry.programme.value -%}
+{% enddoc %}
+{%- liquid
+  capture brand
+    render 'gs-programme', value: programme
+  endcapture
+  assign brand = brand | strip
+-%}
+{%- case brand -%}
+  {%- when 'artists-for-kids' -%}
+    {"@type": "Organization", "@id": {{ base | append: '/#artists-for-kids' | json }}, "name": {{ 'general.site_title.artists_for_kids' | t | json }}}
+  {%- when 'foundation' -%}
+    {"@type": "Organization", "@id": {{ base | append: '/#foundation' | json }}, "name": {{ 'general.site_title.foundation' | t | json }}}
+  {%- else -%}
+    {"@type": "ArtGallery", "@id": {{ base | append: '/#gallery' | json }}, "name": {{ 'general.site_title.gallery' | t | json }}, "url": {{ base | append: '/' | json }}}
+{%- endcase -%}
