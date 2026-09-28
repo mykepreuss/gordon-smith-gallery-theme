@@ -1217,6 +1217,43 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   color: var(--gs-color-fg);
   border-bottom-color: var(--gs-color-link-line);
 }
+/* Two rows (DS-149): the main row, then a quieter row of filters under its rule, in sentence
+   case at the small size, closer together, so a long set of names wraps as a paragraph of links
+   does and no name is left alone at the far end of a row. The current one is bold over the
+   link-line colour. */
+.gs-switcher__sub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--gs-space-5);
+  margin: var(--gs-space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.gs-switcher__sub a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--gs-tap-target);
+  font-size: var(--gs-text-small);
+  color: var(--gs-color-fg-muted);
+  text-decoration: underline transparent;
+  text-decoration-thickness: var(--gs-border-strong);
+  text-underline-offset: 0.4em;
+}
+.gs-switcher__sub a:active { color: var(--gs-color-fg); text-decoration-color: var(--gs-color-rule); }
+@media (hover: hover) and (pointer: fine) {
+  .gs-switcher__sub a:hover { color: var(--gs-color-fg); text-decoration-color: var(--gs-color-rule); }
+}
+.gs-switcher__sub a[aria-current="page"] {
+  color: var(--gs-color-fg);
+  font-weight: var(--gs-weight-bold);
+  text-decoration-color: var(--gs-color-link-line);
+}
+/* The list under the rows starts with its first event, not a second rule. */
+.gs-events--led > .gs-event:first-child { padding-block-start: 0; border-block-start: 0; }
+/* A programme's groups (Current, Upcoming, Past): the heading sits close over its list's first rule. */
+.gs-events-group > .gs-section-head { margin-block-end: var(--gs-space-4); }
+/* A programme's past events: no pictures, closer together. */
+.gs-events--quiet { gap: var(--gs-space-5); }
 .gs-switcher__count {
   font-size: var(--gs-text-label);
   font-weight: var(--gs-weight-bold);
@@ -1880,8 +1917,6 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-event--media > .gs-event__text,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event > .gs-event__text { grid-column: 2 / -1; }
 }
-
-
 
 /* ---------- Logo cards (DS-50) ---------- */
 /* A card about one of the three organisations: its logo is the heading (the title is there for

@@ -1,0 +1,46 @@
+{
+ "taken": "2026-09-28, before the Programs switcher's store changes (DS-143, DS-147)",
+ "pages_with_handle_past-events": [],
+ "menu_with_handle_new-theme-programmes": null,
+ "menus": [
+  {"id": "gid://shopify/Menu/305944068393", "handle": "new-theme-main-2", "title": "Main menu (new theme, 2026-09-28)", "items": [
+   {"id": "gid://shopify/MenuItem/767723045161", "title": "Exhibitions", "type": "PAGE", "resourceId": "gid://shopify/Page/155763999017", "items": []},
+   {"id": "gid://shopify/MenuItem/767723077929", "title": "Collection", "type": "PAGE", "resourceId": "gid://shopify/Page/155720548649", "items": [
+    {"id": "gid://shopify/MenuItem/767723110697", "title": "The collection", "type": "PAGE", "resourceId": "gid://shopify/Page/155720548649", "items": []},
+    {"id": "gid://shopify/MenuItem/767723143465", "title": "Artists", "type": "PAGE", "resourceId": "gid://shopify/Page/140886573353", "items": []}]},
+   {"id": "gid://shopify/MenuItem/767723176233", "title": "Programs", "type": "PAGE", "resourceId": "gid://shopify/Page/155718943017", "items": [
+    {"id": "gid://shopify/MenuItem/767723209001", "title": "Upcoming events", "type": "PAGE", "resourceId": "gid://shopify/Page/155669168425", "items": []},
+    {"id": "gid://shopify/MenuItem/767723241769", "title": "Public programs", "type": "PAGE", "resourceId": "gid://shopify/Page/155718943017", "items": [
+     {"id": "gid://shopify/MenuItem/767723274537", "title": "Speaker series", "type": "PAGE", "resourceId": "gid://shopify/Page/155719434537", "items": []},
+     {"id": "gid://shopify/MenuItem/767723307305", "title": "Music at the Smith", "type": "PAGE", "resourceId": "gid://shopify/Page/155719696681", "items": []},
+     {"id": "gid://shopify/MenuItem/767723340073", "title": "Explore + Create", "type": "PAGE", "resourceId": "gid://shopify/Page/155720089897", "items": []},
+     {"id": "gid://shopify/MenuItem/767723372841", "title": "Art in Good Company", "type": "PAGE", "resourceId": "gid://shopify/Page/155720253737", "items": []}]},
+    {"id": "gid://shopify/MenuItem/767723405609", "title": "Artists for Kids", "type": "PAGE", "resourceId": "gid://shopify/Page/155720810793", "items": [
+     {"id": "gid://shopify/MenuItem/767723438377", "title": "Classes and camps", "type": "PAGE", "resourceId": "gid://shopify/Page/165837734185", "items": []},
+     {"id": "gid://shopify/MenuItem/767723471145", "title": "Schools and teachers", "type": "PAGE", "resourceId": "gid://shopify/Page/165837766953", "items": []}]},
+    {"id": "gid://shopify/MenuItem/767723503913", "title": "Scholarships and awards", "type": "HTTP", "url": "#", "items": [
+     {"id": "gid://shopify/MenuItem/767728910633", "title": "Smith Foundation scholarships", "type": "PAGE", "resourceId": "gid://shopify/Page/165856379177", "items": []},
+     {"id": "gid://shopify/MenuItem/767723536681", "title": "Artists for Kids awards", "type": "PAGE", "resourceId": "gid://shopify/Page/165838225705", "items": []}]}]},
+   {"id": "gid://shopify/MenuItem/767723569449", "title": "Support", "type": "PAGE", "resourceId": "gid://shopify/Page/155885863209", "items": [
+    {"id": "gid://shopify/MenuItem/767723602217", "title": "Give to the Smith Foundation", "type": "PAGE", "resourceId": "gid://shopify/Page/155885863209", "items": []},
+    {"id": "gid://shopify/MenuItem/767723634985", "title": "Give to Artists for Kids", "type": "PAGE", "resourceId": "gid://shopify/Page/165838258473", "items": []},
+    {"id": "gid://shopify/MenuItem/767728943401", "title": "Brilliance Gala", "type": "PAGE", "resourceId": "gid://shopify/Page/165856444713", "items": []},
+    {"id": "gid://shopify/MenuItem/767723667753", "title": "Volunteer", "type": "PAGE", "resourceId": "gid://shopify/Page/155902738729", "items": []},
+    {"id": "gid://shopify/MenuItem/767728976169", "title": "Supporters", "type": "PAGE", "resourceId": "gid://shopify/Page/165856477481", "items": []}]},
+   {"id": "gid://shopify/MenuItem/767723700521", "title": "About", "type": "PAGE", "resourceId": "gid://shopify/Page/155687813417", "items": [
+    {"id": "gid://shopify/MenuItem/767723733289", "title": "About the gallery", "type": "PAGE", "resourceId": "gid://shopify/Page/155687813417", "items": []},
+    {"id": "gid://shopify/MenuItem/767723766057", "title": "Plan your visit", "type": "PAGE", "resourceId": "gid://shopify/Page/155670151465", "items": []},
+    {"id": "gid://shopify/MenuItem/767723798825", "title": "Gordon and Marion Smith", "type": "PAGE", "resourceId": "gid://shopify/Page/155692957993", "items": []},
+    {"id": "gid://shopify/MenuItem/767723831593", "title": "The Smith Foundation", "type": "PAGE", "resourceId": "gid://shopify/Page/155705409833", "items": []}]},
+   {"id": "gid://shopify/MenuItem/767723864361", "title": "Shop", "type": "PAGE", "resourceId": "gid://shopify/Page/155762786601", "items": []}]},
+  {"id": "gid://shopify/Menu/305944330537", "handle": "new-theme-explore-2", "title": "Footer: Explore (new theme, 2026-09-28)", "items": [
+   {"id": "gid://shopify/MenuItem/767723897129", "title": "Exhibitions", "type": "PAGE", "resourceId": "gid://shopify/Page/155763999017", "items": []},
+   {"id": "gid://shopify/MenuItem/767723929897", "title": "Collection", "type": "PAGE", "resourceId": "gid://shopify/Page/155720548649", "items": []},
+   {"id": "gid://shopify/MenuItem/767723962665", "title": "Programs", "type": "PAGE", "resourceId": "gid://shopify/Page/155718943017", "items": []},
+   {"id": "gid://shopify/MenuItem/767723995433", "title": "Artists for Kids", "type": "PAGE", "resourceId": "gid://shopify/Page/155720810793", "items": []},
+   {"id": "gid://shopify/MenuItem/767724028201", "title": "Support", "type": "PAGE", "resourceId": "gid://shopify/Page/155885863209", "items": []},
+   {"id": "gid://shopify/MenuItem/767724060969", "title": "About", "type": "PAGE", "resourceId": "gid://shopify/Page/155687813417", "items": []},
+   {"id": "gid://shopify/MenuItem/767724093737", "title": "Shop", "type": "PAGE", "resourceId": "gid://shopify/Page/155762786601", "items": []},
+   {"id": "gid://shopify/MenuItem/767724126505", "title": "Frequently asked questions", "type": "PAGE", "resourceId": "gid://shopify/Page/154942865705", "items": []}]}
+ ]
+}

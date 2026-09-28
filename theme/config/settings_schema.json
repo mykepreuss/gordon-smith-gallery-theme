@@ -445,7 +445,32 @@
         "type": "page",
         "id": "events_page",
         "label": "Upcoming events page",
-        "info": "This page lists every upcoming event. Other pages list only their own."
+        "info": "Lists the events that start after today, soonest first. A programme's page lists only its own."
+      },
+      {
+        "type": "text",
+        "id": "events_title",
+        "label": "Title of the events lists",
+        "default": "Programming",
+        "info": "Shown as the title of the Current, Upcoming and Past events pages, whatever the pages are called."
+      },
+      {
+        "type": "page",
+        "id": "events_current_page",
+        "label": "Current events page",
+        "info": "Lists the events on today or under way."
+      },
+      {
+        "type": "page",
+        "id": "events_past_page",
+        "label": "Past events page",
+        "info": "Lists the events that have ended, newest first. An event moves here by itself once it has ended."
+      },
+      {
+        "type": "link_list",
+        "id": "programmes_menu",
+        "label": "Programs filter menu",
+        "info": "The programme pages in the row of links above the events list, in this order. Each page shows its own events. A page with an upcoming event joins the row by itself."
       },
       {
         "type": "text",
