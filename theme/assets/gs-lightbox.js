@@ -1,5 +1,5 @@
 /*
- * Gordon Smith Gallery: the larger view of an image, a lightbox (DESIGN.md §6.8, DS-139).
+ * Gordon Smith Gallery: the larger view of an image, a lightbox (DESIGN.md §6.8, DS-140).
  * Theme copy: theme/assets/gs-lightbox.js, loaded with `defer`.
  *
  * An image that opens larger is a link to its full-size file ([data-gs-lightbox-item], written by

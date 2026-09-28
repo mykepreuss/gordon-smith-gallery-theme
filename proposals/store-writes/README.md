@@ -706,3 +706,21 @@ Not changed, by decision: the older Year in Review reports (P-47, only the newes
 **Effect on the live site:** three new addresses that show a page title and nothing else, `noindex`, not in the sitemap, linked from nowhere (P-35). The exhibition entries' addresses are 404 and the live Past Exhibitions page is unchanged; no staged text, card or menu change shows.
 
 **Undo:** `foundation/load.py restore` (the nine exhibitions' fields and the two cards' links back from the snapshot, the group's cards back, the 17 new exhibitions and the Supporters card deleted); set the four pages' staged text back from the snapshots (Speaker Series and Music at the Smith: delete `custom.release_body`); hide or delete the three pages; `menuUpdate` the menu without the three items; delete the files in `created/foundation-files.json`; delete the `media` field from the exhibition definition.
+
+## 2026-09-28: Richard Savage leaves the Board of Directors
+
+**Why:** Michael, 2026-09-28: "Remove Richard Savage from Board of Directors on https://gordonsmithgallery.com/pages/the-smith-foundation".
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 (live) and the review theme 184767250729 (unpublished), rechecked at the review theme push earlier the same hour. Before-snapshot: `snapshots/foundation-board-2026-09-28-before.json` (the group `foundation-board` and his card, read through the CLI).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Card group `foundation-board` ("Board of Directors"): `board-richard-savage` out of its cards; 13 left, in the same order | CLI | `metaobjectUpsert` on `gid://shopify/Metaobject/608367477033` |
+
+His card (`gid://shopify/Metaobject/608367083817`: name, "Director", portrait) stays in the store in no group, so this can be undone; it can be deleted once no one needs it back. `programmes.py` no longer lists him, so a re-run can't bring him back. His name elsewhere is unchanged: the Brilliance Gala 2026 committee and the Supporters list, both as the old site had them.
+
+**Checked after:** the review theme's Smith Foundation page lists 13 board members, Allison Kerr then Ed Tsumura.
+
+**Effect on the live site:** none from this write: the live theme doesn't read card groups. The live page's board is in the live theme's own template (`templates/page.the-smith-foundation.json` in Colorblock, as `baseline/theme/` has it), and the live theme is never written to from here (AGENTS.md). It keeps showing him until release, unless someone removes his block in the live theme's editor.
+
+**Undo:** put `gid://shopify/Metaobject/608367083817` back in the group's cards, ninth, from the snapshot.

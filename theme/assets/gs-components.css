@@ -1242,7 +1242,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-gallery--installation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* ---------- Larger view (lightbox, DS-139) ---------- */
+/* ---------- Larger view (lightbox, DS-140) ---------- */
 /* A work's views and an exhibition's installation views open larger when clicked. Each is a link to
    its full-size file (gs-media with enlarge), so without the script it opens the file. The cursor is
    the only cue: nothing is laid over the work (principle 1). */
@@ -1636,23 +1636,20 @@ html:has(.gs-lightbox[open]) { overflow: hidden; }
   }
 }
 
-/* Quiet links, written once: dropdown, utility, footer and list links (a name in the A to Z). No
+/* Quiet links, written once: dropdown, utility and footer links. No
    underline at rest: they sit in lists where every item is a link. The underline comes on hover and
    press, in the link-line colour, and stays on the current page's link. Instant, no fade: a
    transparent underline fading in would vanish in forced colours. */
-:is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a,
-.gs-list-link {
+:is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a {
   text-decoration-line: none;
   text-decoration-color: var(--gs-color-link-line);
   text-decoration-thickness: var(--gs-link-thickness);
   text-underline-offset: var(--gs-link-offset);
 }
 :is(.gs-nav__panel, .gs-utility) a[aria-current="page"],
-:is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a:active,
-.gs-list-link:active { text-decoration-line: underline; }
+:is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a:active { text-decoration-line: underline; }
 @media (hover: hover) and (pointer: fine) {
-  :is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a:hover,
-  .gs-list-link:hover { text-decoration-line: underline; }
+  :is(.gs-nav__panel, .gs-utility, .gs-footer__cols, .gs-footer__legal) a:hover { text-decoration-line: underline; }
 }
 
 
@@ -2403,31 +2400,15 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   text-transform: uppercase;
   color: var(--gs-color-accent-text);
 }
-/* Each name with its number of works after it, as the categories and themes on the Permanent
-   Collection page (DS-64): "Dana Claxton 2". No rules and no underlines (DS-65): in a list where every
-   name is a link, space groups the rows and bold marks the names; the underline comes on hover, as a
-   card title's does, and the count stays quiet beside it. */
+/* Each name with its number of works after it (DS-64): "Dana Claxton 2". Artists A to Z, the site
+   search's Artists group and the Permanent Collection page's categories and themes all read as a
+   long list in page text (DS-45, DS-139): names in body type as ordinary underlined links
+   (.gs-link), no bullets, in columns, rows grouped by a small space, the count quiet after the name. */
 .gs-index__list { margin: 0; padding: 0; list-style: none; columns: 3 11rem; column-gap: var(--gs-gutter); }
-.gs-index__item,
-.gs-browse__list li {
-  display: block;
-  line-height: var(--gs-leading-tight);
-  padding-block: var(--gs-space-2);
-  break-inside: avoid;
-}
+:is(.gs-index__list, .gs-browse__list) > li { break-inside: avoid; margin-block: 0 0.4em; }
 /* The count follows the name as text, never on a line of its own. */
-:is(.gs-index__item, .gs-browse__list li) > .gs-meta { white-space: nowrap; margin-inline-start: var(--gs-space-1); }
+:is(.gs-index__list, .gs-browse__list) > li > .gs-meta { white-space: nowrap; margin-inline-start: var(--gs-space-1); }
 .gs-index__item[hidden] { display: none; }
-/* The link's padding covers the row's, so the whole row is the target (about 38 px) without
-   moving anything: padding on an inline link doesn't change the line. */
-.gs-list-link {
-  padding-block: var(--gs-space-2);
-  font-weight: var(--gs-weight-bold);
-  line-height: var(--gs-leading-tight);
-  color: var(--gs-color-fg);
-}
-/* The ring hugs the name, not the padded target, so on a wrapped name it can't cross the count. */
-.gs-list-link:focus-visible { padding-block: 0; }
 
 /* A work's page: the product page's layout (DS-38) without price or cart. The label's facts are a
    list under rules, one to a row; with no image, the label takes the width. */
@@ -2449,7 +2430,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 }
 .gs-browse { display: grid; gap: var(--gs-space-7) var(--gs-gutter); }
 @media (min-width: 750px) { .gs-browse { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.gs-browse__list { margin: var(--gs-space-4) 0 0; padding: 0; list-style: none; columns: 2 9rem; column-gap: var(--gs-gutter); }
+/* Categories and themes: the long list's rows (with .gs-index__list above). Up to three columns,
+   none narrower than 9rem, so a half-width list keeps two until there's room for three. */
+.gs-browse__list { margin: var(--gs-space-4) 0 0; padding: 0; list-style: none; columns: 3 9rem; column-gap: var(--gs-gutter); }
 
 /* The collection search: the field, a live count, then works as tiles. */
 .gs-finder { display: grid; gap: var(--gs-space-6); }
