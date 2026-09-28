@@ -1226,7 +1226,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Image gallery ---------- */
 /* Installation views on the grid (.gs-grid): photo mode, one ratio, the credit under the list.
-   Works in an exhibition use the artworks grid (.gs-grid--artworks) with a museum label. No lightbox in v1. */
+   Works in an exhibition use the artworks grid (.gs-grid--artworks) with a museum label. Each view
+   opens larger when clicked (the larger view, below). */
 
 .gs-gallery--installation { grid-template-columns: minmax(0, 1fr); }
 .gs-gallery--installation .gs-media { --gs-media-ratio: var(--gs-ratio-install); }
@@ -1240,6 +1241,97 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
   .gs-gallery--installation { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* ---------- Larger view (lightbox, DS-140) ---------- */
+/* A work's views and an exhibition's installation views open larger when clicked. Each is a link to
+   its full-size file (gs-media with enlarge), so without the script it opens the file. The cursor is
+   the only cue: nothing is laid over the work (principle 1). */
+.gs-media--enlarge { display: block; cursor: zoom-in; }
+
+/* The dialog (snippets/gs-lightbox.liquid, js/gs-lightbox.js) covers the screen in the mat colour,
+   so a print's white paper keeps its edge, as it does on the work's page. The image sits whole
+   between a bar (the count and Close) and a foot (the caption, Previous and Next): never cropped,
+   rounded or covered, installation views included, which the grid crops to 3:2. It fades in, 120ms,
+   and closes at once (§5.4). */
+.gs-lightbox {
+  --gs-color-bg: var(--gs-color-mat);
+  box-sizing: border-box;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  color: var(--gs-color-fg);
+  background-color: var(--gs-color-bg);
+}
+.gs-lightbox[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  animation: gs-fade var(--gs-duration-fast) var(--gs-ease);
+}
+.gs-lightbox::backdrop { background-color: var(--gs-color-mat); }
+@keyframes gs-fade {
+  from { opacity: 0; }
+}
+/* The page behind stays still while the view is open. */
+html:has(.gs-lightbox[open]) { overflow: hidden; }
+
+.gs-lightbox__bar,
+.gs-lightbox__foot {
+  display: flex;
+  align-items: center;
+  gap: var(--gs-space-4);
+  padding: var(--gs-space-3) var(--gs-gutter);
+}
+.gs-lightbox__close { margin-inline-start: auto; }
+.gs-lightbox__stage {
+  display: grid;
+  min-height: 0;
+  padding-inline: var(--gs-gutter);
+}
+.gs-lightbox__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+}
+.gs-lightbox__foot { align-items: flex-end; }
+.gs-lightbox__caption { flex: 1 1 auto; max-width: var(--gs-measure); }
+.gs-lightbox__caption > * + * { margin-block-start: var(--gs-space-1); }
+.gs-lightbox__label { margin: 0; }
+.gs-lightbox__label cite { font-style: italic; }
+.gs-lightbox__nav {
+  display: flex;
+  flex: none;
+  gap: var(--gs-space-2);
+  margin-inline-start: auto;
+}
+.gs-lightbox :is(.gs-lightbox__count, .gs-lightbox__nav)[hidden] { display: none; }
+
+/* Close says what it does, with the close icon; Previous and Next are the arrow alone, square, their
+   names for screen readers. All three are secondary buttons at the control height. */
+.gs-lightbox__close::after,
+.gs-lightbox__step::after {
+  content: "";
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-close) center / contain no-repeat;
+  mask: var(--gs-icon-close) center / contain no-repeat;
+}
+.gs-lightbox__close::after { width: 0.75em; height: 0.75em; }
+.gs-lightbox__step { width: var(--gs-control-h); padding: 0; }
+.gs-lightbox__step::after {
+  width: 1.25em;
+  height: 0.875em;
+  -webkit-mask-image: var(--gs-icon-arrow);
+  mask-image: var(--gs-icon-arrow);
+}
+.gs-lightbox__step--previous::after { transform: scaleX(-1); }
 
 /* ---------- Forms ---------- */
 
@@ -2402,6 +2494,8 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-cta-link--more::after,
   .gs-link--external::after,
   .gs-header__menu-toggle::after,
+  .gs-lightbox__close::after,
+  .gs-lightbox__step::after,
   .gs-nav__trigger::after,
   .gs-field__error::before,
   .gs-form-status::before,

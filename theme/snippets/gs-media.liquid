@@ -29,6 +29,12 @@
   @param {boolean} [decorative] - A label follows that names the image (an artwork or document
     tile, a cart row), so it has empty alt even when Files gives it one (DS-63, DS-120)
   @param {string} [class] - Extra wrapper classes
+  @param {boolean} [enlarge] - The image opens larger when clicked (DS-140): the wrapper is a link
+    to its full-size file, which gs-lightbox.js opens in the larger view. Put it inside an element
+    with data-gs-lightbox, holding the group's other images and its caption template
+  @param {number} [number] - With enlarge: the image's place in its group, for the link's name when
+    the image's alt doesn't give it (installation views)
+  @param {number} [total] - With enlarge: how many images the group has
 
   @example
   {%- render 'gs-media', image: card_image, preset: 'card', mode: 'photo', ratio: 'var(--gs-ratio-card)', title: card_title -%}
@@ -81,7 +87,23 @@
     assign alt_text = ''
   endif
 -%}
-{%- if image != blank -%}
+{%- if image != blank and enlarge -%}
+  <a
+    class="gs-media gs-media--{{ mode }} gs-media--enlarge gs-shape-{{ shape }}{% if class != blank %} {{ class }}{% endif %}"
+    href="{{ image | image_url: width: 3000 }}"
+    data-gs-lightbox-item
+    {%- if ratio != blank %} style="--gs-media-ratio: {{ ratio }}"{% endif %}
+  >
+    {{- image | image_url: width: 2400 | image_tag: loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: '400, 600, 800, 1200, 1600, 2000, 2400', alt: alt_text -}}
+    <span class="gs-visually-hidden">
+      {%- if number != blank and total > 1 -%}
+        {{ 'lightbox.open_numbered' | t: number: number, total: total }}
+      {%- else -%}
+        {{ 'lightbox.open' | t }}
+      {%- endif -%}
+    </span>
+  </a>
+{%- elsif image != blank -%}
   <div
     class="gs-media gs-media--{{ mode }} gs-shape-{{ shape }}{% if class != blank %} {{ class }}{% endif %}"
     {%- if ratio != blank %} style="--gs-media-ratio: {{ ratio }}"{% endif %}
