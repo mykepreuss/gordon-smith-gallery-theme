@@ -892,6 +892,12 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-story__flow > .gs-story__credit + * { margin-block-start: 0; }
 .gs-story__split { display: grid; gap: var(--gs-space-5); }
 .gs-story :is(.gs-story__row, .gs-story__split) figure { margin: 0; }
+/* A list of points in a story keeps clear of an offset picture point by point, not as a whole, so
+   the points below the picture take the column again (Plan your visit's Public transport and
+   Parking beside the entrance photo). Each point's rule then stops at the picture. */
+.gs-story__flow > ul.gs-points { display: block; }
+.gs-story__flow > ul.gs-points > li { display: flow-root; }
+.gs-story__flow > ul.gs-points > li + li { margin-block-start: var(--gs-space-5); }
 /* A pull quote keeps clear of the text above and below it. */
 .gs-story__flow > .gs-quote[data-gs-story] { margin-block: var(--gs-space-6); }
 /* From 750 px a picture or quote in the running text is offset: half the column, the text wrapping

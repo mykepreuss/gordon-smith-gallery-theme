@@ -4,7 +4,8 @@
   how much text they have around them. Staff choose nothing but the page's template.
 
   The text is split at its H2 headings. In each part, pictures with nothing between them are a group,
-  and a group belongs to the text before it:
+  and a group belongs to the text before it, or to the text after it when only a heading comes
+  before it:
   - Long text (120 words or more for each picture): the pictures are spread through it, the first
     before its first paragraph, each offset into the margin with the text wrapping round them.
   - A quote stays where the text puts it, offset the same way, as a pull quote.
@@ -105,6 +106,41 @@
         assign before = ''
         assign after_row = false
         assign item_list = items | split: cut_item
+
+        # A group with nothing but a heading before it belongs to the text after it (Plan your
+        # visit's entrance photo, straight after "Getting Here"): it moves after that text, so it is
+        # laid out with it. A quote stays where it is.
+        assign reordered = ''
+        assign held = ''
+        assign text_before = false
+        for item in item_list
+          assign kind = item | slice: 0, 1
+          if kind == 'T'
+            assign reordered = reordered | append: item | append: cut_item
+            if held != ''
+              assign reordered = reordered | append: held | append: cut_item
+              assign held = ''
+            endif
+            assign text_before = false
+            if item contains '<p' or item contains '<ul' or item contains '<ol' or item contains '<blockquote' or item contains '<table'
+              assign text_before = true
+            endif
+          else
+            assign is_quote = false
+            if item contains 'gs-quote'
+              assign is_quote = true
+            endif
+            if text_before == false and forloop.last == false and is_quote == false
+              assign held = item
+            else
+              assign reordered = reordered | append: item | append: cut_item
+            endif
+          endif
+        endfor
+        if held != ''
+          assign reordered = reordered | append: held
+        endif
+        assign item_list = reordered | split: cut_item
         for item in item_list
           assign kind = item | slice: 0, 1
           assign body = item | remove_first: kind
