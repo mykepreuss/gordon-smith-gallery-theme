@@ -147,7 +147,7 @@ CARDS = {
         card("foundation-endowment", "Endowment", 45809013457193,
              "The Gordon and Marion Smith Foundation established a permanent endowment fund whose increasing annual revenues ensure the success and viability of Artists for Kids and their programs and support the Gordon Smith Gallery of Canadian Art in perpetuity. The Vancouver Foundation, Canada's largest community foundation, manages our endowment."),
     ],
-    # The Smith Foundation's board, in the old order.
+    # The Smith Foundation's board, in the old order, less Richard Savage (2026-09-28).
     "board": [
         card(f"board-{h}", name, image, role) for h, name, role, image in [
             ("paul-killeen", "Paul Killeen", "Chair", 45739036213545),
@@ -158,7 +158,8 @@ CARDS = {
             ("shannon-heth", "Shannon Heth", "Director", 45739218829609),
             ("john-david-james", "John David James", "Director", 45739211784489),
             ("allison-kerr", "Allison Kerr", "Director", 46307068936489),
-            ("richard-savage", "Richard Savage", "Director", 45739198382377),
+            # Richard Savage left the board list, 2026-09-28 (Michael: "Remove Richard Savage from Board of
+            # Directors"). His card, board-richard-savage, is still in the store, in no group; README.md.
             ("ed-tsumura", "Ed Tsumura", "Director", 45739204182313),
             ("anne-watt", "Anne Watt", "Director", 45739206476073),
             ("ian-wallace", "Ian Wallace", "Director", 45739208442153),
