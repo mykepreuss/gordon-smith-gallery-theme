@@ -1,0 +1,74 @@
+{%- comment -%}
+  Videos and publications (DS-138): the exhibition entry's Videos and publications field, a list of
+  links, after the text. A YouTube or Vimeo link plays in the page (gs-video: privacy-enhanced,
+  nothing loads until it's scrolled to), captioned with the link's label; any other link (a
+  catalogue's PDF, a zine online) is a standalone link, with "(PDF)" or the external cue from
+  gs-link. Videos first, then the other links, each in the field's order. No links, no section.
+{%- endcomment -%}
+{%- liquid
+  assign links = metaobject.media.value
+  assign has_video = false
+  assign has_other = false
+  for l in links
+    if l.url contains 'youtu' or l.url contains 'vimeo.com/'
+      assign has_video = true
+    else
+      assign has_other = true
+    endif
+  endfor
+-%}
+{%- if links != blank -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'exhibitions.media' | t }}</h2>
+      </div>
+      <div class="gs-media-links">
+        {%- if has_video -%}
+          <ul class="gs-media-links__videos" role="list">
+            {%- for l in links -%}
+              {%- if l.url contains 'youtu' or l.url contains 'vimeo.com/' -%}
+                <li>
+                  <figure class="gs-media-links__video">
+                    {%- render 'gs-video', url: l.url, title: l.text -%}
+                    {%- if l.text != blank -%}<figcaption class="gs-caption">{{ l.text | escape }}</figcaption>{%- endif -%}
+                  </figure>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if has_other -%}
+          <ul class="gs-media-links__list" role="list">
+            {%- for l in links -%}
+              {%- unless l.url contains 'youtu' or l.url contains 'vimeo.com/' -%}
+                <li>{%- render 'gs-link', link: l, class: 'gs-cta-link' -%}</li>
+              {%- endunless -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Videos and publications",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "From the exhibition entry's Videos and publications field: YouTube and Vimeo links play here, captioned with their label; other links (a catalogue, a zine) are listed under them."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Videos and publications"
+    }
+  ]
+}
+{% endschema %}

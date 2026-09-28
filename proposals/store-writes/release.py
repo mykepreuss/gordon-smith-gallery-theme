@@ -54,6 +54,13 @@ AFK_STANDARD = {"artist-in-residence-amelia-butcher", "artist-in-residence-mark-
                 "artist-in-residence-becky-bair", "artist-in-residence-sara-jeanne-bourget",
                 "support-artists-for-kids"}
 AFK_NEW = AFK_PROGRAMME | AFK_STANDARD
+# The Smith Foundation's pages made before release the same way (P-35, P-42; proposals/smith-foundation-site.md),
+# on the standard page template. Supporters waits for the gallery to confirm its donor list (P-43,
+# gallery-questions.md 8.1): until then it stays hidden at release, and its card leaves the Foundation page's
+# "Get involved" group. Take it out of HOLD_AT_RELEASE when the gallery confirms.
+FOUNDATION_NEW = {"smith-foundation-scholarships", "brilliance-gala", "smith-foundation-supporters"}
+HOLD_AT_RELEASE = {"smith-foundation-supporters"}
+NEW_PAGES = AFK_NEW | FOUNDATION_NEW
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
@@ -132,10 +139,10 @@ def addresses(pages, want_vars):
 def staged(pages, want_vars):
     rows, muts, deletes, stop = [], [], [], []
     for p in sorted(pages, key=lambda p: p["handle"]):
-        if not p.get("staged"):
+        if not p.get("staged") or p["handle"] in HOLD_AT_RELEASE:
             continue
         snap = SNAP_BY_ID.get(p["id"], {}).get("body")
-        if snap is None and p["handle"] in AFK_NEW:
+        if snap is None and p["handle"] in NEW_PAGES:
             snap = ""  # made empty before release (P-35); its text is all staged
         new = p["staged"]["value"]
         new_body = "" if new.strip().startswith(CLEARED_PREFIX) and new.strip().endswith("-->") else new
@@ -162,12 +169,13 @@ def staged(pages, want_vars):
 # 3b. The Artists for Kids pages become visible to search engines and the store's search (P-35).
 
 def unhide(pages, want_vars):
-    todo = [p for p in sorted(pages, key=lambda p: p["handle"]) if p["handle"] in AFK_NEW and p.get("hidden")]
-    missing = sorted(AFK_NEW - {p["handle"] for p in pages})
+    todo = [p for p in sorted(pages, key=lambda p: p["handle"])
+            if p["handle"] in NEW_PAGES - HOLD_AT_RELEASE and p.get("hidden")]
+    missing = sorted(NEW_PAGES - {p["handle"] for p in pages})
     if want_vars:
         return {"metafields": [{"ownerId": p["id"], "namespace": "seo", "key": "hidden"} for p in todo]}
     rows = [f"| `{p['handle']}` | hidden (`seo.hidden` = {p['hidden']['value']}) | shown |" for p in todo]
-    return "\n".join(["## Artists for Kids pages: search engines and the store's search", "",
+    return "\n".join(["## New pages (Artists for Kids, the Smith Foundation): search engines and the store's search", "",
                       f"{len(todo)} pages lose `seo.hidden` (metafieldsDelete). Rollback: set it back to 1 on each.", "",
                       "| Page | Now | At release |", "| --- | --- | --- |"] + rows +
                      ([""] + [f"**Missing from the export:** {', '.join(missing)}"] if missing else []))

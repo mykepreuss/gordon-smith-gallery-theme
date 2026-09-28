@@ -97,6 +97,7 @@ Opening reception, curator and venue are required parts of the model (gallery an
 | `credits` | Rich text | | Presenters, partners, sponsors and funders, with links |
 | `funder_logos` | List of files (images) | | Logos a funder requires, e.g. Canada Council for the Arts |
 | `programme` | Single line text, choice | | Gallery, Smith Foundation or Artists for Kids |
+| `media` | List of links | | Videos and publications (added 2026-09-28, DS-138): talks and tours on YouTube or Vimeo play on the page, captioned with their label; catalogues and other links are listed under them |
 
 **Status is computed, not typed.** A snippet compares today with the start and end dates (`theme/snippets/gs-exhibition-status.liquid`), so an exhibition moves from Upcoming to On Now to Past on its own. Liquid can loop over up to 50 entries at once and paginate up to 250 per page ([Shopify: metaobject_definition](https://shopify.dev/docs/api/liquid/objects/metaobject_definition)); the gallery will stay well inside that.
 
@@ -198,6 +199,8 @@ Added 2026-09-26, when the catalogue at afkcatalogue.sd44.ca moved into the stor
 | `artwork` | `/pages/collection/<accession number>` | Title, artists (a list, for works made together), year, category (one of eight), medium, dimensions, edition, accession number, credit line, images, themes, about the work, the edition in the Shop, shown in (exhibitions) |
 | `collection_group` | `/pages/browse/<handle>` | Name, kind (category, theme or grouping), introduction, works |
 | `document` | none (shown on the artist's page) | Title, cover (an image), file (the PDF, or the photograph itself). An artist's Documents field lists them (DS-63) |
+
+The exhibition entry also gained **Videos and publications** (`media`, a list of links, 2026-09-28, DS-138, P-46), for the talks, tours and catalogues of the exhibitions moved from the Smith Foundation's old site (`proposals/smith-foundation-site.md`).
 
 The exhibition entry gained **Works from the collection** (`collection_works`, a list of artwork entries, 2026-09-27, DS-63), which its page shows after the installation views.
 

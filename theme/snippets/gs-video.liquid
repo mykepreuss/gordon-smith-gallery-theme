@@ -1,19 +1,31 @@
 {% doc %}
-  A YouTube video from its address (a lesson's Video field, DS-70), as a privacy-enhanced embed at
-  16:9: nothing loads from YouTube until the reader scrolls to it, and YouTube sets no cookies
-  until the video plays. Takes a watch, short, youtu.be or embed address. Any other address (a
-  Vimeo link, a file) becomes a plain link to the video, so nothing is lost.
+  A YouTube or Vimeo video from its address (a lesson's Video field, DS-70; an exhibition's Videos
+  and publications, DS-138), as a privacy-enhanced embed at 16:9: nothing loads until the reader
+  scrolls to it, YouTube sets no cookies until the video plays, and Vimeo is asked not to track
+  (dnt). Takes a YouTube watch, short, youtu.be or embed address, or a Vimeo address
+  (vimeo.com/<id> or player.vimeo.com/video/<id>). Any other address (a file, a page) becomes a
+  plain link to the video, so nothing is lost.
 
   @param {string} url - The video's address
-  @param {string} title - What the video is, for screen readers: the lesson's title
+  @param {string} title - What the video is, for screen readers: the lesson's or link's title
 
   @example
   {%- render 'gs-video', url: metaobject.video.value, title: metaobject.title.value -%}
 {% enddoc %}
 {%- liquid
   assign id = ''
+  assign vimeo = ''
   assign address = url | strip
-  if address contains 'youtu.be/'
+  if address contains 'vimeo.com/'
+    assign vimeo = address | split: 'vimeo.com/' | last | remove: 'video/' | split: '?' | first | split: '#' | first | split: '/' | first
+    comment
+      Only a numbered video plays; any other Vimeo page (a channel, a showcase) stays a link.
+    endcomment
+    assign vimeo_number = vimeo | plus: 0 | append: ''
+    if vimeo_number != vimeo
+      assign vimeo = ''
+    endif
+  elsif address contains 'youtu.be/'
     assign id = address | split: 'youtu.be/' | last
   elsif address contains 'youtube.com/watch' and address contains 'v='
     assign id = address | split: 'v=' | last
@@ -24,7 +36,18 @@
   endif
   assign id = id | split: '?' | first | split: '&' | first | split: '#' | first | split: '/' | first
 -%}
-{%- if id != blank -%}
+{%- if vimeo != blank -%}
+  <div class="gs-video">
+    <iframe
+      src="https://player.vimeo.com/video/{{ vimeo }}?dnt=1"
+      title="{{ 'lessons.video_title' | t: title: title | escape }}"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+{%- elsif id != blank -%}
   <div class="gs-video">
     <iframe
       src="https://www.youtube-nocookie.com/embed/{{ id | url_encode }}?rel=0"

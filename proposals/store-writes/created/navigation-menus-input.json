@@ -85,6 +85,11 @@
       "url": "#",
       "items": [
        {
+        "title": "Smith Foundation scholarships",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/165856379177"
+       },
+       {
         "title": "Artists for Kids awards",
         "type": "PAGE",
         "resourceId": "gid://shopify/Page/165838225705"
@@ -109,9 +114,19 @@
       "resourceId": "gid://shopify/Page/165838258473"
      },
      {
+      "title": "Brilliance Gala",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/165856444713"
+     },
+     {
       "title": "Volunteer",
       "type": "PAGE",
       "resourceId": "gid://shopify/Page/155902738729"
+     },
+     {
+      "title": "Supporters",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/165856477481"
      }
     ]
    },
@@ -195,21 +210,5 @@
    }
   ]
  },
- "later": [
-  {
-   "page": "/pages/smith-foundation-scholarships",
-   "title": "Smith Foundation scholarships",
-   "where": "Programs, Scholarships and awards, first"
-  },
-  {
-   "page": "/pages/brilliance-gala",
-   "title": "Brilliance Gala",
-   "where": "Support, after Give to Artists for Kids"
-  },
-  {
-   "page": "/pages/smith-foundation-supporters",
-   "title": "Supporters",
-   "where": "Support, last"
-  }
- ]
+ "later": []
 }

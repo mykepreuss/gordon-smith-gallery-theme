@@ -10,14 +10,14 @@ By what visitors come to do, not by which organisation runs a page (P-50 to P-57
 | --- | --- | --- | --- |
 | Exhibitions | Link | On now (`/pages/on-now`) | Was a section of three. Upcoming and Past are reached from the switcher on the three lists (P-51) |
 | Collection | Section | The collection (`/pages/permanent-collection`), Artists (`/pages/artists`) | None (P-26) |
-| Programs | Section with groups | Upcoming events (`/pages/upcoming-events`). **Public programs** (`/pages/public-programs-1`): Speaker series, Music at the Smith, Explore + Create, Art in Good Company. **Artists for Kids** (`/pages/artists-for-kids`): Classes and camps, Schools and teachers. **Scholarships and awards** (no page, "#"): Smith Foundation scholarships once its page exists, Artists for Kids awards (`/pages/awards-and-scholarships`) | Artists for Kids leaves the bar and becomes a group here, its title linking to its page; the two organisations' scholarships sit together (P-52) |
-| Support | Section | Give to the Smith Foundation (`/pages/donate`), Give to Artists for Kids (`/pages/support-artists-for-kids`), Brilliance Gala once its page exists, Volunteer (`/pages/volunteer`), Supporters once its page exists | New. Takes the Smith Foundation section's place; Volunteer leaves About, and Support Artists for Kids leaves Artists for Kids (P-53) |
+| Programs | Section with groups | Upcoming events (`/pages/upcoming-events`). **Public programs** (`/pages/public-programs-1`): Speaker series, Music at the Smith, Explore + Create, Art in Good Company. **Artists for Kids** (`/pages/artists-for-kids`): Classes and camps, Schools and teachers. **Scholarships and awards** (no page, "#"): Smith Foundation scholarships (`/pages/smith-foundation-scholarships`), Artists for Kids awards (`/pages/awards-and-scholarships`) | Artists for Kids leaves the bar and becomes a group here, its title linking to its page; the two organisations' scholarships sit together (P-52) |
+| Support | Section | Give to the Smith Foundation (`/pages/donate`), Give to Artists for Kids (`/pages/support-artists-for-kids`), Brilliance Gala (`/pages/brilliance-gala`), Volunteer (`/pages/volunteer`), Supporters (`/pages/smith-foundation-supporters`) | New. Takes the Smith Foundation section's place; Volunteer leaves About, and Support Artists for Kids leaves Artists for Kids (P-53) |
 | About | Section | About the gallery (`/pages/about-us`), Plan your visit (`/pages/plan-your-visit`), Gordon and Marion Smith (`/pages/gordon-and-marion`), The Smith Foundation (`/pages/the-smith-foundation`) | Gains Gordon and Marion, with "Smith" in its label, and the Foundation's page. Visit stays here; the header shows today's opening line (P-54, DS-132) |
 | Shop | Link | The Shop page (`/pages/shop`) | Was a section with the five portfolios, which the Shop page and the portfolio switcher list (P-55) |
 
 Each section's own link in the Shopify menu editor points at one of its links (Programs at Public programs' title, Support at Donate), so `snippets/gs-nav.liquid` raises no editor warning.
 
-**The three Foundation pages planned in `proposals/smith-foundation-site.md`** (Scholarships at `/pages/smith-foundation-scholarships`, Brilliance Gala at `/pages/brilliance-gala`, Supporters at `/pages/smith-foundation-supporters`) join this menu when they're made, where the table says, with `menuUpdate` keeping the other items' IDs. That plan had them in a Smith Foundation section; P-53 and P-52 place them instead. `proposals/store-writes/navigation.py`, `LATER`.
+**The three Foundation pages from `proposals/smith-foundation-site.md`** joined this menu when they were made, 2026-09-28, where the table says, with `menuUpdate` keeping the other items' IDs (P-52, P-53). If the gallery hasn't confirmed the Supporters list by release (P-43, `gallery-questions.md` 8.1), Supporters leaves the menu that day (§8c).
 
 **How it is applied:** during review, as a menu referenced only by the new theme, so the live header doesn't change. At release, publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.
 
@@ -63,6 +63,8 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 **Also done 2026-09-27, with Michael's go-ahead ("all recommendations are approved ... let's get started on implementation"):** the Artists for Kids site's content (P-30 to P-40): the `lesson` definition and the event's `keep_off_home` field (content model part 8), 92 files, 27 lessons, 46 cards, 15 card groups and two extended ones, 6 events and the curatorial tour's programme page, 18 pages published with their title only and hidden from search engines (P-35), their fields and staged text, the Artists for Kids page's new card groups, button and history, and the review menu's Artists for Kids section. Log: `proposals/store-writes/README.md`.
 
 **Also done 2026-09-28, with Michael's go-ahead ("Proceed with implementing this new navigation and IA"):** the artist entry's About page field (`about_page`, a page reference, P-57), set on Gordon Smith's entry to Gordon and Marion; the eyebrow "The Smith Foundation" on Donate and Gordon and Marion, which links back to the Foundation's page (DS-80); and Gordon and Marion's button, "See Gordon Smith's works". Log: `proposals/store-writes/README.md`.
+
+**Also done 2026-09-28, with Michael's go-ahead ("Yes to everything except integrating the older Year in Review content", then "Proceed with implementation"):** the Smith Foundation's old website (P-41 to P-49, DS-138; `proposals/smith-foundation-site.md`): the exhibition field Videos and publications (`media`, a list of links), 60 files, 17 older exhibitions (2013 to 2019) and nine existing ones filled in, the Foundation page's scholarship and gala cards linked and a Supporters card added, three pages published with their title only and hidden from search engines (P-35), their fields and staged text, staged additions on Speaker Series, Music at the Smith, Gordon and Marion and Awards and scholarships, and the three pages in the new theme's menu. Log: `proposals/store-writes/README.md`.
 
 ## 5. Addresses at release (P-10, P-20, P-24, P-25, DS-129)
 
@@ -144,6 +146,9 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | The Smith Foundation | Its two paragraphs, word for word, without the line above them that repeated the first sentence's opening (the Foundation's full name). Explore + Create, Art In Good Company, Speaker Series and Music at The Smith link to their pages; the Gordon and Marion link stays on the site instead of opening a new tab (DS-52) |
 | Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading (P-24), with Our Story's sentence on art specialists and its fuller caption for the Bill Reid print (P-25). Our Story's sentence on the ceremonial drum was added, then dropped because it repeated the sentences around it. Words unchanged; both pictures become figures with their own captions; "contemporary limited editions" links to the Shop; pasted formatting stays behind. 2026-09-27 (P-30): two paragraphs from the Artists for Kids site's Who We Are join the History, then "Meet the Artists for Kids Team" (the team photo and four names) and the 2024-2025 annual report (PDF) |
 | The 18 Artists for Kids pages (P-35) | All their text: the pages were made with none, so the live site shows only their titles until release (`proposals/store-writes/artists-for-kids/content.py`) |
+| Speaker Series, Music at the Smith | Their text, then "Past talks" and "Past concerts" from the Smith Foundation's old site, and on Music at the Smith the Steinway (P-44; `proposals/store-writes/foundation/content.py`) |
+| Gordon and Marion, Awards and scholarships | Their staged text above, then the obituary line and a second video (Gordon and Marion), and a line linking the Foundation's scholarships (Awards and scholarships) |
+| Scholarships, Brilliance Gala, Supporters (P-35, P-42) | All their text, from the Smith Foundation's old site. Supporters only if the gallery has confirmed its list (§8c) |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 
@@ -164,6 +169,16 @@ The 18 pages are published but carry `seo.hidden` (noindex, out of the sitemap a
 The team cuts the old site (artistsforkids.sd44.ca) back to registration the same day (P-30): After School Art, the camps and their forms, with links here. The list of old and new addresses is in `proposals/artists-for-kids-integration.md`, "Where each page goes".
 
 Rollback: set `seo.hidden` back to 1 on each page, or hide the pages. The lessons, cards and events can stay: the old theme reads none of them.
+
+## 8c. The Smith Foundation's pages at release (P-35, P-42, P-43)
+
+Scripts: `release.py templates` (the standard page template), `staged`, `unhide`: the three pages are in `FOUNDATION_NEW`.
+
+The same as the Artists for Kids pages (§8b): published with a title only and `seo.hidden` until release; at release their template changes, their text moves in and `seo.hidden` goes.
+
+**Supporters waits for the gallery** (P-43, `gallery-questions.md` 8.1). It is in `HOLD_AT_RELEASE`, so `staged` and `unhide` skip it. If the gallery hasn't confirmed the list by release, the same day: take Supporters out of the new theme's menu (`menuUpdate`, the other items keep their IDs), take `foundation-supporters` out of the card group `foundation-take-part`, and hide the page. When the gallery confirms: take it out of `HOLD_AT_RELEASE`, run the three steps for it, put it back in the menu and the group, and link Donate's "donor page" to it (the one change to Donate's staged text still to make).
+
+Rollback: set `seo.hidden` back to 1 on each page, or hide the pages. The exhibitions and cards can stay: the old theme reads none of them.
 
 ## 9. Frame products at release (P-19)
 

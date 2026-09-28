@@ -122,6 +122,9 @@ From the old smithfoundation.co site (`proposals/smith-foundation-site.md`). Eac
 | 8.7 | Does the gallery still sell the 11 publications the old shop listed? If so, their prices and how many are left | Not in the Shop |
 | 8.8 | Who wrote the Off the Wall auction's press quote ("more than $115,000 raised")? Perhaps Fred Lee, in the Vancouver Courier | Left out |
 | 8.9 | Every old smithfoundation.co address except the home page gives an error. Should old addresses forward to their new pages? That needs the Foundation's domain settings | Nothing forwards |
+| 8.10 | Confirm the three new pages' titles, as the old site had them: Scholarships ("Smith Foundation scholarships" in the menu), Brilliance Gala, Supporters. And the few words that are ours: the Awards and scholarships page's last line ("The Gordon and Marion Smith Foundation offers its own Young Artist Scholarships, separate from these awards."), the gala page's headings "Brilliance 2023" and "Spring Luncheons" and its lines "Guests: 300. Raised: $471,000." and "Guests: 150. Raised: $148,000." (the old site's counters), "2019 auction catalogue (PDF)", and "The Steinway" on Music at the Smith | As written |
+| 8.11 | Three older exhibitions had no picture on the old site, so their key image is a work of theirs from the collection: Alistair Bell, *Tall Bird*, 1961; Yung Wing Chow, *Flux I*, 2013, for *Work Is Art* ("Wing Chow" in its text); Robert Young, *The Jazz Player/ Sounds Inside*, 1973. Better choices, or photos of the shows? And confirm the title of Tiko Kerr's painting on *Reframed*, taken from its file's name: *Before the Inferno I Had a Light Heart* | As chosen |
+| 8.12 | Confirm the alt text of the 52 photos from the old site, written from looking at each (`proposals/store-writes/foundation/alt.json`). No one is named, since we can't tell who is who; one of the 2013 luncheon photos may show Gordon Smith | As written |
 
 ## 9. Photos and files to send
 
