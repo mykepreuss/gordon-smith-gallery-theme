@@ -2,7 +2,8 @@
   More exhibitions, at the end of an exhibition's page (DESIGN.md §7.5): three compact cards,
   first what's on now and coming up, then, to fill the row, the most recent past exhibitions that
   have their own page (DS-130). A row with a current show says each card's status. Never the
-  exhibition being shown.
+  exhibition being shown. Entries are read back inside a paginate tag: a plain loop stops at 50
+  (DS-152).
 {%- endcomment -%}
 {%- liquid
   assign handle = metaobject.system.handle
@@ -37,18 +38,20 @@
         {%- endif -%}
       </div>
       <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
-        {%- for id in ids -%}
-          {%- liquid
-            assign n = id | plus: 0
-            capture card_sizes
-              render 'gs-grid-sizes', mods: mods, index: forloop.index
-            endcapture
-            assign card_sizes = card_sizes | strip
-          -%}
-          {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
-            <li>{%- render 'gs-exhibition-card', entry: entry, show_status: show_status, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+        {%- paginate shop.metaobjects.exhibition.values by 250 -%}
+          {%- for id in ids -%}
+            {%- liquid
+              assign n = id | plus: 0
+              capture card_sizes
+                render 'gs-grid-sizes', mods: mods, index: forloop.index
+              endcapture
+              assign card_sizes = card_sizes | strip
+            -%}
+            {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+              <li>{%- render 'gs-exhibition-card', entry: entry, show_status: show_status, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+            {%- endfor -%}
           {%- endfor -%}
-        {%- endfor -%}
+        {%- endpaginate -%}
       </ul>
     </div>
   </section>

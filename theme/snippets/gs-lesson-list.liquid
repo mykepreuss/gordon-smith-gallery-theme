@@ -3,7 +3,8 @@
   the note that goes with the videos after them. Rendered by the page text section on the page
   chosen as ArtReach videos page in Theme settings, after the page's opening and its cards,
   whatever template the page has (as the visit details are on Plan your visit, DS-61). Staff add a
-  lesson in Content, Metaobjects, Lesson; it shows here by itself.
+  lesson in Content, Metaobjects, Lesson; it shows here by itself. Lessons are read back inside a
+  paginate tag: a plain loop stops at 50 entries (DS-152).
 
   @param {string} id - A unique prefix for the heading's id: the section's id
 
@@ -25,18 +26,20 @@
       <div class="gs-container">
         <h2 class="gs-visually-hidden" id="{{ id }}-heading">{{ 'lessons.heading' | t }}</h2>
         <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
-          {%- for pos in ids -%}
-            {%- liquid
-              assign n = pos | plus: 0
-              capture card_sizes
-                render 'gs-grid-sizes', mods: mods, index: forloop.index
-              endcapture
-              assign card_sizes = card_sizes | strip
-            -%}
-            {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
-              <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3', sizes: card_sizes -%}</li>
+          {%- paginate shop.metaobjects.lesson.values by 250 -%}
+            {%- for pos in ids -%}
+              {%- liquid
+                assign n = pos | plus: 0
+                capture card_sizes
+                  render 'gs-grid-sizes', mods: mods, index: forloop.index
+                endcapture
+                assign card_sizes = card_sizes | strip
+              -%}
+              {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+                <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3', sizes: card_sizes -%}</li>
+              {%- endfor -%}
             {%- endfor -%}
-          {%- endfor -%}
+          {%- endpaginate -%}
         </ul>
         {%- if settings.lessons_note != blank -%}
           <p class="gs-meta gs-lessons-note">{{ settings.lessons_note | escape | newline_to_br }}</p>

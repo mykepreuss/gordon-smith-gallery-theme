@@ -20,6 +20,8 @@
     render 'gs-exhibition-index', status: 'current', exclude: lead_handle
   endcapture
   assign ex_ids = ex_ids | strip | split: ','
+  # Entries are read back inside their own paginate tag: a plain loop stops at 50 (DS-148, DS-152).
+  paginate shop.metaobjects.exhibition.values by 250
   for id in ex_ids
     assign n = id | plus: 0
     for entry in shop.metaobjects.exhibition.values offset: n limit: 1
@@ -27,13 +29,13 @@
       assign keys = keys | append: when | append: '-x-' | append: id | append: ','
     endfor
   endfor
+  endpaginate
 
   capture ev_ids
     render 'gs-event-index'
   endcapture
   assign ev_ids = ev_ids | strip | split: ','
   assign seen = '|'
-  # Events are read back inside a paginate tag: a plain loop stops at 50 entries (DS-148).
   paginate shop.metaobjects.event.values by 250
   for id in ev_ids
     assign n = id | plus: 0
@@ -72,7 +74,10 @@
         </p>
       </div>
       <ul class="gs-grid gs-grid--cards gs-rail" role="list">
-        {%- paginate shop.metaobjects.event.values by 250 -%}
+        {%- comment -%}
+          Each kind has its own paginate tag, the innermost one around its loop: inside the other
+          kind's tag its entries would be read 50 at a time again (DS-152).
+        {%- endcomment -%}
         {%- for item in items limit: 6 -%}
           {%- liquid
             assign parts = item | split: '-'
@@ -80,17 +85,20 @@
           -%}
           <li>
             {%- if parts[1] == 'x' -%}
-              {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
-                {%- render 'gs-exhibition-card', entry: entry, show_status: true -%}
-              {%- endfor -%}
+              {%- paginate shop.metaobjects.exhibition.values by 250 -%}
+                {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+                  {%- render 'gs-exhibition-card', entry: entry, show_status: true -%}
+                {%- endfor -%}
+              {%- endpaginate -%}
             {%- else -%}
-              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-                {%- render 'gs-event-card', event: event, lead: lead_handle -%}
-              {%- endfor -%}
+              {%- paginate shop.metaobjects.event.values by 250 -%}
+                {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                  {%- render 'gs-event-card', event: event, lead: lead_handle -%}
+                {%- endfor -%}
+              {%- endpaginate -%}
             {%- endif -%}
           </li>
         {%- endfor -%}
-        {%- endpaginate -%}
       </ul>
     </div>
   </section>
