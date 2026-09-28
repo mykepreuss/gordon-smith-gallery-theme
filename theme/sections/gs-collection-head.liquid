@@ -7,7 +7,7 @@
 {%- if collection.image != blank -%}
   <div class="gs-section gs-section--lead gs-collection-head">
     <div class="gs-hero">
-      {%- render 'gs-media', image: collection.image, preset: 'hero', mode: 'photo', shape: 'lg', class: 'gs-hero__media', alt: collection.title -%}
+      {%- render 'gs-media', image: collection.image, preset: 'hero', mode: 'photo', shape: 'lg', class: 'gs-hero__media', title: collection.title -%}
       <div class="gs-hero__box gs-surface-accent">
         <h1 class="gs-h1"{% render 'gs-fit', text: collection.title %}>{{ collection.title | escape }}</h1>
       </div>
@@ -17,7 +17,7 @@
     </div>
     {%- if collection.description != blank -%}
       <div class="gs-container gs-collection-intro">
-        <div class="gs-prose">{{ collection.description }}</div>
+        <div class="gs-prose">{%- capture html -%}{{ collection.description }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       </div>
     {%- endif -%}
   </div>
@@ -26,7 +26,7 @@
     <header class="gs-page-head">
       <h1 class="gs-h1"{% render 'gs-fit', text: collection.title %}>{{ collection.title | escape }}</h1>
       {%- if collection.description != blank -%}
-        <div class="gs-prose">{{ collection.description }}</div>
+        <div class="gs-prose gs-page-head__deck">{%- capture html -%}{{ collection.description }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       {%- endif -%}
       {%- if credit != blank -%}
         <p class="gs-caption">{{ credit | escape }}</p>

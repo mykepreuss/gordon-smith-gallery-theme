@@ -75,8 +75,7 @@
             render 'gs-url', link: cta
           endcapture
           assign cr = cr | strip | split: '|'
-          assign cta_end = cr[0] | split: '?' | first | downcase | slice: -4, 4
-          if cr[1] == '1' and cta_end != '.pdf'
+          if cr[1] == '1' and cr[2] != '1'
             assign repeat_cta = true
           endif
         endif

@@ -8,7 +8,8 @@
   A part with no words, only pictures, lays them out under its heading instead of beside an
   empty column: one at the reading width, two or more side by side from 750 px (DS-78, Proposed).
   Two tall photos in a row pair up side by side from 750 px (DS-77, Proposed): a photo figure whose
-  picture is taller than wide is marked data-gs-tall.
+  picture is taller than wide is marked data-gs-tall. A part whose text opens with a figure is
+  marked gs-text-media--lead, and below 990 px its pictures come before its text (DS-94, Proposed).
 
   With heads, each H2 is the heading of a part of the page, level with a card group's heading:
   section-heading size, above the text and its pictures (DS-51). Without, H2s stay page-text
@@ -44,6 +45,8 @@
       assign prose = ''
       assign media = ''
       assign chunks = html | split: '<figure'
+      # A part whose text opens with a figure shows it first below 990 px (DS-94, Proposed).
+      assign before = chunks.first | strip
       for chunk in chunks
         if forloop.first
           assign prose = chunk
@@ -80,7 +83,7 @@
       {%- if head != blank -%}
         <div class="gs-section-head">{{ head }}</div>
       {%- endif -%}
-      <div class="gs-text-media{% if media == blank %} gs-text-media--text{% elsif words == blank %} gs-text-media--media{% endif %}">
+      <div class="gs-text-media{% if media == blank %} gs-text-media--text{% elsif words == blank %} gs-text-media--media{% endif %}{% if before == blank and media != blank %} gs-text-media--lead{% endif %}">
         {%- if prose != blank -%}
           <div class="gs-prose">{{ prose }}</div>
         {%- endif -%}

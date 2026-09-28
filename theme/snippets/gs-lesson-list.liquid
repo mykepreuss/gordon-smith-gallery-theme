@@ -18,21 +18,28 @@
     capture mods
       render 'gs-grid-modifiers', count: ids.size
     endcapture
+    assign mods = mods | strip_newlines
   -%}
   {%- if ids.size > 0 -%}
     <section class="gs-section gs-surface-paper{% if page.metafields.custom.card_groups.value == blank %} gs-section--continues{% endif %}" aria-labelledby="{{ id }}-heading">
       <div class="gs-container">
         <h2 class="gs-visually-hidden" id="{{ id }}-heading">{{ 'lessons.heading' | t }}</h2>
-        <ul class="gs-grid gs-grid--cards{{ mods | strip_newlines }}">
+        <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
           {%- for pos in ids -%}
-            {%- assign n = pos | plus: 0 -%}
+            {%- liquid
+              assign n = pos | plus: 0
+              capture card_sizes
+                render 'gs-grid-sizes', mods: mods, index: forloop.index
+              endcapture
+              assign card_sizes = card_sizes | strip
+            -%}
             {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
-              <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3' -%}</li>
+              <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3', sizes: card_sizes -%}</li>
             {%- endfor -%}
           {%- endfor -%}
         </ul>
         {%- if settings.lessons_note != blank -%}
-          <p class="gs-meta gs-lessons__note">{{ settings.lessons_note | escape | newline_to_br }}</p>
+          <p class="gs-meta gs-lessons-note">{{ settings.lessons_note | escape | newline_to_br }}</p>
         {%- endif -%}
       </div>
     </section>

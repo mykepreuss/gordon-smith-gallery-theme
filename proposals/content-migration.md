@@ -29,7 +29,7 @@ Source: the baseline theme's templates and section groups (commit 27ef593), read
 | --- | --- |
 | Rotating banner, 4 images, autoplay | The hero leads with the exhibition on now (DS-30). When nothing is on, it shows one image from the home template's settings: the banner's first image (`ON9DA8_1.jpg`) is set. No autoplay carousel |
 | The whole On Now page embedded | Exhibitions on now and upcoming, from exhibition entries |
-| "Shop Limited Editions", 2026 Spring Portfolio, "View Shop" | Shop feature: the newest portfolio automatically, linking to the Shop landing |
+| "Shop Limited Editions", 2026 Spring Portfolio, "View Shop" | New limited editions: the newest portfolio's works automatically, linking to the portfolio and to all editions (DS-54) |
 | Two frame blocks | Dropped (the product page offers the frame) |
 
 ## Exhibitions
@@ -58,7 +58,7 @@ Source: the baseline theme's templates and section groups (commit 27ef593), read
 | `page.gordon-and-marion` | Banner; Vimeo video "Gordon Smith's Magic" with a cover image | Hero image; the video embedded in the page body |
 | `page.plan-your-visit`, `page.about-us` | Banner (and the page's own body) | Hero image field |
 | `page.contact` | "Contact Us"; contact form; newsletter ("Join Our Newsletter" and a sentence) | Contact template; the newsletter band is site-wide (DS-09) and reuses this wording until the gallery supplies final copy |
-| `page.engage` (unused) | 3 columns | Nothing today; a card group if the gallery wants it |
+| `page.engage` (unused) | 3 columns | Nothing. The Engage page itself (default template) repeats Public programs' opening and nothing links to it, so it is hidden at release and forwards to `/pages/public-programs-1` (DS-129, `store-changes.md` §5) |
 | `page.shop` (Shop and Our Story) | Rotating banner; the Our Story page embedded; photo credit | Shop landing: one introduction and the portfolio navigation (DS-14, SHOP-01, SHOP-02); Our Story keeps its own page |
 
 ## Shop

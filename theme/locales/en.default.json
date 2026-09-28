@@ -2,10 +2,18 @@
   "general": {
     "skip_to_content": "Skip to content",
     "external_site": "(external site)",
-    "pagination": "Pages",
+    "pagination": "Page numbers",
     "previous": "Previous",
     "next": "Next",
-    "pdf": "(PDF)"
+    "page": "Page",
+    "pdf": "(PDF)",
+    "title_tagged": "tagged {{ tags }}",
+    "title_page": "page {{ number }}",
+    "site_title": {
+      "gallery": "Gordon Smith Gallery",
+      "artists_for_kids": "Artists for Kids",
+      "foundation": "The Gordon and Marion Smith Foundation"
+    }
   },
   "header": {
     "home": "Gordon Smith Gallery, home",
@@ -34,7 +42,7 @@
     "email_label": "Email address",
     "submit": "Sign up",
     "busy": "Signing up",
-    "done": "You're signed up for the newsletter.",
+    "done": "You’re signed up for the newsletter.",
     "error_email": "Enter an email address like name@example.com."
   },
   "exhibitions": {
@@ -51,18 +59,24 @@
     "switcher_on_now": "On now",
     "switcher_upcoming": "Upcoming",
     "switcher_past": "Past",
+    "count": {
+      "one": "1 exhibition",
+      "other": "{{ count }} exhibitions"
+    },
     "list_label": "Exhibitions",
     "all_past": "All past exhibitions",
     "empty_on_now": "No exhibitions are on right now.",
-    "empty_on_now_link": "See what's coming up",
+    "empty_on_now_link": "See what’s coming up",
     "empty_upcoming": "No upcoming exhibitions are announced yet.",
-    "empty_upcoming_link": "See what's on now",
+    "empty_upcoming_link": "See what’s on now",
     "empty_past": "No past exhibitions to show yet.",
-    "details_label": "About the exhibition",
+    "empty_past_link": "See what’s on now",
+    "details_label": "Exhibition details",
     "curator": "Curator",
     "venue": "Where",
     "reception": "Opening reception",
     "artists": "Artists",
+    "collection_artists": "From the collection",
     "events": "Events",
     "credits": "Credits",
     "installation_views": "Installation views",
@@ -74,12 +88,14 @@
   "events": {
     "time_range": "{{ start }} to {{ end }}",
     "tickets": "Tickets",
-    "empty": "No events are scheduled right now."
+    "empty": "No events are scheduled right now.",
+    "empty_link": "See what’s on now"
   },
   "shop": {
     "portfolios": "Portfolios",
     "all_editions": "All editions",
     "all_editions_link": "All limited editions",
+    "crumb": "Limited editions",
     "see_portfolio": "See the {{ title }}",
     "editions_count": {
       "one": "{{ count }} edition",
@@ -98,19 +114,22 @@
     "adding": "Adding",
     "frame_heading": "Add a frame",
     "add_frame": "Add frame to cart",
+    "adding_frame": "Adding frame",
     "frame_sold_out": "This frame is sold out.",
     "disclosure": "Disclosure",
-    "about_work": "About the work"
+    "about_work": "About the work",
+    "details": "Details",
+    "view_of": "View {{ number }} of {{ total }}"
   },
   "contact": {
     "details_heading": "Visit and contact",
-    "name": "Name",
+    "name": "Name (optional)",
     "email": "Email address",
     "phone": "Phone (optional)",
     "message": "Message",
     "submit": "Send",
     "busy": "Sending",
-    "done": "Thanks, your message is sent. We'll reply by email.",
+    "done": "Thanks, your message is sent. We’ll reply by email.",
     "error_message": "Write a message before sending."
   },
   "cart": {
@@ -121,31 +140,46 @@
     "checkout": "Check out",
     "subtotal": "Subtotal: {{ amount }}",
     "taxes_shipping": "Taxes and shipping are calculated at checkout.",
-    "empty": "Your cart is empty."
+    "empty": "Your cart is empty.",
+    "add_frame": "Add its frame, {{ price }}"
   },
   "search": {
     "title": "Search",
     "label": "Search the site",
     "submit": "Search",
-    "no_results": "Nothing found for “{{ terms }}”. Try another word, or fewer words.",
+    "no_results": "Nothing on the site matches “{{ terms }}”.",
     "results": {
       "one": "1 result for “{{ terms }}”",
       "other": "{{ count }} results for “{{ terms }}”"
-    }
+    },
+    "exhibitions_heading": "Exhibitions",
+    "exhibitions_found": {
+      "one": "1 exhibition matches “{{ terms }}”",
+      "other": "{{ count }} exhibitions match “{{ terms }}”"
+    },
+    "artists_heading": "Artists",
+    "lessons_heading": "Lessons",
+    "lessons_found": {
+      "one": "1 lesson matches “{{ terms }}”",
+      "other": "{{ count }} lessons match “{{ terms }}”"
+    },
+    "pages_heading": "Pages",
+    "editions_heading": "Limited editions"
   },
   "not_found": {
     "title": "Page not found",
-    "text": "This address doesn't lead to a page. It may have moved.",
+    "text": "This address doesn’t lead to a page. It may have moved.",
     "home": "Go to the home page",
     "search": "Search the site"
   },
   "blog": {
-    "empty": "No articles yet."
+    "empty": "No articles yet.",
+    "empty_link": "See upcoming events"
   },
   "password": {
     "title": "This shop is private",
     "password": "Password",
-    "error": "That password isn't right. Try again.",
+    "error": "That password isn’t right. Try again.",
     "enter": "Enter"
   },
   "gift_card": {
@@ -157,7 +191,6 @@
   },
   "visit": {
     "address": "Address",
-    "hours": "Hours",
     "plan_link": "{{ title }}",
     "details": "Visit details",
     "gallery_hours": "Gallery hours",
@@ -177,7 +210,8 @@
     "weekdays": "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
   },
   "home": {
-    "all_events": "All events"
+    "all_events": "All events",
+    "see_portfolio": "See the portfolio"
   },
   "collection": {
     "works_heading": "Works in the collection",
@@ -191,6 +225,8 @@
     },
     "totals": "{{ works }} works and {{ artists }} artists",
     "documents": "Documents",
+    "document_blank": "PDF",
+    "no_image": "No image",
     "in_the_shop": "In the Shop",
     "edition_for_sale": "This work is also a limited edition in the Shop.",
     "exhibitions_heading": "Exhibitions at the gallery",
@@ -213,6 +249,7 @@
     "search_heading": "Search the collection",
     "search_label": "Artist, title, medium or theme",
     "search_loading": "Searching the collection",
+    "search_error": "The collection didn’t load. Try again, or browse by artist or category below.",
     "works_found_one": "1 work matches “{{ terms }}”",
     "works_found_other": "{{ number }} works match “{{ terms }}”",
     "works_none": "No works match “{{ terms }}”. Try another word, or browse by artist or category below.",
@@ -223,15 +260,16 @@
     "by_theme": "By theme",
     "site_heading": "In the collection",
     "site_all": "See every match in the collection",
-    "exhibition_works": "Works from the collection"
+    "exhibition_works": "Works from the collection",
+    "see_edition": "See the edition"
   },
   "lessons": {
     "heading": "Lessons",
     "lesson": "The lesson",
-    "making": "We're making",
-    "inspired_by": "We're inspired by",
+    "making": "We’re making",
+    "inspired_by": "We’re inspired by",
     "grades": "Suggested grade levels",
-    "wondering": "We're wondering",
+    "wondering": "We’re wondering",
     "more": "More lessons",
     "all": "All ArtReach videos",
     "watch": "Watch the video",

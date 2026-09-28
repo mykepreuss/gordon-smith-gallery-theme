@@ -3,7 +3,8 @@
    every work.
 
    1. Artists A to Z ([data-gs-index]): a field that narrows the list as you type. Every word must
-      appear in the artist's names (name, full name, other names), accents ignored.
+      appear in the artist's names (name, full name, other names), accents ignored. A link with
+      ?q= opens with the list narrowed.
    2. Collection search ([data-gs-finder]): works found by artist, title, year, category, medium or
       theme, shown as artwork tiles 48 at a time. Shopify's search doesn't look in entries, so the
       works come from sections/gs-collection-data, 250 to a request, the first time they're needed.
@@ -36,23 +37,28 @@
     }
     tools.hidden = false;
     let timer;
+    // The list narrows on every keystroke (it takes a few milliseconds); only the spoken count
+    // waits for a pause in typing, so it isn't read out letter by letter.
     input.addEventListener('input', () => {
+      const want = words(input.value);
+      let shown = 0;
+      items.forEach(({ li, names }) => {
+        const match = want.every((w) => names.includes(w));
+        li.hidden = !match;
+        if (match) shown += 1;
+      });
+      groups.forEach((g) => { g.hidden = !g.querySelector('.gs-index__item:not([hidden])'); });
+      if (letters) letters.hidden = want.length > 0;
+      const terms = input.value.trim();
       clearTimeout(timer);
       timer = setTimeout(() => {
-        const want = words(input.value);
-        let shown = 0;
-        items.forEach(({ li, names }) => {
-          const match = want.every((w) => names.includes(w));
-          li.hidden = !match;
-          if (match) shown += 1;
-        });
-        groups.forEach((g) => { g.hidden = !g.querySelector('.gs-index__item:not([hidden])'); });
-        if (letters) letters.hidden = want.length > 0;
-        const terms = input.value.trim();
         status.textContent = !want.length ? '' : shown === 0 ? say(status, 'gsNone', 0, terms)
           : say(status, shown === 1 ? 'gsOne' : 'gsOther', shown, terms);
       }, 120);
     });
+    // The site search's Artists group links here with its words (?q=, DS-113).
+    const q = new URL(window.location.href).searchParams.get('q');
+    if (q) { input.value = q; input.dispatchEvent(new Event('input')); }
   });
 
   /* ---------- 2. Collection search ---------- */
@@ -72,32 +78,43 @@
       if (data.dataset.param) param = data.dataset.param;
       return { pages: Number(data.dataset.pages) || 1, list: JSON.parse(data.textContent) };
     };
+    // A failed load isn't kept: the next search (or focus) tries again.
     works = (async () => {
       const first = await page(1);
       const rest = await Promise.all(Array.from({ length: first.pages - 1 }, (_, i) => page(i + 2)));
       return [first, ...rest].flatMap((p) => p.list).map((w) => ({
         ...w, text: fold([w.a, w.t, w.y, w.c, w.m, w.k].join(' ')),
       }));
-    })();
+    })().catch((e) => { works = null; throw e; });
     return works;
   }
 
-  function tile(w) {
+  // A work tile, as snippets/gs-work-tile. The picture keeps its own alt text, which describes the
+  // work (amending DS-120); an alt that only repeats the title is dropped (DS-58). A work without
+  // an image gets the blank mat, so the row keeps one shape (DS-109).
+  function tile(w, noImage) {
     const li = document.createElement('li');
     const art = document.createElement('article');
     art.className = 'gs-artwork-tile';
+    const media = document.createElement('div');
+    media.className = 'gs-media gs-media--artwork gs-shape-md';
     if (w.i) {
-      const media = document.createElement('div');
-      media.className = 'gs-media gs-media--artwork gs-shape-md';
       const img = document.createElement('img');
       img.src = w.i;
-      img.alt = w.l || '';
+      img.alt = w.l && w.l !== w.t ? w.l : '';
       img.loading = 'lazy';
       img.decoding = 'async';
       if (w.r) { img.width = 600; img.height = Math.round(600 / Number(w.r)); }
       media.append(img);
-      art.append(media);
+    } else {
+      media.classList.add('gs-media--blank');
+      media.setAttribute('aria-hidden', 'true');
+      const word = document.createElement('span');
+      word.className = 'gs-label';
+      word.textContent = noImage;
+      media.append(word);
     }
+    art.append(media);
     if (w.a) {
       const artist = document.createElement('p');
       artist.className = 'gs-artwork-tile__artist';
@@ -136,10 +153,15 @@
     let shown = 0;
     let run = 0;
 
-    const showMore = () => {
-      matches.slice(shown, shown + limit).forEach((w) => list.append(tile(w)));
+    // From the Show more button, focus moves to the first new work, so it isn't lost when the
+    // button goes away after the last batch, and the next Tab doesn't skip the new works.
+    const showMore = (fromClick) => {
+      const first = shown;
+      matches.slice(shown, shown + limit).forEach((w) => list.append(tile(w, finder.dataset.gsNoImage || '')));
       shown = Math.min(matches.length, shown + limit);
       if (more) more.hidden = site || shown >= matches.length;
+      const link = fromClick === true && list.children[first] && list.children[first].querySelector('a');
+      if (link) link.focus({ preventScroll: true });
     };
 
     async function search(q, push) {
@@ -151,13 +173,18 @@
       if (!want.length) { status.textContent = ''; matches = []; return; }
       status.textContent = status.dataset.gsLoading || '';
       let all;
-      try { all = await loadWorks(); } catch (e) { status.textContent = ''; return; }
+      try { all = await loadWorks(); } catch (e) {
+        if (mine === run) status.textContent = status.dataset.gsError || '';
+        return;
+      }
       if (mine !== run) return;
       matches = all.filter((w) => want.every((x) => w.text.includes(x)));
       const terms = q.trim();
       status.textContent = matches.length === 0 ? say(status, 'gsNone', 0, terms)
         : say(status, matches.length === 1 ? 'gsOne' : 'gsOther', matches.length, terms);
       if (site) finder.hidden = matches.length === 0;
+      // The search page's own "Nothing found" gives way when the collection has matches.
+      if (site) document.querySelector('[data-gs-finder-empty]')?.toggleAttribute('hidden', matches.length > 0);
       showMore();
       if (push) {
         const url = new URL(window.location.href);
@@ -183,7 +210,7 @@
       clearTimeout(timer);
       search(input.value, true);
     });
-    if (more) more.querySelector('button').addEventListener('click', showMore);
+    if (more) more.querySelector('button').addEventListener('click', () => showMore(true));
     const q = new URL(window.location.href).searchParams.get('q');
     if (q) { input.value = q; search(q, false); }
   });

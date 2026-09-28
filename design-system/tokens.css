@@ -6,6 +6,7 @@
  * Layers
  *   1. Raw brand + neutral values (--gs-<org>-*, --gs-ink*, --gs-paper*). Never use in components.
  *   2. Semantic roles (--gs-color-*, --gs-text-*, --gs-space-*, ...). Components use only these.
+ *      An element that keeps its colours on every surface (fields, the skip link) has a fixed role too.
  *   3. Scopes that remap roles: [data-gs-brand] for sub-brands, .gs-surface-* for backgrounds.
  */
 
@@ -39,7 +40,7 @@
   --gs-ink-faint: #bfb9ba;  /* secondary text on ink surfaces only */
   --gs-paper: #ffffff;
   --gs-mat: #f2f5f6;        /* artwork mat: 50% mix of --gs-gsg-tint and white */
-  --gs-logo-black: #000000; /* only inside logo artwork */
+  --gs-logo-black: #000000; /* only inside logo artwork; reserved: the logo files carry it, no gs- code uses it */
 
   /* Error (system-derived; the brand guide has no error colour). Text and field borders only,
      never a fill, so it can't compete with the brand boxes. */
@@ -63,10 +64,23 @@
   --gs-color-hover-fill: var(--gs-gsg-tint);   /* inline-link hover fill; each surface resets it (tint on paper, rule on tint, paper on accent, box on ink) */
   --gs-color-hover-fill-fg: var(--gs-ink);     /* text on the hover fill, on every surface */
   --gs-color-link-line: var(--gs-gsg-text);    /* inline-link underline, current-item bars; must stay ≥ 3:1 on --gs-color-bg */
-  --gs-color-control-border: var(--gs-ink-soft); /* inputs, secondary buttons; ≥ 3:1 */
+  --gs-color-control-border: var(--gs-ink-soft); /* inputs; ≥ 3:1 */
   --gs-color-error: var(--gs-error);           /* error text and invalid-field borders */
   --gs-color-focus: var(--gs-ink);
   --gs-color-mat: var(--gs-mat);
+
+  /* Fixed roles (DS-84, Proposed): elements that keep their colours whatever the surface. Each pair
+     is its own role, so a pair that looks alike today can change on its own. */
+  --gs-color-field-bg: var(--gs-paper);            /* inputs, the dropdown panel, a chip on a tint */
+  --gs-color-field-fg: var(--gs-ink);              /* their text, the select chevron, chip text */
+  --gs-color-field-placeholder: var(--gs-ink-soft); /* placeholder text in an input */
+  --gs-color-on-colour-hover-bg: var(--gs-paper);  /* a primary button's hover and press on tint and accent */
+  --gs-color-on-colour-hover-fg: var(--gs-ink);
+  --gs-color-selection-fg: var(--gs-ink);          /* selected text, on the rule colour */
+  --gs-color-skip-bg: var(--gs-ink);               /* the skip link */
+  --gs-color-skip-fg: var(--gs-paper);
+  --gs-color-editor-warning: var(--gs-afk-rule);   /* theme editor only (request.design_mode): loud on every surface */
+  --gs-color-editor-warning-fg: var(--gs-ink);
 
   /* ------------------------------------------------------------------
    * TYPOGRAPHY
@@ -102,6 +116,10 @@
   --gs-leading-body: 1.6;
   --gs-leading-caption: 1.45;
   --gs-leading-label: 1.2;
+  --gs-leading-small: 1.5;      /* §4.2 small and meta */
+  --gs-leading-tight: 1.35;     /* tile and list-link lines */
+  --gs-leading-art-label: 1.25; /* the museum label beside a work */
+  --gs-leading-index: 0.85;     /* the A to Z's big letters */
 
   /* Tracking is a system choice (guide is silent). Kerning stays at browser default. */
   --gs-tracking-heading: 0;
@@ -111,7 +129,7 @@
 
   --gs-measure: 68ch;        /* body copy line length */
   --gs-measure-deck: 42ch;
-  --gs-measure-heading: 20ch;
+  --gs-measure-heading: 22ch;
 
   /* ------------------------------------------------------------------
    * SPACE (4px base) + fluid layout spacing
@@ -125,8 +143,8 @@
   --gs-space-6: 2rem;    /* 32 */
   --gs-space-7: 3rem;    /* 48 */
   --gs-space-8: 4rem;    /* 64 */
-  --gs-space-9: 6rem;    /* 96 */
-  --gs-space-10: 8rem;   /* 128 */
+  --gs-space-9: 6rem;    /* 96; reserved, completes the scale */
+  --gs-space-10: 8rem;   /* 128; reserved, completes the scale */
 
   --gs-gutter: clamp(1rem, 0.257rem + 3.048vw, 3rem);       /* page side padding + grid gap: 16 → 48 */
   --gs-section-space: clamp(3rem, 1.514rem + 6.095vw, 7rem); /* between page sections: 48 → 112 */
@@ -138,12 +156,13 @@
    * ------------------------------------------------------------------ */
 
   --gs-width-wide: 90rem;     /* 1440: heroes, image grids */
-  --gs-width-content: 75rem;  /* 1200: card grids, header, footer */
-  --gs-width-prose: 45rem;    /* 720: long-form text column */
+  --gs-width-content: 75rem;  /* 1200: card grids, footer (the header runs full width, DS-07) */
+  --gs-width-prose: 45rem;    /* 720: the logo cards' text (text columns use --gs-measure) */
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
-  --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px */
+  --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px; the header's height there on every page */
   --gs-nav-gap: clamp(1.25rem, 4.6vw - 2.2rem, 2.25rem); /* main nav item gap from 1200 px: 20 at 1200, 31 at 1440, 36 from about 1550, so seven section labels fit on one line at 1200 (§6.1) */
-  --gs-header-logo-h-foundation: 4.5rem; /* 72: the Foundation logo's minimum height (§8.3), on phones */
+  --gs-logo-min-foundation: 4.5rem; /* 72: the Foundation logo's minimum height (§8.3) */
+  --gs-header-logo-h-foundation: var(--gs-logo-min-foundation); /* the Foundation logo in the header, at every width (DS-47, DS-97) */
   --gs-org-logo-h: 7rem;           /* 112: a square logo beside its organisation's text (DS-50); the Gallery full stacked minimum (§8.3) */
   --gs-org-logo-h-lg: 9rem;        /* 144 at ≥ 990px */
   --gs-org-logo-h-wide: 5.5rem;    /* 88: the Foundation full lockup (about 2:1) at its minimum */
@@ -151,13 +170,15 @@
   --gs-org-logo-col: 12rem;        /* 192: the logo column beside the text, 750 to 989px; fits the Foundation lockup (182) */
   --gs-org-logo-col-lg: 14rem;     /* 224 at ≥ 990px; fits the Foundation lockup (215) */
   --gs-rail-item: min(82%, 20rem); /* a card in a sideways row on phones: the next one peeks in (DS-54) */
-  --gs-feature-logo-h: 4.5rem;     /* 72: a programme's logo in a feature panel; the Foundation logo's minimum (§8.3, DS-55) */
+  --gs-feature-logo-h: var(--gs-logo-min-foundation); /* 72: a programme's logo in a feature panel; the Foundation logo's minimum (§8.3, DS-55) */
   --gs-tap-target: 2.75rem;   /* 44 */
   --gs-footer-logo-x: 1.4535rem;   /* 23.3: the lowercase letter height the three footer logos share: the Foundation simple lockup's at its 72 px minimum (DESIGN.md §8.3, §6.10, DS-59) */
-  --gs-programme-logo-h: 5rem;     /* 80: programme logo in a page header (§8.2), above both programme minimums */
+  --gs-password-logo-h: 5rem;      /* 80: the Gallery logo on the password page (§7.5) */
   --gs-funder-logo-h: 3.5rem;      /* 56: funder logos on exhibition pages */
   --gs-thumb: 6rem;                /* 96: artwork thumbnails in the cart */
-  --gs-width-form: 40rem;          /* 640: one-column forms and the hero title box */
+  --gs-width-form: 40rem;          /* 640: one-column forms */
+  --gs-hero-box-w: 40rem;          /* 640: the hero title box's text from 990 px (at most 58% of the hero) */
+  --gs-hero-box-w-xl: 48rem;       /* 768 from 1200 px (at most 60%), so a four-word title takes two lines */
 
   /* ------------------------------------------------------------------
    * MEDIA
@@ -169,6 +190,7 @@
   --gs-hero-max-h: 80svh;
   --gs-figure-max-h: min(32rem, 80svh); /* a photo in page text stays inside the screen (DS-77, Proposed) */
   --gs-hero-art-max-h: calc(100svh - 16rem); /* artwork hero: header, caption, the gap and a glimpse of what follows stay on the first screen (DS-66) */
+  --gs-artwork-detail-max-h: calc(100svh - 8rem); /* a view on a work or product page: the header and the whole work fit the first screen, on screens at least 40rem tall (DS-111) */
   --gs-hero-overlap: clamp(3rem, 1.886rem + 4.571vw, 6rem); /* title box overlaps the image by exactly this: 48 to 96 */
   --gs-ratio-card: 4 / 3;      /* exhibition, program, news cards (photo mode) */
   --gs-ratio-install: 3 / 2;   /* installation-view galleries (photo mode) */
@@ -197,17 +219,19 @@
 
   --gs-border: 1px;
   --gs-border-strong: 2px;
+  --gs-border-bar: 4px;            /* current-item bars, the dropdown's top edge, the quote rule */
+  --gs-nav-line: 3px;              /* the nav's current and hover underline */
+  --gs-control-h: 3rem;            /* 48: buttons and fields */
   --gs-link-thickness: 2px;
   --gs-link-thickness-hover: 3px; /* hover and press on standalone links, crumbs and card titles: the line thickens, so the cue shows where the line is already the text colour (Artists for Kids and Foundation pages) */
   --gs-link-offset: 0.22em;
+  --gs-link-offset-heading: 0.16em; /* underline under caps card titles */
   --gs-focus-width: 3px;
   --gs-focus-offset: 3px;
   --gs-shadow-dropdown: 0 10px 28px rgb(35 31 32 / 0.12); /* the only shadow in the system: dropdown panels and the Menu drawer */
 
   /* Motion answers a person's action only (DESIGN.md §5.4). */
-  --gs-duration-fast: 120ms; /* link fill, underline, arrow nudge, button colour, dropdown reveal */
-  --gs-duration: 200ms;      /* chevron rotation */
-  --gs-duration-slow: 320ms; /* reserved; nothing uses it yet */
+  --gs-duration-fast: 120ms; /* every reveal and state change: link fill, underline, arrow nudge, button colour, dropdown reveal, chevron (DS-123) */
   --gs-duration-press: 160ms; /* a button shrinking while pressed (DS-55) */
   --gs-ease-press: cubic-bezier(0.23, 1, 0.32, 1); /* strong ease-out: the press shows at once */
   --gs-ease: cubic-bezier(0.2, 0, 0, 1);
@@ -216,14 +240,35 @@
   --gs-z-header: 100;
   --gs-z-dropdown: 110;
   --gs-z-drawer: 200;
-  --gs-z-toast: 300;
+  --gs-z-skip: 300;     /* the skip link, over everything once focused */
+
+  /* ------------------------------------------------------------------
+   * ICONS. Masks painted in the text colour (currentColor), so they follow the surface.
+   * ------------------------------------------------------------------ */
+
+  --gs-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 14'%3E%3Cpath d='M0 7h17.5M11.5 1l6 6-6 6' fill='none' stroke='%23000' stroke-width='2.6'/%3E%3C/svg%3E");
+  --gs-icon-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 12L12 2M4.5 2H12v7.5' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-menu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14'%3E%3Cpath d='M0 2h18M0 7h18M0 12h18' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M1.5 1.5l11 11M12.5 1.5l-11 11' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5L7 7l5.5-5.5' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
+  --gs-icon-alert: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8.6' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3Cpath d='M10 5v6.2' stroke='%23000' stroke-width='2.6'/%3E%3Ccircle cx='10' cy='14.6' r='1.5'/%3E%3C/svg%3E");
+  --gs-icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8.6' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3Cpath d='M5.8 10.2l2.9 2.9 5.5-5.8' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E");
 }
+
+/* --------------------------------------------------------------------
+ * LOGO METRICS (DS-59)
+ * Measured from the white logo files, as shares of each logo's height: its lowercase letters' height
+ * (the "o") and how far the artwork reaches below its last baseline. With them, logos of different
+ * shapes can be set at one letter size and on one baseline, as in the footer.
+ * -------------------------------------------------------------------- */
+
+.gs-logo--gallery-simple-stacked-white { --gs-logo-x: 0.192; --gs-logo-descent: 0.086; }
+.gs-logo--artists-for-kids-full-white { --gs-logo-x: 0.207; --gs-logo-descent: 0.031; }
+.gs-logo--foundation-simple-white { --gs-logo-x: 0.323; --gs-logo-descent: 0.008; }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --gs-duration-fast: 0ms;
-    --gs-duration: 0ms;
-    --gs-duration-slow: 0ms;
     --gs-duration-press: 0ms;
   }
 }

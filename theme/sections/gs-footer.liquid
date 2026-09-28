@@ -1,21 +1,27 @@
 {%- comment -%}
   Footer (DESIGN.md §6.10, ACCESS-02, ACCESS-03): ink surface. The three organisations' white
-  logos, the Gallery first and largest, beside the land acknowledgement that names them; then
+  logos, the Gallery first, the three at one letter size on one baseline (DS-59), beside the land
+  acknowledgement that names them; then
   Visit, Contact, Explore and Follow columns, which keep their places whether or not Follow
   shows; then the legal line (DS-57). Addresses, hours, contact details, social links and the
   land acknowledgement are theme settings (Gallery details, Social links), so they're the same on
   every page.
 {%- endcomment -%}
-{%- liquid
-  assign socials = 'instagram,facebook,youtube,vimeo,linkedin' | split: ','
-  assign has_social = false
-  for key in socials
-    assign setting_id = 'social_' | append: key
-    if settings[setting_id] != blank
-      assign has_social = true
-    endif
-  endfor
--%}
+{%- assign socials = 'instagram,facebook,youtube,vimeo,linkedin' | split: ',' -%}
+{%- capture social_items -%}
+  {%- for key in socials -%}
+    {%- assign setting_id = 'social_' | append: key -%}
+    {%- if settings[setting_id] != blank -%}
+      {%- assign label_key = 'footer.social_' | append: key -%}
+      <li>
+        <a class="gs-link--external" href="{{ settings[setting_id] }}">
+          {{- label_key | t -}}
+          <span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
 <footer class="gs-surface-ink">
   <div class="gs-container gs-footer">
     <div class="gs-footer__top">
@@ -35,8 +41,10 @@
         {%- if settings.address != blank -%}
           <address>{{ settings.address | escape | newline_to_br }}</address>
         {%- endif -%}
-        {%- if settings.hours != blank -%}
-          <p>{{ settings.hours | escape | newline_to_br }}</p>
+        {%- capture hours -%}{% render 'gs-open-hours' %}{%- endcapture -%}
+        {%- assign hours = hours | strip -%}
+        {%- if hours != blank -%}
+          <p>{{ hours }}</p>
         {%- endif -%}
       </div>
 
@@ -47,7 +55,8 @@
             <li><a href="mailto:{{ settings.email | strip }}">{{ settings.email | strip | escape }}</a></li>
           {%- endif -%}
           {%- if settings.phone != blank -%}
-            <li><a href="tel:{{ settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' }}">{{ settings.phone | escape }}</a></li>
+            {%- capture tel -%}{% render 'gs-tel' %}{%- endcapture -%}
+            <li><a href="tel:{{ tel | strip }}">{{ settings.phone | escape }}</a></li>
           {%- endif -%}
           {%- if settings.contact_page != blank -%}
             <li><a href="{{ settings.contact_page.url }}">{{ 'footer.contact_page' | t }}</a></li>
@@ -66,22 +75,11 @@
         </nav>
       {%- endif -%}
 
-      {%- if has_social -%}
+      {%- if social_items != blank -%}
         <div>
           <h2 class="gs-label">{{ 'footer.follow' | t }}</h2>
           <ul>
-            {%- for key in socials -%}
-              {%- assign setting_id = 'social_' | append: key -%}
-              {%- if settings[setting_id] != blank -%}
-                {%- assign label_key = 'footer.social_' | append: key -%}
-                <li>
-                  <a class="gs-link--external" href="{{ settings[setting_id] }}">
-                    {{- label_key | t -}}
-                    <span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>
-                  </a>
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
+            {{- social_items -}}
           </ul>
         </div>
       {%- elsif request.design_mode -%}

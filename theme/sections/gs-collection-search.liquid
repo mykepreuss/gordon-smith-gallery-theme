@@ -25,12 +25,12 @@
 -%}
 <section class="gs-section gs-surface-paper" id="collection-search" aria-labelledby="{{ id }}-heading">
   <div class="gs-container">
-    <div class="gs-finder" data-gs-finder data-gs-limit="48">
+    <div class="gs-finder" data-gs-finder data-gs-limit="48" data-gs-no-image="{{ 'collection.no_image' | t }}">
       <div class="gs-section-head">
         <div class="gs-section-head__text">
           <h2 class="gs-h2" id="{{ id }}-heading">{{ 'collection.search_heading' | t }}</h2>
           {%- if works_total > 0 -%}
-            <p class="gs-deck">{{ 'collection.totals' | t: works: works_number, artists: artists_number }}</p>
+            <p class="gs-meta">{{ 'collection.totals' | t: works: works_number, artists: artists_number }}</p>
           {%- endif -%}
         </div>
       </div>
@@ -43,10 +43,11 @@
       </form>
       <p class="gs-deck gs-finder__count" role="status" data-gs-finder-status
         data-gs-loading="{{ 'collection.search_loading' | t | escape }}"
+        data-gs-error="{{ 'collection.search_error' | t }}"
         data-gs-one="{{ 'collection.works_found_one' | t: terms: '[terms]' | escape }}"
         data-gs-other="{{ 'collection.works_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
         data-gs-none="{{ 'collection.works_none' | t: terms: '[terms]' | escape }}"></p>
-      <ul class="gs-grid gs-grid--artworks" data-gs-finder-results></ul>
+      <ul class="gs-grid gs-grid--artworks" role="list" data-gs-finder-results></ul>
       <p class="gs-finder__more" data-gs-finder-more hidden><button class="gs-button gs-button--secondary" type="button">{{ 'collection.show_more' | t }}</button></p>
     </div>
   </div>

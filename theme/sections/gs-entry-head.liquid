@@ -27,19 +27,21 @@
     {%- endif -%}
     {%- if is_artist -%}
       {%- liquid
-        assign names = metaobject.other_names.value
-        if metaobject.full_name.value != blank
-          if names != blank
-            assign names = names | append: '. '
-          endif
-          assign names = names | append: metaobject.full_name.value
-        endif
+        # Other names, then the full name, each on its own line.
+        assign other_names = metaobject.other_names.value
+        assign full_name = metaobject.full_name.value
         assign facts = metaobject.nationality.value
         if metaobject.life_dates.value != blank
           if facts != blank
             assign facts = facts | append: ', '
           endif
           assign facts = facts | append: metaobject.life_dates.value
+        endif
+        # The line starts with a capital ("Born 1946"). Not capitalize, which lower-cases the rest.
+        if facts != blank
+          assign first_char = facts | slice: 0 | upcase
+          assign rest = facts | slice: 1, facts.size
+          assign facts = first_char | append: rest
         endif
         assign has_aside = false
         if metaobject.portrait.value != blank
@@ -49,20 +51,24 @@
       <div class="gs-entry-head">
         <div class="gs-entry-head__main">
           <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
-          {%- if names != blank -%}
-            <p class="gs-entry-head__names">{{ names | escape }}</p>
+          {%- if other_names != blank or full_name != blank -%}
+            <p class="gs-deck">
+              {{- other_names | escape -}}
+              {%- if other_names != blank and full_name != blank -%}<br>{%- endif -%}
+              {{- full_name | escape -}}
+            </p>
           {%- endif -%}
           {%- if facts != blank -%}
             <p class="gs-deck">{{ facts | escape }}</p>
           {%- endif -%}
           {%- if metaobject.biography.value != blank -%}
-            <div class="gs-prose">{{ metaobject.biography | metafield_tag }}</div>
+            <div class="gs-prose">{%- capture html -%}{{ metaobject.biography | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
           {%- endif -%}
         </div>
         {%- if has_aside -%}
           <div class="gs-entry-head__aside">
             {%- if metaobject.portrait.value != blank -%}
-              {%- render 'gs-media', image: metaobject.portrait.value, sizes: '(min-width: 990px) 320px, 80vw', mode: 'photo', ratio: '4 / 5' -%}
+              {%- render 'gs-media', image: metaobject.portrait.value, sizes: '(min-width: 990px) 320px, 80vw', mode: 'photo', ratio: 'var(--gs-ratio-portrait)' -%}
             {%- endif -%}
           </div>
         {%- endif -%}
@@ -70,7 +76,7 @@
     {%- else -%}
       <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
       {%- if metaobject.introduction.value != blank -%}
-        <div class="gs-prose">{{ metaobject.introduction.value | escape | newline_to_br }}</div>
+        <div class="gs-prose">{%- render 'gs-paragraphs', text: metaobject.introduction.value -%}</div>
       {%- endif -%}
     {%- endif -%}
   </header>

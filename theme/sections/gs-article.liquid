@@ -4,16 +4,16 @@
 {%- endcomment -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1"{% render 'gs-fit', text: article.title %}>{{ article.title | escape }}</h1>
-    <p class="gs-status__dates">{{ article.published_at | date: '%B %-d, %Y' }}</p>
+    {%- render 'gs-title-block', title: article.title -%}
+    <p class="gs-status__dates"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %-d, %Y' }}</time></p>
   </header>
 </div>
 <div class="gs-section gs-surface-paper">
   <div class="gs-container">
     {%- if article.image != blank -%}
-      {%- render 'gs-media', image: article.image, preset: 'full', mode: 'photo', shape: 'lg', ratio: '3 / 2', alt: article.title -%}
+      {%- render 'gs-media', image: article.image, preset: 'full', mode: 'photo', shape: 'lg', ratio: 'var(--gs-ratio-install)', title: article.title -%}
     {%- endif -%}
-    <div class="gs-prose gs-article__body">{{ article.content }}</div>
+    <div class="gs-prose gs-article__body">{%- capture html -%}{{ article.content }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
   </div>
 </div>
 

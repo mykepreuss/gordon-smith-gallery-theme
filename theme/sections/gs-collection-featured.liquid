@@ -16,7 +16,7 @@
           {%- endif -%}
         </div>
       </div>
-      <ul class="gs-grid gs-grid--artworks">
+      <ul class="gs-grid gs-grid--artworks" role="list">
         {%- for work in group.works.value limit: 6 -%}
           <li>{%- render 'gs-work-tile', work: work, heading: 'h3' -%}</li>
         {%- endfor -%}

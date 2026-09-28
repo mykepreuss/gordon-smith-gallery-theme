@@ -1,0 +1,24 @@
+{% doc %}
+  Artists' names joined as a sentence: "A", "A and B", "A, B and C" (DESIGN.md §6.13).
+
+  Without link, prints the names as plain text for the caller to escape (| escape in HTML, | json
+  in data), and captured output starts with a line break, so strip it. With link, each name is
+  escaped and links to the artist's page.
+
+  @param {object} entries - A list of artist entries (each with a name field). Required
+  @param {boolean} [link] - Link each name to its artist's page
+
+  @example
+  {%- capture names -%}{% render 'gs-names', entries: work.artists.value %}{%- endcapture -%}
+  {%- assign names = names | strip -%}
+  {%- render 'gs-names', entries: work.artists.value, link: true -%}
+{% enddoc %}
+{%- assign and_word = 'collection.and' | t -%}
+{%- for a in entries -%}
+  {%- unless forloop.first -%}{% if forloop.last %} {{ and_word }} {% else %}, {% endif %}{%- endunless -%}
+  {%- if link -%}
+    <a href="{{ a.system.url }}">{{ a.name.value | escape }}</a>
+  {%- else -%}
+    {{- a.name.value -}}
+  {%- endif -%}
+{%- endfor -%}

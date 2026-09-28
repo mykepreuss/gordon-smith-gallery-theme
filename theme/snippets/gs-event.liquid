@@ -6,6 +6,11 @@
   On a programme page, an event titled like the page itself (a run of "Explore + Create"
   drop-ins) leads with its date and time instead of repeating the title (DS-36).
 
+  Under the date, what the event belongs to: its exhibition (DS-71), and, anywhere but its own
+  programme page, its programme page, linked, so a row on Upcoming events says who it is for
+  (DS-115). The programme is left out when the event has the programme's own name, as the event
+  card does.
+
   @param {object} event - An event entry
   @param {boolean} [compact] - Title, time, place and tickets only
   @param {string} [heading] - Element for the title: 'h3' (default), 'h4', or 'p' where a heading would skip a level
@@ -53,22 +58,33 @@
     {%- assign exhibition = event.exhibition.value -%}
     {%- if compact != true and exhibition != blank -%}
       <p class="gs-meta">
-        {%- if exhibition.summary.value != blank -%}
-          <a href="{{ exhibition.system.url }}">{{ exhibition.title.value | escape }}</a>
+        {%- if exhibition.summary.value != blank or exhibition.body.value != blank -%}
+          <a class="gs-link" href="{{ exhibition.system.url }}">{{ exhibition.title.value | escape }}</a>
         {%- else -%}
           {{- exhibition.title.value | escape -}}
         {%- endif -%}
       </p>
+    {%- endif -%}
+    {%- liquid
+      assign programme = event.programme_page.value
+      assign show_programme = false
+      if compact != true and programme != blank and programme.id != page.id
+        assign p_title = programme.title | strip | downcase
+        assign e_title = event.title.value | strip | downcase
+        if p_title != e_title
+          assign show_programme = true
+        endif
+      endif
+    -%}
+    {%- if show_programme -%}
+      <p class="gs-meta"><a class="gs-link" href="{{ programme.url }}">{{ programme.title | escape }}</a></p>
     {%- endif -%}
     {%- if event.location.value != blank -%}
       <p class="gs-meta">{{ event.location.value | escape }}</p>
     {%- endif -%}
     {%- comment -%} A blank line in the summary starts a new paragraph; a single line break stays a break (Part 1 / Part 2). {%- endcomment -%}
     {%- if compact != true and event.summary.value != blank -%}
-      {%- assign paras = event.summary.value | escape | newline_to_br | strip_newlines | split: '<br /><br />' -%}
-      <div class="gs-event__summary">
-        {%- for para in paras -%}<p>{{ para }}</p>{%- endfor -%}
-      </div>
+      <div class="gs-event__summary">{%- render 'gs-paragraphs', text: event.summary.value -%}</div>
     {%- endif -%}
     {%- if event.tickets.value.url != blank -%}
       {%- liquid

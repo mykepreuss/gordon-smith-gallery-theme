@@ -1,0 +1,13 @@
+{% doc %}
+  The gallery's phone number (Theme settings) as a tel: address, without the spaces, hyphens,
+  brackets and dots people write it with, so every phone link dials the same way.
+
+  The output can start with a line break, so capture it and strip it.
+
+  @example
+  {%- capture tel -%}{% render 'gs-tel' %}{%- endcapture -%}
+  <a href="tel:{{ tel | strip }}">{{ settings.phone | escape }}</a>
+{% enddoc %}
+{%- liquid
+  echo settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' | escape
+-%}

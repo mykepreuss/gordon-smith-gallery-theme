@@ -15,7 +15,10 @@
   <time datetime="{{ event.starts.value }}">{% render 'gs-time-range', start: event.starts.value, end: event.ends.value %}</time>
 {% enddoc %}
 {%- liquid
-  assign day1 = start | date: '%A, %B %-d, %Y'
+  # nb: a no-break space (U+00A0), so a date never splits and a time stays with AM or PM
+  assign nb = ' '
+  assign d1 = start | date: '%B %-d, %Y' | replace: ' ', nb
+  assign day1 = start | date: '%A, ' | append: d1
   assign t1 = start | date: '%-I'
   assign m1 = start | date: '%M'
   if m1 != '00'
@@ -24,9 +27,10 @@
   assign p1 = start | date: '%p'
 
   if end == blank
-    echo day1 | append: ', ' | append: t1 | append: ' ' | append: p1
+    echo day1 | append: ', ' | append: t1 | append: nb | append: p1
   else
-    assign day2 = end | date: '%A, %B %-d, %Y'
+    assign d2 = end | date: '%B %-d, %Y' | replace: ' ', nb
+    assign day2 = end | date: '%A, ' | append: d2
     assign t2 = end | date: '%-I'
     assign m2 = end | date: '%M'
     if m2 != '00'
@@ -34,14 +38,14 @@
     endif
     assign p2 = end | date: '%p'
     if day1 != day2
-      assign from = day1 | append: ', ' | append: t1 | append: ' ' | append: p1
-      assign to = day2 | append: ', ' | append: t2 | append: ' ' | append: p2
+      assign from = day1 | append: ', ' | append: t1 | append: nb | append: p1
+      assign to = day2 | append: ', ' | append: t2 | append: nb | append: p2
     elsif p1 == p2
       assign from = day1 | append: ', ' | append: t1
-      assign to = t2 | append: ' ' | append: p2
+      assign to = t2 | append: nb | append: p2
     else
-      assign from = day1 | append: ', ' | append: t1 | append: ' ' | append: p1
-      assign to = t2 | append: ' ' | append: p2
+      assign from = day1 | append: ', ' | append: t1 | append: nb | append: p1
+      assign to = t2 | append: nb | append: p2
     endif
     echo 'events.time_range' | t: start: from, end: to
   endif

@@ -33,6 +33,10 @@ Text is the old site's, moved as written (AGENTS.md, "Gallery-facing work"). Wha
   (Studio Art Academy's, Paradise Valley's "5 days, 4 nights, inclusive", Awards' closed line), with
   their asterisks and bold dropped; phone numbers become links; a list typed with line breaks becomes
   a list; typographic quotes in the workshop titles and the pull quote; "**" markers dropped.
+- After the whole-site design review (2026-09-27, proposals/site-design-review.md): Support gives
+  like Donate (a "Make a gift" button to its ways to give; cards Online, School Cash Online and
+  Phone, each with a sentence and a verb), the hub's button says "Download the guide", Awards'
+  requirement links are standalone links (DS-82), and the NVSD point is two paragraphs.
 
 Pages get the live theme's On Now template name until release (`current-on-now-exhibition`), the only
 live template besides Artists that shows a page's title and nothing else; the new theme has no template
@@ -281,9 +285,13 @@ def pages():
              "</ul>"])},
         {"handle": "learning-guides", "title": "Learning Guides", "template": "programme",
          "groups": ["afk-guides-by-artists", "afk-guides-primary"]},
+        # Each kit, then its lesson plans, then its video (DS-129, after the whole-site design review,
+        # 2026-09-28): the Collagraph kit's "Lesson plans are linked, below" now leads straight to them.
         {"handle": "learning-kits", "title": "Learning Kits", "template": "programme",
-         "groups": ["afk-kits", "afk-kit-clay-plans", "afk-kit-collagraph-plans", "afk-kit-trace-monotype-plan",
-                    "afk-kit-gel-plate-plan", "afk-kit-videos"]},
+         "groups": ["afk-kit-clay-kit", "afk-kit-clay-plans", "afk-kit-clay-video",
+                    "afk-kit-collagraph-kit", "afk-kit-collagraph-plans",
+                    "afk-kit-trace-monotype-kit", "afk-kit-trace-monotype-plan", "afk-kit-trace-monotype-video",
+                    "afk-kit-gel-plate-kit", "afk-kit-gel-plate-plan"]},
         {"handle": "artreach-videos", "title": "ArtReach Videos", "template": "programme",
          "body": "\n".join([
              "<p>This series of videos guides classrooms or individuals at home through art activities focused on principles of creative inquiry and play. Videos are posted to our website throughout the school year. Enjoy!</p>",
@@ -298,13 +306,13 @@ def pages():
          "body": "\n".join([
              "<p>Artists for Kids is pleased to offer the following three Scholarships for North Vancouver School District graduating students who have completed or are enrolled in Grade 12 level Visual and Performing Arts courses.</p>",
              '<ul class="gs-points">',
-             f'<li><p><strong>The $1,000 Jack Shadbolt Multiple Arts Excellence award</strong> is available to a graduating student who has demonstrated excellence in two or more of the Visual and/or Performing Arts disciplines (i.e. art &amp; music, film &amp; theatre, drama &amp; dance) and is planning to continue their education in the arts.</p><p><a href="{pdf_path("award-shadbolt")}">Requirements (PDF)</a></p></li>',
-             f'<li><p><strong>The $1,000 Robert Bateman Future Teacher award</strong> is available to a graduating student who has demonstrated excellence in Visual Arts and is planning to pursue a future teaching career in the field of Elementary or Secondary education.</p><p><a href="{pdf_path("award-bateman")}">Requirements (PDF)</a></p></li>',
-             f'<li><p><strong>The $1,000 North Shore Community Foundation - Gordon Smith Outstanding Visual Artist award</strong> is available to a graduating student who has demonstrated excellence in the Visual Arts and is planning to continue their education in the Visual Arts (visual arts include traditional media as well as photographic and digital media).</p><p><a href="{pdf_path("award-gordon-smith")}">Requirements (PDF)</a></p></li>',
+             f'<li><p><strong>The $1,000 Jack Shadbolt Multiple Arts Excellence award</strong> is available to a graduating student who has demonstrated excellence in two or more of the Visual and/or Performing Arts disciplines (i.e. art &amp; music, film &amp; theatre, drama &amp; dance) and is planning to continue their education in the arts.</p><p><a class="gs-cta-link" href="{pdf_path("award-shadbolt")}">Requirements (PDF)</a></p></li>',
+             f'<li><p><strong>The $1,000 Robert Bateman Future Teacher award</strong> is available to a graduating student who has demonstrated excellence in Visual Arts and is planning to pursue a future teaching career in the field of Elementary or Secondary education.</p><p><a class="gs-cta-link" href="{pdf_path("award-bateman")}">Requirements (PDF)</a></p></li>',
+             f'<li><p><strong>The $1,000 North Shore Community Foundation - Gordon Smith Outstanding Visual Artist award</strong> is available to a graduating student who has demonstrated excellence in the Visual Arts and is planning to continue their education in the Visual Arts (visual arts include traditional media as well as photographic and digital media).</p><p><a class="gs-cta-link" href="{pdf_path("award-gordon-smith")}">Requirements (PDF)</a></p></li>',
              "</ul>",
              f'<p>If you have questions or encounter any problems with the application process, please email {EMAIL} or call <a href="{PHONE}">(604) 903-3798</a>.</p>'])},
         {"handle": "support-artists-for-kids", "title": "Support Artists for Kids", "template": "",
-         "cta": (CANADAHELPS, "Donate"), "groups": ["afk-how-to-give"],
+         "cta": ("https://gordonsmithgallery.com/pages/support-artists-for-kids#afk-how-to-give", "Make a gift"), "groups": ["afk-how-to-give"],
          "body": "\n".join([
              "<p>Artists for Kids is a unique, not-for-profit, self-sustaining art education program operated by the North Vancouver School District (NVSD) in British Columbia. In addition to receiving support through the NVSD, we rely on the generosity of our donors to offer a range of Artist- and Educator-led programs in schools and the community, as well as scholarships for students pursuing post-secondary studies in arts education.</p>",
              "<p>Your contribution helps make quality arts education accessible to all children and youth and enables us to continue creating meaningful, life-changing opportunities through the arts.</p>",
@@ -321,7 +329,7 @@ def pages():
              '<li><strong>The Christopher Foundation for the Arts</strong><br><a href="https://cffta.org/">The Christopher Foundation</a> generously supports Artists for Kids\' Gallery Program to continue to offer the exceptional experiences in Art Education that we bring to our community. The Foundation has been instrumental in providing resources to bring to our programing, experiences that build connection and belonging to all that we do, and to ensure that all children and youth have access to be involved.</li>',
              '<li><strong>The Idea Partner Marketing Inc.</strong><br><a href="https://www.theideapartner.com/">The Idea Partner Marketing Inc.</a> has generously worked with Artists for Kids to create their logos and visual mark. Additionally, The Idea Partner consistently provides financial support for campers to attend our Paradise Valley Summer School of Visual Arts Camp each year.</li>',
              "<li><strong>The Edwina and Paul Heller Memorial Fund</strong><br>Over many years, the Edwina and Paul Heller Memorial Fund has assisted countless of students to attend camp, participate in our after school art programs and day camps. Funding has also provided the ability to acquire materials and equipment to allow students to have access to experiences in a range of visual art.</li>",
-             "<li><strong>The North Vancouver School District</strong><br>In 1989, the North Vancouver School District listened carefully to the founders of Artists for Kids. The District learned about Artists for Kids' model for fund-raising and their passion to ensure Arts Education for all, existed and continued. With this, the NVSD funded the first limited edition that AFK published, with Bill Reid.<br><br>From this point, the District has never stopped cheering on Artists for Kids, including being open to build a cultural space at the Education Services Centre. In 2012, the Smith Foundation, brought together multiple funding sources, including a generous 2 million donation from Michael Audain, that enabled the Gordon Smith Gallery of Canadian Art to be built at the Education Services Centre, and to become an integral space for our community to gather.</li>",
+             "<li><p><strong>The North Vancouver School District</strong><br>In 1989, the North Vancouver School District listened carefully to the founders of Artists for Kids. The District learned about Artists for Kids' model for fund-raising and their passion to ensure Arts Education for all, existed and continued. With this, the NVSD funded the first limited edition that AFK published, with Bill Reid.</p><p>From this point, the District has never stopped cheering on Artists for Kids, including being open to build a cultural space at the Education Services Centre. In 2012, the Smith Foundation, brought together multiple funding sources, including a generous 2 million donation from Michael Audain, that enabled the Gordon Smith Gallery of Canadian Art to be built at the Education Services Centre, and to become an integral space for our community to gather.</p></li>",
              '<li><strong>The Beech Foundation</strong><br><a href="https://beechfoundation.ca/">The Beech Foundation</a> has been a long standing patron of Artists for Kids, supporting children and youth by providing funding for bursaries and materials for our Paradise Valley Summer School of Visual Arts camp.</li>',
              '<li><strong>OPUS</strong><br><a href="https://opusartsupplies.com/">OPUS</a> has been a community patron since Artists for Kids\' inception. Opus supports AFK with materials for: our camps, professional development workshops, and our Artist in Residence programs which has made a significant difference to our programming and ability to offer to our children, educators and artists the exceptional experiences and resources that Artists for Kids is known for.</li>',
              '<li><strong>ArtStarts</strong><br><a href="https://artstarts.com/">ArtStarts</a> brings artists into our community through their funding, allowing all of us, to learn from each other through our collective stories. Our Artist in Residence Program as well as teacher workshops are supported by ArtStarts\' annual grant.</li>',
@@ -421,9 +429,9 @@ def cards():
             {"key": "text", "value": "Families with children ages 5 – 12 are invited to join us on Saturdays from 1 – 3 PM for drop-in art activities inspired by works in the Gordon Smith Gallery’s current exhibition."},
             {"key": "link", "value": link(page_url("explore-create"))}],
         # Support Artists for Kids: how to give, as on Donate.
-        "afk-give-online": card("Give online through CanadaHelps", url=CANADAHELPS),
-        "afk-give-school-cash": card("Give with a School Cash Online account", url=SCHOOLCASH),
-        "afk-give-phone": card("Give by phone", text="(604) 903-3798", url=PHONE, link_text="Call us"),
+        "afk-give-online": card("Online", text="Through CanadaHelps.", url=CANADAHELPS, link_text="Give online"),
+        "afk-give-school-cash": card("School Cash Online", text="With an NVSD School Cash Online account.", url=SCHOOLCASH, link_text="Give with School Cash"),
+        "afk-give-phone": card("Phone", text="(604) 903-3798", url=PHONE, link_text="Call us"),
         "afk-learning-guides": card("Learning Guides", "guide-paper-mural", url=page_url("learning-guides")),
         "afk-artreach-videos": card("ArtReach Videos", "cover:paths-abstract-painting", url=page_url("artreach-videos")),
         "afk-professional-development": card("Professional Development", "event-clay-kit", url=page_url("professional-development")),
@@ -527,13 +535,21 @@ GROUPS = [
      ["afk-guide-art-camp", "afk-guide-charcoal", "afk-guide-mail-art", "afk-guide-mini-monster", "afk-guide-zine-collage",
       "afk-guide-zine-frottage", "afk-guide-narrative-scrolls"]),
     ("afk-guides-primary", "Primary (K - Grade 3) Resources", ["afk-guide-fragmented-faces"]),
-    ("afk-kits", "", ["afk-kit-clay", "afk-kit-collagraph", "afk-kit-trace-monotype", "afk-kit-gel-plate"]),
+    # Learning kits (DS-129): each kit is a group of its own, without a heading (the kit's card is its
+    # heading, and a one-card offer stays a row, DS-76), followed by its plans and its video. The first
+    # load had all four kits in one group ("afk-kits") and both videos in another ("afk-kit-videos",
+    # "Lesson Videos"); those two entries stay in the store, on no page, until someone removes them.
+    ("afk-kit-clay-kit", "", ["afk-kit-clay"]),
     ("afk-kit-clay-plans", "Clay Lesson Plans", ["afk-plan-clay-tile", "afk-plan-clay-log"]),
+    ("afk-kit-clay-video", "Clay Lesson Video", ["afk-kit-video-clay"]),
+    ("afk-kit-collagraph-kit", "", ["afk-kit-collagraph"]),
     ("afk-kit-collagraph-plans", "Collagraph Lesson Plans",
      ["afk-plan-foam-butterflies", "afk-plan-garbage-press", "afk-plan-lego-press", "afk-plan-textured-landscapes"]),
+    ("afk-kit-trace-monotype-kit", "", ["afk-kit-trace-monotype"]),
     ("afk-kit-trace-monotype-plan", "Trace Monotype Lesson Plan", ["afk-plan-trace-monotype"]),
+    ("afk-kit-trace-monotype-video", "Trace Monotype Lesson Video", ["afk-kit-video-trace-monotype"]),
+    ("afk-kit-gel-plate-kit", "", ["afk-kit-gel-plate"]),
     ("afk-kit-gel-plate-plan", "Gel Plate Lesson Plan", ["afk-plan-gel-plate"]),
-    ("afk-kit-videos", "Lesson Videos", ["afk-kit-video-clay", "afk-kit-video-trace-monotype"]),
 ]
 # Existing groups that gain a card: (handle, card added at the end).
 GROUPS_EXTENDED = [("public-programs", "programs-afk-classes-and-camps"), ("donate-ways-to-give", "donate-artists-for-kids")]
@@ -744,7 +760,7 @@ def page_fields():
     before = json.loads((HERE.parent / "snapshots" / "afk-2026-09-27-before.json").read_text())
     rows.append((AFK_PAGE, "release_body", "multi_line_text_field",
                  afk_release_body(before["pages"]["artists-for-kids"]["custom.release_body"])))
-    rows.append((AFK_PAGE, "cta", "link", link(pdf("program-guide"), "2026-2027 Program Guide")))
+    rows.append((AFK_PAGE, "cta", "link", link(pdf("program-guide"), "Download the guide")))
     return [{"ownerId": o, "namespace": "custom", "key": k, "type": t, "value": v} for o, k, t, v in rows]
 
 

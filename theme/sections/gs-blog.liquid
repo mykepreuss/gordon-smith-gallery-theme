@@ -4,22 +4,22 @@
 {%- endcomment -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1"{% render 'gs-fit', text: blog.title %}>{{ blog.title | escape }}</h1>
+    {%- render 'gs-title-block', title: blog.title -%}
   </header>
 </div>
 <div class="gs-section gs-surface-paper">
   <div class="gs-container">
     {%- paginate blog.articles by 12 -%}
       {%- if blog.articles.size > 0 -%}
-        <ul class="gs-grid gs-grid--cards">
+        <ul class="gs-grid gs-grid--cards" role="list">
           {%- for article in blog.articles -%}
             <li>
               <article class="gs-card">
-                {%- render 'gs-media', image: article.image, preset: 'card', mode: 'photo', alt: article.title -%}
+                {%- render 'gs-media', image: article.image, preset: 'card', mode: 'photo', title: article.title -%}
                 <h2 class="gs-card__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>
-                <p class="gs-status__dates">{{ article.published_at | date: '%B %-d, %Y' }}</p>
+                <p class="gs-status__dates"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %-d, %Y' }}</time></p>
                 {%- if article.excerpt != blank -%}
-                  <p class="gs-card__text">{{ article.excerpt | strip_html | truncatewords: 30 }}</p>
+                  <p class="gs-card__text">{{ article.excerpt | strip_html | truncatewords: 30, '…' }}</p>
                 {%- endif -%}
               </article>
             </li>
@@ -27,9 +27,9 @@
         </ul>
         {%- render 'gs-pagination', paginate: paginate -%}
       {%- else -%}
-        <div class="gs-empty">
-          <p class="gs-empty__text">{{ 'blog.empty' | t }}</p>
-        </div>
+        {%- assign empty_text = 'blog.empty' | t -%}
+        {%- assign empty_label = 'blog.empty_link' | t -%}
+        {%- render 'gs-empty', text: empty_text, link_url: settings.events_page.url, link_label: empty_label -%}
       {%- endif -%}
     {%- endpaginate -%}
   </div>

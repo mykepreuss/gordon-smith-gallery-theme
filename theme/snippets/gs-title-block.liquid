@@ -1,0 +1,30 @@
+{% doc %}
+  The top of a page: crumb or eyebrow, the H1 sized to its box, deck and call to action (DESIGN.md
+  §6.3, §6.6). The same block goes in a hero's title box and in a page header, so every page
+  title is written once. The section keeps its own wrapper (.gs-hero__box or .gs-page-head) and
+  adds anything after it (an article's date, the search form, the 404 page's ways on).
+
+  An eyebrow that names another page links back to it as a crumb (DS-80, Proposed), unless it is
+  this page.
+
+  @param {string} title - The page title, as plain text or a translation. Required
+  @param {string} [eyebrow] - The label above the title
+  @param {object} [back] - The page the eyebrow names, if any
+  @param {string} [deck] - Intro text; line breaks are kept
+  @param {object} [cta] - A link field's value, shown as the page's button
+
+  @example
+  {%- render 'gs-title-block', title: page.title, eyebrow: eyebrow, back: back, deck: f.intro.value, cta: cta -%}
+{% enddoc %}
+{%- if back.id != blank and back.id != page.id -%}
+  <p class="gs-crumb"><a href="{{ back.url }}">{{ eyebrow | escape }}</a></p>
+{%- elsif eyebrow != blank -%}
+  <p class="gs-eyebrow">{{ eyebrow | escape }}</p>
+{%- endif -%}
+<h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape_once }}</h1>
+{%- if deck != blank -%}
+  <p class="gs-deck">{{ deck | escape_once | newline_to_br }}</p>
+{%- endif -%}
+{%- if cta.url != blank -%}
+  <div class="gs-actions">{%- render 'gs-link', link: cta, class: 'gs-button' -%}</div>
+{%- endif -%}

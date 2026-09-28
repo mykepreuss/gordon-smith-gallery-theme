@@ -1,16 +1,23 @@
 {%- comment -%}
-  Search: the form, then results. Limited editions show as artwork tiles; pages and articles as a
-  list with their titles. Product titles are plain text once the artwork fields are filled
-  (DS-16), which is what lets "Seven Sisters" find Seven Sisters Range.
+  Search: the form, then results in headed groups. On the first page, the entries Shopify's search
+  doesn't look in come first (DS-113): exhibitions and lessons as compact cards, up to six each,
+  and artists as names, up to twelve, each group with its count and, when there are more, a link
+  to the whole list (gs-search-entries matches them). Then pages and articles as text cards
+  (DS-114), then limited editions as artwork tiles. The summary counts every result; with nothing
+  found, an empty state points to the collection. Product titles are plain text once the artwork
+  fields are filled (DS-16), which is what lets "Seven Sisters" find Seven Sisters Range.
 {%- endcomment -%}
 {%- assign form_id = 'gs-search-' | append: section.id -%}
+{%- comment -%} search.terms arrives HTML-escaped: decoded for the addresses that carry it on. {%- endcomment -%}
+{%- assign terms_plain = search.terms | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' | replace: '&amp;', '&' -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1">{{ 'search.title' | t }}</h1>
+    {%- assign title = 'search.title' | t -%}
+    {%- render 'gs-title-block', title: title -%}
     <form class="gs-form-row" action="{{ routes.search_url }}" method="get" role="search">
       <div class="gs-field">
         <label class="gs-field__label" for="{{ form_id }}">{{ 'search.label' | t }}</label>
-        <input class="gs-input" id="{{ form_id }}" type="search" name="q" value="{{ search.terms | escape }}" autocomplete="off">
+        <input class="gs-input" id="{{ form_id }}" type="search" name="q" value="{{ search.terms | escape }}" autocomplete="off"{% unless search.performed %} autofocus{% endunless %}>
       </div>
       <button class="gs-button" type="submit">{{ 'search.submit' | t }}</button>
     </form>
@@ -18,41 +25,192 @@
 </div>
 
 {%- if search.performed -%}
-  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-summary">
+  {%- liquid
+    capture exhibition_ids
+      render 'gs-search-entries', kind: 'exhibition', terms: search.terms
+    endcapture
+    assign exhibition_ids = exhibition_ids | strip | split: ','
+    capture lesson_ids
+      render 'gs-search-entries', kind: 'lesson', terms: search.terms
+    endcapture
+    assign lesson_ids = lesson_ids | strip | split: ','
+    capture artist_ids
+      render 'gs-search-entries', kind: 'artist', terms: search.terms
+    endcapture
+    assign artist_ids = artist_ids | strip | split: ','
+    assign total = search.results_count | plus: exhibition_ids.size | plus: lesson_ids.size | plus: artist_ids.size
+  -%}
+  {%- comment -%}
+    The artists' names are written here, in their own pagination: it can't sit inside the
+    search's, and a loop without one stops at 50 entries.
+  {%- endcomment -%}
+  {%- capture artist_items -%}
+    {%- if artist_ids.size > 0 -%}
+      {%- paginate metaobjects.artist.values by 250 -%}
+        {%- for pos in artist_ids limit: 12 -%}
+          {%- assign n = pos | plus: 0 -%}
+          {%- for artist in metaobjects.artist.values offset: n limit: 1 -%}
+            {%- render 'gs-artist-item', artist: artist -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  {%- endcapture -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-summary"{% if total == 0 %} data-gs-finder-empty{% endif %}>
     <div class="gs-container">
       {%- paginate search.results by 24 -%}
-        <p class="gs-deck" id="{{ form_id }}-summary" role="status">
-          {%- if search.results_count == 0 -%}
-            {{- 'search.no_results' | t: terms: search.terms -}}
-          {%- else -%}
-            {{- 'search.results' | t: count: search.results_count, terms: search.terms -}}
+        {%- if total == 0 -%}
+          {%- comment -%} gs-collection.js hides this section when the collection has works that match. {%- endcomment -%}
+          {%- assign empty_text = 'search.no_results' | t: terms: search.terms -%}
+          {%- assign empty_label = 'collection.ways_heading' | t -%}
+          {%- assign empty_id = form_id | append: '-summary' -%}
+          {%- render 'gs-empty', text: empty_text, link_url: settings.collection_page.url, link_label: empty_label, id: empty_id, status: true -%}
+        {%- else -%}
+          <div class="gs-section-head">
+            <p class="gs-deck" id="{{ form_id }}-summary" role="status">{{ 'search.results' | t: count: total, terms: search.terms }}</p>
+          </div>
+
+          {%- if paginate.current_page == 1 -%}
+            {%- if exhibition_ids.size > 0 -%}
+              {%- liquid
+                assign shown = exhibition_ids | slice: 0, 6
+                capture mods
+                  render 'gs-grid-modifiers', count: shown.size
+                endcapture
+                assign mods = mods | strip_newlines
+              -%}
+              <div class="gs-card-group">
+                <div class="gs-section-head">
+                  <div class="gs-section-head__text">
+                    <h2 class="gs-h2">{{ 'search.exhibitions_heading' | t }}</h2>
+                    <p class="gs-meta">{{ 'search.exhibitions_found' | t: count: exhibition_ids.size, terms: search.terms }}</p>
+                  </div>
+                  {%- if exhibition_ids.size > shown.size and settings.exhibitions_on_now_page != blank -%}
+                    <a class="gs-cta-link gs-cta-link--more" href="{{ settings.exhibitions_on_now_page.url }}">{{ 'exhibitions.all' | t }}</a>
+                  {%- endif -%}
+                </div>
+                <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
+                  {%- for pos in shown -%}
+                    {%- liquid
+                      assign n = pos | plus: 0
+                      capture card_sizes
+                        render 'gs-grid-sizes', mods: mods, index: forloop.index
+                      endcapture
+                      assign card_sizes = card_sizes | strip
+                    -%}
+                    {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+                      <li>{%- render 'gs-exhibition-card', entry: entry, show_status: true, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+                    {%- endfor -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+
+            {%- if artist_ids.size > 0 -%}
+              <div class="gs-card-group">
+                <div class="gs-section-head">
+                  <div class="gs-section-head__text">
+                    <h2 class="gs-h2">{{ 'search.artists_heading' | t }}</h2>
+                    <p class="gs-meta">
+                      {%- if artist_ids.size == 1 -%}
+                        {{- 'collection.artists_found_one' | t: terms: search.terms -}}
+                      {%- else -%}
+                        {{- 'collection.artists_found_other' | t: number: artist_ids.size, terms: search.terms -}}
+                      {%- endif -%}
+                    </p>
+                  </div>
+                  {%- if artist_ids.size > 12 and settings.artists_page != blank -%}
+                    <a class="gs-cta-link gs-cta-link--more" href="{{ settings.artists_page.url }}?q={{ terms_plain | url_encode }}">{{ 'collection.artists_link' | t }}</a>
+                  {%- endif -%}
+                </div>
+                <ul class="gs-index__list" role="list">{{ artist_items }}</ul>
+              </div>
+            {%- endif -%}
+
+            {%- if lesson_ids.size > 0 -%}
+              {%- liquid
+                assign shown = lesson_ids | slice: 0, 6
+                capture mods
+                  render 'gs-grid-modifiers', count: shown.size
+                endcapture
+                assign mods = mods | strip_newlines
+              -%}
+              <div class="gs-card-group">
+                <div class="gs-section-head">
+                  <div class="gs-section-head__text">
+                    <h2 class="gs-h2">{{ 'search.lessons_heading' | t }}</h2>
+                    <p class="gs-meta">{{ 'search.lessons_found' | t: count: lesson_ids.size, terms: search.terms }}</p>
+                  </div>
+                  {%- if lesson_ids.size > shown.size and settings.lessons_page != blank -%}
+                    <a class="gs-cta-link gs-cta-link--more" href="{{ settings.lessons_page.url }}">{{ 'lessons.all' | t }}</a>
+                  {%- endif -%}
+                </div>
+                <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
+                  {%- for pos in shown -%}
+                    {%- liquid
+                      assign n = pos | plus: 0
+                      capture card_sizes
+                        render 'gs-grid-sizes', mods: mods, index: forloop.index
+                      endcapture
+                      assign card_sizes = card_sizes | strip
+                    -%}
+                    {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+                      <li>{%- render 'gs-lesson-card', lesson: lesson, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+                    {%- endfor -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
           {%- endif -%}
-        </p>
-        {%- assign products = search.results | where: 'object_type', 'product' -%}
-        {%- assign others = search.results | where: 'object_type', 'page' -%}
-        {%- assign articles = search.results | where: 'object_type', 'article' -%}
-        {%- if products.size > 0 -%}
-          <ul class="gs-grid gs-grid--artworks gs-search__products">
-            {%- for product in products -%}
-              <li>{%- render 'gs-artwork-tile', product: product, heading: 'h2' -%}</li>
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-        {%- if others.size > 0 or articles.size > 0 -%}
-          <ul class="gs-results">
-            {%- for item in others -%}
-              <li>
-                <h2 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h2>
-                {%- if item.content != blank -%}<p class="gs-meta">{{ item.content | strip_html | truncatewords: 30 }}</p>{%- endif -%}
-              </li>
-            {%- endfor -%}
-            {%- for item in articles -%}
-              <li>
-                <h2 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h2>
-                {%- if item.excerpt_or_content != blank -%}<p class="gs-meta">{{ item.excerpt_or_content | strip_html | truncatewords: 30 }}</p>{%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
+
+          {%- assign products = search.results | where: 'object_type', 'product' -%}
+          {%- assign others = search.results | where: 'object_type', 'page' -%}
+          {%- assign articles = search.results | where: 'object_type', 'article' -%}
+          {%- comment -%}
+            Pages and articles (someone looking for "visit" wants Plan your visit before the
+            editions), then limited editions. Pages and articles are text cards: the whole card is
+            the link, as every other card (DS-114). Excerpts get a space at each block's end before
+            the tags go, so words from two paragraphs don't join.
+          {%- endcomment -%}
+          {%- if others.size > 0 or articles.size > 0 -%}
+            <div class="gs-card-group">
+              <div class="gs-section-head">
+                <h2 class="gs-h2">{{ 'search.pages_heading' | t }}</h2>
+              </div>
+              <ul class="gs-results" role="list">
+                {%- for item in others -%}
+                  {%- assign excerpt = item.metafields.custom.intro.value | default: item.content -%}
+                  <li>
+                    <article class="gs-card gs-card--text gs-card--compact">
+                      <h3 class="gs-card__title"><a href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                      {%- if excerpt != blank -%}<p class="gs-card__text gs-meta">{{ excerpt | replace: '<br', ' <br' | replace: '</p>', ' </p>' | replace: '</h2>', ' </h2>' | replace: '</h3>', ' </h3>' | replace: '</li>', ' </li>' | strip_html | truncatewords: 30, '…' | escape_once }}</p>{%- endif -%}
+                    </article>
+                  </li>
+                {%- endfor -%}
+                {%- for item in articles -%}
+                  {%- assign excerpt = item.excerpt_or_content -%}
+                  <li>
+                    <article class="gs-card gs-card--text gs-card--compact">
+                      <h3 class="gs-card__title"><a href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                      {%- if excerpt != blank -%}<p class="gs-card__text gs-meta">{{ excerpt | replace: '<br', ' <br' | replace: '</p>', ' </p>' | replace: '</h2>', ' </h2>' | replace: '</h3>', ' </h3>' | replace: '</li>', ' </li>' | strip_html | truncatewords: 30, '…' | escape_once }}</p>{%- endif -%}
+                    </article>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          {%- if products.size > 0 -%}
+            <div class="gs-card-group">
+              <div class="gs-section-head">
+                <h2 class="gs-h2">{{ 'search.editions_heading' | t }}</h2>
+              </div>
+              <ul class="gs-grid gs-grid--artworks" role="list">
+                {%- for product in products -%}
+                  <li>{%- render 'gs-artwork-tile', product: product, heading: 'h3' -%}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
         {%- endif -%}
         {%- render 'gs-pagination', paginate: paginate -%}
       {%- endpaginate -%}
@@ -66,7 +224,7 @@
   Permanent Collection page.
 {%- endcomment -%}
 {%- if search.performed and search.terms != blank and settings.collection_page != blank -%}
-  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-collection" data-gs-finder data-gs-finder-site data-gs-limit="6" data-gs-query="{{ search.terms | escape }}" hidden>
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-collection" data-gs-finder data-gs-finder-site data-gs-limit="6" data-gs-no-image="{{ 'collection.no_image' | t }}" data-gs-query="{{ search.terms | escape }}" hidden>
     <div class="gs-container">
       <div class="gs-section-head">
         <div class="gs-section-head__text">
@@ -76,9 +234,9 @@
             data-gs-other="{{ 'collection.works_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
             data-gs-none=""></p>
         </div>
-        <a class="gs-cta-link gs-cta-link--more" href="{{ settings.collection_page.url }}?q={{ search.terms | url_encode }}#collection-search">{{ 'collection.site_all' | t }}</a>
+        <a class="gs-cta-link gs-cta-link--more" href="{{ settings.collection_page.url }}?q={{ terms_plain | url_encode }}#collection-search">{{ 'collection.site_all' | t }}</a>
       </div>
-      <ul class="gs-grid gs-grid--artworks" data-gs-finder-results></ul>
+      <ul class="gs-grid gs-grid--artworks" role="list" data-gs-finder-results></ul>
     </div>
   </section>
   <script src="{{ 'gs-collection.js' | asset_url }}" defer></script>

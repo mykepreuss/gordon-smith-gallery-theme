@@ -35,10 +35,12 @@
   if m2 != '00'
     assign t2 = t2 | append: ':' | append: m2
   endif
+  # nb: a no-break space (U+00A0), so a time stays with AM or PM
+  assign nb = ' '
   assign to_word = 'open.to' | t
   if p1 == p2
-    echo t1 | append: ' ' | append: to_word | append: ' ' | append: t2 | append: ' ' | append: p2
+    echo t1 | append: ' ' | append: to_word | append: ' ' | append: t2 | append: nb | append: p2
   else
-    echo t1 | append: ' ' | append: p1 | append: ' ' | append: to_word | append: ' ' | append: t2 | append: ' ' | append: p2
+    echo t1 | append: nb | append: p1 | append: ' ' | append: to_word | append: ' ' | append: t2 | append: nb | append: p2
   endif
 -%}

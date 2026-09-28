@@ -13,7 +13,9 @@ What it checks
               no repeated listings, no two tinted bands in a row), and has no disabled leftovers.
   settings    Section and block schemas don't give staff design controls: colour pickers,
               colour schemes, font pickers, padding/size/opacity sliders (lockedSettings).
-  code        gs- assets, sections and snippets don't hard-code colours or px font sizes.
+  code        gs- assets, sections and snippets don't hard-code colours, palette values, px font
+              sizes, durations, line heights or ratios; no transition on all, no :has() inside
+              :has(), :hover only for a mouse, and grid and event lists keep role="list".
   renders     Snippet calls pass the parameters they need (e.g. gs-media gets a preset, so images
               are sized for where they sit).
 
@@ -173,25 +175,97 @@ def check_settings(theme, rules, report):
                            f"design control for staff{scope}: {reason}. Remove it; the value belongs in tokens")
 
 
-def check_code(theme, rules, report):
-    code = rules["codeRules"]
-    patterns = {name: re.compile(p) for name, p in code["patterns"].items() if not name.startswith("$")}
+def blank_out(match):
+    """Replace a skipped block with its line breaks, so line numbers stay right."""
+    return "\n" * match.group(0).count("\n")
+
+
+SKIP_BLOCKS = [
+    re.compile(r"{%-?\s*schema\s*-?%}.*?{%-?\s*endschema\s*-?%}", re.S),
+    re.compile(r"{%-?\s*doc\s*-?%}.*?{%-?\s*enddoc\s*-?%}", re.S),
+    re.compile(r"{%-?\s*comment\s*-?%}.*?{%-?\s*endcomment\s*-?%}", re.S),
+]
+CSS_COMMENT = re.compile(r"/\*.*?\*/", re.S)
+
+
+def code_files(theme, files, skip):
     for path in sorted(theme.rglob("*")):
         if not path.is_file():
             continue
         rel = path.relative_to(theme).as_posix()
-        if not any(fnmatch.fnmatch(rel, pat) for pat in code["files"]):
+        if not any(fnmatch.fnmatch(rel, pat) for pat in files):
             continue
-        if any(fnmatch.fnmatch(rel, pat) for pat in code["skipFiles"]):
+        if any(fnmatch.fnmatch(rel, pat) for pat in skip):
             continue
-        text = path.read_text(errors="replace")
-        text = re.sub(r"{%-?\s*schema\s*-?%}.*?{%-?\s*endschema\s*-?%}", "", text, flags=re.S)
+        yield path, rel
+
+
+def code_text(path, rel):
+    """The file's code without schemas, doc and comment blocks (Liquid) or comments (CSS)."""
+    text = path.read_text(errors="replace")
+    blocks = [CSS_COMMENT] if rel.endswith(".css") else SKIP_BLOCKS
+    for rx in blocks:
+        text = rx.sub(blank_out, text)
+    return text
+
+
+def check_code(theme, rules, report):
+    code = rules["codeRules"]
+    patterns = []
+    for name, spec in code["patterns"].items():
+        if name.startswith("$"):
+            continue
+        if isinstance(spec, str):
+            spec = {"pattern": spec}
+        patterns.append((name, re.compile(spec["pattern"]), spec.get("files"), spec.get("level", "error"),
+                         spec.get("message", f"{name}; use a token from tokens.css")))
+    for path, rel in code_files(theme, code["files"], code["skipFiles"]):
+        text = code_text(path, rel)
+        original = path.read_text(errors="replace").splitlines()
         for lineno, line in enumerate(text.splitlines(), 1):
-            if "gs-lint-ignore" in line:
+            if "gs-lint-ignore" in original[lineno - 1]:
                 continue
-            for name, rx in patterns.items():
+            for name, rx, files, level, message in patterns:
+                if files and not any(fnmatch.fnmatch(rel, pat) for pat in files):
+                    continue
                 if rx.search(line):
-                    report.add("error", f"{rel}:{lineno}", f"{name}; use a token from tokens.css")
+                    report.add(level, f"{rel}:{lineno}", message)
+    check_hover(theme, code, report)
+
+
+HOVER_MEDIA = re.compile(r"@media[^{]*\(\s*hover\s*:\s*hover\s*\)[^{]*\(\s*pointer\s*:\s*fine\s*\)"
+                         r"|@media[^{]*\(\s*pointer\s*:\s*fine\s*\)[^{]*\(\s*hover\s*:\s*hover\s*\)")
+
+
+def check_hover(theme, code, report):
+    """Every :hover selector sits inside @media (hover: hover) and (pointer: fine) (DESIGN.md §5.4).
+    A small brace scanner: each block's prelude is the text since the last ; { or }."""
+    spec = code.get("hoverOutsideMedia")
+    if not spec:
+        return
+    for path, rel in code_files(theme, spec["files"], code["skipFiles"]):
+        text = code_text(path, rel)
+        original = path.read_text(errors="replace").splitlines()
+        stack = []  # one entry per open block: True if it is (or is inside) a hover media query
+        prelude_start = 0
+        for i, ch in enumerate(text):
+            if ch == "{":
+                prelude = text[prelude_start:i]
+                inside = bool(stack and stack[-1])
+                is_hover_media = bool(HOVER_MEDIA.search(prelude))
+                if ":hover" in prelude and not prelude.lstrip().startswith("@") and not inside:
+                    first = text.count("\n", 0, prelude_start + len(prelude) - len(prelude.lstrip())) + 1
+                    last = text.count("\n", 0, i) + 1
+                    if not any("gs-lint-ignore" in original[n - 1] for n in range(first, last + 1)):
+                        report.add("error", f"{rel}:{first}", spec["message"])
+                stack.append(inside or is_hover_media)
+                prelude_start = i + 1
+            elif ch == "}":
+                if stack:
+                    stack.pop()
+                prelude_start = i + 1
+            elif ch == ";":
+                prelude_start = i + 1
 
 
 RENDER_RE = re.compile(r"render\s+['\"]([\w-]+)['\"]")

@@ -616,3 +616,43 @@ Support Artists for Kids now goes to the standard page template at release (`rel
 **Effect on the live site:** none. The 18 pages still show their title only; the Artists for Kids page's staged text and fields aren't read by the live theme.
 
 **Undo:** rebuild the earlier copies from the old site with `files.py prepare` and put them back with `files.py replace` (same IDs), and set the covers' alt text from `cover_alt` at `aea9961`; delete the 6 new cards and 4 new groups; run `load.py cards`, `load.py events` and the page-field batches from `content.py` at `aea9961`.
+
+## 2026-09-27: whole-site design review (proposals/site-design-review.md)
+
+**Why:** Michael, 2026-09-27: "Do the same using all of our design skills ... on every page of our new version of the site ... we want the design to be as good and consistent as possible". The review's content changes of our own words and markup only; the gallery's words are unchanged, and changes that need the gallery's words or would show on the live site wait (the review record lists them).
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 and the review theme 184767250729, neither touched. Before-snapshot: `snapshots/site-review-2026-09-27-before.json` (the three giving cards, Stitched's credits, the review menu, the two buttons; staged texts as the generators' output at the commits it names; FAQ and Contact had none).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Staged text: Donate's camp links go to the camps' pages here; FAQ and Contact get staged text (line-break paragraphs made paragraphs; Contact's phone and emails as links); Awards' three requirement links are standalone links (DS-82); Support's NVSD point is two paragraphs | Connector | `site_review.py pages`, `artists-for-kids/content.py` page-fields; one `metafieldsSet` of 7 values with the two buttons below |
+| Buttons: Support Artists for Kids "Make a gift", to its How to give cards (as Donate); the Artists for Kids page "Download the guide" (was "2026-2027 Program Guide") | Connector | Same call |
+| The three giving cards: "Online" (Through CanadaHelps. / Give online), "School Cash Online" (With an NVSD School Cash Online account. / Give with School Cash), "Phone" ((604) 903-3798 / Call us), as Donate's | Connector | `metaobjectUpdate` on 609010778409, 609010811177, 609010843945; `content.py` updated to match |
+| Stitched's credits: Artists For Kids and the Foundation link to their pages here; the Foundation's link was broken | Connector | `metaobjectUpdate` on 608388448553 (`site_review.py stitched`) |
+| The review menu `new-theme-main`: "Upcoming events" under Programs, after Public programs (label for the gallery to confirm) | Connector | `menuUpdate` (`site_review.py menu`); the other items keep their IDs |
+
+**Checked after:** on the development theme at 1440: Support's button and cards, the hub's button "Download the guide (PDF)", Awards' three links, Donate's camp links, Contact's links, Stitched's two links, Upcoming events marked in the menu. On gordonsmithgallery.com: Contact and FAQ unchanged.
+
+**Effect on the live site:** none. Staged text, buttons, cards, exhibition entries and the review menu aren't read by the live theme.
+
+**Undo:** set the values in the before-snapshot back (staged text: the generators at the commits named there; FAQ and Contact: delete `custom.release_body`); `menuUpdate` the review menu without the Upcoming events item.
+
+## 2026-09-28: DS-122 and DS-129, decided by Michael
+
+**Why:** Michael, 2026-09-28: "DS-97 to DS-130 all look like great improvements, proceed with implementation". Two of them need store content: DS-122 (the Permanent Collection's Browse button lands on "Browse the collection") and DS-129 (Learning kits shows each kit, then its lesson plans, then its video).
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 and the review theme 184767250729, neither touched. Before-snapshot: `snapshots/site-review-decided-2026-09-28-before.json`.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Six new card groups: one for each kit (no heading) and one for each kit's video ("Clay Lesson Video", "Trace Monotype Lesson Video", headings for the gallery to confirm) | CLI | `artists-for-kids/load.py cards` (upserts by handle; the other cards and groups were written with the values they already had); IDs in `created/afk-card-groups.json`. The old `afk-kits` and `afk-kit-videos` groups stay in the store, on no page |
+| Learning kits' card groups in the new order: each kit, its plans, its video | Connector | `metafieldsSet` on gid://shopify/Page/165838127401 (`content.py` page-fields, that row only) |
+| The Permanent Collection's button: "Browse" now goes to `#collection-browse` (was `#collection-search`) | Connector | Same call, gid://shopify/Page/155720548649 `custom.cta` |
+
+**Checked after:** Learning kits at 390 and 1440 on the development theme (kit, plans, video, for each of the four kits).
+
+**Effect on the live site:** none. Card groups and these page fields aren't read by the live theme.
+
+**Effect on the review theme:** its Browse button jumps nowhere until it has the new section id (`theme/sections/gs-collection-ways.liquid`, `id="collection-browse"`); push `main` to it after this branch merges.
+
+**Undo:** set both page fields back from the snapshot; the six new groups can stay or be deleted.

@@ -5,8 +5,9 @@
   Model: a top-level item is either a plain link (no children) or one button that opens its
   dropdown (has children). The button is the <summary> of a <details>, so it works without
   JavaScript and never navigates. The section's main page must be one of the dropdown's links,
-  normally the first, with its own label (e.g. "About the Foundation"). Dropdowns in one menu
-  share a name, so opening one closes the others.
+  normally the first, with its own label (e.g. "About the Foundation"). The bar's dropdowns
+  share a name, so opening one closes the others; the drawer's sections open independently, in
+  place, so a tapped row never jumps away (DS-104).
 
   Enforced here, because the menu editor can't enforce it:
   - A parent whose link points to a page that isn't in its dropdown gets a theme-editor
@@ -19,8 +20,13 @@
   - The current section's button says ", current section" to screen readers; in the drawer
     its dropdown starts open, so people see where they are.
   - Only two levels render. A third level in the menu is ignored.
-  - An artist's, work's or grouping's page (DS-62) counts as inside the section that links to the
-    Permanent Collection or Artists page (Theme settings), since menus can't link every entry.
+  - Section names longer than 73 characters together, or more than seven sections, get a
+    warning: the bar has only 36 to 39 px to spare on one line at 1200 px.
+  - A page the menu can't list belongs to a section through the pages in Theme settings (DS-91,
+    Proposed): an artist's, work's or grouping's page (DS-62) marks the section that links to the
+    Permanent Collection or Artists page; an exhibition marks the one that links to an exhibitions
+    page; a limited edition, portfolio or the collections list marks the one that links to the Shop
+    page. Only when no menu link is active, and at most one section.
   - A page or lesson the menu doesn't list counts as inside the section whose main page (its own
     link, else its first item) belongs to the same programme: After School Art or a lesson marks
     Artists for Kids. At most one section; exhibition and event pages never trigger it.
@@ -34,10 +40,17 @@
 {% enddoc %}
 {%- liquid
   assign variant = variant | default: 'bar'
-  assign in_collection = false
+  # The section a page belongs to when the menu can't list it (DS-91): its anchor pages.
+  assign anchors = ''
   if request.path contains '/pages/artists/' or request.path contains '/pages/collection/' or request.path contains '/pages/browse/'
-    assign in_collection = true
+    assign anchors = settings.collection_page.url | append: '|' | append: settings.artists_page.url
+  elsif request.path contains '/pages/exhibitions/'
+    assign anchors = settings.exhibitions_on_now_page.url | append: '|' | append: settings.exhibitions_upcoming_page.url | append: '|' | append: settings.exhibitions_past_page.url
+  elsif request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'list-collections'
+    assign anchors = settings.shop_page.url
   endif
+  assign anchors = anchors | split: '|'
+  assign anchor_marked = false
   assign listed = false
   for l in menu.links
     if l.active or l.child_active
@@ -46,7 +59,7 @@
     endif
   endfor
   assign find_programme = false
-  if listed == false and in_collection == false and brand != blank and brand != 'gallery'
+  if listed == false and anchors.size == 0 and brand != blank and brand != 'gallery'
     if template.name == 'page' or metaobject.system.type == 'lesson'
       assign find_programme = true
     endif
@@ -63,9 +76,13 @@
     {%- assign title_key = link.title | strip | downcase -%}
     {%- assign is_current = false -%}
     {%- if link.active or link.child_active -%}{%- assign is_current = true -%}{%- endif -%}
-    {%- if in_collection -%}
+    {%- if listed == false and anchor_marked == false and anchors.size > 0 -%}
       {%- for child in link.links -%}
-        {%- if child.url == settings.collection_page.url or child.url == settings.artists_page.url -%}{%- assign is_current = true -%}{%- endif -%}
+        {%- if anchors contains child.url -%}
+          {%- assign is_current = true -%}
+          {%- assign anchor_marked = true -%}
+          {%- break -%}
+        {%- endif -%}
       {%- endfor -%}
     {%- endif -%}
     {%- if find_programme and programme_marked == false and link.links.size > 0 -%}
@@ -93,7 +110,7 @@
       {%- if link.links.size > 0 -%}
         {%- assign parent_listed = false -%}
         {%- assign repeated_label = false -%}
-        <details class="gs-nav__details" name="gs-nav-{{ variant }}"{% if variant == 'drawer' and is_current %} open{% endif %}>
+        <details class="gs-nav__details"{% if variant == 'bar' %} name="gs-nav-bar"{% endif %}{% if variant == 'drawer' and is_current %} open{% endif %}>
           <summary class="gs-nav__trigger">
             {{- title -}}
             {%- if is_current -%}<span class="gs-visually-hidden">{{ 'header.current_section' | t }}</span>{%- endif -%}
@@ -133,4 +150,14 @@
       {%- endif -%}
     </li>
   {%- endfor -%}
+  {%- if request.design_mode and variant == 'bar' -%}
+    {%- assign name_chars = 0 -%}
+    {%- for l in menu.links -%}
+      {%- assign l_chars = l.title | strip | size -%}
+      {%- assign name_chars = name_chars | plus: l_chars -%}
+    {%- endfor -%}
+    {%- if name_chars > 73 or menu.links.size > 7 -%}
+      <li><span class="gs-editor-warning">The main menu's section names are too long to fit on one line on laptop screens. Shorten one, or ask for the layout to be checked.</span></li>
+    {%- endif -%}
+  {%- endif -%}
 </ul>

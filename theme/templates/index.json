@@ -19,7 +19,7 @@
     "whats_on": {
       "type": "gs-whats-on",
       "settings": {
-        "heading": "What's on"
+        "heading": "What’s on"
       }
     },
     "programme": {

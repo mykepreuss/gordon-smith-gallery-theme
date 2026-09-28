@@ -31,10 +31,12 @@
               {%- render 'gs-link', url: directions, label: directions_label, class: 'gs-cta-link' -%}
             </dd>
           </div>
-          {%- if settings.hours != blank -%}
+          {%- capture hours -%}{% render 'gs-open-hours' %}{%- endcapture -%}
+          {%- assign hours = hours | strip -%}
+          {%- if hours != blank -%}
             <div class="gs-details__item">
               <dt>{{ 'visit.gallery_hours' | t }}</dt>
-              <dd>{{ settings.hours | escape | newline_to_br }}</dd>
+              <dd>{{ hours }}</dd>
             </div>
           {%- endif -%}
           {%- if settings.admission != blank -%}

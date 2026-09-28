@@ -45,7 +45,7 @@ for name, p in PROGRAMMES.items():
         (f"{name} · tint", "error text", "error", p["tint"], AA_TEXT),
         (f"{name} · accent box", "text, focus ring", "ink", p["box"], AA_TEXT),
         (f"{name} · accent box", "button (ink fill)", "paper", "ink", AA_TEXT),
-        (f"{name} · accent box", "strong chip (ink with box-colour text)", p["box"], "ink", AA_TEXT),
+        (f"{name} · accent box", "strong chip (ink, paper text, DS-128)", "paper", "ink", AA_TEXT),
         (f"{name} · ink", "body text", "paper", "ink", AA_TEXT),
         (f"{name} · ink", "muted text", "ink-faint", "ink", AA_TEXT),
         (f"{name} · ink", "eyebrow / accent text, link underline", p["box"], "ink", AA_TEXT),

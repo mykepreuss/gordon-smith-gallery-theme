@@ -3,7 +3,8 @@
   photographs from the catalogue's archive, after the works, as tiles like the works: each cover
   whole on the mat, its title under it, as the catalogue showed them. The whole tile opens the
   document's file, and a PDF says so. A document whose file isn't uploaded yet (a PDF over 20 MB)
-  shows its cover without a link. A document without a cover gets a plain mat with "PDF".
+  shows its cover without a link. A document without a cover gets a plain mat with "PDF". The tile
+  is snippets/gs-doc-tile, which a card group of documents uses too (DS-108).
 
   From the artist's Documents field: a list of Document entries (title, cover, file).
 {%- endcomment -%}
@@ -13,40 +14,20 @@
       <div class="gs-section-head">
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.documents' | t }}</h2>
       </div>
-      <ul class="gs-grid gs-grid--artworks">
+      <ul class="gs-grid gs-grid--artworks" role="list">
         {%- for doc in metaobject.documents.value -%}
           {%- liquid
             assign file = doc.file.value
             assign doc_url = ''
-            assign is_pdf = false
             if file != blank
               if file.media_type == 'image'
                 assign doc_url = file | image_url
               else
                 assign doc_url = file.url
-                assign ending = doc_url | split: '?' | first | downcase | slice: -4, 4
-                if ending == '.pdf'
-                  assign is_pdf = true
-                endif
               endif
             endif
           -%}
-          <li>
-            <article class="gs-artwork-tile gs-doc-tile">
-              {%- if doc.cover.value != blank -%}
-                {%- render 'gs-media', image: doc.cover.value, preset: 'tile', mode: 'artwork' -%}
-              {%- else -%}
-                <div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">PDF</span></div>
-              {%- endif -%}
-              <h3 class="gs-artwork-tile__title">
-                {%- if doc_url != blank -%}
-                  <a href="{{ doc_url }}">{{ doc.title.value | escape }}{% if is_pdf %} {{ 'general.pdf' | t }}{% endif %}</a>
-                {%- else -%}
-                  {{- doc.title.value | escape -}}
-                {%- endif -%}
-              </h3>
-            </article>
-          </li>
+          <li>{%- render 'gs-doc-tile', title: doc.title.value, cover: doc.cover.value, url: doc_url -%}</li>
         {%- endfor -%}
       </ul>
     </div>

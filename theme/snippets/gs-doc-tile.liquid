@@ -1,0 +1,38 @@
+{% doc %}
+  A document as a tile (DESIGN.md §6.5, DS-63, DS-108): its cover whole on the mat, like a work,
+  then its title in the label style. The whole tile opens the file, and a PDF says "(PDF)" (gs-link).
+  A document whose file isn't there yet shows its title without a link. One without a cover gets
+  the blank mat with "PDF", so the row keeps one shape. The cover is decorative: the title follows
+  it (DS-120).
+
+  Used for an artist's documents (gs-artist-documents) and for a card group whose cards all open a
+  PDF (gs-card-groups), both in a grid of artworks. A document among photo cards stays a card
+  (gs-card, DS-69).
+
+  @param {string} title - The document's title. Required
+  @param {object} [cover] - The cover image
+  @param {string} [url] - The file's address. Blank shows the title without a link
+  @param {string} [text] - A line under the title, such as the grades a lesson is for
+  @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
+
+  @example
+  {%- render 'gs-doc-tile', title: doc.title.value, cover: doc.cover.value, url: doc_url -%}
+{% enddoc %}
+{%- assign tag = heading | default: 'h3' -%}
+<article class="gs-artwork-tile gs-doc-tile">
+  {%- if cover != blank -%}
+    {%- render 'gs-media', image: cover, preset: 'tile', mode: 'artwork', decorative: true -%}
+  {%- else -%}
+    <div class="gs-media gs-media--artwork gs-shape-md gs-media--blank" aria-hidden="true"><span class="gs-label">{{ 'collection.document_blank' | t }}</span></div>
+  {%- endif -%}
+  <{{ tag }} class="gs-artwork-tile__title">
+    {%- if url != blank -%}
+      {%- render 'gs-link', url: url, label: title, cue_wraps: true -%}
+    {%- else -%}
+      {{- title | escape | replace: ' - ', '&nbsp;- ' | replace: ' | ', '&nbsp;| ' -}}
+    {%- endif -%}
+  </{{ tag }}>
+  {%- if text != blank -%}
+    <p class="gs-meta">{{ text | escape | strip | newline_to_br }}</p>
+  {%- endif -%}
+</article>

@@ -12,15 +12,15 @@
   addresses get the external cue.
 
   A card whose link is a PDF (a learning guide, a lesson plan) is a document: its image, the
-  cover, shows whole on the mat, as a document tile does, and the link says "(PDF)" (DS-69). The
-  mat keeps the card's 4:3, so its title lines up with the photo cards beside it.
+  cover, shows whole on the mat, and the link says "(PDF)" (DS-69). The mat keeps the card's 4:3,
+  so its title lines up with the photo cards beside it. A group of documents alone is a row of
+  document tiles instead (gs-doc-tile, DS-108).
 
   @param {object} card - A card entry
   @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
   @param {boolean} [portrait] - A card in a group of portraits (people): 4:5 image, compact title
-  @param {boolean} [compact] - A card in a shelf of documents: compact title (DS-75)
   @param {string} [sizes] - The picture's sizes when the group's layout isn't three across (four
-    across, the wide first cards, a shelf, a row), so the browser fetches the right width
+    across, the wide first cards, a row), so the browser fetches the right width
 
   The picture has no alt text of its own unless Files gives it one: the card's title follows it,
   so repeating the title would say it twice (as heroes, DS-58).
@@ -36,8 +36,11 @@
   assign labelled = false
   assign is_pdf = false
   if link.url != blank
-    assign ending = link.url | split: '?' | first | downcase | slice: -4, 4
-    if ending == '.pdf'
+    capture r
+      render 'gs-url', link: link
+    endcapture
+    assign r = r | strip | split: '|'
+    if r[2] == '1'
       assign is_pdf = true
     endif
     if link.text == blank
@@ -69,8 +72,6 @@
   <article class="gs-card gs-card--logo" data-gs-brand="{{ brand }}">
     <{{ tag }} class="gs-card__logo gs-card__logo--{{ brand }}">
       {%- if stretch -%}
-        {%- capture r -%}{% render 'gs-url', link: link %}{%- endcapture -%}
-        {%- assign r = r | strip | split: '|' -%}
         <a href="{{ r[0] }}">
           <span class="gs-visually-hidden">{{ card.title.value | escape }}{% if r[1] == '1' %} {{ 'general.external_site' | t }}{% endif %}</span>
           {%- render 'gs-logo', name: logo, label: 'decorative' -%}
@@ -82,7 +83,7 @@
     </{{ tag }}>
     <div class="gs-card__body">
       {%- if card.text.value != blank -%}
-        <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
+        <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value -%}</div>
       {%- endif -%}
       {%- if labelled -%}
         {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
@@ -90,7 +91,7 @@
     </div>
   </article>
 {%- else -%}
-  <article class="gs-card{% if image == blank %} gs-card--text{% endif %}{% if portrait or compact %} gs-card--compact{% endif %}">
+  <article class="gs-card{% if image == blank %} gs-card--text{% endif %}{% if portrait %} gs-card--compact{% endif %}">
     {%- if image != blank -%}
       {%- if portrait -%}
         {%- render 'gs-media', image: image, preset: 'tile', mode: 'photo', ratio: 'var(--gs-ratio-portrait)', sizes: sizes -%}
@@ -102,13 +103,13 @@
     {%- endif -%}
     <{{ tag }} class="gs-card__title">
       {%- if stretch -%}
-        {%- render 'gs-link', link: link, label: card.title.value -%}
+        {%- render 'gs-link', link: link, label: card.title.value, cue_wraps: true -%}
       {%- else -%}
         {{- card.title.value | escape | replace: ' - ', '&nbsp;- ' | replace: ' | ', '&nbsp;| ' -}}
       {%- endif -%}
     </{{ tag }}>
     {%- if card.text.value != blank -%}
-      <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
+      <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value -%}</div>
     {%- endif -%}
     {%- if labelled -%}
       {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
