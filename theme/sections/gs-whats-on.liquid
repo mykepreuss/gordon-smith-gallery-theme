@@ -33,6 +33,8 @@
   endcapture
   assign ev_ids = ev_ids | strip | split: ','
   assign seen = '|'
+  # Events are read back inside a paginate tag: a plain loop stops at 50 entries (DS-148).
+  paginate shop.metaobjects.event.values by 250
   for id in ev_ids
     assign n = id | plus: 0
     for event in shop.metaobjects.event.values offset: n limit: 1
@@ -49,6 +51,7 @@
       assign keys = keys | append: when | append: '-e-' | append: id | append: ','
     endfor
   endfor
+  endpaginate
   assign items = keys | split: ',' | sort
 -%}
 {%- if items.size > 0 -%}
@@ -69,6 +72,7 @@
         </p>
       </div>
       <ul class="gs-grid gs-grid--cards gs-rail" role="list">
+        {%- paginate shop.metaobjects.event.values by 250 -%}
         {%- for item in items limit: 6 -%}
           {%- liquid
             assign parts = item | split: '-'
@@ -86,6 +90,7 @@
             {%- endif -%}
           </li>
         {%- endfor -%}
+        {%- endpaginate -%}
       </ul>
     </div>
   </section>

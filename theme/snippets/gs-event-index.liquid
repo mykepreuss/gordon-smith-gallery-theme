@@ -1,11 +1,14 @@
 {% doc %}
   Picks and orders event entries (content model part 5). Outputs comma-separated positions in
-  shop.metaobjects.event.values, soonest first. Read an event back with:
+  shop.metaobjects.event.values, soonest first. Read an event back inside the same paginate tag
+  (a plain loop stops at 50 entries, and the tag doesn't reach into a rendered snippet, DS-148):
 
-    for event in shop.metaobjects.event.values offset: n limit: 1
+    paginate shop.metaobjects.event.values by 250
+      for event in shop.metaobjects.event.values offset: n limit: 1
 
   An event drops off every list once it has ended (its end time, or its start time when it has
-  no end). Only active entries exist on the storefront. Reads up to 50 entries.
+  no end). Only active entries exist on the storefront. Reads the first 250 entries, A to Z by
+  handle, which is Shopify's order; the oldest ended events are removed before then (DS-148).
 
   With when, one of the three lists of DS-147: 'current', events today or under way (started on
   or before today, not yet ended); 'upcoming', events that start after today; 'past', events that
@@ -16,17 +19,18 @@
 
   @param {object} [for_page] - Only events whose programme page is this page
   @param {object} [exhibition] - Only events tied to this exhibition entry
-  @param {number} [limit] - At most this many
+  @param {number} [limit] - At most this many; 250 without it
   @param {string} [when] - 'current', 'upcoming' or 'past'
 
   @example
   {%- capture ids -%}{% render 'gs-event-index', for_page: page %}{%- endcapture -%}
 {% enddoc %}
 {%- liquid
-  assign limit = limit | default: 50
+  assign limit = limit | default: 250
   assign now = 'now' | date: '%s' | plus: 0
   assign today = 'now' | date: '%Y%m%d' | plus: 0
   assign keys = ''
+  paginate shop.metaobjects.event.values by 250
   for event in shop.metaobjects.event.values
     if for_page != blank
       if event.programme_page.value.id != for_page.id
@@ -60,6 +64,7 @@
     assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
     assign keys = keys | append: start_s | append: '-' | append: pos | append: ','
   endfor
+  endpaginate
 
   assign sorted = keys | split: ',' | sort
   if when == 'past'

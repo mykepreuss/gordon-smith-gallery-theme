@@ -8,7 +8,7 @@
   a page back with pages[handle]. With check, prints true or false instead: whether that page is
   one of the programmes.
 
-  An event counts until it has ended, as in gs-event-index. Reads up to 50 entries.
+  An event counts until it has ended, as in gs-event-index. Reads the first 250 entries (DS-148).
 
   @param {object} [check] - A page: print only whether it is in the row
 
@@ -21,6 +21,7 @@
   # Every upcoming event's programme, as "|handle|", between two dots so a count can be taken by splitting.
   assign hits = '.'
   assign keys = ''
+  paginate shop.metaobjects.event.values by 250
   for event in shop.metaobjects.event.values
     assign programme = event.programme_page.value
     if programme == blank
@@ -35,6 +36,7 @@
     assign hits = hits | append: '|' | append: programme.handle | append: '|'
     assign keys = keys | append: start_s | append: '#' | append: programme.handle | append: ','
   endfor
+  endpaginate
   assign hits = hits | append: '.'
 
   assign handles = ''

@@ -10,6 +10,10 @@
   is left out, except that a programme with nothing on or coming says so. Past shows the latest
   six, without pictures or summaries, and links to the Past events page. Any other page shows
   nothing here. An event moves from list to list by its dates.
+
+  Events are read back inside a paginate tag: a plain loop stops at 50 entries (DS-148). The
+  lists read the first 250 entries; from 200 the theme editor says so on the three lists, so the
+  oldest ended events are removed in time.
 {%- endcomment -%}
 {%- liquid
   assign when = ''
@@ -49,7 +53,7 @@
     endif
     assign ids = ids | strip | split: ','
     assign more = false
-    assign cap = 50
+    assign cap = 250
     if when == blank and group == 'past'
       assign cap = 6
     endif
@@ -91,17 +95,23 @@
         {%- endif -%}
         {%- if ids.size > 0 -%}
           <ul class="gs-events{% if when != blank %} gs-events--led{% endif %}{% if when == blank and past %} gs-events--quiet{% endif %}" role="list">
-            {%- for id in ids limit: cap -%}
-              {%- assign n = id | plus: 0 -%}
-              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-                {%- if when == blank and past -%}
-                  {%- render 'gs-event', event: event, page_title: page.title, past: true, compact: true -%}
-                {%- else -%}
-                  {%- render 'gs-event', event: event, page_title: page.title, past: past -%}
-                {%- endif -%}
+            {%- paginate shop.metaobjects.event.values by 250 -%}
+              {%- for id in ids limit: cap -%}
+                {%- assign n = id | plus: 0 -%}
+                {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                  {%- if when == blank and past -%}
+                    {%- render 'gs-event', event: event, page_title: page.title, past: true, compact: true -%}
+                  {%- else -%}
+                    {%- render 'gs-event', event: event, page_title: page.title, past: past -%}
+                  {%- endif -%}
+                {%- endfor -%}
               {%- endfor -%}
-            {%- endfor -%}
+              {%- assign entries = paginate.items -%}
+            {%- endpaginate -%}
           </ul>
+          {%- if request.design_mode and when != blank and entries >= 200 -%}
+            <p class="gs-editor-warning">There are {{ entries }} event entries, and the lists read the first 250. Delete the oldest ended events in Content, Metaobjects, Events, or set them to Draft.</p>
+          {%- endif -%}
         {%- else -%}
           {%- liquid
             assign empty_key = 'events.empty_' | append: group
