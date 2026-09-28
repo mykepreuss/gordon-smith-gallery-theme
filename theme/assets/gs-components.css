@@ -1415,16 +1415,17 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* ----- Bar (1200px and up): utility row above the main nav ----- */
 .gs-header__bar { display: none; }
 
+/* The utility row steps back (DS-135): small, regular weight, sentence case, so the main menu is the
+   only row in caps and the eye starts there. */
 .gs-utility {
   display: flex;
   gap: var(--gs-space-5);
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: var(--gs-text-label);
-  font-weight: var(--gs-weight-extrabold);
-  letter-spacing: var(--gs-tracking-label);
-  text-transform: uppercase;
+  font-size: var(--gs-text-small);
+  font-weight: var(--gs-weight-regular);
+  line-height: var(--gs-leading-small);
 }
 .gs-utility a { color: var(--gs-color-fg); }
 /* Today's opening line leads the row, in the row's own type, and links to Plan your visit (DS-132). */
@@ -1580,6 +1581,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   /* Both rows end at the same right edge, so the section labels stay put between programmes (DS-98). */
   .gs-header__bar :is(.gs-utility, .gs-nav) { justify-content: flex-end; }
   .gs-header__bar .gs-utility a { display: inline-flex; align-items: center; min-height: 2rem; }
+  /* The opening line sits at the row's left, beside the logo, apart from Contact, Search and Cart
+     (DS-135): what the place is doing, then the tools. */
+  .gs-header__bar .gs-utility__open { margin-inline-end: auto; }
   .gs-nav { gap: var(--gs-space-1) var(--gs-nav-gap); }
   /* A dropdown with groups (DS-133): the groups side by side, one column each (--gs-nav-groups, from
      gs-nav), and any links outside a group across the top, closed by a rule. The panel ends at the

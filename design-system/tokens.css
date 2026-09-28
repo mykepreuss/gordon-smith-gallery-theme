@@ -160,7 +160,7 @@
   --gs-width-prose: 45rem;    /* 720: the logo cards' text (text columns use --gs-measure) */
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
   --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px; the header's height there on every page */
-  --gs-nav-gap: clamp(1.25rem, 4.6vw - 2.2rem, 2.25rem); /* main nav item gap from 1200 px: 20 at 1200, 31 at 1440, 36 from about 1550, so seven section labels fit on one line at 1200 (§6.1) */
+  --gs-nav-gap: clamp(2rem, 2.9vw - 0.2rem, 2.75rem); /* main nav item gap from 1200 px: 32 at 1200, 39 at 1440, 44 from about 1630. Six section labels leave room at 1200 on every programme's pages (DS-136); seven would need checking */
   --gs-logo-min-foundation: 4.5rem; /* 72: the Foundation logo's minimum height (§8.3) */
   --gs-header-logo-h-foundation: var(--gs-logo-min-foundation); /* the Foundation logo in the header, at every width (DS-47, DS-97) */
   --gs-org-logo-h: 7rem;           /* 112: a square logo beside its organisation's text (DS-50); the Gallery full stacked minimum (§8.3) */

@@ -28,8 +28,9 @@
   - The current section's button or link says ", current section" to screen readers (a plain link
     only when the page isn't its own); in the drawer its dropdown starts open, so people see where
     they are. A group's item counts, as a dropdown's item does.
-  - Section names longer than 73 characters together, or more than seven sections, get a
-    warning: the bar has little to spare on one line at 1200 px.
+  - Section names longer than 58 characters together, or more than seven sections, get a
+    warning: at 1200 px on Foundation pages (the narrowest bar) seven sections with dropdowns fit
+    about 58 characters with the gaps of DS-136; the six today use 45.
   - A page the menu can't list belongs to a section through the pages in Theme settings (DS-91,
     DS-134): an artist's, work's or grouping's page marks the section that links to the Permanent
     Collection or Artists page; an exhibition, and the Upcoming and Past pages, mark the one that
@@ -253,7 +254,7 @@
       {%- assign l_chars = l.title | strip | size -%}
       {%- assign name_chars = name_chars | plus: l_chars -%}
     {%- endfor -%}
-    {%- if name_chars > 73 or menu.links.size > 7 -%}
+    {%- if name_chars > 58 or menu.links.size > 7 -%}
       <li><span class="gs-editor-warning">The main menu's section names are too long to fit on one line on laptop screens. Shorten one, or ask for the layout to be checked.</span></li>
     {%- endif -%}
   {%- endif -%}
