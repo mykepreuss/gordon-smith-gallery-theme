@@ -820,13 +820,13 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-text-media:not(.gs-text-media--text, .gs-text-media--media),
   .gs-text-media-list:has(.gs-text-media__aside) .gs-text-media--text { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 }
-/* A part with pictures is split into passages (DS-141, Proposed), each with its own pictures beside
+/* A part with pictures is split into passages (DS-142, Proposed), each with its own pictures beside
    it. Passages continue the text: the next one starts a paragraph's space below the last, or a
    heading's (1.8em at the H4 size, as h3 in page text) when it opens with one. */
 .gs-text-media + .gs-text-media { margin-block-start: 1em; }
 .gs-text-media + .gs-text-media--head { margin-block-start: calc(1.8 * var(--gs-text-h4)); }
 /* A passage whose text opens with a picture shows its pictures first below 990 px, after its
-   heading, as the text does (DS-94, Proposed; DS-141). */
+   heading, as the text does (DS-94, Proposed; DS-142). */
 @media (max-width: 989.98px) {
   .gs-text-media--lead > .gs-text-media__aside { order: -1; }
   .gs-text-media--lead > .gs-text-media__head { order: -2; }
@@ -839,7 +839,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-text-media--lead:has(> .gs-text-media__head) > .gs-text-media__aside { grid-column: 2; grid-row: 1 / span 2; }
 }
 /* A passage's only picture or quote stays in view while its longer text scrolls past, and stops
-   with the passage (DS-141, Proposed). Only on a screen tall enough for a capped photo and its
+   with the passage (DS-142, Proposed). Only on a screen tall enough for a capped photo and its
    caption; the header never sticks (DS-23), so it sits a small margin from the top. */
 @media (min-width: 990px) and (min-height: 50rem) {
   .gs-text-media:not(.gs-text-media--media) > .gs-text-media__aside:not(:has(> * + *)) { position: sticky; top: var(--gs-space-6); }
@@ -1632,6 +1632,29 @@ html:has(.gs-lightbox[open]) { overflow: hidden; }
 .gs-nav__group { display: grid; align-content: start; }
 .gs-nav__group-title { display: flex; align-items: center; min-height: 2.5rem; color: var(--gs-color-field-fg); }
 .gs-nav__group > ul { display: grid; margin: 0; padding: 0; list-style: none; }
+/* Link or heading, told apart at a glance (DS-141). Caps alone read as a heading, and a link alone
+   above a rule reads as an introduction, so what leads to a page carries the standalone link's arrow:
+   a group's title that links to its page, and a link across the top ("Upcoming events"), which is
+   also bold. A title that is plain text is only a heading: the same ink, no arrow. The group's own
+   links stay plain: a list under a heading is a list of links. */
+.gs-nav__panel--groups > li:not(.gs-nav__group) > a { font-weight: var(--gs-weight-bold); }
+a.gs-nav__group-title,
+.gs-nav__panel--groups > li:not(.gs-nav__group) > a { gap: 0.55em; }
+a.gs-nav__group-title:not(.gs-link--external)::after,
+.gs-nav__panel--groups > li:not(.gs-nav__group) > a:not(.gs-link--external)::after {
+  content: "";
+  flex: none;
+  width: 1.15em;
+  height: 0.8em;
+  background-color: currentColor;
+  -webkit-mask: var(--gs-icon-arrow) center / contain no-repeat;
+  mask: var(--gs-icon-arrow) center / contain no-repeat;
+  transition: transform var(--gs-duration-fast) var(--gs-ease);
+}
+:is(a.gs-nav__group-title, .gs-nav__panel--groups > li:not(.gs-nav__group) > a):active::after { transform: translateX(0.25em); }
+@media (hover: hover) and (pointer: fine) {
+  :is(a.gs-nav__group-title, .gs-nav__panel--groups > li:not(.gs-nav__group) > a):hover::after { transform: translateX(0.25em); }
+}
 
 /* Opening answers a click, so it may move: what floats over the page (a bar dropdown, the Menu
    drawer) fades in and drops 4px, 120ms. What opens in place (a section inside the drawer) opens

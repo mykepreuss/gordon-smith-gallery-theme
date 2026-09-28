@@ -1,6 +1,6 @@
 {% doc %}
   Page text with pictures beside it (DS-51, DESIGN.md §6.11). The text is split at its H2
-  headings into parts, and each part with pictures into passages (DS-141, Proposed): a new passage
+  headings into parts, and each part with pictures into passages (DS-142, Proposed): a new passage
   starts at an H3 with text before it in the part, and at text that follows a picture when another
   picture comes after it. From 990 px a passage's figures (a picture with its caption) sit beside
   its text, aligned to its first line; on smaller screens they follow its text. So each picture
@@ -9,14 +9,14 @@
 
   A passage's only figure stays in view while its longer text scrolls past (CSS). A quote in a
   passage that also has a picture stays in the text where the text puts it, and the picture sits
-  beside; a quote with no picture beside it is a pull quote (DS-141).
+  beside; a quote with no picture beside it is a pull quote (DS-142).
 
   A part with no words, only pictures, lays them out under its heading instead of beside an
   empty column: one at the reading width, two or more side by side from 750 px (DS-78, Proposed).
   Two tall photos in a row pair up side by side from 750 px (DS-77, Proposed): a photo figure whose
   picture is taller than wide is marked data-gs-tall. A passage whose text, after its heading,
   opens with a figure is marked gs-text-media--lead, and below 990 px its pictures come after its
-  heading and before its text (DS-94, Proposed; DS-141).
+  heading and before its text (DS-94, Proposed; DS-142).
 
   With heads, each H2 is the heading of a part of the page, level with a card group's heading:
   section-heading size, above the text and its pictures (DS-51). Without, H2s stay page-text
@@ -57,7 +57,7 @@
         endif
       endif
 
-      # Passages (DS-141). Each is its text, cut_aside, then its figures; passages are joined by
+      # Passages (DS-142). Each is its text, cut_aside, then its figures; passages are joined by
       # cut_passage. A quote goes into both the text and the figures until the passage closes,
       # then stays in whichever one the passage's pictures call for.
       assign passages = ''
