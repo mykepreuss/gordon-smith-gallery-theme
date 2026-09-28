@@ -12,17 +12,33 @@
   The logo is the page's programme's (DS-47): Artists for Kids or the Foundation on their pages,
   the Gallery everywhere else. It always links home.
 
-  The utility links are fixed (P-07, P-15): Contact (the contact page in theme settings), Search
-  and Cart. Contact is always visible. The newsletter has no link here (DS-56): its sign-up band
-  is at the foot of every page.
+  The utility links are fixed (P-07, P-15): today's opening line, linking to Plan your visit
+  (DS-132), then Contact (the contact page in theme settings), Search and Cart. The opening line
+  shows only when the opening days are set in Theme settings; the page names it for screen readers,
+  since the line itself says the hours. Contact is always visible. The newsletter has no link here
+  (DS-56): its sign-up band is at the foot of every page.
 
   @param {object} menu - The main menu (linklist), e.g. section.settings.menu
 
   @example
   {%- render 'gs-header', menu: section.settings.menu -%}
 {% enddoc %}
+{%- capture open_line -%}{%- render 'gs-open-today', tag: 'span' -%}{%- endcapture -%}
+{%- assign open_line = open_line | strip -%}
 {%- capture utility -%}
   <ul class="gs-utility">
+    {%- if open_line != blank -%}
+      <li>
+        {%- if settings.visit_page != blank -%}
+          <a href="{{ settings.visit_page.url }}"{% if page.id == settings.visit_page.id %} aria-current="page"{% endif %}>
+            {{- open_line -}}
+            <span class="gs-visually-hidden">{{ 'header.open_visit' | t }}</span>
+          </a>
+        {%- else -%}
+          {{- open_line -}}
+        {%- endif -%}
+      </li>
+    {%- endif -%}
     {%- if settings.contact_page != blank -%}
       <li><a href="{{ settings.contact_page.url }}"{% if page.id == settings.contact_page.id %} aria-current="page"{% endif %}>{{ 'header.contact' | t }}</a></li>
     {%- endif -%}

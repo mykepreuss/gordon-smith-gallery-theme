@@ -8,6 +8,8 @@
   Holidays and one-off closures aren't known here: the Plan your visit page carries those.
 
   @param {string} [class] - Extra classes for the line
+  @param {string} [tag] - 'p' (default) or 'span', for a line inside a link: the header's utility
+    row wraps it in a link to Plan your visit (DS-132)
 
   @example
   {%- render 'gs-open-today' -%}
@@ -30,7 +32,13 @@
     assign times = times | strip
     assign to_word = 'open.to' | t
   -%}
-  <p class="gs-open{% if class != blank %} {{ class }}{% endif %}" data-gs-open data-tz="America/Vancouver"
+  {%- liquid
+    assign tag = tag | default: 'p'
+    unless tag == 'span'
+      assign tag = 'p'
+    endunless
+  -%}
+  <{{ tag }} class="gs-open{% if class != blank %} {{ class }}{% endif %}" data-gs-open data-tz="America/Vancouver"
     data-days="{{ open }}" data-opens="{{ settings.opens_at }}" data-closes="{{ settings.closes_at }}"
     data-now="{{ 'open.now' | t: time: '%time%' | escape }}"
     data-today="{{ 'open.today' | t: times: '%times%' | escape }}"
@@ -40,5 +48,5 @@
     data-weekdays="{{ 'open.weekdays' | t | escape }}"
     data-to="{{ to_word | escape }}">
     {{- 'open.days_times' | t: days: days, times: times -}}
-  </p>
+  </{{ tag }}>
 {%- endif -%}

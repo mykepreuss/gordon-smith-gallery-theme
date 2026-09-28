@@ -1,35 +1,45 @@
 {% doc %}
-  Main navigation list (DESIGN.md §6.1, DS-11). Rendered twice by gs-header: once for the Menu
-  drawer and once for the desktop bar.
+  Main navigation list (DESIGN.md §6.1, DS-11, DS-133). Rendered twice by gs-header: once for the
+  Menu drawer and once for the desktop bar.
 
   Model: a top-level item is either a plain link (no children) or one button that opens its
   dropdown (has children). The button is the <summary> of a <details>, so it works without
   JavaScript and never navigates. The section's main page must be one of the dropdown's links,
-  normally the first, with its own label (e.g. "About the Foundation"). The bar's dropdowns
-  share a name, so opening one closes the others; the drawer's sections open independently, in
-  place, so a tapped row never jumps away (DS-104).
+  normally the first, with its own label (e.g. "About the gallery"). The bar's dropdowns share a
+  name, so opening one closes the others; the drawer's sections open independently, in place, so a
+  tapped row never jumps away (DS-104).
+
+  Groups (DS-133): an item in a dropdown that has items of its own is a group. Its title links to
+  its own page ("Artists for Kids"), or is plain text when its link is "#" ("Scholarships and
+  awards"), and its items are listed under it. On the bar the groups sit side by side, one column
+  each, in a panel that ends at the nav's right edge; in the drawer they stack. Items without items
+  of their own run across the top. Nothing opens inside a dropdown: the menu editor's third level
+  draws the groups, and it has no fourth.
 
   Enforced here, because the menu editor can't enforce it:
-  - A parent whose link points to a page that isn't in its dropdown gets a theme-editor
-    warning: visitors could no longer reach that page from the menu. Fix by adding the page
-    to the dropdown, or set the parent's link to "#" if no main page is intended.
-  - A child labelled exactly like its parent gets a warning: give it its own label.
+  - A parent whose link points to a page that isn't in its dropdown (an item, a group's title or a
+    group's item) gets a theme-editor warning: visitors could no longer reach that page from the
+    menu. Fix by adding the page to the dropdown, or set the parent's link to "#" if no main page is
+    intended.
+  - An item or group labelled exactly like its section gets a warning: give it its own label.
   - Store URLs typed as absolute links are made relative; true off-site links get the
     external cue and "(external site)" for screen readers (gs-url).
   - A plain link with no destination ("#") gets a warning.
-  - The current section's button says ", current section" to screen readers; in the drawer
-    its dropdown starts open, so people see where they are.
-  - Only two levels render. A third level in the menu is ignored.
+  - The current section's button or link says ", current section" to screen readers (a plain link
+    only when the page isn't its own); in the drawer its dropdown starts open, so people see where
+    they are. A group's item counts, as a dropdown's item does.
   - Section names longer than 73 characters together, or more than seven sections, get a
-    warning: the bar has only 36 to 39 px to spare on one line at 1200 px.
+    warning: the bar has little to spare on one line at 1200 px.
   - A page the menu can't list belongs to a section through the pages in Theme settings (DS-91,
-    Proposed): an artist's, work's or grouping's page (DS-62) marks the section that links to the
-    Permanent Collection or Artists page; an exhibition marks the one that links to an exhibitions
-    page; a limited edition, portfolio or the collections list marks the one that links to the Shop
-    page. Only when no menu link is active, and at most one section.
+    DS-134): an artist's, work's or grouping's page marks the section that links to the Permanent
+    Collection or Artists page; an exhibition, and the Upcoming and Past pages, mark the one that
+    links to an exhibitions page; a limited edition, portfolio or the collections list marks the one
+    that links to the Shop page. A section's own link counts, so a plain link (Exhibitions to On now,
+    Shop) is marked too. Only when no menu link is active, and at most one section.
   - A page or lesson the menu doesn't list counts as inside the section whose main page (its own
-    link, else its first item) belongs to the same programme: After School Art or a lesson marks
-    Artists for Kids. At most one section; exhibition and event pages never trigger it.
+    link, its first item or a group's title) belongs to the same programme: After School Art or a
+    lesson marks the section with the Artists for Kids group. At most one section; exhibition and
+    event pages never trigger it.
 
   @param {object} menu - A menu (linklist), e.g. section.settings.menu
   @param {string} [brand] - The page's programme as a brand scope (gs-brand), from gs-header
@@ -40,24 +50,43 @@
 {% enddoc %}
 {%- liquid
   assign variant = variant | default: 'bar'
-  # The section a page belongs to when the menu can't list it (DS-91): its anchor pages.
+  # The section a page belongs to when the menu can't list it (DS-91, DS-134): its anchor pages.
+  assign exhibition_list = false
+  if page.id != blank
+    if page.id == settings.exhibitions_upcoming_page.id or page.id == settings.exhibitions_past_page.id
+      assign exhibition_list = true
+    endif
+  endif
   assign anchors = ''
   if request.path contains '/pages/artists/' or request.path contains '/pages/collection/' or request.path contains '/pages/browse/'
     assign anchors = settings.collection_page.url | append: '|' | append: settings.artists_page.url
-  elsif request.path contains '/pages/exhibitions/'
+  elsif request.path contains '/pages/exhibitions/' or exhibition_list
     assign anchors = settings.exhibitions_on_now_page.url | append: '|' | append: settings.exhibitions_upcoming_page.url | append: '|' | append: settings.exhibitions_past_page.url
   elsif request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'list-collections'
     assign anchors = settings.shop_page.url
   endif
   assign anchors = anchors | split: '|'
   assign anchor_marked = false
+
+  # Whether the menu lists this page, at any of its three levels.
   assign listed = false
   for l in menu.links
     if l.active or l.child_active
       assign listed = true
+    else
+      for c in l.links
+        for g in c.links
+          if g.active
+            assign listed = true
+          endif
+        endfor
+      endfor
+    endif
+    if listed
       break
     endif
   endfor
+
   assign find_programme = false
   if listed == false and anchors.size == 0 and brand != blank and brand != 'gallery'
     if template.name == 'page' or metaobject.system.type == 'lesson'
@@ -74,39 +103,79 @@
     {%- assign ext = r[1] -%}
     {%- assign title = link.title | strip | escape -%}
     {%- assign title_key = link.title | strip | downcase -%}
-    {%- assign is_current = false -%}
-    {%- if link.active or link.child_active -%}{%- assign is_current = true -%}{%- endif -%}
-    {%- if listed == false and anchor_marked == false and anchors.size > 0 -%}
-      {%- for child in link.links -%}
-        {%- if anchors contains child.url -%}
-          {%- assign is_current = true -%}
-          {%- assign anchor_marked = true -%}
-          {%- break -%}
-        {%- endif -%}
-      {%- endfor -%}
-    {%- endif -%}
-    {%- if find_programme and programme_marked == false and link.links.size > 0 -%}
-      {%- liquid
-        assign main = nil
-        if link.type == 'page_link'
-          assign main = link.object
-        elsif link.links.first.type == 'page_link'
-          assign main = link.links.first.object
+    {%- liquid
+      assign is_current = false
+      if link.active or link.child_active
+        assign is_current = true
+      endif
+      assign groups = 0
+      for child in link.links
+        if child.links.size > 0
+          assign groups = groups | plus: 1
+          for grandchild in child.links
+            if grandchild.active
+              assign is_current = true
+            endif
+          endfor
         endif
-        if main != nil
-          capture main_brand
-            render 'gs-programme', value: main.metafields.custom.programme.value
-          endcapture
-          assign main_brand = main_brand | strip
-          if main_brand == brand
-            assign is_current = true
-            assign programme_marked = true
-          endif
-        endif
-      -%}
-    {%- endif -%}
+      endfor
 
-    <li class="gs-nav__item{% if is_current %} gs-nav__item--current{% endif %}">
+      if listed == false and anchor_marked == false and anchors.size > 0
+        if anchors contains link.url
+          assign anchor_marked = true
+        else
+          for child in link.links
+            if anchors contains child.url
+              assign anchor_marked = true
+            else
+              for grandchild in child.links
+                if anchors contains grandchild.url
+                  assign anchor_marked = true
+                endif
+              endfor
+            endif
+            if anchor_marked
+              break
+            endif
+          endfor
+        endif
+        if anchor_marked
+          assign is_current = true
+        endif
+      endif
+
+      # The section's main pages: its own link, its first item and its groups' titles.
+      if find_programme and programme_marked == false and link.links.size > 0
+        assign candidates = ''
+        if link.type == 'page_link'
+          capture b
+            render 'gs-programme', value: link.object.metafields.custom.programme.value
+          endcapture
+          assign candidates = candidates | append: b | append: ','
+        endif
+        if link.links.first.type == 'page_link'
+          capture b
+            render 'gs-programme', value: link.links.first.object.metafields.custom.programme.value
+          endcapture
+          assign candidates = candidates | append: b | append: ','
+        endif
+        for child in link.links
+          if child.links.size > 0 and child.type == 'page_link'
+            capture b
+              render 'gs-programme', value: child.object.metafields.custom.programme.value
+            endcapture
+            assign candidates = candidates | append: b | append: ','
+          endif
+        endfor
+        assign candidates = candidates | strip_newlines | remove: ' ' | split: ','
+        if candidates contains brand
+          assign is_current = true
+          assign programme_marked = true
+        endif
+      endif
+    -%}
+
+    <li class="gs-nav__item{% if is_current %} gs-nav__item--current{% endif %}{% if groups > 0 %} gs-nav__item--groups{% endif %}">
       {%- if link.links.size > 0 -%}
         {%- assign parent_listed = false -%}
         {%- assign repeated_label = false -%}
@@ -115,19 +184,46 @@
             {{- title -}}
             {%- if is_current -%}<span class="gs-visually-hidden">{{ 'header.current_section' | t }}</span>{%- endif -%}
           </summary>
-          <ul class="gs-nav__panel">
+          <ul class="gs-nav__panel{% if groups > 0 %} gs-nav__panel--groups{% endif %}"{% if groups > 0 %} style="--gs-nav-groups: {{ groups }}"{% endif %}>
             {%- for child in link.links -%}
               {%- capture c -%}{%- render 'gs-url', link: child -%}{%- endcapture -%}
               {%- assign c = c | strip | split: '|' -%}
               {%- if c[0] == href -%}{%- assign parent_listed = true -%}{%- endif -%}
               {%- assign child_key = child.title | strip | downcase -%}
               {%- if child_key == title_key -%}{%- assign repeated_label = true -%}{%- endif -%}
-              <li>
-                <a href="{{ c[0] }}"{% if child.current %} aria-current="page"{% endif %}{% if c[1] == '1' %} class="gs-link--external"{% endif %}>
-                  {{- child.title | strip | escape -}}
-                  {%- if c[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
-                </a>
-              </li>
+              {%- if child.links.size > 0 -%}
+                {%- assign group_id = 'gs-nav-' | append: variant | append: '-' | append: forloop.parentloop.index | append: '-' | append: forloop.index -%}
+                <li class="gs-nav__group">
+                  {%- if c[0] == '#' -%}
+                    <span class="gs-nav__group-title" id="{{ group_id }}">{{ child.title | strip | escape }}</span>
+                  {%- else -%}
+                    <a class="gs-nav__group-title{% if c[1] == '1' %} gs-link--external{% endif %}" id="{{ group_id }}" href="{{ c[0] }}"{% if child.current %} aria-current="page"{% endif %}>
+                      {{- child.title | strip | escape -}}
+                      {%- if c[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
+                    </a>
+                  {%- endif -%}
+                  <ul aria-labelledby="{{ group_id }}">
+                    {%- for grandchild in child.links -%}
+                      {%- capture g -%}{%- render 'gs-url', link: grandchild -%}{%- endcapture -%}
+                      {%- assign g = g | strip | split: '|' -%}
+                      {%- if g[0] == href -%}{%- assign parent_listed = true -%}{%- endif -%}
+                      <li>
+                        <a href="{{ g[0] }}"{% if grandchild.current %} aria-current="page"{% endif %}{% if g[1] == '1' %} class="gs-link--external"{% endif %}>
+                          {{- grandchild.title | strip | escape -}}
+                          {%- if g[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </li>
+              {%- else -%}
+                <li>
+                  <a href="{{ c[0] }}"{% if child.current %} aria-current="page"{% endif %}{% if c[1] == '1' %} class="gs-link--external"{% endif %}>
+                    {{- child.title | strip | escape -}}
+                    {%- if c[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
+                  </a>
+                </li>
+              {%- endif -%}
             {%- endfor -%}
           </ul>
         </details>
@@ -143,6 +239,7 @@
         <a class="gs-nav__link{% if ext == '1' %} gs-link--external{% endif %}" href="{{ href }}"{% if link.current %} aria-current="page"{% endif %}>
           {{- title -}}
           {%- if ext == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
+          {%- if is_current and link.current == false -%}<span class="gs-visually-hidden">{{ 'header.current_section' | t }}</span>{%- endif -%}
         </a>
         {%- if request.design_mode and variant == 'bar' and href == '#' -%}
           <span class="gs-editor-warning">Menu item "{{ title }}" has no page. Link it to a page or add items under it.</span>

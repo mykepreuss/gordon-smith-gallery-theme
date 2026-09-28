@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="components.css">
 <script src="js/gs-nav.js" defer></script>
+<script src="js/gs-open.js" defer></script>
 <script src="js/gs-collection.js" defer></script>
 <style>
   /* Preview-only scaffolding. Not part of the system. */
@@ -75,16 +76,7 @@
     <div class="gs-drawer__panel">
       <nav aria-label="Main">
         <ul class="gs-nav">
-          <li class="gs-nav__item gs-nav__item--current">
-            <details class="gs-nav__details" open>
-              <summary class="gs-nav__trigger">Exhibitions<span class="gs-visually-hidden">, current section</span></summary>
-              <ul class="gs-nav__panel">
-                <li><a href="#on-now" aria-current="page">On now</a></li>
-                <li><a href="#upcoming">Upcoming</a></li>
-                <li><a href="#past">Past exhibitions</a></li>
-              </ul>
-            </details>
-          </li>
+          <li class="gs-nav__item gs-nav__item--current"><a class="gs-nav__link" href="#exhibitions">Exhibitions<span class="gs-visually-hidden">, current section</span></a></li>
           <li class="gs-nav__item">
             <details class="gs-nav__details">
               <summary class="gs-nav__trigger">Collection</summary>
@@ -94,15 +86,26 @@
               </ul>
             </details>
           </li>
-          <li class="gs-nav__item">
+          <li class="gs-nav__item gs-nav__item--groups">
             <details class="gs-nav__details">
               <summary class="gs-nav__trigger">Programs</summary>
+              <ul class="gs-nav__panel gs-nav__panel--groups" style="--gs-nav-groups: 3">
+                <li><a href="#events">Upcoming events</a></li>
+                <li class="gs-nav__group"><a class="gs-nav__group-title" id="pv-nav-drawer-3-2" href="#public-programs">Public programs</a><ul aria-labelledby="pv-nav-drawer-3-2"><li><a href="#speaker-series">Speaker series</a></li><li><a href="#music">Music at the Smith</a></li><li><a href="#explore">Explore + Create</a></li><li><a href="#art-in-good-company">Art in Good Company</a></li></ul></li>
+                <li class="gs-nav__group"><a class="gs-nav__group-title" id="pv-nav-drawer-3-3" href="#artists-for-kids">Artists for Kids</a><ul aria-labelledby="pv-nav-drawer-3-3"><li><a href="#classes">Classes and camps</a></li><li><a href="#schools">Schools and teachers</a></li></ul></li>
+                <li class="gs-nav__group"><span class="gs-nav__group-title" id="pv-nav-drawer-3-4">Scholarships and awards</span><ul aria-labelledby="pv-nav-drawer-3-4"><li><a href="#scholarships">Smith Foundation scholarships</a></li><li><a href="#awards">Artists for Kids awards</a></li></ul></li>
+              </ul>
+            </details>
+          </li>
+          <li class="gs-nav__item">
+            <details class="gs-nav__details">
+              <summary class="gs-nav__trigger">Support</summary>
               <ul class="gs-nav__panel">
-                <li><a href="#public-programs">Public programs</a></li>
-                <li><a href="#speaker-series">Speaker series</a></li>
-                <li><a href="#music">Music at the Smith</a></li>
-                <li><a href="#explore">Explore + Create</a></li>
-                <li><a href="#art-in-good-company">Art in Good Company</a></li>
+                <li><a href="#donate">Give to the Smith Foundation</a></li>
+                <li><a href="#support-afk">Give to Artists for Kids</a></li>
+                <li><a href="#gala">Brilliance Gala</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+                <li><a href="#supporters">Supporters</a></li>
               </ul>
             </details>
           </li>
@@ -112,37 +115,16 @@
               <ul class="gs-nav__panel">
                 <li><a href="#about">About the gallery</a></li>
                 <li><a href="#visit">Plan your visit</a></li>
-                <li><a href="#volunteer">Volunteer</a></li>
+                <li><a href="#gordon-and-marion">Gordon and Marion Smith</a></li>
+                <li><a href="#foundation">The Smith Foundation</a></li>
               </ul>
             </details>
           </li>
-          <li class="gs-nav__item"><a class="gs-nav__link" href="#artists-for-kids">Artists for Kids</a></li>
-          <li class="gs-nav__item">
-            <details class="gs-nav__details">
-              <summary class="gs-nav__trigger">Smith Foundation</summary>
-              <ul class="gs-nav__panel">
-                <li><a href="#foundation">About the Foundation</a></li>
-                <li><a href="#gordon-and-marion">Gordon and Marion</a></li>
-                <li><a href="#donate">Donate</a></li>
-              </ul>
-            </details>
-          </li>
-          <li class="gs-nav__item">
-            <details class="gs-nav__details">
-              <summary class="gs-nav__trigger">Shop</summary>
-              <ul class="gs-nav__panel">
-                <li><a href="#shop">Limited editions</a></li>
-                <li><a href="#portfolio">2026 Fall Portfolio</a></li>
-                <li><a href="#p2">2026 Spring Portfolio</a></li>
-                <li><a href="#p3">2025 Fall Portfolio</a></li>
-                <li><a href="#p4">2025 Spring Portfolio</a></li>
-                <li><a href="#p5">2024 Fall Portfolio</a></li>
-              </ul>
-            </details>
-          </li>
+          <li class="gs-nav__item"><a class="gs-nav__link" href="#shop">Shop</a></li>
         </ul>
       </nav>
       <ul class="gs-utility">
+        <li><a href="#visit"><span class="gs-open" data-gs-open data-tz="America/Vancouver" data-days="4,5,6" data-opens="12:00" data-closes="16:00" data-now="Open now until %time%" data-today="Open today, %times%" data-closed-today="Closed today. Open %day%, %times%" data-closed-now="Closed now. Open %day%, %times%" data-tomorrow="tomorrow" data-weekdays="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" data-to="to">Open Thursday to Saturday, 12 to 4&nbsp;PM</span><span class="gs-visually-hidden">. Plan your visit</span></a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#search">Search</a></li>
         <li><a href="#cart">Cart (0)</a></li>
@@ -151,22 +133,14 @@
   </details>
   <div class="gs-header__bar">
     <ul class="gs-utility">
+      <li><a href="#visit"><span class="gs-open" data-gs-open data-tz="America/Vancouver" data-days="4,5,6" data-opens="12:00" data-closes="16:00" data-now="Open now until %time%" data-today="Open today, %times%" data-closed-today="Closed today. Open %day%, %times%" data-closed-now="Closed now. Open %day%, %times%" data-tomorrow="tomorrow" data-weekdays="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" data-to="to">Open Thursday to Saturday, 12 to 4&nbsp;PM</span><span class="gs-visually-hidden">. Plan your visit</span></a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#search">Search</a></li>
       <li><a href="#cart">Cart (0)</a></li>
     </ul>
     <nav aria-label="Main">
       <ul class="gs-nav">
-        <li class="gs-nav__item gs-nav__item--current">
-          <details class="gs-nav__details" name="gs-nav-bar">
-            <summary class="gs-nav__trigger">Exhibitions<span class="gs-visually-hidden">, current section</span></summary>
-            <ul class="gs-nav__panel">
-              <li><a href="#on-now" aria-current="page">On now</a></li>
-              <li><a href="#upcoming">Upcoming</a></li>
-              <li><a href="#past">Past exhibitions</a></li>
-            </ul>
-          </details>
-        </li>
+        <li class="gs-nav__item gs-nav__item--current"><a class="gs-nav__link" href="#exhibitions">Exhibitions<span class="gs-visually-hidden">, current section</span></a></li>
         <li class="gs-nav__item">
           <details class="gs-nav__details" name="gs-nav-bar">
             <summary class="gs-nav__trigger">Collection</summary>
@@ -176,15 +150,26 @@
             </ul>
           </details>
         </li>
-        <li class="gs-nav__item">
+        <li class="gs-nav__item gs-nav__item--groups">
           <details class="gs-nav__details" name="gs-nav-bar">
             <summary class="gs-nav__trigger">Programs</summary>
+            <ul class="gs-nav__panel gs-nav__panel--groups" style="--gs-nav-groups: 3">
+              <li><a href="#events">Upcoming events</a></li>
+              <li class="gs-nav__group"><a class="gs-nav__group-title" id="pv-nav-bar-3-2" href="#public-programs">Public programs</a><ul aria-labelledby="pv-nav-bar-3-2"><li><a href="#speaker-series">Speaker series</a></li><li><a href="#music">Music at the Smith</a></li><li><a href="#explore">Explore + Create</a></li><li><a href="#art-in-good-company">Art in Good Company</a></li></ul></li>
+              <li class="gs-nav__group"><a class="gs-nav__group-title" id="pv-nav-bar-3-3" href="#artists-for-kids">Artists for Kids</a><ul aria-labelledby="pv-nav-bar-3-3"><li><a href="#classes">Classes and camps</a></li><li><a href="#schools">Schools and teachers</a></li></ul></li>
+              <li class="gs-nav__group"><span class="gs-nav__group-title" id="pv-nav-bar-3-4">Scholarships and awards</span><ul aria-labelledby="pv-nav-bar-3-4"><li><a href="#scholarships">Smith Foundation scholarships</a></li><li><a href="#awards">Artists for Kids awards</a></li></ul></li>
+            </ul>
+          </details>
+        </li>
+        <li class="gs-nav__item">
+          <details class="gs-nav__details" name="gs-nav-bar">
+            <summary class="gs-nav__trigger">Support</summary>
             <ul class="gs-nav__panel">
-              <li><a href="#public-programs">Public programs</a></li>
-              <li><a href="#speaker-series">Speaker series</a></li>
-              <li><a href="#music">Music at the Smith</a></li>
-              <li><a href="#explore">Explore + Create</a></li>
-              <li><a href="#art-in-good-company">Art in Good Company</a></li>
+              <li><a href="#donate">Give to the Smith Foundation</a></li>
+              <li><a href="#support-afk">Give to Artists for Kids</a></li>
+              <li><a href="#gala">Brilliance Gala</a></li>
+              <li><a href="#volunteer">Volunteer</a></li>
+              <li><a href="#supporters">Supporters</a></li>
             </ul>
           </details>
         </li>
@@ -194,39 +179,17 @@
             <ul class="gs-nav__panel">
               <li><a href="#about">About the gallery</a></li>
               <li><a href="#visit">Plan your visit</a></li>
-              <li><a href="#volunteer">Volunteer</a></li>
+              <li><a href="#gordon-and-marion">Gordon and Marion Smith</a></li>
+              <li><a href="#foundation">The Smith Foundation</a></li>
             </ul>
           </details>
         </li>
-        <li class="gs-nav__item"><a class="gs-nav__link" href="#artists-for-kids">Artists for Kids</a></li>
-        <li class="gs-nav__item">
-          <details class="gs-nav__details" name="gs-nav-bar">
-            <summary class="gs-nav__trigger">Smith Foundation</summary>
-            <ul class="gs-nav__panel">
-              <li><a href="#foundation">About the Foundation</a></li>
-              <li><a href="#gordon-and-marion">Gordon and Marion</a></li>
-              <li><a href="#donate">Donate</a></li>
-            </ul>
-          </details>
-        </li>
-        <li class="gs-nav__item">
-          <details class="gs-nav__details" name="gs-nav-bar">
-            <summary class="gs-nav__trigger">Shop</summary>
-            <ul class="gs-nav__panel">
-              <li><a href="#shop">Limited editions</a></li>
-              <li><a href="#portfolio">2026 Fall Portfolio</a></li>
-              <li><a href="#p2">2026 Spring Portfolio</a></li>
-              <li><a href="#p3">2025 Fall Portfolio</a></li>
-              <li><a href="#p4">2025 Spring Portfolio</a></li>
-              <li><a href="#p5">2024 Fall Portfolio</a></li>
-            </ul>
-          </details>
-        </li>
+        <li class="gs-nav__item"><a class="gs-nav__link" href="#shop">Shop</a></li>
       </ul>
     </nav>
   </div>
 </header>
-<div class="gs-container"><p class="pv-note">The new theme&rsquo;s main menu, as in the review menu (proposals/store-changes.md §1): Exhibitions, Collection, Programs, About, Artists for Kids, Smith Foundation, Shop (P-26, P-29). The Gallery&rsquo;s logo is its full lockup, with &ldquo;of Canadian Art&rdquo; (DS-68). A section with a dropdown is one button: click, tap, Enter or Space opens it, and the section&rsquo;s main page is the first link inside. Artists for Kids is a plain link. Everything works without JavaScript; the script adds Escape, outside click and closing when focus leaves. Narrow the window below 1200 px for the Menu drawer.</p></div>
+<div class="gs-container"><p class="pv-note">The new theme&rsquo;s main menu, by what visitors come to do (P-50 to P-55; proposals/store-changes.md §1): Exhibitions and Shop are plain links, Collection, Programs, Support and About open dropdowns. Programs holds groups, the menu&rsquo;s third level (DS-133): open it to see Upcoming events across the top, then Public programs, Artists for Kids, and Scholarships and awards side by side. The Smith Foundation scholarships, Brilliance Gala and Supporters links show where those planned pages go. Exhibitions is marked as the current section, as it is on an exhibition&rsquo;s page (DS-134). Today&rsquo;s opening line leads the utility row and links to Plan your visit (DS-132). Everything works without JavaScript; the script adds Escape, outside click and closing when focus leaves. Narrow the window below 1200 px for the Menu drawer.</p></div>
 
 <main id="top" class="gs-main" tabindex="-1">
 
