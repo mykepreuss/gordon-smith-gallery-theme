@@ -41,7 +41,7 @@
   display: block;
   margin-block: var(--gs-space-2);
   padding: var(--gs-space-2) var(--gs-space-3);
-  font: var(--gs-weight-bold) var(--gs-text-caption) / 1.4 var(--gs-font-sans);
+  font: var(--gs-weight-bold) var(--gs-text-caption) / var(--gs-leading-caption) var(--gs-font-sans);
   color: var(--gs-color-editor-warning-fg);
   background: var(--gs-color-editor-warning);
   border-radius: var(--gs-shape-sm);
@@ -151,7 +151,9 @@
 /* Titles that must fit a box: the hero title box and the page header. Their size follows the
    box's width (container query units), so the longest word always fits on a phone:
    --gs-fit-chars is the title's longest word in letters, set by snippets/gs-fit.liquid
-   (default 12, the length of CONVERSATION). 0.74em is the widest average capital in Mulish Black.
+   (default 12, the length of CONVERSATION). 0.74em per capital is a margin over Mulish Black's
+   average of about 0.70em; words heavy in wide letters can still pass it, and then break as the
+   last resort.
    Short titles still reach the full H1 or display size. */
 .gs-hero__box,
 .gs-page-head { container-type: inline-size; }

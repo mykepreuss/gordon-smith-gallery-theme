@@ -64,7 +64,7 @@
   --gs-color-hover-fill: var(--gs-gsg-tint);   /* inline-link hover fill; each surface resets it (tint on paper, rule on tint, paper on accent, box on ink) */
   --gs-color-hover-fill-fg: var(--gs-ink);     /* text on the hover fill, on every surface */
   --gs-color-link-line: var(--gs-gsg-text);    /* inline-link underline, current-item bars; must stay ≥ 3:1 on --gs-color-bg */
-  --gs-color-control-border: var(--gs-ink-soft); /* inputs, secondary buttons; ≥ 3:1 */
+  --gs-color-control-border: var(--gs-ink-soft); /* inputs; ≥ 3:1 */
   --gs-color-error: var(--gs-error);           /* error text and invalid-field borders */
   --gs-color-focus: var(--gs-ink);
   --gs-color-mat: var(--gs-mat);
@@ -156,8 +156,8 @@
    * ------------------------------------------------------------------ */
 
   --gs-width-wide: 90rem;     /* 1440: heroes, image grids */
-  --gs-width-content: 75rem;  /* 1200: card grids, header, footer */
-  --gs-width-prose: 45rem;    /* 720: long-form text column */
+  --gs-width-content: 75rem;  /* 1200: card grids, footer (the header runs full width, DS-07) */
+  --gs-width-prose: 45rem;    /* 720: the logo cards' text (text columns use --gs-measure) */
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
   --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px */
   --gs-nav-gap: clamp(1.25rem, 4.6vw - 2.2rem, 2.25rem); /* main nav item gap from 1200 px: 20 at 1200, 31 at 1440, 36 from about 1550, so seven section labels fit on one line at 1200 (§6.1) */

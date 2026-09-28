@@ -21,8 +21,10 @@
       {%- if settings.address != blank -%}
         <address>{{ settings.address | escape | newline_to_br }}</address>
       {%- endif -%}
-      {%- if settings.hours != blank -%}
-        <p>{{ settings.hours | escape | newline_to_br }}</p>
+      {%- capture hours -%}{% render 'gs-open-hours' %}{%- endcapture -%}
+      {%- assign hours = hours | strip -%}
+      {%- if hours != blank -%}
+        <p>{{ hours }}</p>
       {%- endif -%}
       {%- if settings.email != blank -%}
         <p><a class="gs-link" href="mailto:{{ settings.email | strip }}">{{ settings.email | strip | escape }}</a></p>

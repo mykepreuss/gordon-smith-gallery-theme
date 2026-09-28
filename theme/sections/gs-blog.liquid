@@ -17,7 +17,7 @@
               <article class="gs-card">
                 {%- render 'gs-media', image: article.image, preset: 'card', mode: 'photo', title: article.title -%}
                 <h2 class="gs-card__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>
-                <p class="gs-status__dates">{{ article.published_at | date: '%B %-d, %Y' }}</p>
+                <p class="gs-status__dates"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %-d, %Y' }}</time></p>
                 {%- if article.excerpt != blank -%}
                   <p class="gs-card__text">{{ article.excerpt | strip_html | truncatewords: 30, '…' }}</p>
                 {%- endif -%}

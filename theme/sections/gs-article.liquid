@@ -5,7 +5,7 @@
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
     {%- render 'gs-title-block', title: article.title -%}
-    <p class="gs-status__dates">{{ article.published_at | date: '%B %-d, %Y' }}</p>
+    <p class="gs-status__dates"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %-d, %Y' }}</time></p>
   </header>
 </div>
 <div class="gs-section gs-surface-paper">

@@ -98,7 +98,8 @@
 
     {%- if collection_artists != blank -%}
       <div class="gs-details__item{% if collection_artists.size > 6 %} gs-details__item--wide{% endif %}">
-        <dt>{{ settings.collection_artists_label | default: 'From the collection' | escape }}</dt>
+        {%- assign collection_label = 'exhibitions.collection_artists' | t -%}
+        <dt>{{ settings.collection_artists_label | default: collection_label | escape_once }}</dt>
         <dd>
           <ul class="gs-names">
             {%- for name in collection_artists -%}<li>{{ name | escape }}</li>{%- endfor -%}

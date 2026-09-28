@@ -37,7 +37,7 @@
     "email_label": "Email address",
     "submit": "Sign up",
     "busy": "Signing up",
-    "done": "You're signed up for the newsletter.",
+    "done": "You’re signed up for the newsletter.",
     "error_email": "Enter an email address like name@example.com."
   },
   "exhibitions": {
@@ -61,16 +61,17 @@
     "list_label": "Exhibitions",
     "all_past": "All past exhibitions",
     "empty_on_now": "No exhibitions are on right now.",
-    "empty_on_now_link": "See what's coming up",
+    "empty_on_now_link": "See what’s coming up",
     "empty_upcoming": "No upcoming exhibitions are announced yet.",
-    "empty_upcoming_link": "See what's on now",
+    "empty_upcoming_link": "See what’s on now",
     "empty_past": "No past exhibitions to show yet.",
-    "empty_past_link": "See what's on now",
+    "empty_past_link": "See what’s on now",
     "details_label": "Exhibition details",
     "curator": "Curator",
     "venue": "Where",
     "reception": "Opening reception",
     "artists": "Artists",
+    "collection_artists": "From the collection",
     "events": "Events",
     "credits": "Credits",
     "installation_views": "Installation views",
@@ -83,7 +84,7 @@
     "time_range": "{{ start }} to {{ end }}",
     "tickets": "Tickets",
     "empty": "No events are scheduled right now.",
-    "empty_link": "See what's on now"
+    "empty_link": "See what’s on now"
   },
   "shop": {
     "portfolios": "Portfolios",
@@ -122,7 +123,7 @@
     "message": "Message",
     "submit": "Send",
     "busy": "Sending",
-    "done": "Thanks, your message is sent. We'll reply by email.",
+    "done": "Thanks, your message is sent. We’ll reply by email.",
     "error_message": "Write a message before sending."
   },
   "cart": {
@@ -149,7 +150,7 @@
   },
   "not_found": {
     "title": "Page not found",
-    "text": "This address doesn't lead to a page. It may have moved.",
+    "text": "This address doesn’t lead to a page. It may have moved.",
     "home": "Go to the home page",
     "search": "Search the site"
   },
@@ -160,7 +161,7 @@
   "password": {
     "title": "This shop is private",
     "password": "Password",
-    "error": "That password isn't right. Try again.",
+    "error": "That password isn’t right. Try again.",
     "enter": "Enter"
   },
   "gift_card": {
@@ -172,7 +173,6 @@
   },
   "visit": {
     "address": "Address",
-    "hours": "Hours",
     "plan_link": "{{ title }}",
     "details": "Visit details",
     "gallery_hours": "Gallery hours",
@@ -230,7 +230,7 @@
     "search_heading": "Search the collection",
     "search_label": "Artist, title, medium or theme",
     "search_loading": "Searching the collection",
-    "search_error": "The collection didn't load. Try again, or browse by artist or category below.",
+    "search_error": "The collection didn’t load. Try again, or browse by artist or category below.",
     "works_found_one": "1 work matches “{{ terms }}”",
     "works_found_other": "{{ number }} works match “{{ terms }}”",
     "works_none": "No works match “{{ terms }}”. Try another word, or browse by artist or category below.",
@@ -247,10 +247,10 @@
   "lessons": {
     "heading": "Lessons",
     "lesson": "The lesson",
-    "making": "We're making",
-    "inspired_by": "We're inspired by",
+    "making": "We’re making",
+    "inspired_by": "We’re inspired by",
     "grades": "Suggested grade levels",
-    "wondering": "We're wondering",
+    "wondering": "We’re wondering",
     "more": "More lessons",
     "all": "All ArtReach videos",
     "watch": "Watch the video",

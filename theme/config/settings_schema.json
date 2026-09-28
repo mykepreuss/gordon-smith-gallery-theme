@@ -12,19 +12,13 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Shown in the footer on every page and on the contact page. Colours, fonts and spacing come from the design system, so there are no settings for them."
+        "content": "Shown in the footer on every page, on the home page's Visit block, on Plan your visit and on the contact page. Colours, fonts and spacing come from the design system, so there are no settings for them."
       },
       {
         "type": "textarea",
         "id": "address",
         "label": "Address",
         "default": "2121 Lonsdale Avenue\nNorth Vancouver, BC V7M 2K6"
-      },
-      {
-        "type": "textarea",
-        "id": "hours",
-        "label": "Opening hours",
-        "info": "One line per day or group of days."
       },
       {
         "type": "textarea",
@@ -44,7 +38,7 @@
       },
       {
         "type": "paragraph",
-        "content": "For the home page's line that says whether the gallery is open today (DS-54). The Hours text above still shows in the footer, on the home page's Visit block and on the Contact page, so change both when the hours change."
+        "content": "The gallery's hours everywhere on the site: the footer, the home page's Visit block, Plan your visit, the contact page and the line that says whether the gallery is open today. Tick each day it opens and set the times once (DS-96)."
       },
       {
         "type": "checkbox",
@@ -351,6 +345,12 @@
           }
         ],
         "default": "16:00"
+      },
+      {
+        "type": "textarea",
+        "id": "hours",
+        "label": "Hours, only if no open days are ticked",
+        "info": "Shown in place of the days and times above when no day is ticked, for example while the gallery is closed between exhibitions. One line per day or group of days."
       },
       {
         "type": "text",

@@ -32,13 +32,15 @@
           <dt>{{ 'visit.address' | t }}</dt>
           <dd><address>{{ settings.address | escape | newline_to_br }}</address></dd>
         </div>
-        {%- if settings.hours != blank -%}
+        {%- capture hours -%}{% render 'gs-open-hours' %}{%- endcapture -%}
+        {%- assign hours = hours | strip -%}
+        {%- if hours != blank -%}
           <div class="gs-details__item">
-            <dt>{{ 'visit.hours' | t }}</dt>
-            <dd>{{ settings.hours | escape | newline_to_br }}</dd>
+            <dt>{{ 'visit.gallery_hours' | t }}</dt>
+            <dd>{{ hours }}</dd>
           </div>
         {%- elsif request.design_mode -%}
-          <p class="gs-editor-warning">Add the opening hours in Theme settings, Gallery details.</p>
+          <p class="gs-editor-warning">Tick the opening days and set the times in Theme settings, Gallery details.</p>
         {%- endif -%}
       </dl>
       {%- if image != blank -%}</div>{%- endif -%}
