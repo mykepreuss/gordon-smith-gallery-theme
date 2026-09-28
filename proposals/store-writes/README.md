@@ -725,6 +725,45 @@ His card (`gid://shopify/Metaobject/608367083817`: name, "Director", portrait) s
 
 **Undo:** put `gid://shopify/Metaobject/608367083817` back in the group's cards, ninth, from the snapshot.
 
+## 2026-09-28: the Programs switcher's menu and page (DS-143, DS-147)
+
+**Why:** Michael, 2026-09-28: "Go ahead with the three store changes". The row of links above the events list needs the four public programmes in a fixed order, the Past events page, and Programs leading to the full list (pull request 69).
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (Artists for Kids & The Gordon Smith Gallery); the live theme 183162372393 (live) and the review theme 184767250729 (unpublished), by `shopify theme list`. Before-snapshot: `snapshots/programmes-switcher-2026-09-28-before.json` (both menus whole, with item IDs; no menu `new-theme-programmes` and no page `past-events` existed). The live theme reads `new-website-menu-1` and `footer`, neither of which changed.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| New menu `new-theme-programmes`, "Programs filter (new theme)": Speaker series, Music at the Smith, Explore + Create, Art in Good Company | Connector, `menuCreate` | `gid://shopify/Menu/305948229929` |
+| New page Past events, `/pages/past-events`, no text, `seo.hidden` = 1 | Connector, `pageCreate` | `gid://shopify/Page/165857689897` |
+| `new-theme-main-2`: the Programs section's own link points at Upcoming events in place of Public programs | Connector, `menuUpdate` | Item `gid://shopify/MenuItem/767723176233`; the other 31 items keep their IDs, titles and order |
+| `new-theme-explore-2`: Programs points at Upcoming events in place of Public programs | Connector, `menuUpdate` | Item `gid://shopify/MenuItem/767723962665`; the other 7 items unchanged |
+
+`release.py` lists `past-events` among the new pages, so it loses `seo.hidden` at release with the others.
+
+**Checked after:** on the development theme 184804704553, the row reads All upcoming, Speaker Series, Music At The Smith, Explore + Create, Art In Good Company, Professional Development, Past events; Past events lists the one ended event; the footer's Programs link goes to Upcoming events.
+
+**Effect on the live site:** one new address. `/pages/past-events` shows the page's title with nothing under it, marked `noindex,nofollow`; no live page links to it (the home page and Upcoming events checked). The live menus are untouched. On the review theme the footer's Programs link now goes to Upcoming events, which has no row of links there until pull request 69 merges and the review theme is pushed.
+
+**Undo:** delete the menu `new-theme-programmes` and the page Past events; set the two Programs items back to `gid://shopify/Page/155718943017` from the snapshot.
+
+## 2026-09-28: the Current events page (DS-149)
+
+**Why:** Michael, 2026-09-28: "Go ahead with the Current events page". The main row of the Programming lists is Current, Upcoming and Past, each a page.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 (live) and the review theme 184767250729 (unpublished), by `shopify theme list`. Before: no page with the handle `current-events` existed.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| New page Current events, `/pages/current-events`, no text, `seo.hidden` = 1 | Connector, `pageCreate` | `gid://shopify/Page/165858115881` |
+
+`release.py` lists `current-events` among the new pages, so it loses `seo.hidden` at release with the others.
+
+**Checked after:** on the development theme 184804704553 the main row reads Current, Upcoming, Past, and the Current page says nothing is on today.
+
+**Effect on the live site:** one new address. `/pages/current-events` shows the page's title with nothing under it, marked `noindex,nofollow`; no live page links to it. Nothing else changed.
+
+**Undo:** delete the page Current events.
+
 ## 2026-09-28: Gordon and Marion's pull quote (DS-145)
 
 **Why:** Michael, 2026-09-28: "Yes, add the Effervescent pull quote", for the story layout (DS-145, PR #71).

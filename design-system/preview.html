@@ -958,6 +958,25 @@
 <!-- ============ EVENTS (page, page.programme: sections/gs-events, snippets/gs-event, gs-time-range) ============ -->
 <section class="gs-section gs-surface-paper" aria-labelledby="events-title">
   <div class="gs-container">
+    <div class="gs-switcher gs-switcher--two">
+      <nav aria-label="Programming">
+        <ul class="gs-switcher__list">
+          <li><a href="#events-title">Current</a></li>
+          <li><a href="#events-title" aria-current="page">Upcoming <span class="gs-switcher__count"><span aria-hidden="true">6</span><span class="gs-visually-hidden">, 6 events</span></span></a></li>
+          <li><a href="#events-title">Past <span class="gs-switcher__count"><span aria-hidden="true">1</span><span class="gs-visually-hidden">, 1 event</span></span></a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Programs">
+        <ul class="gs-switcher__sub">
+          <li><a href="#events-title" aria-current="page">All programs</a></li>
+          <li><a href="#events-title">Speaker Series</a></li>
+          <li><a href="#events-title">Music At The Smith</a></li>
+          <li><a href="#events-title">Explore + Create</a></li>
+          <li><a href="#events-title">Art In Good Company</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="pv-note">Programming in two rows (DS-149): Current, Upcoming and Past, three pages with their counts, then the programmes in a quieter row. A programme&rsquo;s link goes to its own page, which shows both rows, the programme&rsquo;s words (DS-151), then its own events under Current, Upcoming and Past.</p>
     <div class="gs-section-head"><h2 class="gs-h2" id="events-title">Upcoming events</h2></div>
     <ul class="gs-events" id="events"></ul>
     <p class="pv-note">Upcoming events from four programme pages on the live store, in date order: title, time in the site&rsquo;s one format, place, a sentence, tickets. A blank place means the gallery; Explore + Create names its floor. With an image, the image sits beside the text from 750 px. No event on the store has a ticket link yet; La Modestine&rsquo;s shows the default label, as it will once tickets are on sale. An event drops off every list once it has ended. On a programme page, an event titled like the page leads with its date instead (DS-36); on the Upcoming events page itself this heading is for screen readers only, since the page title says it. Images are placeholders.</p>

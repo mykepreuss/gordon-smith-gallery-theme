@@ -60,7 +60,9 @@ AFK_NEW = AFK_PROGRAMME | AFK_STANDARD
 # "Get involved" group. Take it out of HOLD_AT_RELEASE when the gallery confirms.
 FOUNDATION_NEW = {"smith-foundation-scholarships", "brilliance-gala", "smith-foundation-supporters"}
 HOLD_AT_RELEASE = {"smith-foundation-supporters"}
-NEW_PAGES = AFK_NEW | FOUNDATION_NEW
+# Past events (DS-147) and Current events (DS-149): made empty and hidden from search engines, 2026-09-28.
+EVENTS_NEW = {"past-events", "current-events"}
+NEW_PAGES = AFK_NEW | FOUNDATION_NEW | EVENTS_NEW
 # Story pages: long reads whose text is one column with its pictures set into it (DS-145, Proposed).
 STORY = {"gordon-and-marion", "brilliance-gala", "plan-your-visit", "donate"}
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
