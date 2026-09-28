@@ -446,7 +446,7 @@
 
 <!-- ============ ARTWORK DETAIL (product: sections/gs-artwork-detail, snippets/gs-artwork-label) ============ -->
 <div class="gs-container--wide gs-container">
-  <p class="pv-note pv-note--before">Artwork detail, the product page: Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store. The first view leads; below 990 px the label, price and action follow it, then the other views (DS-110). Each mat takes the work&rsquo;s shape between 4:5 and 4:3 (DS-111): the portrait first view here gets a 4:5 mat. Beside the work sits only what it takes to decide and buy: a crumb back to the Shop (DS-102), label, medium, edition, size, price, the three colour variants (named without a price, since all three cost the same), the archive note and the frame offer in a panel on tint. The description follows under About the work, at reading width, with any disclosures (DS-38). Its two paragraphs about the work show here; on the store it also opens with lines that repeat the label. The label is the page&rsquo;s H1 in the theme, and the select appears only when a work has more than one variant, named after the product&rsquo;s option as the store calls it. No limited edition has a disclosure yet, so the one shown has the default label and stand-in text. Images are placeholders.</p>
+  <p class="pv-note pv-note--before">Artwork detail, the product page: Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store. The first view leads; below 990 px the label, price and action follow it, then the other views (DS-110). Each mat takes the work&rsquo;s shape between 4:5 and 4:3 (DS-111): the portrait first view here gets a 4:5 mat. Beside the work sits only what it takes to decide and buy: a crumb back to the Shop (DS-102), label, medium, edition, size, price, the three colour variants (named without a price, since all three cost the same), the Framing choice with the gallery&rsquo;s framing text under it (DS-137), one Add to cart and the archive note. Framed adds the frame nested under the print, so the cart shows it as part of the work. The description follows under About the work, at reading width, with any disclosures (DS-38). Its two paragraphs about the work show here; on the store it also opens with lines that repeat the label. The label is the page&rsquo;s H1 in the theme, and the select appears only when a work has more than one variant, named after the product&rsquo;s option as the store calls it. No limited edition has a disclosure yet, so the one shown has the default label and stand-in text. Images are placeholders.</p>
   <div class="gs-artwork">
     <div class="gs-artwork__lead" id="artwork-lead"></div>
     <div class="gs-artwork__info">
@@ -471,17 +471,15 @@
             </select>
           </span>
         </div>
+        <fieldset class="gs-choice" aria-describedby="pv-framing">
+          <legend class="gs-field__label">Framing</legend>
+          <label class="gs-choice__option"><input type="radio" name="pv-framing" value="0" checked>Unframed</label>
+          <label class="gs-choice__option"><input type="radio" name="pv-framing" value="1">Framed, add $258.00</label>
+        </fieldset>
+        <div class="gs-prose gs-caption" id="pv-framing"><p>Museum-quality framing and service includes UV-protective glass and acid-free matting, keeping your fine art print vibrant and pristine for decades.<br>Framing by Artrageous Pictures and Framing North Shore</p></div>
         <button class="gs-button" type="submit">Add to cart</button>
       </form>
       <div class="gs-prose gs-caption"><p><em>The first edition is archived in the Artists For Kids and the Gordon Smith Gallery Permanent Collection</em></p></div>
-      <section class="gs-panel gs-surface-tint" aria-labelledby="pv-frame">
-        <h3 class="gs-h4" id="pv-frame">Add a frame</h3>
-        <div class="gs-prose"><p>Museum-quality framing and service includes UV-protective glass and acid-free matting, keeping your fine art print vibrant and pristine for decades.<br>Framing by Artrageous Pictures and Framing North Shore</p></div>
-        <p><a class="gs-link" href="#x">Marlene Yuen Short Gumboots FRAME</a>, $258.00</p>
-        <form class="gs-form" onsubmit="return false">
-          <button class="gs-button gs-button--secondary" type="submit">Add frame to cart</button>
-        </form>
-      </section>
     </div>
     <ul class="gs-artwork__media" id="artwork-media"></ul>
     <section class="gs-artwork__about" aria-labelledby="pv-about-work">
@@ -521,25 +519,22 @@
             <div class="gs-cart__controls">
               <div class="gs-field">
                 <label class="gs-field__label" for="pv-cart-qty-1">Quantity<span class="gs-visually-hidden">: Short Gumboots</span></label>
-                <input class="gs-input" id="pv-cart-qty-1" type="number" name="updates[]" value="1" min="0" inputmode="numeric">
+                <input class="gs-input" id="pv-cart-qty-1" type="number" name="updates[1:a]" value="1" min="0" inputmode="numeric">
               </div>
               <a class="gs-cta-link" href="#x">Remove<span class="gs-visually-hidden">: Marlene Yuen, Short Gumboots, 2026</span></a>
             </div>
-          </li>
-          <li class="gs-cart__item">
-            <div class="gs-media gs-media--artwork gs-shape-sm" id="cart-thumb-2"></div>
-            <div class="gs-cart__details">
-              <h3 class="gs-cart__name">
-                <a class="gs-link" href="#x"><span class="gs-cart__label">Marlene Yuen Short Gumboots FRAME</span></a>
-              </h3>
-              <p class="gs-artwork-tile__price">$258.00</p>
-            </div>
-            <div class="gs-cart__controls">
-              <div class="gs-field">
-                <label class="gs-field__label" for="pv-cart-qty-2">Quantity<span class="gs-visually-hidden">: Short Gumboots FRAME</span></label>
-                <input class="gs-input" id="pv-cart-qty-2" type="number" name="updates[]" value="1" min="0" inputmode="numeric">
+            <div class="gs-cart__addon">
+              <div class="gs-cart__details">
+                <p class="gs-cart__name" id="pv-cart-item-1-1">Frame<span class="gs-visually-hidden">: Marlene Yuen, Short Gumboots, 2026</span></p>
+                <p class="gs-price--line">$258.00</p>
               </div>
-              <a class="gs-cta-link" href="#x">Remove<span class="gs-visually-hidden">: Marlene Yuen Short Gumboots FRAME</span></a>
+              <div class="gs-cart__controls">
+                <div class="gs-field">
+                  <label class="gs-field__label" for="pv-cart-qty-2">Frames<span class="gs-visually-hidden">: Marlene Yuen, Short Gumboots, 2026</span></label>
+                  <input class="gs-input" id="pv-cart-qty-2" type="number" name="updates[2:b]" value="1" min="0" inputmode="numeric">
+                </div>
+                <a class="gs-cta-link" href="#x">Remove frame<span class="gs-visually-hidden">: Marlene Yuen, Short Gumboots, 2026</span></a>
+              </div>
             </div>
           </li>
           <li class="gs-cart__item">
@@ -553,7 +548,7 @@
             <div class="gs-cart__controls">
               <div class="gs-field">
                 <label class="gs-field__label" for="pv-cart-qty-3">Quantity<span class="gs-visually-hidden">: Pender Harbour</span></label>
-                <input class="gs-input" id="pv-cart-qty-3" type="number" name="updates[]" value="1" min="0" inputmode="numeric">
+                <input class="gs-input" id="pv-cart-qty-3" type="number" name="updates[3:c]" value="1" min="0" inputmode="numeric">
               </div>
               <a class="gs-cta-link" href="#x">Remove<span class="gs-visually-hidden">: Gordon Smith, Pender Harbour, 2006</span></a>
             </div>
@@ -580,7 +575,7 @@
         </div>
       </form>
       <form id="pv-cart-frame-3" action="#cart" method="post" onsubmit="return false"></form>
-      <p class="pv-note">The print above, in its Light variant, with its frame, and a second print whose frame isn&rsquo;t in the cart yet: its row offers the frame (DS-125). The subtotal and Check out come before the policy below 990 px; from 990 px the policy sits on the left (DS-124). The frame has no label fields, so its product title shows instead, as for any product whose fields aren&rsquo;t filled yet. The sales policy is the cart&rsquo;s setting; three of its seven lines show here. The page header is a lead-in: it sets its own gap to the section after it (DESIGN.md §5.1). A plain form, so the cart works without JavaScript.</p>
+      <p class="pv-note">The print above, in its Light variant, with its frame nested under it (DS-137): named Frame, not by the frame product&rsquo;s title, with no thumbnail of its own, its price, quantity and Remove frame. Removing the print removes its frame. A second print has no frame yet, so its row offers one, which is added nested under it (DS-125). The subtotal and Check out come before the policy below 990 px; from 990 px the policy sits on the left (DS-124). The sales policy is the cart&rsquo;s setting; three of its seven lines show here. The page header is a lead-in: it sets its own gap to the section after it (DESIGN.md §5.1). A plain form, so the cart works without JavaScript.</p>
     </div>
   </div>
 </section>
@@ -1612,14 +1607,12 @@
   document.getElementById("feature-photo").innerHTML = `<img src="${photo(...tones[1])}" alt="Placeholder for a photo">`;
 
   // Artwork detail: every image of the work, whole on the mat. The cart repeats the first as a thumbnail.
-  const frame = svg(600, 600, "<rect width='600' height='600' fill='#f4f1ea'/><rect x='90' y='90' width='420' height='420' fill='none' stroke='#231f20' stroke-width='36'/>");
   // The first view leads, the others follow the label (DS-110); each mat takes its view's shape (DS-111).
   document.getElementById("artwork-lead").style.setProperty("--gs-art-ratio", art[0][0] / art[0][1]);
   document.getElementById("artwork-lead").innerHTML = `<div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[0])}" alt="Placeholder for Short Gumboots by Marlene Yuen. View 1 of 2"></div>`;
   document.getElementById("artwork-media").innerHTML = `
     <li style="--gs-art-ratio: 1"><div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[2])}" alt="Placeholder for Short Gumboots by Marlene Yuen. View 2 of 2"></div></li>`;
   document.getElementById("cart-thumb-1").innerHTML = `<img src="${svg(...art[0])}" alt="">`;
-  document.getElementById("cart-thumb-2").innerHTML = `<img src="${frame}" alt="">`;
   document.getElementById("cart-thumb-3").innerHTML = `<img src="${svg(...art[1])}" alt="">`;
 
   // Artists for Kids: a programme group, document cards and lesson cards (the store's cards and lessons, 2026-09-27).

@@ -56,7 +56,7 @@ AFK_STANDARD = {"artist-in-residence-amelia-butcher", "artist-in-residence-mark-
 AFK_NEW = AFK_PROGRAMME | AFK_STANDARD
 # The Smith Foundation's pages made before release the same way (P-35, P-42; proposals/smith-foundation-site.md),
 # on the standard page template. Supporters waits for the gallery to confirm its donor list (P-43,
-# gallery-questions.md 10.1): until then it stays hidden at release, and its card leaves the Foundation page's
+# gallery-questions.md 8.1): until then it stays hidden at release, and its card leaves the Foundation page's
 # "Get involved" group. Take it out of HOLD_AT_RELEASE when the gallery confirms.
 FOUNDATION_NEW = {"smith-foundation-scholarships", "brilliance-gala", "smith-foundation-supporters"}
 HOLD_AT_RELEASE = {"smith-foundation-supporters"}

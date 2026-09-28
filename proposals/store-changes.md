@@ -17,7 +17,7 @@ By what visitors come to do, not by which organisation runs a page (P-50 to P-57
 
 Each section's own link in the Shopify menu editor points at one of its links (Programs at Public programs' title, Support at Donate), so `snippets/gs-nav.liquid` raises no editor warning.
 
-**The three Foundation pages from `proposals/smith-foundation-site.md`** joined this menu when they were made, 2026-09-28, where the table says, with `menuUpdate` keeping the other items' IDs (P-52, P-53). If the gallery hasn't confirmed the Supporters list by release (P-43, `gallery-questions.md` 10.1), Supporters leaves the menu that day (§8c).
+**The three Foundation pages from `proposals/smith-foundation-site.md`** joined this menu when they were made, 2026-09-28, where the table says, with `menuUpdate` keeping the other items' IDs (P-52, P-53). If the gallery hasn't confirmed the Supporters list by release (P-43, `gallery-questions.md` 8.1), Supporters leaves the menu that day (§8c).
 
 **How it is applied:** during review, as a menu referenced only by the new theme, so the live header doesn't change. At release, publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.
 
@@ -176,7 +176,7 @@ Scripts: `release.py templates` (the standard page template), `staged`, `unhide`
 
 The same as the Artists for Kids pages (§8b): published with a title only and `seo.hidden` until release; at release their template changes, their text moves in and `seo.hidden` goes.
 
-**Supporters waits for the gallery** (P-43, `gallery-questions.md` 10.1). It is in `HOLD_AT_RELEASE`, so `staged` and `unhide` skip it. If the gallery hasn't confirmed the list by release, the same day: take Supporters out of the new theme's menu (`menuUpdate`, the other items keep their IDs), take `foundation-supporters` out of the card group `foundation-take-part`, and hide the page. When the gallery confirms: take it out of `HOLD_AT_RELEASE`, run the three steps for it, put it back in the menu and the group, and link Donate's "donor page" to it (the one change to Donate's staged text still to make).
+**Supporters waits for the gallery** (P-43, `gallery-questions.md` 8.1). It is in `HOLD_AT_RELEASE`, so `staged` and `unhide` skip it. If the gallery hasn't confirmed the list by release, the same day: take Supporters out of the new theme's menu (`menuUpdate`, the other items keep their IDs), take `foundation-supporters` out of the card group `foundation-take-part`, and hide the page. When the gallery confirms: take it out of `HOLD_AT_RELEASE`, run the three steps for it, put it back in the menu and the group, and link Donate's "donor page" to it (the one change to Donate's staged text still to make).
 
 Rollback: set `seo.hidden` back to 1 on each page, or hide the pages. The exhibitions and cards can stay: the old theme reads none of them.
 
@@ -184,9 +184,9 @@ Rollback: set `seo.hidden` back to 1 on each page, or hide the pages. The exhibi
 
 Script: `release.py frames` (dry run: `dry-runs/2026-09-26/frames.md`).
 
-Each print's frame is its own product (product type Frame, collection `framing`), so search results fill with frames. At release, after publishing, the 16 active frames become **Unlisted**: still buyable, still offered on each print's page through `custom.featured_frame` (a metafield reference, which Liquid still returns), but out of search, collections and recommendations. The draft Michael Snow frame stays a draft. Snapshot: `proposals/store-writes/snapshots/frames-2026-09-26.json`.
+Each print's frame is its own product (product type Frame, collection `framing`), so search results fill with frames. At release, after publishing, the 16 active frames become **Unlisted**: still buyable, still offered on each print's page through `custom.featured_frame` (a metafield reference, which Liquid still returns) as the Framing choice that nests the frame under the print (DS-137), but out of search, collections and recommendations. The new theme already treats a frame as sold only with its print: a frame's own page points to its print and isn't listed by search engines. The draft Michael Snow frame stays a draft. Snapshot: `proposals/store-writes/snapshots/frames-2026-09-26.json`.
 
-This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's "Add a frame" still adds its frame to the cart.
+This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's Framed choice still adds its frame, nested under the print in the cart and at checkout.
 
 Rollback: set the 16 back to Active from the snapshot.
 

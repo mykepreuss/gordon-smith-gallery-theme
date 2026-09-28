@@ -1,6 +1,6 @@
 {%- comment -%}
-  The cart: each work with its museum label, quantity and a remove link (and, under a print with a
-  linked frame, the frame's Add button), then the subtotal and checkout, then the gallery's sales
+  The cart: each work with its museum label, quantity and a remove link (and, under a print, its
+  frame, or the frame's Add button), then the subtotal and checkout, then the gallery's sales
   policy (a setting, the same for every cart). A plain form, so it works without JavaScript. No
   checkout changes (P-04).
 {%- endcomment -%}
@@ -13,37 +13,36 @@
 <div class="gs-section gs-surface-paper">
   <div class="gs-container">
     {%- if cart.item_count > 0 -%}
-      {%- liquid
-        assign offered = ''
-        assign frame_forms = ''
-      -%}
+      {%- assign frame_forms = '' -%}
       <form action="{{ routes.cart_url }}" method="post" id="gs-cart">
         <ul class="gs-cart__items">
           {%- for item in cart.items -%}
+            {%- comment -%}
+              A frame nested under its print (DS-137) shows inside the print's row, so it's skipped
+              here. Quantities are keyed by line (updates[key]), so skipped lines don't shift them.
+            {%- endcomment -%}
+            {%- if item.parent_relationship.parent -%}{%- continue -%}{%- endif -%}
             {%- liquid
-              # A print with a linked frame offers the frame under it, when the frame can be bought
-              # and isn't in the cart yet, once per frame (DS-125).
+              assign row = forloop.index
+              assign has_addon = false
+              for child in cart.items
+                if child.parent_relationship.parent.key == item.key
+                  assign has_addon = true
+                endif
+              endfor
+              # A print with a linked frame and none under it yet offers the frame, when the frame
+              # can be bought (DS-125). Added, it nests under this line.
               assign offer_frame = nil
               assign frame = item.product.metafields.custom.featured_frame.value
-              if frame != blank and frame.available
-                assign frame_key = ',' | append: frame.id | append: ','
-                assign in_cart = false
-                for other in cart.items
-                  if other.product_id == frame.id
-                    assign in_cart = true
-                  endif
-                endfor
-                unless in_cart or offered contains frame_key
-                  assign offer_frame = frame
-                  assign offered = offered | append: frame_key
-                endunless
+              if frame != blank and frame.available and has_addon == false
+                assign offer_frame = frame
               endif
-              assign frame_form_id = 'gs-cart-frame-' | append: forloop.index
+              assign frame_form_id = 'gs-cart-frame-' | append: row
             -%}
             <li class="gs-cart__item">
               {%- render 'gs-media', image: item.image, sizes: '96px', mode: 'artwork', shape: 'sm', decorative: true -%}
               <div class="gs-cart__details">
-                <h2 class="gs-cart__name" id="gs-cart-item-{{ forloop.index }}">
+                <h2 class="gs-cart__name" id="gs-cart-item-{{ row }}">
                   <a class="gs-link" href="{{ item.url }}">
                     {%- render 'gs-artwork-label', product: item.product, tag: 'span', class: 'gs-cart__label' -%}
                   </a>
@@ -55,21 +54,49 @@
               </div>
               <div class="gs-cart__controls">
                 <div class="gs-field">
-                  <label class="gs-field__label" for="gs-cart-qty-{{ forloop.index }}">{{ 'cart.quantity' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></label>
-                  <input class="gs-input" id="gs-cart-qty-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric">
+                  <label class="gs-field__label" for="gs-cart-qty-{{ row }}">{{ 'cart.quantity' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></label>
+                  <input class="gs-input" id="gs-cart-qty-{{ row }}" type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" inputmode="numeric">
                 </div>
                 <a class="gs-cta-link" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></a>
               </div>
+              {%- comment -%}
+                The frame under its print: named Frame, not by the frame product's title, with its
+                own price, quantity and remove link as Shopify allows. Removing the print removes it.
+              {%- endcomment -%}
+              {%- for child in cart.items -%}
+                {%- if child.parent_relationship.parent.key == item.key -%}
+                  {%- assign sub = row | append: '-' | append: forloop.index -%}
+                  <div class="gs-cart__addon">
+                    <div class="gs-cart__details">
+                      <p class="gs-cart__name" id="gs-cart-item-{{ sub }}">{{ 'cart.frame' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></p>
+                      <p class="gs-price--line">{{ child.final_line_price | money }}</p>
+                    </div>
+                    <div class="gs-cart__controls">
+                      {%- if child.instructions.can_update_quantity -%}
+                        <div class="gs-field">
+                          <label class="gs-field__label" for="gs-cart-qty-{{ sub }}">{{ 'cart.frames' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></label>
+                          <input class="gs-input" id="gs-cart-qty-{{ sub }}" type="number" name="updates[{{ child.key }}]" value="{{ child.quantity }}" min="0" inputmode="numeric">
+                        </div>
+                      {%- endif -%}
+                      {%- if child.instructions.can_remove -%}
+                        <a class="gs-cta-link" href="{{ child.url_to_remove }}">{{ 'cart.remove_frame' | t }}<span class="gs-visually-hidden">: {{ item.product.title | escape }}</span></a>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
               {%- if offer_frame -%}
                 {%- assign frame_variant = offer_frame.selected_or_first_available_variant -%}
                 {%- assign frame_price = frame_variant.price | money -%}
                 <div class="gs-cart__offer">
-                  <button class="gs-button gs-button--secondary" type="submit" form="{{ frame_form_id }}" aria-describedby="gs-cart-item-{{ forloop.index }}">{{ 'cart.add_frame' | t: price: frame_price }}</button>
+                  <button class="gs-button gs-button--secondary" type="submit" form="{{ frame_form_id }}" aria-describedby="gs-cart-item-{{ row }}">{{ 'cart.add_frame' | t: price: frame_price }}</button>
                 </div>
                 {%- capture frame_forms -%}
                   {{- frame_forms -}}
                   {%- form 'product', offer_frame, id: frame_form_id -%}
-                    <input type="hidden" name="id" value="{{ frame_variant.id }}">
+                    <input type="hidden" name="items[0][id]" value="{{ frame_variant.id }}">
+                    <input type="hidden" name="items[0][quantity]" value="1">
+                    <input type="hidden" name="items[0][parent_line_key]" value="{{ item.key }}">
                   {%- endform -%}
                 {%- endcapture -%}
               {%- endif -%}
@@ -100,8 +127,9 @@
         </div>
       </form>
       {%- comment -%}
-        The frames offered under their prints (DS-125). A form can't sit inside the cart's form, so
-        each is here, empty, and its button in the row names it with the form attribute.
+        The frames offered under their prints (DS-125), each added nested under its print's line
+        (DS-137). A form can't sit inside the cart's form, so each is here, empty, and its button in
+        the row names it with the form attribute.
       {%- endcomment -%}
       {{- frame_forms -}}
     {%- else -%}

@@ -283,7 +283,7 @@ About keeps the fields from the entry above (Artists for Kids programme, the pri
 
 **Effect on the live site:** none; the live theme doesn't read the staged field. The live Artists for Kids page shows its own text, without the print (checked 2026-09-26).
 
-**For the gallery:** the Paradise Valley photo's description says 1994, its caption 1996 (`proposals/gallery-questions.md` 3.8).
+**For the gallery:** the Paradise Valley photo's description says 1994, its caption 1996 (`proposals/gallery-questions.md` §2).
 
 **Undo:** clear Artists for Kids' staged text; set About's back from the snapshot.
 
@@ -313,7 +313,7 @@ About keeps the fields from the entry above (Artists for Kids programme, the pri
 - after the paragraph on the first print: "This print by Bill Reid, based on a ceremonial drum, marked the beginning of an extraordinary partnership with now more than 100 Canadian artists - from Kenojuak Ashevak to Ian Wallace - that has produced one of the most significant limited edition collections in the country."
 - the print's caption: "Bill Reid, (Canadian, 1920 – 1998) *XHUWAJI/Haida Grizzly Bear*, (1990) Serigraph, 22 in x 22 in." (the italics end before the comma now).
 
-Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Our Story sat under. Two phrases now come twice in a row; the words are the gallery's, so that's a question for them (`proposals/gallery-questions.md` 3.6).
+Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Our Story sat under. Two phrases now come twice in a row; the words are the gallery's, so that's a question for them (`proposals/gallery-questions.md` 6.8).
 
 **Effect on the live site:** none; the live theme doesn't read the staged field.
 
@@ -330,7 +330,7 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 | What | Before | After |
 | --- | --- | --- |
 | Card group `afk-programmes` (`gid://shopify/Metaobject/608367378729`), `heading` | not set | "Programs": its card titles become H3s under it |
-| Artists for Kids' staged text | with Our Story's sentence "This print by Bill Reid, based on a ceremonial drum, …" | without it: it repeated "marked the beginning of an extraordinary partnership" and "one of the most significant limited edition collections" from the paragraphs on either side. The ceremonial drum and the more than 100 artists go with it; `proposals/gallery-questions.md` 3.6 asks the gallery whether to mention them in its own words |
+| Artists for Kids' staged text | with Our Story's sentence "This print by Bill Reid, based on a ceremonial drum, …" | without it: it repeated "marked the beginning of an extraordinary partnership" and "one of the most significant limited edition collections" from the paragraphs on either side. The ceremonial drum and the more than 100 artists go with it; `proposals/gallery-questions.md` 6.8 asks the gallery whether to mention them in its own words |
 
 **Effect on the live site:** none; the live theme reads no card groups or staged text.
 
@@ -415,9 +415,9 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 | Page `volunteer` staged text (`release_body`): the opening sentence; "Join the team" (new heading) with the photo `khimhipol221129_0389.jpg` from the page's old banner, alt "Guests are served drinks at a gallery event"; the two closing paragraphs; a new last line, "To apply, fill in the volunteer form (PDF). Questions? Contact us." | `gid://shopify/Metafield/190408730444073` |
 | Page `volunteer` field `cta`: label "Volunteer Form" became "Download the form"; the address is unchanged | `gid://shopify/Metafield/190392604197161` |
 
-`volunteer.py` checks that every word of the page's text is still there, in order. The only change to the gallery's words: each role's sentence starts the card, so its first letter is a capital ("greet" became "Greet", "support" became "Support"). The heading and last line are new, for the gallery to check (`gallery-questions.md` 6.5).
+`volunteer.py` checks that every word of the page's text is still there, in order. The only change to the gallery's words: each role's sentence starts the card, so its first letter is a capital ("greet" became "Greet", "support" became "Support"). The heading and last line are new, for the gallery to check (`gallery-questions.md` §3).
 
-**Not written:** alt text on the hero photo. The live theme's slideshow reads each image's alt text from Files, so it would change the live page. The new theme treats a hero image without alt text as decorative instead (DS-58); descriptions can be added at release (`gallery-questions.md` 6.4).
+**Not written:** alt text on the hero photo. The live theme's slideshow reads each image's alt text from Files, so it would change the live page. The new theme treats a hero image without alt text as decorative instead (DS-58); descriptions can be added at release.
 
 **Effect on the live site:** none. The live theme reads no page fields or cards, and its Volunteer page still shows its own text and "VOLUNTEER FORM" button.
 
@@ -439,7 +439,7 @@ Also "contemporary limited editions" links to the Shop (`/pages/shop`), which Ou
 | Page `donate`, staged text (`release_body`) | `gid://shopify/Metafield/190392604393769` | DS-53's | The same, with `galleryschool-13.jpg` (a class visit) as a figure under "Ways to Support", alt "Students sit on the gallery floor with a guide during a class visit". Words unchanged (`donate.py` checks) |
 | Page `donate`, call to action (`cta`) | `gid://shopify/Metafield/190406558417193` | "Ways to give" | "Make a gift", same address (`#donate-ways-to-give`) |
 
-The cards' text is unchanged; the email address and number stay in it as the gallery wrote them. The Online Form card entry is unchanged and kept, out of the group, until there is a form (`gallery-questions.md` 3.1).
+The cards' text is unchanged; the email address and number stay in it as the gallery wrote them. The Online Form card entry is unchanged and kept, out of the group, until there is a form (`gallery-questions.md` 7.3).
 
 **Effect on the live site:** none. The live theme reads no page fields, cards or card groups; its Donate page still shows its own template.
 
@@ -699,7 +699,7 @@ Not changed: the review menus `new-theme-main` and `new-theme-explore`, which th
 | Staged text additions (P-44, P-57): Speaker Series (Past talks), Music at the Smith (Past concerts, the Steinway), Gordon and Marion (the obituary line, a second video), Awards and scholarships (one line linking the Foundation's scholarships) | Connector | `metafieldsSet`; each is the page's text as it was plus the addition |
 | The new theme's menu `new-theme-main-2`: Smith Foundation scholarships first under Programs, Scholarships and awards; Brilliance Gala after Give to Artists for Kids and Supporters last under Support (P-52, P-53) | Connector | `menuUpdate` on `gid://shopify/Menu/305944068393`; every other item keeps its ID; `navigation.py` updated to match |
 
-Not changed, by decision: the older Year in Review reports (P-47, only the newest shows); the Donate page's "donor page" link, which waits with the Supporters page for the gallery's word on the list (10.1); facts that may be out of date (P-49, questions 10.4 to 10.8). Uploaded and unused: the photos taken off the gala page (three of 2026, four of 2025, four of 2023, and the 2018 and 2013 luncheons'), kept in Files for the gallery to swap in.
+Not changed, by decision: the older Year in Review reports (P-47, only the newest shows); the Donate page's "donor page" link, which waits with the Supporters page for the gallery's word on the list (8.1); facts that may be out of date (P-49, questions 1.1, 1.4, 7.3, 8.3 and 8.4). Uploaded and unused: the photos taken off the gala page (three of 2026, four of 2025, four of 2023, and the 2018 and 2013 luncheons'), kept in Files for the gallery to swap in.
 
 **Checked after:** on the review theme (it follows `main`, so it shows the content but not the Videos and publications section, which is on this branch): Past exhibitions lists 29, back to 2013; an older exhibition's page (summary, facts, text, views, credit); the three new pages; every staged paragraph and heading of the seven pages found on its rendered page (the three with off-site links differ only by the hidden "(external site)"); the Foundation page's cards link to the three pages; the menu has them. The section itself in `preview.html` at 1440 and 390. The development theme was in use by another session, so the section waits for the review theme after merge.
 

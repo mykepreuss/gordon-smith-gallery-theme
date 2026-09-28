@@ -114,10 +114,16 @@
     "option": "Option",
     "add_to_cart": "Add to cart",
     "adding": "Adding",
-    "frame_heading": "Add a frame",
-    "add_frame": "Add frame to cart",
-    "adding_frame": "Adding frame",
-    "frame_sold_out": "This frame is sold out.",
+    "framing": "Framing",
+    "unframed": "Unframed",
+    "framed": "Framed, add {{ price }}",
+    "framing_offered": "Also offered framed, for {{ price }} more.",
+    "framing_sold_out": "Framing is sold out for this print.",
+    "frame_page": {
+      "title": "Framing",
+      "deck": "This frame is sold with its print. Choose Framed on the print’s page.",
+      "own_print_html": "Framing a print you already own? <a class=\"gs-link\" href=\"{{ url }}\">Contact the gallery</a>."
+    },
     "disclosure": "Disclosure",
     "about_work": "About the work",
     "details": "Details",
@@ -143,7 +149,10 @@
     "subtotal": "Subtotal: {{ amount }}",
     "taxes_shipping": "Taxes and shipping are calculated at checkout.",
     "empty": "Your cart is empty.",
-    "add_frame": "Add its frame, {{ price }}"
+    "add_frame": "Add its frame, {{ price }}",
+    "frame": "Frame",
+    "frames": "Frames",
+    "remove_frame": "Remove frame"
   },
   "search": {
     "title": "Search",

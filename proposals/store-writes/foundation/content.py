@@ -12,14 +12,14 @@ nothing is typed again (AGENTS.md, "Gallery-facing work"). What changed, and why
 - Headings and labels the old site wrote in capitals are in sentence or title case ("NORTH
   VANCOUVER" is "North Vancouver"); paragraphs its page builder styled as headings are paragraphs.
 - Curator lines taken from a sentence ("… was guest-curated by Robin Laurence") read as the site's
-  other curator lines do: "Guest-curated by Robin Laurence" (gallery-questions.md 10.14).
+  other curator lines do: "Guest-curated by Robin Laurence" (gallery-questions.md 4.7).
 - Summaries are the text's first sentence or two, and the text carries on after them, as the
   migration's were; nothing is repeated.
 - Dated calls to action stay behind (P-45): RSVP links, ticket prices, "PLEASE MARK YOUR
   CALENDARS!", "Applications are closed", "Reception to follow". Past events stay as history.
 - "AFK" in titles, labels and headings is written out (P-39): Transformations' subtitle.
 - Titles follow each text's own spelling where the old title and text differ (Robert Young's
-  "Spatial Understanding", "Thirteen Ways to Summon Ghosts"; 10.13), and Victor John Penner's
+  "Spatial Understanding", "Thirteen Ways to Summon Ghosts"; 4.6), and Victor John Penner's
   February 29, 2014, which didn't exist, is February 28 until the gallery says.
 - Three older exhibitions have no picture on the old site (Alistair Bell's, Work Is Art, Robert
   Young's): their key image is a work of theirs from the collection, as an artwork, with its
@@ -29,7 +29,7 @@ nothing is typed again (AGENTS.md, "Gallery-facing work"). What changed, and why
 - Links get their plain address (a tracking parameter comes off the CBC link).
 - A few words are ours, where a page needs to say what it is: the Artists for Kids awards page's
   line pointing to the Foundation's scholarships, the headings of the gala page's sections, the
-  figures' captions naming a photographer the old text names. The gallery checks them (10.17 to 10.19).
+  figures' captions naming a photographer the old text names. The gallery checks them (8.10 to 8.12).
 """
 import html
 import json

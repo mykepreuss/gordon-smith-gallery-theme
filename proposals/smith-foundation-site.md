@@ -225,7 +225,7 @@ Michael, 2026-09-28: "Yes to everything except integrating the older Year in Rev
 One branch and one pull request after the decisions, as the Artists for Kids work did. Each step is its own commit.
 
 1. **Decide.** Done 2026-09-28: P-41 to P-49 and DS-138.
-2. **Ask.** The new questions go to the gallery (`gallery-questions.md` §10), with the rest.
+2. **Ask.** The new questions go to the gallery (`gallery-questions.md`, now in its sections 1, 4, 7 and 8), with the rest.
 3. **Review sheet.** A read-only script, `proposals/store-writes/foundation/inventory.py`, reads the export and the manifest. It writes every entry's fields and each page's staged text to a sheet, with the chosen images. Michael checks the sheet before anything is written.
 4. **Photos to choose.** For each gala and for *Unfixed*, a contact sheet of the proposed photos; Michael swaps any.
 5. **Design.** The Videos and publications section, in the design system first (DS-138).
@@ -277,18 +277,18 @@ What the build changed from the plan:
 | Four to six photos a gala | Two at most (a video counts as one); the Spring Luncheons have 2019's photo only | At 1440 the photos stacked beside the text far past its words; the page went from 11,276 to 5,072 px. The 2018 and 2013 luncheons were photos alone on the old site. The other photos are in Files, unused, for the gallery to swap in |
 | *Unfixed*: about 30 installation views | 12 | Chosen from contact sheets for variety: the room, each artist's main works. The rest stay on the download |
 | *Dwelling*'s key image from the old site (1024 px) | Christopher Pratt's *Christmas Eve at 12 O'Clock*, 1995, from the collection, with its record's caption; it is also *Dwelling*'s work from the collection | Looking at the old picture showed it is his print, which the collection holds at full size |
-| Three older shows' key images from the collection | Alistair Bell's *Tall Bird*, 1961; Yung Wing Chow's *Flux I*, 2013 (*Work Is Art*); Robert Young's *The Jazz Player/ Sounds Inside*, 1973 (his show was inspired by jazz) | The old site has no picture for them. Captions from the collection's records; the gallery checks the choice (10.18) |
+| Three older shows' key images from the collection | Alistair Bell's *Tall Bird*, 1961; Yung Wing Chow's *Flux I*, 2013 (*Work Is Art*); Robert Young's *The Jazz Player/ Sounds Inside*, 1973 (his show was inspired by jazz) | The old site has no picture for them. Captions from the collection's records; the gallery checks the choice (8.11) |
 | *Phantoms in the Front Yard*: curator line | None | The old text says the collective "collaborated with curator Pennylane Shen"; a curator line would say more than that. The sentence stays in the text |
-| The Donate page links "donor page" to Supporters | Not yet | Supporters goes live only when the gallery confirms the list (P-43, 10.1); the link goes in with it (`proposals/store-changes.md` §8c) |
+| The Donate page links "donor page" to Supporters | Not yet | Supporters goes live only when the gallery confirms the list (P-43, 8.1); the link goes in with it (`proposals/store-changes.md` §8c) |
 | Foundation page: scholarship and gala cards linked | Also a sixth card, Supporters, with the old page's first line and a 2019 luncheon photo | So the hub reaches all six Foundation pages (P-57, N13) |
 | Music at the Smith: the Steinway | Under a heading of ours, "The Steinway", with Kathryn Allison's words as a quote naming her | The old page had the paragraphs with no heading; the quote is hers, as the paragraph before it says |
 | Speaker Series: *Art Education Unveiled* | Without its last sentence, "Reception to follow, supported by Polygon Homes." | Dated (P-45) |
-| Alt text written from looking at each picture | Written by a reviewer who looked at each of the 52 photos, then checked | For the gallery to review with the rest (10.19) |
+| Alt text written from looking at each picture | Written by a reviewer who looked at each of the 52 photos, then checked | For the gallery to review with the rest (8.12) |
 
 Checked on the review theme (it follows `main`, so it shows the content and not yet the new section): Past exhibitions lists 29, back to 2013; an older exhibition's page; the three new pages; every staged paragraph and heading on its rendered page; the Foundation page's cards and the menu link to the three pages; the new pages' header shows the Foundation's logo and marks Support or Programs. The Videos and publications section was checked in `design-system/preview.html` at 1440 (two across) and 390 (one column, no sideways scrolling); the shared development theme was in use by another session, so the section waits for the review theme after merge. Theme Check, the linter and its tests, contrast and sync pass. The live site shows the three new pages' titles only (`noindex`, not in the sitemap); nothing else changed there.
 
 ## Still open
 
-- The gallery's answers (`gallery-questions.md` §10), and its word on the menu labels (§9.1). Supporters and Donate's link to it wait for 10.1 (`proposals/store-changes.md` §8c).
+- The gallery's answers (`gallery-questions.md` §8, and 1.1, 1.4, 4.6, 4.7, 4.9, 7.3), and its word on the menu labels (§3). Supporters and Donate's link to it wait for 8.1 (`proposals/store-changes.md` §8c).
 - The Videos and publications section on the review theme once this merges: *Unfixed*, *We Can Only Hint at This with Words*, *Endless Summer*, *Prevailing Landscapes*, *Playhouse*, *Stitched*.
 - Michael's decisions on DS-69, DS-77 and DS-80, which are built and Proposed. This plan uses all three.

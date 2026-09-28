@@ -1,14 +1,20 @@
 {%- comment -%}
   A limited edition (DESIGN.md §7.5, DS-05, DS-16): every image of the work whole on the mat;
   beside it the museum label from the product's artwork fields, medium, edition and size, the
-  price, and one action. One template for every product: whether it's on sale yet comes from
-  custom.coming_soon and custom.availability_note, and the framing offer from the linked frame
-  (custom.featured_frame), so no product needs its own template (content model parts 3 and 6).
+  price, framing and one action. One template for every product: whether it's on sale yet comes
+  from custom.coming_soon and custom.availability_note, and the framing choice from the linked
+  frame (custom.featured_frame), so no product needs its own template (content model parts 3, 6).
+
+  Framing (DS-137): a print with a linked frame offers Unframed or Framed in its one form, and
+  Framed adds the frame nested under the print, so the cart, checkout and order show it as part of
+  the work. The form posts both lines to /cart/add: the print, then the frame with the print as its
+  parent and the choice as its quantity (0 or 1), so it works without JavaScript. A frame is sold
+  only with its print: a frame's own page (product type Frame) points to its print instead.
 
   The archive note and framing text are the same on every product, so they're settings here.
 
-  Beside the work sits only what it takes to decide and buy: label, price, the action, the archive
-  note and the framing offer. The description follows below at reading width, "About the work"
+  Beside the work sits only what it takes to decide and buy: label, price, framing, the action and
+  the archive note. The description follows below at reading width, "About the work"
   (DESIGN.md §7.5), with any disclosures after it (DS-38).
 {%- endcomment -%}
 {%- liquid
@@ -20,6 +26,19 @@
   endif
   assign frame = f.featured_frame.value
   assign form_id = 'gs-product-' | append: section.id
+  assign can_buy = true
+  if coming_soon or product.available == false
+    assign can_buy = false
+  endif
+  assign is_frame = false
+  if product.type == 'Frame'
+    assign is_frame = true
+  endif
+  # The framing choice shows when the print can be bought and its frame can too.
+  assign framing = false
+  if frame != blank and can_buy and frame.available
+    assign framing = true
+  endif
   # A limited edition has its label fields; a frame (or a product not yet migrated) doesn't, so it
   # gets no archive note and its text is headed Details.
   assign is_edition = false
@@ -79,6 +98,40 @@
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
+{%- if is_frame -%}
+  {%- comment -%}
+    A frame on its own (DS-137): it's sold only with its print, so its page shows the print and
+    sends people there, and to the gallery for a print they already own. The prints are those in
+    Theme settings, All limited editions, whose linked frame is this one.
+  {%- endcomment -%}
+  {%- capture frame_prints -%}
+    {%- for item in settings.all_editions_collection.products -%}
+      {%- if item.metafields.custom.featured_frame.value.id == product.id -%}
+        <li>{%- render 'gs-artwork-tile', product: item, heading: 'h2', sizes: '(min-width: 1296px) 384px, (min-width: 750px) 31vw, 100vw' -%}</li>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  <div class="gs-container gs-lead-in">
+    <header class="gs-page-head">
+      {%- liquid
+        assign title = 'products.frame_page.title' | t
+        assign eyebrow = 'shop.crumb' | t
+        assign deck = 'products.frame_page.deck' | t
+        render 'gs-title-block', title: title, eyebrow: eyebrow, back: settings.shop_page, deck: deck
+      -%}
+      {%- if settings.contact_page != blank -%}
+        <p>{{ 'products.frame_page.own_print_html' | t: url: settings.contact_page.url }}</p>
+      {%- endif -%}
+    </header>
+  </div>
+  {%- if frame_prints != blank -%}
+    <div class="gs-section gs-surface-paper">
+      <div class="gs-container">
+        <ul class="gs-grid gs-grid--artworks" role="list">{{- frame_prints -}}</ul>
+      </div>
+    </div>
+  {%- endif -%}
+{%- else -%}
 <div class="gs-container--wide gs-container">
   <div class="gs-artwork{% if image_total == 0 %} gs-artwork--text{% endif %}">
     {{- lead_view -}}
@@ -100,7 +153,7 @@
       </div>
 
       <p class="gs-price">
-        {%- if coming_soon or product.available == false -%}
+        {%- if can_buy == false -%}
           {{- variant.price | money -}}
         {%- else -%}
           {%- render 'gs-price', product: product -%}
@@ -120,7 +173,7 @@
           <div class="gs-field">
             <label class="gs-field__label" for="{{ form_id }}-variant">{{ option_label | escape }}</label>
             <span class="gs-select-wrap">
-              <select class="gs-input gs-select" id="{{ form_id }}-variant" name="id">
+              <select class="gs-input gs-select" id="{{ form_id }}-variant" name="{% if framing %}items[0][id]{% else %}id{% endif %}">
                 {%- for v in product.variants -%}
                   <option value="{{ v.id }}"{% if v.id == variant.id %} selected{% endif %}{% unless v.available %} disabled{% endunless %}>
                     {{- v.title | escape -}}{%- if product.price_varies -%}, {{ v.price | money }}{%- endif -%}
@@ -131,11 +184,38 @@
             </span>
           </div>
         {%- else -%}
-          <input type="hidden" name="id" value="{{ variant.id }}">
+          <input type="hidden" name="{% if framing %}items[0][id]{% else %}id{% endif %}" value="{{ variant.id }}">
         {%- endunless -%}
 
+        {%- if framing -%}
+          {%- comment -%}
+            The choice is the frame's quantity: 0 adds the print alone, 1 adds the frame under it.
+            With options, the parent follows the one chosen (gs-forms.js); without the script it
+            stays off and the frame is added as its own line.
+          {%- endcomment -%}
+          {%- liquid
+            assign frame_variant = frame.selected_or_first_available_variant
+            assign frame_price = frame_variant.price | money
+          -%}
+          <input type="hidden" name="items[0][quantity]" value="1">
+          <input type="hidden" name="items[1][id]" value="{{ frame_variant.id }}">
+          {%- if product.has_only_default_variant -%}
+            <input type="hidden" name="items[1][parent_id]" value="{{ variant.id }}">
+          {%- else -%}
+            <input type="hidden" name="items[1][parent_id]" value="{{ variant.id }}" disabled data-gs-parent-of="{{ form_id }}-variant">
+          {%- endif -%}
+          <fieldset class="gs-choice"{% if section.settings.framing_text != blank %} aria-describedby="{{ form_id }}-framing"{% endif %}>
+            <legend class="gs-field__label">{{ 'products.framing' | t }}</legend>
+            <label class="gs-choice__option"><input type="radio" name="items[1][quantity]" value="0" checked>{{ 'products.unframed' | t }}</label>
+            <label class="gs-choice__option"><input type="radio" name="items[1][quantity]" value="1">{{ 'products.framed' | t: price: frame_price }}</label>
+          </fieldset>
+          {%- if section.settings.framing_text != blank -%}
+            <div class="gs-prose gs-caption" id="{{ form_id }}-framing">{{ section.settings.framing_text }}</div>
+          {%- endif -%}
+        {%- endif -%}
+
         {%- comment -%} Not on sale yet, or sold out: the reason sits beside the disabled button and describes it. {%- endcomment -%}
-        {%- if coming_soon or product.available == false -%}
+        {%- if can_buy == false -%}
           <div class="gs-actions">
             <button class="gs-button" type="button" disabled aria-describedby="{{ form_id }}-why">{{ 'products.add_to_cart' | t }}</button>
             <p class="gs-note" id="{{ form_id }}-why">{%- render 'gs-price', product: product -%}</p>
@@ -149,23 +229,17 @@
         <div class="gs-prose gs-caption">{{ section.settings.archive_note }}</div>
       {%- endif -%}
 
-      {%- if frame != blank -%}
-        {%- assign frame_variant = frame.selected_or_first_available_variant -%}
-        <section class="gs-panel gs-surface-tint" aria-labelledby="{{ form_id }}-frame">
-          <h2 class="gs-h4" id="{{ form_id }}-frame">{{ 'products.frame_heading' | t }}</h2>
-          {%- if section.settings.framing_text != blank -%}
-            <div class="gs-prose">{{ section.settings.framing_text }}</div>
-          {%- endif -%}
-          <p><a class="gs-link" href="{{ frame.url }}">{{ frame.title | escape }}</a>, {{ frame.price | money }}</p>
-          {%- if frame.available -%}
-            {%- form 'product', frame, class: 'gs-form', data-gs-form: '' -%}
-              <input type="hidden" name="id" value="{{ frame_variant.id }}">
-              <button class="gs-button gs-button--secondary" type="submit" data-gs-busy-label="{{ 'products.adding_frame' | t }}">{{ 'products.add_frame' | t }}</button>
-            {%- endform -%}
-          {%- else -%}
-            <p class="gs-note">{{ 'products.frame_sold_out' | t }}</p>
-          {%- endif -%}
-        </section>
+      {%- comment -%}
+        Without the choice, a print that can't be bought yet, or whose frame is sold out, says
+        whether framing is offered.
+      {%- endcomment -%}
+      {%- if frame != blank and framing == false -%}
+        {%- if frame.available -%}
+          {%- assign frame_price = frame.selected_or_first_available_variant.price | money -%}
+          <p class="gs-meta">{{ 'products.framing_offered' | t: price: frame_price }}</p>
+        {%- elsif can_buy -%}
+          <p class="gs-meta">{{ 'products.framing_sold_out' | t }}</p>
+        {%- endif -%}
       {%- endif -%}
 
     </div>
@@ -208,6 +282,7 @@
     {%- endif -%}
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -231,7 +306,7 @@
       "type": "richtext",
       "id": "framing_text",
       "label": "Framing text",
-      "info": "Shown when the product has a linked frame.",
+      "info": "Shown under the Framing choice when the product has a linked frame.",
       "default": "<p>Museum-quality framing and service includes UV-protective glass and acid-free matting, keeping your fine art print vibrant and pristine for decades.<br/>Framing by Artrageous Pictures and Framing North Shore</p>"
     }
   ]
