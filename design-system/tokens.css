@@ -129,7 +129,7 @@
 
   --gs-measure: 68ch;        /* body copy line length */
   --gs-measure-deck: 42ch;
-  --gs-measure-heading: 20ch;
+  --gs-measure-heading: 22ch;
 
   /* ------------------------------------------------------------------
    * SPACE (4px base) + fluid layout spacing

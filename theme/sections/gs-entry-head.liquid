@@ -52,7 +52,7 @@
         <div class="gs-entry-head__main">
           <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
           {%- if other_names != blank or full_name != blank -%}
-            <p class="gs-entry-head__names">
+            <p class="gs-deck">
               {{- other_names | escape -}}
               {%- if other_names != blank and full_name != blank -%}<br>{%- endif -%}
               {{- full_name | escape -}}
