@@ -1,6 +1,6 @@
 # Review: structured data (schema.org) in the new theme
 
-Date: 2026-09-28. Decision: DS-154, **Proposed**. Specification: `design-system/DESIGN.md` §9.7.
+Date: 2026-09-28. Decision: DS-154, **decided by Michael, 2026-09-28**, all five choices as built. Specification: `design-system/DESIGN.md` §9.7.
 
 ## What we found
 
@@ -39,9 +39,11 @@ On the development theme `schema-seo` (184805556521), 2026-09-28:
 
 Not checked yet: Google's Rich Results Test and validator.schema.org. Both need a public address, so they run against the review theme's preview link after merge.
 
-## Decisions for Michael
+## Decisions
 
-| # | Question | Built as | Alternative |
+Michael approved all five as built, 2026-09-28 ("approve all five decisions as built"). The alternatives are kept for the record.
+
+| # | Question | Decided, as built | Alternative, not taken |
 | --- | --- | --- | --- |
 | 1 | The gallery's type | `ArtGallery` | `ArtGallery` and `Museum` together, since it holds a permanent collection and is a public gallery |
 | 2 | The gallery's name | "Gordon Smith Gallery", as the tab title (DS-121) | Add the full name, "Gordon Smith Gallery of Canadian Art", as a second name, if the gallery confirms it |
