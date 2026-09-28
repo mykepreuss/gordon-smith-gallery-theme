@@ -85,9 +85,9 @@
 
     <div class="gs-artwork__info">
       <div class="gs-artwork__head">
-        {%- comment -%} A way back to the Shop, as the work page has to the collection (DS-102). {%- endcomment -%}
+        {%- comment -%} A way back to the Shop, as the work page has to the collection, labelled as the menu names it (DS-102). {%- endcomment -%}
         {%- if settings.shop_page != blank -%}
-          <p class="gs-crumb"><a href="{{ settings.shop_page.url }}">{{ settings.shop_page.title | escape }}</a></p>
+          <p class="gs-crumb"><a href="{{ settings.shop_page.url }}">{{ 'shop.crumb' | t }}</a></p>
         {%- endif -%}
         {%- render 'gs-artwork-label', product: product, tag: 'h1', link: true -%}
         {%- if f.medium.value != blank or f.edition.value != blank or f.dimensions.value != blank -%}

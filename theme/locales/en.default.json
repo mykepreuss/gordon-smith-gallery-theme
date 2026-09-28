@@ -95,6 +95,7 @@
     "portfolios": "Portfolios",
     "all_editions": "All editions",
     "all_editions_link": "All limited editions",
+    "crumb": "Limited editions",
     "see_portfolio": "See the {{ title }}",
     "editions_count": {
       "one": "{{ count }} edition",

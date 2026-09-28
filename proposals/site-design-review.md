@@ -171,7 +171,7 @@ Then every page was captured again and compared with captures taken just before 
 
 For Michael:
 - Michael, 2026-09-28: "DS-131 approved, restore the alt text on work tiles". Work tiles, in the collection and the finder, keep their images' own alt text from Files again (amending DS-120); edition and document tiles and the cart stay decorative.
-- The product crumb shows the Shop page's title, "Shop", while the menu calls it "Limited editions" (gallery question 8.5 covers the Shop labels).
+- Michael, 2026-09-28: "Crumb label should be Limited editions". The product and frame crumb now reads "Limited editions", as the menu names the Shop page (a theme label, `shop.crumb`).
 - The review theme's Browse button will jump to `#collection-browse`, which it gets only when `main` is pushed to it after this merges.
 - Cup and Saucer's description has words joined by no-break spaces (pasted from Word), which still scrolls sideways at 320 px. That's a copy fix for the gallery, from before this build.
 
