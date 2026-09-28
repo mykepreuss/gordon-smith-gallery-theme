@@ -287,5 +287,14 @@
     "watch": "Watch the video",
     "video_title": "Video: {{ title }}",
     "none": "No lessons yet: add lesson entries in Content, Metaobjects, Lesson."
+  },
+  "lightbox": {
+    "label": "Larger view",
+    "open": "Open larger view",
+    "open_numbered": "Open larger view, image {{ number }} of {{ total }}",
+    "count": "{{ number }} of {{ total }}",
+    "close": "Close",
+    "previous": "Previous image",
+    "next": "Next image"
   }
 }
