@@ -95,7 +95,10 @@
     "empty_programme": "Nothing is scheduled right now.",
     "empty_programme_link": "See all upcoming events",
     "switcher_label": "Programs",
-    "switcher_all": "All events",
+    "switcher_all": "All upcoming",
+    "switcher_past": "Past events",
+    "past_heading": "Past events",
+    "empty_past": "No past events to show yet.",
     "count": {
       "one": "1 event",
       "other": "{{ count }} events"

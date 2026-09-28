@@ -11,7 +11,8 @@
   last link.
   On the Upcoming events page and the programmes' pages: All events, then each programme
   (gs-programme-index), with its count of upcoming events (DS-142). A programme's page is its
-  filtered view: its own words, then its events only.
+  filtered view: its own words, then its events only. Past events, the page chosen in Theme
+  settings, ends the row, at its far end on wide screens (DS-145).
 {%- endcomment -%}
 {%- if collection != blank -%}
   {%- assign nav_label = 'shop.portfolios' | t -%}
@@ -50,7 +51,7 @@
         endcapture
         assign programmes_row = programmes_row | strip | split: ','
         assign here = false
-        if page.id == settings.events_page.id
+        if page.id == settings.events_page.id or page.id == settings.events_past_page.id
           assign here = true
         endif
         for item in programmes_row
@@ -59,6 +60,10 @@
             assign here = true
           endif
         endfor
+        if here and programmes_row.size == 0
+          # No programmes yet: the row still has All upcoming, and Past events.
+          assign programmes_row = ',' | split: '|'
+        endif
         unless here
           assign programmes_row = ''
         endunless
@@ -122,6 +127,10 @@
       render 'gs-event-index'
     endcapture
     assign total = total | strip | split: ',' | size
+    capture ended
+      render 'gs-event-index', past: true
+    endcapture
+    assign ended = ended | strip | split: ',' | size
   -%}
   <nav class="gs-container gs-switcher gs-lead-in" aria-label="{{ 'events.switcher_label' | t }}">
     <ul class="gs-switcher__list">
@@ -146,6 +155,14 @@
           </li>
         {%- endif -%}
       {%- endfor -%}
+      {%- if settings.events_past_page != blank -%}
+        <li class="gs-switcher__end">
+          <a href="{{ settings.events_past_page.url }}"{% if page.id == settings.events_past_page.id %} aria-current="page"{% endif %}>
+            {{- 'events.switcher_past' | t -}}
+            {%- if ended > 0 %} <span class="gs-switcher__count"><span aria-hidden="true">{{ ended }}</span><span class="gs-visually-hidden">, {{ 'events.count' | t: count: ended }}</span></span>{% endif -%}
+          </a>
+        </li>
+      {%- endif -%}
     </ul>
   </nav>
 {%- endif -%}

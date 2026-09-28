@@ -1217,6 +1217,10 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   color: var(--gs-color-fg);
   border-bottom-color: var(--gs-color-link-line);
 }
+/* A link that ends the row (Past events, DS-145) sits at its far end from 990 px, apart from the filters. */
+@media (min-width: 990px) {
+  .gs-switcher__end { margin-inline-start: auto; }
+}
 .gs-switcher__count {
   font-size: var(--gs-text-label);
   font-weight: var(--gs-weight-bold);

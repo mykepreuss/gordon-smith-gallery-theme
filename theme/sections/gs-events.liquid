@@ -5,14 +5,24 @@
   there are none, and so does a programme in the switcher (gs-programme-index, DS-142), with a
   link to every event; any other page without events shows nothing here. On the Upcoming events
   page the list's heading is for screen readers only: the page title already says it. The
-  switcher above the list has the link to every event.
+  switcher above the list has the link to every event. On the page chosen as the Past events page
+  it lists the events that have ended, newest first, without their tickets links (DS-145).
 {%- endcomment -%}
 {%- liquid
   assign all = false
   if settings.events_page != blank and page.id == settings.events_page.id
     assign all = true
   endif
-  if all
+  assign past = false
+  if settings.events_past_page != blank and page.id == settings.events_past_page.id
+    assign past = true
+    assign all = true
+  endif
+  if past
+    capture ids
+      render 'gs-event-index', past: true
+    endcapture
+  elsif all
     capture ids
       render 'gs-event-index'
     endcapture
@@ -38,7 +48,7 @@
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
     <div class="gs-container">
       {%- if all -%}
-        <h2 class="gs-visually-hidden" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+        <h2 class="gs-visually-hidden" id="{{ section.id }}-heading">{% if past %}{{ 'events.past_heading' | t }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2>
       {%- else -%}
         <div class="gs-section-head">
           <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
@@ -49,10 +59,14 @@
           {%- for id in ids -%}
             {%- assign n = id | plus: 0 -%}
             {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-              {%- render 'gs-event', event: event, page_title: page.title -%}
+              {%- render 'gs-event', event: event, page_title: page.title, past: past -%}
             {%- endfor -%}
           {%- endfor -%}
         </ul>
+      {%- elsif past -%}
+        {%- assign empty_text = 'events.empty_past' | t -%}
+        {%- assign empty_label = 'events.empty_programme_link' | t -%}
+        {%- render 'gs-empty', text: empty_text, link_url: settings.events_page.url, link_label: empty_label -%}
       {%- elsif filtered -%}
         {%- assign empty_text = 'events.empty_programme' | t -%}
         {%- assign empty_label = 'events.empty_programme_link' | t -%}

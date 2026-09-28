@@ -448,6 +448,12 @@
         "info": "This page lists every upcoming event. Other pages list only their own."
       },
       {
+        "type": "page",
+        "id": "events_past_page",
+        "label": "Past events page",
+        "info": "Lists the events that have ended, newest first. An event moves here by itself once it has ended."
+      },
+      {
         "type": "link_list",
         "id": "programmes_menu",
         "label": "Programs filter menu",
