@@ -1,88 +1,131 @@
 {%- comment -%}
-  Upcoming events (content model part 5, P-16). On the page chosen as the Upcoming events page in
-  theme settings it lists every upcoming event; on any other page, the events whose programme
-  page is that page. An event drops off once it has ended. The Upcoming events page says when
-  there are none, and so does a programme in the switcher (gs-programme-index, DS-143), with a
-  link to every event; any other page without events shows nothing here. On the Upcoming events
-  page the list's heading is for screen readers only: the page title already says it. The
-  switcher above the list has the link to every event. On the page chosen as the Past events page
-  it lists the events that have ended, newest first, without their tickets links (DS-147).
+  Events (content model part 5, P-16, DS-143, DS-147). On the pages chosen in Theme settings as
+  the Current, Upcoming and Past events pages it lists every programme's events of that kind:
+  today's and those under way; those that start after today, soonest first; those that have
+  ended, newest first, without their tickets links. The list's heading is for screen readers
+  only: the row of links above it says which list this is. An empty list says so.
+
+  On a programme in the switcher (gs-programme-index) it lists that page's own events in groups,
+  Current, Upcoming and Past, each under its heading with its count. A group with nothing in it
+  is left out, except that a programme with nothing on or coming says so. Past shows the latest
+  six, without pictures or summaries, and links to the Past events page. Any other page shows
+  nothing here. An event moves from list to list by its dates.
 {%- endcomment -%}
 {%- liquid
-  assign all = false
-  if settings.events_page != blank and page.id == settings.events_page.id
-    assign all = true
+  assign when = ''
+  if page.id == settings.events_page.id
+    assign when = 'upcoming'
+  elsif page.id == settings.events_current_page.id
+    assign when = 'current'
+  elsif page.id == settings.events_past_page.id
+    assign when = 'past'
   endif
-  assign past = false
-  if settings.events_past_page != blank and page.id == settings.events_past_page.id
-    assign past = true
-    assign all = true
-  endif
-  if past
-    capture ids
-      render 'gs-event-index', past: true
-    endcapture
-  elsif all
-    capture ids
-      render 'gs-event-index'
-    endcapture
-  else
-    capture ids
-      render 'gs-event-index', for_page: page
-    endcapture
-  endif
-  assign ids = ids | strip | split: ','
-  assign filtered = false
-  unless all
+  assign groups = when
+  if when == blank
     capture filtered
       render 'gs-programme-index', check: page
     endcapture
     if filtered contains 'true'
-      assign filtered = true
-    else
-      assign filtered = false
+      assign groups = 'current,upcoming,past'
     endif
-  endunless
+  endif
+  assign groups = groups | split: ','
+  assign live = 0
 -%}
-{%- if ids.size > 0 or all or filtered -%}
-  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
-    <div class="gs-container">
-      {%- if all -%}
-        <h2 class="gs-visually-hidden" id="{{ section.id }}-heading">{% if past %}{{ 'events.past_heading' | t }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2>
-      {%- else -%}
-        <div class="gs-section-head">
-          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
-        </div>
-      {%- endif -%}
-      {%- if ids.size > 0 -%}
-        <ul class="gs-events" role="list">
-          {%- for id in ids -%}
-            {%- assign n = id | plus: 0 -%}
-            {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-              {%- render 'gs-event', event: event, page_title: page.title, past: past -%}
+{%- for group in groups -%}
+  {%- liquid
+    if when != blank
+      capture ids
+        render 'gs-event-index', when: group
+      endcapture
+    elsif group == 'past'
+      capture ids
+        render 'gs-event-index', for_page: page, when: group, limit: 7
+      endcapture
+    else
+      capture ids
+        render 'gs-event-index', for_page: page, when: group
+      endcapture
+    endif
+    assign ids = ids | strip | split: ','
+    assign more = false
+    assign cap = 50
+    if when == blank and group == 'past'
+      assign cap = 6
+    endif
+    if when == blank and group == 'past' and ids.size > 6
+      assign more = true
+    endif
+    unless group == 'past'
+      assign live = live | plus: ids.size
+    endunless
+    # A programme's empty groups are left out; Upcoming stays to say nothing is on or coming.
+    assign show = true
+    if when == blank and ids.size == 0
+      assign show = false
+      if group == 'upcoming' and live == 0
+        assign show = true
+      endif
+    endif
+    assign heading_key = 'events.' | append: group
+    assign past = false
+    if group == 'past'
+      assign past = true
+    endif
+  -%}
+  {%- if show -%}
+    <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-{{ group }}">
+      <div class="gs-container{% if when == blank %} gs-events-group{% endif %}">
+        {%- if when != blank -%}
+          <h2 class="gs-visually-hidden" id="{{ section.id }}-{{ group }}">{{ heading_key | t }}</h2>
+        {%- else -%}
+          <div class="gs-section-head">
+            <h2 class="gs-h3" id="{{ section.id }}-{{ group }}">
+              {{- heading_key | t -}}
+              {%- if ids.size > 0 and more == false %} <span class="gs-switcher__count"><span aria-hidden="true">{{ ids.size }}</span><span class="gs-visually-hidden">, {{ 'events.count' | t: count: ids.size }}</span></span>{% endif -%}
+            </h2>
+            {%- if more and settings.events_past_page != blank -%}
+              <a class="gs-cta-link gs-cta-link--more" href="{{ settings.events_past_page.url }}">{{ 'events.all_past' | t }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if ids.size > 0 -%}
+          <ul class="gs-events{% if when != blank %} gs-events--led{% endif %}{% if when == blank and past %} gs-events--quiet{% endif %}" role="list">
+            {%- for id in ids limit: cap -%}
+              {%- assign n = id | plus: 0 -%}
+              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                {%- if when == blank and past -%}
+                  {%- render 'gs-event', event: event, page_title: page.title, past: true, compact: true -%}
+                {%- else -%}
+                  {%- render 'gs-event', event: event, page_title: page.title, past: past -%}
+                {%- endif -%}
+              {%- endfor -%}
             {%- endfor -%}
-          {%- endfor -%}
-        </ul>
-      {%- elsif past -%}
-        {%- assign empty_text = 'events.empty_past' | t -%}
-        {%- assign empty_label = 'events.empty_programme_link' | t -%}
-        {%- render 'gs-empty', text: empty_text, link_url: settings.events_page.url, link_label: empty_label -%}
-      {%- elsif filtered -%}
-        {%- assign empty_text = 'events.empty_programme' | t -%}
-        {%- assign empty_label = 'events.empty_programme_link' | t -%}
-        {%- render 'gs-empty', text: empty_text, link_url: settings.events_page.url, link_label: empty_label -%}
-      {%- else -%}
-        {%- assign empty_text = 'events.empty' | t -%}
-        {%- assign empty_label = 'events.empty_link' | t -%}
-        {%- render 'gs-empty', text: empty_text, link_url: settings.exhibitions_on_now_page.url, link_label: empty_label -%}
-      {%- endif -%}
-    </div>
-  </section>
-{%- endif -%}
+          </ul>
+        {%- else -%}
+          {%- liquid
+            assign empty_key = 'events.empty_' | append: group
+            assign empty_label = 'events.empty_link' | t
+            assign empty_url = settings.events_page.url
+            if when == blank
+              assign empty_key = 'events.empty_programme'
+              assign empty_label = 'events.empty_programme_link' | t
+            elsif group == 'upcoming'
+              assign empty_url = settings.exhibitions_on_now_page.url
+              assign empty_label = 'events.empty_upcoming_link' | t
+            endif
+            assign empty_text = empty_key | t
+          -%}
+          {%- render 'gs-empty', text: empty_text, link_url: empty_url, link_label: empty_label -%}
+        {%- endif -%}
+      </div>
+    </section>
+  {%- endif -%}
+{%- endfor -%}
 
 {% schema %}
 {
-  "name": "Upcoming events",
+  "name": "Events",
   "tag": "div",
   "enabled_on": {
     "templates": ["page"]
@@ -90,18 +133,12 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Events come from their entries in Content, Metaobjects, Events. Link an event to its programme page to list it there."
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Upcoming events"
+      "content": "Events come from their entries in Content, Metaobjects, Events. The Current, Upcoming and Past pages in Theme settings list every event; a programme's page lists its own. Link an event to its programme page to list it there."
     }
   ],
   "presets": [
     {
-      "name": "Upcoming events"
+      "name": "Events"
     }
   ]
 }

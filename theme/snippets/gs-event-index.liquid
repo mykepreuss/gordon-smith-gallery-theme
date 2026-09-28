@@ -5,8 +5,11 @@
     for event in shop.metaobjects.event.values offset: n limit: 1
 
   An event drops off every list once it has ended (its end time, or its start time when it has
-  no end). Only active entries exist on the storefront. Reads up to 50 entries. With past, the
-  events that have ended instead, newest first (the Past events page, DS-147).
+  no end). Only active entries exist on the storefront. Reads up to 50 entries.
+
+  With when, one of the three lists of DS-147: 'current', events today or under way (started on
+  or before today, not yet ended); 'upcoming', events that start after today; 'past', events that
+  have ended, newest first. Without it, every event that hasn't ended, as before.
 
   Pass one of for_page or exhibition, or neither for every upcoming event. (Not "page": inside a
   snippet that name is also the current page, so leaving it out would still filter by it.)
@@ -14,7 +17,7 @@
   @param {object} [for_page] - Only events whose programme page is this page
   @param {object} [exhibition] - Only events tied to this exhibition entry
   @param {number} [limit] - At most this many
-  @param {boolean} [past] - The events that have ended, newest first
+  @param {string} [when] - 'current', 'upcoming' or 'past'
 
   @example
   {%- capture ids -%}{% render 'gs-event-index', for_page: page %}{%- endcapture -%}
@@ -22,6 +25,7 @@
 {%- liquid
   assign limit = limit | default: 50
   assign now = 'now' | date: '%s' | plus: 0
+  assign today = 'now' | date: '%Y%m%d' | plus: 0
   assign keys = ''
   for event in shop.metaobjects.event.values
     if for_page != blank
@@ -36,12 +40,21 @@
     endif
     assign finish = event.ends.value | default: event.starts.value
     assign finish_s = finish | date: '%s' | plus: 0
-    if past
+    if when == 'past'
       if finish_s >= now
         continue
       endif
     elsif finish_s < now
       continue
+    endif
+    if when == 'current' or when == 'upcoming'
+      assign start_day = event.starts.value | date: '%Y%m%d' | plus: 0
+      if when == 'current' and start_day > today
+        continue
+      endif
+      if when == 'upcoming' and start_day <= today
+        continue
+      endif
     endif
     assign start_s = event.starts.value | date: '%s'
     assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
@@ -49,7 +62,7 @@
   endfor
 
   assign sorted = keys | split: ',' | sort
-  if past
+  if when == 'past'
     assign sorted = sorted | reverse
   endif
   for key in sorted limit: limit
