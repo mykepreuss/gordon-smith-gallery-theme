@@ -1,0 +1,91 @@
+{%- comment -%}
+  More lessons, at the end of a lesson's page (DESIGN.md §7.5, DS-70): the next three lessons after
+  this one in the list's order (newest first), wrapping round to the newest, as lesson cards, and a
+  link to all of them on the ArtReach videos page. So each lesson leads somewhere different.
+{%- endcomment -%}
+{%- liquid
+  capture order
+    render 'gs-lesson-index'
+  endcapture
+  assign order = order | strip | split: ','
+  assign here = ''
+  for lesson in shop.metaobjects.lesson.values
+    if lesson.system.handle == metaobject.system.handle
+      assign here = forloop.index0 | append: ''
+      break
+    endif
+  endfor
+  assign at = 0
+  for pos in order
+    if pos == here
+      assign at = forloop.index0
+      break
+    endif
+  endfor
+  assign picked = ''
+  assign taken = 0
+  if order.size > 1
+    for step in (1..4)
+      assign k = at | plus: step | modulo: order.size
+      assign candidate = order[k]
+      if candidate != here and taken < 3
+        unless picked contains candidate
+          assign picked = picked | append: candidate | append: ','
+          assign taken = taken | plus: 1
+        endunless
+      endif
+    endfor
+  endif
+  assign ids = picked | split: ','
+  capture mods
+    render 'gs-grid-modifiers', count: ids.size
+  endcapture
+  assign mods = mods | strip_newlines
+-%}
+{%- if ids.size > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'lessons.more' | t }}</h2>
+        {%- if settings.lessons_page != blank -%}
+          <a class="gs-cta-link gs-cta-link--more" href="{{ settings.lessons_page.url }}">{{ 'lessons.all' | t }}</a>
+        {%- endif -%}
+      </div>
+      <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
+        {%- for id in ids -%}
+          {%- liquid
+            assign n = id | plus: 0
+            capture card_sizes
+              render 'gs-grid-sizes', mods: mods, index: forloop.index
+            endcapture
+            assign card_sizes = card_sizes | strip
+          -%}
+          {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+            <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3', compact: true, sizes: card_sizes -%}</li>
+          {%- endfor -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "More lessons",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The next three lessons after this one in the list, newest first by their Posted date, wrapping round to the newest."
+    }
+  ],
+  "presets": [
+    {
+      "name": "More lessons"
+    }
+  ]
+}
+{% endschema %}

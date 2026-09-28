@@ -1,0 +1,6 @@
+{
+ "taken": "2026-09-28, through the Shopify connector, before the store writes for DS-122 and DS-129 (decided by Michael 2026-09-28)",
+ "permanent-collection": {"page": "gid://shopify/Page/155720548649", "cta": "{\"text\":\"Browse\",\"url\":\"https://gordonsmithgallery.com/pages/permanent-collection#collection-search\"}"},
+ "learning-kits": {"page": "gid://shopify/Page/165838127401", "card_groups": "[\"gid://shopify/Metaobject/608983122217\",\"gid://shopify/Metaobject/608983154985\",\"gid://shopify/Metaobject/608983187753\",\"gid://shopify/Metaobject/608983220521\",\"gid://shopify/Metaobject/608983253289\",\"gid://shopify/Metaobject/608983286057\"]"},
+ "card_groups_before": "created/afk-card-groups.json at commit 976b979 (no afk-kit-*-kit, afk-kit-clay-video or afk-kit-trace-monotype-video groups existed)"
+}

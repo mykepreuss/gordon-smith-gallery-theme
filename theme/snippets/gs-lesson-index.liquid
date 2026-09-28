@@ -1,0 +1,40 @@
+{% doc %}
+  Orders the lessons (the ArtReach videos, DS-70), newest first by their Posted date; lessons
+  without one come last. Outputs comma-separated positions in shop.metaobjects.lesson.values.
+  Read a lesson back with:
+
+    for lesson in shop.metaobjects.lesson.values offset: n limit: 1
+
+  Only active entries exist on the storefront. Reads up to 50 entries (L-07).
+
+  @param {string} [exclude] - A lesson's handle to leave out (the page's own lesson)
+  @param {number} [limit] - At most this many
+
+  @example
+  {%- capture ids -%}{% render 'gs-lesson-index', exclude: metaobject.system.handle, limit: 3 %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign limit = limit | default: 50
+  assign keys = ''
+  for lesson in shop.metaobjects.lesson.values
+    if exclude != blank and lesson.system.handle == exclude
+      continue
+    endif
+    assign posted = '00000000'
+    if lesson.posted.value != blank
+      assign posted = lesson.posted.value | date: '%Y%m%d'
+    endif
+    # Within a date, keep the entries' own order: a higher counter sorts first once reversed.
+    assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
+    assign order = 999 | minus: forloop.index0 | prepend: '000' | slice: -3, 3
+    assign keys = keys | append: posted | append: order | append: '-' | append: pos | append: ','
+  endfor
+
+  assign sorted = keys | split: ',' | sort | reverse
+  for key in sorted limit: limit
+    echo key | split: '-' | last | plus: 0
+    unless forloop.last
+      echo ','
+    endunless
+  endfor
+-%}

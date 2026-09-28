@@ -1,6 +1,7 @@
 {% doc %}
   Page links for a paginated list: previous, page numbers, next. Real links; the current page is
-  marked with aria-current. Renders nothing when there's only one page.
+  marked with aria-current, and each number is read as "Page 2". Renders nothing when there's only
+  one page.
 
   @param {object} paginate - The paginate object from a paginate tag
 
@@ -16,9 +17,9 @@
       {%- for part in paginate.parts -%}
         <li>
           {%- if part.is_link -%}
-            <a href="{{ part.url }}">{{ part.title }}</a>
+            <a href="{{ part.url }}"><span class="gs-visually-hidden">{{ 'general.page' | t }} </span>{{ part.title }}</a>
           {%- elsif part.title == paginate.current_page -%}
-            <span aria-current="page">{{ part.title }}</span>
+            <span aria-current="page"><span class="gs-visually-hidden">{{ 'general.page' | t }} </span>{{ part.title }}</span>
           {%- else -%}
             <span>{{ part.title }}</span>
           {%- endif -%}

@@ -1,0 +1,86 @@
+{% doc %}
+  The gallery's hours, from the opening days and times in Theme settings, Gallery details, so the
+  footer, the home page's Visit block, Plan your visit, the contact page and the "open today" line
+  all say the same thing from one source (DS-96, Proposed). By default it prints the days, a line
+  break and the times: "Thursday to Saturday<br>12 to 4 PM", as escaped HTML. Days in a row read
+  "Thursday to Saturday"; days with gaps read "Monday, Wednesday and Friday"; times follow
+  gs-open-times ("12 to 4 PM").
+
+  With no open day ticked it falls back to the Hours text in the same settings (for a holiday
+  note or a closure), and prints nothing when that is empty too.
+
+  Captured output starts with a line break, so strip it.
+
+  @param {string} [part] - 'days' prints only the days ("Thursday to Saturday"), 'numbers' only
+    the open days as JavaScript counts them, Sunday 0 ("4,5,6"), for gs-open.js. Both print
+    nothing when no open day is ticked
+
+  @example
+  {%- capture hours -%}{% render 'gs-open-hours' %}{%- endcapture -%}
+  {%- assign hours = hours | strip -%}
+{% enddoc %}
+{%- liquid
+  assign keys = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday' | split: ','
+  # The weekday names come from the locale, Sunday first, as JavaScript counts them (Sunday 0).
+  assign week = 'open.weekdays' | t | split: ','
+  assign js_days = '1,2,3,4,5,6,0' | split: ','
+  assign numbers = ''
+  assign open_names = ''
+  assign last = -9
+  assign count = 0
+  assign gaps = false
+  for key in keys
+    assign setting = 'open_' | append: key
+    if settings[setting]
+      assign i = js_days[forloop.index0] | plus: 0
+      assign numbers = numbers | append: js_days[forloop.index0] | append: ','
+      assign open_names = open_names | append: week[i] | append: ','
+      assign expected = last | plus: 1
+      if count > 0 and forloop.index0 != expected
+        assign gaps = true
+      endif
+      assign last = forloop.index0
+      assign count = count | plus: 1
+    endif
+  endfor
+
+  if count > 0
+    assign day_list = open_names | split: ','
+    assign to_word = 'open.to' | t
+    assign and_word = 'open.and' | t
+    if count == 1
+      assign days = day_list.first
+    elsif gaps == false
+      assign days = day_list.first | append: ' ' | append: to_word | append: ' ' | append: day_list.last
+    else
+      assign days = ''
+      for d in day_list
+        if forloop.last
+          assign days = days | append: ' ' | append: and_word | append: ' ' | append: d
+        else
+          if forloop.index > 1
+            assign days = days | append: ', '
+          endif
+          assign days = days | append: d
+        endif
+      endfor
+    endif
+
+    case part
+      when 'days'
+        echo days
+      when 'numbers'
+        echo numbers | split: ',' | join: ','
+      else
+        capture times
+          render 'gs-open-times', opens: settings.opens_at, closes: settings.closes_at
+        endcapture
+        assign times = times | strip
+    endcase
+  endif
+-%}
+{%- if count > 0 -%}
+  {%- if part == blank -%}{{ days | escape_once }}<br>{{ times | escape_once }}{%- endif -%}
+{%- elsif part == blank and settings.hours != blank -%}
+  {{- settings.hours | escape | newline_to_br -}}
+{%- endif -%}

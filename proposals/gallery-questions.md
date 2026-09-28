@@ -143,3 +143,59 @@ Each is a scan: every page is one picture at 300 dpi, most with the words recogn
 ## At release (later)
 
 - The product description clean-up (P-21, P-22): the gallery approves a before-and-after list of the 21 descriptions before anything changes.
+
+## 6. Artists for Kids (`proposals/artists-for-kids-integration.md`)
+
+The Artists for Kids site's pages moved here as written, 2026-09-27. These came up on the way, with the team's questions from the plan.
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 6.1 | Artists for Kids office hours: 8:30 to 4:30 on the old site and on Contact, 8:00 to 3:00 on Plan your visit. Which? | Both as written |
+| 6.2 | The Foundation's phone (604.998.8563), "by appointment", and the summer closure (June 23 to September 18, 2026) are on the old site's Contact page but not on this site. Add them? | Not added |
+| 6.3 | The old Contact page shows `admin@smithfoundation.ca` but its link writes to `info@smithfoundation.ca`. Which is right? | This site uses `admin@smithfoundation.ca`, as its Contact page does |
+| 6.4 | Gallery Program: the self-guided tours text names *Collect, Assemble, Gather*, then "our spring exhibition, One Hundred Artists Deep" and "April through June"; "Class visits can be booked at the button below" has no button; the Spring 2027 text repeats the fall's (Grade 5, *Collect, Assemble, Gather*, September to February) and refers to a Register button that isn't there yet. Please send corrected text | As written |
+| 6.5 | Gallery Program: the self-guided tour instructions (a PDF on the district's old server, which no longer answers). Please send the file | Left out |
+| 6.6 | Learning Guides: "Creating a Paper Mural with Sandeep Johal" has a cover and no PDF. Please send the PDF | Its card is made but not shown |
+| 6.7 | Samuel Roy-Bois, *My Sun*: 2024 in the caption, 2025 in the picture's description. Which? | As written |
+| 6.8 | *The Art of Conversation* offered a 3D tour ("Explore The Art of Conversation in 3D!"), but its link is missing. The address? | No tour link |
+| 6.9 | Names: "Sara Jean Bourget" (Paradise Valley) and "Sara-Jeanne Bourget"; "Mark Johnson" once on Mark Johnsen's page; "Elizabeth MacIntosh" and "McIntosh"; "Becky" and "Rebecca" Bair; "Artist for Kids" three times. Corrections? | As written |
+| 6.10 | "AFK" in body text ("the founders of AFK", "the AFK studios", "the AFK Permanent Collection", "AFK's Paradise Valley"): may it be written out as "Artists for Kids" (P-39)? Titles, labels and headings already are | As written |
+| 6.11 | Works named in lessons that differ from the collection's record: *Harlequin* (2019 in the lesson, 2003 in the collection), *Plains Cree Chiefs* (1996, 1995), *Einstein/Frankenstein* (2009 in one lesson, 2004 in another and the collection), *Pender Harbour* (2009, 2006), "Figure Maquette in Studio at Night" (the collection: *Painting and Figure Maquette in Studio at Night*), "All Kinds of Birds Flying North in Spring" (the collection: *All Kinds of Birds*). Each lesson shows the collection's work beside its own text | As written, work linked |
+| 6.12 | Studio Art Academy isn't offered in 2026/2027. Show its page this year? | Shown, with its note |
+| 6.13 | The Artists for Kids scholarships and the Foundation's scholarships are two sets of three. Should each page say how they differ, or link to the other? | No link |
+| 6.14 | Check the new labels: the menu's Classes and camps, Schools and teachers, Support Artists for Kids; the buttons "Register for classes", "Register for camps", "Register for camp" (verb first, after the design review), "Register a Grade 5 class"; the groups "Also for families", "More classes and camps", "Awards and support", "How to give", "Learning guides" (on Sara-Jeanne Bourget's page) and "Lesson Videos"; the cards "Give online through CanadaHelps", "Give with a School Cash Online account", "Give by phone" with "Call us"; the link "Amelia Butcher at the gallery"; "Artists for Kids Classes and Camps" on Public programs and "Artists for Kids" in Donate's How to give | As shown |
+| 6.15 | The team: how are fees collected after a registration form is sent? (T3) | The site says nothing about payment |
+| 6.16 | The team: how do camps and scholarships take registrations when they open? (T4) | The buttons go to the old site's pages |
+| 6.17 | The team: do the Microsoft Forms and the booking calendar get a new address each year? (T5) | The current addresses |
+| 6.18 | The team: who keeps the "Fall 2026 at Artists For Kids" cards up to date each term? (T6) | The team, through the shared login |
+| 6.19 | The After School Art photo (892 px wide) looks soft as a full-width hero. A larger copy? | The old site's copy |
+| 6.20 | Classes and camps, Schools and teachers, Learning Kits and Learning Guides start straight with their cards. One or two sentences for each (who it's for; each programme page has its dates and registration)? Learning Guides could take its first heading, "Learning Guides Created by Artists with Artists For Kids", as that sentence, so the page doesn't open with two headings | No introduction |
+| 6.21 | Larger copies of three small photos: Amelia Butcher in her studio (319 px wide), the clay kit event's picture (500 px) and Amelia Butcher's 2026 workshop (960 px) | The old site's copies |
+| 6.22 | After School Art: "If you child requires support" (your child)? | As written |
+| 6.23 | Artists-in-Residence: the two groups are "2026-2027 Artists In Residence" and "2025-2026 Artists-in-Residence". One form for both, as the page title "Artists-in-Residence"? | As written |
+| 6.24 | Artists-in-Residence: the artists' cards show the old site's orange posters (name and dates set in the picture). Plain portraits would let the card's own title and date do that work. Do you have them? | The posters |
+| 6.25 | Sara-Jeanne Bourget: the first heading repeats the page title; may it go, or be shortened to the drawing focus? And the residency has happened: should "This November ... is excited to offer" move to the past tense? | As written |
+| 6.26 | Professional Development: the February workshop says more information comes in September 2026. Are the details ready? | As written |
+| 6.27 | Support Artists for Kids: the second and third paragraphs say nearly the same thing. Keep both, or one? | Both |
+| 6.28 | About Artists for Kids: the Paradise Valley photo's description says 1994 and its caption 1996. And which form of the Bill Reid print's title: *Xhuwaji / Haida Grizzly* (text) or *XHUWAJI/Haida Grizzly Bear* (caption)? | As written |
+
+## 8. Whole-site design review (`proposals/site-design-review.md`)
+
+Questions from the review of every page, 2026-09-27. Until the gallery answers, each shows as it does today.
+
+| # | Question |
+| --- | --- |
+| 8.1 | Artists for Kids pages (add to 6.19, 6.20): a hero photo for Classes and camps, Schools and teachers and Support Artists for Kids; a larger day-camp photo than pvssa_25.jpg (889 px wide, visibly soft); on Sara-Jeanne Bourget's page, may the opening H2 that repeats the title go and 'Artist Bio' read 'Sara-Jeanne Bourget Biography' like the other three? |
+| 8.2 | Names and casing (site-wide): 'Artists for Kids' or 'Artists For Kids' in running text (78 capital-F uses, including Theme settings text in Git); programme page titles in sentence case ('Music at the Smith'); one name per programme on cards and pages; one spelling of Artists-in-Residence; typographic quotes in Against the Latitude of “Progress”; the Shop menu label against the page title. |
+| 8.3 | Exhibition list titles: could the three list pages be titled 'On now', 'Upcoming' and 'Past' to match the switcher and menu (the only fix for the switcher jump on phones; see DS-105)? |
+| 8.4 | Collection data (add to 5.8, 5.14, 6.28): one form for undated works and ranges; medium casing and Watercolor/Watercolour; the jeff002, reid001-2, barr002, barr017/018/025 fixes; A/P vs AP and whether Pender Harbour's edition should read 'AP (ed. of N)'; 78 alts missing a full stop; 'Artist for Kids'' typo; REID008 title; nationality or Nation for artist entries; one or two sentences for three grouping introductions and a shorter Portfolio Collective name; the Permanent Collection intro wording; Pender Harbour 2009 or 2006 in the Landscape painting lesson. |
+| 8.5 | Shop labels: sentence-case mediums, one size form, 'AP' written out, a shorter medium for Russna Kaur; one frame title pattern ('Frame for Pender Harbour'); one photo credit form and Donate's hero credit; a different Shop hero from the 2026 Fall Portfolio's; 'More from this portfolio' instead of 'You may also like'; cart policy ranges, the stray asterisk, which page is Terms of Service, and whether the policy sits before or under Check out (DS-124). |
+| 8.6 | Shop landing: keep only the last paragraph (buying funds programs) as the introduction, staged in custom.release_body? The history paragraphs already live on three other pages. |
+| 8.7 | Product descriptions: remove the typed caps block that repeats the label fields (artist, title, year, 'Limited Edition', 'Availability: Low Stock', 'PRINT DETAILS'), keeping Paper and Signature as one plain sentence or as fields; staged for release. |
+| 8.8 | Programme and Artists for Kids copy: Explore + Create's typed 'PUBLIC PROGRAM' line, title line, email as a link and paragraphs; stale event notes and 'Tickets Coming Soon'; Art in Good Company's November and December dates; a sentence and booking route for the Curatorial Tour; Becky or Rebecca Bair; residency pages for Samuel Roy-Bois and Marlene Yuen; link labels that say what happens ('See the learning guides', 'Borrow a learning kit'); a Learning guides intro; whether the collagraph and trace monotype kits share one form; verb-first hero buttons ('Get the program guide', 'Read the year in review'); award names as point headings; one card-title pattern and phone format on Donate and Support; office hours 8 AM to 3 PM or 8:30 AM to 4:30 PM. |
+| 8.9 | Foundation and Get involved labels: may '2025 A Year In Review' read 'Download the report', Public Programs get a link label like Donations, and 'Donate today' read 'Donate' as on Home? |
+| 8.10 | Residency cards: can they use the plain portraits the name graphics were made from (each card shows the name three times)? |
+| 8.11 | Contact form heading: may 'Contact us' under the H1 'Contact' read 'Send a message'? |
+| 8.12 | Past exhibitions: are the Paths and Unfixed key images artworks or photos of the room? If photos, clear key_image_is_artwork on both (store write), update migration.py:281, 284 and preview.html:301. |
+| 8.13 | From the Ground: list one entry per multi-part work (eight identical Charlene Vickers tiles today), or keep the parts? |
+| 8.14 | Artists for Kids team: four separate portraits at least 800 px wide (then a people grid) and meanwhile a copy of the composite without its baked-in white frame? |

@@ -86,7 +86,7 @@
           <li>
             <a href="{{ target.url }}"{% if page.id == target.id %} aria-current="page"{% endif %}>
               {{- label_key | t -}}
-              {%- if count > 0 %} <span class="gs-switcher__count">{{ count }}</span>{% endif -%}
+              {%- if count > 0 %} <span class="gs-switcher__count"><span aria-hidden="true">{{ count }}</span><span class="gs-visually-hidden">, {{ 'exhibitions.count' | t: count: count }}</span></span>{% endif -%}
             </a>
           </li>
         {%- endif -%}

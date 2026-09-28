@@ -3,7 +3,9 @@
   without price or cart. Every image whole on the mat; beside it the museum label (artists linking
   to their pages, title in a <cite>, year) and the label's facts, one to a row under rules. The
   edition in the Shop, when this is the collection's copy of one, sits in a panel like the framing
-  offer. "About the work" follows at reading width under both columns.
+  offer. "About the work" follows at reading width under both columns. Below 990 px the first view
+  leads, then the label, then the other views (DS-110); from 990 px on a tall screen the label stays
+  in view beside a long run of views (DS-112).
 
   The facts link out to where the work belongs: the exhibitions that showed it, and its category and
   themes when they have a page (a Collection grouping with the same handle).
@@ -18,38 +20,31 @@
 -%}
 <div class="gs-container--wide gs-container">
   <div class="gs-artwork{% unless has_image %} gs-artwork--text{% endunless %}">
-    {%- if has_image -%}
-      <ul class="gs-artwork__media">
-        {%- for image in work.images.value -%}
-          {%- liquid
-            assign loading = 'lazy'
-            if forloop.first
-              assign loading = 'eager'
-            endif
-          -%}
-          <li>
-            {%- render 'gs-media', image: image, sizes: '(min-width: 1536px) 820px, (min-width: 990px) 55vw, 100vw', loading: loading, mode: 'artwork', shape: 'lg' -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
+    {%- comment -%}
+      The first view, then the label, then the other views: below 990 px the label follows the
+      work, however many views it has (DS-110). Each mat takes its view's shape (DS-111).
+    {%- endcomment -%}
+    {%- for image in work.images.value limit: 1 -%}
+      <div class="gs-artwork__lead"{% if image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
+        {%- render 'gs-media', image: image, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg' -%}
+      </div>
+    {%- endfor -%}
 
-    <div class="gs-artwork__info">
-      {%- if settings.collection_page != blank -%}
-        <p class="gs-crumb"><a href="{{ settings.collection_page.url }}">{{ settings.collection_page.title | escape }}</a></p>
-      {%- endif -%}
-      <h1 class="gs-artwork-label">
-        {%- if work.artists.value != blank -%}
-          <span class="gs-artwork-label__artist">
-            {%- for a in work.artists.value -%}
-              {%- unless forloop.first -%}{% if forloop.last %} {{ 'collection.and' | t }} {% else %}, {% endif %}{%- endunless -%}
-              <a href="{{ a.system.url }}">{{ a.name.value | escape }}</a>
-            {%- endfor -%}
-          </span>{{ ' ' }}
+    <div class="gs-artwork__info{% if has_image %} gs-artwork__info--follow{% endif %}">
+      <div class="gs-artwork__head">
+        {%- if settings.collection_page != blank -%}
+          <p class="gs-crumb"><a href="{{ settings.collection_page.url }}">{{ settings.collection_page.title | escape }}</a></p>
         {%- endif -%}
-        <cite>{{ work.title.value | escape }}</cite>
-        {%- if work.year.value != blank -%}, {{ work.year.value | escape }}{%- endif -%}
-      </h1>
+        <h1 class="gs-artwork-label">
+          {%- if work.artists.value != blank -%}
+            <span class="gs-artwork-label__artist">
+              {%- render 'gs-names', entries: work.artists.value, link: true -%}
+            </span><span class="gs-visually-hidden">,</span>{{ ' ' }}
+          {%- endif -%}
+          <cite>{{ work.title.value | escape }}</cite>
+          {%- if work.year.value != blank -%}, {{ work.year.value | escape }}{%- endif -%}
+        </h1>
+      </div>
 
       {%- liquid
         capture browse
@@ -102,11 +97,12 @@
         {%- if work.medium.value != blank -%}
           <div class="gs-details__item"><dt>{{ 'collection.medium' | t }}</dt><dd>{{ work.medium.value | escape }}</dd></div>
         {%- endif -%}
-        {%- if work.dimensions.value != blank -%}
-          <div class="gs-details__item"><dt>{{ 'collection.dimensions' | t }}</dt><dd>{{ work.dimensions.value | escape }}</dd></div>
-        {%- endif -%}
+        {%- comment -%} Medium, edition, dimensions: the order of the product page and the tiles (DS-16, DS-93). {%- endcomment -%}
         {%- if work.edition.value != blank -%}
           <div class="gs-details__item"><dt>{{ 'collection.edition' | t }}</dt><dd>{{ work.edition.value | escape }}</dd></div>
+        {%- endif -%}
+        {%- if work.dimensions.value != blank -%}
+          <div class="gs-details__item"><dt>{{ 'collection.dimensions' | t }}</dt><dd>{{ work.dimensions.value | escape }}</dd></div>
         {%- endif -%}
         {%- if work.credit_line.value != blank -%}
           <div class="gs-details__item"><dt>{{ 'collection.credit' | t }}</dt><dd>{{ work.credit_line.value | escape }}</dd></div>
@@ -133,15 +129,26 @@
         <section class="gs-panel gs-surface-tint" aria-labelledby="{{ id }}-shop">
           <h2 class="gs-h4" id="{{ id }}-shop">{{ 'collection.in_the_shop' | t }}</h2>
           <p>{{ 'collection.edition_for_sale' | t }}</p>
-          <p><a class="gs-link" href="{{ edition.url }}">{{ edition.metafields.custom.artwork_title.value | default: edition.title | escape }}</a>, {% render 'gs-price', product: edition %}</p>
+          <p><cite>{{ edition.metafields.custom.artwork_title.value | default: edition.title | escape }}</cite>, {% render 'gs-price', product: edition %}</p>
+          <a class="gs-cta-link" href="{{ edition.url }}">{{ 'collection.see_edition' | t }}</a>
         </section>
       {%- endif -%}
     </div>
 
+    {%- if work.images.value.size > 1 -%}
+      <ul class="gs-artwork__media">
+        {%- for image in work.images.value offset: 1 -%}
+          <li{% if image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
+            {%- render 'gs-media', image: image, preset: 'detail', mode: 'artwork', shape: 'lg' -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
     {%- if work.about.value != blank -%}
       <section class="gs-artwork__about" aria-labelledby="{{ id }}-about">
         <h2 class="gs-label" id="{{ id }}-about">{{ 'products.about_work' | t }}</h2>
-        <div class="gs-prose">{{ work.about | metafield_tag }}</div>
+        <div class="gs-prose">{%- capture html -%}{{ work.about | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       </section>
     {%- endif -%}
   </div>

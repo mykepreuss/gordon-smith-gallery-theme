@@ -154,6 +154,7 @@ Open while iterating. Add what each review finds; take items off when they merge
 | Set the seven hero focal points in the admin (Content > Files), then check them on the review theme at phone width | Michael, then Agent | `proposals/hero-focal-points.md`, each point tried on the preview first (2026-09-26). Shopify's API can't set focal points. IMG-02, IMG-03 |
 | Send the gallery its questions: values, exhibitions, content checks, brand | Michael | `proposals/gallery-questions.md` collects all of them in one place (2026-09-26) |
 | The Permanent Collection: the gallery checks the review sheets and names, and chooses the featured works | Gallery, then Agent | Built 2026-09-27 (P-26, P-27, P-28, DS-62, DS-63): 1,174 works, 171 artists, 26 groupings, 1,420 images and 118 linked documents in the store (the 39 PDFs over 20 MB as smaller copies, 2026-09-27); the Artists page is the A to Z of every artist, each with a page on the site; the Permanent Collection page searches and browses the collection; Collection in the menu. `proposals/permanent-collection.md` ("Still open"), `proposals/gallery-questions.md` §5. It goes live with the site |
+| Artists for Kids: the gallery's and the team's answers (text corrections, the missing PDFs, names, "AFK" in body text, the labels), then Michael's review of DS-69 to DS-71 | Gallery, team, Michael | Built 2026-09-27 (P-30 to P-40): `proposals/artists-for-kids-integration.md`, `proposals/gallery-questions.md` §6. The 18 pages, lessons, cards and events are in the store; the live site shows only the pages' titles, hidden from search engines (P-35) |
 
 ### Release backlog (on hold until Michael decides to release)
 
@@ -167,6 +168,7 @@ Done so far: every page's content, the 15 exhibitions, the card groups and event
 | The staff editing test and the newsletter test | Gallery staff, Mailchimp access | Staff use the review theme's editor. The test includes adding a work and an artist to the Permanent Collection (`proposals/permanent-collection.md`, "Who edits where") |
 | Mailchimp app settings: customer sync, audience, consent mapping, double opt-in | Gallery or Michael | ACCESS-01; needs app access |
 | The release gate | Agent, Michael | "Release gate and rollback" |
+| Artists for Kids at release: the 18 pages' templates (`release.py templates`), their staged text (`staged`), then `seo.hidden` off (`unhide`); the same day the team cuts the old site back to registration and gets the list of old and new addresses | Agent, Michael, Artists for Kids team | `proposals/store-changes.md` §3, §8, §8b; `proposals/artists-for-kids-integration.md`, "At release" |
 | After release: remove the pre-release bridges, which are the staged-text fallback in `gs-page-text` (DS-39) and the list of old template names in `gs-is-programme-page` (L-08) | Agent | One follow-up pull request, once the release scripts have run |
 
 ## Verification and completion rules

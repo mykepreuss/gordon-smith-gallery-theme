@@ -1,10 +1,11 @@
 {%- comment -%}
-  The works on an artist's, a grouping's or an exhibition's page (DESIGN.md §7.5, DS-62 to DS-64):
-  artwork tiles in the order of the entry's list; all of an artist's or an exhibition's on one page,
-  a grouping's 24 to a page. On an artist's page they sit under
-  "Works in the collection"; on an exhibition's page under "Works from the collection" (its Works
-  from the collection field); on a grouping's page the grouping's name is the page title, so the
-  heading only counts them. An entry with no works shows nothing here.
+  The works on an artist's, a grouping's, an exhibition's or a lesson's page (DESIGN.md §7.5,
+  DS-62 to DS-64, DS-70): artwork tiles in the order of the entry's list; all of an artist's, an
+  exhibition's or a lesson's on one page, a grouping's 24 to a page. On an artist's page they sit
+  under "Works in the collection"; on an exhibition's page (its Works from the collection field) and
+  a lesson's (the works that inspired it) under "Works from the collection"; on a grouping's page
+  the grouping's name is the page title, so the heading only counts them. An entry with no works
+  shows nothing here.
 {%- endcomment -%}
 {%- liquid
   assign type = metaobject.system.type
@@ -14,6 +15,9 @@
   assign page_size = 24
   if type == 'exhibition'
     assign field = metaobject.collection_works
+    assign page_size = 250
+  elsif type == 'lesson'
+    assign field = metaobject.works
     assign page_size = 250
   else
     assign field = metaobject.works
@@ -35,22 +39,31 @@
       <div class="gs-container">
         <div class="gs-section-head">
           <div class="gs-section-head__text">
-            {%- if type == 'artist' or type == 'exhibition' -%}
+            {%- if type == 'artist' or type == 'exhibition' or type == 'lesson' -%}
               <h2 class="gs-h2" id="{{ section.id }}-heading">
                 {%- if type == 'artist' %}{{ 'collection.works_heading' | t }}{% else %}{{ 'collection.exhibition_works' | t }}{% endif -%}
               </h2>
-              <p class="gs-meta">{{ 'collection.works_count' | t: count: paginate.items }}</p>
+              {%- unless type == 'lesson' -%}
+                <p class="gs-meta">{{ 'collection.works_count' | t: count: paginate.items }}</p>
+              {%- endunless -%}
             {%- else -%}
               <h2 class="gs-h3" id="{{ section.id }}-heading">{{ 'collection.works_count' | t: count: paginate.items }}</h2>
             {%- endif -%}
           </div>
         </div>
-        <ul class="gs-grid gs-grid--artworks">
+        <ul class="gs-grid gs-grid--artworks" role="list">
           {%- for work in list -%}
             {%- liquid
+              # On an artist's page, a work by them alone leaves the name off; a joint work keeps every name.
               assign hide_artist = false
               if type == 'artist'
-                assign hide_artist = true
+                assign artist_count = 0
+                for a in work.artists.value
+                  assign artist_count = artist_count | plus: 1
+                endfor
+                if artist_count == 1
+                  assign hide_artist = true
+                endif
               endif
             -%}
             <li>{%- render 'gs-work-tile', work: work, heading: 'h3', hide_artist: hide_artist -%}</li>

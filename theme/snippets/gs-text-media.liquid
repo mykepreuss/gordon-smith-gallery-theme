@@ -5,6 +5,12 @@
   instead of breaking the reading column. Used when the text has a figure, and for the headed
   sections a programme page shows after its programmes.
 
+  A part with no words, only pictures, lays them out under its heading instead of beside an
+  empty column: one at the reading width, two or more side by side from 750 px (DS-78, Proposed).
+  Two tall photos in a row pair up side by side from 750 px (DS-77, Proposed): a photo figure whose
+  picture is taller than wide is marked data-gs-tall. A part whose text opens with a figure is
+  marked gs-text-media--lead, and below 990 px its pictures come before its text (DS-94, Proposed).
+
   With heads, each H2 is the heading of a part of the page, level with a card group's heading:
   section-heading size, above the text and its pictures (DS-51). Without, H2s stay page-text
   headings, one step smaller (DS-40).
@@ -39,23 +45,45 @@
       assign prose = ''
       assign media = ''
       assign chunks = html | split: '<figure'
+      # A part whose text opens with a figure shows it first below 990 px (DS-94, Proposed).
+      assign before = chunks.first | strip
       for chunk in chunks
         if forloop.first
           assign prose = chunk
         else
           assign inner = chunk | split: '</figure>' | first
-          assign media = media | append: '<figure' | append: inner | append: '</figure>'
+          assign opening = '<figure'
+          unless inner contains 'gs-figure--artwork' or inner contains 'gs-quote'
+            if inner contains ' width="' and inner contains ' height="'
+              assign fw = inner | split: ' width="' | last | split: '"' | first | plus: 0
+              assign fh = inner | split: ' height="' | last | split: '"' | first | plus: 0
+              if fh > fw and fw > 0
+                assign opening = '<figure data-gs-tall'
+              endif
+            endif
+          endunless
+          assign media = media | append: opening | append: inner | append: '</figure>'
           assign after = chunk | remove_first: inner | remove_first: '</figure>'
           assign prose = prose | append: after
         endif
       endfor
       assign prose = prose | strip
+      # Without heads the part's H2 is still in its text: a part that is only that heading and
+      # pictures is a part with only pictures too (DS-78), its heading above them.
+      assign words = prose
+      if prose contains '</h2>'
+        assign h2_part = prose | split: '</h2>' | first
+        assign starts = h2_part | slice: 0, 3
+        if starts == '<h2'
+          assign words = prose | remove_first: h2_part | remove_first: '</h2>' | strip
+        endif
+      endif
     -%}
     <div class="gs-text-media-part">
       {%- if head != blank -%}
         <div class="gs-section-head">{{ head }}</div>
       {%- endif -%}
-      <div class="gs-text-media{% if media == blank %} gs-text-media--text{% endif %}">
+      <div class="gs-text-media{% if media == blank %} gs-text-media--text{% elsif words == blank %} gs-text-media--media{% endif %}{% if before == blank and media != blank %} gs-text-media--lead{% endif %}">
         {%- if prose != blank -%}
           <div class="gs-prose">{{ prose }}</div>
         {%- endif -%}

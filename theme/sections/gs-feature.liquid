@@ -54,7 +54,7 @@
   <div class="gs-container">
     <div class="gs-feature gs-surface-{{ surface }}{% if s.image == blank %} gs-feature--no-media{% endif %}">
       {%- if s.image != blank -%}
-        {%- render 'gs-media', image: s.image, preset: 'card', sizes: '(min-width: 990px) 55vw, 100vw', mode: mode, shape: 'md' -%}
+        {%- render 'gs-media', image: s.image, preset: 'feature', mode: mode, shape: 'md' -%}
       {%- endif -%}
       <div class="gs-feature__text">
         {%- if logo != blank -%}

@@ -2,7 +2,10 @@
   Sizes a hero or page-header title to its box, so the longest word fits on a phone
   (DESIGN.md §4.3).
 
-  Outputs a style attribute that sets --gs-fit-chars to the length of the title's longest word.
+  Outputs a style attribute that sets --gs-fit-chars to the length of the longest run the browser
+  can't break. A hyphen before a letter ends a run, since the line may break after it
+  ("Artists-in-Residence" counts "Residence", 9, and "in-" 3); a number range such as 2026-2027
+  stays whole, as the browser keeps it together.
   gs-components.css sizes the title as 100% of its box divided by (letters x 0.74em), capped at
   the H1 or display size. Without it the CSS assumes 12 letters (CONVERSATION).
 
@@ -13,11 +16,31 @@
 {% enddoc %}
 {%- liquid
   assign longest = 1
+  assign digits = '0123456789'
   assign words = text | strip_html | strip | split: ' '
   for word in words
-    assign n = word | size
-    if n > longest
-      assign longest = n
+    assign parts = word | split: '-'
+    assign run = 0
+    for part in parts
+      assign n = part | size
+      if forloop.first
+        assign run = n
+      else
+        assign first_char = part | slice: 0
+        if first_char != blank and digits contains first_char
+          assign run = run | plus: 1 | plus: n
+        else
+          # The run so far ends with its hyphen.
+          assign run_end = run | plus: 1
+          if run_end > longest
+            assign longest = run_end
+          endif
+          assign run = n
+        endif
+      endif
+    endfor
+    if run > longest
+      assign longest = run
     endif
   endfor
   echo ' style="--gs-fit-chars: ' | append: longest | append: '"'

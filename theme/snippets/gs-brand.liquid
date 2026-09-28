@@ -1,6 +1,7 @@
 {% doc %}
   The current page's programme as a brand scope: gallery, foundation or artists-for-kids (DESIGN.md
-  §3.3). From the page's programme field, or the exhibition entry's; blank is the Gallery. The
+  §3.3). From the page's programme field, or the exhibition entry's; blank is the Gallery. Lessons
+  (the ArtReach videos) are always Artists for Kids (DS-70). The
   layout sets data-gs-brand from it (programme colours, DS-04) and the header picks its logo from it
   (DS-47).
 
@@ -13,6 +14,8 @@
   assign programme = ''
   if page != blank
     assign programme = page.metafields.custom.programme.value
+  elsif metaobject.system.type == 'lesson'
+    assign programme = 'Artists for Kids'
   elsif metaobject != blank
     assign programme = metaobject.programme.value
   endif

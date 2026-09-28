@@ -5,7 +5,8 @@
   (baseline/mailchimp-audit.md, option 1). No ScriptTag (P-08).
 
   Without JavaScript the form posts and Shopify's reply shows the error or done state here.
-  assets/gs-forms.js adds the inline email check and the "Signing up" state.
+  assets/gs-forms.js adds the inline email check, the "Signing up" state, and focus on the error
+  or done line after a post. The error is linked only while it shows.
 {%- endcomment -%}
 {%- assign form_id = 'gs-newsletter-' | append: section.id -%}
 {%- assign heading_id = form_id | append: '-heading' -%}
@@ -25,6 +26,13 @@
         if form.errors
           assign email_error = true
         endif
+        assign described_by = ''
+        if email_error
+          assign described_by = form_id | append: '-email-error'
+        endif
+        if section.settings.consent != blank
+          assign described_by = described_by | append: ' ' | append: form_id | append: '-consent' | strip
+        endif
       -%}
       <div class="gs-signup__row">
         <div class="gs-field">
@@ -38,7 +46,10 @@
             autocapitalize="off"
             spellcheck="false"
             required
-            aria-describedby="{{ form_id }}-error{% if section.settings.consent != blank %} {{ form_id }}-consent{% endif %}"
+            value="{{ form.email | escape }}"
+            {% if described_by != blank %}
+              aria-describedby="{{ described_by }}"
+            {% endif %}
             {% if email_error %}
               aria-invalid="true" autofocus
             {% endif %}
@@ -48,14 +59,14 @@
           {{- 'newsletter.submit' | t -}}
         </button>
       </div>
-      <p class="gs-field__error" id="{{ form_id }}-error"{% unless email_error %} hidden{% endunless %}>
+      <p class="gs-field__error" id="{{ form_id }}-email-error"{% unless email_error %} hidden{% endunless %}>
         {{- 'newsletter.error_email' | t -}}
       </p>
       {%- if form.posted_successfully? -%}
-        <p class="gs-form-status" role="status">{{ 'newsletter.done' | t }}</p>
+        <p class="gs-form-status" role="status" tabindex="-1">{{ 'newsletter.done' | t }}</p>
       {%- endif -%}
       {%- if section.settings.consent != blank -%}
-        <div class="gs-caption" id="{{ form_id }}-consent">{{ section.settings.consent }}</div>
+        <div class="gs-caption gs-prose" id="{{ form_id }}-consent">{{ section.settings.consent }}</div>
       {%- elsif request.design_mode -%}
         <p class="gs-editor-warning">Add the consent wording from the gallery (ACCESS-04). Visitors see nothing here until you do.</p>
       {%- endif -%}

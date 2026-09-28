@@ -27,14 +27,14 @@
       {%- endif -%}
 
       {%- if entry.body.value != blank -%}
-        <div class="gs-prose gs-about__body">{{ entry.body | metafield_tag }}</div>
+        <div class="gs-prose gs-about__body">{%- capture html -%}{{ entry.body | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       {%- endif -%}
 
       {%- if has_credits -%}
         <section class="gs-about__credits" aria-labelledby="{{ section.id }}-credits">
           <h2 class="gs-label" id="{{ section.id }}-credits">{{ 'exhibitions.credits' | t }}</h2>
           {%- if entry.credits.value != blank -%}
-            <div class="gs-prose">{{ entry.credits | metafield_tag }}</div>
+            <div class="gs-prose">{%- capture html -%}{{ entry.credits | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
           {%- endif -%}
           {%- if entry.funder_logos.value != blank -%}
             <ul class="gs-logos">

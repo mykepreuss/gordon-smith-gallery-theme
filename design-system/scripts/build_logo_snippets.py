@@ -20,7 +20,6 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 # The logos the website uses (DESIGN.md §8.2). Add here, then add a `when` to gs-logo.liquid.
 WEBSITE_LOGOS = [
-    "gallery-simple-stacked-colour-box",
     "gallery-simple-horizontal-colour-box",
     "gallery-full-stacked-colour-box",
     "gallery-simple-stacked-white",
@@ -42,6 +41,106 @@ A11Y = (
 )
 
 
+PATH_DATA = re.compile(r'\sd="([^"]*)"')
+TOKEN = re.compile(r"[MLCZmlcz]|-?(?:\d+\.?\d*|\.\d+)")
+ARGS = {"M": 2, "L": 2, "C": 6, "Z": 0}
+
+
+def parse(d):
+    """Absolute M, L, C and Z commands (what the exported logos use) as (command, [tenths])."""
+    out, cmd, nums = [], None, []
+    for tok in TOKEN.findall(d):
+        if tok.isalpha():
+            if tok not in ARGS:
+                raise SystemExit(f"unexpected path command {tok!r}: extend build_logo_snippets.py")
+            cmd = tok
+            if cmd == "Z":
+                out.append(("Z", []))
+            continue
+        nums.append(round(float(tok) * 10))
+        if len(nums) == ARGS[cmd]:
+            out.append((cmd, nums))
+            nums = []
+            if cmd == "M":
+                cmd = "L"  # further pairs after a moveto are lines
+    if nums:
+        raise SystemExit("path data ends in the middle of a command")
+    return out
+
+
+def fmt(tenths):
+    """A number in tenths, as short as it goes: 867 -> 86.7, 50 -> 5, -3 -> -.3."""
+    sign = "-" if tenths < 0 else ""
+    whole, tenth = divmod(abs(tenths), 10)
+    text = (str(whole) if whole else "") + (f".{tenth}" if tenth else "")
+    return sign + (text or "0")
+
+
+def join(nums):
+    out = ""
+    for n in nums:
+        s = fmt(n)
+        out += s if (not out or s.startswith("-")) else " " + s
+    return out
+
+
+def compact(commands):
+    """Relative commands, each letter written once for a run of the same command. Exact: every
+    point is kept on the tenth-of-a-unit grid, so rounding never accumulates."""
+    out, x, y, sx, sy, last = [], 0, 0, 0, 0, None
+    for cmd, nums in commands:
+        if cmd == "Z":
+            out.append("z")
+            x, y, last = sx, sy, None
+            continue
+        rel = [n - (x if i % 2 == 0 else y) for i, n in enumerate(nums)]
+        letter = cmd.lower()
+        if letter == last and letter != "m":
+            out.append((" " if not fmt(rel[0]).startswith("-") else "") + join(rel))
+        else:
+            out.append(letter + join(rel))
+        x, y = nums[-2], nums[-1]
+        if cmd == "M":
+            sx, sy = x, y
+        last = letter
+    return "".join(out)
+
+
+def expand(d):
+    """compact() read back to absolute tenths, to check it lost nothing."""
+    out, x, y, sx, sy, cmd, nums = [], 0, 0, 0, 0, None, []
+    for tok in TOKEN.findall(d):
+        if tok.isalpha():
+            cmd = tok
+            if cmd == "z":
+                out.append(("Z", []))
+                x, y = sx, sy
+            continue
+        nums.append(round(float(tok) * 10))
+        if len(nums) == ARGS[cmd.upper()]:
+            absolute = [n + (x if i % 2 == 0 else y) for i, n in enumerate(nums)]
+            out.append((cmd.upper(), absolute))
+            x, y = absolute[-2], absolute[-1]
+            if cmd == "m":
+                sx, sy = x, y
+                cmd = "l"
+            nums = []
+    return out
+
+
+def round_paths(svg):
+    """Path coordinates rounded to one decimal and written as short relative commands. The
+    viewBoxes are 118 to 412 units tall for logos drawn 64 to 144 px tall, so 0.1 unit is at most
+    about 0.1 px, even at 2x. The Artists for Kids logo drops from 66 KB to 30 KB on every page."""
+    def one(m):
+        commands = parse(m.group(1))
+        d = compact(commands)
+        if expand(d) != [(c, n) if c != "M" else ("M", n) for c, n in commands]:
+            raise SystemExit("compacted path data doesn't match the rounded path")
+        return f' d="{d}"'
+    return PATH_DATA.sub(one, svg)
+
+
 def build(out_dir):
     manifest = json.loads((ROOT / "logos" / "logos.json").read_text())
     alt = {pathlib.Path(e["file"]).stem: e["altText"] for e in manifest["logos"]}
@@ -60,6 +159,7 @@ def build(out_dir):
         svg, n = re.subn(r'role="img" aria-label="[^"]*"', A11Y.format(alt=alt[name]), svg, count=1)
         if n != 1:
             raise SystemExit(f"{name}: expected one role/aria-label attribute")
+        svg = round_paths(svg)
         # Let CSS size the logo from its height; keep the viewBox for the aspect ratio.
         svg = re.sub(r'\swidth="[^"]*" height="[^"]*"', "", svg, count=1)
         svg = svg.replace("<svg ", f'<svg class="gs-logo gs-logo--{name}" ', 1)

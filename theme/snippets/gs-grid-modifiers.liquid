@@ -1,0 +1,35 @@
+{% doc %}
+  The count classes for a grid of cards, so no card sits alone on a row (DESIGN.md §6.5): four or
+  eight go two, then four across (DS-44); a count that would leave a short last row at three across
+  gives the spare room to its first two cards (lead, DS-52); an odd count at two across starts with
+  one wide card (odd, DS-52); a card alone takes the spare room, its picture beside its text
+  (single, DS-74, DS-92). Every grid of cards uses it, so they all follow one rule: card groups,
+  the lesson lists (gs-lesson-list, More lessons), the Past exhibition list, More
+  exhibitions, an artist's exhibitions and the collection's ways in. gs-grid-sizes gives the
+  matching sizes for each card's picture.
+
+  @param {number} count - How many cards
+
+  @example
+  {%- capture mods -%}{% render 'gs-grid-modifiers', count: ids.size %}{%- endcapture -%}
+  <ul class="gs-grid gs-grid--cards{{ mods | strip_newlines }}" role="list">
+{% enddoc %}
+{%- liquid
+  assign by_three = count | modulo: 3
+  assign by_four = count | modulo: 4
+  assign by_two = count | modulo: 2
+  assign fours = false
+  if by_four == 0 and by_three != 0
+    assign fours = true
+    echo ' gs-grid--fours'
+  endif
+  if fours == false and by_three == 2
+    echo ' gs-grid--lead'
+  endif
+  if count > 1 and by_two == 1
+    echo ' gs-grid--odd'
+  endif
+  if count == 1
+    echo ' gs-grid--single'
+  endif
+-%}

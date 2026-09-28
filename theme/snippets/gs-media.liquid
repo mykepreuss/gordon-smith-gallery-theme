@@ -11,18 +11,27 @@
 
   @param {object} image - An image, or a media image from a file field. Required
   @param {string} [preset] - Where the image sits, which sets sizes and loading so the browser
-    fetches the right width: 'hero' (eager, high priority), 'card', 'tile', 'gallery' or 'full'.
+    fetches the right width: 'hero' (eager, high priority), 'card', 'tile' (three across),
+    'gallery', 'feature' (a feature panel's picture), 'detail' (an artwork's own page) or 'full'.
     Required unless sizes is passed (design-system/scripts/lint_theme.py checks)
+  @param {boolean} [priority] - With the detail preset: the first image, loaded eagerly at high
+    priority because it is the page's largest picture
   @param {string} [mode] - 'photo' (default) or 'artwork'. Chosen by the section, never by staff
-  @param {string} [ratio] - Ratio override from a component, e.g. '3 / 2'. Never a staff setting
+  @param {string} [ratio] - Ratio override from a component, as a ratio token, e.g.
+    'var(--gs-ratio-card)'. Never a staff setting
   @param {string} [shape] - 'sm', 'md' (default) or 'lg'
   @param {string} [sizes] - Explicit sizes attribute, only for a layout no preset fits
   @param {string} [loading] - 'lazy' (default; 'eager' for the hero preset)
-  @param {string} [alt] - Alt text when the image has none, e.g. the product's title
+  @param {string} [alt] - Alt text when the image has none and nothing beside it names it, e.g. a
+    product page's gallery. Never a title that follows the image: pass it as title (DS-58)
+  @param {string} [title] - The title that follows the image, as on a card. An image alt that only
+    repeats it is dropped, so a screen reader doesn't hear the title twice (DS-58)
+  @param {boolean} [decorative] - A label follows that names the image (an artwork or document
+    tile, a cart row), so it has empty alt even when Files gives it one (DS-63, DS-120)
   @param {string} [class] - Extra wrapper classes
 
   @example
-  {%- render 'gs-media', image: card_image, preset: 'card', mode: 'photo' -%}
+  {%- render 'gs-media', image: card_image, preset: 'card', mode: 'photo', ratio: 'var(--gs-ratio-card)', title: card_title -%}
 {% enddoc %}
 {%- liquid
   assign mode = mode | default: 'photo'
@@ -30,13 +39,32 @@
   assign fetchpriority = 'auto'
   case preset
     when 'hero'
-      assign preset_sizes = '(min-width: 1536px) 1440px, 100vw'
+      if mode == 'photo'
+        # A photo hero is cropped to the box's ratio (4 / 5, 4 / 3, then 21 / 9), so a wide photo
+        # shows at more than the viewport's width: ask for the width it is really drawn at.
+        assign ar = image.aspect_ratio | default: 1.5
+        assign vw_phone = ar | divided_by: 0.8 | times: 100 | ceil | at_least: 100
+        assign vw_tablet = ar | divided_by: 1.3333 | times: 100 | ceil | at_least: 100
+        assign vw_wide = ar | divided_by: 2.3333 | times: 100 | ceil | at_least: 100
+        assign px_xl = vw_wide | times: 1440 | divided_by: 100
+        assign preset_sizes = '(min-width: 1536px) ' | append: px_xl | append: 'px, (min-width: 990px) ' | append: vw_wide | append: 'vw, (min-width: 750px) ' | append: vw_tablet | append: 'vw, ' | append: vw_phone | append: 'vw'
+      else
+        assign preset_sizes = '(min-width: 1536px) 1440px, 100vw'
+      endif
       assign loading = loading | default: 'eager'
       assign fetchpriority = 'high'
     when 'card'
       assign preset_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 92vw'
     when 'tile'
-      assign preset_sizes = '(min-width: 1296px) 276px, (min-width: 1200px) 22vw, (min-width: 750px) 30vw, 46vw'
+      assign preset_sizes = '(min-width: 1296px) 384px, (min-width: 750px) 31vw, 46vw'
+    when 'feature'
+      assign preset_sizes = '(min-width: 990px) 55vw, 100vw'
+    when 'detail'
+      assign preset_sizes = '(min-width: 1536px) 820px, (min-width: 990px) 55vw, 100vw'
+      if priority
+        assign loading = loading | default: 'eager'
+        assign fetchpriority = 'high'
+      endif
     when 'gallery'
       assign preset_sizes = '(min-width: 1536px) 448px, (min-width: 1200px) 30vw, (min-width: 750px) 47vw, 92vw'
     when 'full'
@@ -44,7 +72,14 @@
   endcase
   assign sizes = sizes | default: preset_sizes | default: '100vw'
   assign loading = loading | default: 'lazy'
-  assign alt_text = image.alt | default: alt | default: ''
+  assign alt_text = image.alt
+  if title != blank and alt_text == title
+    assign alt_text = ''
+  endif
+  assign alt_text = alt_text | default: alt | default: ''
+  if decorative
+    assign alt_text = ''
+  endif
 -%}
 {%- if image != blank -%}
   <div

@@ -6,6 +6,18 @@
 
   A group whose cards all have portrait images (a board, a staff list) shows as a grid of people:
   portrait frames, two to four across, smaller titles (DS-37). Staff don't choose it; the images do.
+  A card that opens a PDF is a document, never a person, whatever its cover's shape (DS-69).
+  A group of four or eight people goes two, then four across, as cards do (DS-44).
+
+  Proposed (DS-73 to DS-76), each decided by the cards, never a setting:
+  - A group whose cards all open a PDF is a shelf of documents: document tiles (gs-doc-tile) in a
+    grid of artworks, two then three across, each cover whole on the mat and the title in the label
+    style, as an artist's documents are (DS-108, which replaces DS-75's shelf).
+  - A group whose cards all have a picture and their own action label ("Reserve a Clay Kit") is a
+    list of offers: one per row, picture beside text from 750 px, as events are (DS-76).
+  - A group whose cards are all just a picture, a title and at most a short note (ways to other
+    pages) is a list of rows on phones: picture beside title, the note under it (DS-73, DS-116).
+  - A card alone in its group takes the spare room: picture beside its text from 750 px (DS-74).
   A group of four or eight cards goes two, then four, across, so no card sits alone (DS-44).
   Any other count that would leave a short last row gives the spare room to its first cards
   (DS-52): five cards go two wider ones, then three, on wide screens; an odd count starts with one
@@ -39,13 +51,30 @@
           endif
           assign portrait = true
           assign logos = true
+          assign docs = true
+          assign offers = true
+          assign links = true
           for card in group.cards.value
             assign ratio = card.image.value.aspect_ratio | default: 1
-            if ratio >= 1
+            assign card_link = card.link.value
+            capture card_url
+              render 'gs-url', link: card_link
+            endcapture
+            assign card_pdf = card_url | strip | split: '|' | last
+            if ratio >= 1 or card_pdf == '1'
               assign portrait = false
             endif
             if card.logo.value == blank
               assign logos = false
+            endif
+            if card_pdf != '1'
+              assign docs = false
+            endif
+            if card.image.value == blank or card_link.text == blank
+              assign offers = false
+            endif
+            if card.image.value == blank or card_link.text != blank or card_link.url == blank or card_pdf == '1'
+              assign links = false
             endif
           endfor
         -%}
@@ -56,26 +85,64 @@
             </div>
           {%- endif -%}
           {%- liquid
-            assign fours = false
             assign count = group.cards.value.size
-            assign by_three = count | modulo: 3
-            assign by_four = count | modulo: 4
-            if by_four == 0 and by_three != 0
+            capture mods
+              render 'gs-grid-modifiers', count: count
+            endcapture
+            assign mods = mods | strip_newlines
+            assign fours = false
+            if mods contains 'fours'
               assign fours = true
             endif
-            assign lead = false
-            if fours == false and by_three == 2
-              assign lead = true
+            if logos
+              assign grid = 'gs-grid--logos'
+            elsif docs
+              assign grid = 'gs-grid--artworks'
+            elsif portrait
+              assign grid = 'gs-grid--people'
+              if fours
+                assign grid = grid | append: ' gs-grid--fours'
+              endif
+            elsif offers
+              assign grid = 'gs-grid--cards gs-grid--rows'
+            else
+              assign grid = 'gs-grid--cards' | append: mods
             endif
-            assign by_two = count | modulo: 2
-            assign odd = false
-            if count > 1 and by_two == 1
-              assign odd = true
+            if links and logos == false and portrait == false and offers == false
+              assign grid = grid | append: ' gs-grid--links'
             endif
           -%}
-          <ul class="gs-grid {% if logos %}gs-grid--logos{% elsif portrait %}gs-grid--people{% else %}gs-grid--cards{% if fours %} gs-grid--fours{% endif %}{% if lead %} gs-grid--lead{% endif %}{% if odd %} gs-grid--odd{% endif %}{% endif %}">
+          <ul class="gs-grid {{ grid }}" role="list">
             {%- for card in group.cards.value -%}
-              <li>{%- render 'gs-card', card: card, heading: card_heading, portrait: portrait -%}</li>
+              {%- liquid
+                # The width each card's picture is shown at, so the browser fetches the right file.
+                # Phones show one card across, or a link card's small picture beside its words.
+                assign card_sizes = blank
+                assign phone_sizes = '92vw'
+                if links
+                  assign phone_sizes = '37vw'
+                endif
+                if portrait and fours
+                  assign card_sizes = '(min-width: 1296px) 276px, (min-width: 990px) 22vw, 46vw'
+                elsif portrait
+                  assign card_sizes = '(min-width: 1296px) 276px, (min-width: 990px) 22vw, (min-width: 750px) 30vw, 46vw'
+                elsif offers
+                  assign card_sizes = '(min-width: 1296px) 384px, (min-width: 750px) 31vw, 92vw'
+                else
+                  capture card_sizes
+                    render 'gs-grid-sizes', mods: mods, index: forloop.index, phone: phone_sizes
+                  endcapture
+                  assign card_sizes = card_sizes | strip
+                  if card_sizes == blank and links
+                    assign card_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 37vw'
+                  endif
+                endif
+              -%}
+              {%- if docs -%}
+                <li>{%- render 'gs-doc-tile', title: card.title.value, cover: card.image.value, url: card.link.value.url, text: card.text.value, heading: card_heading -%}</li>
+              {%- else -%}
+                <li>{%- render 'gs-card', card: card, heading: card_heading, portrait: portrait, sizes: card_sizes -%}</li>
+              {%- endif -%}
             {%- endfor -%}
           </ul>
         </section>

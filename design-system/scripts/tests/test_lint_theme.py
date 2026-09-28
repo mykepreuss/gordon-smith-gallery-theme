@@ -54,13 +54,13 @@ class LintTheme(unittest.TestCase):
             {"type": "select", "id": "surface", "label": "Surface", "options": [{"value": "paper", "label": "Paper"}]},
         ]))
         self.write("templates/page.json", template([
-            ("head", {"type": "gs-page-head"}),
+            ("head", {"type": "gs-page-hero"}),
             ("switch", {"type": "gs-switcher"}),
             ("list", {"type": "gs-exhibition-list"}),
         ]))
         self.write("templates/metaobject/exhibition.json", template([
             ("hero", {"type": "gs-hero"}),
-            ("body", {"type": "gs-rich-text"}),
+            ("body", {"type": "gs-exhibition-body"}),
             ("views", {"type": "gs-gallery", "settings": {"surface": "tint"}}),
             ("works", {"type": "gs-gallery", "settings": {"surface": "paper"}}),
         ]))
@@ -88,8 +88,8 @@ class LintTheme(unittest.TestCase):
 
     def test_order_and_repeated_tint(self):
         self.write("templates/page.json", template([
-            ("text", {"type": "gs-rich-text", "settings": {"surface": "tint"}}),
-            ("text2", {"type": "gs-rich-text", "settings": {"surface": "tint"}}),
+            ("text", {"type": "gs-page-body", "settings": {"surface": "tint"}}),
+            ("text2", {"type": "gs-page-body", "settings": {"surface": "tint"}}),
         ]))
         code, out = self.run_lint()
         self.assertIn("must start with hero or pageHead", out)
@@ -129,6 +129,104 @@ class LintTheme(unittest.TestCase):
         self.assertIn("sections/gs-card-grid.liquid:8: render 'gs-media' without preset or sizes", out)
         self.assertNotIn("gs-card-grid.liquid:2:", out)
         self.assertNotIn("gs-card-grid.liquid:7:", out)
+
+
+    def test_raw_palette_value(self):
+        self.write("assets/gs-components.css",
+                   ".a { color: var(--gs-ink); }\n.b { background: var(--gs-afk-rule); }\n"
+                   ".c { color: var(--gs-color-fg); border-color: var(--gs-ink-soft, red); }\n"
+                   ".d { color: var(--gs-color-field-fg); }\n")
+        code, out = self.run_lint()
+        self.assertEqual(code, 1)
+        for line in (1, 2, 3):
+            self.assertIn(f"gs-components.css:{line}: raw palette value", out)
+        self.assertNotIn("gs-components.css:4", out)
+
+    def test_raw_duration(self):
+        self.write("assets/gs-components.css",
+                   ".a { transition: color 120ms ease; }\n.b { animation: fade .2s; }\n"
+                   ".c { transition: color var(--gs-duration-fast) var(--gs-ease); }\n")
+        code, out = self.run_lint()
+        self.assertIn("gs-components.css:1: raw duration", out)
+        self.assertIn("gs-components.css:2: raw duration", out)
+        self.assertNotIn("gs-components.css:3", out)
+
+    def test_transition_all(self):
+        self.write("assets/gs-components.css",
+                   ".a { transition: all var(--gs-duration-fast); }\n.b { transition-property: all; }\n"
+                   ".c { transition-property: color, background-color; }\n")
+        code, out = self.run_lint()
+        self.assertIn("gs-components.css:1: transition on all", out)
+        self.assertIn("gs-components.css:2: transition on all", out)
+        self.assertNotIn("gs-components.css:3", out)
+
+    def test_raw_ratio(self):
+        self.write("snippets/gs-thing.liquid",
+                   "{%- render 'gs-media', image: i, preset: 'card', ratio: '4 / 3' -%}\n"
+                   "{%- render 'gs-media', image: i, preset: 'card', ratio: 'var(--gs-ratio-card)' -%}\n"
+                   "{% doc %}\n  {% render 'gs-media', image: i, preset: 'card', ratio: '1' %}\n{% enddoc %}\n")
+        code, out = self.run_lint()
+        self.assertIn("snippets/gs-thing.liquid:1: raw ratio", out)
+        self.assertNotIn("gs-thing.liquid:2", out)
+        self.assertNotIn("gs-thing.liquid:4", out)
+
+    def test_unitless_line_height(self):
+        self.write("assets/gs-components.css",
+                   ".a { line-height: 1.4; }\n.b { line-height: 0; }\n.c { line-height: 1; }\n"
+                   ".d { line-height: var(--gs-leading-body); }\n.e { font: 700 1rem / 1.4 sans-serif; }\n"
+                   ".f { font: 700 var(--gs-text-small) / var(--gs-leading-small) sans-serif; }\n"
+                   "/* line-height: 1.6 in a comment */\n.g { line-height: 1.25 }\n")
+        code, out = self.run_lint()
+        self.assertIn("gs-components.css:1: unitless line height;", out)
+        self.assertIn("gs-components.css:5: unitless line height in font shorthand", out)
+        self.assertIn("gs-components.css:8: unitless line height;", out)
+        for line in (2, 3, 4, 6, 7):
+            self.assertNotIn(f"gs-components.css:{line}:", out)
+
+    def test_nested_has(self):
+        self.write("assets/gs-components.css",
+                   ".a:has(> li:has(.x)) { color: var(--gs-color-fg); }\n"
+                   ".b:has(> li:not(.y)) { color: var(--gs-color-fg); }\n"
+                   ".c:has(.x), .d:has(.y) { color: var(--gs-color-fg); }\n")
+        code, out = self.run_lint()
+        self.assertIn("gs-components.css:1: a :has() inside a :has()", out)
+        self.assertNotIn("gs-components.css:2", out)
+        self.assertNotIn("gs-components.css:3", out)
+
+    def test_hover_outside_media(self):
+        self.write("assets/gs-components.css",
+                   ".a:hover { color: var(--gs-color-fg); }\n"
+                   "@media (hover: hover) and (pointer: fine) {\n"
+                   "  .b:hover { color: var(--gs-color-fg); }\n"
+                   "  @supports (display: grid) { .c:hover { color: var(--gs-color-fg); } }\n"
+                   "}\n"
+                   "@media (min-width: 750px) {\n"
+                   "  .d,\n  .e:hover { color: var(--gs-color-fg); }\n"
+                   "}\n"
+                   "/* .f:hover { } */\n"
+                   ".g:active { color: var(--gs-color-fg); }\n")
+        code, out = self.run_lint()
+        self.assertEqual(code, 1)
+        self.assertIn("gs-components.css:1: :hover outside", out)
+        self.assertIn("gs-components.css:7: :hover outside", out)
+        for line in (3, 4, 10, 11):
+            self.assertNotIn(f"gs-components.css:{line}:", out)
+
+    def test_list_without_role(self):
+        self.write("sections/gs-list.liquid",
+                   '<ul class="gs-grid gs-grid--cards">\n'
+                   '<ul class="gs-grid{{ mods }}" role="list">\n'
+                   '<ul class="gs-events" role="list">\n'
+                   '<ul class="gs-events">\n'
+                   '<ul class="gs-names">\n')
+        code, out = self.run_lint()
+        self.assertEqual(code, 0, out)
+        self.assertIn("WARNING sections/gs-list.liquid:1: a grid or event list without role", out)
+        self.assertIn("WARNING sections/gs-list.liquid:4:", out)
+        for line in (2, 3, 5):
+            self.assertNotIn(f"gs-list.liquid:{line}:", out)
+        code, out = self.run_lint("--strict")
+        self.assertEqual(code, 1)
 
 
 if __name__ == "__main__":

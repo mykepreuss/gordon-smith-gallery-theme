@@ -12,7 +12,7 @@ Model (DS-11): a section with pages under it is one button; its main page is the
 | Collection (P-26) | Section | The collection (`/pages/permanent-collection`), Artists (`/pages/artists`) | New section, second after Exhibitions, now the Permanent Collection is on the site (`proposals/permanent-collection.md`). Permanent collection leaves About and Artists leaves Shop. Decided by Michael, 2026-09-26 ("Under Collection"); in the review menu 2026-09-27; the gallery confirms the labels |
 | Programs | Section | Public programs (`/pages/public-programs-1`), Speaker series, Music at the Smith, Explore + Create, Art in Good Company | "Public Programs" no longer repeats the section, because the section itself is not a link |
 | About | Section | About the gallery (`/pages/about-us`; `/pages/about` is hidden at release and forwards to Artists for Kids, P-24), Plan your visit (`/pages/plan-your-visit`), Volunteer (`/pages/volunteer`) | Permanent collection moved to the Collection section (P-26). The About page becomes reachable (today the parent label only opens the dropdown). Contact moves to the always-visible utility row and footer. About Us is the page about the three organisations. About's history joins the Artists for Kids page, and About is hidden at release (Michael, 2026-09-26, P-24) |
-| Artists for Kids | Link | `/pages/artists-for-kids` | None. Approved 2026-09-25 as one link (P-15); the programme links to the Artists for Kids site stay on its page |
+| Artists for Kids | Section | About Artists for Kids (`/pages/artists-for-kids`), Classes and camps (`/pages/classes-and-camps`), Schools and teachers (`/pages/schools-and-teachers`), Awards and scholarships (`/pages/awards-and-scholarships`), Support Artists for Kids (`/pages/support-artists-for-kids`) | Was one link (P-15). The Artists for Kids site moved onto this one, except registration (P-30), so it's a section (P-33, decided by Michael 2026-09-27). In the review menu 2026-09-27; the gallery confirms the labels |
 | Smith Foundation | Section | About the Foundation (`/pages/the-smith-foundation`), Gordon and Marion (`/pages/gordon-and-marion`), Donate (`/pages/donate`) | Renames the first item so it doesn't repeat the section |
 | Shop | Section | Limited editions (`/pages/shop`), 2026 Fall Portfolio, 2026 Spring Portfolio, 2025 Fall Portfolio, 2025 Spring Portfolio, 2024 Fall Portfolio | Leads to the Shop landing page instead of Shopify's `/collections` list. 2025 Fall Portfolio uses the relative `/collections/2025-fall-portfolio` instead of the absolute myshopify URL. Artists moved to the Collection section (Michael, 2026-09-26: "The artists page should not be under the 'Shop' dropdown in the nav"; P-26) |
 
@@ -33,7 +33,7 @@ Each section's own link in the Shopify menu editor points at its first item, so 
 
 Script: `proposals/store-writes/release.py templates` (dry run 2026-09-26: `store-writes/dry-runs/2026-09-26/templates.md`).
 
-Moving pages from their one-off templates to the closed set in `design-system/DESIGN.md` §7.4 (On Now, Upcoming and Past go to the standard page template, DS-48) is a store-level release action (the Admin assignment list reads the live theme). Until then, the review theme shows every page with its release layout at its own address (DS-48, DS-49, and for the programme pages and Volunteer `snippets/gs-is-programme-page.liquid`); `?view=` still previews any template. After the script has run, delete that snippet's list of old template names in a follow-up pull request. Full mapping: DESIGN.md §7.4. With the new theme (P-13) none of today's page templates exist after publishing, so every page's assignment is set at release by a script run straight after publishing, with a snapshot of today's assignments for rollback.
+Moving pages from their one-off templates to the closed set in `design-system/DESIGN.md` §7.4 (On Now, Upcoming and Past go to the standard page template, DS-48) is a store-level release action (the Admin assignment list reads the live theme). Until then, the review theme shows every page with its release layout at its own address (DS-48, DS-49, and for the programme pages and Volunteer `snippets/gs-is-programme-page.liquid`); `?view=` still previews any template. After the script has run, delete that snippet's list of old template names in a follow-up pull request. The 18 Artists for Kids pages made 2026-09-27 (P-35) carry the live theme's On Now template name (`current-on-now-exhibition`) so the live site shows only their titles; the script gives 13 of them the programme template, and the four residency pages and Support Artists for Kids the standard one (`release.py`, `AFK_PROGRAMME`, `AFK_STANDARD`). Full mapping: DESIGN.md §7.4. With the new theme (P-13) none of today's page templates exist after publishing, so every page's assignment is set at release by a script run straight after publishing, with a snapshot of today's assignments for rollback.
 
 Until the script runs, pages whose old template the new theme lacks fall back to the default page template, which shows them correctly (the exhibition lists from Theme settings, DS-48), and Our Story (old template `shop`) shows as a plain page on the Shop template (DS-49). So the script puts the right template names on the pages for staff rather than fixing what visitors see. It is written and dry-run before release (plan, "Release gate and rollback"): it snapshots every page's template, maps each page to its new one, and prints the changes for Michael to check. At release it runs straight after publishing, and every page is opened to check it. Not written yet.
 
@@ -59,14 +59,16 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 **Also done 2026-09-26 and 27, with Michael's go-ahead ("please proceed with delivering the plan", "all the artists and everything"):** the collection's three definitions and the product field, 171 artists, 1,168 works, 1,417 images, 180 documents and 26 groupings, all active; the Artists page's staged text without its links out; the Permanent Collection page's Browse button to its own search; the Collection section in the review menu (§1). The entries go live with the site. Then, after Michael's review (2026-09-27, P-28, DS-63): the 6 works on loan, the exhibition entry's Works from the collection field (filled for three exhibitions), and the documents as Document entries with their covers. Log: `proposals/store-writes/README.md`.
 
-## 5. Addresses at release (P-10, P-20, P-24, P-25)
+**Also done 2026-09-27, with Michael's go-ahead ("all recommendations are approved ... let's get started on implementation"):** the Artists for Kids site's content (P-30 to P-40): the `lesson` definition and the event's `keep_off_home` field (content model part 8), 92 files, 27 lessons, 46 cards, 15 card groups and two extended ones, 6 events and the curatorial tour's programme page, 18 pages published with their title only and hidden from search engines (P-35), their fields and staged text, the Artists for Kids page's new card groups, button and history, and the review menu's Artists for Kids section. Log: `proposals/store-writes/README.md`.
+
+## 5. Addresses at release (P-10, P-20, P-24, P-25, DS-129)
 
 Script: `release.py addresses` (dry run: `dry-runs/2026-09-26/addresses.md`).
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
-1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20), About (P-24) and Our Story (P-25), keeping them for rollback.
-2. Create nine URL redirects:
+1. Hide (don't delete) the six exhibition pages, the Exhibitions overview (`exhibitions-1`, P-20), About (P-24), Our Story (P-25) and Engage (DS-129), keeping them for rollback.
+2. Create ten URL redirects:
 
 | From | To |
 | --- | --- |
@@ -79,13 +81,14 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/exhibitions-1` | `/pages/on-now` |
 | `/pages/about` | `/pages/about-us` |
 | `/pages/our-story` | `/pages/artists-for-kids` |
+| `/pages/engage` | `/pages/public-programs-1` |
 
 3. Open each old address and check it lands on its entry.
 4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
 The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 
-Rollback: republish the baseline theme, unhide the nine pages, delete the nine redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
+Rollback: republish the baseline theme, unhide the ten pages, delete the ten redirects, restore the page bodies from `proposals/store-writes/snapshots/pages-2026-09-25.json`. Entry handles are proposals until the entries exist.
 
 The entries are already active (created 2026-09-25); their pages return 404 only because the live theme has no exhibition template. Publishing the new theme makes every active entry public, so each one is checked before release.
 
@@ -136,7 +139,8 @@ Page text is live, so the text that changes at release is staged in a temporary 
 | Artists | Its two paragraphs, then its 59 artist links as one list, same order and addresses (page pass, 2026-09-26, DS-45) |
 | About Us | None: its three descriptions live in its card group, each beside its organisation's logo, and the combined logo image above them goes (DS-50, 2026-09-26) |
 | The Smith Foundation | Its two paragraphs, word for word, without the line above them that repeated the first sentence's opening (the Foundation's full name). Explore + Create, Art In Good Company, Speaker Series and Music at The Smith link to their pages; the Gordon and Marion link stays on the site instead of opening a new tab (DS-52) |
-| Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading (P-24), with Our Story's sentence on art specialists and its fuller caption for the Bill Reid print (P-25). Our Story's sentence on the ceremonial drum was added, then dropped because it repeated the sentences around it. Words unchanged; both pictures become figures with their own captions; "contemporary limited editions" links to the Shop; pasted formatting stays behind |
+| Artists for Kids | Its own two paragraphs and the Paradise Valley photo, then About's four paragraphs under a "History" heading (P-24), with Our Story's sentence on art specialists and its fuller caption for the Bill Reid print (P-25). Our Story's sentence on the ceremonial drum was added, then dropped because it repeated the sentences around it. Words unchanged; both pictures become figures with their own captions; "contemporary limited editions" links to the Shop; pasted formatting stays behind. 2026-09-27 (P-30): two paragraphs from the Artists for Kids site's Who We Are join the History, then "Meet the Artists for Kids Team" (the team photo and four names) and the 2024-2025 annual report (PDF) |
+| The 18 Artists for Kids pages (P-35) | All their text: the pages were made with none, so the live site shows only their titles until release (`proposals/store-writes/artists-for-kids/content.py`) |
 
 At release, a script (to write before release, with a dry run) does, for each page:
 
@@ -148,6 +152,16 @@ Then it deletes the `release_body` definition. The theme's fallback in `gs-page-
 
 Rollback: restore each page's text from the snapshot.
 
+## 8b. The Artists for Kids pages at release (P-35)
+
+Script: `release.py unhide`, after `staged`.
+
+The 18 pages are published but carry `seo.hidden` (noindex, out of the sitemap and the store's search), so the live site's search engines and search never find a page that shows only a title. At release, after their text moves in (§8) and their template changes (§3), the script deletes `seo.hidden` from each.
+
+The team cuts the old site (artistsforkids.sd44.ca) back to registration the same day (P-30): After School Art, the camps and their forms, with links here. The list of old and new addresses is in `proposals/artists-for-kids-integration.md`, "Where each page goes".
+
+Rollback: set `seo.hidden` back to 1 on each page, or hide the pages. The lessons, cards and events can stay: the old theme reads none of them.
+
 ## 9. Frame products at release (P-19)
 
 Script: `release.py frames` (dry run: `dry-runs/2026-09-26/frames.md`).
@@ -157,6 +171,13 @@ Each print's frame is its own product (product type Frame, collection `framing`)
 This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's "Add a frame" still adds its frame to the cart.
 
 Rollback: set the 16 back to Active from the snapshot.
+
+## 9b. Page fields from the whole-site design review (DS-122, DS-129)
+
+Decided by Michael on 2026-09-28; each waits for his go-ahead to write, with a before-snapshot, and is logged in `proposals/store-writes/README.md`. The theme is ready for both.
+
+- **Permanent Collection's Browse button (DS-122):** the page's call to action (`custom.cta`, `gid://shopify/Metafield/190392604131625`) changes from `https://gordonsmithgallery.com/pages/permanent-collection#collection-search` to `https://gordonsmithgallery.com/pages/permanent-collection#collection-browse`, so "Browse" lands on "Browse the collection" (the theme gives that section the ID and makes the address relative). The label stays. Rollback: set the old address back.
+- **Learning kits order (DS-129):** each kit, then its lesson plans, then its video. `load.py cards` creates the four one-kit groups and the two one-video groups ("Clay Lesson Video", "Trace Monotype Lesson Video"; headings for the gallery to confirm), then the Learning kits page's Card groups field takes the new order: only that row of `content.py page-fields` (the page `learning-kits`), since the rest are unchanged. No card changes. The old "afk-kits" and "afk-kit-videos" groups leave the page and stay in the store. Rollback: set the field back from the snapshot.
 
 ## 10. Not proposed
 

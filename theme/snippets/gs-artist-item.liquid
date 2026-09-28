@@ -1,0 +1,22 @@
+{% doc %}
+  One artist in a list of names (DESIGN.md §6.13): the name, bold, opening the artist's page on
+  this site, then the number of works in the collection ("Dana Claxton 2", DS-64). A screen reader
+  hears "2 works". Used by Artists A to Z and by the site search's Artists group (DS-113), inside a
+  ul.gs-index__list. data-gs-names holds the names the A to Z field filters on.
+  Its output starts with a line break: capture it and strip it.
+
+  @param {object} artist - An artist entry
+
+  @example
+  {%- render 'gs-artist-item', artist: artist -%}
+{% enddoc %}
+{%- liquid
+  assign names = artist.name.value | append: ' ' | append: artist.full_name.value | append: ' ' | append: artist.other_names.value | downcase | strip
+  assign count = artist.works.value.size
+-%}
+<li class="gs-index__item" data-gs-names="{{ names | escape }}">
+  <a class="gs-list-link" href="{{ artist.system.url }}">{{ artist.name.value | escape }}</a>
+  {%- if count > 0 -%}
+    &nbsp;<span class="gs-meta"><span aria-hidden="true">{{ count }}</span><span class="gs-visually-hidden">{{ 'collection.works_count' | t: count: count }}</span></span>
+  {%- endif -%}
+</li>

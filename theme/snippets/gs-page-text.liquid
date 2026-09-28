@@ -6,7 +6,7 @@
     HTML comment alone means the page will have no text.
   - A heading at the very start that only repeats the page title isn't shown: the hero or page
     header already says it (DS-41).
-  - An embedded video's width and height set its shape (DS-53).
+  - Videos, links and pictures go through gs-rich-text, as every staff rich text does.
   - A template can show the text in two parts (DS-51): the opening, up to the first H2, and the
     sections from the first H2 on. The programme template puts the programmes between them.
 
@@ -47,40 +47,8 @@
     endif
   endif
 
-  # An embedded video keeps its own shape (DS-53): the embed code's width and height set its ratio,
-  # so a square or portrait video isn't boxed at 16:9 with bars down its sides.
-  if body contains '<iframe'
-    assign marked = '|' | append: body
-    assign pieces = marked | split: '<iframe'
-    assign out = pieces.first | remove_first: '|'
-    for piece in pieces offset: 1
-      # A loop's own variable can't be reassigned inside it, so the changed piece is a new one.
-      assign fixed = piece
-      assign tag = piece | split: '>' | first
-      assign ratio = ''
-      if tag contains ' width="' and tag contains ' height="'
-        assign w = tag | split: ' width="' | last | split: '"' | first | plus: 0
-        assign h = tag | split: ' height="' | last | split: '"' | first | plus: 0
-        if w > 0 and h > 0
-          assign ratio = '--gs-video-ratio: ' | append: w | append: ' / ' | append: h | append: ';'
-        endif
-      endif
-      if ratio != ''
-        if tag contains 'style="'
-          assign with_ratio = 'style="' | append: ratio | append: ' '
-          assign new_tag = tag | replace_first: 'style="', with_ratio
-        else
-          assign new_tag = tag | append: ' style="' | append: ratio | append: '"'
-        endif
-        assign fixed = piece | replace_first: tag, new_tag
-      endif
-      assign out = out | append: '<iframe' | append: fixed
-    endfor
-    assign body = out
-  endif
-
   assign text = body | strip_html | strip
   if text != blank or body contains '<img' or body contains '<iframe'
-    echo body
+    render 'gs-rich-text', html: body
   endif
 -%}

@@ -1,0 +1,25 @@
+{% doc %}
+  The sizes attribute for a card's picture in a grid of cards, from the count classes that
+  gs-grid-modifiers gives the grid, so the browser fetches the width the picture is shown at.
+  Prints nothing when the card preset's sizes already fit (three across, or two for an odd count).
+  Its output starts with a line break: capture it and strip it.
+
+  @param {string} mods - The classes from gs-grid-modifiers
+  @param {number} index - The card's place in the grid, from 1 (forloop.index)
+  @param {string} [phone] - The picture's width on phones, e.g. '37vw' for a link card. Default '92vw'
+
+  @example
+  {%- capture sizes -%}{% render 'gs-grid-sizes', mods: mods, index: forloop.index %}{%- endcapture -%}
+  {%- assign sizes = sizes | strip -%}
+  {%- render 'gs-exhibition-card', entry: entry, sizes: sizes -%}
+{% enddoc %}
+{%- liquid
+  assign phone_w = phone | default: '92vw'
+  if mods contains 'single'
+    echo '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, ' | append: phone_w
+  elsif mods contains 'fours'
+    echo '(min-width: 1296px) 276px, (min-width: 1200px) 22vw, (min-width: 750px) 47vw, ' | append: phone_w
+  elsif mods contains 'lead' and index <= 2
+    echo '(min-width: 1296px) 576px, (min-width: 750px) 47vw, ' | append: phone_w
+  endif
+-%}

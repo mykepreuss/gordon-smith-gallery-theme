@@ -20,35 +20,84 @@
   endif
   assign frame = f.featured_frame.value
   assign form_id = 'gs-product-' | append: section.id
+  # A limited edition has its label fields; a frame (or a product not yet migrated) doesn't, so it
+  # gets no archive note and its text is headed Details.
+  assign is_edition = false
+  if f.artist.value != blank and f.artwork_title.value != blank
+    assign is_edition = true
+  endif
+  # The images' alt when they have none of their own: the label in plain text ("Artist, Title,
+  # year"), never the product title, whose italics are Unicode letters a screen reader spells out.
+  # Each view is numbered when there is more than one.
+  assign art_alt = product.title
+  if is_edition
+    assign art_alt = f.artist.value | append: ', ' | append: f.artwork_title.value
+    if f.year.value != blank
+      assign art_alt = art_alt | append: ', ' | append: f.year.value
+    endif
+  endif
+  assign image_total = 0
+  for media in product.media
+    if media.media_type == 'image'
+      assign image_total = image_total | plus: 1
+    endif
+  endfor
 -%}
+{%- comment -%}
+  The first view, then the label, price and action, then the other views: below 990 px the action
+  follows the work, however many views it has (DS-110). Each mat takes its view's shape (DS-111).
+{%- endcomment -%}
+{%- liquid
+  assign image_number = 0
+  assign lead_view = ''
+  assign more_views = ''
+-%}
+{%- for media in product.media -%}
+  {%- if media.media_type == 'image' -%}
+    {%- liquid
+      assign image_number = image_number | plus: 1
+      assign this_alt = art_alt
+      if image_total > 1
+        assign view = 'products.view_of' | t: number: image_number, total: image_total
+        assign this_alt = art_alt | append: '. ' | append: view
+      endif
+      assign art_ratio = media.preview_image.aspect_ratio
+    -%}
+    {%- if image_number == 1 -%}
+      {%- capture lead_view -%}
+        <div class="gs-artwork__lead"{% if art_ratio %} style="--gs-art-ratio: {{ art_ratio }}"{% endif %}>
+          {%- render 'gs-media', image: media, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title -%}
+        </div>
+      {%- endcapture -%}
+    {%- else -%}
+      {%- capture more_views -%}
+        {{- more_views -}}
+        <li{% if art_ratio %} style="--gs-art-ratio: {{ art_ratio }}"{% endif %}>
+          {%- render 'gs-media', image: media, preset: 'detail', mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title -%}
+        </li>
+      {%- endcapture -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
 <div class="gs-container--wide gs-container">
-  <div class="gs-artwork">
-    <ul class="gs-artwork__media">
-      {%- for media in product.media -%}
-        {%- if media.media_type == 'image' -%}
-          {%- liquid
-            assign loading = 'lazy'
-            if forloop.first
-              assign loading = 'eager'
-            endif
-          -%}
-          <li>
-            {%- render 'gs-media', image: media, sizes: '(min-width: 1536px) 820px, (min-width: 990px) 55vw, 100vw', loading: loading, mode: 'artwork', shape: 'lg', alt: product.title -%}
-          </li>
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
+  <div class="gs-artwork{% if image_total == 0 %} gs-artwork--text{% endif %}">
+    {{- lead_view -}}
 
     <div class="gs-artwork__info">
-      {%- render 'gs-artwork-label', product: product, tag: 'h1', link: true -%}
-
-      {%- if f.medium.value != blank or f.edition.value != blank or f.dimensions.value != blank -%}
-        <div class="gs-card__meta">
-          {%- if f.medium.value != blank -%}<p class="gs-meta">{{ f.medium.value | escape }}</p>{%- endif -%}
-          {%- if f.edition.value != blank -%}<p class="gs-meta">{{ f.edition.value | escape }}</p>{%- endif -%}
-          {%- if f.dimensions.value != blank -%}<p class="gs-meta">{{ f.dimensions.value | escape }}</p>{%- endif -%}
-        </div>
-      {%- endif -%}
+      <div class="gs-artwork__head">
+        {%- comment -%} A way back to the Shop, as the work page has to the collection, labelled as the menu names it (DS-102). {%- endcomment -%}
+        {%- if settings.shop_page != blank -%}
+          <p class="gs-crumb"><a href="{{ settings.shop_page.url }}">{{ 'shop.crumb' | t }}</a></p>
+        {%- endif -%}
+        {%- render 'gs-artwork-label', product: product, tag: 'h1', link: true -%}
+        {%- if f.medium.value != blank or f.edition.value != blank or f.dimensions.value != blank -%}
+          <div class="gs-artwork__facts">
+            {%- if f.medium.value != blank -%}<p class="gs-meta">{{ f.medium.value | escape }}</p>{%- endif -%}
+            {%- if f.edition.value != blank -%}<p class="gs-meta">{{ f.edition.value | escape }}</p>{%- endif -%}
+            {%- if f.dimensions.value != blank -%}<p class="gs-meta">{{ f.dimensions.value | escape }}</p>{%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
 
       <p class="gs-price">
         {%- if coming_soon or product.available == false -%}
@@ -57,10 +106,6 @@
           {%- render 'gs-price', product: product -%}
         {%- endif -%}
       </p>
-
-      {%- if coming_soon -%}
-        <p class="gs-note">{%- render 'gs-price', product: product -%}</p>
-      {%- endif -%}
 
       {%- form 'product', product, id: form_id, class: 'gs-form', data-gs-form: '' -%}
         {%- unless product.has_only_default_variant -%}
@@ -78,7 +123,7 @@
               <select class="gs-input gs-select" id="{{ form_id }}-variant" name="id">
                 {%- for v in product.variants -%}
                   <option value="{{ v.id }}"{% if v.id == variant.id %} selected{% endif %}{% unless v.available %} disabled{% endunless %}>
-                    {{- v.title | escape }}, {{ v.price | money -}}
+                    {{- v.title | escape -}}{%- if product.price_varies -%}, {{ v.price | money }}{%- endif -%}
                     {%- unless v.available %} ({{ 'products.sold_out' | t }}){% endunless -%}
                   </option>
                 {%- endfor -%}
@@ -89,17 +134,18 @@
           <input type="hidden" name="id" value="{{ variant.id }}">
         {%- endunless -%}
 
-        {%- if coming_soon -%}
-          <button class="gs-button" type="button" disabled>{{ 'products.add_to_cart' | t }}</button>
-        {%- elsif product.available -%}
-          <button class="gs-button" type="submit" name="add" data-gs-busy-label="{{ 'products.adding' | t }}">{{ 'products.add_to_cart' | t }}</button>
+        {%- comment -%} Not on sale yet, or sold out: the reason sits beside the disabled button and describes it. {%- endcomment -%}
+        {%- if coming_soon or product.available == false -%}
+          <div class="gs-actions">
+            <button class="gs-button" type="button" disabled aria-describedby="{{ form_id }}-why">{{ 'products.add_to_cart' | t }}</button>
+            <p class="gs-note" id="{{ form_id }}-why">{%- render 'gs-price', product: product -%}</p>
+          </div>
         {%- else -%}
-          <button class="gs-button" type="button" disabled>{{ 'products.add_to_cart' | t }}</button>
-          <p class="gs-note">{{ 'products.sold_out' | t }}</p>
+          <button class="gs-button" type="submit" name="add" data-gs-busy-label="{{ 'products.adding' | t }}">{{ 'products.add_to_cart' | t }}</button>
         {%- endif -%}
       {%- endform -%}
 
-      {%- if section.settings.archive_note != blank -%}
+      {%- if is_edition and section.settings.archive_note != blank -%}
         <div class="gs-prose gs-caption">{{ section.settings.archive_note }}</div>
       {%- endif -%}
 
@@ -114,7 +160,7 @@
           {%- if frame.available -%}
             {%- form 'product', frame, class: 'gs-form', data-gs-form: '' -%}
               <input type="hidden" name="id" value="{{ frame_variant.id }}">
-              <button class="gs-button gs-button--secondary" type="submit" data-gs-busy-label="{{ 'products.adding' | t }}">{{ 'products.add_frame' | t }}</button>
+              <button class="gs-button gs-button--secondary" type="submit" data-gs-busy-label="{{ 'products.adding_frame' | t }}">{{ 'products.add_frame' | t }}</button>
             {%- endform -%}
           {%- else -%}
             <p class="gs-note">{{ 'products.frame_sold_out' | t }}</p>
@@ -123,6 +169,10 @@
       {%- endif -%}
 
     </div>
+
+    {%- if more_views != blank -%}
+      <ul class="gs-artwork__media">{{- more_views -}}</ul>
+    {%- endif -%}
 
     {%- liquid
       assign disclosures = product.metafields.shopify.disclosure.value
@@ -135,9 +185,9 @@
     -%}
     {%- if product.description != blank or has_disclosures -%}
     <section class="gs-artwork__about" aria-labelledby="{{ form_id }}-about">
-      <h2 class="gs-label" id="{{ form_id }}-about">{{ 'products.about_work' | t }}</h2>
+      <h2 class="gs-label" id="{{ form_id }}-about">{% if is_edition %}{{ 'products.about_work' | t }}{% else %}{{ 'products.details' | t }}{% endif %}</h2>
       {%- if product.description != blank -%}
-        <div class="gs-prose">{{ product.description }}</div>
+        <div class="gs-prose">{%- capture html -%}{{ product.description }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       {%- endif -%}
       {%- for disclosure in disclosures -%}
         {%- assign surfaces = disclosure.display_preferences.value.surfaces -%}
@@ -150,7 +200,7 @@
           -%}
           <details class="gs-disclosure">
             <summary>{{ disclosure_title | escape }}</summary>
-            <div class="gs-disclosure__body gs-prose">{{ disclosure.content | metafield_tag }}</div>
+            <div class="gs-disclosure__body gs-prose">{%- capture html -%}{{ disclosure.content | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
           </details>
         {%- endif -%}
       {%- endfor -%}

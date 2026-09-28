@@ -5,19 +5,21 @@ fresh read-only export of the store, prints what would change as Markdown for re
 --vars prints the variables for the mutations to run through the Shopify connector at release.
 
 Exports (take them again on the day, just before running):
-  pages     query { pages(first: 50) { nodes { id handle title templateSuffix isPublished updatedAt
-            body staged: metafield(namespace: "custom", key: "release_body") { id value } } } }
-            saved as the nodes list.
+  pages     query { pages(first: 100) { nodes { id handle title templateSuffix isPublished updatedAt
+            body staged: metafield(namespace: "custom", key: "release_body") { id value }
+            hidden: metafield(namespace: "seo", key: "hidden") { id value } } } }
+            saved as the nodes list. (53 pages since the Artists for Kids pages, 2026-09-27.)
   products  query($ids: [ID!]!) { nodes(ids: $ids) { ... on Product { id handle title status
             updatedAt descriptionHtml } } }, with the 21 IDs in snapshots/prints-2026-09-25.json.
 
   python3 proposals/store-writes/release.py templates <pages.json> [--vars]
   python3 proposals/store-writes/release.py staged    <pages.json> [--vars]
+  python3 proposals/store-writes/release.py unhide    <pages.json> [--vars]
   python3 proposals/store-writes/release.py addresses <pages.json> [--vars]
   python3 proposals/store-writes/release.py products  <products.json> [--vars]
   python3 proposals/store-writes/release.py frames    [--vars]
 
-Order at release (plan): publish, templates, addresses, staged, products, frames. Every step's
+Order at release (plan): publish, templates, addresses, staged, unhide, products, frames. Every step's
 Markdown doubles as its rollback record: it lists the values before the change.
 """
 import html
@@ -41,18 +43,30 @@ CLEARED_PREFIX = "<!--"
 PROGRAMME = {"artists-for-kids", "the-smith-foundation", "public-programs-1", "speaker-series",
              "music-at-the-smith", "explore-create", "art-in-good-company",
              "volunteer"}  # Volunteer: its roles are cards between its text's parts (DS-58)
+# The Artists for Kids pages made before release (P-35, proposals/artists-for-kids-integration.md): they
+# carry the live theme's On Now template name until now, so the live site shows only their title.
+AFK_PROGRAMME = {"classes-and-camps", "schools-and-teachers", "after-school-art", "day-camps",
+                 "paradise-valley-summer-camp", "gallery-program", "artists-in-residence", "studio-art-academy",
+                 "learning-guides", "learning-kits", "artreach-videos", "professional-development",
+                 "awards-and-scholarships"}
+# Support Artists for Kids: its ways to give follow all of its text, as on Donate (design review 2026-09-27).
+AFK_STANDARD = {"artist-in-residence-amelia-butcher", "artist-in-residence-mark-johnsen",
+                "artist-in-residence-becky-bair", "artist-in-residence-sara-jeanne-bourget",
+                "support-artists-for-kids"}
+AFK_NEW = AFK_PROGRAMME | AFK_STANDARD
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
                      "about",       # About: its history joins Artists for Kids (P-24)
-                     "our-story"}   # Our Story: removed from the Shop (P-25)
+                     "our-story",   # Our Story: removed from the Shop (P-25)
+                     "engage"}      # Engage: its one paragraph is Public programs' opening, and nothing links to it (DS-129)
 
 
 def new_template(page):
     h = page["handle"]
     if h in HIDDEN_AT_RELEASE or not page["isPublished"]:
         return None  # left as it is: hidden at release, or already unpublished
-    if h in PROGRAMME:
+    if h in PROGRAMME or h in AFK_PROGRAMME:
         return "programme"
     if h == "contact":
         return "contact"
@@ -80,7 +94,7 @@ def templates(pages, want_vars):
 
 
 # ---------------------------------------------------------------------------
-# 2. Addresses (store-changes §5): hide nine pages, then nine redirects.
+# 2. Addresses (store-changes §5): hide ten pages, then ten redirects.
 
 REDIRECTS = [
     ("/pages/exhibition-one-hundred-artists-deep", "/pages/exhibitions/one-hundred-artists-deep"),
@@ -92,6 +106,7 @@ REDIRECTS = [
     ("/pages/exhibitions-1", "/pages/on-now"),
     ("/pages/about", "/pages/about-us"),                 # P-24, Michael 2026-09-26
     ("/pages/our-story", "/pages/artists-for-kids"),     # P-25: its history is on Artists for Kids
+    ("/pages/engage", "/pages/public-programs-1"),       # DS-129: Public programs opens with its text
 ]
 
 
@@ -120,6 +135,8 @@ def staged(pages, want_vars):
         if not p.get("staged"):
             continue
         snap = SNAP_BY_ID.get(p["id"], {}).get("body")
+        if snap is None and p["handle"] in AFK_NEW:
+            snap = ""  # made empty before release (P-35); its text is all staged
         new = p["staged"]["value"]
         new_body = "" if new.strip().startswith(CLEARED_PREFIX) and new.strip().endswith("-->") else new
         same = snap is not None and p["body"] == snap
@@ -139,6 +156,21 @@ def staged(pages, want_vars):
                       "After the pages, delete the staged values and the `release_body` definition. Rollback: restore each page's text from the snapshot.", "",
                       "| Page | Live text | At release |", "| --- | --- | --- |"] + rows +
                      ([""] + [f"**Stopped:** {', '.join(stop)}"] if stop else [""] + ["All pages match: ready."]))
+
+
+# ---------------------------------------------------------------------------
+# 3b. The Artists for Kids pages become visible to search engines and the store's search (P-35).
+
+def unhide(pages, want_vars):
+    todo = [p for p in sorted(pages, key=lambda p: p["handle"]) if p["handle"] in AFK_NEW and p.get("hidden")]
+    missing = sorted(AFK_NEW - {p["handle"] for p in pages})
+    if want_vars:
+        return {"metafields": [{"ownerId": p["id"], "namespace": "seo", "key": "hidden"} for p in todo]}
+    rows = [f"| `{p['handle']}` | hidden (`seo.hidden` = {p['hidden']['value']}) | shown |" for p in todo]
+    return "\n".join(["## Artists for Kids pages: search engines and the store's search", "",
+                      f"{len(todo)} pages lose `seo.hidden` (metafieldsDelete). Rollback: set it back to 1 on each.", "",
+                      "| Page | Now | At release |", "| --- | --- | --- |"] + rows +
+                     ([""] + [f"**Missing from the export:** {', '.join(missing)}"] if missing else []))
 
 
 # ---------------------------------------------------------------------------
@@ -355,6 +387,7 @@ if __name__ == "__main__":
     files = [a for a in args if not a.startswith("--")]
     data = json.loads(pathlib.Path(files[0]).read_text()) if files else None
     result = {"templates": lambda: templates(data, want_vars), "addresses": lambda: addresses(data, want_vars),
-              "staged": lambda: staged(data, want_vars), "products": lambda: products(data, want_vars),
+              "staged": lambda: staged(data, want_vars), "unhide": lambda: unhide(data, want_vars),
+              "products": lambda: products(data, want_vars),
               "frames": lambda: frames(want_vars)}[step]()
     print(json.dumps(result, indent=2, ensure_ascii=False) if want_vars else result)

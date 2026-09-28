@@ -1,0 +1,20 @@
+{% doc %}
+  The exhibition the home page leads with (DS-30): the exhibition on now that opened most
+  recently and has a page. Prints its handle, or nothing when none is on. The hero shows it, and
+  What's on and the home exhibition list leave it out, so all three agree.
+
+  @example
+  {%- capture lead_handle -%}{% render 'gs-lead-exhibition' %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  capture lead_id
+    render 'gs-exhibition-index', status: 'on-now', order: 'desc', linked_only: true, limit: 1
+  endcapture
+  assign lead_id = lead_id | strip
+  if lead_id != blank
+    assign n = lead_id | plus: 0
+    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+      echo entry.system.handle
+    endfor
+  endif
+-%}

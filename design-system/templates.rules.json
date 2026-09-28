@@ -11,10 +11,10 @@
       "video"
     ],
     "pageHead": [
-      "gs-page-head",
       "gs-title",
       "main-page",
-      "gs-entry-head"
+      "gs-entry-head",
+      "gs-lesson"
     ],
     "collectionHead": [
       "gs-collection-head",
@@ -25,7 +25,6 @@
     ],
     "listing": [
       "gs-exhibition-list",
-      "gs-card-grid",
       "gs-portfolio-nav",
       "gs-artwork-grid",
       "gs-exhibition-more",
@@ -49,7 +48,6 @@
       "gs-events"
     ],
     "text": [
-      "gs-rich-text",
       "gs-page-body",
       "gs-exhibition-body",
       "rich-text",
@@ -60,8 +58,7 @@
       "gs-gallery"
     ],
     "feature": [
-      "gs-feature",
-      "gs-shop-feature"
+      "gs-feature"
     ],
     "visit": [
       "gs-visit"
@@ -80,7 +77,8 @@
       "gs-work-more",
       "gs-artist-editions",
       "gs-artist-exhibitions",
-      "gs-artist-documents"
+      "gs-artist-documents",
+      "gs-lesson-more"
     ],
     "legacy": [
       "custom-liquid",
@@ -139,7 +137,7 @@
       }
     },
     "page.programme": {
-      "purpose": "Programme landing: Artists for Kids, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company",
+      "purpose": "Programme landing: Artists for Kids and its programme pages, The Smith Foundation, Public Programs, Speaker Series, Music at the Smith, Explore + Create, Art in Good Company, Volunteer. On the ArtReach videos page (Theme settings) it lists the lessons (DS-70)",
       "maxPerGroup": {
         "text": 3,
         "listing": 1,
@@ -159,6 +157,19 @@
         "text": 1,
         "gallery": 2,
         "listing": 2
+      }
+    },
+    "metaobject/lesson": {
+      "purpose": "A lesson, one ArtReach video (DS-70): the lesson and its video, the works that inspired it from the collection, more lessons",
+      "firstGroups": [
+        "pageHead"
+      ],
+      "require": [
+        "pageHead"
+      ],
+      "maxPerGroup": {
+        "listing": 1,
+        "related": 1
       }
     },
     "page.permanent-collection": {
@@ -271,7 +282,7 @@
       }
     },
     "list-collections": {
-      "purpose": "Shopify's /collections page; redirect visitors to the Shop landing instead",
+      "purpose": "Shopify's /collections page: a title and the portfolio navigation, so a visitor who lands there still reaches every portfolio; the menu and every Shop link go to the Shop landing page instead (P-06)",
       "legacy": true
     },
     "search": {
@@ -361,7 +372,7 @@
     ]
   },
   "codeRules": {
-    "$comment": "Raw values that belong in tokens.css, checked in gs- assets, sections and snippets.",
+    "$comment": "Raw values and patterns that drift, checked in gs- assets, sections and snippets (doc and comment blocks and schemas skipped). Each pattern has its message; 'files' narrows it to some of the files below; 'level' is error unless it says warning.",
     "files": [
       "assets/gs-*.css",
       "sections/gs-*.liquid",
@@ -372,10 +383,66 @@
       "snippets/gs-logo-*.liquid"
     ],
     "patterns": {
-      "raw colour": "#[0-9a-fA-F]{3,8}\\b",
-      "raw colour function": "\\b(rgba?|hsla?)\\(",
-      "px font size": "font-size:\\s*\\d+(\\.\\d+)?px",
-      "inline style colour": "style=\"[^\"]*color:"
+      "raw colour": {
+        "pattern": "#[0-9a-fA-F]{3,8}\\b",
+        "message": "raw colour; use a colour role from tokens.css (DESIGN.md §3.1)"
+      },
+      "raw colour function": {
+        "pattern": "\\b(rgba?|hsla?)\\(",
+        "message": "raw colour function; use a colour role from tokens.css (DESIGN.md §3.1)"
+      },
+      "px font size": {
+        "pattern": "font-size:\\s*\\d+(\\.\\d+)?px",
+        "message": "px font size; use a --gs-text-* token (DESIGN.md §4.2)"
+      },
+      "inline style colour": {
+        "pattern": "style=\"[^\"]*color:",
+        "message": "inline style colour; use a class and a colour role (DESIGN.md §3.1)"
+      },
+      "palette primitive": {
+        "pattern": "var\\(\\s*--gs-(ink(-soft|-faint)?|paper|mat|logo-black|error(-light)?|gsg-[\\w-]+|gsf-[\\w-]+|afk-[\\w-]+)\\s*[,)]",
+        "message": "raw palette value; components use colour roles, including the fixed roles (DESIGN.md §3.1, DS-84)"
+      },
+      "raw duration": {
+        "pattern": "(transition|animation)[^;]*\\b\\d+(\\.\\d+)?m?s\\b",
+        "files": ["assets/gs-*.css"],
+        "message": "raw duration; use --gs-duration-* (DESIGN.md §5.4)"
+      },
+      "transition on all": {
+        "pattern": "transition(-property)?:\\s*all\\b",
+        "message": "transition on all; name the properties that change (DESIGN.md §5.4)"
+      },
+      "unitless line height": {
+        "pattern": "line-height:\\s*(?!(0|1)\\s*([;}!]|$))(\\d*\\.)?\\d+\\s*([;}!]|$)",
+        "files": ["assets/gs-*.css"],
+        "message": "unitless line height; use a --gs-leading-* token (0 and 1 are fine) (DESIGN.md §4.2)"
+      },
+      "unitless line height in font shorthand": {
+        "pattern": "\\bfont:[^;{}]*/\\s*(?!(0|1)(?![\\d.]))(\\d*\\.)?\\d+(?![\\w%.])",
+        "files": ["assets/gs-*.css"],
+        "message": "unitless line height in font shorthand; use a --gs-leading-* token (DESIGN.md §4.2)"
+      },
+      "nested :has()": {
+        "pattern": ":has\\(([^()]|\\([^()]*\\))*:has\\(",
+        "files": ["assets/gs-*.css"],
+        "message": "a :has() inside a :has() is invalid CSS, so the browser drops the whole rule"
+      },
+      "raw ratio": {
+        "pattern": "ratio:\\s*'\\d",
+        "files": ["sections/gs-*.liquid", "snippets/gs-*.liquid"],
+        "message": "raw ratio; pass a ratio token, such as 'var(--gs-ratio-card)' (DESIGN.md §6.4)"
+      },
+      "list without role": {
+        "pattern": "<ul\\b(?=[^>]*class=\"[^\"]*\\bgs-(grid|events)\\b)(?![^>]*\\brole=\"list\")[^>]*>",
+        "files": ["sections/gs-*.liquid", "snippets/gs-*.liquid"],
+        "level": "warning",
+        "message": "a grid or event list without role=\"list\"; Safari doesn't announce a list without bullets as one (DESIGN.md §6.5)"
+      }
+    },
+    "hoverOutsideMedia": {
+      "$comment": "A :hover rule in gs- CSS must sit inside @media (hover: hover) and (pointer: fine), so a tap never leaves a hover state stuck (DESIGN.md §5.4).",
+      "files": ["assets/gs-*.css"],
+      "message": ":hover outside @media (hover: hover) and (pointer: fine); a tap on a phone would leave it stuck (DESIGN.md §5.4)"
     }
   },
   "renderRules": {

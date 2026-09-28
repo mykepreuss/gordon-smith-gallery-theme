@@ -12,7 +12,10 @@
     {%- for product in all.products limit: 50 -%}
       {%- for a in product.metafields.custom.artist_entries.value -%}
         {%- if a.system.id == me -%}
-          <li>{%- render 'gs-artwork-tile', product: product, heading: 'h3' -%}</li>
+          {%- comment -%} On the artist's own page, an edition by them alone leaves their name off (§6.13); a joint edition keeps every name. {%- endcomment -%}
+          {%- assign solo = false -%}
+          {%- if forloop.length == 1 -%}{%- assign solo = true -%}{%- endif -%}
+          <li>{%- render 'gs-artwork-tile', product: product, heading: 'h3', hide_artist: solo -%}</li>
         {%- endif -%}
       {%- endfor -%}
     {%- endfor -%}
@@ -24,7 +27,7 @@
           <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.in_the_shop' | t }}</h2>
           <a class="gs-cta-link gs-cta-link--more" href="{{ all.url }}">{{ 'shop.all_editions_link' | t }}</a>
         </div>
-        <ul class="gs-grid gs-grid--artworks">{{ tiles }}</ul>
+        <ul class="gs-grid gs-grid--artworks" role="list">{{ tiles }}</ul>
       </div>
     </section>
   {%- endif -%}

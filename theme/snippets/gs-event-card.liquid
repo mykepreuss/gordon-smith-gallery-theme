@@ -1,15 +1,22 @@
 {% doc %}
   An event as a card, for rows that mix events with exhibitions (Home's What's on, DS-54): image,
-  what it belongs to, title, when. The event's own image, else its programme page's hero image,
-  else its exhibition's key image, so every card has a picture without anyone adding one twice.
-  The whole card links to the programme page, else the exhibition, else the tickets.
+  what it belongs to, title, when. The event's own image, else its exhibition's key image, else its
+  programme page's hero image, so every card has a picture without anyone adding one twice.
+  The whole card links to the exhibition, else the programme page, else the tickets.
 
-  A line under the date names the programme ("Music at the Smith") or the exhibition ("Collect,
-  Assemble, Gather"); an event titled like its programme ("Explore + Create") has none. It sits
-  under the title, not above it, so every title in a row starts at the same height (DS-55).
+  A line under the date names the exhibition ("Collect, Assemble, Gather") or the programme ("Music
+  at the Smith"); an event titled like its programme ("Explore + Create") has none. It sits under
+  the title, not above it, so every title in a row starts at the same height (DS-55). An event with
+  both, such as a curator's tour listed on Professional development, is named and linked by its
+  exhibition, which is what visitors know it by (DS-71).
+
+  Beside the home hero, an event of the exhibition the hero leads with doesn't show the hero's
+  picture again: when the hero shows that exhibition's key image (it has no installation views),
+  the event's programme page hero comes before the key image (DS-95, Proposed).
 
   @param {object} event - An event entry
   @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
+  @param {string} [lead] - The handle of the exhibition the home hero leads with (gs-lead-exhibition)
 
   @example
   {%- render 'gs-event-card', event: event -%}
@@ -20,10 +27,13 @@
   assign exhibition = event.exhibition.value
   assign image = event.image.value
   assign mode = 'photo'
-  if image == blank and programme != blank
-    assign image = programme.metafields.custom.hero_image.value
-    if programme.metafields.custom.hero_is_artwork.value == true
-      assign mode = 'artwork'
+  # The hero already shows this exhibition's key image: the programme's picture comes first (DS-95).
+  if image == blank and exhibition != blank and programme != blank and lead != blank
+    if exhibition.system.handle == lead and exhibition.installation_views.value == blank
+      assign image = programme.metafields.custom.hero_image.value
+      if programme.metafields.custom.hero_is_artwork.value == true
+        assign mode = 'artwork'
+      endif
     endif
   endif
   if image == blank and exhibition != blank
@@ -32,37 +42,50 @@
       assign mode = 'artwork'
     endif
   endif
+  if image == blank and programme != blank
+    assign image = programme.metafields.custom.hero_image.value
+    if programme.metafields.custom.hero_is_artwork.value == true
+      assign mode = 'artwork'
+    endif
+  endif
 
   assign label = ''
-  if programme != blank
+  if exhibition != blank
+    assign label = exhibition.title.value
+  elsif programme != blank
     assign a = programme.title | strip | downcase
     assign b = event.title.value | strip | downcase
     if a != b
       assign label = programme.title
     endif
-  elsif exhibition != blank
-    assign label = exhibition.title.value
   endif
 
+  # An exhibition has a page when it has a summary or body, as gs-exhibition-card decides.
+  assign ex_linked = false
+  if exhibition != blank
+    if exhibition.summary.value != blank or exhibition.body.value != blank
+      assign ex_linked = true
+    endif
+  endif
   assign href = ''
-  if programme != blank
-    assign href = programme.url
-  elsif exhibition != blank and exhibition.summary.value != blank
+  assign by_tickets = false
+  if ex_linked
     assign href = exhibition.system.url
+  elsif programme != blank
+    assign href = programme.url
   elsif event.tickets.value.url != blank
-    capture r
-      render 'gs-url', link: event.tickets.value
-    endcapture
-    assign href = r | strip | split: '|' | first
+    assign by_tickets = true
   endif
 -%}
 <article class="gs-card">
   {%- if image != blank -%}
-    {%- render 'gs-media', image: image, preset: 'card', mode: mode, ratio: '4 / 3', alt: event.title.value -%}
+    {%- render 'gs-media', image: image, preset: 'card', mode: mode, ratio: 'var(--gs-ratio-card)' -%}
   {%- endif -%}
   <div class="gs-card__body">
     <{{ tag }} class="gs-card__title">
-      {%- if href != blank -%}
+      {%- if by_tickets -%}
+        {%- render 'gs-link', link: event.tickets.value, label: event.title.value -%}
+      {%- elsif href != blank -%}
         <a href="{{ href }}">{{ event.title.value | escape }}</a>
       {%- else -%}
         {{- event.title.value | escape -}}

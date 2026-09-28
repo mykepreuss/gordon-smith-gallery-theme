@@ -1,0 +1,544 @@
+{
+ "taken": "2026-09-27",
+ "why": "before the Artists for Kids integration changes these (proposals/artists-for-kids-integration.md)",
+ "cards": [
+  {
+   "id": "gid://shopify/Metaobject/608366330153",
+   "handle": "afk-after-school-art",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45746713854249"
+    },
+    {
+     "key": "title",
+     "value": "After School Art Classes"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://artistsforkids.sd44.ca/learn/after-school-art/\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366362921",
+   "handle": "afk-artists-in-residence",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45819820769577"
+    },
+    {
+     "key": "title",
+     "value": "Artist In Residence Enrichment Workshops"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://artistsforkids.sd44.ca/learn/artists-in-residence/\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366395689",
+   "handle": "afk-day-camps",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45746720669993"
+    },
+    {
+     "key": "title",
+     "value": "Spring and Summer Day Camps"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://artistsforkids.sd44.ca/learn/spring--summer-day-camps/\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366428457",
+   "handle": "afk-gallery-programs",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45698058256681"
+    },
+    {
+     "key": "title",
+     "value": "Gallery Programs"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://artistsforkids.sd44.ca/learn/gallery-program/\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366461225",
+   "handle": "afk-paradise-valley",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45819842658601"
+    },
+    {
+     "key": "title",
+     "value": "Paradise Valley Summer School of Visual Art Camp"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://artistsforkids.sd44.ca/learn/paradise-valley-summer-camps/\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366493993",
+   "handle": "afk-learning-kits",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45819844952361"
+    },
+    {
+     "key": "title",
+     "value": "Learning Kits and Outreach"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://artistsforkids.sd44.ca/learn/learning-kits/\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366526761",
+   "handle": "programs-explore-create",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45668902568233"
+    },
+    {
+     "key": "title",
+     "value": "Explore + Create Saturdays"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://gordonsmithgallery.com/pages/explore-create\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366559529",
+   "handle": "programs-art-in-good-company",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45668975214889"
+    },
+    {
+     "key": "title",
+     "value": "Art In Good Company"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://gordonsmithgallery.com/pages/art-in-good-company\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366592297",
+   "handle": "programs-speaker-series",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45698097250601"
+    },
+    {
+     "key": "title",
+     "value": "Speaker Series"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://gordonsmithgallery.com/pages/speaker-series\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608366625065",
+   "handle": "programs-music-at-the-smith",
+   "fields": [
+    {
+     "key": "image",
+     "value": "gid://shopify/MediaImage/45820261237033"
+    },
+    {
+     "key": "title",
+     "value": "Music At The Smith"
+    },
+    {
+     "key": "text",
+     "value": null
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"\",\"url\":\"https://gordonsmithgallery.com/pages/music-at-the-smith\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608389366057",
+   "handle": "donate-online-form",
+   "fields": [
+    {
+     "key": "image",
+     "value": null
+    },
+    {
+     "key": "title",
+     "value": "Online Form"
+    },
+    {
+     "key": "text",
+     "value": "Donate directly through our website with the secure Blackbaud Etapestry form above. Your submission will be processed when you finalize your secure payment information."
+    },
+    {
+     "key": "link",
+     "value": null
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608389398825",
+   "handle": "donate-email",
+   "fields": [
+    {
+     "key": "image",
+     "value": null
+    },
+    {
+     "key": "title",
+     "value": "Email"
+    },
+    {
+     "key": "text",
+     "value": "To make a gift or for more information about the various giving options, email us at admin@smithfoundation.ca"
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"Email us\",\"url\":\"mailto:admin@smithfoundation.ca\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608389431593",
+   "handle": "donate-mail",
+   "fields": [
+    {
+     "key": "image",
+     "value": null
+    },
+    {
+     "key": "title",
+     "value": "Mail"
+    },
+    {
+     "key": "text",
+     "value": "Address:\nThe Gordon and Marion Smith Foundation for Young Artists\n2121 Lonsdale Avenue, North Vancouver\nBritish Columbia, Canada\nV7M 2K6"
+    },
+    {
+     "key": "link",
+     "value": null
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608389464361",
+   "handle": "donate-phone",
+   "fields": [
+    {
+     "key": "image",
+     "value": null
+    },
+    {
+     "key": "title",
+     "value": "Phone"
+    },
+    {
+     "key": "text",
+     "value": "Contact us by telephone at 604-998-8563"
+    },
+    {
+     "key": "link",
+     "value": "{\"text\":\"Call us\",\"url\":\"tel:+16049988563\"}"
+    },
+    {
+     "key": "logo",
+     "value": null
+    }
+   ]
+  }
+ ],
+ "card_groups": [
+  {
+   "id": "gid://shopify/Metaobject/608367378729",
+   "handle": "afk-programmes",
+   "fields": [
+    {
+     "key": "heading",
+     "value": "Programs"
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608366330153\",\"gid://shopify/Metaobject/608366362921\",\"gid://shopify/Metaobject/608366395689\",\"gid://shopify/Metaobject/608366428457\",\"gid://shopify/Metaobject/608366461225\",\"gid://shopify/Metaobject/608366493993\"]"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608367411497",
+   "handle": "public-programs",
+   "fields": [
+    {
+     "key": "heading",
+     "value": null
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608366526761\",\"gid://shopify/Metaobject/608366559529\",\"gid://shopify/Metaobject/608366592297\",\"gid://shopify/Metaobject/608366625065\"]"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608367444265",
+   "handle": "foundation-take-part",
+   "fields": [
+    {
+     "key": "heading",
+     "value": "Get involved"
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608366657833\",\"gid://shopify/Metaobject/608366690601\",\"gid://shopify/Metaobject/608366723369\",\"gid://shopify/Metaobject/608366756137\",\"gid://shopify/Metaobject/608366788905\"]"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608367477033",
+   "handle": "foundation-board",
+   "fields": [
+    {
+     "key": "heading",
+     "value": "Board of Directors"
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608366821673\",\"gid://shopify/Metaobject/608366854441\",\"gid://shopify/Metaobject/608366887209\",\"gid://shopify/Metaobject/608366919977\",\"gid://shopify/Metaobject/608366952745\",\"gid://shopify/Metaobject/608366985513\",\"gid://shopify/Metaobject/608367018281\",\"gid://shopify/Metaobject/608367051049\",\"gid://shopify/Metaobject/608367083817\",\"gid://shopify/Metaobject/608367116585\",\"gid://shopify/Metaobject/608367149353\",\"gid://shopify/Metaobject/608367182121\",\"gid://shopify/Metaobject/608367214889\",\"gid://shopify/Metaobject/608367247657\"]"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608389529897",
+   "handle": "about-organisations",
+   "fields": [
+    {
+     "key": "heading",
+     "value": null
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608389267753\",\"gid://shopify/Metaobject/608389300521\",\"gid://shopify/Metaobject/608389333289\"]"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608389562665",
+   "handle": "donate-ways-to-give",
+   "fields": [
+    {
+     "key": "heading",
+     "value": "How to give"
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608389398825\",\"gid://shopify/Metaobject/608389431593\",\"gid://shopify/Metaobject/608389464361\"]"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608631980329",
+   "handle": "about-us-organisations",
+   "fields": [
+    {
+     "key": "heading",
+     "value": null
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608631816489\",\"gid://shopify/Metaobject/608631882025\",\"gid://shopify/Metaobject/608631947561\"]"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Metaobject/608725008681",
+   "handle": "volunteer-roles",
+   "fields": [
+    {
+     "key": "heading",
+     "value": null
+    },
+    {
+     "key": "cards",
+     "value": "[\"gid://shopify/Metaobject/608724943145\",\"gid://shopify/Metaobject/608724975913\"]"
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "id": "gid://shopify/Metaobject/608352272681",
+   "handle": "curatorial-tour-collect-assemble-gather",
+   "fields": [
+    {
+     "key": "title",
+     "value": "Curatorial Tour"
+    },
+    {
+     "key": "starts",
+     "value": "2026-10-26T15:30:00-07:00"
+    },
+    {
+     "key": "ends",
+     "value": "2026-10-26T16:30:00-07:00"
+    },
+    {
+     "key": "location",
+     "value": null
+    },
+    {
+     "key": "summary",
+     "value": null
+    },
+    {
+     "key": "image",
+     "value": null
+    },
+    {
+     "key": "tickets",
+     "value": null
+    },
+    {
+     "key": "programme_page",
+     "value": null
+    },
+    {
+     "key": "exhibition",
+     "value": "gid://shopify/Metaobject/608352043305"
+    },
+    {
+     "key": "keep_off_home",
+     "value": null
+    }
+   ]
+  }
+ ],
+ "pages": {
+  "artists-for-kids": {
+   "id": "gid://shopify/Page/155720810793",
+   "custom.card_groups": "[\"gid://shopify/Metaobject/608367378729\"]",
+   "custom.cta": "{\"text\":\"Artists For Kids Website\",\"url\":\"https://artistsforkids.sd44.ca/\"}",
+   "custom.release_body": "<p>Artists for Kids brings together educators and the community at large, to provide inspiring, highly relevant educational experiences and enrichment, for thousands of young people annually, while encouraging students to pursue and share their own artistic voice and narrative. Through the Gordon Smith Gallery of Canadian Art, established as Canada's first public art gallery for young audiences, Artists for Kids has created a space for young audiences and our community to experience the narrative of Canadian Art through a significant collection of visual art. As a visual arts catalyst in the community, Artists for Kids is proud to contribute to the development of a rich cultural aesthetic.</p>\n<p>The continued growth and development of our acclaimed program in North Vancouver during the past three decades, provides substantial documentation that intentional art education in schools led by art specialists, can significantly transform young lives, inform programming in schools and ultimately shape a community in ways once thought unimaginable. We see clearly what can be accomplished and possible in education with intentional commitment, understanding and engagement.</p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Gordon_Smith_PVSSA.jpg?v=1785270372\" alt=\"At Paradise Valley Summer Camp in 1994, a group of children painting at an outdoor table with Gordon Smith in a light blue shirt and black apron standing and guiding the art activity.\" width=\"1764\" height=\"993\" loading=\"lazy\"><figcaption>Gordon Smith and a group of young artists at the Paradise Valley Summer School of Visual Art Camp in 1996.</figcaption></figure>\n<h2>History</h2>\n<p>Artists for Kids was founded in 1989 with the singular intent to support art education, for all.</p>\n<p>Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators.</p>\n<p>In 1990, with the support of art educators and artist patrons Bill Reid, Jack Shadbolt, and Gordon Smith, the first Artists for Kids Limited Edition Portfolio print, <em>Xhuwaji / Haida Grizzly</em> was published - marking the beginning of an extraordinary partnership between Canadian artists and Artists for Kids.</p>\n<figure class=\"gs-figure--artwork\"><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Reid_REID002_Xhuwaji_HaidaGrizzly.jpg?v=1728074721&amp;width=1440\" alt=\"Bill Reid, Xhuwaji / Haida Grizzly Bear, 1990\" width=\"1440\" height=\"1456\" loading=\"lazy\"><figcaption>Bill Reid, (Canadian, 1920 – 1998) <em>XHUWAJI/Haida Grizzly Bear</em>, (1990) Serigraph, 22 in x 22 in.</figcaption></figure>\n<p>Entering its 37th year, Artists for Kids continues to work with renowned Canadian artists and print studios across Canada to publish <a href=\"/pages/shop\">contemporary limited editions</a>; its portfolio is now revered as one of the most significant limited edition collections in Canada.</p>\n<p>The Artists for Kids Limited Edition Portfolio program funds educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for the Artists for Kids and the Gordon Smith Gallery Permanent Collection.</p>",
+   "custom.release_body_updated_at": "2026-09-26T17:17:23Z"
+  }
+ },
+ "menus": {
+  "new-theme-main": "Artists for Kids is a plain link to /pages/artists-for-kids (gid://shopify/Menu/305860739369); full items in proposals/store-changes.md §1"
+ }
+}

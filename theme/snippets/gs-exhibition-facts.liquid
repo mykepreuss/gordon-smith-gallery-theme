@@ -59,7 +59,7 @@
       <div class="gs-details__item">
         <dt>{{ 'exhibitions.events' | t }}</dt>
         <dd>
-          <ul class="gs-events gs-events--compact">
+          <ul class="gs-events gs-events--compact" role="list">
             {%- for id in event_ids -%}
               {%- assign n = id | plus: 0 -%}
               {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
@@ -98,7 +98,8 @@
 
     {%- if collection_artists != blank -%}
       <div class="gs-details__item{% if collection_artists.size > 6 %} gs-details__item--wide{% endif %}">
-        <dt>{{ settings.collection_artists_label | default: 'From the collection' | escape }}</dt>
+        {%- assign collection_label = 'exhibitions.collection_artists' | t -%}
+        <dt>{{ settings.collection_artists_label | default: collection_label | escape_once }}</dt>
         <dd>
           <ul class="gs-names">
             {%- for name in collection_artists -%}<li>{{ name | escape }}</li>{%- endfor -%}

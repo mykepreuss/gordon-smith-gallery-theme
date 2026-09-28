@@ -564,3 +564,95 @@ The cleaned data follows the gallery-questions defaults (§5) where the gallery 
 **Effect on the live site:** none. The live theme renders none of these.
 
 **Undo:** empty the 34 entries' file field, delete the 5 new entries, run `import.py link` from the previous commit, and delete the 39 files (their IDs are in `created/collection-files.json`, under the media IDs in `shrunk-documents.json`).
+
+## 2026-09-27: Artists for Kids moves onto the site (P-30 to P-40)
+
+**Why:** Michael, 2026-09-27: the Artists for Kids site (artistsforkids.sd44.ca) becomes part of gordonsmithgallery.com, all but registration; "Decisions for Michael: all recommendations are approved ... let's get started on implementation". Plan: `proposals/artists-for-kids-integration.md`.
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (Artists for Kids & The Gordon Smith Gallery, through the connector and the CLI); the live theme 183162372393 "Colorblock: NEW WEBSITE" (live) and the review theme 184767250729 (unpublished), neither touched. Before-snapshot: `snapshots/afk-2026-09-27-before.json` (the programme, Public programs and Donate cards, every card group, the curatorial tour event, and the Artists for Kids page's card groups, button and full staged text). No page, entry or file with these handles existed.
+
+**Read-only first:** the old site in full (`artists-for-kids/inventory.py`, 48 pages); each video's owner, upload date and thumbnail from YouTube (`lessons.py youtube`: all 27 belong to the gallery's channel, "Artists for Kids & The Gordon Smith Gallery"); the collection's artwork titles, to match the works each lesson names.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Definition `lesson` (9 fields, publishable, pages at `/pages/lessons/<handle>`, storefront read; content model part 8) | Connector | `gid://shopify/MetaobjectDefinition/23785144617`. The CLI's app may not create store-owned types |
+| Event field `keep_off_home` (P-37) | Connector | on `gid://shopify/MetaobjectDefinition/23753392425` |
+| 44 pictures and 27 lesson covers, each with alt text; 21 PDFs (5 of them smaller copies under 19 MB, `artists-for-kids/shrunk-pdfs.json`, P-40) | CLI | `created/afk-files.json`. The first upload enlarged the smaller pictures to 3,000 px; each was replaced in place with a copy at its own size (`files.py replace`, fileUpdate, same IDs) |
+| Test page `after-school-art`, published, title only, `seo.hidden` = 1 | Connector | `gid://shopify/Page/165837373737`. Made with the programme template name first: the live theme fell back to its default page template, which carries About's content, so the address showed About's text under "After School Art". Changed to the live theme's On Now template name (`current-on-now-exhibition`), which shows the title only; checked on gordonsmithgallery.com (title only, `noindex,nofollow`, not in the sitemap or search) |
+| 17 more pages, the same way | Connector | `created/afk-pages.json` |
+| 46 cards (40 new; the 6 programme cards' links and nothing else changed, to the site's pages; the 8 residency cards renamed after the first look) | CLI | `created/afk-cards.json` |
+| 15 card groups, and one card added to `public-programs` and to `donate-ways-to-give` | CLI | `created/afk-card-groups.json`, `afk-card-groups-extended.json` |
+| 27 lessons, active: title, video, posted (the YouTube upload date), cover, the old page's four parts, and the works they name from the collection (22 lessons) | CLI | `created/afk-lessons.json` |
+| 6 events, active, Keep off the home page: the educators' workshops with a date; the curatorial tour (existing) gains Professional development as its page | CLI | `created/afk-events.json` |
+| Page fields on the 18 pages: programme, hero image and caption, eyebrow, button, card groups, staged text (`custom.release_body`) | Connector | 56 values in three `metafieldsSet` calls; two staged texts set again after the first look ("(PDF)" on PDF links) |
+| The Artists for Kids page: card groups (was `afk-programmes`), button (the 2026-2027 program guide, was the Artists For Kids Website), staged text (two history paragraphs, the team, the annual report) | Connector | Its previous values are in the before-snapshot |
+| The review menu `new-theme-main`: Artists for Kids becomes a section of five items (P-33) | Connector | `created/afk-menu-input.json`; the other items keep their IDs |
+
+Text is the old site's, moved as written; what changed and why is in `artists-for-kids/content.py`'s docstring. Kept, for the gallery: `proposals/gallery-questions.md` §6.
+
+**Checked after:** on the development theme at 1440, 768 and 390: every new page, a lesson, the home page (no workshops in What's on; the tour named by its exhibition), Donate and Public programs; no sideways scrolling, one H1 each, the Artists for Kids colours and logo, no empty links. On gordonsmithgallery.com: the new pages show their title only, with `noindex,nofollow`, and aren't in the sitemap; `/pages/lessons/paper-fruit` is 404; the Artists for Kids page is unchanged.
+
+**Effect on the live site:** 18 new addresses that show a page title and nothing else, hidden from search engines, the sitemap and the store's search, linked from nowhere on the live site (P-35). Nothing else the live theme renders changed.
+
+**Undo:** hide or delete the 18 pages; set the Artists for Kids page's card groups, button and staged text back from the snapshot; restore the six programme cards' links and the two extended groups' card lists from the snapshot; delete the 40 new cards, 15 groups, 27 lessons and 6 events, and clear the tour's programme page; `menuUpdate` the review menu with Artists for Kids as a plain link; delete the files in `created/afk-files.json`; delete the `keep_off_home` field and the `lesson` definition.
+
+## 2026-09-27: Artists for Kids after the design review (DS-73 to DS-83)
+
+**Why:** Michael, 2026-09-27: "Spawn an agent per new page to review the design ... to ensure each page is as great as it can be while sticking to our design system." The review's content changes (`artists-for-kids/content.py` docstring, "After the design review"); the theme changes and Proposed rules are in `design-system/DESIGN.md` 0.6.28.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 and the review theme 184767250729, neither touched. Before-snapshot: everything this round writes was made earlier the same day, from `content.py` and `files.py` at commit `aea9961`, whose values are the before-state; the Artists for Kids page's own previous values are in `snapshots/afk-2026-09-27-before.json`. No file, card or group the live theme shows was changed.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| 10 pictures replaced in place (the program guide's and Mini Monster's covers rendered from their PDFs, the Paradise Valley collage without its white border, the black bars cut from seven lesson covers); the 27 lesson covers' alt text cleared, since each cover's title follows it | CLI (`files.py revise`) | Same IDs, `created/afk-files.json` |
+| 6 new cards (Explore + Create Saturdays for families; Awards and scholarships and Support Artists for Kids as text cards; the three ways to give) and text on the community programme cards; 4 new groups (`afk-more-classes-and-camps`, `afk-awards-and-support`, `afk-air-sara-jeanne-bourget-guides`, `afk-how-to-give`); `afk-also-for-families` holds the new Explore + Create card | CLI (`load.py cards`) | `created/afk-cards.json`, `afk-card-groups.json`; 52 cards and 19 groups upserted by handle, the two extended groups unchanged |
+| The 6 educators' workshops: typographic quotes in two titles, "**" markers dropped | CLI (`load.py events`) | `created/afk-events.json` |
+| Page fields on the 18 pages and the Artists for Kids page: intros (Studio Art Academy, Paradise Valley, Awards), buttons ("Register for classes", "Register for camps", "Register for camp"), card groups (Day camps, Sara-Jeanne Bourget, Support, Artists for Kids), staged text (phone links, lists, standalone links, figures moved, the team's names as the photo's caption) | Connector | 62 values in three `metafieldsSet` calls |
+
+Support Artists for Kids now goes to the standard page template at release (`release.py`, `AFK_STANDARD`), so its ways to give follow all its text, as on Donate.
+
+**Checked after:** the 20 pages on the development theme at 1440, 768 and 390; Paradise Valley, the home page, Donate, The Smith Foundation, Plan your visit, Volunteer, Gordon and Marion and an exhibition page at the same widths.
+
+**Effect on the live site:** none. The 18 pages still show their title only; the Artists for Kids page's staged text and fields aren't read by the live theme.
+
+**Undo:** rebuild the earlier copies from the old site with `files.py prepare` and put them back with `files.py replace` (same IDs), and set the covers' alt text from `cover_alt` at `aea9961`; delete the 6 new cards and 4 new groups; run `load.py cards`, `load.py events` and the page-field batches from `content.py` at `aea9961`.
+
+## 2026-09-27: whole-site design review (proposals/site-design-review.md)
+
+**Why:** Michael, 2026-09-27: "Do the same using all of our design skills ... on every page of our new version of the site ... we want the design to be as good and consistent as possible". The review's content changes of our own words and markup only; the gallery's words are unchanged, and changes that need the gallery's words or would show on the live site wait (the review record lists them).
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 and the review theme 184767250729, neither touched. Before-snapshot: `snapshots/site-review-2026-09-27-before.json` (the three giving cards, Stitched's credits, the review menu, the two buttons; staged texts as the generators' output at the commits it names; FAQ and Contact had none).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Staged text: Donate's camp links go to the camps' pages here; FAQ and Contact get staged text (line-break paragraphs made paragraphs; Contact's phone and emails as links); Awards' three requirement links are standalone links (DS-82); Support's NVSD point is two paragraphs | Connector | `site_review.py pages`, `artists-for-kids/content.py` page-fields; one `metafieldsSet` of 7 values with the two buttons below |
+| Buttons: Support Artists for Kids "Make a gift", to its How to give cards (as Donate); the Artists for Kids page "Download the guide" (was "2026-2027 Program Guide") | Connector | Same call |
+| The three giving cards: "Online" (Through CanadaHelps. / Give online), "School Cash Online" (With an NVSD School Cash Online account. / Give with School Cash), "Phone" ((604) 903-3798 / Call us), as Donate's | Connector | `metaobjectUpdate` on 609010778409, 609010811177, 609010843945; `content.py` updated to match |
+| Stitched's credits: Artists For Kids and the Foundation link to their pages here; the Foundation's link was broken | Connector | `metaobjectUpdate` on 608388448553 (`site_review.py stitched`) |
+| The review menu `new-theme-main`: "Upcoming events" under Programs, after Public programs (label for the gallery to confirm) | Connector | `menuUpdate` (`site_review.py menu`); the other items keep their IDs |
+
+**Checked after:** on the development theme at 1440: Support's button and cards, the hub's button "Download the guide (PDF)", Awards' three links, Donate's camp links, Contact's links, Stitched's two links, Upcoming events marked in the menu. On gordonsmithgallery.com: Contact and FAQ unchanged.
+
+**Effect on the live site:** none. Staged text, buttons, cards, exhibition entries and the review menu aren't read by the live theme.
+
+**Undo:** set the values in the before-snapshot back (staged text: the generators at the commits named there; FAQ and Contact: delete `custom.release_body`); `menuUpdate` the review menu without the Upcoming events item.
+
+## 2026-09-28: DS-122 and DS-129, decided by Michael
+
+**Why:** Michael, 2026-09-28: "DS-97 to DS-130 all look like great improvements, proceed with implementation". Two of them need store content: DS-122 (the Permanent Collection's Browse button lands on "Browse the collection") and DS-129 (Learning kits shows each kit, then its lesson plans, then its video).
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 and the review theme 184767250729, neither touched. Before-snapshot: `snapshots/site-review-decided-2026-09-28-before.json`.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Six new card groups: one for each kit (no heading) and one for each kit's video ("Clay Lesson Video", "Trace Monotype Lesson Video", headings for the gallery to confirm) | CLI | `artists-for-kids/load.py cards` (upserts by handle; the other cards and groups were written with the values they already had); IDs in `created/afk-card-groups.json`. The old `afk-kits` and `afk-kit-videos` groups stay in the store, on no page |
+| Learning kits' card groups in the new order: each kit, its plans, its video | Connector | `metafieldsSet` on gid://shopify/Page/165838127401 (`content.py` page-fields, that row only) |
+| The Permanent Collection's button: "Browse" now goes to `#collection-browse` (was `#collection-search`) | Connector | Same call, gid://shopify/Page/155720548649 `custom.cta` |
+
+**Checked after:** Learning kits at 390 and 1440 on the development theme (kit, plans, video, for each of the four kits).
+
+**Effect on the live site:** none. Card groups and these page fields aren't read by the live theme.
+
+**Effect on the review theme:** its Browse button jumps nowhere until it has the new section id (`theme/sections/gs-collection-ways.liquid`, `id="collection-browse"`); push `main` to it after this branch merges.
+
+**Undo:** set both page fields back from the snapshot; the six new groups can stay or be deleted.

@@ -4,7 +4,7 @@
 {%- endcomment -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1"{% render 'gs-fit', text: section.settings.heading %}>{{ section.settings.heading | escape }}</h1>
+    {%- render 'gs-title-block', title: section.settings.heading -%}
   </header>
 </div>
 

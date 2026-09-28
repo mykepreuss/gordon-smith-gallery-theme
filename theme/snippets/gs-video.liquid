@@ -1,0 +1,41 @@
+{% doc %}
+  A YouTube video from its address (a lesson's Video field, DS-70), as a privacy-enhanced embed at
+  16:9: nothing loads from YouTube until the reader scrolls to it, and YouTube sets no cookies
+  until the video plays. Takes a watch, short, youtu.be or embed address. Any other address (a
+  Vimeo link, a file) becomes a plain link to the video, so nothing is lost.
+
+  @param {string} url - The video's address
+  @param {string} title - What the video is, for screen readers: the lesson's title
+
+  @example
+  {%- render 'gs-video', url: metaobject.video.value, title: metaobject.title.value -%}
+{% enddoc %}
+{%- liquid
+  assign id = ''
+  assign address = url | strip
+  if address contains 'youtu.be/'
+    assign id = address | split: 'youtu.be/' | last
+  elsif address contains 'youtube.com/watch' and address contains 'v='
+    assign id = address | split: 'v=' | last
+  elsif address contains '/embed/'
+    assign id = address | split: '/embed/' | last
+  elsif address contains '/shorts/'
+    assign id = address | split: '/shorts/' | last
+  endif
+  assign id = id | split: '?' | first | split: '&' | first | split: '#' | first | split: '/' | first
+-%}
+{%- if id != blank -%}
+  <div class="gs-video">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/{{ id | url_encode }}?rel=0"
+      title="{{ 'lessons.video_title' | t: title: title | escape }}"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+{%- elsif address != blank -%}
+  {%- assign watch = 'lessons.watch' | t -%}
+  <p>{%- render 'gs-link', url: address, label: watch, class: 'gs-cta-link' -%}</p>
+{%- endif -%}

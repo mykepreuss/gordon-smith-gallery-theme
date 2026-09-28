@@ -48,6 +48,8 @@
         {{- artist | escape -}}
       {%- endif -%}
     </span>
+    {%- comment -%} A comma for screen readers, so the name and title aren't read as one phrase. {%- endcomment -%}
+    <span class="gs-visually-hidden">,</span>
     <cite>{{ work | escape }}</cite>
     {%- if year != blank -%}, {{ year | escape }}{%- endif -%}
   {%- else -%}

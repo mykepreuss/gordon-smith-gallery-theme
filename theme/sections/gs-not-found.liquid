@@ -4,8 +4,9 @@
 {%- endcomment -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1">{{ 'not_found.title' | t }}</h1>
-    <p class="gs-deck">{{ 'not_found.text' | t }}</p>
+    {%- assign title = 'not_found.title' | t -%}
+    {%- assign deck = 'not_found.text' | t -%}
+    {%- render 'gs-title-block', title: title, deck: deck -%}
     <div class="gs-actions">
       <a class="gs-button" href="{{ routes.root_url }}">{{ 'not_found.home' | t }}</a>
       <a class="gs-cta-link" href="{{ routes.search_url }}">{{ 'not_found.search' | t }}</a>
