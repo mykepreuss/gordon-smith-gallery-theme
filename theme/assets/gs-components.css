@@ -197,6 +197,7 @@
 .gs-details dt,
 .gs-disclosure > summary,
 .gs-pagination,
+.gs-nav__group-title,
 .gs-button,
 .gs-skip-link {
   font-size: var(--gs-text-label);
@@ -1405,24 +1406,30 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   box-shadow: none;
 }
 .gs-drawer__panel .gs-nav__panel a { min-height: var(--gs-tap-target); }
+/* In the drawer a dropdown's groups stack, each under its title (DS-133). */
+.gs-drawer__panel .gs-nav__group { margin-block-start: var(--gs-space-2); }
+.gs-drawer__panel .gs-nav__group-title { min-height: var(--gs-tap-target); }
 .gs-drawer__panel .gs-utility { flex-direction: column; gap: 0; }
 .gs-drawer__panel .gs-utility a { display: flex; align-items: center; min-height: var(--gs-tap-target); }
 
 /* ----- Bar (1200px and up): utility row above the main nav ----- */
 .gs-header__bar { display: none; }
 
+/* The utility row steps back (DS-135): small, regular weight, sentence case, so the main menu is the
+   only row in caps and the eye starts there. */
 .gs-utility {
   display: flex;
   gap: var(--gs-space-5);
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: var(--gs-text-label);
-  font-weight: var(--gs-weight-extrabold);
-  letter-spacing: var(--gs-tracking-label);
-  text-transform: uppercase;
+  font-size: var(--gs-text-small);
+  font-weight: var(--gs-weight-regular);
+  line-height: var(--gs-leading-small);
 }
 .gs-utility a { color: var(--gs-color-fg); }
+/* Today's opening line leads the row, in the row's own type, and links to Plan your visit (DS-132). */
+.gs-utility .gs-open { font-weight: inherit; }
 
 /* Two kinds of top-level item, never mixed:
    .gs-nav__link     a plain link, for a section with no dropdown
@@ -1509,6 +1516,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   min-height: 2.5rem;
   color: var(--gs-color-field-fg);
 }
+/* A group in a dropdown (DS-133): the menu's third level. Its title is the caps label, a link to the
+   group's own page or plain text, with the group's links under it. Nothing opens inside a dropdown. */
+.gs-nav__group { display: grid; align-content: start; }
+.gs-nav__group-title { display: flex; align-items: center; min-height: 2.5rem; color: var(--gs-color-field-fg); }
+.gs-nav__group > ul { display: grid; margin: 0; padding: 0; list-style: none; }
 
 /* Opening answers a click, so it may move: what floats over the page (a bar dropdown, the Menu
    drawer) fades in and drops 4px, 120ms. What opens in place (a section inside the drawer) opens
@@ -1569,7 +1581,27 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   /* Both rows end at the same right edge, so the section labels stay put between programmes (DS-98). */
   .gs-header__bar :is(.gs-utility, .gs-nav) { justify-content: flex-end; }
   .gs-header__bar .gs-utility a { display: inline-flex; align-items: center; min-height: 2rem; }
+  /* The opening line sits at the row's left, beside the logo, apart from Contact, Search and Cart
+     (DS-135): what the place is doing, then the tools. */
+  .gs-header__bar .gs-utility__open { margin-inline-end: auto; }
   .gs-nav { gap: var(--gs-space-1) var(--gs-nav-gap); }
+  /* A dropdown with groups (DS-133): the groups side by side, one column each (--gs-nav-groups, from
+     gs-nav), and any links outside a group across the top, closed by a rule. The panel ends at the
+     nav's right edge, wherever its section sits, so it never runs off the screen. */
+  .gs-header__bar .gs-nav { position: relative; }
+  .gs-header__bar .gs-nav__item--groups { position: static; }
+  .gs-header__bar .gs-nav__panel--groups {
+    left: auto;
+    right: 0;
+    grid-template-columns: repeat(var(--gs-nav-groups, 1), minmax(11rem, max-content));
+    column-gap: var(--gs-space-7);
+  }
+  .gs-header__bar .gs-nav__panel--groups > li:not(.gs-nav__group) { grid-column: 1 / -1; }
+  .gs-header__bar .gs-nav__panel--groups > li:not(.gs-nav__group):has(+ .gs-nav__group) {
+    margin-block-end: var(--gs-space-3);
+    padding-block-end: var(--gs-space-3);
+    border-block-end: var(--gs-border) solid var(--gs-color-rule);
+  }
 }
 
 /* ---------- Footer ---------- */

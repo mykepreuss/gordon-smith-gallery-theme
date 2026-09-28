@@ -194,7 +194,7 @@ Added 2026-09-26, when the catalogue at afkcatalogue.sd44.ca moved into the stor
 
 | Type | Page | Holds |
 | --- | --- | --- |
-| `artist` | `/pages/artists/<handle>` | Name, sort name (surname first, for A to Z), full name, other names (a traditional or Indigenous name), life dates, nationality or Nation, biography, portrait, website, exhibitions, documents, works |
+| `artist` | `/pages/artists/<handle>` | Name, sort name (surname first, for A to Z), full name, other names (a traditional or Indigenous name), life dates, nationality or Nation, biography, portrait, website, exhibitions, documents, works, about page (a page on this site about the artist's life, linked as "About" and the name: Gordon and Marion for Gordon Smith, P-57, added 2026-09-28) |
 | `artwork` | `/pages/collection/<accession number>` | Title, artists (a list, for works made together), year, category (one of eight), medium, dimensions, edition, accession number, credit line, images, themes, about the work, the edition in the Shop, shown in (exhibitions) |
 | `collection_group` | `/pages/browse/<handle>` | Name, kind (category, theme or grouping), introduction, works |
 | `document` | none (shown on the artist's page) | Title, cover (an image), file (the PDF, or the photograph itself). An artist's Documents field lists them (DS-63) |

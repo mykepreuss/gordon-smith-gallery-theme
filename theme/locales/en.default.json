@@ -22,6 +22,7 @@
     "menu": "Menu",
     "main_nav": "Main",
     "current_section": ", current section",
+    "open_visit": ". Plan your visit",
     "contact": "Contact",
     "search": "Search",
     "cart": "Cart ({{ count }})"
@@ -215,6 +216,7 @@
   },
   "collection": {
     "works_heading": "Works in the collection",
+    "about_artist": "About {{ name }}",
     "works_count": {
       "one": "{{ count }} work",
       "other": "{{ count }} works"

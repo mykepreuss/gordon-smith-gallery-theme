@@ -656,3 +656,27 @@ Support Artists for Kids now goes to the standard page template at release (`rel
 **Effect on the review theme:** its Browse button jumps nowhere until it has the new section id (`theme/sections/gs-collection-ways.liquid`, `id="collection-browse"`); push `main` to it after this branch merges.
 
 **Undo:** set both page fields back from the snapshot; the six new groups can stay or be deleted.
+
+## 2026-09-28: the menu by what visitors come to do (P-50 to P-57)
+
+**Why:** Michael, 2026-09-28: "Proceed with implementing this new navigation and IA" (`proposals/navigation-review.md`).
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (connector: gordonsmithgallery.com); the live theme 183162372393 reads `new-website-menu-1` in its header and no page fields or entries (`baseline/theme/`, and the live pages fetched 2026-09-28). No menu with the handles `new-theme-main-2` or `new-theme-explore-2`; the artist definition had no `about_page` field. Before-snapshot: `snapshots/navigation-2026-09-28-before.json`.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| New menu `new-theme-main-2`, "Main menu (new theme, 2026-09-28)": Exhibitions, Collection, Programs (with its three groups), Support, About, Shop | Connector | `menuCreate`, `gid://shopify/Menu/305944068393`; input `created/navigation-menus-input.json` from `navigation.py`. The group title "Scholarships and awards" links to "#" |
+| New menu `new-theme-explore-2`, "Footer: Explore (new theme, 2026-09-28)" | Connector | `menuCreate`, `gid://shopify/Menu/305944330537` |
+| Artist definition: new field About page (`about_page`, page reference) | Connector | `metaobjectDefinitionUpdate` on `gid://shopify/MetaobjectDefinition/23770661161` |
+| Gordon Smith's artist entry: About page is Gordon and Marion | Connector | `metaobjectUpdate` on `gid://shopify/Metaobject/608899105065` |
+| Donate and Gordon and Marion: eyebrow "The Smith Foundation" (links back, DS-80); Gordon and Marion's button "See Gordon Smith's works" to `/pages/artists/gordon-smith` | Connector | `metafieldsSet` on `gid://shopify/Page/155885863209` and `gid://shopify/Page/155692957993` (`custom.eyebrow`, `custom.cta`). The link field needs a full address; `gs-url` makes it relative |
+
+Not changed: the review menus `new-theme-main` and `new-theme-explore`, which the review theme reads until this merges. The three Foundation pages planned in `proposals/smith-foundation-site.md` aren't made here; they join the new menu when they are (`navigation.py`, `LATER`), and the Foundation page's gala and scholarship cards get their links then.
+
+**Checked after:** on the development theme 184755814697 (`theme dev` on port 9393, this branch): the bar at 1200 with each programme's logo and at 1280, 1366 and 1440, the drawer at 768 and 375, keyboard, and 33 pages each marking one section or none; the crumb "The Smith Foundation" on Donate and Gordon and Marion; "See Gordon Smith's works" on Gordon and Marion; "About Gordon Smith" on his artist page, and nothing on an artist without an About page. On gordonsmithgallery.com: the home page, Donate, Gordon and Marion and `/pages/artists/gordon-smith` unchanged (live theme, old header menu, no crumb or button).
+
+**Effect on the live site:** none. The live theme doesn't read these menus, page fields or entries.
+
+**Effect on the review theme:** none until this branch merges and `main` is pushed to it; then its header and footer read the new menus.
+
+**Undo:** point `sections/header-group.json` and `footer-group.json` back at `new-theme-main` and `new-theme-explore`, then delete the two new menus; clear `custom.eyebrow` on the two pages and `custom.cta` on Gordon and Marion (neither had a value before); clear Gordon Smith's About page and delete the `about_page` field from the artist definition.

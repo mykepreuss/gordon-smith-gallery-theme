@@ -1,0 +1,215 @@
+{
+ "main": {
+  "title": "Main menu (new theme, 2026-09-28)",
+  "handle": "new-theme-main-2",
+  "items": [
+   {
+    "title": "Exhibitions",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155763999017"
+   },
+   {
+    "title": "Collection",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155720548649",
+    "items": [
+     {
+      "title": "The collection",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155720548649"
+     },
+     {
+      "title": "Artists",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/140886573353"
+     }
+    ]
+   },
+   {
+    "title": "Programs",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155718943017",
+    "items": [
+     {
+      "title": "Upcoming events",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155669168425"
+     },
+     {
+      "title": "Public programs",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155718943017",
+      "items": [
+       {
+        "title": "Speaker series",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/155719434537"
+       },
+       {
+        "title": "Music at the Smith",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/155719696681"
+       },
+       {
+        "title": "Explore + Create",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/155720089897"
+       },
+       {
+        "title": "Art in Good Company",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/155720253737"
+       }
+      ]
+     },
+     {
+      "title": "Artists for Kids",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155720810793",
+      "items": [
+       {
+        "title": "Classes and camps",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/165837734185"
+       },
+       {
+        "title": "Schools and teachers",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/165837766953"
+       }
+      ]
+     },
+     {
+      "title": "Scholarships and awards",
+      "type": "HTTP",
+      "url": "#",
+      "items": [
+       {
+        "title": "Artists for Kids awards",
+        "type": "PAGE",
+        "resourceId": "gid://shopify/Page/165838225705"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Support",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155885863209",
+    "items": [
+     {
+      "title": "Give to the Smith Foundation",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155885863209"
+     },
+     {
+      "title": "Give to Artists for Kids",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/165838258473"
+     },
+     {
+      "title": "Volunteer",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155902738729"
+     }
+    ]
+   },
+   {
+    "title": "About",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155687813417",
+    "items": [
+     {
+      "title": "About the gallery",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155687813417"
+     },
+     {
+      "title": "Plan your visit",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155670151465"
+     },
+     {
+      "title": "Gordon and Marion Smith",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155692957993"
+     },
+     {
+      "title": "The Smith Foundation",
+      "type": "PAGE",
+      "resourceId": "gid://shopify/Page/155705409833"
+     }
+    ]
+   },
+   {
+    "title": "Shop",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155762786601"
+   }
+  ]
+ },
+ "explore": {
+  "title": "Footer: Explore (new theme, 2026-09-28)",
+  "handle": "new-theme-explore-2",
+  "items": [
+   {
+    "title": "Exhibitions",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155763999017"
+   },
+   {
+    "title": "Collection",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155720548649"
+   },
+   {
+    "title": "Programs",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155718943017"
+   },
+   {
+    "title": "Artists for Kids",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155720810793"
+   },
+   {
+    "title": "Support",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155885863209"
+   },
+   {
+    "title": "About",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155687813417"
+   },
+   {
+    "title": "Shop",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/155762786601"
+   },
+   {
+    "title": "Frequently asked questions",
+    "type": "PAGE",
+    "resourceId": "gid://shopify/Page/154942865705"
+   }
+  ]
+ },
+ "later": [
+  {
+   "page": "/pages/smith-foundation-scholarships",
+   "title": "Smith Foundation scholarships",
+   "where": "Programs, Scholarships and awards, first"
+  },
+  {
+   "page": "/pages/brilliance-gala",
+   "title": "Brilliance Gala",
+   "where": "Support, after Give to Artists for Kids"
+  },
+  {
+   "page": "/pages/smith-foundation-supporters",
+   "title": "Supporters",
+   "where": "Support, last"
+  }
+ ]
+}

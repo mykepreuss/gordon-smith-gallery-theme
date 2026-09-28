@@ -4,8 +4,9 @@
   Artist: a link back to the Artists page, the name, the other names the artist is known by (a
   Haida or traditional name, the full name), then nationality or Nation and life dates, and the
   biography when there is one, with the portrait beside them. No link out to the artist's website
-  (DS-63): the page is about their work here. Their documents follow the works
-  (gs-artist-documents).
+  (DS-63): the page is about their work here. A page on this site about the artist's life (the
+  entry's About page field: Gordon and Marion for Gordon Smith) gets a link, "About Gordon Smith"
+  (P-57). Their documents follow the works (gs-artist-documents).
 
   Grouping: a link back to the Permanent Collection page, the name and the introduction.
 {%- endcomment -%}
@@ -63,6 +64,11 @@
           {%- endif -%}
           {%- if metaobject.biography.value != blank -%}
             <div class="gs-prose">{%- capture html -%}{{ metaobject.biography | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+          {%- endif -%}
+          {%- assign about = metaobject.about_page.value -%}
+          {%- if about.url != blank -%}
+            {%- assign about_name = title | escape -%}
+            <p><a class="gs-cta-link" href="{{ about.url }}">{{ 'collection.about_artist' | t: name: about_name }}</a></p>
           {%- endif -%}
         </div>
         {%- if has_aside -%}

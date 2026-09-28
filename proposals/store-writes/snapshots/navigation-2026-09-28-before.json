@@ -1,0 +1,76 @@
+{
+ "taken": "2026-09-28, through the Shopify connector, store ed35ee-ea.myshopify.com",
+ "menus_existing_handles": [
+  "main-menu",
+  "footer",
+  "customer-account-main-menu",
+  "footer-menu-copy",
+  "new-website-menu-1",
+  "new-theme-main",
+  "new-theme-explore",
+  "new-theme-legal"
+ ],
+ "note_menus": "new-theme-main-2 and new-theme-explore-2 don't exist. The review menus new-theme-main (gid://shopify/Menu/305860739369) and new-theme-explore (gid://shopify/Menu/305860935977) are not changed by this work; their state on 2026-09-28 is below.",
+ "new_theme_main": {
+  "id": "gid://shopify/Menu/305860739369",
+  "order": [
+   "Exhibitions: On now, Upcoming, Past exhibitions",
+   "Collection: The collection, Artists",
+   "Programs: Public programs, Upcoming events, Speaker series, Music at the Smith, Explore + Create, Art in Good Company",
+   "About: About the gallery, Plan your visit, Volunteer",
+   "Artists for Kids: About Artists for Kids, Classes and camps, Schools and teachers, Awards and scholarships, Support Artists for Kids",
+   "Smith Foundation: About the Foundation, Gordon and Marion, Donate",
+   "Shop: Limited editions, 2026 Fall Portfolio, 2026 Spring Portfolio, 2025 Fall Portfolio, 2025 Spring Portfolio, 2024 Fall Portfolio"
+  ]
+ },
+ "new_theme_explore": {
+  "id": "gid://shopify/Menu/305860935977",
+  "items": [
+   "Exhibitions /pages/on-now",
+   "Limited editions /pages/shop",
+   "Artists for Kids /pages/artists-for-kids",
+   "Frequently asked questions /pages/frequently-asked-questions"
+  ]
+ },
+ "pages": {
+  "gid://shopify/Page/155692957993": {
+   "handle": "gordon-and-marion",
+   "custom.eyebrow": null,
+   "custom.cta": null,
+   "custom.programme": "Smith Foundation"
+  },
+  "gid://shopify/Page/155885863209": {
+   "handle": "donate",
+   "custom.eyebrow": null,
+   "custom.cta": "{\"text\":\"Make a gift\",\"url\":\"https://gordonsmithgallery.com/pages/donate#donate-ways-to-give\"}",
+   "custom.programme": "Smith Foundation"
+  }
+ },
+ "artist_definition": {
+  "id": "gid://shopify/MetaobjectDefinition/23770661161",
+  "field_keys": [
+   "name",
+   "sort_name",
+   "full_name",
+   "other_names",
+   "life_dates",
+   "nationality",
+   "biography",
+   "portrait",
+   "website",
+   "exhibitions",
+   "works",
+   "documents"
+  ],
+  "about_page": "not defined"
+ },
+ "gordon_smith_entry": {
+  "id": "gid://shopify/Metaobject/608899105065",
+  "updatedAt": "2026-09-27T18:39:27Z"
+ },
+ "foundation_pages_planned": {
+  "smith-foundation-scholarships": "does not exist",
+  "brilliance-gala": "does not exist",
+  "smith-foundation-supporters": "does not exist"
+ }
+}

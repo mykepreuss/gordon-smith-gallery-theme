@@ -200,3 +200,13 @@ Questions from the review of every page, 2026-09-27. Until the gallery answers, 
 | 8.12 | Past exhibitions: are the Paths and Unfixed key images artworks or photos of the room? If photos, clear key_image_is_artwork on both (store write), update migration.py:281, 284 and preview.html:301. |
 | 8.13 | From the Ground: list one entry per multi-part work (eight identical Charlene Vickers tiles today), or keep the parts? |
 | 8.14 | Artists for Kids team: four separate portraits at least 800 px wide (then a people grid) and meanwhile a copy of the composite without its baked-in white frame? |
+
+## 9. The main menu (`proposals/navigation-review.md`, P-50 to P-57)
+
+The menu is now sorted by what visitors come to do: Exhibitions, Collection, Programs, Support, About, Shop (2026-09-28). The words are ours until the gallery confirms them.
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 9.1 | Menu labels: "Support"; "Give to the Smith Foundation" (Donate) and "Give to Artists for Kids" (Support Artists for Kids), which say where each gift goes; "Scholarships and awards", with "Smith Foundation scholarships" and "Artists for Kids awards" (the page keeps its title, Awards and Scholarships); "Gordon and Marion Smith"; "About the gallery"; "Upcoming events" | As written |
+| 9.2 | Gordon and Marion's button "See Gordon Smith's works", and "About Gordon Smith" on his artist page, linking to Gordon and Marion | As written |
+| 9.3 | The footer's "Support" goes to the Foundation's Donate page, which links on to Support Artists for Kids. Is that the right first stop, or should it be the page that shows both? | Donate |
