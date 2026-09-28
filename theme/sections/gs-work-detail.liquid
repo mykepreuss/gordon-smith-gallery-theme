@@ -3,7 +3,9 @@
   without price or cart. Every image whole on the mat; beside it the museum label (artists linking
   to their pages, title in a <cite>, year) and the label's facts, one to a row under rules. The
   edition in the Shop, when this is the collection's copy of one, sits in a panel like the framing
-  offer. "About the work" follows at reading width under both columns.
+  offer. "About the work" follows at reading width under both columns. Below 990 px the first view
+  leads, then the label, then the other views (DS-110); from 990 px on a tall screen the label stays
+  in view beside a long run of views (DS-112).
 
   The facts link out to where the work belongs: the exhibitions that showed it, and its category and
   themes when they have a page (a Collection grouping with the same handle).
@@ -18,17 +20,17 @@
 -%}
 <div class="gs-container--wide gs-container">
   <div class="gs-artwork{% unless has_image %} gs-artwork--text{% endunless %}">
-    {%- if has_image -%}
-      <ul class="gs-artwork__media">
-        {%- for image in work.images.value -%}
-          <li>
-            {%- render 'gs-media', image: image, preset: 'detail', priority: forloop.first, mode: 'artwork', shape: 'lg' -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
+    {%- comment -%}
+      The first view, then the label, then the other views: below 990 px the label follows the
+      work, however many views it has (DS-110). Each mat takes its view's shape (DS-111).
+    {%- endcomment -%}
+    {%- for image in work.images.value limit: 1 -%}
+      <div class="gs-artwork__lead"{% if image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
+        {%- render 'gs-media', image: image, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg' -%}
+      </div>
+    {%- endfor -%}
 
-    <div class="gs-artwork__info">
+    <div class="gs-artwork__info{% if has_image %} gs-artwork__info--follow{% endif %}">
       <div class="gs-artwork__head">
         {%- if settings.collection_page != blank -%}
           <p class="gs-crumb"><a href="{{ settings.collection_page.url }}">{{ settings.collection_page.title | escape }}</a></p>
@@ -132,6 +134,16 @@
         </section>
       {%- endif -%}
     </div>
+
+    {%- if work.images.value.size > 1 -%}
+      <ul class="gs-artwork__media">
+        {%- for image in work.images.value offset: 1 -%}
+          <li{% if image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
+            {%- render 'gs-media', image: image, preset: 'detail', mode: 'artwork', shape: 'lg' -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
 
     {%- if work.about.value != blank -%}
       <section class="gs-artwork__about" aria-labelledby="{{ id }}-about">

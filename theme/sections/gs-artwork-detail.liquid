@@ -43,26 +43,45 @@
     endif
   endfor
 -%}
+{%- comment -%}
+  The first view, then the label, price and action, then the other views: below 990 px the action
+  follows the work, however many views it has (DS-110). Each mat takes its view's shape (DS-111).
+{%- endcomment -%}
+{%- liquid
+  assign image_number = 0
+  assign lead_view = ''
+  assign more_views = ''
+-%}
+{%- for media in product.media -%}
+  {%- if media.media_type == 'image' -%}
+    {%- liquid
+      assign image_number = image_number | plus: 1
+      assign this_alt = art_alt
+      if image_total > 1
+        assign view = 'products.view_of' | t: number: image_number, total: image_total
+        assign this_alt = art_alt | append: '. ' | append: view
+      endif
+      assign art_ratio = media.preview_image.aspect_ratio
+    -%}
+    {%- if image_number == 1 -%}
+      {%- capture lead_view -%}
+        <div class="gs-artwork__lead"{% if art_ratio %} style="--gs-art-ratio: {{ art_ratio }}"{% endif %}>
+          {%- render 'gs-media', image: media, preset: 'detail', priority: true, mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title -%}
+        </div>
+      {%- endcapture -%}
+    {%- else -%}
+      {%- capture more_views -%}
+        {{- more_views -}}
+        <li{% if art_ratio %} style="--gs-art-ratio: {{ art_ratio }}"{% endif %}>
+          {%- render 'gs-media', image: media, preset: 'detail', mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title -%}
+        </li>
+      {%- endcapture -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
 <div class="gs-container--wide gs-container">
-  <div class="gs-artwork">
-    <ul class="gs-artwork__media">
-      {%- assign image_number = 0 -%}
-      {%- for media in product.media -%}
-        {%- if media.media_type == 'image' -%}
-          {%- liquid
-            assign image_number = image_number | plus: 1
-            assign this_alt = art_alt
-            if image_total > 1
-              assign view = 'products.view_of' | t: number: image_number, total: image_total
-              assign this_alt = art_alt | append: '. ' | append: view
-            endif
-          -%}
-          <li>
-            {%- render 'gs-media', image: media, preset: 'detail', priority: forloop.first, mode: 'artwork', shape: 'lg', alt: this_alt, title: product.title -%}
-          </li>
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
+  <div class="gs-artwork{% if image_total == 0 %} gs-artwork--text{% endif %}">
+    {{- lead_view -}}
 
     <div class="gs-artwork__info">
       <div class="gs-artwork__head">
@@ -150,6 +169,10 @@
       {%- endif -%}
 
     </div>
+
+    {%- if more_views != blank -%}
+      <ul class="gs-artwork__media">{{- more_views -}}</ul>
+    {%- endif -%}
 
     {%- liquid
       assign disclosures = product.metafields.shopify.disclosure.value

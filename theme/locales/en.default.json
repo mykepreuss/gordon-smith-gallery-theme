@@ -139,7 +139,8 @@
     "checkout": "Check out",
     "subtotal": "Subtotal: {{ amount }}",
     "taxes_shipping": "Taxes and shipping are calculated at checkout.",
-    "empty": "Your cart is empty."
+    "empty": "Your cart is empty.",
+    "add_frame": "Add its frame, {{ price }}"
   },
   "search": {
     "title": "Search",

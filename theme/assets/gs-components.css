@@ -1003,11 +1003,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* Artwork hero: the work is never covered, cropped or rounded. */
 .gs-hero--artwork { gap: var(--gs-space-3); }
 /* The mat follows the work's own shape, between 4:5 and 4:3, so a wide work isn't floating in a
-   square of empty mat (DS-55). --gs-art-ratio is the image's ratio, set by the hero. */
-.gs-hero--artwork .gs-hero__media {
+   square of empty mat (DS-55), in the artwork hero and on the work and product pages (DS-111).
+   --gs-art-ratio is the image's ratio, set by the hero or by each view. Tiles stay 1:1. Each place
+   caps the mat's height with its own token; the work is never cropped (DS-05). */
+.gs-hero--artwork .gs-hero__media,
+:is(.gs-artwork__lead, .gs-artwork__media) .gs-media--artwork {
   --gs-media-ratio: max(0.8, min(1.3333, var(--gs-art-ratio, 1)));
-  max-height: var(--gs-hero-art-max-h);
 }
+.gs-hero--artwork .gs-hero__media { max-height: var(--gs-hero-art-max-h); }
 /* Until the box moves beside it, the credit sits straight under the work it names. */
 .gs-hero--artwork .gs-hero__caption { margin-block-start: 0; }
 .gs-hero--artwork .gs-hero__box { margin: var(--gs-space-3) 0 0; }
@@ -1844,18 +1847,43 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-logos img { display: block; height: var(--gs-funder-logo-h); width: auto; }
 
 /* ---------- Artwork detail (product) ---------- */
-/* The work whole on the mat; beside it the museum label, price and one action. */
+/* The work whole on the mat; beside it the museum label, price and one action.
+   The first view (.gs-artwork__lead) comes first, then the label (.gs-artwork__info), then the
+   other views (.gs-artwork__media), then About the work. Below 990 px that is the reading order, so
+   the label, price and action follow the first view however many views there are (DS-110). From
+   990 px the views run down the left column with the label beside them (DS-38); with no row gap an
+   empty row of other views adds no space. */
 
 .gs-artwork {
   display: grid;
+  grid-template-columns: minmax(0, 1fr); /* a long word in the description can't widen the page past the screen */
   gap: var(--gs-space-7) var(--gs-gutter);
   margin-block: var(--gs-space-5) var(--gs-section-space);
 }
 @media (min-width: 990px) {
-  .gs-artwork { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; }
+  .gs-artwork {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas: "lead info" "more info" "about about";
+    row-gap: 0;
+    align-items: start;
+  }
+  .gs-artwork__lead { grid-area: lead; }
+  .gs-artwork__info { grid-area: info; }
+  .gs-artwork__media { grid-area: more; padding-block-start: var(--gs-space-4); }
+  .gs-artwork__about { grid-area: about; margin-block-start: var(--gs-space-7); }
 }
+/* A view stops short of the screen's height, so the whole work shows at once (DS-111). The mat
+   keeps the column's width (without it the cap would narrow a tall mat), and the work sits whole
+   in its middle. */
+:is(.gs-artwork__lead, .gs-artwork__media) .gs-media--artwork { width: 100%; max-height: var(--gs-artwork-detail-max-h); }
 .gs-artwork__media { display: grid; gap: var(--gs-space-4); margin: 0; padding: 0; list-style: none; }
 .gs-artwork__info { display: grid; align-content: start; justify-items: start; gap: var(--gs-space-5); }
+/* On a tall enough screen a work's label stays in view beside a long run of views, ending with
+   them, before About the work (DS-112). Only the work page: its label has no form and always fits
+   (537 to 672 px). The header itself never sticks (DS-23). */
+@media (min-width: 990px) and (min-height: 50rem) {
+  .gs-artwork__info--follow { position: sticky; top: var(--gs-space-5); }
+}
 .gs-artwork__info > * { margin: 0; }
 /* The head: the crumb (work pages), the museum label and its facts, read as one group, 16 px apart
    as on every other detail page's head. */
@@ -1866,6 +1894,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* About the work: the description at reading width under both columns (DS-38). */
 .gs-artwork__about {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   max-width: var(--gs-measure);
   border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
 }
@@ -1873,7 +1902,6 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* Rule, caps label, text: spaced as a fact in the details list (.gs-details__item). */
 :is(.gs-artwork__about, .gs-about__credits) { padding-block-start: var(--gs-space-3); row-gap: var(--gs-space-2); }
 :is(.gs-artwork__about, .gs-about__credits) > .gs-label ~ * + * { margin-block-start: var(--gs-space-2); }
-@media (min-width: 990px) { .gs-artwork__about { grid-column: 1 / -1; } }
 
 /* Museum label: artist in bold, title in italics (a real <cite>), then year. Sentence case (DS-10). */
 .gs-artwork-label {
@@ -1974,13 +2002,18 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-cart__item { grid-template-columns: var(--gs-thumb) minmax(0, 1fr) auto; align-items: center; }
   .gs-cart__controls { grid-column: auto; }
 }
+/* A print's frame offered under its row, beside the thumbnail's column (DS-125). */
+.gs-cart__offer { grid-column: 2 / -1; }
 .gs-cart__foot { display: grid; gap: var(--gs-space-6) var(--gs-gutter); margin-block-start: var(--gs-space-6); }
 .gs-cart__summary { display: grid; justify-items: start; align-content: start; gap: var(--gs-space-4); }
 .gs-cart__summary > * { margin: 0; }
 .gs-cart__subtotal { font-size: var(--gs-text-deck); font-weight: var(--gs-weight-bold); line-height: var(--gs-leading-deck); }
+/* The summary comes first, so below 990 px Check out follows the works and the policy follows it;
+   from 990 px the policy takes the left and the summary the right (DS-124). */
 @media (min-width: 990px) {
   .gs-cart__foot { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; }
-  .gs-cart__summary { justify-items: end; text-align: end; }
+  .gs-cart__summary { grid-column: 2; grid-row: 1; justify-items: end; text-align: end; }
+  .gs-cart__foot > :not(.gs-cart__summary) { grid-column: 1; grid-row: 1; }
 }
 
 /* ---------- Pagination and search results ---------- */
@@ -2233,7 +2266,7 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 
 /* A work's page: the product page's layout (DS-38) without price or cart. The label's facts are a
    list under rules, one to a row; with no image, the label takes the width. */
-.gs-artwork--text { grid-template-columns: minmax(0, 1fr); }
+.gs-artwork--text { grid-template-columns: minmax(0, 1fr); grid-template-areas: "info" "about"; }
 .gs-artwork--text .gs-artwork__info { max-width: var(--gs-measure); }
 
 /* Ways into the collection: groupings as cards with a work on the mat, then categories and themes

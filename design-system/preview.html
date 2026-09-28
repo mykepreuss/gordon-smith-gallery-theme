@@ -483,9 +483,9 @@
 
 <!-- ============ ARTWORK DETAIL (product: sections/gs-artwork-detail, snippets/gs-artwork-label) ============ -->
 <div class="gs-container--wide gs-container">
-  <p class="pv-note pv-note--before">Artwork detail, the product page: Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store. Beside the work sits only what it takes to decide and buy: a crumb back to the Shop (DS-102), label, medium, edition, size, price, the three colour variants (named without a price, since all three cost the same), the archive note and the frame offer in a panel on tint. The description follows under About the work, at reading width, with any disclosures (DS-38). Its two paragraphs about the work show here; on the store it also opens with lines that repeat the label. The label is the page&rsquo;s H1 in the theme, and the select appears only when a work has more than one variant, named after the product&rsquo;s option as the store calls it. No limited edition has a disclosure yet, so the one shown has the default label and stand-in text. Images are placeholders.</p>
+  <p class="pv-note pv-note--before">Artwork detail, the product page: Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store. The first view leads; below 990 px the label, price and action follow it, then the other views (DS-110). Each mat takes the work&rsquo;s shape between 4:5 and 4:3 (DS-111): the portrait first view here gets a 4:5 mat. Beside the work sits only what it takes to decide and buy: a crumb back to the Shop (DS-102), label, medium, edition, size, price, the three colour variants (named without a price, since all three cost the same), the archive note and the frame offer in a panel on tint. The description follows under About the work, at reading width, with any disclosures (DS-38). Its two paragraphs about the work show here; on the store it also opens with lines that repeat the label. The label is the page&rsquo;s H1 in the theme, and the select appears only when a work has more than one variant, named after the product&rsquo;s option as the store calls it. No limited edition has a disclosure yet, so the one shown has the default label and stand-in text. Images are placeholders.</p>
   <div class="gs-artwork">
-    <ul class="gs-artwork__media" id="artwork-media"></ul>
+    <div class="gs-artwork__lead" id="artwork-lead"></div>
     <div class="gs-artwork__info">
       <div class="gs-artwork__head">
         <p class="gs-crumb"><a href="#shop">Shop</a></p>
@@ -520,6 +520,7 @@
         </form>
       </section>
     </div>
+    <ul class="gs-artwork__media" id="artwork-media"></ul>
     <section class="gs-artwork__about" aria-labelledby="pv-about-work">
       <h3 class="gs-label" id="pv-about-work">About the work</h3>
       <div class="gs-prose">
@@ -578,25 +579,45 @@
               <a class="gs-cta-link" href="#x">Remove<span class="gs-visually-hidden">: Marlene Yuen Short Gumboots FRAME</span></a>
             </div>
           </li>
+          <li class="gs-cart__item">
+            <div class="gs-media gs-media--artwork gs-shape-sm" id="cart-thumb-3"></div>
+            <div class="gs-cart__details">
+              <h3 class="gs-cart__name" id="pv-cart-item-3">
+                <a class="gs-link" href="#x"><span class="gs-cart__label"><span class="gs-artwork-label__artist">Gordon Smith</span> <cite>Pender Harbour</cite>, 2006</span></a>
+              </h3>
+              <p class="gs-artwork-tile__price">$2,200.00</p>
+            </div>
+            <div class="gs-cart__controls">
+              <div class="gs-field">
+                <label class="gs-field__label" for="pv-cart-qty-3">Quantity<span class="gs-visually-hidden">: Pender Harbour</span></label>
+                <input class="gs-input" id="pv-cart-qty-3" type="number" name="updates[]" value="1" min="0" inputmode="numeric">
+              </div>
+              <a class="gs-cta-link" href="#x">Remove<span class="gs-visually-hidden">: Gordon Smith, Pender Harbour, 2006</span></a>
+            </div>
+            <div class="gs-cart__offer">
+              <button class="gs-button gs-button--secondary" type="submit" form="pv-cart-frame-3" aria-describedby="pv-cart-item-3">Add its frame, $575.00</button>
+            </div>
+          </li>
         </ul>
         <div class="gs-cart__foot">
-          <div>
-            <div class="gs-prose">
-              <ul><li>All sales are final</li><li>Shipping costs confirmed at checkout.</li></ul>
-              <p>By completing your purchase, you agree to our <a href="#x" title="Terms of Service and Privacy Policy">Terms of Service and Privacy Policy.</a></p>
-            </div>
-          </div>
           <div class="gs-cart__summary">
-            <p class="gs-cart__subtotal">Subtotal: $396.00</p>
+            <p class="gs-cart__subtotal">Subtotal: $2,596.00</p>
             <p class="gs-meta">Taxes and shipping are calculated at checkout.</p>
             <div class="gs-actions">
               <button class="gs-button gs-button--secondary" type="submit" name="update">Update cart</button>
               <button class="gs-button" type="submit" name="checkout">Check out</button>
             </div>
           </div>
+          <div>
+            <div class="gs-prose">
+              <ul><li>All sales are final</li><li>Shipping costs confirmed at checkout.</li></ul>
+              <p>By completing your purchase, you agree to our <a href="#x" title="Terms of Service and Privacy Policy">Terms of Service and Privacy Policy.</a></p>
+            </div>
+          </div>
         </div>
       </form>
-      <p class="pv-note">The print above, in its Light variant, with its frame. The frame has no label fields, so its product title shows instead, as for any product whose fields aren&rsquo;t filled yet. The sales policy is the cart&rsquo;s setting; three of its seven lines show here. The page header is a lead-in: it sets its own gap to the section after it (DESIGN.md §5.1). A plain form, so the cart works without JavaScript.</p>
+      <form id="pv-cart-frame-3" action="#cart" method="post" onsubmit="return false"></form>
+      <p class="pv-note">The print above, in its Light variant, with its frame, and a second print whose frame isn&rsquo;t in the cart yet: its row offers the frame (DS-125). The subtotal and Check out come before the policy below 990 px; from 990 px the policy sits on the left (DS-124). The frame has no label fields, so its product title shows instead, as for any product whose fields aren&rsquo;t filled yet. The sales policy is the cart&rsquo;s setting; three of its seven lines show here. The page header is a lead-in: it sets its own gap to the section after it (DESIGN.md §5.1). A plain form, so the cart works without JavaScript.</p>
     </div>
   </div>
 </section>
@@ -1058,8 +1079,8 @@
 <section id="work" aria-labelledby="work-title">
   <div class="gs-container--wide gs-container">
     <div class="gs-artwork">
-      <ul class="gs-artwork__media" id="work-media"></ul>
-      <div class="gs-artwork__info">
+      <div class="gs-artwork__lead" id="work-media" style="--gs-art-ratio: 1.5"></div>
+      <div class="gs-artwork__info gs-artwork__info--follow">
         <div class="gs-artwork__head">
           <p class="gs-crumb"><a href="#collection">Permanent Collection</a></p>
           <h2 class="gs-artwork-label" id="work-title"><span class="gs-artwork-label__artist"><a href="#artist">Gordon Smith</a></span> <cite>Pender Harbour</cite>, 2006</h2>
@@ -1080,7 +1101,7 @@
         </section>
       </div>
     </div>
-    <p class="pv-note">A work&rsquo;s page (DS-62): the product page&rsquo;s layout without price or cart. Every image whole on the mat; beside it, &ldquo;Permanent Collection&rdquo; linking back, the museum label with the artist linking to their page, then its facts one to a row. Shown in, when the work was in an exhibition here, links the exhibitions (Winter Pond&rsquo;s says From the Ground); Browse links its category and themes. When the work is also an edition in the Shop, a panel on tint names it with its price and a When the work is also an edition in the Shop, a panel on tint links to it.ldquo;See the editionWhen the work is also an edition in the Shop, a panel on tint links to it.rdquo; link. About the work follows at reading width when there is text. The label is the page&rsquo;s H1 in the theme. Gordon Smith&rsquo;s Pender Harbour from the store; images are placeholders.</p>
+    <p class="pv-note">A work&rsquo;s page (DS-62): the product page&rsquo;s layout without price or cart. Every image whole on the mat; beside it, &ldquo;Permanent Collection&rdquo; linking back, the museum label with the artist linking to their page, then its facts one to a row. Shown in, when the work was in an exhibition here, links the exhibitions (Winter Pond&rsquo;s says From the Ground); Browse links its category and themes. When the work is also an edition in the Shop, a panel on tint names it with its price and a &ldquo;See the edition&rdquo; link. The wide work gets a 4:3 mat (DS-111); a work with more views shows them after the label below 990 px, and from 990 px on a tall screen the label stays in view beside them (DS-110, DS-112). About the work follows at reading width when there is text. The label is the page&rsquo;s H1 in the theme. Gordon Smith&rsquo;s Pender Harbour from the store; images are placeholders.</p>
   </div>
   <section class="gs-section gs-surface-paper" aria-labelledby="work-more">
     <div class="gs-container">
@@ -1513,7 +1534,7 @@
   document.getElementById("artist-tiles").innerHTML = gordon.map((w, i) => workTile(w, i, { tag: "h4", hideArtist: true })).join("");
   document.getElementById("work-more-tiles").innerHTML = gordon.slice(0, 3).map((w, i) => workTile(w, i, { tag: "h4" })).join("");
   document.getElementById("search-collection").innerHTML = smith.map((w, i) => workTile(w, i, { tag: "h4" })).join("");
-  document.getElementById("work-media").innerHTML = `<li><div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[1])}" alt="Placeholder for Pender Harbour by Gordon Smith"></div></li>`;
+  document.getElementById("work-media").innerHTML = `<div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[1])}" alt="Placeholder for Pender Harbour by Gordon Smith"></div>`;
 
   // Ways in: the groupings as cards with their first work, then categories and themes with counts.
   const worksCount = n => `${n.toLocaleString("en-CA")} ${n === 1 ? "work" : "works"}`;
@@ -1576,10 +1597,14 @@
 
   // Artwork detail: every image of the work, whole on the mat. The cart repeats the first as a thumbnail.
   const frame = svg(600, 600, "<rect width='600' height='600' fill='#f4f1ea'/><rect x='90' y='90' width='420' height='420' fill='none' stroke='#231f20' stroke-width='36'/>");
-  document.getElementById("artwork-media").innerHTML = [art[2], art[0]].map(([w, h, b], i) => `
-    <li><div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(w, h, b)}" alt="Placeholder for ${i ? "a second view of " : ""}Short Gumboots by Marlene Yuen"></div></li>`).join("");
-  document.getElementById("cart-thumb-1").innerHTML = `<img src="${svg(...art[2])}" alt="">`;
+  // The first view leads, the others follow the label (DS-110); each mat takes its view's shape (DS-111).
+  document.getElementById("artwork-lead").style.setProperty("--gs-art-ratio", art[0][0] / art[0][1]);
+  document.getElementById("artwork-lead").innerHTML = `<div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[0])}" alt="Placeholder for Short Gumboots by Marlene Yuen. View 1 of 2"></div>`;
+  document.getElementById("artwork-media").innerHTML = `
+    <li style="--gs-art-ratio: 1"><div class="gs-media gs-media--artwork gs-shape-lg"><img src="${svg(...art[2])}" alt="Placeholder for Short Gumboots by Marlene Yuen. View 2 of 2"></div></li>`;
+  document.getElementById("cart-thumb-1").innerHTML = `<img src="${svg(...art[0])}" alt="">`;
   document.getElementById("cart-thumb-2").innerHTML = `<img src="${frame}" alt="">`;
+  document.getElementById("cart-thumb-3").innerHTML = `<img src="${svg(...art[1])}" alt="">`;
 
   // Artists for Kids: a programme group, document cards and lesson cards (the store's cards and lessons, 2026-09-27).
   const afk = ["Learning Guides", "Learning Kits and Outreach", "ArtReach Videos", "Professional Development"];
