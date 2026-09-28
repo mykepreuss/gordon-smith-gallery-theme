@@ -48,8 +48,8 @@
       }).catch(() => {});
     }
     count.textContent = count.dataset.text
-      .replace('{n}', String(index + 1))
-      .replace('{t}', String(items.length));
+      .replace('[n]', String(index + 1))
+      .replace('[t]', String(items.length));
   };
 
   const build = () => {

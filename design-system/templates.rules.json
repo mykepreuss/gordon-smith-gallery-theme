@@ -441,6 +441,11 @@
         "files": ["sections/gs-*.liquid", "snippets/gs-*.liquid"],
         "level": "warning",
         "message": "a grid or event list without role=\"list\"; Safari doesn't announce a list without bullets as one (DESIGN.md §6.5)"
+      },
+      "brace in an output tag": {
+        "pattern": "\\{\\{[^}]*\\}[^}]",
+        "files": ["sections/gs-*.liquid", "snippets/gs-*.liquid"],
+        "message": "a closing brace inside {{ }}: Shopify's Liquid ends the tag at the first one, even in a string, and refuses the file on upload (Theme Check doesn't see it); use another character"
       }
     },
     "hoverOutsideMedia": {
