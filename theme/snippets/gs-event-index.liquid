@@ -1,11 +1,14 @@
 {% doc %}
   Picks and orders event entries (content model part 5). Outputs comma-separated positions in
-  shop.metaobjects.event.values, soonest first. Read an event back with:
+  shop.metaobjects.event.values, soonest first. Read an event back inside the same paginate tag
+  (a plain loop stops at 50 entries, and the tag doesn't reach into a rendered snippet, DS-148):
 
-    for event in shop.metaobjects.event.values offset: n limit: 1
+    paginate shop.metaobjects.event.values by 250
+      for event in shop.metaobjects.event.values offset: n limit: 1
 
   An event drops off every list once it has ended (its end time, or its start time when it has
-  no end). Only active entries exist on the storefront. Reads up to 50 entries. With past, the
+  no end). Only active entries exist on the storefront. Reads the first 250 entries, A to Z by handle,
+  which is Shopify's order; the oldest ended events are removed before then (DS-148). With past, the
   events that have ended instead, newest first (the Past events page, DS-147).
 
   Pass one of for_page or exhibition, or neither for every upcoming event. (Not "page": inside a
@@ -23,6 +26,7 @@
   assign limit = limit | default: 50
   assign now = 'now' | date: '%s' | plus: 0
   assign keys = ''
+  paginate shop.metaobjects.event.values by 250
   for event in shop.metaobjects.event.values
     if for_page != blank
       if event.programme_page.value.id != for_page.id
@@ -47,6 +51,7 @@
     assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
     assign keys = keys | append: start_s | append: '-' | append: pos | append: ','
   endfor
+  endpaginate
 
   assign sorted = keys | split: ',' | sort
   if past

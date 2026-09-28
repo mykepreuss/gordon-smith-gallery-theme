@@ -7,6 +7,8 @@
   page the list's heading is for screen readers only: the page title already says it. The
   switcher above the list has the link to every event. On the page chosen as the Past events page
   it lists the events that have ended, newest first, without their tickets links (DS-147).
+  The lists read the first 250 event entries (DS-148). From 200 the theme editor says so on the
+  Upcoming events and Past events pages, so the oldest ended events are removed in time.
 {%- endcomment -%}
 {%- liquid
   assign all = false
@@ -56,13 +58,19 @@
       {%- endif -%}
       {%- if ids.size > 0 -%}
         <ul class="gs-events" role="list">
-          {%- for id in ids -%}
-            {%- assign n = id | plus: 0 -%}
-            {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-              {%- render 'gs-event', event: event, page_title: page.title, past: past -%}
+          {%- paginate shop.metaobjects.event.values by 250 -%}
+            {%- for id in ids -%}
+              {%- assign n = id | plus: 0 -%}
+              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                {%- render 'gs-event', event: event, page_title: page.title, past: past -%}
+              {%- endfor -%}
             {%- endfor -%}
-          {%- endfor -%}
+            {%- assign entries = paginate.items -%}
+          {%- endpaginate -%}
         </ul>
+        {%- if request.design_mode and all and entries >= 200 -%}
+          <p class="gs-editor-warning">There are {{ entries }} event entries, and the lists read the first 250. Delete the oldest ended events in Content, Metaobjects, Events, or set them to Draft.</p>
+        {%- endif -%}
       {%- elsif past -%}
         {%- assign empty_text = 'events.empty_past' | t -%}
         {%- assign empty_label = 'events.empty_programme_link' | t -%}
