@@ -94,7 +94,7 @@
     "upcoming": "Upcoming",
     "past": "Past",
     "all_past": "All past events",
-    "empty_current": "Nothing is on today.",
+    "empty_current": "Nothing is on this week.",
     "empty_upcoming": "No events are scheduled right now.",
     "empty_upcoming_link": "See what’s on now",
     "empty_past": "No past events to show yet.",
