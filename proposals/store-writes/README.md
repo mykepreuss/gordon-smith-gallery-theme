@@ -724,3 +724,19 @@ His card (`gid://shopify/Metaobject/608367083817`: name, "Director", portrait) s
 **Effect on the live site:** none from this write: the live theme doesn't read card groups. The live page's board is in the live theme's own template (`templates/page.the-smith-foundation.json` in Colorblock, as `baseline/theme/` has it), and the live theme is never written to from here (AGENTS.md). It keeps showing him until release, unless someone removes his block in the live theme's editor.
 
 **Undo:** put `gid://shopify/Metaobject/608367083817` back in the group's cards, ninth, from the snapshot.
+
+## 2026-09-28: Gordon and Marion's pull quote (DS-145)
+
+**Why:** Michael, 2026-09-28: "Yes, add the Effervescent pull quote", for the story layout (DS-145, PR #71).
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 (live) and the review theme 184767250729 (unpublished), rechecked at the review theme push earlier the same hour. The live theme doesn't read `custom.release_body` (none of `baseline/theme/` does), so this is a field value the live theme doesn't read ("Store writes before release"). Before-snapshot: `snapshots/gordon-and-marion-2026-09-28-before.json` (the field's value, last changed 21:15 UTC, unchanged when read again just before the write).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Gordon and Marion's staged text (`custom.release_body`, DS-39): the paragraph "Effervescent, wildly creative, endlessly youthful, energetic and hard-working. An infectious, …" wrapped as a quote, `<figure class="gs-quote"><blockquote>…</blockquote></figure>`, where it was. Every word, and everything else in the text, unchanged | Shopify connector (`metafieldsSet`) | `gid://shopify/Metafield/190392604426537` on `gid://shopify/Page/155692957993`, updated 22:39:46 UTC |
+
+**Checked after:** read back through the connector, the value is exactly the one intended, and its words match the snapshot's with the tags taken out. On the review theme the story shows it as a pull quote, offset left between the portrait (right) and the Magic video (right), with no Liquid error; the obituary paragraph and History video then flip, the video on the left.
+
+**Effect on the live site:** none. gordonsmithgallery.com/pages/gordon-and-marion returns 200 with the same text and no quote; the live theme shows the page's own text, which this didn't touch. At release the staged text replaces it (store-changes §8), quote and all.
+
+**Undo:** set `custom.release_body` on `gid://shopify/Page/155692957993` back to the snapshot's value (`metafieldsSet`, type `multi_line_text_field`).
