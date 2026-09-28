@@ -62,7 +62,7 @@ FOUNDATION_NEW = {"smith-foundation-scholarships", "brilliance-gala", "smith-fou
 HOLD_AT_RELEASE = {"smith-foundation-supporters"}
 NEW_PAGES = AFK_NEW | FOUNDATION_NEW
 # Story pages: long reads whose text is one column with its pictures set into it (DS-145, Proposed).
-STORY = {"gordon-and-marion", "brilliance-gala", "plan-your-visit"}
+STORY = {"gordon-and-marion", "brilliance-gala", "plan-your-visit", "donate"}
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",

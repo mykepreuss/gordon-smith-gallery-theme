@@ -3,7 +3,7 @@
   is one reading column with its pictures set into it (gs-story).
 
   Until release, pages keep their old template names (L-08), and the new theme has none of them, so
-  the story pages (Gordon and Marion, Brilliance Gala, Plan your visit) fall back to the default page template. They are recognised here by their handles
+  the story pages (Gordon and Marion, Brilliance Gala, Plan your visit, Donate) fall back to the default page template. They are recognised here by their handles
   too, so the review theme lays them out as they will be after release. After release the release
   script moves them to the story template: then delete the list.
 
@@ -13,7 +13,7 @@
 {% enddoc %}
 {%- liquid
   # The story pages before release (store-changes.md §3).
-  assign handles = 'gordon-and-marion,brilliance-gala,plan-your-visit' | split: ','
+  assign handles = 'gordon-and-marion,brilliance-gala,plan-your-visit,donate' | split: ','
   assign result = false
   if template.suffix == 'story'
     assign result = true

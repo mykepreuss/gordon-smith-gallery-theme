@@ -898,6 +898,21 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-story__flow > ul.gs-points { display: block; }
 .gs-story__flow > ul.gs-points > li { display: flow-root; }
 .gs-story__flow > ul.gs-points > li + li { margin-block-start: var(--gs-space-5); }
+/* Gift amounts in a story answer the room they have (container query), not the screen: beside an
+   offset picture they stack, each amount beside its words, the amounts in one column (subgrid); with
+   the column to themselves they sit three across, as elsewhere (Donate's Ways to Support). */
+.gs-story__flow .gs-points > li { container-type: inline-size; }
+.gs-story__flow ul.gs-amounts { grid-template-columns: max-content minmax(0, 1fr); }
+.gs-story__flow .gs-amounts > li { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; column-gap: var(--gs-space-4); align-items: baseline; }
+.gs-story__flow .gs-amounts > li > strong:first-child { margin-block-end: 0; }
+@container (min-width: 34rem) {
+  .gs-story__flow ul.gs-amounts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .gs-story__flow .gs-amounts > li { display: block; grid-column: auto; }
+  .gs-story__flow .gs-amounts > li > strong:first-child { margin-block-end: var(--gs-space-2); }
+}
+/* A quote that ends its part stands in the column between the parts, clear of the pictures above. */
+.gs-story__flow > .gs-story__pull { clear: both; margin-block: var(--gs-space-8); }
+.gs-story__pull > .gs-quote { margin: 0; }
 /* A pull quote keeps clear of the text above and below it. */
 .gs-story__flow > .gs-quote[data-gs-story] { margin-block: var(--gs-space-6); }
 /* From 750 px a picture or quote in the running text is offset: half the column, the text wrapping

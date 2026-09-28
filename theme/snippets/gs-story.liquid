@@ -8,7 +8,8 @@
   before it:
   - Long text (120 words or more for each picture): the pictures are spread through it, the first
     before its first paragraph, each offset into the margin with the text wrapping round them.
-  - A quote stays where the text puts it, offset the same way, as a pull quote.
+  - A quote stays where the text puts it, offset the same way, as a pull quote; one that ends its
+    part stands in the column between the parts.
   Offset pictures and quotes alternate right and left down the page (CSS).
   - Short text and one picture: the text, with its heading, and the picture side by side, across
     the column and its right margin.
@@ -256,9 +257,19 @@
           assign before = ''
         endfor
         assign out = out | append: before
+        # A quote that ends its part has no text to sit beside: it stands in the column as a pull
+        # quote between the parts, not offset.
+        assign probe = out | strip | append: '|end'
         for q in quotes
           assign quote_mark = '<!--gs-q:' | append: forloop.index0 | append: '-->'
-          assign out = out | replace: quote_mark, q
+          assign mark_end = quote_mark | append: '|end'
+          if probe contains mark_end
+            assign pull = q | replace_first: ' data-gs-story="offset"', ''
+            assign pull = '<div class="gs-story__pull">' | append: pull | append: '</div>'
+            assign out = out | replace: quote_mark, pull
+          else
+            assign out = out | replace: quote_mark, q
+          endif
         endfor
         assign part_offsets = out | split: 'data-gs-story="offset"' | size | minus: 1
         assign page_offsets = page_offsets | plus: part_offsets
