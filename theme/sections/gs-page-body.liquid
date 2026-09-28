@@ -31,20 +31,20 @@
     # A programme page splits its text only when something sits between the parts (card groups,
     # the lessons); otherwise its text reads as one part, its H2s at the page-text size (DS-40).
     assign split = false
+    assign filtered_view = false
     if programme_page contains 'true'
       if page.metafields.custom.card_groups.value != blank or lessons_here
         assign split = true
       endif
     endif
     # A programme in the events switcher: its events follow its opening (DS-142).
-    unless split
-      capture filtered
-        render 'gs-programme-index', check: page
-      endcapture
-      if filtered contains 'true'
-        assign split = true
-      endif
-    endunless
+    capture filtered
+      render 'gs-programme-index', check: page
+    endcapture
+    if filtered contains 'true'
+      assign split = true
+      assign filtered_view = true
+    endif
     unless split
       if part == 'opening'
         assign part = 'all'
@@ -67,10 +67,37 @@
 {%- if lessons_here and section.settings.part == 'sections' -%}
   {%- render 'gs-lesson-list', id: section.id -%}
 {%- endif -%}
-{%- if text != blank -%}
+{%- comment -%} A programme in the events switcher: its picture beside its words (DS-144). {%- endcomment -%}
+{%- liquid
+  assign intro_image = nil
+  if filtered_view and part == 'opening'
+    assign intro_image = page.metafields.custom.hero_image.value
+  endif
+-%}
+{%- if text != blank or intro_image != blank -%}
   <div class="gs-section gs-surface-paper">
     <div class="gs-container">
-      {%- if part == 'sections' -%}
+      {%- if filtered_view and part == 'opening' -%}
+        {%- liquid
+          assign intro_mode = 'photo'
+          if page.metafields.custom.hero_is_artwork.value == true
+            assign intro_mode = 'artwork'
+          endif
+        -%}
+        <div class="gs-programme-intro{% if intro_image != blank %} gs-programme-intro--media{% endif %}">
+          {%- if intro_image != blank -%}
+            <div class="gs-programme-intro__media">
+              {%- render 'gs-media', image: intro_image, preset: 'card', mode: intro_mode -%}
+              {%- if page.metafields.custom.hero_caption.value != blank -%}
+                <p class="gs-caption">{{ page.metafields.custom.hero_caption.value | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          {%- if text != blank -%}
+            <div class="gs-prose">{{ text }}</div>
+          {%- endif -%}
+        </div>
+      {%- elsif part == 'sections' -%}
         {%- render 'gs-text-media', text: text, heads: true -%}
       {%- elsif text contains '<figure' -%}
         {%- render 'gs-text-media', text: text -%}

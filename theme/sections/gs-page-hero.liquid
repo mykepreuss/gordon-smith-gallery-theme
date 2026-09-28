@@ -11,10 +11,22 @@
   The hero image takes its alt text from Files. Without one it is decorative, not the page title
   again: the title comes right after it (DS-58). An artwork's caption follows the work in the
   markup, before the box, so it reads and tabs in the order it shows; a photo's comes after the box.
+
+  A programme in the events switcher gets the page header, as the Upcoming events page has, so the
+  row of links stays in one place from view to view; its picture sits beside its words instead
+  (gs-page-body, DS-144).
 {%- endcomment -%}
 {%- liquid
   assign f = page.metafields.custom
   assign image = f.hero_image.value
+  if image != blank
+    capture filtered
+      render 'gs-programme-index', check: page
+    endcapture
+    if filtered contains 'true'
+      assign image = nil
+    endif
+  endif
   assign mode = 'photo'
   if f.hero_is_artwork.value == true
     assign mode = 'artwork'

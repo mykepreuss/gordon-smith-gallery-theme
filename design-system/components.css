@@ -592,14 +592,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 750px) {
   .gs-grid--single { --_beside: repeat(2, minmax(0, 1fr)); }
   .gs-grid--rows,
-  .gs-events { --_beside: minmax(0, 1fr) minmax(0, 2fr); }
+  .gs-events, .gs-programme-intro { --_beside: minmax(0, 1fr) minmax(0, 2fr); }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) { grid-template-columns: var(--_beside); grid-template-rows: repeat(3, auto) 1fr; column-gap: var(--gs-gutter); }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) > .gs-media { grid-column: 1; grid-row: 1 / span 4; margin-block-end: 0; }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card:has(> .gs-media) > :not(.gs-media) { grid-column: 2 / -1; }
   :is(.gs-grid--single, .gs-grid--rows) > li > .gs-card > :not(.gs-media) { max-width: var(--gs-measure); }
 }
 @media (min-width: 990px) {
-  :is(.gs-grid--single, .gs-grid--rows, .gs-events) { --_beside: repeat(3, minmax(0, 1fr)); }
+  :is(.gs-grid--single, .gs-grid--rows, .gs-events, .gs-programme-intro) { --_beside: repeat(3, minmax(0, 1fr)); }
 }
 /* A count that would leave a short last row gives the spare room to its first cards (DS-52).
    Two across: an odd count starts with one wide card, its image beside its text, half and half. */
@@ -1881,7 +1881,16 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event > .gs-event__text { grid-column: 2 / -1; }
 }
 
-
+/* A programme's words above its events (DS-144): the page's picture beside them, in the
+   events' own columns, so the words start where the events' text does. Without a picture the
+   words start at the page's edge. The picture's credit sits under it. */
+.gs-programme-intro { display: grid; gap: var(--gs-space-4) var(--gs-gutter); align-items: start; }
+.gs-programme-intro__media { display: grid; gap: var(--gs-space-2); }
+.gs-programme-intro__media > .gs-caption { margin: 0; }
+@media (min-width: 750px) {
+  .gs-programme-intro--media { grid-template-columns: var(--_beside); }
+  .gs-programme-intro--media > .gs-prose { grid-column: 2 / -1; }
+}
 
 /* ---------- Logo cards (DS-50) ---------- */
 /* A card about one of the three organisations: its logo is the heading (the title is there for
