@@ -119,7 +119,7 @@ Waiting for Michael:
 
 ## For the gallery
 
-`proposals/gallery-questions.md` §8 (14 questions): names and casing, list page titles, collection data, Shop labels, the Shop introduction, product descriptions, programme copy, Foundation labels, residency portraits, the contact heading, two past exhibitions' key images, From the Ground's multi-part works, the team photo.
+`proposals/gallery-questions.md` (14 questions, since sorted into its sections): names and casing, list page titles, collection data, Shop labels, the Shop introduction, product descriptions, programme copy, Foundation labels, residency portraits, the contact heading, two past exhibitions' key images, From the Ground's multi-part works, the team photo.
 
 ## Held
 
