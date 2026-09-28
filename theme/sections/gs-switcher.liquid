@@ -9,6 +9,9 @@
   taken from the collection's title ("2026 Fall Portfolio"); a title in another form shows as
   it is. Short labels keep the row on one line: five "Portfolio"s made it wrap and strand the
   last link.
+  On the Upcoming events page and the programmes' pages: All events, then each programme
+  (gs-programme-index), with its count of upcoming events (DS-142). A programme's page is its
+  filtered view: its own words, then its events only.
 {%- endcomment -%}
 {%- if collection != blank -%}
   {%- assign nav_label = 'shop.portfolios' | t -%}
@@ -35,11 +38,30 @@
   </nav>
 {%- else -%}
   {%- liquid
-    # On a page, only the three exhibition lists show this switcher.
+    # On a page, only the three exhibition lists, the Upcoming events page and the programmes show this switcher.
     assign exhibitions_page = false
+    assign programmes_row = ''
     if page != blank
       if page.id == settings.exhibitions_on_now_page.id or page.id == settings.exhibitions_upcoming_page.id or page.id == settings.exhibitions_past_page.id
         assign exhibitions_page = true
+      elsif settings.events_page != blank
+        capture programmes_row
+          render 'gs-programme-index'
+        endcapture
+        assign programmes_row = programmes_row | strip | split: ','
+        assign here = false
+        if page.id == settings.events_page.id
+          assign here = true
+        endif
+        for item in programmes_row
+          assign handle = item | split: '|' | first
+          if handle == page.handle
+            assign here = true
+          endif
+        endfor
+        unless here
+          assign programmes_row = ''
+        endunless
       endif
     endif
   -%}
@@ -94,6 +116,39 @@
     </ul>
   </nav>
 {%- endif -%}
+{%- if collection == blank and programmes_row.size > 0 -%}
+  {%- liquid
+    capture total
+      render 'gs-event-index'
+    endcapture
+    assign total = total | strip | split: ',' | size
+  -%}
+  <nav class="gs-container gs-switcher gs-lead-in" aria-label="{{ 'events.switcher_label' | t }}">
+    <ul class="gs-switcher__list">
+      <li>
+        <a href="{{ settings.events_page.url }}"{% if page.id == settings.events_page.id %} aria-current="page"{% endif %}>
+          {{- 'events.switcher_all' | t -}}
+          {%- if total > 0 %} <span class="gs-switcher__count"><span aria-hidden="true">{{ total }}</span><span class="gs-visually-hidden">, {{ 'events.count' | t: count: total }}</span></span>{% endif -%}
+        </a>
+      </li>
+      {%- for item in programmes_row -%}
+        {%- liquid
+          assign pair = item | split: '|'
+          assign target = pages[pair[0]]
+          assign count = pair[1] | plus: 0
+        -%}
+        {%- if target != blank -%}
+          <li>
+            <a href="{{ target.url }}"{% if page.id == target.id %} aria-current="page"{% endif %}>
+              {{- target.title | escape -}}
+              {%- if count > 0 %} <span class="gs-switcher__count"><span aria-hidden="true">{{ count }}</span><span class="gs-visually-hidden">, {{ 'events.count' | t: count: count }}</span></span>{% endif -%}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}
 
 {% schema %}
 {
@@ -105,7 +160,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "On exhibition pages: On now, Upcoming and Past, from Theme settings, Exhibitions and events. On portfolio pages: the portfolios in Theme settings, Shop."
+      "content": "On exhibition pages: On now, Upcoming and Past, from Theme settings, Exhibitions and events. On the Upcoming events page and the programmes' pages: the programmes in the Programs filter menu there, and any other page with an upcoming event. On portfolio pages: the portfolios in Theme settings, Shop."
     }
   ],
   "presets": [

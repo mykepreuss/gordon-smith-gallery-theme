@@ -147,7 +147,8 @@
         "gallery": 1,
         "feature": 1,
         "cards": 1,
-        "events": 1
+        "events": 1,
+        "switcher": 1
       }
     },
     "metaobject/exhibition": {

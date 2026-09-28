@@ -448,6 +448,12 @@
         "info": "This page lists every upcoming event. Other pages list only their own."
       },
       {
+        "type": "link_list",
+        "id": "programmes_menu",
+        "label": "Programs filter menu",
+        "info": "The programme pages in the row of links above the events list, in this order. Each page shows its own events. A page with an upcoming event joins the row by itself."
+      },
+      {
         "type": "text",
         "id": "collection_artists_label",
         "label": "Label for artists from the permanent collection",

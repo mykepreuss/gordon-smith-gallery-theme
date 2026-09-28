@@ -91,7 +91,15 @@
     "time_range": "{{ start }} to {{ end }}",
     "tickets": "Tickets",
     "empty": "No events are scheduled right now.",
-    "empty_link": "See what’s on now"
+    "empty_link": "See what’s on now",
+    "empty_programme": "Nothing is scheduled right now.",
+    "empty_programme_link": "See all upcoming events",
+    "switcher_label": "Programs",
+    "switcher_all": "All events",
+    "count": {
+      "one": "1 event",
+      "other": "{{ count }} events"
+    }
   },
   "shop": {
     "portfolios": "Portfolios",

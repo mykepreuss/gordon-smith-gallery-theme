@@ -17,6 +17,11 @@ By what visitors come to do, not by which organisation runs a page (P-50 to P-57
 
 Each section's own link in the Shopify menu editor points at one of its links (Programs at Public programs' title, Support at Donate), so `snippets/gs-nav.liquid` raises no editor warning.
 
+**The Programs switcher (DS-142), proposed 2026-09-28, not made yet.** Two changes to menus only the new theme reads, each needing Michael's go-ahead and a before-snapshot:
+
+- A new menu, `new-theme-programmes` ("Programs filter (new theme)"): Speaker series, Music at the Smith, Explore + Create, Art in Good Company, each linking to its page. Theme settings, Exhibitions and events, Programs filter menu names it (`config/settings_data.json`). Until it exists the row holds only the pages with an upcoming event, so nothing breaks without it.
+- The Programs section's own link in `new-theme-main-2`, and the Programs link in the footer's `new-theme-explore-2`, point at Upcoming events (`/pages/upcoming-events`) in place of Public programs. Public programs keeps its link as its group's title.
+
 **The three Foundation pages from `proposals/smith-foundation-site.md`** joined this menu when they were made, 2026-09-28, where the table says, with `menuUpdate` keeping the other items' IDs (P-52, P-53). If the gallery hasn't confirmed the Supporters list by release (P-43, `gallery-questions.md` 8.1), Supporters leaves the menu that day (§8c).
 
 **How it is applied:** during review, as a menu referenced only by the new theme, so the live header doesn't change. At release, publishing the new theme switches the header to it; `new-website-menu-1` is then unused and stays for rollback.

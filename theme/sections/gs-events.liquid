@@ -1,10 +1,11 @@
 {%- comment -%}
   Upcoming events (content model part 5, P-16). On the page chosen as the Upcoming events page in
   theme settings it lists every upcoming event; on any other page, the events whose programme
-  page is that page. An event drops off once it has ended. A programme page with no upcoming
-  events shows nothing here; the Upcoming events page says there are none. On the Upcoming events
-  page the list's heading is for screen readers only: the page title already says it. On a
-  programme page the heading has a link to every event on the Upcoming events page.
+  page is that page. An event drops off once it has ended. The Upcoming events page says when
+  there are none, and so does a programme in the switcher (gs-programme-index, DS-142), with a
+  link to every event; any other page without events shows nothing here. On the Upcoming events
+  page the list's heading is for screen readers only: the page title already says it. The
+  switcher above the list has the link to every event.
 {%- endcomment -%}
 {%- liquid
   assign all = false
@@ -21,8 +22,19 @@
     endcapture
   endif
   assign ids = ids | strip | split: ','
+  assign filtered = false
+  unless all
+    capture filtered
+      render 'gs-programme-index', check: page
+    endcapture
+    if filtered contains 'true'
+      assign filtered = true
+    else
+      assign filtered = false
+    endif
+  endunless
 -%}
-{%- if ids.size > 0 or all -%}
+{%- if ids.size > 0 or all or filtered -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
     <div class="gs-container">
       {%- if all -%}
@@ -30,9 +42,6 @@
       {%- else -%}
         <div class="gs-section-head">
           <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
-          {%- if settings.events_page != blank -%}
-            <a class="gs-cta-link gs-cta-link--more" href="{{ settings.events_page.url }}">{{ 'home.all_events' | t }}</a>
-          {%- endif -%}
         </div>
       {%- endif -%}
       {%- if ids.size > 0 -%}
@@ -44,6 +53,10 @@
             {%- endfor -%}
           {%- endfor -%}
         </ul>
+      {%- elsif filtered -%}
+        {%- assign empty_text = 'events.empty_programme' | t -%}
+        {%- assign empty_label = 'events.empty_programme_link' | t -%}
+        {%- render 'gs-empty', text: empty_text, link_url: settings.events_page.url, link_label: empty_label -%}
       {%- else -%}
         {%- assign empty_text = 'events.empty' | t -%}
         {%- assign empty_label = 'events.empty_link' | t -%}
