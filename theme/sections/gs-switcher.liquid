@@ -4,6 +4,7 @@
 
   On exhibition list pages: On now, Upcoming, Past, with counts from the exhibition entries
   (hidden when zero). The pages are the ones chosen in Theme settings, Exhibitions and events.
+  The counts read the first 250 entries (DS-152).
   On portfolio pages: All editions, then each portfolio in Theme settings, Shop, newest first
   (DS-67). The row is labelled Portfolios, so each link names its season and year, "Fall 2026",
   taken from the collection's title ("2026 Fall Portfolio"); a title in another form shows as
@@ -76,6 +77,7 @@
     assign on_now = 0
     assign upcoming = 0
     assign past = 0
+    paginate shop.metaobjects.exhibition.values by 250
     for entry in shop.metaobjects.exhibition.values
       capture state
         render 'gs-exhibition-status', start: entry.start_date.value, end: entry.end_date.value
@@ -90,6 +92,7 @@
           assign past = past | plus: 1
       endcase
     endfor
+    endpaginate
     assign items = 'on_now,upcoming,past' | split: ','
   -%}
   <nav class="gs-container gs-switcher gs-lead-in" aria-label="{{ 'exhibitions.switcher_label' | t }}">

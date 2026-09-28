@@ -1,12 +1,18 @@
 {% doc %}
   Picks and orders exhibition entries (DS-15, DS-24, DS-25). Outputs comma-separated positions in
-  shop.metaobjects.exhibition.values, in display order. Read an entry back with:
+  shop.metaobjects.exhibition.values, in display order. Read an entry back inside the same
+  paginate tag (a plain loop stops at 50 entries, and the tag doesn't reach into a rendered
+  snippet, DS-152):
 
-    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+    paginate shop.metaobjects.exhibition.values by 250
+      for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+
+  The tag must be the innermost one around the loop: inside another array's paginate tag the
+  entries are read 50 at a time again.
 
   Status comes from the dates (gs-exhibition-status), never from a typed label. Only active
-  entries exist on the storefront; drafts are skipped. Reads up to 50 entries, Liquid's limit for
-  a loop without pagination (the gallery has 15).
+  entries exist on the storefront; drafts are skipped. Reads the first 250 entries, A to Z by
+  handle, which is Shopify's order (the gallery has 32).
 
   @param {string} status - 'on-now', 'upcoming', 'past', 'current' (on now and upcoming) or 'all'
   @param {string} [order] - 'asc' (default: earliest start first) or 'desc' (newest first)
@@ -18,8 +24,9 @@
   {%- capture ids -%}{% render 'gs-exhibition-index', status: 'past', order: 'desc' %}{%- endcapture -%}
 {% enddoc %}
 {%- liquid
-  assign limit = limit | default: 50
+  assign limit = limit | default: 250
   assign keys = ''
+  paginate shop.metaobjects.exhibition.values by 250
   for entry in shop.metaobjects.exhibition.values
     if exclude != blank and entry.system.handle == exclude
       continue
@@ -52,6 +59,7 @@
       assign keys = keys | append: day | append: '-' | append: pos | append: ','
     endif
   endfor
+  endpaginate
 
   assign sorted = keys | split: ',' | sort
   if order == 'desc'

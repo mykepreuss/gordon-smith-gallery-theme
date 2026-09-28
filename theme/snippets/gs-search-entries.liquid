@@ -11,8 +11,9 @@
     "We're making".
   - artist: positions in the first page of metaobjects.artist.values paginated by 250, A to Z by
     sort name, as the Artists page. Its text is the artist's names.
-  Exhibitions and lessons are fewer than 50, Liquid's limit for a loop without pagination; artists
-  (171) are read through their own pagination, so this is rendered outside the search's.
+  Each kind is read through its own pagination, 250 entries to the page: a loop without one stops
+  at 50 (DS-152). Inside another paginate tag the entries are read 50 at a time again, so this is
+  rendered outside the search's.
 
   Its output starts with a line break: capture it and strip it.
 
@@ -33,26 +34,30 @@
         render 'gs-exhibition-index', status: 'all', order: 'desc'
       endcapture
       assign order = order | strip | split: ','
-      for pos in order
-        assign n = pos | plus: 0
-        for entry in shop.metaobjects.exhibition.values offset: n limit: 1
-          assign artists = entry.artists.value | join: ' '
-          assign texts = texts | append: entry.title.value | append: ' ' | append: entry.curator_credit.value | append: ' ' | append: artists | append: ' ~~'
-          assign keys = keys | append: n | append: ','
+      paginate shop.metaobjects.exhibition.values by 250
+        for pos in order
+          assign n = pos | plus: 0
+          for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+            assign artists = entry.artists.value | join: ' '
+            assign texts = texts | append: entry.title.value | append: ' ' | append: entry.curator_credit.value | append: ' ' | append: artists | append: ' ~~'
+            assign keys = keys | append: n | append: ','
+          endfor
         endfor
-      endfor
+      endpaginate
     when 'lesson'
       capture order
         render 'gs-lesson-index'
       endcapture
       assign order = order | strip | split: ','
-      for pos in order
-        assign n = pos | plus: 0
-        for lesson in shop.metaobjects.lesson.values offset: n limit: 1
-          assign texts = texts | append: lesson.title.value | append: ' ' | append: lesson.making.value | append: ' ~~'
-          assign keys = keys | append: n | append: ','
+      paginate shop.metaobjects.lesson.values by 250
+        for pos in order
+          assign n = pos | plus: 0
+          for lesson in shop.metaobjects.lesson.values offset: n limit: 1
+            assign texts = texts | append: lesson.title.value | append: ' ' | append: lesson.making.value | append: ' ~~'
+            assign keys = keys | append: n | append: ','
+          endfor
         endfor
-      endfor
+      endpaginate
   endcase
 -%}
 {%- if kind == 'artist' -%}
