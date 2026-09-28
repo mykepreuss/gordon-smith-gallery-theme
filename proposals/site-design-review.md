@@ -108,7 +108,9 @@ Already waiting from earlier reviews, with new evidence in DESIGN.md §12: DS-72
 
 ## Store changes
 
-See "Store writes" at the end of this file for what was written in this round. Waiting for Michael:
+Written in this round (our own words and markup only; logged in `proposals/store-writes/README.md` with a before-snapshot): Support Artists for Kids gives like Donate ("Make a gift" to its How to give cards, named Online, School Cash Online and Phone); the Artists for Kids button says "Download the guide"; Awards' requirement links are standalone links; staged text for FAQ and Contact with proper paragraphs and Contact's phone and emails as links; Donate's camp links and Stitched's credit links go to pages on this site (the Foundation's was broken); Upcoming events joins the Programs menu. None of it shows on the live site.
+
+Waiting for Michael:
 - Edition image alt text in plain letters instead of Unicode italics (21 products). This also improves the live site, so it needs an early go-ahead.
 - Real alt text for installation views and edition images: words from the gallery.
 - Covers for the 8 documents without one; cropped copies of three white-padded edition photos (at release).
