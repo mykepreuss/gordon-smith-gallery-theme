@@ -9,17 +9,10 @@
   (.gs-rail); from 750 px it's the card grid.
 {%- endcomment -%}
 {%- liquid
-  capture lead_id
-    render 'gs-exhibition-index', status: 'on-now', order: 'desc', linked_only: true, limit: 1
+  capture lead_handle
+    render 'gs-lead-exhibition'
   endcapture
-  assign lead_id = lead_id | strip
-  assign lead_handle = ''
-  if lead_id != blank
-    assign n = lead_id | plus: 0
-    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
-      assign lead_handle = entry.system.handle
-    endfor
-  endif
+  assign lead_handle = lead_handle | strip
 
   assign keys = ''
   capture ex_ids

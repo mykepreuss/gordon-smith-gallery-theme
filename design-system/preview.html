@@ -1560,19 +1560,21 @@
     </article></li>`;
 
   // Upcoming events (live store programme pages): title, start, the time as gs-time-range writes it,
-  // place (blank means the gallery), summary, image tones, and whether to show a ticket link.
+  // place (blank means the gallery), summary, image tones, whether to show a ticket link, and the
+  // exhibition it belongs to (a .gs-link in the muted line when the exhibition has a page).
   const events = [
-    ["Explore + Create", "2026-09-26T13:00:00-07:00", "Saturday, September 26, 2026, 1 to 3 PM", "Main floor", "Join us for an activity inspired by Brendan Tang's work, Manga Ormolu 2.0-R.", null, false],
+    ["Explore + Create", "2026-09-26T13:00:00-07:00", "Saturday, September 26, 2026, 1 to 3 PM", "Main floor", "Join us for an activity inspired by Brendan Tang's work, Manga Ormolu 2.0-R.", null, false, "Collect, Assemble, Gather"],
     ["Art In Good Company", "2026-10-08T14:30:00-07:00", "Thursday, October 8, 2026, 2:30 to 4 PM", "", "", tones[0], false],
     ["La Modestine", "2026-11-07T13:00:00-08:00", "Saturday, November 7, 2026, 1 to 3 PM", "", "La Modestine is a chamber music ensemble formed in 2016 by west coast musicians with a love of playing music of the 17th and 18th centuries together.", tones[1], true],
     ["Art Education, For Life: Reflections from Omer Arbel", "2026-11-26T18:30:00-08:00", "Thursday, November 26, 2026, 6:30 PM", "", "Omer Arbel is the co-founder and creative director of Bocci, and the founder of Omer Arbel Office (OAO).", tones[2], false],
   ];
-  document.getElementById("events").innerHTML = events.map(([t, start, when, where, summary, img, tickets]) => `
+  document.getElementById("events").innerHTML = events.map(([t, start, when, where, summary, img, tickets, ex]) => `
     <li class="gs-event${img ? " gs-event--media" : ""}">
       ${img ? `<div class="gs-media gs-media--photo gs-shape-md"><img src="${photo(...img)}" alt=""></div>` : ""}
       <div class="gs-event__text">
         <h3 class="gs-h3">${t}</h3>
         <p class="gs-status__dates"><time datetime="${start}">${when}</time></p>
+        ${ex ? `<p class="gs-meta"><a class="gs-link" href="#/pages/exhibitions/collect-assemble-gather">${ex}</a></p>` : ""}
         ${where ? `<p class="gs-meta">${where}</p>` : ""}
         ${summary ? `<p>${summary}</p>` : ""}
         ${tickets ? `<a class="gs-cta-link" href="#tickets">Tickets</a>` : ""}

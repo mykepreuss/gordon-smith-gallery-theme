@@ -34,16 +34,10 @@
 
   assign exclude = ''
   if template.name == 'index'
-    capture lead_id
-      render 'gs-exhibition-index', status: 'on-now', order: 'desc', linked_only: true, limit: 1
+    capture exclude
+      render 'gs-lead-exhibition'
     endcapture
-    assign lead_id = lead_id | strip
-    if lead_id != blank
-      assign n = lead_id | plus: 0
-      for entry in shop.metaobjects.exhibition.values offset: n limit: 1
-        assign exclude = entry.system.handle
-      endfor
-    endif
+    assign exclude = exclude | strip
   endif
 
   assign ids = ''
@@ -91,22 +85,20 @@
           {%- endfor -%}
         </ul>
       {%- else -%}
-        <div class="gs-empty">
-          {%- case status -%}
-            {%- when 'on-now' -%}
-              <p class="gs-empty__text gs-deck">{{ 'exhibitions.empty_on_now' | t }}</p>
-              {%- if settings.exhibitions_upcoming_page != blank -%}
-                <a class="gs-cta-link" href="{{ settings.exhibitions_upcoming_page.url }}">{{ 'exhibitions.empty_on_now_link' | t }}</a>
-              {%- endif -%}
-            {%- when 'upcoming' -%}
-              <p class="gs-empty__text gs-deck">{{ 'exhibitions.empty_upcoming' | t }}</p>
-              {%- if settings.exhibitions_on_now_page != blank -%}
-                <a class="gs-cta-link" href="{{ settings.exhibitions_on_now_page.url }}">{{ 'exhibitions.empty_upcoming_link' | t }}</a>
-              {%- endif -%}
-            {%- else -%}
-              <p class="gs-empty__text gs-deck">{{ 'exhibitions.empty_past' | t }}</p>
-          {%- endcase -%}
-        </div>
+        {%- case status -%}
+          {%- when 'on-now' -%}
+            {%- assign empty_text = 'exhibitions.empty_on_now' | t -%}
+            {%- assign empty_label = 'exhibitions.empty_on_now_link' | t -%}
+            {%- render 'gs-empty', text: empty_text, link_url: settings.exhibitions_upcoming_page.url, link_label: empty_label -%}
+          {%- when 'upcoming' -%}
+            {%- assign empty_text = 'exhibitions.empty_upcoming' | t -%}
+            {%- assign empty_label = 'exhibitions.empty_upcoming_link' | t -%}
+            {%- render 'gs-empty', text: empty_text, link_url: settings.exhibitions_on_now_page.url, link_label: empty_label -%}
+          {%- else -%}
+            {%- assign empty_text = 'exhibitions.empty_past' | t -%}
+            {%- assign empty_label = 'exhibitions.empty_past_link' | t -%}
+            {%- render 'gs-empty', text: empty_text, link_url: settings.exhibitions_on_now_page.url, link_label: empty_label -%}
+        {%- endcase -%}
       {%- endif -%}
 
     </div>

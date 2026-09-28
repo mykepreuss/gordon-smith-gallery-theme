@@ -21,14 +21,8 @@
     {%- if has_image -%}
       <ul class="gs-artwork__media">
         {%- for image in work.images.value -%}
-          {%- liquid
-            assign loading = 'lazy'
-            if forloop.first
-              assign loading = 'eager'
-            endif
-          -%}
           <li>
-            {%- render 'gs-media', image: image, sizes: '(min-width: 1536px) 820px, (min-width: 990px) 55vw, 100vw', loading: loading, mode: 'artwork', shape: 'lg' -%}
+            {%- render 'gs-media', image: image, preset: 'detail', priority: forloop.first, mode: 'artwork', shape: 'lg' -%}
           </li>
         {%- endfor -%}
       </ul>
@@ -41,11 +35,8 @@
       <h1 class="gs-artwork-label">
         {%- if work.artists.value != blank -%}
           <span class="gs-artwork-label__artist">
-            {%- for a in work.artists.value -%}
-              {%- unless forloop.first -%}{% if forloop.last %} {{ 'collection.and' | t }} {% else %}, {% endif %}{%- endunless -%}
-              <a href="{{ a.system.url }}">{{ a.name.value | escape }}</a>
-            {%- endfor -%}
-          </span>{{ ' ' }}
+            {%- render 'gs-names', entries: work.artists.value, link: true -%}
+          </span><span class="gs-visually-hidden">,</span>{{ ' ' }}
         {%- endif -%}
         <cite>{{ work.title.value | escape }}</cite>
         {%- if work.year.value != blank -%}, {{ work.year.value | escape }}{%- endif -%}
@@ -141,7 +132,7 @@
     {%- if work.about.value != blank -%}
       <section class="gs-artwork__about" aria-labelledby="{{ id }}-about">
         <h2 class="gs-label" id="{{ id }}-about">{{ 'products.about_work' | t }}</h2>
-        <div class="gs-prose">{{ work.about | metafield_tag }}</div>
+        <div class="gs-prose">{%- capture html -%}{{ work.about | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       </section>
     {%- endif -%}
   </div>

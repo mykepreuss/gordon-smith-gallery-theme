@@ -36,8 +36,11 @@
   assign labelled = false
   assign is_pdf = false
   if link.url != blank
-    assign ending = link.url | split: '?' | first | downcase | slice: -4, 4
-    if ending == '.pdf'
+    capture r
+      render 'gs-url', link: link
+    endcapture
+    assign r = r | strip | split: '|'
+    if r[2] == '1'
       assign is_pdf = true
     endif
     if link.text == blank
@@ -69,8 +72,6 @@
   <article class="gs-card gs-card--logo" data-gs-brand="{{ brand }}">
     <{{ tag }} class="gs-card__logo gs-card__logo--{{ brand }}">
       {%- if stretch -%}
-        {%- capture r -%}{% render 'gs-url', link: link %}{%- endcapture -%}
-        {%- assign r = r | strip | split: '|' -%}
         <a href="{{ r[0] }}">
           <span class="gs-visually-hidden">{{ card.title.value | escape }}{% if r[1] == '1' %} {{ 'general.external_site' | t }}{% endif %}</span>
           {%- render 'gs-logo', name: logo, label: 'decorative' -%}
@@ -82,7 +83,7 @@
     </{{ tag }}>
     <div class="gs-card__body">
       {%- if card.text.value != blank -%}
-        <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
+        <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value -%}</div>
       {%- endif -%}
       {%- if labelled -%}
         {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
@@ -108,7 +109,7 @@
       {%- endif -%}
     </{{ tag }}>
     {%- if card.text.value != blank -%}
-      <p class="gs-card__text">{{ card.text.value | escape | newline_to_br }}</p>
+      <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value -%}</div>
     {%- endif -%}
     {%- if labelled -%}
       {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}

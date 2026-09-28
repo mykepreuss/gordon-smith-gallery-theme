@@ -5,6 +5,10 @@
 
   @param {object} product - The product
   @param {string} [heading] - Heading element for the title: 'h2' (default) or 'h3'
+  @param {boolean} [hide_artist] - Leave the artist's name off, on that artist's own page (only
+    for an edition by that artist alone)
+  @param {string} [sizes] - The picture's sizes when the tile isn't in a grid of three, such as a
+    row that scrolls sideways on phones
 
   @example
   {%- render 'gs-artwork-tile', product: product, heading: 'h3' -%}
@@ -18,9 +22,9 @@
   assign edition = product.metafields.custom.edition.value
 -%}
 <article class="gs-artwork-tile">
-  {%- render 'gs-media', image: product.featured_media, preset: 'tile', mode: 'artwork', alt: product.title -%}
+  {%- render 'gs-media', image: product.featured_media, preset: 'tile', sizes: sizes, mode: 'artwork', alt: product.title -%}
   {%- if artist != blank and work != blank -%}
-    <p class="gs-artwork-tile__artist">{{ artist | escape }}</p>
+    {%- unless hide_artist -%}<p class="gs-artwork-tile__artist">{{ artist | escape }}</p>{%- endunless -%}
     <{{ tag }} class="gs-artwork-tile__title">
       <a href="{{ product.url }}"><cite>{{ work | escape }}</cite>{% if year != blank %}, {{ year | escape }}{% endif %}</a>
     </{{ tag }}>

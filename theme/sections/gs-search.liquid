@@ -6,7 +6,8 @@
 {%- assign form_id = 'gs-search-' | append: section.id -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1">{{ 'search.title' | t }}</h1>
+    {%- assign title = 'search.title' | t -%}
+    {%- render 'gs-title-block', title: title -%}
     <form class="gs-form-row" action="{{ routes.search_url }}" method="get" role="search">
       <div class="gs-field">
         <label class="gs-field__label" for="{{ form_id }}">{{ 'search.label' | t }}</label>

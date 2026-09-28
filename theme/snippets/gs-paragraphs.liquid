@@ -1,0 +1,15 @@
+{% doc %}
+  Plain text from a multi-line text field as paragraphs: a blank line starts a new paragraph, a
+  single line break stays a break (Part 1 / Part 2). The caller wraps them (.gs-card__text,
+  .gs-event__summary, .gs-prose), which spaces them 1em apart.
+
+  @param {string} text - The field's text. Required
+
+  @example
+  <div class="gs-card__text">{% render 'gs-paragraphs', text: card.text.value %}</div>
+{% enddoc %}
+{%- assign paras = text | escape | newline_to_br | strip_newlines | split: '<br /><br />' -%}
+{%- for para in paras -%}
+  {%- assign para = para | strip -%}
+  {%- if para != blank -%}<p>{{ para }}</p>{%- endif -%}
+{%- endfor -%}

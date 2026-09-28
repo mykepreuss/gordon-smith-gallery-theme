@@ -28,13 +28,14 @@
     const h12 = h % 12 || 12;
     return { text: m ? `${h12}:${String(m).padStart(2, '0')}` : `${h12}`, period: h < 12 ? 'AM' : 'PM' };
   };
-  // "12 to 4 PM", "10 AM to 4 PM": the period shows once when both times share it.
+  // "12 to 4 PM", "10 AM to 4 PM": the period shows once when both times share it. A no-break
+  // space (\u00a0) keeps each time with its AM or PM; "to" can still break.
   const range = (opens, closes, to) => {
     const a = clock(opens);
     const b = clock(closes);
     return a.period === b.period
-      ? `${a.text} ${to} ${b.text} ${b.period}`
-      : `${a.text} ${a.period} ${to} ${b.text} ${b.period}`;
+      ? `${a.text} ${to} ${b.text}\u00a0${b.period}`
+      : `${a.text}\u00a0${a.period} ${to} ${b.text}\u00a0${b.period}`;
   };
 
   lines.forEach((el) => {
@@ -70,7 +71,7 @@
       text = d.today.replace('%times%', times);
     } else if (days.includes(today) && at < closes) {
       const until = clock(closes);
-      text = d.now.replace('%time%', `${until.text} ${until.period}`);
+      text = d.now.replace('%time%', `${until.text}\u00a0${until.period}`);
     } else {
       const template = days.includes(today) ? d.closedNow : d.closedToday;
       text = template.replace('%day%', next()).replace('%times%', times);

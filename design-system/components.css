@@ -1038,6 +1038,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-card__meta { display: grid; gap: var(--gs-space-1); margin: 0; }
 .gs-card__meta > * { margin: 0; }
 .gs-card__text { margin: 0; text-wrap: pretty; }
+/* Card text is paragraphs (gs-paragraphs): a blank line in the field starts a new one. */
+.gs-card__text > p { margin: 0; }
+.gs-card__text > p + p { margin-block-start: 1em; }
 /* People cards: the line about the person is in the small size, so the name leads (DS-37). */
 .gs-grid--people .gs-card__text { font-size: var(--gs-text-small); line-height: var(--gs-leading-small); }
 /* A card without an image: the rule marks where it starts. */

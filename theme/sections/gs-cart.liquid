@@ -5,7 +5,8 @@
 {%- endcomment -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1">{{ 'cart.title' | t }}</h1>
+    {%- assign title = 'cart.title' | t -%}
+    {%- render 'gs-title-block', title: title -%}
   </header>
 </div>
 <div class="gs-section gs-surface-paper">
@@ -56,13 +57,10 @@
         </div>
       </form>
     {%- else -%}
-      <div class="gs-empty">
-        <p class="gs-empty__text gs-deck">{{ 'cart.empty' | t }}</p>
-        {%- assign shop_url = settings.shop_page.url | default: settings.all_editions_collection.url -%}
-        {%- if shop_url != blank -%}
-          <a class="gs-cta-link" href="{{ shop_url }}">{{ 'shop.empty_portfolio_link' | t }}</a>
-        {%- endif -%}
-      </div>
+      {%- assign shop_url = settings.shop_page.url | default: settings.all_editions_collection.url -%}
+      {%- assign empty_text = 'cart.empty' | t -%}
+      {%- assign empty_label = 'shop.empty_portfolio_link' | t -%}
+      {%- render 'gs-empty', text: empty_text, link_url: shop_url, link_label: empty_label -%}
     {%- endif -%}
   </div>
 </div>

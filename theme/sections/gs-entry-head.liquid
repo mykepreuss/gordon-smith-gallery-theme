@@ -56,13 +56,13 @@
             <p class="gs-deck">{{ facts | escape }}</p>
           {%- endif -%}
           {%- if metaobject.biography.value != blank -%}
-            <div class="gs-prose">{{ metaobject.biography | metafield_tag }}</div>
+            <div class="gs-prose">{%- capture html -%}{{ metaobject.biography | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
           {%- endif -%}
         </div>
         {%- if has_aside -%}
           <div class="gs-entry-head__aside">
             {%- if metaobject.portrait.value != blank -%}
-              {%- render 'gs-media', image: metaobject.portrait.value, sizes: '(min-width: 990px) 320px, 80vw', mode: 'photo', ratio: '4 / 5' -%}
+              {%- render 'gs-media', image: metaobject.portrait.value, sizes: '(min-width: 990px) 320px, 80vw', mode: 'photo', ratio: 'var(--gs-ratio-portrait)' -%}
             {%- endif -%}
           </div>
         {%- endif -%}
@@ -70,7 +70,7 @@
     {%- else -%}
       <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
       {%- if metaobject.introduction.value != blank -%}
-        <div class="gs-prose">{{ metaobject.introduction.value | escape | newline_to_br }}</div>
+        <div class="gs-prose">{%- render 'gs-paragraphs', text: metaobject.introduction.value -%}</div>
       {%- endif -%}
     {%- endif -%}
   </header>

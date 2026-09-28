@@ -21,12 +21,6 @@
   endcapture
   assign r = r | strip | split: '|'
   assign text = label | default: link.text | default: link.title
-  assign path = r[0] | split: '?' | first | downcase
-  assign ending = path | slice: -4, 4
-  assign is_pdf = false
-  if ending == '.pdf'
-    assign is_pdf = true
-  endif
 -%}
 {%- liquid
   assign classes = class | default: ''
@@ -36,6 +30,6 @@
 -%}
 <a{% if classes != blank %} class="{{ classes }}"{% endif %} href="{{ r[0] }}">
   {{- text | escape | replace: ' - ', '&nbsp;- ' | replace: ' | ', '&nbsp;| ' -}}
-  {%- if is_pdf %}&nbsp;{{ 'general.pdf' | t }}{% endif -%}
+  {%- if r[2] == '1' %}&nbsp;{{ 'general.pdf' | t }}{% endif -%}
   {%- if r[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
 </a>

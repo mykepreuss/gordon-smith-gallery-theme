@@ -48,7 +48,7 @@
       {%- endif -%}
     </div>
     {%- if entry.key_image_caption.value != blank -%}
-      <div class="gs-hero__caption gs-caption">{{ entry.key_image_caption | metafield_tag }}</div>
+      <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ entry.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
     {%- endif -%}
   </div>
 </div>

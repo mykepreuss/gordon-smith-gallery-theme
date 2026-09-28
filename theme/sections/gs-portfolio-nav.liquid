@@ -25,7 +25,7 @@
         {%- for portfolio in portfolios -%}
           <li>
             <article class="gs-card gs-card--compact">
-              {%- render 'gs-media', image: portfolio.products.first.featured_media, preset: 'tile', mode: 'artwork', alt: portfolio.title -%}
+              {%- render 'gs-media', image: portfolio.products.first.featured_media, preset: 'tile', mode: 'artwork' -%}
               <h3 class="gs-card__title"><a href="{{ portfolio.url }}">{{ portfolio.title | escape }}</a></h3>
               <p class="gs-meta">{{ 'shop.editions_count' | t: count: portfolio.products_count }}</p>
             </article>

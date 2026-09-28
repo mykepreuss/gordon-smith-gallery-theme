@@ -8,13 +8,10 @@
 <script type="application/json" data-gs-collection-data data-pages="{{ paginate.pages }}" data-param="{{ paginate.page_param }}">[
   {%- for w in metaobjects.artwork.values -%}
     {%- liquid
-      assign names = ''
-      for a in w.artists.value
-        if forloop.index > 1
-          assign names = names | append: ' and '
-        endif
-        assign names = names | append: a.name.value
-      endfor
+      capture names
+        render 'gs-names', entries: w.artists.value
+      endcapture
+      assign names = names | strip
       assign img = ''
       assign ratio = ''
       assign alt = ''

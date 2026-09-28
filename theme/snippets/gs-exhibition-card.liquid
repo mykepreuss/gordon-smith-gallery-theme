@@ -37,9 +37,9 @@
 -%}
 <article class="gs-card{% if compact %} gs-card--compact{% endif %}{% if wide %} gs-card--wide{% endif %}">
   {%- if wide -%}
-    {%- render 'gs-media', image: entry.key_image.value, sizes: preset_sizes, mode: mode, ratio: '4 / 3', alt: entry.title.value -%}
+    {%- render 'gs-media', image: entry.key_image.value, sizes: preset_sizes, mode: mode, ratio: 'var(--gs-ratio-card)', title: entry.title.value -%}
   {%- else -%}
-    {%- render 'gs-media', image: entry.key_image.value, preset: 'card', mode: mode, ratio: '4 / 3', alt: entry.title.value -%}
+    {%- render 'gs-media', image: entry.key_image.value, preset: 'card', mode: mode, ratio: 'var(--gs-ratio-card)', title: entry.title.value -%}
   {%- endif -%}
   <div class="gs-card__body">
     {%- if wide -%}

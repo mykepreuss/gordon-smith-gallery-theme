@@ -1,9 +1,9 @@
 {% doc %}
   Normalises a link's destination and says whether it leaves the site (DESIGN.md §6.1).
 
-  Output is "<href>|<external>", where external is 1 or 0. Use it like this:
+  Output is "<href>|<external>|<pdf>", where external and pdf are 1 or 0. Use it like this:
     capture r, render 'gs-url', link: link, endcapture
-    assign r = r | strip | split: '|'      r[0] is the href, r[1] is '1' or '0'
+    assign r = r | strip | split: '|'      r[0] is the href, r[1] and r[2] are '1' or '0'
 
   Rules
   - An absolute URL that points at this store (primary domain, with or without www, the
@@ -12,6 +12,7 @@
     "/collections/2025-fall-portfolio" and stops sending visitors to the myshopify domain.
   - Any other absolute URL is external and gets the external cue.
   - A blank URL or "#" means "no destination" and comes back as "#".
+  - pdf is 1 when the address ends in .pdf (before any ? or #), so the link can say "(PDF)".
 
   @param {object} [link] - A menu link, or a link field's value; anything with a url property
   @param {string} [url] - A section's link setting, which is the address alone. Used when there's no link
@@ -38,5 +39,10 @@
       assign external = '1'
     endif
   endif
-  echo href | append: '|' | append: external
+  assign pdf = '0'
+  assign ending = href | split: '?' | first | split: '#' | first | downcase | slice: -4, 4
+  if ending == '.pdf'
+    assign pdf = '1'
+  endif
+  echo href | append: '|' | append: external | append: '|' | append: pdf
 -%}

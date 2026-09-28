@@ -6,7 +6,9 @@
     "previous": "Previous",
     "next": "Next",
     "page": "Page",
-    "pdf": "(PDF)"
+    "pdf": "(PDF)",
+    "title_tagged": "tagged {{ tags }}",
+    "title_page": "page {{ number }}"
   },
   "header": {
     "home": "Gordon Smith Gallery, home",
@@ -59,6 +61,7 @@
     "empty_upcoming": "No upcoming exhibitions are announced yet.",
     "empty_upcoming_link": "See what's on now",
     "empty_past": "No past exhibitions to show yet.",
+    "empty_past_link": "See what's on now",
     "details_label": "About the exhibition",
     "curator": "Curator",
     "venue": "Where",
@@ -75,7 +78,8 @@
   "events": {
     "time_range": "{{ start }} to {{ end }}",
     "tickets": "Tickets",
-    "empty": "No events are scheduled right now."
+    "empty": "No events are scheduled right now.",
+    "empty_link": "See what's on now"
   },
   "shop": {
     "portfolios": "Portfolios",
@@ -142,7 +146,8 @@
     "search": "Search the site"
   },
   "blog": {
-    "empty": "No articles yet."
+    "empty": "No articles yet.",
+    "empty_link": "See upcoming events"
   },
   "password": {
     "title": "This shop is private",
@@ -193,6 +198,7 @@
     },
     "totals": "{{ works }} works and {{ artists }} artists",
     "documents": "Documents",
+    "document_blank": "PDF",
     "in_the_shop": "In the Shop",
     "edition_for_sale": "This work is also a limited edition in the Shop.",
     "exhibitions_heading": "Exhibitions at the gallery",

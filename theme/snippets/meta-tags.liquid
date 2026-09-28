@@ -1,6 +1,13 @@
 {% doc %}
-  Page title, description, canonical address and link-preview tags. From Shopify's Skeleton
-  theme; exhibition pages use their key image as the link-preview image (content model part 2).
+  Page title, description, canonical address and link-preview tags, from Shopify's Skeleton theme.
+
+  - The tab title uses the site's words for the cart, search and 404 pages, joins its parts with
+    commas and one bar before the store name, and names the store once (DESIGN.md §0: no dashes).
+  - A page shares its own picture as the link preview: a page's hero image, an exhibition's key
+    image, a work's first image, an artist's portrait, a lesson's cover. Else the store's.
+  - Without a description of its own, an entry describes itself: a work by its label, an artist
+    by name, nationality, dates and the start of the biography, a grouping by its introduction. Other
+    pages print no description rather than the store's.
 
   @example
   {% render 'meta-tags' %}
@@ -13,7 +20,58 @@
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
+
+  # The entry's own picture and words, used when the page has none of its own.
+  assign own_image = nil
+  assign entry_text = ''
+  if request.page_type == 'page'
+    assign own_image = page.metafields.custom.hero_image.value
+  elsif metaobject != blank
+    case metaobject.system.type
+      when 'exhibition'
+        assign own_image = metaobject.key_image.value
+      when 'artwork'
+        for image in metaobject.images.value limit: 1
+          assign own_image = image
+        endfor
+        capture names
+          render 'gs-names', entries: metaobject.artists.value
+        endcapture
+        assign entry_text = names | strip
+        if entry_text != blank
+          assign entry_text = entry_text | append: ', '
+        endif
+        assign entry_text = entry_text | append: metaobject.title.value
+        if metaobject.year.value != blank
+          assign entry_text = entry_text | append: ', ' | append: metaobject.year.value
+        endif
+        if metaobject.medium.value != blank
+          assign entry_text = entry_text | append: '. ' | append: metaobject.medium.value
+        endif
+      when 'artist'
+        assign own_image = metaobject.portrait.value
+        assign entry_text = metaobject.name.value
+        if metaobject.nationality.value != blank
+          assign entry_text = entry_text | append: ', ' | append: metaobject.nationality.value
+        endif
+        if metaobject.life_dates.value != blank
+          assign entry_text = entry_text | append: ', ' | append: metaobject.life_dates.value
+        endif
+        assign bio = metaobject.biography | metafield_text | truncatewords: 30
+        if bio != blank
+          if entry_text != blank
+            assign entry_text = entry_text | append: '. '
+          endif
+          assign entry_text = entry_text | append: bio
+        endif
+      when 'lesson'
+        assign own_image = metaobject.cover.value
+      when 'collection_group'
+        assign entry_text = metaobject.introduction.value | strip_newlines | truncatewords: 30
+    endcase
+  endif
+  assign description = page_description | default: entry_text
+  assign og_description = description | default: shop.description | default: shop.name
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -23,10 +81,7 @@
     assign og_url = request.origin
   endif
 
-  assign og_image = page_image
-  if og_image == blank and metaobject.key_image.value != blank
-    assign og_image = metaobject.key_image.value
-  endif
+  assign og_image = own_image | default: page_image
 %}
 
 <meta
@@ -89,11 +144,26 @@
   content="{{ og_description | escape }}"
 >
 
+{%- assign site_name = shop.name | replace: '&amp;', '&' -%}
+{%- assign tags = current_tags | join: ', ' -%}
 <title>
-  {{ page_title }}
-  {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-  {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- case template.name -%}
+    {%- when 'cart' -%}
+      {{- 'cart.title' | t -}}
+    {%- when '404' -%}
+      {{- 'not_found.title' | t -}}
+    {%- when 'search' -%}
+      {%- if search.performed -%}
+        {{- 'search.results' | t: count: search.results_count, terms: search.terms -}}
+      {%- else -%}
+        {{- 'search.title' | t -}}
+      {%- endif -%}
+    {%- else -%}
+      {{- page_title | strip | escape_once -}}
+  {%- endcase -%}
+  {%- if current_tags %}, {{ 'general.title_tagged' | t: tags: tags }}{% endif -%}
+  {%- if current_page != 1 %}, {{ 'general.title_page' | t: number: current_page }}{% endif -%}
+  {%- unless page_title contains site_name or page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
 </title>
 
 <link
@@ -101,9 +171,9 @@
   href="{{ canonical_url }}"
 >
 
-{% if page_description %}
+{% if description != blank %}
   <meta
     name="description"
-    content="{{ page_description | escape }}"
+    content="{{ description | escape }}"
   >
 {% endif %}

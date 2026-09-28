@@ -12,7 +12,7 @@
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
     <div class="gs-container gs-visit{% if image != blank %} gs-visit--media{% endif %}">
       {%- if image != blank -%}
-        {%- render 'gs-media', image: image, preset: 'card', sizes: '(min-width: 990px) 50vw, 100vw', mode: 'photo', ratio: '4 / 3', shape: 'md', class: 'gs-visit__media' -%}
+        {%- render 'gs-media', image: image, preset: 'card', sizes: '(min-width: 990px) 50vw, 100vw', mode: 'photo', shape: 'md', class: 'gs-visit__media' -%}
       {%- endif -%}
       {%- if image != blank -%}<div class="gs-visit__body">{%- endif -%}
       <div class="gs-visit__head">

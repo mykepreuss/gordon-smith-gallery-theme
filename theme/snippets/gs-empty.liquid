@@ -1,0 +1,20 @@
+{% doc %}
+  An empty state (DESIGN.md §6.12): a sentence in deck type saying nothing is there, then a
+  standalone link somewhere useful. Empty states always point somewhere: without a link (its page
+  setting is blank), the theme editor shows a warning.
+
+  @param {string} text - What isn't there, e.g. 'events.empty' | t. Required
+  @param {string} [link_url] - Where to go instead
+  @param {string} [link_label] - The link's words
+
+  @example
+  {%- render 'gs-empty', text: text, link_url: settings.events_page.url, link_label: label -%}
+{% enddoc %}
+<div class="gs-empty">
+  <p class="gs-empty__text gs-deck">{{ text }}</p>
+  {%- if link_url != blank -%}
+    <a class="gs-cta-link" href="{{ link_url }}">{{ link_label }}</a>
+  {%- elsif request.design_mode -%}
+    <p class="gs-editor-warning">Choose this link's page in Theme settings, so visitors who find nothing here have somewhere to go.</p>
+  {%- endif -%}
+</div>

@@ -46,25 +46,32 @@
     endif
   endif
 
+  # An exhibition has a page when it has a summary or body, as gs-exhibition-card decides.
+  assign ex_linked = false
+  if exhibition != blank
+    if exhibition.summary.value != blank or exhibition.body.value != blank
+      assign ex_linked = true
+    endif
+  endif
   assign href = ''
-  if exhibition != blank and exhibition.summary.value != blank
+  assign by_tickets = false
+  if ex_linked
     assign href = exhibition.system.url
   elsif programme != blank
     assign href = programme.url
   elsif event.tickets.value.url != blank
-    capture r
-      render 'gs-url', link: event.tickets.value
-    endcapture
-    assign href = r | strip | split: '|' | first
+    assign by_tickets = true
   endif
 -%}
 <article class="gs-card">
   {%- if image != blank -%}
-    {%- render 'gs-media', image: image, preset: 'card', mode: mode, ratio: '4 / 3' -%}
+    {%- render 'gs-media', image: image, preset: 'card', mode: mode, ratio: 'var(--gs-ratio-card)' -%}
   {%- endif -%}
   <div class="gs-card__body">
     <{{ tag }} class="gs-card__title">
-      {%- if href != blank -%}
+      {%- if by_tickets -%}
+        {%- render 'gs-link', link: event.tickets.value, label: event.title.value -%}
+      {%- elsif href != blank -%}
         <a href="{{ href }}">{{ event.title.value | escape }}</a>
       {%- else -%}
         {{- event.title.value | escape -}}

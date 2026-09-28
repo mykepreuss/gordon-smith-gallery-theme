@@ -4,7 +4,7 @@
 {%- endcomment -%}
 <div class="gs-container gs-lead-in">
   <header class="gs-page-head">
-    <h1 class="gs-h1"{% render 'gs-fit', text: blog.title %}>{{ blog.title | escape }}</h1>
+    {%- render 'gs-title-block', title: blog.title -%}
   </header>
 </div>
 <div class="gs-section gs-surface-paper">
@@ -15,7 +15,7 @@
           {%- for article in blog.articles -%}
             <li>
               <article class="gs-card">
-                {%- render 'gs-media', image: article.image, preset: 'card', mode: 'photo', alt: article.title -%}
+                {%- render 'gs-media', image: article.image, preset: 'card', mode: 'photo', title: article.title -%}
                 <h2 class="gs-card__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>
                 <p class="gs-status__dates">{{ article.published_at | date: '%B %-d, %Y' }}</p>
                 {%- if article.excerpt != blank -%}
@@ -27,9 +27,9 @@
         </ul>
         {%- render 'gs-pagination', paginate: paginate -%}
       {%- else -%}
-        <div class="gs-empty">
-          <p class="gs-empty__text gs-deck">{{ 'blog.empty' | t }}</p>
-        </div>
+        {%- assign empty_text = 'blog.empty' | t -%}
+        {%- assign empty_label = 'blog.empty_link' | t -%}
+        {%- render 'gs-empty', text: empty_text, link_url: settings.events_page.url, link_label: empty_label -%}
       {%- endif -%}
     {%- endpaginate -%}
   </div>

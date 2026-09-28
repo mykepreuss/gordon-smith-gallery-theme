@@ -29,7 +29,7 @@
             <article class="gs-card gs-card--compact">
               {%- for w in g.works.value limit: 1 -%}
                 {%- for image in w.images.value limit: 1 -%}
-                  {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', ratio: '4 / 3' -%}
+                  {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', ratio: 'var(--gs-ratio-card)' -%}
                 {%- endfor -%}
               {%- endfor -%}
               <h3 class="gs-card__title"><a href="{{ g.system.url }}">{{ name_html }}</a></h3>

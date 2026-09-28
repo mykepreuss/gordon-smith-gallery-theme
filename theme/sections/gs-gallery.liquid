@@ -9,12 +9,12 @@
     assign images = metaobject.installation_views.value
     assign credit = metaobject.installation_credit.value
     assign heading = 'exhibitions.installation_views' | t
-    assign alt_text = metaobject.title.value
+    assign image_title = metaobject.title.value
   else
     assign images = page.metafields.custom.gallery_images.value
     assign credit = ''
     assign heading = section.settings.heading
-    assign alt_text = page.title
+    assign image_title = page.title
   endif
 -%}
 {%- if images != blank -%}
@@ -27,9 +27,17 @@
       {%- endif -%}
       <ul class="gs-grid gs-gallery--installation" role="list">
         {%- for image in images -%}
-          <li>{%- render 'gs-media', image: image, preset: 'gallery', mode: 'photo', alt: alt_text -%}</li>
+          <li>{%- render 'gs-media', image: image, preset: 'gallery', mode: 'photo', title: image_title -%}</li>
         {%- endfor -%}
       </ul>
+      {%- if request.design_mode -%}
+        {%- for image in images -%}
+          {%- if image.alt == blank -%}
+            <p class="gs-editor-warning">Give each installation view alt text in Files: it describes the photo to people who can't see it.</p>
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
       {%- if credit != blank -%}
         <p class="gs-caption gs-gallery__credit">{{ credit | escape }}</p>
       {%- endif -%}

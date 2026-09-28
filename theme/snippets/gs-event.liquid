@@ -53,8 +53,8 @@
     {%- assign exhibition = event.exhibition.value -%}
     {%- if compact != true and exhibition != blank -%}
       <p class="gs-meta">
-        {%- if exhibition.summary.value != blank -%}
-          <a href="{{ exhibition.system.url }}">{{ exhibition.title.value | escape }}</a>
+        {%- if exhibition.summary.value != blank or exhibition.body.value != blank -%}
+          <a class="gs-link" href="{{ exhibition.system.url }}">{{ exhibition.title.value | escape }}</a>
         {%- else -%}
           {{- exhibition.title.value | escape -}}
         {%- endif -%}
@@ -65,10 +65,7 @@
     {%- endif -%}
     {%- comment -%} A blank line in the summary starts a new paragraph; a single line break stays a break (Part 1 / Part 2). {%- endcomment -%}
     {%- if compact != true and event.summary.value != blank -%}
-      {%- assign paras = event.summary.value | escape | newline_to_br | strip_newlines | split: '<br /><br />' -%}
-      <div class="gs-event__summary">
-        {%- for para in paras -%}<p>{{ para }}</p>{%- endfor -%}
-      </div>
+      <div class="gs-event__summary">{%- render 'gs-paragraphs', text: event.summary.value -%}</div>
     {%- endif -%}
     {%- if event.tickets.value.url != blank -%}
       {%- liquid

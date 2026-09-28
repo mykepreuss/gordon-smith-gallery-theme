@@ -33,18 +33,7 @@
     <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
       {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
       <div class="gs-hero__box gs-surface-accent">
-        {%- if back.id != blank and back.id != page.id -%}
-          <p class="gs-crumb"><a href="{{ back.url }}">{{ eyebrow | escape }}</a></p>
-        {%- elsif eyebrow != blank -%}
-          <p class="gs-eyebrow">{{ eyebrow | escape }}</p>
-        {%- endif -%}
-        <h1 class="gs-h1"{% render 'gs-fit', text: page.title %}>{{ page.title | escape }}</h1>
-        {%- if f.intro.value != blank -%}
-          <p class="gs-deck">{{ f.intro.value | escape | newline_to_br }}</p>
-        {%- endif -%}
-        {%- if cta.url != blank -%}
-          <div class="gs-actions">{%- render 'gs-link', link: cta, class: 'gs-button' -%}</div>
-        {%- endif -%}
+        {%- render 'gs-title-block', title: page.title, eyebrow: eyebrow, back: back, deck: f.intro.value, cta: cta -%}
       </div>
       {%- if request.design_mode and mode == 'photo' and image.width < 1600 -%}
         <p class="gs-editor-warning">This photo is {{ image.width }} px wide. A hero photo needs 1600 px or more to look sharp on large screens: use a larger copy, or remove it to show the page header.</p>
@@ -57,18 +46,7 @@
 {%- else -%}
   <div class="gs-container gs-lead-in">
     <header class="gs-page-head">
-      {%- if back.id != blank and back.id != page.id -%}
-        <p class="gs-crumb"><a href="{{ back.url }}">{{ eyebrow | escape }}</a></p>
-      {%- elsif eyebrow != blank -%}
-        <p class="gs-eyebrow">{{ eyebrow | escape }}</p>
-      {%- endif -%}
-      <h1 class="gs-h1"{% render 'gs-fit', text: page.title %}>{{ page.title | escape }}</h1>
-      {%- if f.intro.value != blank -%}
-        <p class="gs-deck">{{ f.intro.value | escape | newline_to_br }}</p>
-      {%- endif -%}
-      {%- if cta.url != blank -%}
-        <div class="gs-actions">{%- render 'gs-link', link: cta, class: 'gs-button' -%}</div>
-      {%- endif -%}
+      {%- render 'gs-title-block', title: page.title, eyebrow: eyebrow, back: back, deck: f.intro.value, cta: cta -%}
     </header>
   </div>
 {%- endif -%}

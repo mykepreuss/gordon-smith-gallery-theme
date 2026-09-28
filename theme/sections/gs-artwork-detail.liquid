@@ -26,14 +26,8 @@
     <ul class="gs-artwork__media">
       {%- for media in product.media -%}
         {%- if media.media_type == 'image' -%}
-          {%- liquid
-            assign loading = 'lazy'
-            if forloop.first
-              assign loading = 'eager'
-            endif
-          -%}
           <li>
-            {%- render 'gs-media', image: media, sizes: '(min-width: 1536px) 820px, (min-width: 990px) 55vw, 100vw', loading: loading, mode: 'artwork', shape: 'lg', alt: product.title -%}
+            {%- render 'gs-media', image: media, preset: 'detail', priority: forloop.first, mode: 'artwork', shape: 'lg', alt: product.title -%}
           </li>
         {%- endif -%}
       {%- endfor -%}
@@ -137,7 +131,7 @@
     <section class="gs-artwork__about" aria-labelledby="{{ form_id }}-about">
       <h2 class="gs-label" id="{{ form_id }}-about">{{ 'products.about_work' | t }}</h2>
       {%- if product.description != blank -%}
-        <div class="gs-prose">{{ product.description }}</div>
+        <div class="gs-prose">{%- capture html -%}{{ product.description }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       {%- endif -%}
       {%- for disclosure in disclosures -%}
         {%- assign surfaces = disclosure.display_preferences.value.surfaces -%}
@@ -150,7 +144,7 @@
           -%}
           <details class="gs-disclosure">
             <summary>{{ disclosure_title | escape }}</summary>
-            <div class="gs-disclosure__body gs-prose">{{ disclosure.content | metafield_tag }}</div>
+            <div class="gs-disclosure__body gs-prose">{%- capture html -%}{{ disclosure.content | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
           </details>
         {%- endif -%}
       {%- endfor -%}

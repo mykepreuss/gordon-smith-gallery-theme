@@ -18,16 +18,11 @@
           {%- liquid
             assign file = doc.file.value
             assign doc_url = ''
-            assign is_pdf = false
             if file != blank
               if file.media_type == 'image'
                 assign doc_url = file | image_url
               else
                 assign doc_url = file.url
-                assign ending = doc_url | split: '?' | first | downcase | slice: -4, 4
-                if ending == '.pdf'
-                  assign is_pdf = true
-                endif
               endif
             endif
           -%}
@@ -36,11 +31,11 @@
               {%- if doc.cover.value != blank -%}
                 {%- render 'gs-media', image: doc.cover.value, preset: 'tile', mode: 'artwork' -%}
               {%- else -%}
-                <div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">PDF</span></div>
+                <div class="gs-media gs-media--artwork gs-shape-md gs-doc-tile__blank" aria-hidden="true"><span class="gs-label">{{ 'collection.document_blank' | t }}</span></div>
               {%- endif -%}
               <h3 class="gs-artwork-tile__title">
                 {%- if doc_url != blank -%}
-                  <a href="{{ doc_url }}">{{ doc.title.value | escape }}{% if is_pdf %} {{ 'general.pdf' | t }}{% endif %}</a>
+                  {%- render 'gs-link', url: doc_url, label: doc.title.value -%}
                 {%- else -%}
                   {{- doc.title.value | escape -}}
                 {%- endif -%}

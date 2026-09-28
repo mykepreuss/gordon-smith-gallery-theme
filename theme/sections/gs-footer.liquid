@@ -47,7 +47,8 @@
             <li><a href="mailto:{{ settings.email | strip }}">{{ settings.email | strip | escape }}</a></li>
           {%- endif -%}
           {%- if settings.phone != blank -%}
-            <li><a href="tel:{{ settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' }}">{{ settings.phone | escape }}</a></li>
+            {%- capture tel -%}{% render 'gs-tel' %}{%- endcapture -%}
+            <li><a href="tel:{{ tel | strip }}">{{ settings.phone | escape }}</a></li>
           {%- endif -%}
           {%- if settings.contact_page != blank -%}
             <li><a href="{{ settings.contact_page.url }}">{{ 'footer.contact_page' | t }}</a></li>

@@ -20,15 +20,12 @@
 {%- liquid
   assign s = section.settings
   assign lead = nil
-  capture lead_id
-    render 'gs-exhibition-index', status: 'on-now', order: 'desc', linked_only: true, limit: 1
+  capture lead_handle
+    render 'gs-lead-exhibition'
   endcapture
-  assign lead_id = lead_id | strip
-  if lead_id != blank
-    assign n = lead_id | plus: 0
-    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
-      assign lead = entry
-    endfor
+  assign lead_handle = lead_handle | strip
+  if lead_handle != blank
+    assign lead = metaobjects.exhibition[lead_handle]
   endif
 
   assign room_view = false
@@ -113,7 +110,7 @@
       {%- endif -%}
     {%- elsif lead -%}
       {%- if lead.key_image_caption.value != blank -%}
-        <div class="gs-hero__caption gs-caption">{{ lead.key_image_caption | metafield_tag }}</div>
+        <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ lead.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
       {%- endif -%}
     {%- elsif s.caption != blank -%}
       <p class="gs-hero__caption gs-caption">{{ s.caption | escape }}</p>

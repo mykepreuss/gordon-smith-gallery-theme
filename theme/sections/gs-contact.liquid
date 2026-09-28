@@ -28,7 +28,8 @@
         <p><a class="gs-link" href="mailto:{{ settings.email | strip }}">{{ settings.email | strip | escape }}</a></p>
       {%- endif -%}
       {%- if settings.phone != blank -%}
-        <p><a class="gs-link" href="tel:{{ settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' }}">{{ settings.phone | escape }}</a></p>
+        {%- capture tel -%}{% render 'gs-tel' %}{%- endcapture -%}
+        <p><a class="gs-link" href="tel:{{ tel | strip }}">{{ settings.phone | escape }}</a></p>
       {%- endif -%}
     </div>
     {%- endif -%}

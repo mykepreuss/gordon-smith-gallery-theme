@@ -56,20 +56,23 @@
           for card in group.cards.value
             assign ratio = card.image.value.aspect_ratio | default: 1
             assign card_link = card.link.value
-            assign ending = card_link.url | split: '?' | first | downcase | slice: -4, 4
-            if ratio >= 1 or ending == '.pdf'
+            capture card_url
+              render 'gs-url', link: card_link
+            endcapture
+            assign card_pdf = card_url | strip | split: '|' | last
+            if ratio >= 1 or card_pdf == '1'
               assign portrait = false
             endif
             if card.logo.value == blank
               assign logos = false
             endif
-            if ending != '.pdf'
+            if card_pdf != '1'
               assign docs = false
             endif
             if card.image.value == blank or card_link.text == blank
               assign offers = false
             endif
-            if card.image.value == blank or card.text.value != blank or card_link.text != blank or card_link.url == blank or ending == '.pdf'
+            if card.image.value == blank or card.text.value != blank or card_link.text != blank or card_link.url == blank or card_pdf == '1'
               assign links = false
             endif
           endfor
@@ -118,19 +121,26 @@
             {%- for card in group.cards.value -%}
               {%- liquid
                 # The width each card's picture is shown at, so the browser fetches the right file.
+                # Phones show one card across, or a link card's small picture beside its words.
                 assign card_sizes = blank
+                assign phone_sizes = '92vw'
+                if links
+                  assign phone_sizes = '37vw'
+                endif
                 if docs
                   assign card_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, 46vw'
                 elsif portrait and fours
                   assign card_sizes = '(min-width: 1296px) 276px, (min-width: 990px) 22vw, 46vw'
+                elsif portrait
+                  assign card_sizes = '(min-width: 1296px) 276px, (min-width: 990px) 22vw, (min-width: 750px) 30vw, 46vw'
                 elsif offers
                   assign card_sizes = '(min-width: 1296px) 416px, (min-width: 750px) 31vw, 92vw'
                 elsif count == 1
                   assign card_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 92vw'
                 elsif fours
-                  assign card_sizes = '(min-width: 1296px) 276px, (min-width: 1200px) 22vw, (min-width: 750px) 47vw, 92vw'
+                  assign card_sizes = '(min-width: 1296px) 276px, (min-width: 1200px) 22vw, (min-width: 750px) 47vw, ' | append: phone_sizes
                 elsif lead and forloop.index <= 2
-                  assign card_sizes = '(min-width: 1296px) 576px, (min-width: 750px) 47vw, 92vw'
+                  assign card_sizes = '(min-width: 1296px) 576px, (min-width: 750px) 47vw, ' | append: phone_sizes
                 elsif links
                   assign card_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 37vw'
                 endif
