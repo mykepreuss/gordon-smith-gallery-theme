@@ -230,11 +230,11 @@
       {%- endif -%}
 
       {%- comment -%}
-        Without the choice, a print that can't be bought yet, or whose frame is sold out, says
-        whether framing is offered.
+        Without the choice: a print not on sale yet says framing will be offered; one on sale whose
+        frame is sold out says so. A sold-out print says nothing about framing.
       {%- endcomment -%}
       {%- if frame != blank and framing == false -%}
-        {%- if frame.available -%}
+        {%- if coming_soon and frame.available -%}
           {%- assign frame_price = frame.selected_or_first_available_variant.price | money -%}
           <p class="gs-meta">{{ 'products.framing_offered' | t: price: frame_price }}</p>
         {%- elsif can_buy -%}
