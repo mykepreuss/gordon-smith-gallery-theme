@@ -4,13 +4,19 @@
 {%- endcomment -%}
 {%- if metaobject.exhibitions.value != blank -%}
   {%- liquid
-    # Newest first: each card is keyed by its start date, then the keys are sorted.
+    # How many cards, first: the count classes (DS-44, DS-52) set each card's picture size.
+    assign count = 0
+    for entry in metaobject.exhibitions.value
+      assign count = count | plus: 1
+    endfor
+    capture mods
+      render 'gs-grid-modifiers', count: count
+    endcapture
+    assign mods = mods | strip_newlines
+    # Newest first: each entry's place in the list is keyed by its start date, then the keys are sorted.
     assign rows = ''
     for entry in metaobject.exhibitions.value
-      capture card
-        render 'gs-exhibition-card', entry: entry, compact: true, heading: 'h3'
-      endcapture
-      assign rows = rows | append: entry.start_date.value | append: '~~card~~' | append: card | append: '~~row~~'
+      assign rows = rows | append: entry.start_date.value | append: '~~at~~' | append: forloop.index0 | append: '~~row~~'
     endfor
     assign rows = rows | split: '~~row~~' | sort | reverse
   -%}
@@ -19,10 +25,20 @@
       <div class="gs-section-head">
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.exhibitions_heading' | t }}</h2>
       </div>
-      <ul class="gs-grid gs-grid--cards">
+      <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
         {%- for row in rows -%}
-          {%- assign card = row | split: '~~card~~' | last -%}
-          {%- if card != blank -%}<li>{{ card }}</li>{%- endif -%}
+          {%- liquid
+            assign at = row | split: '~~at~~' | last | plus: 0
+            capture card_sizes
+              render 'gs-grid-sizes', mods: mods, index: forloop.index
+            endcapture
+            assign card_sizes = card_sizes | strip
+          -%}
+          {%- for entry in metaobject.exhibitions.value -%}
+            {%- if forloop.index0 == at -%}
+              <li>{%- render 'gs-exhibition-card', entry: entry, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
+            {%- endif -%}
+          {%- endfor -%}
         {%- endfor -%}
       </ul>
     </div>

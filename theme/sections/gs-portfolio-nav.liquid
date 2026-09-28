@@ -21,15 +21,10 @@
           <a class="gs-cta-link gs-cta-link--more" href="{{ settings.all_editions_collection.url }}">{{ 'shop.all_editions_link' | t }}</a>
         {%- endif -%}
       </div>
-      <ul class="gs-grid gs-grid--artworks">
+      <ul class="gs-grid gs-grid--artworks" role="list">
         {%- for portfolio in portfolios -%}
-          <li>
-            <article class="gs-card gs-card--compact">
-              {%- render 'gs-media', image: portfolio.products.first.featured_media, preset: 'tile', mode: 'artwork' -%}
-              <h3 class="gs-card__title"><a href="{{ portfolio.url }}">{{ portfolio.title | escape }}</a></h3>
-              <p class="gs-meta">{{ 'shop.editions_count' | t: count: portfolio.products_count }}</p>
-            </article>
-          </li>
+          {%- assign count_text = 'shop.editions_count' | t: count: portfolio.products_count -%}
+          <li>{%- render 'gs-set-card', image: portfolio.products.first.featured_media, title: portfolio.title, url: portfolio.url, count_text: count_text, ratio: 'var(--gs-ratio-artwork)', preset: 'tile' -%}</li>
         {%- endfor -%}
       </ul>
     </div>

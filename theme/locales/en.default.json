@@ -106,7 +106,9 @@
     "adding_frame": "Adding frame",
     "frame_sold_out": "This frame is sold out.",
     "disclosure": "Disclosure",
-    "about_work": "About the work"
+    "about_work": "About the work",
+    "details": "Details",
+    "view_of": "View {{ number }} of {{ total }}"
   },
   "contact": {
     "details_heading": "Visit and contact",
@@ -133,11 +135,13 @@
     "title": "Search",
     "label": "Search the site",
     "submit": "Search",
-    "no_results": "Nothing found for “{{ terms }}”. Try another word, or fewer words.",
+    "no_results": "No pages or limited editions match “{{ terms }}”.",
     "results": {
       "one": "1 result for “{{ terms }}”",
       "other": "{{ count }} results for “{{ terms }}”"
-    }
+    },
+    "pages_heading": "Pages",
+    "editions_heading": "Limited editions"
   },
   "not_found": {
     "title": "Page not found",
@@ -232,7 +236,8 @@
     "by_theme": "By theme",
     "site_heading": "In the collection",
     "site_all": "See every match in the collection",
-    "exhibition_works": "Works from the collection"
+    "exhibition_works": "Works from the collection",
+    "see_edition": "See the edition"
   },
   "lessons": {
     "heading": "Lessons",

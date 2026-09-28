@@ -1,6 +1,7 @@
 {%- comment -%}
-  Search: the form, then results. Limited editions show as artwork tiles; pages and articles as a
-  list with their titles. Product titles are plain text once the artwork fields are filled
+  Search: the form, then results in headed groups: pages and articles first, as a list with their
+  titles, then limited editions as artwork tiles. With nothing found, an empty state points to the
+  collection. Product titles are plain text once the artwork fields are filled
   (DS-16), which is what lets "Seven Sisters" find Seven Sisters Range.
 {%- endcomment -%}
 {%- assign form_id = 'gs-search-' | append: section.id -%}
@@ -11,7 +12,7 @@
     <form class="gs-form-row" action="{{ routes.search_url }}" method="get" role="search">
       <div class="gs-field">
         <label class="gs-field__label" for="{{ form_id }}">{{ 'search.label' | t }}</label>
-        <input class="gs-input" id="{{ form_id }}" type="search" name="q" value="{{ search.terms | escape }}" autocomplete="off">
+        <input class="gs-input" id="{{ form_id }}" type="search" name="q" value="{{ search.terms | escape }}" autocomplete="off"{% unless search.performed %} autofocus{% endunless %}>
       </div>
       <button class="gs-button" type="submit">{{ 'search.submit' | t }}</button>
     </form>
@@ -19,41 +20,62 @@
 </div>
 
 {%- if search.performed -%}
-  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-summary">
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ form_id }}-summary"{% if search.results_count == 0 %} data-gs-finder-empty{% endif %}>
     <div class="gs-container">
       {%- paginate search.results by 24 -%}
-        <p class="gs-deck" id="{{ form_id }}-summary" role="status">
-          {%- if search.results_count == 0 -%}
-            {{- 'search.no_results' | t: terms: search.terms -}}
-          {%- else -%}
-            {{- 'search.results' | t: count: search.results_count, terms: search.terms -}}
+        {%- if search.results_count == 0 -%}
+          {%- comment -%} gs-collection.js hides this section when the collection has works that match. {%- endcomment -%}
+          {%- assign empty_text = 'search.no_results' | t: terms: search.terms -%}
+          {%- assign empty_label = 'collection.ways_heading' | t -%}
+          {%- assign empty_id = form_id | append: '-summary' -%}
+          {%- render 'gs-empty', text: empty_text, link_url: settings.collection_page.url, link_label: empty_label, id: empty_id, status: true -%}
+        {%- else -%}
+          <div class="gs-section-head">
+            <p class="gs-deck" id="{{ form_id }}-summary" role="status">{{ 'search.results' | t: count: search.results_count, terms: search.terms }}</p>
+          </div>
+          {%- assign products = search.results | where: 'object_type', 'product' -%}
+          {%- assign others = search.results | where: 'object_type', 'page' -%}
+          {%- assign articles = search.results | where: 'object_type', 'article' -%}
+          {%- comment -%}
+            Pages and articles first (someone looking for "visit" wants Plan your visit before the
+            editions), then limited editions. Excerpts get a space at each block's end before the
+            tags go, so words from two paragraphs don't join.
+          {%- endcomment -%}
+          {%- if others.size > 0 or articles.size > 0 -%}
+            <div class="gs-card-group">
+              <div class="gs-section-head">
+                <h2 class="gs-h2">{{ 'search.pages_heading' | t }}</h2>
+              </div>
+              <ul class="gs-results" role="list">
+                {%- for item in others -%}
+                  {%- assign excerpt = item.metafields.custom.intro.value | default: item.content -%}
+                  <li>
+                    <h3 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                    {%- if excerpt != blank -%}<p class="gs-meta">{{ excerpt | replace: '<br', ' <br' | replace: '</p>', ' </p>' | replace: '</h2>', ' </h2>' | replace: '</h3>', ' </h3>' | replace: '</li>', ' </li>' | strip_html | truncatewords: 30, '…' | escape_once }}</p>{%- endif -%}
+                  </li>
+                {%- endfor -%}
+                {%- for item in articles -%}
+                  {%- assign excerpt = item.excerpt_or_content -%}
+                  <li>
+                    <h3 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h3>
+                    {%- if excerpt != blank -%}<p class="gs-meta">{{ excerpt | replace: '<br', ' <br' | replace: '</p>', ' </p>' | replace: '</h2>', ' </h2>' | replace: '</h3>', ' </h3>' | replace: '</li>', ' </li>' | strip_html | truncatewords: 30, '…' | escape_once }}</p>{%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
           {%- endif -%}
-        </p>
-        {%- assign products = search.results | where: 'object_type', 'product' -%}
-        {%- assign others = search.results | where: 'object_type', 'page' -%}
-        {%- assign articles = search.results | where: 'object_type', 'article' -%}
-        {%- if products.size > 0 -%}
-          <ul class="gs-grid gs-grid--artworks gs-search__products">
-            {%- for product in products -%}
-              <li>{%- render 'gs-artwork-tile', product: product, heading: 'h2' -%}</li>
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-        {%- if others.size > 0 or articles.size > 0 -%}
-          <ul class="gs-results">
-            {%- for item in others -%}
-              <li>
-                <h2 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h2>
-                {%- if item.content != blank -%}<p class="gs-meta">{{ item.content | strip_html | truncatewords: 30 }}</p>{%- endif -%}
-              </li>
-            {%- endfor -%}
-            {%- for item in articles -%}
-              <li>
-                <h2 class="gs-h4"><a class="gs-link" href="{{ item.url }}">{{ item.title | escape }}</a></h2>
-                {%- if item.excerpt_or_content != blank -%}<p class="gs-meta">{{ item.excerpt_or_content | strip_html | truncatewords: 30 }}</p>{%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
+          {%- if products.size > 0 -%}
+            <div class="gs-card-group">
+              <div class="gs-section-head">
+                <h2 class="gs-h2">{{ 'search.editions_heading' | t }}</h2>
+              </div>
+              <ul class="gs-grid gs-grid--artworks" role="list">
+                {%- for product in products -%}
+                  <li>{%- render 'gs-artwork-tile', product: product, heading: 'h3' -%}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
         {%- endif -%}
         {%- render 'gs-pagination', paginate: paginate -%}
       {%- endpaginate -%}
@@ -79,7 +101,7 @@
         </div>
         <a class="gs-cta-link gs-cta-link--more" href="{{ settings.collection_page.url }}?q={{ search.terms | url_encode }}#collection-search">{{ 'collection.site_all' | t }}</a>
       </div>
-      <ul class="gs-grid gs-grid--artworks" data-gs-finder-results></ul>
+      <ul class="gs-grid gs-grid--artworks" role="list" data-gs-finder-results></ul>
     </div>
   </section>
   <script src="{{ 'gs-collection.js' | asset_url }}" defer></script>

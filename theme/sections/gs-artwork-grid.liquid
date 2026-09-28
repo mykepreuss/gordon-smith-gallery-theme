@@ -6,7 +6,7 @@
   <section class="gs-section gs-surface-paper" aria-label="{{ 'shop.works_label' | t: title: collection.title }}">
     <div class="gs-container">
       {%- if collection.products.size > 0 -%}
-        <ul class="gs-grid gs-grid--artworks">
+        <ul class="gs-grid gs-grid--artworks" role="list">
           {%- for product in collection.products -%}
             <li>{%- render 'gs-artwork-tile', product: product, heading: 'h2' -%}</li>
           {%- endfor -%}

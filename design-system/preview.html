@@ -389,7 +389,7 @@
       </div>
       <div class="pv-state">
         <h3 class="gs-h4">Disabled</h3>
-        <div class="gs-actions"><button class="gs-button" type="button" disabled>Add to cart</button><span class="gs-meta">Sold out</span></div>
+        <div class="gs-actions"><button class="gs-button" type="button" disabled aria-describedby="st-why">Add to cart</button><p class="gs-note" id="st-why">Sold out</p></div>
       </div>
       <div class="pv-state">
         <h3 class="gs-h4">Links that lead on</h3>
@@ -484,25 +484,27 @@
 
 <!-- ============ ARTWORK DETAIL (product: sections/gs-artwork-detail, snippets/gs-artwork-label) ============ -->
 <div class="gs-container--wide gs-container">
-  <p class="pv-note pv-note--before">Artwork detail, the product page: Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store. Beside the work sits only what it takes to decide and buy: label, medium, edition, size, price, the three colour variants, the archive note and the frame offer in a panel on tint. The description follows under About the work, at reading width, with any disclosures (DS-38). Its two paragraphs about the work show here; on the store it also opens with lines that repeat the label. The label is the page&rsquo;s H1 in the theme, and the select appears only when a work has more than one variant, named after the product&rsquo;s option as the store calls it. No limited edition has a disclosure yet, so the one shown has the default label and stand-in text. Images are placeholders.</p>
+  <p class="pv-note pv-note--before">Artwork detail, the product page: Marlene Yuen&rsquo;s <cite>Short Gumboots</cite> from the live store. Beside the work sits only what it takes to decide and buy: label, medium, edition, size, price, the three colour variants (named without a price, since all three cost the same), the archive note and the frame offer in a panel on tint. The description follows under About the work, at reading width, with any disclosures (DS-38). Its two paragraphs about the work show here; on the store it also opens with lines that repeat the label. The label is the page&rsquo;s H1 in the theme, and the select appears only when a work has more than one variant, named after the product&rsquo;s option as the store calls it. No limited edition has a disclosure yet, so the one shown has the default label and stand-in text. Images are placeholders.</p>
   <div class="gs-artwork">
     <ul class="gs-artwork__media" id="artwork-media"></ul>
     <div class="gs-artwork__info">
-      <h2 class="gs-artwork-label"><span class="gs-artwork-label__artist">Marlene Yuen</span> <cite>Short Gumboots</cite>, 2026</h2>
-      <div class="gs-card__meta">
-        <p class="gs-meta">One-colour serigraph</p>
-        <p class="gs-meta">3 Varied Editions of 10 each (Light, Medium, Dark)</p>
-        <p class="gs-meta">14.75" x 14.75"</p>
+      <div class="gs-artwork__head">
+        <h2 class="gs-artwork-label"><span class="gs-artwork-label__artist">Marlene Yuen</span> <cite>Short Gumboots</cite>, 2026</h2>
+        <div class="gs-artwork__facts">
+          <p class="gs-meta">One-colour serigraph</p>
+          <p class="gs-meta">3 Varied Editions of 10 each (Light, Medium, Dark)</p>
+          <p class="gs-meta">14.75" x 14.75"</p>
+        </div>
       </div>
-      <p class="gs-price">$138</p>
+      <p class="gs-price">$138.00</p>
       <form class="gs-form" onsubmit="return false">
         <div class="gs-field">
           <label class="gs-field__label" for="pv-variant">Colour</label>
           <span class="gs-select-wrap">
             <select class="gs-input gs-select" id="pv-variant" name="id">
-              <option value="light" selected>Light, $138</option>
-              <option value="medium">Medium, $138</option>
-              <option value="dark">Dark, $138</option>
+              <option value="light" selected>Light</option>
+              <option value="medium">Medium</option>
+              <option value="dark">Dark</option>
             </select>
           </span>
         </div>
@@ -512,7 +514,7 @@
       <section class="gs-panel gs-surface-tint" aria-labelledby="pv-frame">
         <h3 class="gs-h4" id="pv-frame">Add a frame</h3>
         <div class="gs-prose"><p>Museum-quality framing and service includes UV-protective glass and acid-free matting, keeping your fine art print vibrant and pristine for decades.<br>Framing by Artrageous Pictures and Framing North Shore</p></div>
-        <p><a class="gs-link" href="#x">Marlene Yuen Short Gumboots FRAME</a>, $258</p>
+        <p><a class="gs-link" href="#x">Marlene Yuen Short Gumboots FRAME</a>, $258.00</p>
         <form class="gs-form" onsubmit="return false">
           <button class="gs-button gs-button--secondary" type="submit">Add frame to cart</button>
         </form>
@@ -550,7 +552,7 @@
                 <a class="gs-link" href="#x"><span class="gs-cart__label"><span class="gs-artwork-label__artist">Marlene Yuen</span> <cite>Short Gumboots</cite>, 2026</span></a>
               </h3>
               <p class="gs-meta">Light</p>
-              <p class="gs-artwork-tile__price">$138</p>
+              <p class="gs-artwork-tile__price">$138.00</p>
             </div>
             <div class="gs-cart__controls">
               <div class="gs-field">
@@ -566,7 +568,7 @@
               <h3 class="gs-cart__name">
                 <a class="gs-link" href="#x"><span class="gs-cart__label">Marlene Yuen Short Gumboots FRAME</span></a>
               </h3>
-              <p class="gs-artwork-tile__price">$258</p>
+              <p class="gs-artwork-tile__price">$258.00</p>
             </div>
             <div class="gs-cart__controls">
               <div class="gs-field">
@@ -585,7 +587,7 @@
             </div>
           </div>
           <div class="gs-cart__summary">
-            <p class="gs-cart__subtotal">Subtotal: $396</p>
+            <p class="gs-cart__subtotal">Subtotal: $396.00</p>
             <p class="gs-meta">Taxes and shipping are calculated at checkout.</p>
             <div class="gs-actions">
               <button class="gs-button gs-button--secondary" type="submit" name="update">Update cart</button>
@@ -1016,12 +1018,14 @@
     <div class="gs-artwork">
       <ul class="gs-artwork__media" id="work-media"></ul>
       <div class="gs-artwork__info">
-        <p class="gs-crumb"><a href="#collection">Permanent Collection</a></p>
-        <h2 class="gs-artwork-label" id="work-title"><span class="gs-artwork-label__artist"><a href="#artist">Gordon Smith</a></span> <cite>Pender Harbour</cite>, 2006</h2>
+        <div class="gs-artwork__head">
+          <p class="gs-crumb"><a href="#collection">Permanent Collection</a></p>
+          <h2 class="gs-artwork-label" id="work-title"><span class="gs-artwork-label__artist"><a href="#artist">Gordon Smith</a></span> <cite>Pender Harbour</cite>, 2006</h2>
+        </div>
         <dl class="gs-details gs-details--stack">
           <div class="gs-details__item"><dt>Medium</dt><dd>Serigraph &amp; Acrylic on Paper</dd></div>
-          <div class="gs-details__item"><dt>Dimensions</dt><dd>36.5&quot; x 48.5&quot; x 1.5&quot; (framed), 30&quot; x 44&quot; (unframed)</dd></div>
           <div class="gs-details__item"><dt>Edition</dt><dd>AP</dd></div>
+          <div class="gs-details__item"><dt>Dimensions</dt><dd>36.5&quot; x 48.5&quot; x 1.5&quot; (framed), 30&quot; x 44&quot; (unframed)</dd></div>
           <div class="gs-details__item"><dt>Credit</dt><dd>Collection of Artists for Kids and the Gordon Smith Gallery</dd></div>
           <div class="gs-details__item"><dt>Accession number</dt><dd>SMIT028</dd></div>
           <div class="gs-details__item"><dt>Browse</dt><dd><a class="gs-link" href="#ways-title">Prints</a>, <a class="gs-link" href="#ways-title">Landscape</a>, <a class="gs-link" href="#ways-title">Ecology</a></dd></div>
@@ -1029,11 +1033,12 @@
         <section class="gs-panel gs-surface-tint" aria-labelledby="work-shop">
           <h3 class="gs-h4" id="work-shop">In the Shop</h3>
           <p>This work is also a limited edition in the Shop.</p>
-          <p><a class="gs-link" href="#shop">Pender Harbour</a>, $2,200</p>
+          <p><cite>Pender Harbour</cite>, $2,200.00</p>
+          <a class="gs-cta-link" href="#shop">See the edition</a>
         </section>
       </div>
     </div>
-    <p class="pv-note">A work&rsquo;s page (DS-62): the product page&rsquo;s layout without price or cart. Every image whole on the mat; beside it, &ldquo;Permanent Collection&rdquo; linking back, the museum label with the artist linking to their page, then its facts one to a row. Shown in, when the work was in an exhibition here, links the exhibitions (Winter Pond&rsquo;s says From the Ground); Browse links its category and themes. When the work is also an edition in the Shop, a panel on tint links to it. About the work follows at reading width when there is text. The label is the page&rsquo;s H1 in the theme. Gordon Smith&rsquo;s Pender Harbour from the store; images are placeholders.</p>
+    <p class="pv-note">A work&rsquo;s page (DS-62): the product page&rsquo;s layout without price or cart. Every image whole on the mat; beside it, &ldquo;Permanent Collection&rdquo; linking back, the museum label with the artist linking to their page, then its facts one to a row. Shown in, when the work was in an exhibition here, links the exhibitions (Winter Pond&rsquo;s says From the Ground); Browse links its category and themes. When the work is also an edition in the Shop, a panel on tint names it with its price and a When the work is also an edition in the Shop, a panel on tint links to it.ldquo;See the editionWhen the work is also an edition in the Shop, a panel on tint links to it.rdquo; link. About the work follows at reading width when there is text. The label is the page&rsquo;s H1 in the theme. Gordon Smith&rsquo;s Pender Harbour from the store; images are placeholders.</p>
   </div>
   <section class="gs-section gs-surface-paper" aria-labelledby="work-more">
     <div class="gs-container">
@@ -1063,17 +1068,24 @@
   </div>
   <section class="gs-section gs-surface-paper" aria-labelledby="pv-search-summary">
     <div class="gs-container">
-      <p class="gs-deck" id="pv-search-summary" role="status">39 results for &ldquo;smith&rdquo;</p>
-      <ul class="gs-results">
-        <li>
-          <h3 class="gs-h4"><a class="gs-link" href="#x">The Smith Foundation</a></h3>
-          <p class="gs-meta">The Gordon and Marion Smith Foundation for Young Artists The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from...</p>
-        </li>
-        <li>
-          <h3 class="gs-h4"><a class="gs-link" href="#x">Music At The Smith</a></h3>
-          <p class="gs-meta">Music At The Smith is a seasonal concert series dedicated to showcasing highly accomplished musical ensembles across a spectrum of genres, including jazz, folk, indie, classical, and world music. Set...</p>
-        </li>
-      </ul>
+      <div class="gs-section-head">
+        <p class="gs-deck" id="pv-search-summary" role="status">39 results for &ldquo;smith&rdquo;</p>
+      </div>
+      <div class="gs-card-group">
+        <div class="gs-section-head">
+          <h3 class="gs-h2">Pages</h3>
+        </div>
+        <ul class="gs-results" role="list">
+          <li>
+            <h4 class="gs-h4"><a class="gs-link" href="#x">The Smith Foundation</a></h4>
+            <p class="gs-meta">The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from&hellip;</p>
+          </li>
+          <li>
+            <h4 class="gs-h4"><a class="gs-link" href="#x">Music At The Smith</a></h4>
+            <p class="gs-meta">Music At The Smith is a seasonal concert series dedicated to showcasing highly accomplished musical ensembles across a spectrum of genres, including jazz, folk, indie, classical, and world music. Set&hellip;</p>
+          </li>
+        </ul>
+      </div>
       <nav aria-label="Pages">
         <ul class="gs-pagination">
           <li><span aria-current="page">1</span></li>
@@ -1081,7 +1093,7 @@
           <li><a href="#x">Next</a></li>
         </ul>
       </nav>
-      <p class="pv-note">The live store&rsquo;s search for &ldquo;smith&rdquo; finds 39 results: two pages at 24 a page, so this is page one. Pages and articles list with their title and first 30 words, as here; limited editions in the results show as artwork tiles above the list, like the portfolio. Pagination is real links with the current page marked; a list of one page shows none.</p>
+      <p class="pv-note">The live store&rsquo;s search for &ldquo;smith&rdquo; finds 39 results: two pages at 24 a page, so this is page one. The results come in headed groups: Pages first (pages and articles, each with its title and first 30 words, or the page&rsquo;s intro when it has one, at the reading measure), then Limited editions as artwork tiles, like the portfolio, then In the collection. With nothing found, an empty state says so and links to the collection. Pagination is real links with the current page marked; a list of one page shows none.</p>
     </div>
   </section>
   <section class="gs-section gs-surface-paper" aria-labelledby="pv-search-collection">
@@ -1382,11 +1394,11 @@
 
   // 2026 Fall Portfolio (live store, CAD): the label fields and price of each work.
   const works = [
-    ["Amelia Butcher", "Cup and Saucer", "2026", "Wheel thrown, hand-formed, reduction-fired stoneware, inscribed Shino under Tenmoku glaze", "Edition of 33", "$180"],
-    ["Marlene Yuen", "Short Gumboots", "2026", "One-colour serigraph", "3 Varied Editions of 10 each (Light, Medium, Dark)", "$138"],
-    ["Gordon Smith", "Pender Harbour", "2006", "17-colour serigraph", "AP", "$2,200"],
-    ["Arnold Shives", "Seven Sisters Range", "2003", "Lithography, Chine Collé", "AP (ed. of 30)", "$350"],
-    ["Arnold Shives", "Mount Orpheus", "2003", "Serigraph, woodcut, Chine Collé", "AP (ed. of 30)", "$350"],
+    ["Amelia Butcher", "Cup and Saucer", "2026", "Wheel thrown, hand-formed, reduction-fired stoneware, inscribed Shino under Tenmoku glaze", "Edition of 33", "$180.00"],
+    ["Marlene Yuen", "Short Gumboots", "2026", "One-colour serigraph", "3 Varied Editions of 10 each (Light, Medium, Dark)", "$138.00"],
+    ["Gordon Smith", "Pender Harbour", "2006", "17-colour serigraph", "AP", "$2,200.00"],
+    ["Arnold Shives", "Seven Sisters Range", "2003", "Lithography, Chine Collé", "AP (ed. of 30)", "$350.00"],
+    ["Arnold Shives", "Mount Orpheus", "2003", "Serigraph, woodcut, Chine Collé", "AP (ed. of 30)", "$350.00"],
   ];
   document.getElementById("tiles").innerHTML = works.map(([artist, title, year, medium, edition, price], i) => {
     const [w, h, b] = art[i];
@@ -1486,8 +1498,8 @@
 
   // The artist's editions in the Shop (store products, CAD) and exhibitions (newest first).
   document.getElementById("artist-editions").innerHTML = [
-    ["Gordon Smith", "Pender Harbour", "2006", "17-colour serigraph", "AP", "$2,200"],
-    ["Gordon Smith", "The Byway", "2009", "16-colour serigraph", "Edition of 200", "$1,200"],
+    ["Gordon Smith", "Pender Harbour", "2006", "17-colour serigraph", "AP", "$2,200.00"],
+    ["Gordon Smith", "The Byway", "2009", "16-colour serigraph", "Edition of 200", "$1,200.00"],
   ].map(([artist, title, year, medium, edition, price], i) => {
     const [w, h, b] = art[(i + 1) % art.length];
     return `<li><article class="gs-artwork-tile">

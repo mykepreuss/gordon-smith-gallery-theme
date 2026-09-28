@@ -101,7 +101,7 @@
                 assign anchor = id | append: '-' | append: letter | replace: '#', 'other' | downcase
                 echo '<section class="gs-index__group" id="' | append: anchor | append: '" aria-labelledby="' | append: anchor | append: '-h">'
                 echo '<h3 class="gs-index__letter" id="' | append: anchor | append: '-h">' | append: letter | append: '</h3>'
-                echo '<ul class="gs-index__list">'
+                echo '<ul class="gs-index__list" role="list">'
               endif
               echo item
             endfor

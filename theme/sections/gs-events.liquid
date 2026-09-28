@@ -3,7 +3,8 @@
   theme settings it lists every upcoming event; on any other page, the events whose programme
   page is that page. An event drops off once it has ended. A programme page with no upcoming
   events shows nothing here; the Upcoming events page says there are none. On the Upcoming events
-  page the list's heading is for screen readers only: the page title already says it.
+  page the list's heading is for screen readers only: the page title already says it. On a
+  programme page the heading has a link to every event on the Upcoming events page.
 {%- endcomment -%}
 {%- liquid
   assign all = false
@@ -29,10 +30,13 @@
       {%- else -%}
         <div class="gs-section-head">
           <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+          {%- if settings.events_page != blank -%}
+            <a class="gs-cta-link gs-cta-link--more" href="{{ settings.events_page.url }}">{{ 'home.all_events' | t }}</a>
+          {%- endif -%}
         </div>
       {%- endif -%}
       {%- if ids.size > 0 -%}
-        <ul class="gs-events">
+        <ul class="gs-events" role="list">
           {%- for id in ids -%}
             {%- assign n = id | plus: 0 -%}
             {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}

@@ -16,6 +16,8 @@
   @param {boolean} [compact] - The compact card, for "More exhibitions"
   @param {boolean} [wide] - The wide card, image beside text, for the On now and Upcoming pages
   @param {string} [heading] - Heading element for the title: 'h2' or 'h3' (default)
+  @param {string} [sizes] - The picture's sizes in a grid whose count changes the card's width
+    (gs-grid-sizes). Blank keeps the card preset's
 
   @example
   {%- render 'gs-exhibition-card', entry: entry, show_status: true -%}
@@ -39,7 +41,7 @@
   {%- if wide -%}
     {%- render 'gs-media', image: entry.key_image.value, sizes: preset_sizes, mode: mode, ratio: 'var(--gs-ratio-card)', title: entry.title.value -%}
   {%- else -%}
-    {%- render 'gs-media', image: entry.key_image.value, preset: 'card', mode: mode, ratio: 'var(--gs-ratio-card)', title: entry.title.value -%}
+    {%- render 'gs-media', image: entry.key_image.value, preset: 'card', sizes: sizes, mode: mode, ratio: 'var(--gs-ratio-card)', title: entry.title.value -%}
   {%- endif -%}
   <div class="gs-card__body">
     {%- if wide -%}
@@ -73,7 +75,7 @@
     {%- endunless -%}
     {%- if wide -%}
       {%- if entry.summary.value != blank -%}
-        <p class="gs-card__text">{{ entry.summary.value | strip_newlines | truncatewords: 45 | escape }}</p>
+        <p class="gs-card__text">{{ entry.summary.value | newline_to_br | strip_newlines | replace: '<br />', ' ' | truncatewords: 45, '…' | escape }}</p>
       {%- endif -%}
       {%- if has_page -%}
         <span class="gs-cta-link gs-card__cue" aria-hidden="true">{{ 'exhibitions.about' | t }}</span>

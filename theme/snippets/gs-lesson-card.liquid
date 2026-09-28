@@ -6,6 +6,9 @@
 
   @param {object} lesson - A lesson entry
   @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
+  @param {boolean} [compact] - The compact card (H4-size title), for More lessons, as More exhibitions
+  @param {string} [sizes] - The cover's sizes in a grid whose count changes the card's width
+    (gs-grid-sizes). Blank keeps the card preset's
 
   @example
   {%- render 'gs-lesson-card', lesson: lesson -%}
@@ -14,9 +17,9 @@
   assign tag = heading | default: 'h3'
   assign cover = lesson.cover.value
 -%}
-<article class="gs-card gs-lesson-card{% if cover == blank %} gs-card--text{% endif %}">
+<article class="gs-card gs-lesson-card{% if compact %} gs-card--compact{% endif %}{% if cover == blank %} gs-card--text{% endif %}">
   {%- if cover != blank -%}
-    {%- render 'gs-media', image: cover, preset: 'card', mode: 'photo', ratio: 'var(--gs-ratio-video)' -%}
+    {%- render 'gs-media', image: cover, preset: 'card', sizes: sizes, mode: 'photo', ratio: 'var(--gs-ratio-video)' -%}
   {%- endif -%}
   <{{ tag }} class="gs-card__title"><a href="{{ lesson.system.url }}">{{ lesson.title.value | escape }}</a></{{ tag }}>
   {%- if lesson.grades.value != blank -%}

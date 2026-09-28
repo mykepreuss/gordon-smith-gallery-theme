@@ -13,7 +13,7 @@
       <div class="gs-section-head">
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.documents' | t }}</h2>
       </div>
-      <ul class="gs-grid gs-grid--artworks">
+      <ul class="gs-grid gs-grid--artworks" role="list">
         {%- for doc in metaobject.documents.value -%}
           {%- liquid
             assign file = doc.file.value

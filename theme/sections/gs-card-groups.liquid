@@ -93,10 +93,6 @@
             if mods contains 'fours'
               assign fours = true
             endif
-            assign lead = false
-            if mods contains 'lead'
-              assign lead = true
-            endif
             if logos
               assign grid = 'gs-grid--logos'
             elsif docs
@@ -108,8 +104,6 @@
               endif
             elsif offers
               assign grid = 'gs-grid--cards gs-grid--rows'
-            elsif count == 1
-              assign grid = 'gs-grid--cards gs-grid--single'
             else
               assign grid = 'gs-grid--cards' | append: mods
             endif
@@ -117,7 +111,7 @@
               assign grid = grid | append: ' gs-grid--links'
             endif
           -%}
-          <ul class="gs-grid {{ grid }}">
+          <ul class="gs-grid {{ grid }}" role="list">
             {%- for card in group.cards.value -%}
               {%- liquid
                 # The width each card's picture is shown at, so the browser fetches the right file.
@@ -135,14 +129,14 @@
                   assign card_sizes = '(min-width: 1296px) 276px, (min-width: 990px) 22vw, (min-width: 750px) 30vw, 46vw'
                 elsif offers
                   assign card_sizes = '(min-width: 1296px) 416px, (min-width: 750px) 31vw, 92vw'
-                elsif count == 1
-                  assign card_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 92vw'
-                elsif fours
-                  assign card_sizes = '(min-width: 1296px) 276px, (min-width: 1200px) 22vw, (min-width: 750px) 47vw, ' | append: phone_sizes
-                elsif lead and forloop.index <= 2
-                  assign card_sizes = '(min-width: 1296px) 576px, (min-width: 750px) 47vw, ' | append: phone_sizes
-                elsif links
-                  assign card_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 37vw'
+                else
+                  capture card_sizes
+                    render 'gs-grid-sizes', mods: mods, index: forloop.index, phone: phone_sizes
+                  endcapture
+                  assign card_sizes = card_sizes | strip
+                  if card_sizes == blank and links
+                    assign card_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 37vw'
+                  endif
                 endif
               -%}
               <li>{%- render 'gs-card', card: card, heading: card_heading, portrait: portrait, compact: docs, sizes: card_sizes -%}</li>

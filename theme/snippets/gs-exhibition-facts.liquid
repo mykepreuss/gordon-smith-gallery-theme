@@ -59,7 +59,7 @@
       <div class="gs-details__item">
         <dt>{{ 'exhibitions.events' | t }}</dt>
         <dd>
-          <ul class="gs-events gs-events--compact">
+          <ul class="gs-events gs-events--compact" role="list">
             {%- for id in event_ids -%}
               {%- assign n = id | plus: 0 -%}
               {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}

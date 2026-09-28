@@ -6,12 +6,14 @@
   @param {string} text - What isn't there, e.g. 'events.empty' | t. Required
   @param {string} [link_url] - Where to go instead
   @param {string} [link_label] - The link's words
+  @param {string} [id] - An id for the sentence, when something else names it (a section's aria-labelledby)
+  @param {boolean} [status] - True when the sentence answers what someone just did (search), so it is announced
 
   @example
   {%- render 'gs-empty', text: text, link_url: settings.events_page.url, link_label: label -%}
 {% enddoc %}
 <div class="gs-empty">
-  <p class="gs-empty__text gs-deck">{{ text }}</p>
+  <p class="gs-empty__text gs-deck"{% if id != blank %} id="{{ id }}"{% endif %}{% if status %} role="status"{% endif %}>{{ text }}</p>
   {%- if link_url != blank -%}
     <a class="gs-cta-link" href="{{ link_url }}">{{ link_label }}</a>
   {%- elsif request.design_mode -%}

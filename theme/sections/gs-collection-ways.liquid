@@ -25,16 +25,17 @@
     {%- case g.kind.value -%}
       {%- when 'Grouping' -%}
         {%- capture card -%}
+          {%- liquid
+            assign first_image = blank
+            for w in g.works.value limit: 1
+              for image in w.images.value limit: 1
+                assign first_image = image
+              endfor
+            endfor
+            assign works_text = 'collection.works_count' | t: count: count
+          -%}
           <li>
-            <article class="gs-card gs-card--compact">
-              {%- for w in g.works.value limit: 1 -%}
-                {%- for image in w.images.value limit: 1 -%}
-                  {%- render 'gs-media', image: image, preset: 'card', mode: 'artwork', ratio: 'var(--gs-ratio-card)' -%}
-                {%- endfor -%}
-              {%- endfor -%}
-              <h3 class="gs-card__title"><a href="{{ g.system.url }}">{{ name_html }}</a></h3>
-              <p class="gs-meta">{{ 'collection.works_count' | t: count: count }}</p>
-            </article>
+            {%- render 'gs-set-card', image: first_image, title: g.name.value, url: g.system.url, count_text: works_text, ratio: 'var(--gs-ratio-card)', preset: 'card', sizes: '~~ways_sizes~~' -%}
           </li>
         {%- endcapture -%}
         {%- assign groupings = groupings | append: key | append: '~~key~~' | append: card | append: '~~row~~' -%}
@@ -54,6 +55,16 @@
   assign groupings = groupings | split: '~~row~~' | sort
   assign categories = categories | split: '~~row~~' | sort
   assign themes = themes | split: '~~row~~' | sort
+  capture ways_mods
+    render 'gs-grid-modifiers', count: groupings.size
+  endcapture
+  assign ways_mods = ways_mods | strip_newlines
+  # The cards are two across below 990 px, then four (or three) across: their pictures' sizes,
+  # filled in once the count is known.
+  assign ways_sizes = '(min-width: 1296px) 384px, (min-width: 990px) 31vw, 47vw'
+  if ways_mods contains 'fours'
+    assign ways_sizes = '(min-width: 1296px) 276px, (min-width: 990px) 22vw, 47vw'
+  endif
 -%}
 {%- if groupings.size > 0 or categories.size > 0 or themes.size > 0 -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ id }}-heading">
@@ -65,15 +76,15 @@
         {%- endif -%}
       </div>
       {%- if groupings.size > 0 -%}
-        <ul class="gs-grid gs-grid--cards{% if groupings.size == 4 %} gs-grid--fours{% endif %}">
-          {%- for row in groupings -%}{{ row | split: '~~key~~' | last }}{%- endfor -%}
+        <ul class="gs-grid gs-grid--cards{{ ways_mods }}" role="list">
+          {%- for row in groupings -%}{{ row | split: '~~key~~' | last | replace: '~~ways_sizes~~', ways_sizes }}{%- endfor -%}
         </ul>
       {%- endif -%}
       <div class="gs-browse">
         {%- if categories.size > 0 -%}
           <div>
             <h3 class="gs-h4">{{ 'collection.by_category' | t }}</h3>
-            <ul class="gs-browse__list">
+            <ul class="gs-browse__list" role="list">
               {%- for row in categories -%}{{ row | split: '~~key~~' | last }}{%- endfor -%}
             </ul>
           </div>
@@ -81,7 +92,7 @@
         {%- if themes.size > 0 -%}
           <div>
             <h3 class="gs-h4">{{ 'collection.by_theme' | t }}</h3>
-            <ul class="gs-browse__list">
+            <ul class="gs-browse__list" role="list">
               {%- for row in themes -%}{{ row | split: '~~key~~' | last }}{%- endfor -%}
             </ul>
           </div>

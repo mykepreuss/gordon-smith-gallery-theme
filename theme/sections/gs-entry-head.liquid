@@ -27,19 +27,21 @@
     {%- endif -%}
     {%- if is_artist -%}
       {%- liquid
-        assign names = metaobject.other_names.value
-        if metaobject.full_name.value != blank
-          if names != blank
-            assign names = names | append: '. '
-          endif
-          assign names = names | append: metaobject.full_name.value
-        endif
+        # Other names, then the full name, each on its own line.
+        assign other_names = metaobject.other_names.value
+        assign full_name = metaobject.full_name.value
         assign facts = metaobject.nationality.value
         if metaobject.life_dates.value != blank
           if facts != blank
             assign facts = facts | append: ', '
           endif
           assign facts = facts | append: metaobject.life_dates.value
+        endif
+        # The line starts with a capital ("Born 1946"). Not capitalize, which lower-cases the rest.
+        if facts != blank
+          assign first_char = facts | slice: 0 | upcase
+          assign rest = facts | slice: 1, facts.size
+          assign facts = first_char | append: rest
         endif
         assign has_aside = false
         if metaobject.portrait.value != blank
@@ -49,8 +51,12 @@
       <div class="gs-entry-head">
         <div class="gs-entry-head__main">
           <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
-          {%- if names != blank -%}
-            <p class="gs-entry-head__names">{{ names | escape }}</p>
+          {%- if other_names != blank or full_name != blank -%}
+            <p class="gs-entry-head__names">
+              {{- other_names | escape -}}
+              {%- if other_names != blank and full_name != blank -%}<br>{%- endif -%}
+              {{- full_name | escape -}}
+            </p>
           {%- endif -%}
           {%- if facts != blank -%}
             <p class="gs-deck">{{ facts | escape }}</p>

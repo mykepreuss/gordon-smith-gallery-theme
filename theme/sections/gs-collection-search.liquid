@@ -47,7 +47,7 @@
         data-gs-one="{{ 'collection.works_found_one' | t: terms: '[terms]' | escape }}"
         data-gs-other="{{ 'collection.works_found_other' | t: number: '[count]', terms: '[terms]' | escape }}"
         data-gs-none="{{ 'collection.works_none' | t: terms: '[terms]' | escape }}"></p>
-      <ul class="gs-grid gs-grid--artworks" data-gs-finder-results></ul>
+      <ul class="gs-grid gs-grid--artworks" role="list" data-gs-finder-results></ul>
       <p class="gs-finder__more" data-gs-finder-more hidden><button class="gs-button gs-button--secondary" type="button">{{ 'collection.show_more' | t }}</button></p>
     </div>
   </div>

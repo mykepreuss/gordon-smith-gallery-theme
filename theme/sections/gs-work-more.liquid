@@ -1,6 +1,7 @@
 {%- comment -%}
   More by the artist, after a work (DESIGN.md §7.5, DS-62): one row of three artwork tiles from the
   first artist's Works list, never the work being shown (as DS-46), and a link to the artist's page.
+  On phones the row scrolls sideways (.gs-rail), as every one-row set of three works does.
   Nothing when the artist has no other work in the collection.
 {%- endcomment -%}
 {%- liquid
@@ -25,7 +26,7 @@
             assign solo = true
           endif
           echo '<li>'
-          render 'gs-work-tile', work: work, heading: 'h3', hide_artist: solo
+          render 'gs-work-tile', work: work, heading: 'h3', hide_artist: solo, sizes: '(min-width: 1296px) 384px, (min-width: 750px) 31vw, 75vw'
           echo '</li>'
         endif
       endfor
@@ -39,7 +40,7 @@
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.more_by' | t: name: artist.name.value }}</h2>
         <a class="gs-cta-link gs-cta-link--more" href="{{ artist.system.url }}">{{ 'collection.all_by' | t: name: artist.name.value }}</a>
       </div>
-      <ul class="gs-grid gs-grid--artworks">{{ tiles }}</ul>
+      <ul class="gs-grid gs-grid--artworks gs-rail" role="list">{{ tiles }}</ul>
     </div>
   </section>
 {%- endif -%}

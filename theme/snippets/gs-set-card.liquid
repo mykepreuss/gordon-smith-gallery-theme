@@ -1,0 +1,23 @@
+{% doc %}
+  A set of works as a compact card (DESIGN.md §6.5): its first work whole on the mat, the set's
+  name linking to it, and how many works it holds. For a Shop portfolio (Portfolio navigation) and a
+  collection grouping (Ways into the collection). Each section keeps its own grid.
+
+  @param {object} image - The first work's image
+  @param {string} title - The set's name, plain text (escaped here)
+  @param {string} url - The set's page
+  @param {string} count_text - How many works, e.g. 'shop.editions_count' | t: count: n
+  @param {string} ratio - The picture's shape, as a ratio token, e.g. 'var(--gs-ratio-artwork)'
+  @param {string} [preset] - gs-media preset: 'tile' or 'card'
+  @param {string} [sizes] - Sizes, when the grid isn't the preset's
+  @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
+
+  @example
+  {%- render 'gs-set-card', image: image, title: portfolio.title, url: portfolio.url, count_text: count_text, ratio: 'var(--gs-ratio-artwork)', preset: 'tile' -%}
+{% enddoc %}
+{%- assign tag = heading | default: 'h3' -%}
+<article class="gs-card gs-card--compact">
+  {%- render 'gs-media', image: image, preset: preset, sizes: sizes, mode: 'artwork', ratio: ratio, title: title -%}
+  <{{ tag }} class="gs-card__title"><a href="{{ url }}">{{ title | escape }}</a></{{ tag }}>
+  <p class="gs-meta">{{ count_text }}</p>
+</article>
