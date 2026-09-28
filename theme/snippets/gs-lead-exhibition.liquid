@@ -13,8 +13,10 @@
   assign lead_id = lead_id | strip
   if lead_id != blank
     assign n = lead_id | plus: 0
-    for entry in shop.metaobjects.exhibition.values offset: n limit: 1
-      echo entry.system.handle
-    endfor
+    paginate shop.metaobjects.exhibition.values by 250
+      for entry in shop.metaobjects.exhibition.values offset: n limit: 1
+        echo entry.system.handle
+      endfor
+    endpaginate
   endif
 -%}

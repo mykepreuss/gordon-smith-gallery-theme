@@ -11,6 +11,8 @@
   and summary (DS-34): there are rarely more than two, and each deserves room. Past uses the grid
   of cards.
   An empty list says so and points somewhere useful (§6.12).
+  The lists read the first 250 exhibition entries (DS-152). From 200 the theme editor says so on
+  the Past page.
 {%- endcomment -%}
 {%- liquid
   assign order = 'asc'
@@ -53,19 +55,25 @@
     <div class="gs-container">
       {%- if ids.size > 0 -%}
         <ul class="gs-grid {% if wide %}gs-grid--features{% else %}gs-grid--cards{{ mods }}{% endif %}" role="list">
-          {%- for id in ids -%}
-            {%- liquid
-              assign n = id | plus: 0
-              capture card_sizes
-                render 'gs-grid-sizes', mods: mods, index: forloop.index
-              endcapture
-              assign card_sizes = card_sizes | strip
-            -%}
-            {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
-              <li>{%- render 'gs-exhibition-card', entry: entry, wide: wide, heading: 'h2', sizes: card_sizes -%}</li>
+          {%- paginate shop.metaobjects.exhibition.values by 250 -%}
+            {%- for id in ids -%}
+              {%- liquid
+                assign n = id | plus: 0
+                capture card_sizes
+                  render 'gs-grid-sizes', mods: mods, index: forloop.index
+                endcapture
+                assign card_sizes = card_sizes | strip
+              -%}
+              {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+                <li>{%- render 'gs-exhibition-card', entry: entry, wide: wide, heading: 'h2', sizes: card_sizes -%}</li>
+              {%- endfor -%}
             {%- endfor -%}
-          {%- endfor -%}
+            {%- assign entries = paginate.items -%}
+          {%- endpaginate -%}
         </ul>
+        {%- if request.design_mode and status == 'past' and entries >= 200 -%}
+          <p class="gs-editor-warning">There are {{ entries }} exhibition entries, and the lists read the first 250. Tell the site's developer before there are 250.</p>
+        {%- endif -%}
       {%- else -%}
         {%- case status -%}
           {%- when 'on-now' -%}

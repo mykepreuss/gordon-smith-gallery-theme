@@ -2,6 +2,7 @@
   More lessons, at the end of a lesson's page (DESIGN.md §7.5, DS-70): the next three lessons after
   this one in the list's order (newest first), wrapping round to the newest, as lesson cards, and a
   link to all of them on the ArtReach videos page. So each lesson leads somewhere different.
+  Lessons are read inside a paginate tag: a plain loop stops at 50 entries (DS-152).
 {%- endcomment -%}
 {%- liquid
   capture order
@@ -9,12 +10,14 @@
   endcapture
   assign order = order | strip | split: ','
   assign here = ''
-  for lesson in shop.metaobjects.lesson.values
-    if lesson.system.handle == metaobject.system.handle
-      assign here = forloop.index0 | append: ''
-      break
-    endif
-  endfor
+  paginate shop.metaobjects.lesson.values by 250
+    for lesson in shop.metaobjects.lesson.values
+      if lesson.system.handle == metaobject.system.handle
+        assign here = forloop.index0 | append: ''
+        break
+      endif
+    endfor
+  endpaginate
   assign at = 0
   for pos in order
     if pos == here
@@ -52,18 +55,20 @@
         {%- endif -%}
       </div>
       <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
-        {%- for id in ids -%}
-          {%- liquid
-            assign n = id | plus: 0
-            capture card_sizes
-              render 'gs-grid-sizes', mods: mods, index: forloop.index
-            endcapture
-            assign card_sizes = card_sizes | strip
-          -%}
-          {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
-            <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3', compact: true, sizes: card_sizes -%}</li>
+        {%- paginate shop.metaobjects.lesson.values by 250 -%}
+          {%- for id in ids -%}
+            {%- liquid
+              assign n = id | plus: 0
+              capture card_sizes
+                render 'gs-grid-sizes', mods: mods, index: forloop.index
+              endcapture
+              assign card_sizes = card_sizes | strip
+            -%}
+            {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+              <li>{%- render 'gs-lesson-card', lesson: lesson, heading: 'h3', compact: true, sizes: card_sizes -%}</li>
+            {%- endfor -%}
           {%- endfor -%}
-        {%- endfor -%}
+        {%- endpaginate -%}
       </ul>
     </div>
   </section>

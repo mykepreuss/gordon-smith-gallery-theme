@@ -147,6 +147,16 @@
         "gallery": 1,
         "feature": 1,
         "cards": 1,
+        "events": 1,
+        "switcher": 1
+      }
+    },
+    "page.story": {
+      "purpose": "Story: a long read, its text one reading column with its own pictures and quotes set into it as a magazine would (DS-145): Gordon and Marion, Brilliance Gala, Plan your visit (its visit details first, DS-61), Donate (its How to give cards after, DS-60)",
+      "maxPerGroup": {
+        "text": 1,
+        "gallery": 1,
+        "cards": 1,
         "events": 1
       }
     },

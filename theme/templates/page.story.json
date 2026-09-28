@@ -12,23 +12,14 @@
     "hero": {
       "type": "gs-page-hero"
     },
-    "switcher": {
-      "type": "gs-switcher"
-    },
     "body": {
       "type": "gs-page-body",
       "settings": {
-        "part": "opening"
+        "part": "all"
       }
     },
     "cards": {
       "type": "gs-card-groups"
-    },
-    "sections": {
-      "type": "gs-page-body",
-      "settings": {
-        "part": "sections"
-      }
     },
     "events": {
       "type": "gs-events"
@@ -39,11 +30,9 @@
   },
   "order": [
     "hero",
-    "switcher",
     "body",
-    "events",
     "cards",
-    "sections",
+    "events",
     "gallery"
   ]
 }

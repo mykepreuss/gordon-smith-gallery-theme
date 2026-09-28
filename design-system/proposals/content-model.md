@@ -99,7 +99,7 @@ Opening reception, curator and venue are required parts of the model (gallery an
 | `programme` | Single line text, choice | | Gallery, Smith Foundation or Artists for Kids |
 | `media` | List of links | | Videos and publications (added 2026-09-28, DS-138): talks and tours on YouTube or Vimeo play on the page, captioned with their label; catalogues and other links are listed under them |
 
-**Status is computed, not typed.** A snippet compares today with the start and end dates (`theme/snippets/gs-exhibition-status.liquid`), so an exhibition moves from Upcoming to On Now to Past on its own. Liquid can loop over up to 50 entries at once and paginate up to 250 per page ([Shopify: metaobject_definition](https://shopify.dev/docs/api/liquid/objects/metaobject_definition)); the gallery will stay well inside that.
+**Status is computed, not typed.** A snippet compares today with the start and end dates (`theme/snippets/gs-exhibition-status.liquid`), so an exhibition moves from Upcoming to On Now to Past on its own. Liquid can loop over up to 50 entries at once and paginate up to 250 per page ([Shopify: metaobject_definition](https://shopify.dev/docs/api/liquid/objects/metaobject_definition)), A to Z by handle. There are 32 exhibition entries (2026-09-28). The exhibition lists, their counts and the search read the first 250 (DS-152), as the events' do (DS-148). Nothing needs tidying: at about five exhibitions a year that is decades away, and from 200 entries the theme editor shows a note on the Past page.
 
 **Past Exhibitions (DS-24, decided by Michael 2026-09-25).** The Past page lists past entries automatically, newest first, above the existing archive, so an exhibition that closes appears there without anyone adding it. The six migrated exhibitions leave the hand-built archive at release; the six older items stay exactly as they are (EXH-03).
 
@@ -176,7 +176,7 @@ Status: **Approved 2026-09-25** (P-16). Four programme pages list dated events t
 | `programme_page` | Page | The programme page it belongs to (Explore + Create, Music at the Smith...) |
 | `exhibition` | Exhibition entry | For tours and talks tied to an exhibition |
 
-Each programme page lists its upcoming events; the Upcoming Events page lists all of them; an exhibition page lists its own. An event drops off every list once it has ended. This **replaces the approved exhibition field `events`** (P-11): one place for all events instead of a rich text field on exhibitions.
+Each programme page lists its upcoming events; the Upcoming Events page lists all of them; an exhibition page lists its own. A row of links joins the Upcoming Events page and the programmes (DS-143, 2026-09-28): the pages in the Programs filter menu (Theme settings), then any other page an upcoming event names as its programme page. An event moves between the Current, Upcoming and Past lists by its dates (DS-149), so entries are kept, not deleted. No new field: the programme page is the event's tag and its filter. An event drops off every list once it has ended. This **replaces the approved exhibition field `events`** (P-11): one place for all events instead of a rich text field on exhibitions. **Housekeeping (DS-148, decided 2026-09-28):** the lists read the first 250 event entries, A to Z by handle, so once a year the gallery deletes the ended events older than two years, or sets them to Draft (a draft entry is kept in Admin and leaves the site). At about 80 events a year that keeps the count under 200; from 200 the theme editor shows a note on the events lists.
 
 ## 6. Smaller field additions
 
@@ -213,6 +213,8 @@ Added 2026-09-27, when the Artists for Kids site moved in (`proposals/artists-fo
 | Type | Page | Holds |
 | --- | --- | --- |
 | `lesson` | `/pages/lessons/<handle>` | Title, video (a YouTube address), posted (a date: the list shows the newest first), cover image, "We're making", "We're inspired by" (rich text), works from the collection (artwork entries), suggested grade levels, "We're wondering" (a list of questions) |
+
+The lesson lists and the search read the first 250 lesson entries, A to Z by handle (DS-152); there are 27 (2026-09-28).
 
 The event entry gained **Keep off the home page** (`keep_off_home`, true or false, P-37): an event for a smaller audience, such as a workshop for teachers, stays out of the home page's What's on and shows on its programme page, its exhibition's page and Upcoming events.
 

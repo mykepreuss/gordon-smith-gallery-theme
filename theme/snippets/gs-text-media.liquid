@@ -1,15 +1,22 @@
 {% doc %}
   Page text with pictures beside it (DS-51, DESIGN.md §6.11). The text is split at its H2
-  headings; in each part, the figures (a picture with its caption) move beside the text from
-  990 px and follow it on smaller screens, so a picture sits next to the paragraphs it belongs to
-  instead of breaking the reading column. Used when the text has a figure, and for the headed
-  sections a programme page shows after its programmes.
+  headings into parts, and each part with pictures into passages (DS-142): a new passage
+  starts at an H3 with text before it in the part, and at text that follows a picture when another
+  picture comes after it. From 990 px a passage's figures (a picture with its caption) sit beside
+  its text, aligned to its first line; on smaller screens they follow its text. So each picture
+  sits next to the paragraphs it belongs to (each talk beside its own video) instead of every
+  picture in a part stacking beside its first lines.
+
+  A passage's only figure stays in view while its longer text scrolls past (CSS). A quote in a
+  passage that also has a picture stays in the text where the text puts it, and the picture sits
+  beside; a quote with no picture beside it is a pull quote (DS-142).
 
   A part with no words, only pictures, lays them out under its heading instead of beside an
   empty column: one at the reading width, two or more side by side from 750 px (DS-78, Proposed).
   Two tall photos in a row pair up side by side from 750 px (DS-77, Proposed): a photo figure whose
-  picture is taller than wide is marked data-gs-tall. A part whose text opens with a figure is
-  marked gs-text-media--lead, and below 990 px its pictures come before its text (DS-94, Proposed).
+  picture is taller than wide is marked data-gs-tall. A passage whose text, after its heading,
+  opens with a figure is marked gs-text-media--lead, and below 990 px its pictures come after its
+  heading and before its text (DS-94, Proposed; DS-142).
 
   With heads, each H2 is the heading of a part of the page, level with a card group's heading:
   section-heading size, above the text and its pictures (DS-51). Without, H2s stay page-text
@@ -22,7 +29,14 @@
   {%- render 'gs-text-media', text: text -%}
   {%- render 'gs-text-media', text: text, heads: true -%}
 {% enddoc %}
-{%- assign blocks = text | split: '<h2' -%}
+{%- liquid
+  assign blocks = text | split: '<h2'
+  # Markers between passages, and between a passage's text and its figures. HTML comments, so
+  # nothing a person typed can match them.
+  assign cut_passage = '<!--gs-passage-->'
+  assign cut_aside = '<!--gs-aside-->'
+  assign cut_quote = '<!--gs-quote-->'
+-%}
 <div class="gs-text-media-list{% if heads %} gs-text-media-list--sections{% endif %}">
   {%- for block in blocks -%}
     {%- liquid
@@ -42,14 +56,29 @@
           assign html = html | remove_first: first_part | remove_first: '</h2>'
         endif
       endif
-      assign prose = ''
-      assign media = ''
+
+      # Passages (DS-142). Each is its text, cut_aside, then its figures; passages are joined by
+      # cut_passage. A quote goes into both the text and the figures until the passage closes,
+      # then stays in whichever one the passage's pictures call for.
+      assign passages = ''
+      assign p_text = ''
+      assign p_media = ''
+      assign p_quotes = ''
+      assign p_figs = 0
+      assign p_quote_count = 0
+      assign p_lead = false
+      assign all_runs = ''
+      assign part_has_figs = false
+      if html contains '<figure'
+        assign part_has_figs = true
+      endif
       assign chunks = html | split: '<figure'
-      # A part whose text opens with a figure shows it first below 990 px (DS-94, Proposed).
-      assign before = chunks.first | strip
+      assign last_index = chunks.size | minus: 1
       for chunk in chunks
+        assign chunk_index = forloop.index0
         if forloop.first
-          assign prose = chunk
+          assign run = chunk
+          assign fig = ''
         else
           assign inner = chunk | split: '</figure>' | first
           assign opening = '<figure'
@@ -62,35 +91,176 @@
               endif
             endif
           endunless
-          assign media = media | append: opening | append: inner | append: '</figure>'
-          assign after = chunk | remove_first: inner | remove_first: '</figure>'
-          assign prose = prose | append: after
+          assign fig = opening | append: inner | append: '</figure>'
+          assign run = chunk | remove_first: inner | remove_first: '</figure>'
+
+          # The figure joins the passage it follows. The passage opens with it when nothing but
+          # a heading comes before it.
+          if p_figs == 0
+            assign p_lead = true
+            if p_text contains '<p' or p_text contains '<ul' or p_text contains '<ol' or p_text contains '<blockquote' or p_text contains '<table' or p_text contains '<div'
+              assign p_lead = false
+            endif
+          endif
+          assign p_media = p_media | append: fig
+          assign p_figs = p_figs | plus: 1
+          if inner contains 'gs-quote'
+            assign p_text = p_text | append: fig
+            assign p_quotes = p_quotes | append: fig | append: cut_quote
+            assign p_quote_count = p_quote_count | plus: 1
+          endif
         endif
+
+        assign all_runs = all_runs | append: run
+
+        # The text after the figure: split at its H3s. A piece starts a new passage when the
+        # passage so far has text or a figure, and it is an H3, or it is text that another
+        # figure follows.
+        assign pieces = run | split: '<h3'
+        for piece in pieces
+          assign part_text = piece
+          unless forloop.first
+            assign part_text = '<h3' | append: piece
+          endunless
+          if part_text == blank
+            continue
+          endif
+          assign has_content = false
+          if p_figs > 0
+            assign has_content = true
+          elsif p_text contains '<p' or p_text contains '<ul' or p_text contains '<ol' or p_text contains '<blockquote' or p_text contains '<table' or p_text contains '<div'
+            assign has_content = true
+          endif
+          assign new_passage = false
+          if has_content and part_has_figs
+            if forloop.first == false
+              assign new_passage = true
+            elsif chunk_index > 0 and chunk_index < last_index
+              assign piece_words = part_text | strip_html | strip
+              if piece_words != blank
+                assign new_passage = true
+              endif
+            endif
+          endif
+          if new_passage
+            # Close the passage: with a picture beside it, its quotes stay in the text;
+            # without, they are pull quotes beside it.
+            assign quote_list = p_quotes | split: cut_quote
+            if p_figs > p_quote_count
+              for q in quote_list
+                assign p_media = p_media | remove: q
+              endfor
+            else
+              for q in quote_list
+                assign p_text = p_text | remove: q
+              endfor
+            endif
+            if p_lead
+              assign p_text = '<!--gs-lead-->' | append: p_text
+            endif
+            assign passages = passages | append: p_text | append: cut_aside | append: p_media | append: cut_passage
+            assign p_text = ''
+            assign p_media = ''
+            assign p_quotes = ''
+            assign p_figs = 0
+            assign p_quote_count = 0
+            assign p_lead = false
+          endif
+          assign p_text = p_text | append: part_text
+        endfor
       endfor
-      assign prose = prose | strip
-      # Without heads the part's H2 is still in its text: a part that is only that heading and
-      # pictures is a part with only pictures too (DS-78), its heading above them.
-      assign words = prose
-      if prose contains '</h2>'
-        assign h2_part = prose | split: '</h2>' | first
+      assign quote_list = p_quotes | split: cut_quote
+      if p_figs > p_quote_count
+        for q in quote_list
+          assign p_media = p_media | remove: q
+        endfor
+      else
+        for q in quote_list
+          assign p_text = p_text | remove: q
+        endfor
+      endif
+      if p_lead
+        assign p_text = '<!--gs-lead-->' | append: p_text
+      endif
+      assign passages = passages | append: p_text | append: cut_aside | append: p_media
+
+      # Words in the part, not counting its H2 when it is still in the text: a part that is only
+      # that heading and pictures is a part with only pictures (DS-78), its heading above them,
+      # all together.
+      assign words = all_runs
+      if words contains '</h2>'
+        assign h2_part = words | split: '</h2>' | first
         assign starts = h2_part | slice: 0, 3
         if starts == '<h2'
-          assign words = prose | remove_first: h2_part | remove_first: '</h2>' | strip
+          assign words = words | remove_first: h2_part | remove_first: '</h2>'
         endif
+      endif
+      assign words = words | strip_html | strip
+      if words == blank
+        assign all_text = ''
+        assign all_media = ''
+        assign passage_list = passages | split: cut_passage
+        for passage in passage_list
+          assign pp = passage | split: cut_aside
+          assign all_text = all_text | append: pp[0]
+          if pp.size > 1
+            assign all_media = all_media | append: pp[1]
+          endif
+        endfor
+        assign passages = all_text | remove: '<!--gs-lead-->' | append: cut_aside | append: all_media
       endif
     -%}
     <div class="gs-text-media-part">
       {%- if head != blank -%}
         <div class="gs-section-head">{{ head }}</div>
       {%- endif -%}
-      <div class="gs-text-media{% if media == blank %} gs-text-media--text{% elsif words == blank %} gs-text-media--media{% endif %}{% if before == blank and media != blank %} gs-text-media--lead{% endif %}">
-        {%- if prose != blank -%}
-          <div class="gs-prose">{{ prose }}</div>
-        {%- endif -%}
-        {%- if media != blank -%}
-          <div class="gs-prose gs-text-media__aside">{{ media }}</div>
-        {%- endif -%}
-      </div>
+      {%- assign passage_list = passages | split: cut_passage -%}
+      {%- for passage in passage_list -%}
+        {%- liquid
+          assign pieces = passage | split: cut_aside
+          assign prose = pieces[0] | strip
+          assign media = pieces[1] | strip
+          assign lead = false
+          if prose contains '<!--gs-lead-->'
+            assign lead = true
+            assign prose = prose | remove: '<!--gs-lead-->' | strip
+          endif
+          if prose == blank and media == blank
+            continue
+          endif
+          # A passage that opens with a heading: its heading sits apart from the text when its
+          # pictures come first below 990 px, and it is spaced as a heading in the text.
+          assign lead_head = ''
+          assign opens_head = false
+          assign starts = prose | slice: 0, 3
+          if starts == '<h2' or starts == '<h3' or starts == '<h4'
+            assign opens_head = true
+            if lead and media != blank
+              assign close_tag = starts | remove: '<' | prepend: '</' | append: '>'
+              assign first_head = prose | split: close_tag | first
+              assign lead_head = first_head | append: close_tag
+              assign prose = prose | remove_first: lead_head | strip
+            endif
+          endif
+          assign kind = ''
+          if media == blank
+            assign kind = ' gs-text-media--text'
+          elsif words == blank
+            assign kind = ' gs-text-media--media'
+          endif
+        -%}
+        <div class="gs-text-media{{ kind }}{% if lead and media != blank and words != blank %} gs-text-media--lead{% endif %}{% if opens_head and forloop.first == false %} gs-text-media--head{% endif %}">
+          {%- if lead_head != blank -%}
+            <div class="gs-prose gs-text-media__head">{{ lead_head }}</div>
+          {%- endif -%}
+          {%- if prose != blank -%}
+            <div class="gs-prose">{{ prose }}</div>
+          {%- endif -%}
+          {%- if media != blank -%}
+            <div class="gs-prose gs-text-media__aside">{{ media }}</div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
     </div>
   {%- endfor -%}
 </div>

@@ -1,0 +1,71 @@
+{% doc %}
+  The programmes in the events switcher (DESIGN.md §6.7, DS-143): the pages in the menu chosen as
+  Programs filter menu in Theme settings, in the menu's order, then any other page with an upcoming
+  event, soonest first. A programme in the menu stays in the row when it has nothing coming up, so
+  the row keeps its shape.
+
+  Outputs comma-separated "handle|count" pairs, count being the programme's upcoming events. Read
+  a page back with pages[handle]. With check, prints true or false instead: whether that page is
+  one of the programmes.
+
+  An event counts until it has ended, as in gs-event-index. Reads the first 250 entries (DS-148).
+
+  @param {object} [check] - A page: print only whether it is in the row
+
+  @example
+  {%- capture row -%}{% render 'gs-programme-index' %}{%- endcapture -%}
+  {%- capture filtered -%}{% render 'gs-programme-index', check: page %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign now = 'now' | date: '%s' | plus: 0
+  # Every upcoming event's programme, as "|handle|", between two dots so a count can be taken by splitting.
+  assign hits = '.'
+  assign keys = ''
+  paginate shop.metaobjects.event.values by 250
+  for event in shop.metaobjects.event.values
+    assign programme = event.programme_page.value
+    if programme == blank
+      continue
+    endif
+    assign finish = event.ends.value | default: event.starts.value
+    assign finish_s = finish | date: '%s' | plus: 0
+    if finish_s < now
+      continue
+    endif
+    assign start_s = event.starts.value | date: '%s'
+    assign hits = hits | append: '|' | append: programme.handle | append: '|'
+    assign keys = keys | append: start_s | append: '#' | append: programme.handle | append: ','
+  endfor
+  endpaginate
+  assign hits = hits | append: '.'
+
+  assign handles = ''
+  for link in settings.programmes_menu.links
+    if link.type == 'page_link' and link.object != blank
+      assign handles = handles | append: link.object.handle | append: ','
+    endif
+  endfor
+  assign sorted = keys | split: ',' | sort
+  for key in sorted
+    assign handle = key | split: '#' | last
+    assign handles = handles | append: handle | append: ','
+  endfor
+  assign handles = handles | split: ',' | uniq
+
+  if check != blank
+    if handles contains check.handle
+      echo 'true'
+    else
+      echo 'false'
+    endif
+  else
+    for handle in handles
+      assign marker = '|' | append: handle | append: '|'
+      assign count = hits | split: marker | size | minus: 1
+      echo handle | append: '|' | append: count
+      unless forloop.last
+        echo ','
+      endunless
+    endfor
+  endif
+-%}
