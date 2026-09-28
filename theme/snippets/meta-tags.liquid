@@ -7,6 +7,7 @@
     Marion Smith Foundation (DS-121). Checkout and emails keep the store name.
   - A page shares its own picture as the link preview: a page's hero image, an exhibition's key
     image, a work's first image, an artist's portrait, a lesson's cover. Else the store's.
+  - A frame's page (product type Frame) asks search engines not to list it (DS-137).
   - Without a description of its own, an entry describes itself: a work by its label, an artist
     by name, nationality, dates and the start of the biography, a grouping by its introduction. Other
     pages print no description rather than the store's.
@@ -203,6 +204,11 @@
   rel="canonical"
   href="{{ canonical_url }}"
 >
+
+{%- comment -%} A frame is sold only with its print (DS-137), so its own page stays out of search engines. {%- endcomment -%}
+{% if template.name == 'product' and product.type == 'Frame' %}
+  <meta name="robots" content="noindex">
+{% endif %}
 
 {% if description != blank %}
   <meta

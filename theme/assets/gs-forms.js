@@ -16,6 +16,10 @@
  *   - After a post, focus moves to the first field in error, or else to the done line
  *     (.gs-form-status, tabindex="-1"), so it's read out. Shopify's reply page opens at the
  *     form's #id, where autofocus doesn't fire.
+ *   - A print with options (such as colours) and a frame: the frame is nested under the option
+ *     chosen (DS-137). The hidden parent input, data-gs-parent-of="<select id>", comes disabled and
+ *     is turned on here with the select's value. Without this file the frame is added as its own
+ *     line, because Shopify refuses the whole add if the parent isn't the option posted.
  *
  * Markup contract (the error's id is always the field's id plus "-error"):
  *   <form data-gs-form>
@@ -109,7 +113,17 @@
     }
   }
 
+  function followParent(input) {
+    var select = document.getElementById(input.getAttribute("data-gs-parent-of"));
+    if (!select) return;
+    var sync = function () { input.value = select.value; };
+    sync();
+    input.disabled = false;
+    select.addEventListener("change", sync);
+  }
+
   function init() {
+    document.querySelectorAll("input[data-gs-parent-of]").forEach(followParent);
     document.querySelectorAll("form[data-gs-form]").forEach(function (form) {
       var button = form.querySelector("[data-gs-busy-label]");
       if (button) button.setAttribute("data-gs-label", button.textContent.trim());
