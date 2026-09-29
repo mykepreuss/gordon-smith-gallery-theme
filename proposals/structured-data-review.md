@@ -65,7 +65,7 @@ These are in `aeo-geo-review.md` too, steps 2 to 4:
 | An artist's own website as `sameAs` | The first build included it. `main`'s artist data doesn't. The field is filled for many artists | Michael |
 | Exhibition videos | An exhibition's Videos and publications (DS-138) have no date or picture, which a video needs | Agent, if fields are added |
 
-## The graph (DS-163 to DS-165, Proposed)
+## The graph (DS-163 to DS-165, decided by Michael, 2026-09-28)
 
 Michael, 2026-09-28: "I have a feeling we can do much better with the schema.org implementation and we're not close to done yet." He was right. The data was valid, and that was all.
 
@@ -105,6 +105,8 @@ Read from 27 pages of the build before this one, against schema.org's vocabulary
 The vocabulary check caught one real fault while this was built: an edition with options carried artwork fields on a type that doesn't take them.
 
 ### Decisions for Michael
+
+Michael, 2026-09-28: "DS-163 to DS-165 approved, merge #92". Choices 1 to 4 stand as built. Choice 5 has no decision number and stays as built, one person, until he or the gallery says otherwise.
 
 | # | Decision | Built as | Alternative |
 | --- | --- | --- | --- |
