@@ -10,11 +10,12 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 - Content model (page fields, exhibitions, product labels, card groups, events): `design-system/proposals/content-model.md`.
 - For search and answer engines: the review and what is built, `proposals/aeo-geo-review.md`; the content side (the four entities, the 32 questions, how to measure), `aeo/`.
 - What the current theme holds and where it goes: `proposals/content-migration.md`. Store changes for review and release: `proposals/store-changes.md`.
+- The old Foundation site's addresses (smithfoundation.co) and the redirect file for its server, for release: `proposals/foundation-redirects/`.
 - The live theme (Colorblock, ID `183162372393`) is in `baseline/theme/` as a reference for content and placement only. Don't copy its code or settings, and never write to it.
 
 ## Current phase: iterating (release on hold)
 
-The theme is built, all content is migrated, and the review theme (`184767250729`) follows `main`. Design decisions are decided as they are made: `DECISIONS.md` marks each one Decided or Proposed, and nothing Proposed ships. On 2026-09-29 none was Proposed. Michael has put release on hold: we keep improving the site until he decides to go ahead.
+The theme is built, all content is migrated, and the review theme (`184767250729`) follows `main`. Design decisions are decided as they are made: `DECISIONS.md` marks each one Decided or Proposed, and nothing Proposed ships. On 2026-09-29 one was Proposed: P-63, where the old Foundation site's addresses go at release. Michael has put release on hold: we keep improving the site until he decides to go ahead.
 
 - Work the loop in the plan's "How we iterate": branch from `main`, work against the development theme, design system first, record decisions as Proposed for Michael, open a pull request. After Michael merges, update the review theme from `main`, checking its editor JSON first.
 - Open work: the plan's "Iteration backlog". The "Release backlog" (release scripts, verification, staff and newsletter tests, the release gate) waits until Michael says to release.

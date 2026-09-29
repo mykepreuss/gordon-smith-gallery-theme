@@ -1,0 +1,314 @@
+# smithfoundation.co: every old address goes to its new page on gordonsmithgallery.com.
+#
+# Made by proposals/foundation-redirects/redirects.py from redirects.csv. Change the list and
+# make the file again. Don't edit this file by hand.
+#
+# Where it goes: the top of the .htaccess file in the website's main folder on the old server
+# (public_html, beside wp-config.php), above everything already in that file. What is there
+# stays: the host's PHP settings are kept in it. Keep a copy of the file first.
+# 174 old addresses are listed. Anything else goes to the new home page.
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 1. Only smithfoundation.co. Any other site in this hosting account is left alone.
+RewriteCond %{HTTP_HOST} !^(www\.)?smithfoundation\.co(:[0-9]+)?$ [NC]
+RewriteRule ^ - [L]
+
+# 2. Left alone: the checks that renew the security certificate, and robots.txt (none means
+# search engines may read every address, which is how they find the redirects).
+RewriteRule ^\.well-known/ - [L]
+RewriteRule ^robots\.txt$ - [L]
+
+# 3. WordPress's sign-in and admin keep working, so staff can still get at the old site.
+# Delete these three lines when WordPress is removed, or sooner if nobody needs to sign in.
+RewriteRule ^(wp-admin|wp-includes)(/|$) - [L]
+RewriteRule ^wp-content/(plugins|themes)/ - [L]
+RewriteRule ^wp-(login|cron)\.php$ - [L]
+
+# 4. WordPress's numbered addresses (/?p=126, /?page_id=9).
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(9)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1517|1520)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/cart? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(6313|6348|6415|6427|6547|6551)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/art-in-good-company? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1659|1733|2221|2863|2988|4285|4394|4635|5471|6069)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(888|3978|5700|6274|6596|6609)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/contact? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(12|29|38|61|2069|3416|4267|4274)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/donate? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1183)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/accidentally-on-purpose-ross-penhall? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(442)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/art-school-high? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(3824|3885)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/beyond-the-horizon? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1216)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/collection-connection-and-the-making-of-meaning? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(3245)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/dwelling-people-and-place? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(4261)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/endless-summer? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1213)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/expressionist-renderings-the-prints-of-alistair-bell? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1191)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/figurative-contemplation? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5744)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/from-the-ground? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1206)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/gu-xiong-a-journey-exposed? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(183)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/memory-history-story? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5968|6193|6299)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/one-hundred-artists-deep? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5109)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/paths? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(92)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/phantoms-in-the-front-yard-over-the-counter-culture? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(3356)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/play? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5293)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/playhouse? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5026)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/prevailing-landscapes? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(94)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/readymades? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(2591)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/reframed-painting-and-collage-by-tiko-kerr? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(441)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/robert-davidson-progression-of-form? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1188)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/robert-young-spatial-understanding? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5432)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/stitched? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5100)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/the-art-of-conversation? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(443)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/thirteen-ways-to-summon-ghosts? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(2539)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/transformations? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(3352|3432)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1210)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/victor-john-penner-not-safe-to-occupy? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(3904)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/we-can-only-hint-at-this-with-words? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1194)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/exhibitions/work-is-art? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5893|6418|6423|6430|6436)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(126)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/gordon-and-marion? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(4077|4216|5940|6201)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/music-at-the-smith? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(49)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/on-now? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(33)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/plan-your-visit? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(35|57)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/public-programs-1? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(55)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/shop? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(3386)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1597)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/smith-foundation-supporters? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(5892|6196|6204)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/speaker-series? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(25|907|1297|1720)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(6539)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/upcoming-events? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(4438)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/upcoming-exhibitions? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(59)(&|$)
+RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/volunteer? [R=301,L]
+
+# 5. Pages, exhibitions and events. Each rule covers the address and anything under it.
+RewriteRule ^curate/upcoming-exhibition/beyond-the-horizon(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/beyond-the-horizon? [R=301,NC,L]
+RewriteRule ^curate/upcoming-exhibition/unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^curate/upcoming-exhibition/unfixed(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^engage/public-programs/art-in-good-company(/.*)?$ https://gordonsmithgallery.com/pages/art-in-good-company? [R=301,NC,L]
+RewriteRule ^engage/public-programs/explore-create-public-program(/.*)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,NC,L]
+RewriteRule ^engage/public-programs/music-at-the-smith(/.*)?$ https://gordonsmithgallery.com/pages/music-at-the-smith? [R=301,NC,L]
+RewriteRule ^engage/public-programs/speaker-series(/.*)?$ https://gordonsmithgallery.com/pages/speaker-series? [R=301,NC,L]
+RewriteRule ^visit/upcoming-exhibition/beyond-the-horizon(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/beyond-the-horizon? [R=301,NC,L]
+RewriteRule ^visit/upcoming-exhibition/unfixed(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^about/board-of-directors(/.*)?$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^about/gordon-and-marion(/.*)?$ https://gordonsmithgallery.com/pages/gordon-and-marion? [R=301,NC,L]
+RewriteRule ^about/our-foundation(/.*)?$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^about/supporters(/.*)?$ https://gordonsmithgallery.com/pages/smith-foundation-supporters? [R=301,NC,L]
+RewriteRule ^brilliancegala/call-for-artists(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^curate/request-for-proposals(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^curate/unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^curate/unfixed(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^curate/upcoming-exhibition(/.*)?$ https://gordonsmithgallery.com/pages/on-now? [R=301,NC,L]
+RewriteRule ^donate-now/giving-tuesday(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^donate/winter-appeal(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^engage/curatorial-call(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^engage/curatorial-fellowship(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^engage/explore-and-create-art-saturdays(/.*)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,NC,L]
+RewriteRule ^engage/explore-create(/.*)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,NC,L]
+RewriteRule ^engage/fundraising-event-manager(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^engage/membership(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^engage/music-at-the-smith(/.*)?$ https://gordonsmithgallery.com/pages/music-at-the-smith? [R=301,NC,L]
+RewriteRule ^engage/public-programs(/.*)?$ https://gordonsmithgallery.com/pages/public-programs-1? [R=301,NC,L]
+RewriteRule ^engage/volunteer(/.*)?$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^engage/work-with-us-2(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^engage/work-with-us-programming-and-communications-manager(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^engage/work-with-us(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^engage/workwithus1(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^event/art-in-good-company-2(/.*)?$ https://gordonsmithgallery.com/pages/art-in-good-company? [R=301,NC,L]
+RewriteRule ^event/art-in-good-company-3(/.*)?$ https://gordonsmithgallery.com/pages/art-in-good-company? [R=301,NC,L]
+RewriteRule ^event/art-in-good-company-4(/.*)?$ https://gordonsmithgallery.com/pages/art-in-good-company? [R=301,NC,L]
+RewriteRule ^event/art-in-good-company-5(/.*)?$ https://gordonsmithgallery.com/pages/art-in-good-company? [R=301,NC,L]
+RewriteRule ^event/art-in-good-company(/.*)?$ https://gordonsmithgallery.com/pages/art-in-good-company? [R=301,NC,L]
+RewriteRule ^event/artist-talk-unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^event/explore-create-2(/.*)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,NC,L]
+RewriteRule ^event/explore-create-saturday-may-9th(/.*)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,NC,L]
+RewriteRule ^event/explore-create(/.*)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,NC,L]
+RewriteRule ^event/music-at-the-smith-the-giving-shapes(/.*)?$ https://gordonsmithgallery.com/pages/music-at-the-smith? [R=301,NC,L]
+RewriteRule ^event/one-hundred-artists-deep-opening-reception(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/one-hundred-artists-deep? [R=301,NC,L]
+RewriteRule ^event/public-event-curatorial-tour-one-hundred-artists-deep(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/one-hundred-artists-deep? [R=301,NC,L]
+RewriteRule ^event/speaker-series-art-education-for-life-fashion-cultural-memory-and-design-as-living-practice-in-conversation-with-rebecca-baker-grenier(/.*)?$ https://gordonsmithgallery.com/pages/speaker-series? [R=301,NC,L]
+RewriteRule ^event/speaker-series-artistic-approaches-in-dialogue-with-jack-shadbolt(/.*)?$ https://gordonsmithgallery.com/pages/speaker-series? [R=301,NC,L]
+RewriteRule ^event/special-explore-create-with-artist-manuel-axel-strain(/.*)?$ https://gordonsmithgallery.com/pages/explore-create? [R=301,NC,L]
+RewriteRule ^exhibitions-items/2013-spring-luncheon(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^exhibitions-items/2018-luncheon-photos(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^exhibitions-items/2019-spring-luncheon(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^exhibitions-items/2025-gala-at-camp-smith(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^exhibitions-items/accidentally-on-purpose-ross-penhall(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/accidentally-on-purpose-ross-penhall? [R=301,NC,L]
+RewriteRule ^exhibitions-items/agricultural(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/thirteen-ways-to-summon-ghosts? [R=301,NC,L]
+RewriteRule ^exhibitions-items/beyond-the-horizon(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/beyond-the-horizon? [R=301,NC,L]
+RewriteRule ^exhibitions-items/brilliance-gala-2026(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^exhibitions-items/brilliance-gala(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^exhibitions-items/caccines(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/readymades? [R=301,NC,L]
+RewriteRule ^exhibitions-items/clean-water(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/robert-davidson-progression-of-form? [R=301,NC,L]
+RewriteRule ^exhibitions-items/collection-connection-and-the-making-of-meaning(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/collection-connection-and-the-making-of-meaning? [R=301,NC,L]
+RewriteRule ^exhibitions-items/dwelling-people-and-place(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/dwelling-people-and-place? [R=301,NC,L]
+RewriteRule ^exhibitions-items/education(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/phantoms-in-the-front-yard-over-the-counter-culture? [R=301,NC,L]
+RewriteRule ^exhibitions-items/endless-summer(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/endless-summer? [R=301,NC,L]
+RewriteRule ^exhibitions-items/expressionist-renderings-the-prints-of-alistair-bell(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/expressionist-renderings-the-prints-of-alistair-bell? [R=301,NC,L]
+RewriteRule ^exhibitions-items/fair-trade(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/thirteen-ways-to-summon-ghosts? [R=301,NC,L]
+RewriteRule ^exhibitions-items/farming(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/art-school-high? [R=301,NC,L]
+RewriteRule ^exhibitions-items/figurative-contemplation(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/figurative-contemplation? [R=301,NC,L]
+RewriteRule ^exhibitions-items/free-internet(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/memory-history-story? [R=301,NC,L]
+RewriteRule ^exhibitions-items/from-the-ground(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/from-the-ground? [R=301,NC,L]
+RewriteRule ^exhibitions-items/gu-xiong-a-journey-exposed(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/gu-xiong-a-journey-exposed? [R=301,NC,L]
+RewriteRule ^exhibitions-items/internet-free(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/memory-history-story? [R=301,NC,L]
+RewriteRule ^exhibitions-items/one-hundred-artists-deep-april-10th-june-20th-2026(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/one-hundred-artists-deep? [R=301,NC,L]
+RewriteRule ^exhibitions-items/one-hundred-artists-deep-april-11th-june-20th-2026(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/one-hundred-artists-deep? [R=301,NC,L]
+RewriteRule ^exhibitions-items/paths(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/paths? [R=301,NC,L]
+RewriteRule ^exhibitions-items/play(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/play? [R=301,NC,L]
+RewriteRule ^exhibitions-items/playhouse(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/playhouse? [R=301,NC,L]
+RewriteRule ^exhibitions-items/prevailing-landscapes(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/prevailing-landscapes? [R=301,NC,L]
+RewriteRule ^exhibitions-items/reframed-painting-collage-by-tiko-kerr(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/reframed-painting-and-collage-by-tiko-kerr? [R=301,NC,L]
+RewriteRule ^exhibitions-items/robert-young-spacial-understanding(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/robert-young-spatial-understanding? [R=301,NC,L]
+RewriteRule ^exhibitions-items/shelter(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/memory-history-story? [R=301,NC,L]
+RewriteRule ^exhibitions-items/stitched-merging-photography-and-textile-practices(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/stitched? [R=301,NC,L]
+RewriteRule ^exhibitions-items/the-art-of-conversation(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/the-art-of-conversation? [R=301,NC,L]
+RewriteRule ^exhibitions-items/transformations(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/transformations? [R=301,NC,L]
+RewriteRule ^exhibitions-items/unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^exhibitions-items/unfixed(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^exhibitions-items/vaccines(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/readymades? [R=301,NC,L]
+RewriteRule ^exhibitions-items/victor-john-penner-not-safe-to-occupy(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/victor-john-penner-not-safe-to-occupy? [R=301,NC,L]
+RewriteRule ^exhibitions-items/we-can-only-hint-at-this-with-words(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/we-can-only-hint-at-this-with-words? [R=301,NC,L]
+RewriteRule ^exhibitions-items/womans-rights(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/art-school-high? [R=301,NC,L]
+RewriteRule ^exhibitions-items/womens-rights(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/art-school-high? [R=301,NC,L]
+RewriteRule ^exhibitions-items/work-is-art(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/work-is-art? [R=301,NC,L]
+RewriteRule ^fund/gallery-shop(/.*)?$ https://gordonsmithgallery.com/pages/shop? [R=301,NC,L]
+RewriteRule ^fund/membership(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^fund/our-impact(/.*)?$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^fund/scholarship-opportunity(/.*)?$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^fund/special-events-gala(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^fund/special-events(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^fund/support(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^music_at_the_smith/fall-fete-2022(/.*)?$ https://gordonsmithgallery.com/pages/music-at-the-smith? [R=301,NC,L]
+RewriteRule ^portfolio_category/brilliance-gala(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^portfolio_category/current(/.*)?$ https://gordonsmithgallery.com/pages/on-now? [R=301,NC,L]
+RewriteRule ^portfolio_category/past(/.*)?$ https://gordonsmithgallery.com/pages/past-exhibitions? [R=301,NC,L]
+RewriteRule ^portfolio_category/spring-luncheon(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^portfolio_category/upcoming(/.*)?$ https://gordonsmithgallery.com/pages/upcoming-exhibitions? [R=301,NC,L]
+RewriteRule ^visit/request-for-proposals(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^visit/upcoming-exhibition(/.*)?$ https://gordonsmithgallery.com/pages/on-now? [R=301,NC,L]
+RewriteRule ^2021-appeal(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^about(/.*)?$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^brilliancegala(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^cart(/.*)?$ https://gordonsmithgallery.com/cart? [R=301,NC,L]
+RewriteRule ^checkout(/.*)?$ https://gordonsmithgallery.com/cart? [R=301,NC,L]
+RewriteRule ^contact(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^curate(/.*)?$ https://gordonsmithgallery.com/pages/plan-your-visit? [R=301,NC,L]
+RewriteRule ^current-exhibition(/.*)?$ https://gordonsmithgallery.com/pages/on-now? [R=301,NC,L]
+RewriteRule ^donate-now(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^donate(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^engage(/.*)?$ https://gordonsmithgallery.com/pages/public-programs-1? [R=301,NC,L]
+RewriteRule ^event(/.*)?$ https://gordonsmithgallery.com/pages/upcoming-events? [R=301,NC,L]
+RewriteRule ^events(/.*)?$ https://gordonsmithgallery.com/pages/upcoming-events? [R=301,NC,L]
+RewriteRule ^exhibitions-items(/.*)?$ https://gordonsmithgallery.com/pages/past-exhibitions? [R=301,NC,L]
+RewriteRule ^fund(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+RewriteRule ^home(/.*)?$ https://gordonsmithgallery.com/? [R=301,NC,L]
+RewriteRule ^music_at_the_smith(/.*)?$ https://gordonsmithgallery.com/pages/music-at-the-smith? [R=301,NC,L]
+RewriteRule ^organizer(/.*)?$ https://gordonsmithgallery.com/pages/upcoming-events? [R=301,NC,L]
+RewriteRule ^portfolio_category(/.*)?$ https://gordonsmithgallery.com/pages/past-exhibitions? [R=301,NC,L]
+RewriteRule ^product-category(/.*)?$ https://gordonsmithgallery.com/pages/shop? [R=301,NC,L]
+RewriteRule ^product(/.*)?$ https://gordonsmithgallery.com/pages/shop? [R=301,NC,L]
+RewriteRule ^public-events(/.*)?$ https://gordonsmithgallery.com/pages/upcoming-events? [R=301,NC,L]
+RewriteRule ^shop(/.*)?$ https://gordonsmithgallery.com/pages/shop? [R=301,NC,L]
+RewriteRule ^spring-gala-2022-ticket(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^tickets(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^to-gordon-with-love-tickets(/.*)?$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^upcoming-exhibition(/.*)?$ https://gordonsmithgallery.com/pages/upcoming-exhibitions? [R=301,NC,L]
+RewriteRule ^update-your-information(/.*)?$ https://gordonsmithgallery.com/pages/contact? [R=301,NC,L]
+RewriteRule ^venue(/.*)?$ https://gordonsmithgallery.com/pages/plan-your-visit? [R=301,NC,L]
+RewriteRule ^visit(/.*)?$ https://gordonsmithgallery.com/pages/plan-your-visit? [R=301,NC,L]
+RewriteRule ^winter-appeal(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
+
+# 6. Documents, each to the page that holds it or what replaced it. And the sitemap.
+RewriteRule ^sitemap\.xml$ https://gordonsmithgallery.com/sitemap.xml? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2017/07/GSF-Volunteer-Application-Form-2015\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2018/08/To_Gordon_With_Love_Website\.pdf$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2018/08/To_Gordon_With_Love_Website_Edit\.pdf$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2019/05/Auction-2019-catalogue-7x7-ONLINE\.pdf$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2020/01/Gordon-Smith-Music-at-the-Smith-Rack-Cards-V3\.pdf$ https://gordonsmithgallery.com/pages/music-at-the-smith? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2020/11/2019-A-YEAR-IN-REVIEW\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2021/06/UnfixedInterior_spreadsNoFrame\.pdf$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2021/10/GSF-Volunteer-Application-Form-2021\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2022/07/2021-A-YEAR-IN-REVIEW_sm\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2022/09/GSF-Volunteer-Application-Form-2022\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2023/01/GMSF-NV-2023\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2023/01/GMSF-V-2023\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2023/01/GMSF-WV-2023\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2023/07/EndlessSummer_ExhibitionBooklet\.pdf$ https://gordonsmithgallery.com/pages/exhibitions/endless-summer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2023/11/2022-A-YEAR-IN-REVIEW\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2023/12/GSF-Volunteer-Application-Form\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-North-Vancouver-2024-1\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-North-Vancouver-2024\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-Vancouver-2024-1\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-Vancouver-2024-2\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-Vancouver-2024\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-West-Vancouver-2024-1\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-West-Vancouver-2024\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/06/GSG-Volunteer-Application-Form\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2024/07/2023-A-YEAR-IN-REVIEW\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2025/10/2024-A-Year-in-Review_with-FS\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2025/10/GSF-Volunteer-Application-Form_202510\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2026/03/GSF-Volunteer-Application-Form_202603\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2026/03/NV-Scholarship-Invitation\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2026/03/Van-Scholarship-Invitation\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2026/03/WV-Scholarship-Invitation-1\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2026/03/WV-Scholarship-Invitation\.pdf$ https://gordonsmithgallery.com/pages/smith-foundation-scholarships? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2026/04/GSF-Volunteer-Application-Form_202603\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
+RewriteRule ^wp-content/uploads/2026/06/SMITH-ANNUAL-REPORT-2025\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
+RewriteRule ^wp-sitemap\.xml$ https://gordonsmithgallery.com/sitemap.xml? [R=301,NC,L]
+
+# 7. Pictures and other files in the media library are still served while they are on the
+# server, so they keep showing in old emails and on other websites. Once the folder is deleted
+# they go to the new home page like everything else.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^wp-content/uploads/ - [L]
+
+# 8. Everything else, the old home page included.
+RewriteRule ^ https://gordonsmithgallery.com/? [R=301,L]
+</IfModule>

@@ -294,7 +294,7 @@ Michael, 2026-09-28, asked what else would help the site be referenced, from the
 
 ### At release
 
-- **The old sites' domains.** Redirecting `smithfoundation.co` and `artistsforkids.sd44.ca` page by page carries over what search engines trust. The ten redirects inside the store are planned (`store-changes.md` §5). Domain redirects are not, and the school district controls one.
+- **The old sites' domains.** Redirecting `smithfoundation.co` and `artistsforkids.sd44.ca` page by page carries over what search engines trust. The ten redirects inside the store are planned (`store-changes.md` §5). Domain redirects are not, and the school district controls one. Since 2026-09-29 the Foundation's are ready: a file for its old server, with 174 addresses, to upload at release (P-63, `proposals/foundation-redirects/`).
 - **The live sitemap lists entry pages that answer 404** under the live theme: 11 of 12 sampled, 2026-09-28. It ends at release.
 
 ### Outside the site
