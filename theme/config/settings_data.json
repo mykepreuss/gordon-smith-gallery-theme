@@ -43,6 +43,11 @@
     "open_friday": true,
     "open_saturday": true,
     "opens_at": "12:00",
-    "closes_at": "16:00"
+    "closes_at": "16:00",
+    "artists_for_kids_page": "artists-for-kids",
+    "foundation_page": "the-smith-foundation",
+    "latitude": "49.3291934",
+    "longitude": "-123.0726507",
+    "artist_groups": "T&T Collective\nVancouver School Collective\nWest Baffin Eskimo Co-operative"
   }
 }

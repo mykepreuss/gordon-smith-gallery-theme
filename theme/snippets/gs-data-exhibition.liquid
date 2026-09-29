@@ -1,0 +1,169 @@
+{% doc %}
+  An exhibition as structured data (schema.org ExhibitionEvent, DS-154, DS-163). It says what
+  the exhibition's page says: dates, place, summary, pictures, who is in it, the works from the
+  collection it shows, and its opening reception and coming events as its parts.
+
+  - Artists are typed as names (content model part 2). A name the collection has an artist
+    entry for, matched whole and without regard to capitals as the page's own links are
+    (DS-161), is that artist: a Person (or a group, gs-data-artist-kind) under the artist's own name for
+    machines (@id), with their page. Any other name stays what the exhibition is about, as DS-154 decided, since
+    some are collectives.
+  - The place is the gallery, with the venue field ("Main gallery") as the part of it.
+  - Whose exhibition it is comes from its programme field.
+  - A dates note means the day isn't set yet ("Opens fall 2027"), so only the month is given.
+  - The opening reception is given until it has ended, as on the page (gs-exhibition-facts).
+  - Works from the collection are read from the entry looked up by its handle, so the page's own
+    list is still unread when gs-work-grid pages it.
+
+  @param {string} [description] - The page's description, as meta-tags works it out
+
+  @example
+  {%- render 'gs-data-exhibition', description: description -%}
+{% enddoc %}
+{%- liquid
+  assign entry = metaobject
+  assign origin = shop.url
+  assign id = canonical_url | append: '#exhibition'
+  assign image = entry.key_image.value
+
+  # Every name, then the artist entries' names and addresses to match them to (DS-161).
+  assign names = ''
+  for name in entry.artists.value
+    assign names = names | append: name | append: '~~row~~'
+  endfor
+  for name in entry.collection_artists.value
+    assign names = names | append: name | append: '~~row~~'
+  endfor
+  assign names = names | split: '~~row~~' | uniq
+  assign artist_map = '|'
+  if names.size > 0
+    paginate shop.metaobjects.artist.values by 250
+      for a in shop.metaobjects.artist.values
+        assign key = a.name.value | strip | downcase
+        assign artist_map = artist_map | append: key | append: '::' | append: a.system.url | append: '|'
+      endfor
+    endpaginate
+  endif
+
+  assign now = 'now' | date: '%s' | plus: 0
+  assign show_reception = false
+  if entry.reception_start.value != blank
+    assign reception_over = entry.reception_end.value | default: entry.reception_start.value
+    assign reception_over_s = reception_over | date: '%s' | plus: 0
+    if reception_over_s >= now
+      assign show_reception = true
+    endif
+  endif
+  capture event_ids
+    render 'gs-event-index', exhibition: entry
+  endcapture
+  assign event_ids = event_ids | strip | split: ','
+  assign twin = metaobjects['exhibition'][entry.system.handle]
+-%}
+{%- if entry.start_date.value != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ExhibitionEvent",
+      "@id": {{ id | json }},
+      "name": {{ entry.title.value | json }},
+      "url": {{ canonical_url | json }},
+      "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} },
+      {%- if entry.dates_note.value != blank -%}
+        "startDate": {{ entry.start_date.value | date: '%Y-%m' | json }},
+      {%- else -%}
+        "startDate": {{ entry.start_date.value | date: '%Y-%m-%d' | json }},
+        {%- if entry.end_date.value != blank -%}
+          "endDate": {{ entry.end_date.value | date: '%Y-%m-%d' | json }},
+        {%- endif -%}
+      {%- endif -%}
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {% render 'gs-data-place', room: entry.venue.value %},
+      "organizer": {% render 'gs-data-org', programme: entry.programme.value %}
+      {%- if entry.subtitle.value != blank -%}
+        ,"alternateName": {{ entry.subtitle.value | json }}
+      {%- endif -%}
+      {%- if description != blank -%}
+        ,"description": {{ description | json }}
+      {%- endif -%}
+      {%- if image != blank -%}
+        ,"image": [
+          {% render 'gs-data-image', image: image %}
+          {%- for view in entry.installation_views.value limit: 8 -%}
+            ,{% render 'gs-data-image', image: view %}
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+      {%- if names.size > 0 -%}
+        ,"about": [
+          {%- for name in names -%}
+            {%- liquid
+              assign key = name | strip | downcase | prepend: '|' | append: '::'
+              assign url = ''
+              if artist_map contains key
+                assign url = artist_map | split: key | last | split: '|' | first
+              endif
+            -%}
+            {%- if url != blank -%}
+              {%- capture kind -%}{%- render 'gs-data-artist-kind', name: name -%}{%- endcapture -%}
+              { "@type": {{ kind | strip | json }}, "@id": {{ url | prepend: origin | append: '#artist' | json }}, "name": {{ name | json }}, "url": {{ url | prepend: origin | json }} }
+            {%- else -%}
+              { "@type": "Thing", "name": {{ name | json }} }
+            {%- endif -%}
+            {%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+      {%- if twin.collection_works.value != blank -%}
+        ,"workFeatured": [
+          {%- for work in twin.collection_works.value limit: 50 -%}
+            {
+              "@type": "VisualArtwork",
+              "@id": {{ work.system.url | prepend: origin | append: '#work' | json }},
+              "name": {{ work.title.value | json }},
+              "url": {{ work.system.url | prepend: origin | json }}
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+      {%- if show_reception or event_ids.size > 0 -%}
+        ,"subEvent": [
+          {%- if show_reception -%}
+            {
+              "@type": "Event",
+              "@id": {{ canonical_url | append: '#reception' | json }},
+              "name": {{ 'exhibitions.reception' | t | append: ', ' | append: entry.title.value | json }},
+              "startDate": {{ entry.reception_start.value | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+              {%- if entry.reception_end.value != blank -%}
+                "endDate": {{ entry.reception_end.value | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+              {%- endif -%}
+              "eventStatus": "https://schema.org/EventScheduled",
+              "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+              "location": {% render 'gs-data-place' %},
+              "organizer": {% render 'gs-data-org', programme: entry.programme.value %},
+              "url": {{ canonical_url | json }},
+              "superEvent": { "@id": {{ id | json }} }
+              {%- if entry.reception_note.value != blank -%}
+                ,"description": {{ entry.reception_note.value | json }}
+              {%- endif -%}
+              {%- if image != blank -%}
+                ,"image": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+              {%- endif -%}
+            }{% if event_ids.size > 0 %},{% endif %}
+          {%- endif -%}
+          {%- paginate shop.metaobjects.event.values by 250 -%}
+            {%- for event_id in event_ids -%}
+              {%- assign n = event_id | plus: 0 -%}
+              {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+                { "@id": {{ shop.url | append: routes.root_url | append: '#event-' | append: event.system.handle | json }} }
+              {%- endfor -%}
+              {%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          {%- endpaginate -%}
+        ]
+      {%- endif -%}
+    }
+  </script>
+  {%- render 'gs-data-webpage', subject: id, name: entry.title.value, description: description, image: image, programme: entry.programme.value, crumb: true -%}
+{%- endif -%}

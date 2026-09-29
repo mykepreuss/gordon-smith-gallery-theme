@@ -15,9 +15,6 @@
 {% enddoc %}
 {%- liquid
   assign origin = shop.url
-  assign home = origin | append: routes.root_url
-  assign gallery_id = home | append: '#gallery'
-  assign site_name = 'general.site_title.gallery' | t
   assign name = ''
   assign image = nil
   assign part_of = nil
@@ -35,18 +32,22 @@
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
+      "@id": {{ canonical_url | append: '#webpage' | json }},
+      "inLanguage": {{ request.locale.iso_code | json }},
+      "breadcrumb": { "@id": {{ canonical_url | append: '#breadcrumb' | json }} },
       "name": {{ name | json }},
       "url": {{ canonical_url | json }},
-      "publisher": { "@type": "ArtGallery", "@id": {{ gallery_id | json }}, "name": {{ site_name | json }} }
+      "publisher": {% render 'gs-data-org' %}
       {%- if description != blank -%}
         ,"description": {{ description | json }}
       {%- endif -%}
       {%- if image != blank -%}
-        ,"image": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+        ,"primaryImageOfPage": {% render 'gs-data-image', image: image %}
       {%- endif -%}
       {%- if part_of != blank -%}
         ,"isPartOf": {
           "@type": "WebPage",
+          "@id": {{ part_of.url | prepend: origin | append: '#webpage' | json }},
           "name": {{ part_of.title | json }},
           "url": {{ part_of.url | prepend: origin | json }}
         }
@@ -67,7 +68,7 @@
                   endif
                 endif
               -%}
-              { "@type": "ListItem", "position": {{ forloop.index }}, "name": {{ item_name | json }}, "url": {{ item.url | prepend: origin | json }} }{% unless forloop.last %},{% endunless %}
+              { "@type": "ListItem", "position": {{ forloop.index }}, "item": { "@type": "Product", "@id": {{ item.url | prepend: origin | append: '#product' | json }}, "name": {{ item_name | json }}, "url": {{ item.url | prepend: origin | json }} } }{% unless forloop.last %},{% endunless %}
             {%- endfor -%}
           ]
         }

@@ -1,0 +1,66 @@
+{% doc %}
+  One of the three organisations as structured data (DS-163): the Gallery, Artists for Kids or
+  The Gordon and Marion Smith Foundation, from a programme field's value. Blank is the Gallery,
+  as everywhere else (gs-programme). One JSON object without its script tag.
+
+  Each organisation has one name for machines (its @id), so a page, an exhibition, an event and
+  a lesson that belong to it all point at the same thing. The short form is that name, the
+  organisation's name and its page. The full form, printed on the organisation's own page, adds
+  its logo. The Gallery's full form is gs-data-place.
+
+  Artists for Kids' and the Foundation's pages are chosen in Theme settings, Gallery details.
+
+  @param {string} [programme] - A programme field's value: Gallery, Smith Foundation or Artists for Kids
+  @param {boolean} [full] - The full form
+
+  @example
+  "publisher": {% render 'gs-data-org', programme: page.metafields.custom.programme.value %}
+{% enddoc %}
+{%- liquid
+  assign origin = shop.url
+  assign home = origin | append: routes.root_url
+  capture brand
+    render 'gs-programme', value: programme
+  endcapture
+  assign brand = brand | strip
+  assign kind = 'Organization'
+  assign own_page = nil
+  case brand
+    when 'artists-for-kids'
+      assign id = home | append: '#artists-for-kids'
+      assign name = 'general.site_title.artists_for_kids' | t
+      assign own_page = settings.artists_for_kids_page
+      assign logo = 'gs-logo-artists-for-kids.svg'
+    when 'foundation'
+      assign id = home | append: '#foundation'
+      assign name = 'general.site_title.foundation' | t
+      assign own_page = settings.foundation_page
+      assign logo = 'gs-logo-foundation.svg'
+    else
+      assign kind = 'ArtGallery'
+      assign id = home | append: '#gallery'
+      assign name = 'general.site_title.gallery' | t
+      assign logo = 'gs-logo-gallery.svg'
+  endcase
+  assign url = home
+  if brand != 'gallery'
+    assign url = ''
+    if own_page != blank
+      assign url = own_page.url | prepend: origin
+    endif
+  endif
+-%}
+{
+  "@type": {{ kind | json }},
+  "@id": {{ id | json }},
+  "name": {{ name | json }}
+  {%- if url != blank -%}
+    ,"url": {{ url | json }}
+  {%- endif -%}
+  {%- if full -%}
+    ,"logo": {{ logo | asset_url | prepend: 'https:' | json }}
+    {%- if own_page != blank -%}
+      ,"mainEntityOfPage": {{ own_page.url | prepend: origin | json }}
+    {%- endif -%}
+  {%- endif -%}
+}
