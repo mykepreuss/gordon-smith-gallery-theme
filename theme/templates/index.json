@@ -22,6 +22,12 @@
         "heading": "What’s on"
       }
     },
+    "collection": {
+      "type": "gs-collection-row",
+      "settings": {
+        "heading": "From the collection"
+      }
+    },
     "programme": {
       "type": "gs-feature",
       "settings": {
@@ -71,6 +77,7 @@
   "order": [
     "hero",
     "whats_on",
+    "collection",
     "programme",
     "editions",
     "support",

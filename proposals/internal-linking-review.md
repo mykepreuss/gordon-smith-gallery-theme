@@ -238,12 +238,12 @@ Michael, 2026-09-29: "DS-178 to DS-187 approved, merge #118". All ten are decide
 
 ### Not built: options
 
-Option A was done on 2026-09-29. See "Since then".
+Options A and B were done on 2026-09-29. See "Since then".
 
 | | Option | Why it isn't built | What it takes |
 | --- | --- | --- | --- |
 | A | Done for 13 of the 14, see "Since then". Crumbs on 14 Artists for Kids pages. After School Art, Day camps and Paradise Valley lead back to Classes and camps. Gallery program, Studio Art Academy, Learning guides, Learning kits, ArtReach videos, Professional development and Artists in Residence lead back to Schools and teachers. Those two, Awards and scholarships and Support Artists for Kids lead back to Artists for Kids | It is a store write: each page's Eyebrow field | Your go-ahead. The live theme doesn't read the field, so nothing shows before release. The theme needs no change: DS-80 and DS-184 do the rest |
-| B | Home links to the collection in its content. Home's content leads to the exhibition, the events, Artists for Kids, the editions, giving and visiting, but not to the collection, the site's largest part, or the Artists page | It changes what Home shows | A row of featured works, or a feature panel. A design decision |
+| B | Built, see "Since then" (DS-188). Home links to the collection in its content. Home's content leads to the exhibition, the events, Artists for Kids, the editions, giving and visiting, but not to the collection, the site's largest part, or the Artists page | It changes what Home shows | A row of featured works, or a feature panel. A design decision |
 | C | The menu printed once | The two copies are how the menu works without JavaScript at both widths. One copy needs the drawer and the bar to share markup | A rebuild of the header, tested on every browser. Gain: 4 KB and 85 words a page. Worth doing only with other header work |
 | D | An exhibition names the artists of its works from the collection. Four exhibitions show works; their artists are named on the tiles, which lead to the works | It adds names to the gallery's list of artists | A row in the exhibition's facts, made from the works |
 | E | Links in page text to About us, the FAQ, Plan your visit and Contact | The words are the gallery's | Sentences for the gallery to approve, staged as the other text changes are (DS-39). For example, the FAQ's answers on visiting, when written (`gallery-questions.md` 10.4), link to Plan your visit |
@@ -264,6 +264,17 @@ Professional Development has no crumb. It is a programme in the Programming rows
 
 A crumb names the page one step up. After School Art's data reads Home, Classes and camps, After School Art, without Artists for Kids between. The whole path would be a change to DS-184.
 
+**2026-09-29, option B (DS-188).** Michael: "Go ahead with option B, Home links to the collection", then, after testing it on the review theme, "DS-188 approved, merge #122". Decided as built. Home has a new row after What's on, "From the collection": the first three featured works, the collection's size, and links to the Permanent Collection page and to Artists A to Z. A theme change only.
+
+| | Before | After |
+| --- | --- | --- |
+| Links from Home's content to the collection's pages | 0 | 5: the Permanent Collection page, Artists A to Z and three works |
+| Clicks from Home to the three featured works | 2, through the menu | 1 |
+| Pages one click from Home | 38 | 41 |
+| Pages three clicks from Home | 1,224 | 1,215 |
+
+A row of works, not a feature panel: Home's rules allow it three listings and two panels, and it had two of each. The row sits after What's on, so the Artists for Kids panel is between it and the row of limited editions.
+
 ## For the gallery
 
 | | Question |
@@ -273,6 +284,7 @@ A crumb names the page one step up. After School Art's data reads Home, Classes 
 | 3 | The names lists (DS-175, DS-183), with three more names |
 | 4 | The new words: "Plan your visit", "See this work in the collection", "Lessons" |
 | 5 | The 13 crumbs: is each Artists for Kids page filed under the right page (`gallery-questions.md` 12.5)? |
+| 6 | The featured works: the first three now show on Home (`gallery-questions.md` 1.9). The words "From the collection" and "Browse the collection" (12.6) |
 
 85 more names on exhibition pages have no artist entry, since the artists have no work in the collection. They stay plain text.
 

@@ -250,7 +250,8 @@
   },
   "home": {
     "all_events": "All events",
-    "see_portfolio": "See the portfolio"
+    "see_portfolio": "See the portfolio",
+    "see_collection": "Browse the collection"
   },
   "collection": {
     "works_heading": "Works in the collection",
