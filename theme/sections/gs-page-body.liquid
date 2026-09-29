@@ -1,13 +1,13 @@
 {%- comment -%}
   The page's body text from the normal page editor, styled by .gs-prose (DESIGN.md §6.11). Fonts,
   sizes and colours pasted from Word or email are neutralised there (TYPE-03). The text comes from
-  gs-page-text: staged text until release (DS-39), without a heading that repeats the title (DS-41).
+  gs-page-text, without a heading that repeats the title (DS-41).
 
   The Part setting is the same for every page on a template (DS-51). On a programme page the
   opening comes before the programmes and the headed sections after them, whose H2s are section
   headings, level with the programmes' heading. On any other page the opening part is all of the
-  text and the sections part shows nothing, so the default template can carry both parts and still
-  lay programme pages out right before their templates are reassigned (gs-is-programme-page, L-08).
+  text and the sections part shows nothing, so the default template can carry both parts: a
+  programme in the events switcher and the ArtReach videos page use them on any template.
   Text with a figure sets each picture beside its paragraphs (gs-text-media); on a story page the
   text is one column with its pictures set into it (gs-story, DS-145). On the page chosen as
   Plan your visit page in Theme settings, the visit details come first (gs-visit-info, DS-61).
@@ -17,7 +17,7 @@
   in the events switcher has its events between the parts (DS-143), whatever template it has. On
   the page chosen as ArtReach videos page, the lessons follow the opening and the cards
   (gs-lesson-list, DS-70): the second part lists them before its text, whatever template the page
-  has, so the list shows before release too, when the page still has its old template name.
+  has.
 {%- endcomment -%}
 {%- liquid
   assign lessons_here = false

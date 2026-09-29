@@ -2,8 +2,6 @@
   The current page's own text, ready to print inside .gs-prose (DESIGN.md §6.11). Prints nothing
   when the page has no text.
 
-  - Until release, text staged in custom.release_body shows instead of the live text (DS-39). An
-    HTML comment alone means the page will have no text.
   - A heading at the very start that only repeats the page title isn't shown: the hero or page
     header already says it (DS-41).
   - Videos, links and pictures go through gs-rich-text, as every staff rich text does.
@@ -19,11 +17,7 @@
   {%- capture text -%}{% render 'gs-page-text', part: 'opening' %}{%- endcapture -%}
 {% enddoc %}
 {%- liquid
-  assign body = page.content
-  if page.metafields.custom.release_body != blank
-    assign body = page.metafields.custom.release_body.value
-  endif
-  assign body = body | strip
+  assign body = page.content | strip
 
   assign lead = body | slice: 0, 3 | downcase
   if lead == '<h1' or lead == '<h2' or lead == '<h3'

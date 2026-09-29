@@ -2,23 +2,16 @@
   Whether the current page is a story page (DS-145): one on the story template, whose text
   is one reading column with its pictures set into it (gs-story).
 
-  Until release, pages keep their old template names (L-08), and the new theme has none of them, so
-  the story pages (Gordon and Marion, Brilliance Gala, Plan your visit, Donate, Paradise Valley
-  Summer Camps) fall back to the default page template. They are recognised here by their handles
-  too, so the review theme lays them out as they will be after release. After release the release
-  script moves them to the story template: then delete the list.
+  Before release it knew the story pages by their handles too (L-08). The release gave each page
+  its template on 2026-09-29, so the template is the only test.
 
   @example
   {%- capture story_page -%}{% render 'gs-is-story-page' %}{%- endcapture -%}
   {%- if story_page contains 'true' -%} ... {%- endif -%}
 {% enddoc %}
 {%- liquid
-  # The story pages before release (store-changes.md §3).
-  assign handles = 'gordon-and-marion,brilliance-gala,plan-your-visit,donate,paradise-valley-summer-camp' | split: ','
   assign result = false
   if template.suffix == 'story'
-    assign result = true
-  elsif page != blank and handles contains page.handle
     assign result = true
   endif
   echo result

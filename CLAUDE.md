@@ -24,7 +24,7 @@ The new theme is live: `184767250729`, from `main` at dee1885, published with Mi
 
 - Work the loop in the plan's "How we iterate" as far as the pull request: branch from `main`, work against the development theme, design system first, record decisions as Proposed for Michael, open a pull request. How a merged change reaches the live theme is Michael's to decide.
 - Open work: the plan's "Iteration backlog", and what is left of its "Release backlog" (the staff and newsletter tests, the gallery's approvals). The plan still reads as before the release; Michael says when it changes.
-- `custom.release_body` is gone: a page's text is the page's own text again (DS-39). The theme still holds the pre-release bridges until the follow-up pull request.
+- `custom.release_body` is gone: a page's text is the page's own text again (DS-39), and a page's template alone decides its layout (L-08). `custom.release_description` stays until the descriptions move to the search engine listings (`store-changes.md` §8d).
 - Another session may be working in this repo at the same time: pull `main` before starting, and merge `main` into your branch if it moved.
 
 ## Commands
@@ -34,7 +34,7 @@ The new theme is live: `184767250729`, from `main` at dee1885, published with Mi
 - Checks: `shopify theme check --path theme`, `python3 design-system/scripts/lint_theme.py theme/ --strict`, `python3 design-system/scripts/tests/test_lint_theme.py`, `python3 design-system/scripts/check_contrast.py`, `python3 design-system/scripts/sync_theme.py theme/ --check`.
 - Structured data, titles and descriptions as a page sends them: `python3 design-system/scripts/check_structured_data.py <url> ...` against a preview link or the `theme dev` address; its tests, `python3 design-system/scripts/tests/test_check_structured_data.py`.
 - The questions the site must answer: `python3 design-system/scripts/check_answers.py <address>` (the `theme dev` address or a preview address, no path; `--theme <id>` with the store's address reads an unpublished theme); its tests, `python3 design-system/scripts/tests/test_check_answers.py`. The questions are in `design-system/scripts/answers.json`.
-- The links between pages: `python3 design-system/scripts/check_links.py <address>` (the `theme dev` address, the live site's, or the store's with `--theme <id>`); it reads every page, about three minutes. Run it on the live site after any change to a page's template: it is the check that caught the release's one fault. Its limits and the addresses left unlinked until release are in `design-system/scripts/links.json`; its tests, `python3 design-system/scripts/tests/test_check_links.py`.
+- The links between pages: `python3 design-system/scripts/check_links.py <address>` (the `theme dev` address, the live site's, or the store's with `--theme <id>`); it reads every page, about three minutes. Run it on the live site after any change to a page's template: it is the check that caught the release's one fault. Its limits are in `design-system/scripts/links.json`; its tests, `python3 design-system/scripts/tests/test_check_links.py`.
 - Rendered fonts: `python3 design-system/scripts/audit_fonts.py <url> ...` against the theme's preview link (`?preview_theme_id=<id>`); the `theme dev` address never goes network-idle.
 - Shopify docs, API schemas and Liquid validation: Shopify's Dev MCP server (`claude mcp add --transport stdio shopify-dev-mcp -- npx -y @shopify/dev-mcp@latest`).
 
