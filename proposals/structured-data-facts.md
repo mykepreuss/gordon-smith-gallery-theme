@@ -141,9 +141,9 @@ One thing to settle first. The shipping policy says $20 and also that shipping "
 
 | Step | Facts | Needs |
 | --- | --- | --- |
-| A. Returns and shipping on each edition | Section 7 | Michael's go-ahead. The gallery's answer on the $20. Theme only |
+| A. Returns and shipping on each edition | Section 7 | **Built 2026-09-28 (DS-170).** The gallery's answer on the $20 is still open: if shipping isn't a flat $20, empty the setting |
 | B. The gallery's social profiles and email | Sections 4 and 5 | The gallery confirms them. Theme settings only |
-| C. Admission and access on the gallery | Section 6 | Michael's go-ahead. Theme only, from words the page already shows |
+| C. Admission and access on the gallery | Section 6 | **Built 2026-09-28 (DS-171)** |
 | D. The organisations: dates founded, the Foundation's full name and charity number, the school district as Artists for Kids' parent | Section 3 | The gallery confirms. Theme only |
 | E. Artists described elsewhere | Section 1 | A new field on the artist entry and 101 values: a store write, so Michael's go-ahead and a before-snapshot |
 | F. Corrections to artists' dates and names | Section 2 | The gallery's check, then a store write |

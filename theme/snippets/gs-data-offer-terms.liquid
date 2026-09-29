@@ -1,0 +1,62 @@
+{% doc %}
+  The terms of buying an edition as structured data (DS-170): whether it can be returned, and
+  what shipping costs, where to and how long the gallery takes to send it. Google's shopping
+  results ask for both. Prints a run of properties for an Offer, each with its comma before it,
+  and nothing when the settings are empty.
+
+  The values are in Theme settings, Shop, and repeat the store's own refund and shipping
+  policies (Settings, Policies), which the footer links to. Change them together.
+
+  - Returns: "All sales are final" says no returns, in the store's country, with the refund
+    policy's address.
+  - Shipping: one flat rate, in the store's currency, to the store's country, which is the only
+    place the store ships to. The days are the gallery's time to prepare and send a print, not
+    the carrier's time to deliver it, which the policy doesn't give.
+  - This is an unframed print's shipping. A framed print is picked up (DS-137), and its frame
+    is part of the order, not a product with data of its own.
+
+  @example
+  "seller": {% render 'gs-data-org' %}
+  {%- render 'gs-data-offer-terms' -%}
+{% enddoc %}
+{%- liquid
+  assign country = shop.address.country_code
+  assign rate = settings.shipping_rate | strip
+  assign days_min = settings.shipping_days_min | strip
+  assign days_max = settings.shipping_days_max | strip | default: days_min
+-%}
+{%- if settings.returns == 'final' and country != blank -%}
+  ,"hasMerchantReturnPolicy": {
+    "@type": "MerchantReturnPolicy",
+    "applicableCountry": {{ country | json }},
+    "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+    {%- if shop.refund_policy.url != blank -%}
+      ,"merchantReturnLink": {{ shop.refund_policy.url | prepend: shop.url | json }}
+    {%- endif -%}
+  }
+{%- endif -%}
+{%- if rate != blank and country != blank -%}
+  ,"shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingRate": {
+      "@type": "MonetaryAmount",
+      "value": {{ rate | plus: 0 | json }},
+      "currency": {{ cart.currency.iso_code | json }}
+    },
+    "shippingDestination": {
+      "@type": "DefinedRegion",
+      "addressCountry": {{ country | json }}
+    }
+    {%- if days_min != blank -%}
+      ,"deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": {{ days_min | plus: 0 | json }},
+          "maxValue": {{ days_max | plus: 0 | json }},
+          "unitCode": "DAY"
+        }
+      }
+    {%- endif -%}
+  }
+{%- endif -%}
