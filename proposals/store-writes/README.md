@@ -817,3 +817,25 @@ The custom profile stays in the store, empty (no products, zones or rates), so n
 **Effect on the live site:** none for buyers in Canada, who see the same $20 rate and pickup. Buyers elsewhere couldn't check out before and can't now.
 
 **Undo:** a deleted zone can't be restored, so recreate both from the snapshot: `deliveryProfileUpdate` with `locationGroupsToUpdate` on `gid://shopify/DeliveryLocationGroup/122038845737` and `zonesToCreate`, or in the admin under Settings, Shipping and delivery, General profile. The new zones and rates get new IDs.
+
+## 2026-09-28: the Artists for Kids team as portraits, like the board
+
+**Why:** Michael, 2026-09-28, sending the four portraits: "I want this section [Meet the Artists for Kids Team] to match this section [Board of Directors]". It also answers the team's part of gallery question 9.2 (four portraits in place of the group photo).
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (the CLI and the connector); the live theme 183162372393 (live) and the review theme 184767250729 (unpublished), by `shopify theme list`. Before-snapshot: `snapshots/afk-team-2026-09-28-before.json` (the Artists for Kids page's card groups and staged text, read through the connector; the staged text is exactly what `content.py` generated on 2026-09-27). No card `afk-team-*` or group `afk-team` existed.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| 4 portraits into Files, JPEG copies of the ones Michael sent (1122 × 1402, sRGB, quality 85), no alt text: each card's name follows its picture, as on the board | CLI | `created/afk-team.json`, from `artists-for-kids/team.py upload` |
+| 4 cards, `afk-team-allison-kerr`, `-amelia-epp`, `-chantal-pinard`, `-emily-neufeld`: name, portrait, role. Names and roles are the old caption's, word for word, in its order | CLI | The same file, from `team.py cards` |
+| Card group `afk-team`, heading "Meet the Artists for Kids Team" | CLI | `gid://shopify/Metaobject/609458585897` |
+| The Artists for Kids page's card groups: `afk-team` added last | Connector, `metafieldsSet` | `gid://shopify/Metafield/190392217338153` |
+| The page's staged text (`custom.release_body`): the heading "Meet the Artists for Kids Team" and the group photo with its caption taken off the end. Everything before it unchanged | Connector, `metafieldsSet` | `gid://shopify/Metafield/190403424715049` |
+
+On a programme page the card groups sit between the opening text and its later parts, so the team now comes after the programmes' groups and before History, where before it closed the page. `content.py` no longer adds the photo, and lists `afk-team` with the page's groups, so a re-run gives the same. The group photo `afk-team.jpg` stays in Files, unused.
+
+**Checked after:** on the review theme, the page's H2s run Fall 2026 at Artists For Kids, Community Programs, School Programs, Learning & Teaching Resources, Awards and support, Meet the Artists for Kids Team, History; the team is a people grid (`gs-grid--people gs-grid--fours`), four across at 1440 and two at 375; the group photo is gone. On gordonsmithgallery.com the page is unchanged (the live theme reads neither field).
+
+**Effect on the live site:** none. The live theme doesn't read card groups or staged text, and the new cards have no pages of their own.
+
+**Undo:** set the page's `card_groups` and `release_body` back to the snapshot's values (`metafieldsSet`); delete the group `afk-team`, its four cards and the four files in `created/afk-team.json`.
