@@ -57,6 +57,11 @@ class CheckAnswers(unittest.TestCase):
         errors = check.check_hours(page("<p>Open Wednesday to Sunday</p>", GALLERY, description=""))
         self.assertEqual(errors, ["the data says Thursday to Saturday; the page doesn't"])
 
+    def test_the_theme_a_page_was_drawn_with(self):
+        html = '<script>Shopify.theme = {"name":"review","id":184767250729,"role":"unpublished"};</script>'
+        self.assertEqual(check.theme_shown(html), "184767250729")
+        self.assertEqual(check.theme_shown("<p>no theme</p>"), "")
+
     def test_the_question_list_is_sound(self):
         spec = json.loads(check.QUESTIONS.read_text())
         numbers = [q["n"] for q in spec["questions"]]
