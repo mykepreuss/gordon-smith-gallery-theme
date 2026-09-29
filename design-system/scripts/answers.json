@@ -1,5 +1,5 @@
 {
-  "about": "The questions people ask answer engines about the gallery, the page meant to answer each, and the evidence that page must show. From the AEO query set (proposals, 2026-09-28). Evidence is a list of regular expressions, matched without regard to capitals against the words a visitor sees and the page's description. A gap is a question the site doesn't answer yet. For a gap, the evidence is only the missing fact.",
+  "about": "The questions people ask answer engines about the gallery, the page meant to answer each, and the evidence that page must show. From the AEO query set, `aeo/aeo-query-set.md`. Change both together. Evidence is a list of regular expressions, matched without regard to capitals against the words a visitor sees and the page's description. A gap is a question the site doesn't answer yet. For a gap, the evidence is only the missing fact.",
   "hours_page": "/pages/plan-your-visit",
   "llms_title": "# The Gordon Smith Gallery of Canadian Art",
   "questions": [

@@ -44,14 +44,15 @@ Name questions: "Gordon Smith Gallery hours". Place and topic questions: "art ga
 **How to measure:**
 
 - a fixed prompt set from `aeo/aeo-query-set.md`, plus five place and topic prompts
+- before that, `design-system/scripts/check_answers.py`, which confirms the site itself still holds each answer (DS-167). An engine can't repeat a fact the page has lost
 - presence rate across answer engines
 - citation rate for gordonsmithgallery.com pages
 
 **How to improve:**
 
-- a plain identity sentence on About and the home page
-- written meta descriptions
-- visit and program questions on the FAQ page
+- a plain identity sentence on About and the home page. In the description and `/llms.txt` now; the sentence on the page waits for the gallery
+- written meta descriptions. Drafted and staged for 40 pages and the home page (DS-160)
+- visit and program questions on the FAQ page. Visiting questions are drafted for the gallery
 
 ## 2) Answer correctness
 
@@ -66,7 +67,7 @@ Name questions: "Gordon Smith Gallery hours". Place and topic questions: "art ga
 
 **How to improve:**
 
-- one source for each fact. The footer, Plan your visit and the `ArtGallery` structured data already share the hours
+- one source for each fact. The footer, Plan your visit, the `ArtGallery` structured data and `/llms.txt` all read the hours from Theme settings, and `check_answers.py` fails if the data and the page disagree
 - settle the office hours, which differ between Plan your visit and Contact
 - state holiday and summer closures
 - keep the map and business listings outside the site in step with the site
@@ -97,7 +98,7 @@ Name questions: "Gordon Smith Gallery hours". Place and topic questions: "art ga
 **How to improve:**
 
 - one first-mention name for the gallery, one spelling of Artists for Kids
-- `Person` and `Organization` structured data with `sameAs` links
+- `Person` and `Organization` structured data with `sameAs` links. The data is built (DS-163). The `sameAs` links wait for the gallery's profiles
 - a short comparison of the three organizations on About
 
 ## 5) Conversational fit-screening
@@ -140,7 +141,7 @@ Walk-ins will never be fully attributed. A simple tally at the front desk is eno
 
 ## 7) AI as first screener
 
-**Definition:** The first reader is often an AI system summarizing the gallery to someone else. It may also be an agent that buys. The store's `/llms.txt` already tells shopping agents how to check out.
+**Definition:** The first reader is often an AI system summarizing the gallery to someone else. It may also be an agent that buys. The site's `/llms.txt` tells the first kind what the gallery is, where each fact lives and how to keep the four entities apart (DS-166). Shopify's `/agents.md` tells the second kind how to check out.
 
 **How to improve:**
 
@@ -155,6 +156,7 @@ Use a small monthly scorecard:
 
 | Signal | Source | Target |
 | --- | --- | --- |
+| The site holds each answer | `check_answers.py` | No errors. Known gaps falling |
 | Answer presence for the priority queries | Manual run of the query set | Rising |
 | Hours, address and admission correct | Manual run | Every engine, every time |
 | Current exhibition correct | Manual run | Every engine within two weeks of opening |

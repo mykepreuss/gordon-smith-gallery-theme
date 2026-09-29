@@ -51,9 +51,18 @@ The job is to help AI systems answer questions like:
 
 ## How this fits with the review
 
-`proposals/aeo-geo-review.md` is the technical review of the theme: structured data, descriptions, titles and headings. Its step 1 is built and decided (DS-154 to DS-157). Its steps 2 to 4 are in the plan's iteration backlog.
+`proposals/aeo-geo-review.md` is the technical review of the theme: structured data, descriptions, titles and headings. All four of its steps are built and decided (DS-154 to DS-167), and in `main` since 2026-09-28. What is left is words from the gallery (`proposals/gallery-questions.md` §10) and the release.
 
 This framework is the content side. It says which facts the site must state, which questions it must answer and how to tell if answer engines get them right. Where the two meet, the review's numbering is given, for example "review 8b".
+
+Four things here were built from this framework the same day:
+
+| From this framework | Built as | Decision |
+| --- | --- | --- |
+| The site's own file for AI assistants | `/llms.txt` (`theme/templates/llms.txt.liquid`), with the four entities kept apart | DS-166 |
+| Artists for Kids and the Foundation as organizations | `Organization` on each one's main page, named by every page of its program | DS-163 |
+| Gordon and Marion points to the artist | The page says it is about the artist's `Person` | DS-163 |
+| The query set as a repeatable check | `design-system/scripts/check_answers.py`, with the questions in `answers.json` | DS-167 |
 
 ## Four entities, one site
 
@@ -79,7 +88,8 @@ Use these as the durable anchors:
 - `/pages/shop` and `/pages/frequently-asked-questions`: the limited editions and how buying works
 - `/pages/exhibitions/<handle>`: one page per exhibition
 - `reference/GordonSmith-BrandGuide_sm.pdf`: brand essence
-- structured data (DS-154; `theme/snippets/gs-data.liquid`, `gs-data-place.liquid`, `gs-data-event.liquid`): `ArtGallery`, `WebSite`, `ExhibitionEvent`, `Event`, `VisualArtwork`, `Person`, `BreadcrumbList`, and Shopify's `Product`
+- structured data (DS-154, DS-158, DS-159, DS-162 to DS-165; `theme/snippets/gs-data.liquid` and the `gs-data-*` snippets it renders), one graph in which each thing has one name for machines: `ArtGallery`, `WebSite`, `Organization`, `ExhibitionEvent`, `Event`, `VisualArtwork`, `Person`, `Product`, `LearningResource`, `WebPage`, `ContactPage`, `FAQPage`, `ProfilePage`, `CollectionPage`, `BreadcrumbList`
+- `/llms.txt` (DS-166): the visit facts from Theme settings, the four entities, and the page to cite for each fact
 - `proposals/aeo-geo-review.md`: what the theme does for search and answer engines, and what is left
 
 The gallery writes the copy (EXH-04, ACCESS-04). This framework says what the pages must answer. It does not rewrite them.
@@ -180,7 +190,7 @@ For priority pages (`/`, `/pages/about-us`, `/pages/plan-your-visit`, `/pages/go
 - at least one source a reader can check
 - FAQs where the page is meant to win repeated questions
 - structured data that matches the visible text
-- a written description in the store (review 3c). Without one, the theme describes the page from its intro or the start of its text (DS-155)
+- a written description. Until release it is staged in the page's Release description field, and the home page's is in Theme settings (DS-160). 40 pages and the home page have drafts, for the gallery to approve (gallery questions 10.1 and 10.2). Without one, the theme describes the page from its intro or the start of its text (DS-155)
 
 ## Claims and evidence table
 
@@ -209,21 +219,21 @@ Rules:
 
 ## Drift found on the preview
 
-These are places where the site disagrees with itself today. AI systems repeat whichever version they find first. Each is a question for the gallery, not a copy change to make here.
+These are places where the site disagreed with itself on 2026-09-28. AI systems repeat whichever version they find first. The rows the theme could settle are settled. The rest are questions for the gallery, with their numbers in `proposals/gallery-questions.md`, not copy changes to make here.
 
 | What | Where | Detail |
 | --- | --- | --- |
-| The gallery's name | Site-wide | "Gordon Smith Gallery", "The Gordon Smith Gallery of Canadian Art" and "Artists for Kids & The Gordon Smith Gallery" all appear. The structured data lists the last two as alternate names (DS-154). Pick one name for first mention (review 2) |
-| Artists for Kids spelling | Several pages | "Artists for Kids", "Artists For Kids" and "Artist for Kids" |
-| Office hours | `/pages/plan-your-visit` and `/pages/contact` | Monday to Friday 8 AM to 3 PM on one, 8:30am to 4:30pm on the other |
-| Collection size | `/pages/permanent-collection` | The heading says "over 1,000 +". The search line says 1,174 works |
-| Edition name | Several pages | "Xhuwaji / Haida Grizzly" and "Xhuwaji/Haida Grizzly Bear" |
-| Home page description | `/` | The description is about the shop only. It does not say the site is a gallery, where it is or when it is open (review 2a) |
-| Page descriptions | Pages with a store description | Shopify made these from the page's text and dropped the line breaks, so some run words together. Written descriptions fix them (review 3c) |
-| FAQ page | `/pages/frequently-asked-questions` | Covers the shop only. No visit, program or donation questions (review 8b). `FAQPage` structured data waits for the questions as fields (review 1h) |
-| People and organizations | `/pages/gordon-and-marion`, `/pages/artists-for-kids`, `/pages/the-smith-foundation` | `WebPage` only. Artist pages carry `Person` (DS-154), but the biography page does not point to it, and Artists for Kids and the Foundation have no `Organization`. Not in the review |
-| `/llms.txt` | Site root | Shopify's default file. It covers buying through agents. It says nothing about the gallery, visits, exhibitions or programs (review 10e) |
-| Gallery founding date | Site-wide | Not stated. 1989 and 2002 are the program and the Foundation |
+| The gallery's name | Site-wide | "Gordon Smith Gallery", "The Gordon Smith Gallery of Canadian Art" and "Artists for Kids & The Gordon Smith Gallery" all appear. The structured data lists the last two as alternate names (DS-154), and `/llms.txt` leads with the full name. Open: one name for first mention on the pages (review 2) |
+| Artists for Kids spelling | Several pages | "Artists for Kids" 97 times, "Artists For Kids" 21 times and "Artist for Kids" 4 times, counted on 41 pages. Open: gallery question 10.9 |
+| Office hours | `/pages/plan-your-visit` and `/pages/contact` | Monday to Friday 8 AM to 3 PM on one, 8:30am to 4:30pm on the other. Open: gallery question 1.3 |
+| Collection size | `/pages/permanent-collection` | The heading says "over 1,000 +". The search line says 1,174 works. Open: gallery question 10.10 |
+| Edition name | Several pages | "Xhuwaji / Haida Grizzly" and "Xhuwaji/Haida Grizzly Bear". Open: gallery question 10.9 |
+| Home page description | `/` | Was about the shop only. Settled in the new theme: a draft in Theme settings says what the gallery is and where (DS-160). Open: the gallery's approval of the words (10.2). The live site keeps the old one until release |
+| Page descriptions | Pages with a store description | Shopify made these from the page's text and dropped the line breaks, so some ran words together. Settled in the new theme: it recognises them and uses the page's own words, and 40 written drafts are staged (DS-160). Open: the gallery's approval (10.1) |
+| FAQ page | `/pages/frequently-asked-questions` | Covers the shop only. No visit, program or donation questions (review 8b). `FAQPage` structured data is built, read from the page's own headings, so it needs no fields (DS-162). Open: eight visiting questions drafted for the gallery (10.4) |
+| People and organizations | `/pages/gordon-and-marion`, `/pages/artists-for-kids`, `/pages/the-smith-foundation` | Settled (DS-163): the biography page says it is about the artist's `Person`, and Artists for Kids and the Foundation each have an `Organization` on their main page. Open: how the three organizations are related, and their kinds (`proposals/structured-data-review.md`) |
+| `/llms.txt` | Site root | Settled (DS-166): the gallery's own file. `/agents.md` keeps Shopify's, which covers buying through agents. Shopify renders the file without the store's data, so it points to the exhibition and collection pages and can't list them. Open: the gallery's approval of its words (10.8) |
+| Gallery founding date | Site-wide | Not stated. 1989 and 2002 are the program and the Foundation. Open: gallery question 10.11 |
 
 ## Freshness rules
 
@@ -312,19 +322,20 @@ Group by:
 
 **Week 2:** tighten retrieval surfaces
 
-- written descriptions for the priority pages, the home page first (review 2a, 3c)
-- a direct answer at the top of About and Plan your visit (review 2b)
-- check whether the store can serve its own `/llms.txt` content (review 10e)
+- written descriptions for the priority pages, the home page first (review 2a, 3c). Drafted and staged, 2026-09-28. Left: the gallery's approval
+- a direct answer at the top of About and Plan your visit (review 2b). Left: the gallery's words (10.6)
+- the store's own `/llms.txt`. Done, 2026-09-28 (DS-166)
 
 **Week 3:** tighten structured data and FAQs
 
-- `Organization` for Artists for Kids and the Foundation, and a link from Gordon and Marion to the artist's `Person`
-- `sameAs` links once the gallery gives its profiles
-- visit, program and support questions on the FAQ page (review 8b), then `FAQPage` structured data (review 1h)
+- `Organization` for Artists for Kids and the Foundation, and a link from Gordon and Marion to the artist's `Person`. Done, 2026-09-28 (DS-163)
+- `sameAs` links once the gallery gives its profiles (gallery question 1.6)
+- visit, program and support questions on the FAQ page (review 8b). Drafted; left: the gallery's approval (10.4). `FAQPage` structured data is done and follows the page (DS-162)
 
 **Week 4:** test and upgrade
 
-- run the query set by hand in the main answer engines
+- run `design-system/scripts/check_answers.py` on the site: it confirms each question's page still shows its evidence
+- after release, run the query set by hand in the main answer engines
 - note where answers drift or blend the four entities
 - fix the page, not the prompt
 
