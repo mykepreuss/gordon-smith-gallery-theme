@@ -30,13 +30,70 @@ def page(*blocks, title="A page | Gordon Smith Gallery", h1=1, canonical=True, d
 
 class CheckStructuredData(unittest.TestCase):
     def test_a_good_exhibition_passes(self):
-        block = {"@context": "https://schema.org", "@type": "ExhibitionEvent", "name": "Playhouse",
+        block = {"@context": "https://schema.org", "@type": "ExhibitionEvent",
+                 "@id": "https://example.com/a#exhibition", "name": "Playhouse",
                  "url": "https://example.com/a", "startDate": "2026-09-25", "endDate": "2027-02-20",
-                 "location": PLACE}
+                 "location": PLACE, "description": "A show.", "image": "https://example.com/a.jpg",
+                 "eventStatus": "https://schema.org/EventScheduled", "organizer": PLACE}
         found, errors, warnings = check.check_page(page(block), ["ExhibitionEvent"])
         self.assertEqual(found, ["ExhibitionEvent"])
         self.assertEqual(errors, [])
         self.assertEqual(warnings, [])
+
+    def test_a_lesson_with_its_video_passes(self):
+        block = {"@type": "LearningResource", "name": "Paths", "url": "https://example.com/a",
+                 "video": {"@type": "VideoObject", "name": "Paths",
+                           "thumbnailUrl": "https://example.com/a.jpg", "uploadDate": "2022-10-20"}}
+        found, errors, _ = check.check_page(page(block), ["LearningResource"])
+        self.assertEqual(found, ["LearningResource"])
+        self.assertEqual(errors, [])
+
+    def test_a_page_without_its_address(self):
+        _, errors, _ = check.check_page(page({"@type": "CollectionPage", "name": "Prints"}))
+        self.assertIn("CollectionPage: no url", errors)
+
+    def test_a_month_is_a_date(self):
+        block = {"@type": "ExhibitionEvent", "@id": "https://example.com/a#exhibition", "name": "Fall show",
+                 "url": "https://example.com/a", "startDate": "2027-09", "location": PLACE}
+        _, errors, _ = check.check_page(page(block))
+        self.assertEqual(errors, [])
+        block["startDate"] = "fall 2027"
+        _, errors, _ = check.check_page(page(block))
+        self.assertTrue(any("startDate is not a date" in e for e in errors))
+
+    def test_a_property_on_the_wrong_type(self):
+        vocabulary = {"types": {"Thing": [], "Product": ["Thing"], "ProductGroup": ["Product"],
+                                "CreativeWork": ["Thing"], "VisualArtwork": ["CreativeWork"]},
+                      "properties": {"name": ["Thing"], "artMedium": ["VisualArtwork"]}}
+        block = {"@type": "ProductGroup", "@id": "https://example.com/a#product", "name": "A print",
+                 "hasVariant": [], "artMedium": "Woodcut"}
+        _, errors, _ = check.check_page(page(block), vocabulary=vocabulary)
+        self.assertIn("ProductGroup: artMedium is not for this type (it is for VisualArtwork)", errors)
+        self.assertIn("ProductGroup: hasVariant is not a schema.org property", errors)
+        block["@type"] = ["ProductGroup", "VisualArtwork"]
+        del block["hasVariant"]
+        _, errors, _ = check.check_page(page(block), vocabulary=vocabulary)
+        self.assertEqual([e for e in errors if "artMedium" in e], [])
+
+    def test_a_type_schema_org_does_not_have(self):
+        vocabulary = {"types": {"Thing": []}, "properties": {"name": ["Thing"]}}
+        _, errors, _ = check.check_page(page({"@type": "Gallery", "name": "A"}), vocabulary=vocabulary)
+        self.assertIn("Gallery: not a schema.org type", errors)
+
+    def test_a_mention_of_something_the_page_does_not_describe(self):
+        work = {"@type": "VisualArtwork", "@id": "https://example.com/a#work", "name": "A",
+                "url": "https://example.com/a", "mainEntityOfPage": {"@id": "https://example.com/a#webpage"}}
+        _, errors, _ = check.check_page(page(work))
+        self.assertIn("a mention of https://example.com/a#webpage, which the page doesn't describe", errors)
+        web = {"@type": "WebPage", "@id": "https://example.com/a#webpage", "name": "A",
+               "url": "https://example.com/a", "mainEntity": {"@id": "https://example.com/a#work"}}
+        _, errors, _ = check.check_page(page(work, web))
+        self.assertEqual(errors, [])
+
+    def test_a_main_thing_without_a_name_for_machines(self):
+        block = {"@type": "Person", "name": "A", "url": "https://example.com/a"}
+        _, _, warnings = check.check_page(page(block))
+        self.assertIn("Person: no name for machines (@id)", warnings)
 
     def test_a_block_that_does_not_parse(self):
         _, errors, _ = check.check_page(page('{"@type": "Person", "name": "A",}'))

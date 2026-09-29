@@ -375,6 +375,36 @@
         "info": "Linked from the Visit section on the home page."
       },
       {
+        "type": "page",
+        "id": "artists_for_kids_page",
+        "label": "Artists for Kids page",
+        "info": "The page about Artists for Kids. Search engines read it as the organisation's own page."
+      },
+      {
+        "type": "page",
+        "id": "foundation_page",
+        "label": "Smith Foundation page",
+        "info": "The page about The Gordon and Marion Smith Foundation. Search engines read it as the organisation's own page."
+      },
+      {
+        "type": "text",
+        "id": "latitude",
+        "label": "Latitude",
+        "info": "Where the gallery is on the map, for search engines. From the store's address record: 49.3291934."
+      },
+      {
+        "type": "text",
+        "id": "longitude",
+        "label": "Longitude",
+        "info": "From the store's address record: -123.0726507."
+      },
+      {
+        "type": "textarea",
+        "id": "home_description",
+        "label": "Home page description",
+        "info": "One or two sentences for search engines and link previews: what the gallery is, where it is and when it is open. Left empty, the store's description is used."
+      },
+      {
         "type": "richtext",
         "id": "land_acknowledgement",
         "label": "Land acknowledgement",
@@ -519,6 +549,12 @@
         "id": "artists_page",
         "label": "Artists page",
         "info": "Lists every artist entry, A to Z. Artist pages link back to it."
+      },
+      {
+        "type": "textarea",
+        "id": "artist_groups",
+        "label": "Artists that are groups",
+        "info": "One name to a line, as the artist entry has it. Search engines are told these are groups, not people. Every other artist is a person."
       }
     ]
   },

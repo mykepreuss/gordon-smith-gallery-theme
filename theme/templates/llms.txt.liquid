@@ -1,0 +1,85 @@
+{%- comment -%}
+  /llms.txt: what the site is, for AI assistants and answer engines (DS-166), in the
+  llms.txt form: a title, a summary, then lists of links. It replaces Shopify's own file at this
+  address only. /agents.md keeps Shopify's, which tells shopping agents how to buy, and this file
+  points to it.
+
+  Shopify renders this template without a layout and without the store's objects: shop, pages,
+  metaobjects and menus are blank here. Theme settings, the locale file, snippets, request and
+  the agents object work. So:
+
+  - The address, hours and admission come from Theme settings, Gallery details, as the footer
+    and Plan your visit do, and change with them. The summary is the home page's description.
+  - The words are in the locale file, under llms.
+  - The pages are named by their addresses, typed here. check_answers.py checks that each one
+    answers.
+  - No telephone number or email: Shopify asks that this file holds none, since it is cached
+    widely.
+
+  Theme Check doesn't know the agents object yet, so its warning is turned off here.
+{%- endcomment -%}
+{%- # theme-check-disable UndefinedObject -%}
+{%- liquid
+  assign site = agents.store_url
+  assign name = 'general.site_title.gallery_full' | t
+  assign address = settings.address | newline_to_br | strip_newlines | replace: '<br />', ', '
+  capture hours
+    render 'gs-open-hours'
+  endcapture
+  assign hours = hours | strip | replace: '<br>', ', ' | replace: '<br />', ', '
+  assign admission = settings.admission | newline_to_br | strip_newlines | replace: '<br />', ' '
+-%}
+# {{ name }}
+{% if settings.home_description != blank %}
+> {{ settings.home_description | strip_newlines }}
+{% endif %}
+## {{ 'llms.visit' | t }}
+
+- {{ 'llms.address' | t }}: {{ address }}
+{% if hours != blank -%}
+- {{ 'llms.open' | t }}: {{ hours }}
+{% endif -%}
+{%- if admission != blank -%}
+- {{ 'llms.admission' | t }}: {{ admission }}
+{% endif -%}
+- [{{ 'llms.visit_more' | t }}]({{ site }}/pages/plan-your-visit)
+
+{{ 'llms.hours_note' | t }}
+
+## {{ 'llms.names' | t }}
+
+{{ 'llms.names_note' | t }}
+
+- [{{ name }}]({{ site }}/pages/about-us): {{ 'llms.gallery' | t }}
+- [{{ 'general.site_title.artists_for_kids' | t }}]({{ site }}/pages/artists-for-kids): {{ 'llms.artists_for_kids' | t }}
+- [{{ 'general.site_title.foundation_full' | t }}]({{ site }}/pages/the-smith-foundation): {{ 'llms.foundation' | t }}
+- [{{ 'llms.artist_name' | t }}]({{ site }}/pages/gordon-and-marion): {{ 'llms.artist' | t }}
+
+## {{ 'llms.pages' | t }}
+
+{{ 'llms.pages_note' | t }}
+
+- [{{ 'llms.on_now' | t }}]({{ site }}/pages/on-now)
+- [{{ 'llms.upcoming' | t }}]({{ site }}/pages/upcoming-exhibitions)
+- [{{ 'llms.past' | t }}]({{ site }}/pages/past-exhibitions)
+- [{{ 'llms.events' | t }}]({{ site }}/pages/upcoming-events)
+- [{{ 'llms.families' | t }}]({{ site }}/pages/classes-and-camps)
+- [{{ 'llms.schools' | t }}]({{ site }}/pages/schools-and-teachers)
+- [{{ 'llms.collection' | t }}]({{ site }}/pages/permanent-collection)
+- [{{ 'llms.artists' | t }}]({{ site }}/pages/artists)
+- [{{ 'llms.editions' | t }}]({{ site }}/pages/shop)
+- [{{ 'llms.faq' | t }}]({{ site }}/pages/frequently-asked-questions)
+- [{{ 'llms.support' | t }}]({{ site }}/pages/donate)
+- [{{ 'llms.volunteer' | t }}]({{ site }}/pages/volunteer)
+- [{{ 'llms.contact' | t }}]({{ site }}/pages/contact)
+
+## {{ 'llms.reading' | t }}
+
+- {{ 'llms.data' | t }}
+- {{ 'llms.sitemap' | t }}: {{ agents.sitemap_url }}
+
+## {{ 'llms.buying' | t }}
+
+{{ 'llms.buying_note' | t }}
+
+- {{ site }}/agents.md

@@ -1,0 +1,94 @@
+{% doc %}
+  A lesson as structured data (schema.org LearningResource, DS-158): an ArtReach video from Artists
+  for Kids, with its grade levels, the day it was posted, what it makes and its video. It says
+  what the lesson's page says. gs-data prints the crumb. The lesson has one name for machines
+  (@id), the same in the ArtReach videos page's list, and the page names it as what it is
+  about (DS-163). The works from the collection that inspired it are left to the page: its
+  list is paged by gs-work-grid.
+
+  - The video (VideoObject) needs a picture and a date to be read as a video: the lesson's cover,
+    else YouTube's own picture of the video, and the day the lesson was posted. Without both, the
+    lesson is given without its video.
+  - The video's address is read as gs-video reads it: a YouTube watch, short, youtu.be or embed
+    address, or a numbered Vimeo address. Any other address gives no video.
+
+  @param {string} [description] - The page's description, as meta-tags works it out
+
+  @example
+  {%- render 'gs-data-lesson', description: description -%}
+{% enddoc %}
+{%- liquid
+  assign lesson = metaobject
+  assign making = lesson.making.value | newline_to_br | strip_newlines | replace: '<br />', ' ' | split: ' ' | join: ' '
+  assign words = description | default: making
+  assign posted = lesson.posted.value | date: '%Y-%m-%d'
+
+  assign address = lesson.video.value | strip
+  assign embed = ''
+  assign picture = ''
+  if address contains 'vimeo.com/'
+    assign vimeo = address | split: 'vimeo.com/' | last | remove: 'video/' | split: '?' | first | split: '#' | first | split: '/' | first
+    assign vimeo_back = vimeo | plus: 0 | append: ''
+    if vimeo_back == vimeo
+      assign embed = 'https://player.vimeo.com/video/' | append: vimeo
+    endif
+  else
+    assign id = ''
+    if address contains 'youtu.be/'
+      assign id = address | split: 'youtu.be/' | last
+    elsif address contains 'youtube.com/watch' and address contains 'v='
+      assign id = address | split: 'v=' | last
+    elsif address contains '/embed/'
+      assign id = address | split: '/embed/' | last
+    elsif address contains '/shorts/'
+      assign id = address | split: '/shorts/' | last
+    endif
+    assign id = id | split: '?' | first | split: '&' | first | split: '#' | first | split: '/' | first
+    if id != blank
+      assign embed = 'https://www.youtube-nocookie.com/embed/' | append: id
+      assign picture = 'https://i.ytimg.com/vi/' | append: id | append: '/hqdefault.jpg'
+    endif
+  endif
+  if lesson.cover.value != blank
+    assign picture = lesson.cover.value | image_url: width: 1200 | prepend: 'https:'
+  endif
+-%}
+{%- if lesson.title.value != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      "@id": {{ canonical_url | append: '#lesson' | json }},
+      "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} },
+      "learningResourceType": "Video lesson",
+      "name": {{ lesson.title.value | json }},
+      "url": {{ canonical_url | json }},
+      "inLanguage": {{ request.locale.iso_code | json }},
+      "provider": {% render 'gs-data-org', programme: 'Artists for Kids' %}
+      {%- if words != blank -%}
+        ,"description": {{ words | json }}
+      {%- endif -%}
+      {%- if lesson.grades.value != blank -%}
+        ,"educationalLevel": {{ lesson.grades.value | json }}
+      {%- endif -%}
+      {%- if posted != blank -%}
+        ,"datePublished": {{ posted | json }}
+      {%- endif -%}
+      {%- if picture != blank -%}
+        ,"image": {{ picture | json }}
+      {%- endif -%}
+      {%- if embed != blank and picture != blank and posted != blank -%}
+        ,"video": {
+          "@type": "VideoObject",
+          "name": {{ lesson.title.value | json }},
+          "description": {{ words | default: lesson.title.value | json }},
+          "thumbnailUrl": {{ picture | json }},
+          "uploadDate": {{ posted | json }},
+          "embedUrl": {{ embed | json }}
+        }
+      {%- endif -%}
+    }
+  </script>
+  {%- assign lesson_id = canonical_url | append: '#lesson' -%}
+  {%- render 'gs-data-webpage', subject: lesson_id, name: lesson.title.value, description: words, image: lesson.cover.value, programme: 'Artists for Kids', crumb: true -%}
+{%- endif -%}

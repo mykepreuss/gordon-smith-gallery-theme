@@ -1,0 +1,45 @@
+{% doc %}
+  The page itself as structured data (schema.org WebPage, DS-163), for a page about one thing: an
+  exhibition, a work, an artist, a lesson, an edition. It says what the page is mainly about
+  (mainEntity), where it sits in the site (breadcrumb, isPartOf), whose it is (publisher) and
+  which picture is its own. The thing itself is printed by its own snippet under the same name
+  (@id), so the two are read as one.
+
+  An artist's page is a ProfilePage and an edition's an ItemPage; the others are a WebPage.
+
+  @param {string} subject - The @id of what the page is about
+  @param {string} name - The page's name
+  @param {string} [kind] - 'WebPage' (default), 'ProfilePage' or 'ItemPage'
+  @param {string} [description] - The page's description, as meta-tags works it out
+  @param {object} [image] - The page's own picture
+  @param {string} [programme] - A programme field's value, for whose page it is
+  @param {boolean} [crumb] - The page has a crumb (gs-data prints it)
+
+  @example
+  {%- render 'gs-data-webpage', subject: id, name: metaobject.title.value, description: description, image: image, crumb: true -%}
+{% enddoc %}
+{%- liquid
+  assign home = shop.url | append: routes.root_url
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {{ kind | default: 'WebPage' | json }},
+    "@id": {{ canonical_url | append: '#webpage' | json }},
+    "url": {{ canonical_url | json }},
+    "name": {{ name | json }},
+    "inLanguage": {{ request.locale.iso_code | json }},
+    "isPartOf": { "@type": "WebSite", "@id": {{ home | append: '#website' | json }}, "name": {{ 'general.site_title.gallery' | t | json }}, "url": {{ home | json }} },
+    "publisher": {% render 'gs-data-org', programme: programme %},
+    "mainEntity": { "@id": {{ subject | json }} }
+    {%- if description != blank -%}
+      ,"description": {{ description | json }}
+    {%- endif -%}
+    {%- if image != blank -%}
+      ,"primaryImageOfPage": {% render 'gs-data-image', image: image %}
+    {%- endif -%}
+    {%- if crumb -%}
+      ,"breadcrumb": { "@id": {{ canonical_url | append: '#breadcrumb' | json }} }
+    {%- endif -%}
+  }
+</script>

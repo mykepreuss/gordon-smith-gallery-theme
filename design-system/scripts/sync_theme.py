@@ -12,6 +12,7 @@ Copied
   components.css    -> assets/gs-components.css
   js/*.js           -> assets/<same name>
   logos/*.svg       -> snippets/gs-logo-*.liquid (through build_logo_snippets.py)
+  three logos       -> assets/gs-logo-<organisation>.svg (LOGO_FILES, for structured data)
 """
 import argparse
 import filecmp
@@ -25,11 +26,22 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_logo_snippets  # noqa: E402
 
 
+LOGO_FILES = {
+    "gs-logo-gallery.svg": "gallery-full-stacked-colour-box.svg",
+    "gs-logo-artists-for-kids.svg": "artists-for-kids-full-colour-box.svg",
+    "gs-logo-foundation.svg": "foundation-full-colour-box.svg",
+}
+
+
 def pairs(theme):
     yield ROOT / "tokens.css", theme / "assets" / "gs-tokens.css"
     yield ROOT / "components.css", theme / "assets" / "gs-components.css"
     for js in sorted((ROOT / "js").glob("*.js")):
         yield js, theme / "assets" / js.name
+    # Each organisation's logo as a file, for its structured data (DS-163): search engines want
+    # a logo's address, and the page's own logos are drawn inline.
+    for name, logo in LOGO_FILES.items():
+        yield ROOT / "logos" / logo, theme / "assets" / name
 
 
 def main(argv=None):

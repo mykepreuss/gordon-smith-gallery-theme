@@ -1,0 +1,328 @@
+{
+  "23-8.jpg": {
+    "alt": "The gallery entrance at dusk, a doorway lit bright green under a glass canopy, beside brick and stone walls",
+    "pages": [
+      "/pages/about-us"
+    ],
+    "where": "hero"
+  },
+  "230616_brilliance_gala-1980-scaled.jpg": {
+    "alt": "An album page holding a colour photograph of a smiling white-haired man in a plaid jacket and red shirt",
+    "pages": [
+      "/pages/the-smith-foundation"
+    ],
+    "where": "hero",
+    "note": "The man is not named, as the rules ask. If this is Gordon Smith, the gallery may want to name him."
+  },
+  "Butterfly-Tattoos_96-x-72-in_2019-1200x922.jpg": {
+    "alt": "Large yellow painting crossed by winding pale paths edged in bright colours, with green tent shapes and a small pastel panel",
+    "pages": [
+      "/pages/exhibitions/paths"
+    ],
+    "where": "hero",
+    "note": "A single artwork, but the page has no caption naming it, so the alt text does not name the artist or title. Adding a caption would let the alt text name it."
+  },
+  "Contact-Us-scaled.jpg": {
+    "alt": "Floor to ceiling fabric panels dyed yellow, pink and purple hang behind low plinths of glass pieces and a hanging mobile",
+    "pages": [
+      "/pages/exhibitions/endless-summer"
+    ],
+    "where": "hero",
+    "note": "The file is named Contact-Us. Check it is the right picture for this exhibition."
+  },
+  "DSC1389.jpg": {
+    "alt": "Samuel Roy-Bois, My Sun, 2024. A freestanding lattice of thin wood strips with bright paint marks, holding a drum at its centre",
+    "pages": [
+      "/pages/exhibitions/collect-assemble-gather"
+    ],
+    "where": "hero",
+    "note": "Artist, title and year come from the caption on the page."
+  },
+  "GSG_-Prevailing-Landscapes-002.jpg": {
+    "alt": "An orange introduction panel on a grey-green wall, a pale wood sculpture, and a wall of closely hung landscape pictures",
+    "pages": [
+      "/pages/exhibitions/prevailing-landscapes"
+    ],
+    "where": "hero"
+  },
+  "GSG_2022_Only_Hint_04-1200x894.jpg": {
+    "alt": "A visitor looks at a large painting of patchwork panels and lettering, with small painted sculptures on white plinths",
+    "pages": [
+      "/pages/exhibitions/we-can-only-hint-at-this-with-words"
+    ],
+    "where": "hero"
+  },
+  "GSG_2026_Fall_Edition_1.jpg": {
+    "alt": "Two visitors look at framed prints and a ceramic cup displayed on a white wall in front of tall windows",
+    "pages": [
+      "/pages/shop"
+    ],
+    "where": "hero",
+    "note": "This picture may be a mock-up or AI-generated: the three boot prints are identical and the room does not match the gallery in other photos. Check before use."
+  },
+  "GSG_From_the_Ground_RTP_001.jpg": {
+    "alt": "A person walks past the exhibition poster in the gallery's window, between a brick wall and a stone wall",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view",
+    "note": "Outside view of the building, not an installation view."
+  },
+  "GSG_From_the_Ground_RTP_002_c68a6647-c04b-48f3-804b-d3aa06f5b7a4.jpg": {
+    "alt": "Five photographs hang above trays of clay forms on the floor, with a hanging collage and carved dark forms beyond",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "hero"
+  },
+  "GSG_From_the_Ground_RTP_003.jpg": {
+    "alt": "A sculpture of a small pear tree in a blue pot stands on a plinth, with paintings and a hanging work behind",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view"
+  },
+  "GSG_From_the_Ground_RTP_005_ee2755b4-f4cc-43b8-af8d-8e0220b17979.jpg": {
+    "alt": "Hand-built clay vessels and folded forms in orange, pink and cream sit on trays of cracked clay on the floor",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view"
+  },
+  "GSG_From_the_Ground_RTP_008.jpg": {
+    "alt": "Four framed works hang in a row on a white wall, three in black and white and one colourful turtle print",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view"
+  },
+  "GSG_From_the_Ground_RTP_011.jpg": {
+    "alt": "Close view of hundreds of small orange and black clay pieces hanging on fine threads",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view"
+  },
+  "GSG_From_the_Ground_RTP_012.jpg": {
+    "alt": "Small clay pieces hang on threads between a wooden beam and a low bench, beside two large photographs of tire piles",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view"
+  },
+  "GSG_From_the_Ground_RTP_020_1.jpg": {
+    "alt": "Seven dark carved turtle-like forms lie on the floor below framed works, beside a small painted figure on a plinth",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view"
+  },
+  "GSG_From_the_Ground_RTP_021.jpg": {
+    "alt": "A hanging collage of cut paper shapes around red and orange concentric rings, held between clear sheets in the gallery",
+    "pages": [
+      "/pages/exhibitions/from-the-ground"
+    ],
+    "where": "installation view"
+  },
+  "GSG_Oct_2023_Art_of_Conversation_008-1200x900.jpg": {
+    "alt": "A portrait on a yellow zigzag wall panel faces a painted drum on a plinth and framed works along a long gallery",
+    "pages": [
+      "/pages/exhibitions/the-art-of-conversation"
+    ],
+    "where": "installation view"
+  },
+  "GSG_Oct_2023_Art_of_Conversation_012.jpg": {
+    "alt": "Two long paper scrolls printed with rows of small red and blue heads hang to the floor between two framed works",
+    "pages": [
+      "/pages/exhibitions/the-art-of-conversation"
+    ],
+    "where": "hero"
+  },
+  "GSG_One_Hundred_Artists_003.jpg": {
+    "alt": "A red and black formline painting of a whale hangs beside a painted drum in a case and two framed works",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_004.jpg": {
+    "alt": "Three mirrored panels cut like garden lattice lean against a wall, with printed images showing in places",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_007.jpg": {
+    "alt": "Seen from above, an office chair holding a purple cushion and blond hair stands on fabric printed with a face",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_011.jpg": {
+    "alt": "A long rainbow-coloured painting, a dark wall relief, a draped office chair sculpture and small standing figures on a low plinth",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "hero"
+  },
+  "GSG_One_Hundred_Artists_013.jpg": {
+    "alt": "Small figure sculptures on a low plinth stand near a draped office chair sculpture and a dark wall relief",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_014_b5aadf87-6b4a-4bb8-aa1d-b21f362c6f41.jpg": {
+    "alt": "A patchwork quilt hangs from the ceiling among black and white knotted fibre sculptures on the walls",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_016.jpg": {
+    "alt": "Two framed butterfly prints in orange and yellow hang either side of a flower-shaped wall piece",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_017.jpg": {
+    "alt": "Wide view of a high white gallery with paintings on three walls and sculptures standing on the floor",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_018.jpg": {
+    "alt": "A painted ceramic sculpture in black, blue and white stands on a plinth beside a framed print covered in lettering",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view"
+  },
+  "GSG_One_Hundred_Artists_019_070a41fd-e8c2-40da-8d76-9a17528d0647.jpg": {
+    "alt": "The exhibition's introduction panel hangs on a freestanding wall, with a long colourful painting and a photo grid beyond",
+    "pages": [
+      "/pages/exhibitions/one-hundred-artists-deep"
+    ],
+    "where": "installation view",
+    "note": "The panel in the picture lists the artists' names. They are not in the alt text."
+  },
+  "GSG_Playhouse_003.jpg": {
+    "alt": "Paintings on freestanding walls, one a blue formline figure on red, with quilts hung high and framed works beyond",
+    "pages": [
+      "/pages/exhibitions/playhouse"
+    ],
+    "where": "hero"
+  },
+  "GSG_Stitched_001.jpg": {
+    "alt": "A freestanding wooden frame holds colourful cut-out winged figures, with photographs and textile works on the walls behind",
+    "pages": [
+      "/pages/exhibitions/stitched"
+    ],
+    "where": "installation view"
+  },
+  "GSG_Stitched_003.jpg": {
+    "alt": "Three patchwork textile pieces and a framed work hang beside a freestanding wooden frame covered in colourful cut-out figures",
+    "pages": [
+      "/pages/exhibitions/stitched"
+    ],
+    "where": "hero"
+  },
+  "GSG_Stitched_004.jpg": {
+    "alt": "Three patchwork textile pieces hang in a row between the introduction panel, a fringed hanging and a framed work",
+    "pages": [
+      "/pages/exhibitions/stitched"
+    ],
+    "where": "installation view"
+  },
+  "GSG_Stitched_011.jpg": {
+    "alt": "A floral rug draped over a plinth and scattered with red dots, beside woven cloths hanging from a copper stand",
+    "pages": [
+      "/pages/exhibitions/stitched"
+    ],
+    "where": "installation view"
+  },
+  "GSG_Stitched_017.jpg": {
+    "alt": "A patterned wall with a blue and yellow banner and a street photograph, beside a folding screen hung with fringed portraits",
+    "pages": [
+      "/pages/exhibitions/stitched"
+    ],
+    "where": "installation view",
+    "note": "The banner in the picture reads Dreamworld."
+  },
+  "GSG_Stitched_020.jpg": {
+    "alt": "A video in a dark room shows two hands resting on bright pink, orange and blue patterned cloth",
+    "pages": [
+      "/pages/exhibitions/stitched"
+    ],
+    "where": "installation view"
+  },
+  "KHIMMATAHIPOL_29.jpg": {
+    "alt": "Two visitors look closely at a framed drawing, beside a large woven hanging in blue, green and white",
+    "pages": [
+      "/pages/volunteer"
+    ],
+    "where": "hero"
+  },
+  "KMH853740.jpg": {
+    "alt": "A group of children sit on the gallery floor facing a large wooden frame covered in colourful cut-out figures",
+    "pages": [
+      "/pages/artists-for-kids"
+    ],
+    "where": "hero"
+  },
+  "Knot-Laurie-Kang-8622-x-78-Unfixed-unprocessed-photographic-papeR_1-1200x801.jpg": {
+    "alt": "Shiny metal cans filled with copper-coloured strands stand among bundles of yellow and black netting on the floor",
+    "pages": [
+      "/pages/exhibitions/unfixed"
+    ],
+    "where": "hero",
+    "note": "A single artwork, but the page has no caption naming it, so the alt text does not name the artist or title."
+  },
+  "OneHundredAD_ORecep81.jpg": {
+    "alt": "Seen from above, visitors at an opening lean over a floor sculpture lined with small coloured cylinders",
+    "pages": [
+      "/pages/plan-your-visit"
+    ],
+    "where": "hero",
+    "note": "One visitor is touching the artwork. Check the gallery is happy to show this."
+  },
+  "PlayInstall-1-1024x683.jpg": {
+    "alt": "Two large landscape paintings and two small framed works hang around a small sculpture in a clear case on a plinth",
+    "pages": [
+      "/pages/exhibitions/play"
+    ],
+    "where": "hero"
+  },
+  "SpeakerSeries_PrevailingLandscapes_05-09-24_1-scaled.jpg": {
+    "alt": "A speaker with a microphone introduces four seated panellists to an audience, in front of a wall of landscape pictures",
+    "pages": [
+      "/pages/public-programs-1"
+    ],
+    "where": "hero"
+  },
+  "khimhipol210708_0559.jpg": {
+    "alt": "Two children draw with chalk pastels on black paper outdoors, one colouring a large flower",
+    "pages": [
+      "/pages/donate"
+    ],
+    "where": "hero"
+  },
+  "khimhipol210921_7318.jpg": {
+    "alt": "A visitor walks past a tall wall grid of blurred landscape photographs, with a hanging sculpture of dried leaves beyond",
+    "pages": [
+      "/pages/exhibitions/beyond-the-horizon"
+    ],
+    "where": "hero"
+  },
+  "warehouse_thumbnail.jpg": {
+    "alt": "Sliding mesh storage racks in the art vault, with a bright yellow and pink painting on the nearest rack",
+    "pages": [
+      "/pages/permanent-collection"
+    ],
+    "where": "hero",
+    "note": "The file is named as a thumbnail. Check a larger original is used."
+  }
+}

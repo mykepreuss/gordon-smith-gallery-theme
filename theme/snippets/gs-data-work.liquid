@@ -1,0 +1,123 @@
+{% doc %}
+  A work in the Permanent Collection as structured data (schema.org VisualArtwork, DS-154,
+  DS-163). It says what the work's page says: the label (artists, title, year), medium, edition,
+  size, accession number, credit line, themes, every picture, the exhibitions that showed it and
+  the edition of it in the Shop.
+
+  - Each artist is the same Person as on the artist's own page (one @id).
+  - A year is given only when it is a plain year ("1985"); "ND" and "1950-1959" stay on the page.
+  - The size stays as typed ('20" x 26"'): the fields don't say which side is the height.
+
+  @param {string} [description] - The page's description, as meta-tags works it out
+  @param {string} [label] - The work's label in plain text, "Artist, Title, year"
+
+  @example
+  {%- render 'gs-data-work', description: description, label: entry_label -%}
+{% enddoc %}
+{%- liquid
+  assign work = metaobject
+  assign origin = shop.url
+  assign id = canonical_url | append: '#work'
+  assign lead = nil
+  for view in work.images.value limit: 1
+    assign lead = view
+  endfor
+  # A plain year only: four digits and nothing else.
+  assign year = work.year.value | append: '' | strip
+  assign year_back = year | plus: 0 | append: ''
+  if year.size != 4 or year_back != year
+    assign year = ''
+  endif
+  assign about = work.about | metafield_text | strip_newlines | split: ' ' | join: ' ' | truncatewords: 80
+  assign edition = work.in_the_shop.value
+  assign page_name = label | default: work.title.value
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    "@id": {{ id | json }},
+    "name": {{ work.title.value | json }},
+    "url": {{ canonical_url | json }},
+    "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} }
+    {%- if work.artists.value != blank -%}
+      ,"creator": [
+        {%- for artist in work.artists.value -%}
+          {%- capture kind -%}{%- render 'gs-data-artist-kind', name: artist.name.value -%}{%- endcapture -%}
+          {
+            "@type": {{ kind | strip | json }},
+            "@id": {{ artist.system.url | prepend: origin | append: '#artist' | json }},
+            "name": {{ artist.name.value | json }},
+            "url": {{ artist.system.url | prepend: origin | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    {%- endif -%}
+    {%- if year != blank -%}
+      ,"dateCreated": {{ year | json }}
+    {%- endif -%}
+    {%- if work.category.value != blank -%}
+      ,"artform": {{ work.category.value | json }}
+    {%- endif -%}
+    {%- if work.medium.value != blank -%}
+      ,"artMedium": {{ work.medium.value | json }}
+    {%- endif -%}
+    {%- if work.edition.value != blank -%}
+      ,"artEdition": {{ work.edition.value | json }}
+    {%- endif -%}
+    {%- if work.dimensions.value != blank -%}
+      ,"size": {{ work.dimensions.value | json }}
+    {%- endif -%}
+    {%- if work.accession_number.value != blank -%}
+      ,"identifier": {{ work.accession_number.value | json }}
+    {%- endif -%}
+    {%- if work.credit_line.value != blank -%}
+      ,"creditText": {{ work.credit_line.value | json }}
+    {%- endif -%}
+    {%- if work.themes.value != blank -%}
+      ,"keywords": {{ work.themes.value | json }}
+    {%- endif -%}
+    {%- if about != blank -%}
+      ,"description": {{ about | json }}
+    {%- elsif description != blank -%}
+      ,"description": {{ description | json }}
+    {%- endif -%}
+    {%- if lead != blank -%}
+      ,"image": [
+        {%- for view in work.images.value limit: 8 -%}
+          {% render 'gs-data-image', image: view %}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    {%- endif -%}
+    ,"isPartOf": {
+      "@type": "Collection",
+      "@id": {{ origin | append: routes.root_url | append: '#collection' | json }},
+      "name": {{ settings.collection_page.title | default: 'Permanent Collection' | json }}
+      {%- if settings.collection_page != blank -%}
+        ,"url": {{ settings.collection_page.url | prepend: origin | json }}
+      {%- endif -%}
+    }
+    ,"provider": {% render 'gs-data-org' %}
+    {%- if work.shown_in.value != blank -%}
+      ,"subjectOf": [
+        {%- for shown in work.shown_in.value -%}
+          {
+            "@type": "ExhibitionEvent",
+            "@id": {{ shown.system.url | prepend: origin | append: '#exhibition' | json }},
+            "name": {{ shown.title.value | json }},
+            "url": {{ shown.system.url | prepend: origin | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    {%- endif -%}
+    {%- if edition != blank -%}
+      ,"workExample": {
+        "@type": "Product",
+        "@id": {{ edition.url | prepend: origin | append: '#product' | json }},
+        "name": {{ edition.metafields.custom.artwork_title.value | default: edition.title | json }},
+        "url": {{ edition.url | prepend: origin | json }}
+      }
+    {%- endif -%}
+  }
+</script>
+{%- render 'gs-data-webpage', subject: id, name: page_name, description: description, image: lead, crumb: true -%}
