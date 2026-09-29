@@ -235,7 +235,9 @@
 
 /* ---------- Links ---------- */
 /* Inline links keep an underline (WCAG 1.4.1) but are designed: brand-coloured line, and on
-   hover or press the surface's hover fill (a tint, never the box colour) fades in behind the words. */
+   hover or press the surface's hover fill (a tint, never the box colour) fades in behind the words
+   and the line thickens, as a standalone link's does (DS-81): on Artists for Kids and Foundation
+   pages the fill is faint on white and the line is already the text colour. */
 
 .gs-link,
 .gs-prose a {
@@ -250,13 +252,15 @@
   transition:
     background-color var(--gs-duration-fast) var(--gs-ease),
     color var(--gs-duration-fast) var(--gs-ease),
-    text-decoration-color var(--gs-duration-fast) var(--gs-ease);
+    text-decoration-color var(--gs-duration-fast) var(--gs-ease),
+    text-decoration-thickness var(--gs-duration-fast) var(--gs-ease);
 }
 .gs-link:active,
 .gs-prose a:active {
   background-color: var(--gs-color-hover-fill);
   color: var(--gs-color-hover-fill-fg);
   text-decoration-color: currentColor;
+  text-decoration-thickness: var(--gs-link-thickness-hover);
 }
 @media (hover: hover) and (pointer: fine) {
   .gs-link:hover,
@@ -264,6 +268,7 @@
     background-color: var(--gs-color-hover-fill);
     color: var(--gs-color-hover-fill-fg);
     text-decoration-color: currentColor;
+    text-decoration-thickness: var(--gs-link-thickness-hover);
   }
 }
 
@@ -2037,7 +2042,7 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
 }
 @media (min-width: 750px) {
   .gs-grid--logos .gs-card--logo {
-    grid-template-columns: var(--gs-org-logo-col) minmax(0, var(--gs-width-prose));
+    grid-template-columns: var(--gs-org-logo-col) minmax(0, var(--gs-measure));
     gap: var(--gs-gutter);
   }
 }
@@ -2045,11 +2050,11 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-card__logo .gs-logo { height: var(--gs-org-logo-h-lg); }
   .gs-card__logo--foundation .gs-logo { height: var(--gs-org-logo-h-wide-lg); }
   .gs-grid--logos {
-    max-width: calc(var(--gs-org-logo-col-lg) + var(--gs-gutter) + var(--gs-width-prose));
+    max-width: calc(var(--gs-org-logo-col-lg) + var(--gs-gutter) + var(--gs-measure));
     gap: var(--gs-space-8);
   }
   .gs-grid--logos .gs-card--logo {
-    grid-template-columns: var(--gs-org-logo-col-lg) minmax(0, var(--gs-width-prose));
+    grid-template-columns: var(--gs-org-logo-col-lg) minmax(0, var(--gs-measure));
     padding-block-start: var(--gs-space-7);
   }
 }
