@@ -1,6 +1,6 @@
 ## Staged page text
 
-31 pages. Stop if any page's live text changed since `snapshots/pages-2026-09-25.json`. After the pages, delete the staged values and the `release_body` definition. Rollback: restore each page's text from the snapshot.
+32 pages. Stop if any page's live text changed since `snapshots/pages-2026-09-25.json`. After the pages, delete the staged values and the `release_body` definition. Rollback: restore each page's text from the snapshot.
 
 | Page | Live text | At release |
 | --- | --- | --- |
@@ -18,7 +18,7 @@
 | `brilliance-gala` | matches the snapshot | 6855 characters (was 0) |
 | `contact` | matches the snapshot | 606 characters (was 489) |
 | `day-camps` | matches the snapshot | 340 characters (was 0) |
-| `donate` | matches the snapshot | 3763 characters (was 3502) |
+| `donate` | matches the snapshot | 3812 characters (was 3502) |
 | `frequently-asked-questions` | matches the snapshot | 1476 characters (was 1477) |
 | `gallery-program` | matches the snapshot | 3500 characters (was 0) |
 | `gordon-and-marion` | matches the snapshot | 3518 characters (was 2293) |
@@ -28,6 +28,7 @@
 | `plan-your-visit` | matches the snapshot | 1746 characters (was 1869) |
 | `professional-development` | matches the snapshot | 202 characters (was 0) |
 | `smith-foundation-scholarships` | matches the snapshot | 2255 characters (was 0) |
+| `smith-foundation-supporters` | matches the snapshot | 9452 characters (was 0) |
 | `speaker-series` | matches the snapshot | 3451 characters (was 314) |
 | `studio-art-academy` | matches the snapshot | 2345 characters (was 0) |
 | `support-artists-for-kids` | matches the snapshot | 7342 characters (was 0) |

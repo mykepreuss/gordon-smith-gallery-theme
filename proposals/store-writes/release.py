@@ -60,8 +60,12 @@ AFK_NEW = AFK_PROGRAMME | AFK_STANDARD | AFK_STORY
 # on the standard page template. Supporters waits for the gallery to confirm its donor list (P-43,
 # gallery-questions.md 8.1): until then it stays hidden at release, and its card leaves the Foundation page's
 # "Get involved" group. Take it out of HOLD_AT_RELEASE when the gallery confirms.
+# Confirmed: Michael, 2026-09-29 ("Supporters confirmed, keep in"). Supporters goes live with the rest,
+# and Donate's "donor page" links to it (P-43).
 FOUNDATION_NEW = {"smith-foundation-scholarships", "brilliance-gala", "smith-foundation-supporters"}
-HOLD_AT_RELEASE = {"smith-foundation-supporters"}
+HOLD_AT_RELEASE = set()
+DONATE_OLD = "including the donor page of each website."
+DONATE_NEW = 'including the <a href="/pages/smith-foundation-supporters">donor page</a> of each website.'
 # Past events (DS-147) and Current events (DS-149): made empty and hidden from search engines, 2026-09-28.
 EVENTS_NEW = {"past-events", "current-events"}
 NEW_PAGES = AFK_NEW | FOUNDATION_NEW | EVENTS_NEW
@@ -163,6 +167,9 @@ def staged(pages, want_vars):
             snap = ""  # made empty before release (P-35); its text is all staged
         new = p["staged"]["value"]
         new_body = "" if new.strip().startswith(CLEARED_PREFIX) and new.strip().endswith("-->") else new
+        if p["handle"] == "donate" and "smith-foundation-supporters" not in HOLD_AT_RELEASE:
+            assert new_body.count(DONATE_OLD) == 1, "Donate's sentence on the donor page isn't there once"
+            new_body = new_body.replace(DONATE_OLD, DONATE_NEW)
         same = snap is not None and p["body"] == snap
         if not same:
             stop.append(p["handle"])

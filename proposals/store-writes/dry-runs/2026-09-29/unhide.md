@@ -1,6 +1,6 @@
 ## New pages (Artists for Kids, the Smith Foundation): search engines and the store's search
 
-22 pages lose `seo.hidden` (metafieldsDelete). Rollback: set it back to 1 on each.
+23 pages lose `seo.hidden` (metafieldsDelete). Rollback: set it back to 1 on each.
 
 | Page | Now | At release |
 | --- | --- | --- |
@@ -24,5 +24,6 @@
 | `professional-development` | hidden (`seo.hidden` = 1) | shown |
 | `schools-and-teachers` | hidden (`seo.hidden` = 1) | shown |
 | `smith-foundation-scholarships` | hidden (`seo.hidden` = 1) | shown |
+| `smith-foundation-supporters` | hidden (`seo.hidden` = 1) | shown |
 | `studio-art-academy` | hidden (`seo.hidden` = 1) | shown |
 | `support-artists-for-kids` | hidden (`seo.hidden` = 1) | shown |
