@@ -60,7 +60,8 @@
    "page": "professional-development",
    "page_id": "gid://shopify/Page/165838192937",
    "metafield_id": "gid://shopify/Metafield/190492709355817",
-   "value": "Schools and teachers"
+   "value": "Schools and teachers",
+   "removed": "2026-09-29T22:30:17Z, metafieldsDelete, at Michael's word; the page has no eyebrow, as before"
   },
   {
    "page": "classes-and-camps",
@@ -86,5 +87,6 @@
    "metafield_id": "gid://shopify/Metafield/190492709486889",
    "value": "Artists for Kids"
   }
- ]
+ ],
+ "note": "13 values stand. Professional Development's was written with the others and taken off again the same day (DS-146)."
 }

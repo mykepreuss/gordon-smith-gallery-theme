@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Crumbs on 14 Artists for Kids pages (option A of proposals/internal-linking-review.md;
-Michael, 2026-09-29: "Go ahead with option A, the crumbs on the 14 pages").
+"""Crumbs on 13 Artists for Kids pages (option A of proposals/internal-linking-review.md;
+Michael, 2026-09-29: "Go ahead with option A, the crumbs on the 14 pages", then "Take the crumb
+off Professional Development").
 
 Each page's Eyebrow field (custom.eyebrow) names the page it belongs to. The new theme shows an
 eyebrow that names another page as a crumb, a link back to it (DS-80), and says the same in the
@@ -18,7 +19,8 @@ The two calls, checked against the Admin API's schema:
     metafieldsDelete(metafields: $metafields) { deletedMetafields { ownerId key } userErrors { field message } } }
 
 The pages and their IDs come from the before-snapshot, so a page that has since gained an
-eyebrow, or gone, stops the run.
+eyebrow, or gone, stops the run. The snapshot holds the 14 pages as they were; REMOVED names the
+one whose crumb was written and taken off again the same day, so set and undo leave it alone.
 """
 import json
 import pathlib
@@ -40,7 +42,6 @@ CRUMBS = {
         "learning-guides",
         "learning-kits",
         "artreach-videos",
-        "professional-development",
     ],
     "Artists for Kids": [
         "classes-and-camps",
@@ -49,6 +50,11 @@ CRUMBS = {
         "support-artists-for-kids",
     ],
 }
+
+# Professional Development is a programme in the Programming rows, which stay in one place from
+# view to view (DS-146): a crumb above its title moved them 33 px. The rows are its way around,
+# as they are for the four public programmes, which have no crumb either.
+REMOVED = {"professional-development": "Schools and teachers"}
 
 
 def handleize(words):
@@ -66,7 +72,8 @@ def rows():
             assert page["eyebrow"] is None, f"{handle} had an eyebrow already"
             assert handle != handleize(words), f"{handle} would name itself"
             out.append((page, words))
-    assert len(out) == 14 and len({p["id"] for p, _ in out}) == 14
+    assert len(out) == 13 and len({p["id"] for p, _ in out}) == 13
+    assert not REMOVED.keys() & {p["handle"] for p, _ in out}
     return out
 
 

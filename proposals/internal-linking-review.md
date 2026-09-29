@@ -162,7 +162,7 @@ Nine pages show a crumb (DS-80): the five Foundation pages and the four residenc
 
 **Built (DS-184).** A page with a crumb says so in its data: Home, the page the crumb names, the page.
 
-Fourteen Artists for Kids pages had no crumb at all. That was option A, done on 2026-09-29 (P-64): see "Since then".
+Fourteen Artists for Kids pages had no crumb at all. That was option A, done on 2026-09-29 for 13 of them (P-64): see "Since then".
 
 ### 8. Links that say only what they do (low)
 
@@ -242,7 +242,7 @@ Option A was done on 2026-09-29. See "Since then".
 
 | | Option | Why it isn't built | What it takes |
 | --- | --- | --- | --- |
-| A | Crumbs on 14 Artists for Kids pages. After School Art, Day camps and Paradise Valley lead back to Classes and camps. Gallery program, Studio Art Academy, Learning guides, Learning kits, ArtReach videos, Professional development and Artists in Residence lead back to Schools and teachers. Those two, Awards and scholarships and Support Artists for Kids lead back to Artists for Kids | It is a store write: each page's Eyebrow field | Your go-ahead. The live theme doesn't read the field, so nothing shows before release. The theme needs no change: DS-80 and DS-184 do the rest |
+| A | Done for 13 of the 14, see "Since then". Crumbs on 14 Artists for Kids pages. After School Art, Day camps and Paradise Valley lead back to Classes and camps. Gallery program, Studio Art Academy, Learning guides, Learning kits, ArtReach videos, Professional development and Artists in Residence lead back to Schools and teachers. Those two, Awards and scholarships and Support Artists for Kids lead back to Artists for Kids | It is a store write: each page's Eyebrow field | Your go-ahead. The live theme doesn't read the field, so nothing shows before release. The theme needs no change: DS-80 and DS-184 do the rest |
 | B | Home links to the collection in its content. Home's content leads to the exhibition, the events, Artists for Kids, the editions, giving and visiting, but not to the collection, the site's largest part, or the Artists page | It changes what Home shows | A row of featured works, or a feature panel. A design decision |
 | C | The menu printed once | The two copies are how the menu works without JavaScript at both widths. One copy needs the drawer and the bar to share markup | A rebuild of the header, tested on every browser. Gain: 4 KB and 85 words a page. Worth doing only with other header work |
 | D | An exhibition names the artists of its works from the collection. Four exhibitions show works; their artists are named on the tiles, which lead to the works | It adds names to the gallery's list of artists | A row in the exhibition's facts, made from the works |
@@ -251,16 +251,16 @@ Option A was done on 2026-09-29. See "Since then".
 
 ## Since then
 
-**2026-09-29, option A (P-64).** Michael: "Go ahead with option A, the crumbs on the 14 pages". The Eyebrow field of the 14 pages now names the page each belongs to, so each shows a crumb and says so in its data. A store write, logged in `proposals/store-writes/README.md` with its before-snapshot and how to undo it. No theme file changed, and the live site shows nothing different.
+**2026-09-29, option A (P-64).** Michael: "Go ahead with option A, the crumbs on the 14 pages", then "Take the crumb off Professional Development, then merge #120". The Eyebrow field of 13 pages now names the page each belongs to, so each shows a crumb and says so in its data. A store write, logged in `proposals/store-writes/README.md` with its before-snapshot and how to undo it. No theme file changed, and the live site shows nothing different.
 
 | | Before | After |
 | --- | --- | --- |
-| Pages with a crumb, on the page and in the data | 9 | 23 |
-| Links in to Schools and teachers from other pages' content | 0 | 7 |
+| Pages with a crumb, on the page and in the data | 9 | 22 |
+| Links in to Schools and teachers from other pages' content | 0 | 6 |
 | Links in to Classes and camps | 1 | 4 |
 | Paradise Valley Summer Camps' ways on, the menu apart | None | Its crumb |
 
-One thing to decide: Professional Development is a programme in the Programming rows, and its crumb puts the rows 33 px lower than on the other programmes' views (DS-146). Its two-line title had put them 68 px lower already.
+Professional Development has no crumb. It is a programme in the Programming rows, which stay in one place from view to view (DS-146), and a crumb above its title moved them 33 px. The rows are its way around, as they are for the four public programmes. Its crumb was written with the others and taken off the same day.
 
 A crumb names the page one step up. After School Art's data reads Home, Classes and camps, After School Art, without Artists for Kids between. The whole path would be a change to DS-184.
 
@@ -272,7 +272,7 @@ A crumb names the page one step up. After School Art's data reads Home, Classes 
 | 2 | Seven editions have no work in the collection that names them. Are they in the collection? |
 | 3 | The names lists (DS-175, DS-183), with three more names |
 | 4 | The new words: "Plan your visit", "See this work in the collection", "Lessons" |
-| 5 | The 14 crumbs: is each Artists for Kids page filed under the right page (`gallery-questions.md` 12.5)? |
+| 5 | The 13 crumbs: is each Artists for Kids page filed under the right page (`gallery-questions.md` 12.5)? |
 
 85 more names on exhibition pages have no artist entry, since the artists have no work in the collection. They stay plain text.
 
