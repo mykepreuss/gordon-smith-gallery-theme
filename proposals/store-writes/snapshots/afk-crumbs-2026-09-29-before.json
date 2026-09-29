@@ -1,0 +1,197 @@
+{
+ "taken": "2026-09-29, through the Shopify connector (pages, first 50 then the rest, sorted by ID), store ed35ee-ea.myshopify.com (connector: gordonsmithgallery.com, \"Artists for Kids & The Gordon Smith Gallery\")",
+ "note": "The 14 pages whose Eyebrow field (custom.eyebrow) is set by afk_crumbs.py. None had a value. Each is published, on the live theme's template current-on-now-exhibition (title only, L-09), with programme Artists for Kids.",
+ "definition": {
+  "id": "gid://shopify/MetafieldDefinition/272783245609",
+  "namespace": "custom",
+  "key": "eyebrow",
+  "type": "single_line_text_field",
+  "name": "Label above the title",
+  "values_before": 9
+ },
+ "targets": {
+  "classes-and-camps": "gid://shopify/Page/165837734185",
+  "schools-and-teachers": "gid://shopify/Page/165837766953",
+  "artists-for-kids": "gid://shopify/Page/155720810793"
+ },
+ "pages": [
+  {
+   "handle": "after-school-art",
+   "id": "gid://shopify/Page/165837373737",
+   "title": "After School Art",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "classes-and-camps",
+   "id": "gid://shopify/Page/165837734185",
+   "title": "Classes and camps",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "schools-and-teachers",
+   "id": "gid://shopify/Page/165837766953",
+   "title": "Schools and teachers",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:03:08Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "day-camps",
+   "id": "gid://shopify/Page/165837799721",
+   "title": "Spring & Summer Day Camps",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "paradise-valley-summer-camp",
+   "id": "gid://shopify/Page/165837832489",
+   "title": "Paradise Valley Summer Camps",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:46:08Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "gallery-program",
+   "id": "gid://shopify/Page/165837865257",
+   "title": "Gallery Program",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "artists-in-residence",
+   "id": "gid://shopify/Page/165837898025",
+   "title": "Artists-in-Residence",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "studio-art-academy",
+   "id": "gid://shopify/Page/165838061865",
+   "title": "Studio Art Academy",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:03:08Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "learning-guides",
+   "id": "gid://shopify/Page/165838094633",
+   "title": "Learning Guides",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "learning-kits",
+   "id": "gid://shopify/Page/165838127401",
+   "title": "Learning Kits",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "artreach-videos",
+   "id": "gid://shopify/Page/165838160169",
+   "title": "ArtReach Videos",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "professional-development",
+   "id": "gid://shopify/Page/165838192937",
+   "title": "Professional Development",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:03:08Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "awards-and-scholarships",
+   "id": "gid://shopify/Page/165838225705",
+   "title": "Awards and Scholarships",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:02:49Z",
+   "eyebrow": null
+  },
+  {
+   "handle": "support-artists-for-kids",
+   "id": "gid://shopify/Page/165838258473",
+   "title": "Support Artists for Kids",
+   "isPublished": true,
+   "templateSuffix": "current-on-now-exhibition",
+   "programme": "Artists for Kids",
+   "updatedAt": "2026-09-29T00:03:08Z",
+   "eyebrow": null
+  }
+ ],
+ "eyebrows_already_set": [
+  {
+   "handle": "gordon-and-marion",
+   "value": "The Smith Foundation"
+  },
+  {
+   "handle": "donate",
+   "value": "The Smith Foundation"
+  },
+  {
+   "handle": "smith-foundation-scholarships",
+   "value": "The Smith Foundation"
+  },
+  {
+   "handle": "brilliance-gala",
+   "value": "The Smith Foundation"
+  },
+  {
+   "handle": "smith-foundation-supporters",
+   "value": "The Smith Foundation"
+  },
+  {
+   "handle": "artist-in-residence-amelia-butcher",
+   "value": "Artists in Residence"
+  },
+  {
+   "handle": "artist-in-residence-mark-johnsen",
+   "value": "Artists in Residence"
+  },
+  {
+   "handle": "artist-in-residence-becky-bair",
+   "value": "Artists in Residence"
+  },
+  {
+   "handle": "artist-in-residence-sara-jeanne-bourget",
+   "value": "Artists in Residence"
+  }
+ ]
+}

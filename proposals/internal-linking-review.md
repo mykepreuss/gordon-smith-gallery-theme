@@ -162,7 +162,7 @@ Nine pages show a crumb (DS-80): the five Foundation pages and the four residenc
 
 **Built (DS-184).** A page with a crumb says so in its data: Home, the page the crumb names, the page.
 
-Fourteen Artists for Kids pages have no crumb at all. That is option A.
+Fourteen Artists for Kids pages had no crumb at all. That was option A, done on 2026-09-29 (P-64): see "Since then".
 
 ### 8. Links that say only what they do (low)
 
@@ -238,6 +238,8 @@ Michael, 2026-09-29: "DS-178 to DS-187 approved, merge #118". All ten are decide
 
 ### Not built: options
 
+Option A was done on 2026-09-29. See "Since then".
+
 | | Option | Why it isn't built | What it takes |
 | --- | --- | --- | --- |
 | A | Crumbs on 14 Artists for Kids pages. After School Art, Day camps and Paradise Valley lead back to Classes and camps. Gallery program, Studio Art Academy, Learning guides, Learning kits, ArtReach videos, Professional development and Artists in Residence lead back to Schools and teachers. Those two, Awards and scholarships and Support Artists for Kids lead back to Artists for Kids | It is a store write: each page's Eyebrow field | Your go-ahead. The live theme doesn't read the field, so nothing shows before release. The theme needs no change: DS-80 and DS-184 do the rest |
@@ -247,6 +249,21 @@ Michael, 2026-09-29: "DS-178 to DS-187 approved, merge #118". All ten are decide
 | E | Links in page text to About us, the FAQ, Plan your visit and Contact | The words are the gallery's | Sentences for the gallery to approve, staged as the other text changes are (DS-39). For example, the FAQ's answers on visiting, when written (`gallery-questions.md` 10.4), link to Plan your visit |
 | F | The footer's logos as files. Three logos are 41 KB in every page | Not about links | Served as files, the browser keeps them. A small change to `gs-logo` |
 
+## Since then
+
+**2026-09-29, option A (P-64).** Michael: "Go ahead with option A, the crumbs on the 14 pages". The Eyebrow field of the 14 pages now names the page each belongs to, so each shows a crumb and says so in its data. A store write, logged in `proposals/store-writes/README.md` with its before-snapshot and how to undo it. No theme file changed, and the live site shows nothing different.
+
+| | Before | After |
+| --- | --- | --- |
+| Pages with a crumb, on the page and in the data | 9 | 23 |
+| Links in to Schools and teachers from other pages' content | 0 | 7 |
+| Links in to Classes and camps | 1 | 4 |
+| Paradise Valley Summer Camps' ways on, the menu apart | None | Its crumb |
+
+One thing to decide: Professional Development is a programme in the Programming rows, and its crumb puts the rows 33 px lower than on the other programmes' views (DS-146). Its two-line title had put them 68 px lower already.
+
+A crumb names the page one step up. After School Art's data reads Home, Classes and camps, After School Art, without Artists for Kids between. The whole path would be a change to DS-184.
+
 ## For the gallery
 
 | | Question |
@@ -255,6 +272,7 @@ Michael, 2026-09-29: "DS-178 to DS-187 approved, merge #118". All ten are decide
 | 2 | Seven editions have no work in the collection that names them. Are they in the collection? |
 | 3 | The names lists (DS-175, DS-183), with three more names |
 | 4 | The new words: "Plan your visit", "See this work in the collection", "Lessons" |
+| 5 | The 14 crumbs: is each Artists for Kids page filed under the right page (`gallery-questions.md` 12.5)? |
 
 85 more names on exhibition pages have no artist entry, since the artists have no work in the collection. They stay plain text.
 

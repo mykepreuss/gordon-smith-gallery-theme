@@ -952,3 +952,27 @@ The words were written from looking at each picture (`aeo/alt.json`, drafted 202
 **Effect on the live site:** for about 80 seconds, event addresses existed and answered 404 under the live theme. The live sitemap showed none when read after. No page of the live site changed.
 
 **Undo:** done. At release the same call turns the pages on for good (`proposals/store-changes.md` §8e).
+
+## 2026-09-29: crumbs on 14 Artists for Kids pages (P-64)
+
+**Why:** the 14 pages had no way back to the page they belong to, on the page or in its data (`proposals/internal-linking-review.md`, finding 7 and option A). Michael, 2026-09-29: "Go ahead with option A, the crumbs on the 14 pages".
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (connector: gordonsmithgallery.com, "Artists for Kids & The Gordon Smith Gallery"); the live theme 183162372393 "Colorblock: NEW WEBSITE" (live) and the review theme 184767250729 (unpublished), by `shopify theme list`; neither touched. The live theme doesn't read the field: no file in `baseline/theme/` holds the word "eyebrow". Before-snapshot: `snapshots/afk-crumbs-2026-09-29-before.json`. None of the 14 pages had an eyebrow; the three pages the crumbs name exist; nine other pages had one already (five Foundation pages, four residency pages). The live pages were read before the write: each shows its title only.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Eyebrow "Classes and camps" on After School Art, Spring & Summer Day Camps and Paradise Valley Summer Camps | Connector | One `metafieldsSet` call for all 14, `custom.eyebrow`; variables from `afk_crumbs.py set`; the values' IDs in `created/afk-crumbs.json` |
+| Eyebrow "Schools and teachers" on Gallery Program, Artists-in-Residence, Studio Art Academy, Learning Guides, Learning Kits, ArtReach Videos and Professional Development | The same | |
+| Eyebrow "Artists for Kids" on Classes and camps, Schools and teachers, Awards and Scholarships and Support Artists for Kids | The same | |
+
+Each page is filed under the page whose cards lead to it. Artists-in-Residence has a card on both Artists for Kids and Schools and teachers; it goes under Schools and teachers, where its workshops are offered. No theme file changed: an eyebrow that names another page shows as a crumb (DS-80) and is in the page's data (DS-184).
+
+**Checked after:** on the review theme 184767250729, level with `main` at d1b3505: all 14 pages show their crumb, and their data gives Home, the page the crumb names, the page. No Liquid errors. `check_links.py`, 1,627 addresses, 0 errors; `check_structured_data.py` on nine pages, 0 errors. Seen at 1440 px on After School Art (in the hero's title box) and Professional Development (above the title, over the Programming rows), and at 375 px on Classes and camps: no sideways scroll, the crumb 44 px tall on touch.
+
+**One thing to decide.** Professional Development is a programme in the Programming rows. Its crumb puts the rows 33 px lower than on the other programmes' views, which DS-146 keeps in one place. Its two-line title had put them 68 px lower already. To take the crumb off that page alone, clear its value (below).
+
+**Effect on the live site:** none. The 14 live pages and Artists for Kids were read before and after: the same answer, theme, words and links on each.
+
+**Effect on the review theme:** the crumbs show at once, since the review theme holds the code already.
+
+**Undo:** clear `custom.eyebrow` on the 14 pages: `metafieldsDelete` with the variables from `afk_crumbs.py undo`. None had a value before. For one page, clear its Eyebrow field in the page's editor (Label above the title).
