@@ -1,0 +1,122 @@
+{% doc %}
+  A product as structured data (schema.org Product, DS-159), in place of Shopify's
+  structured_data filter, so the data says what the page says:
+
+  - A limited edition is named by its label in plain letters ("Artist, Title, year", DS-156),
+    never by a product title whose italics are Unicode letters (L-03). It is an artwork as well
+    as a product: its artist, year, medium, edition and size come from the label fields, and the
+    artist is the same person as on the artist's page.
+  - Whether it can be bought follows the page: not on sale yet (custom.coming_soon) and sold out
+    are both out of stock, since neither can be ordered.
+  - One offer for each option, at its own address and price, sold by the gallery.
+
+  A frame (product type Frame) is sold only with its print and its page is kept out of search
+  engines (DS-137), so it has no data.
+
+  @param {string} [label] - The edition's label in plain text, "Artist, Title, year"
+
+  @example
+  {%- render 'gs-data-product', label: entry_label -%}
+{% enddoc %}
+{%- liquid
+  assign origin = shop.url
+  assign home = origin | append: routes.root_url
+  assign gallery_id = home | append: '#gallery'
+  assign site_name = 'general.site_title.gallery' | t
+  assign f = product.metafields.custom
+  assign is_edition = false
+  if label != blank
+    assign is_edition = true
+  endif
+  # The start of the product's own text, with its words kept apart. Not the store's description,
+  # which Shopify makes from the same text with the line breaks dropped ("FALKNorth Shore").
+  assign words = product.description | replace: '<', ' <' | strip_html | replace: '&nbsp;', ' ' | strip_newlines | split: ' ' | join: ' ' | truncatewords: 60
+  # A plain year only: four digits and nothing else.
+  assign year = f.year.value | append: '' | strip
+  assign year_back = year | plus: 0 | append: ''
+  if year.size != 4 or year_back != year
+    assign year = ''
+  endif
+  assign coming_soon = false
+  if f.coming_soon.value == true
+    assign coming_soon = true
+  endif
+  assign artists = f.artist_entries.value
+-%}
+{%- unless product.type == 'Frame' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": {% if is_edition %}["Product", "VisualArtwork"]{% else %}"Product"{% endif %},
+      "name": {{ label | default: product.title | json }},
+      "url": {{ product.url | prepend: origin | json }}
+      {%- if words != blank -%}
+        ,"description": {{ words | json }}
+      {%- endif -%}
+      {%- if product.featured_media != blank -%}
+        ,"image": {{ product.featured_media | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+      {%- if product.selected_or_first_available_variant.sku != blank -%}
+        ,"sku": {{ product.selected_or_first_available_variant.sku | json }}
+      {%- endif -%}
+      {%- if is_edition -%}
+        ,"creator": [
+          {%- if artists != blank -%}
+            {%- for artist in artists -%}
+              {
+                "@type": "Person",
+                "name": {{ artist.name.value | json }},
+                "url": {{ artist.system.url | prepend: origin | json }}
+              }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+          {%- else -%}
+            { "@type": "Person", "name": {{ f.artist.value | json }} }
+          {%- endif -%}
+        ]
+        {%- if year != blank -%}
+          ,"dateCreated": {{ year | json }}
+        {%- endif -%}
+        {%- if f.medium.value != blank -%}
+          ,"artMedium": {{ f.medium.value | json }}
+        {%- endif -%}
+        {%- if f.edition.value != blank -%}
+          ,"artEdition": {{ f.edition.value | json }}
+        {%- endif -%}
+        {%- if f.dimensions.value != blank -%}
+          ,"size": {{ f.dimensions.value | json }}
+        {%- endif -%}
+      {%- elsif product.vendor != blank -%}
+        ,"brand": { "@type": "Brand", "name": {{ product.vendor | json }} }
+      {%- endif -%}
+      ,"offers": [
+        {%- for variant in product.variants -%}
+          {%- liquid
+            assign offer_url = product.url | prepend: origin
+            unless product.has_only_default_variant
+              assign offer_url = variant.url | prepend: origin
+            endunless
+            assign availability = 'https://schema.org/InStock'
+            if coming_soon or variant.available == false
+              assign availability = 'https://schema.org/OutOfStock'
+            endif
+          -%}
+          {
+            "@type": "Offer",
+            "url": {{ offer_url | json }},
+            {%- unless product.has_only_default_variant -%}
+              "name": {{ variant.title | json }},
+            {%- endunless -%}
+            {%- if variant.sku != blank -%}
+              "sku": {{ variant.sku | json }},
+            {%- endif -%}
+            "price": {{ variant.price | divided_by: 100.0 | json }},
+            "priceCurrency": {{ cart.currency.iso_code | json }},
+            "availability": {{ availability | json }},
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "ArtGallery", "@id": {{ gallery_id | json }}, "name": {{ site_name | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endunless -%}

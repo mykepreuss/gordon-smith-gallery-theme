@@ -38,6 +38,18 @@ class CheckStructuredData(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(warnings, [])
 
+    def test_a_lesson_with_its_video_passes(self):
+        block = {"@type": "LearningResource", "name": "Paths", "url": "https://example.com/a",
+                 "video": {"@type": "VideoObject", "name": "Paths",
+                           "thumbnailUrl": "https://example.com/a.jpg", "uploadDate": "2022-10-20"}}
+        found, errors, _ = check.check_page(page(block), ["LearningResource"])
+        self.assertEqual(found, ["LearningResource"])
+        self.assertEqual(errors, [])
+
+    def test_a_page_without_its_address(self):
+        _, errors, _ = check.check_page(page({"@type": "CollectionPage", "name": "Prints"}))
+        self.assertIn("CollectionPage: no url", errors)
+
     def test_a_block_that_does_not_parse(self):
         _, errors, _ = check.check_page(page('{"@type": "Person", "name": "A",}'))
         self.assertTrue(any("doesn't parse" in e for e in errors))

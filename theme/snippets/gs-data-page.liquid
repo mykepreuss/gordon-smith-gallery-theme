@@ -1,0 +1,88 @@
+{% doc %}
+  A page or an article as structured data (DS-158). A page is a schema.org WebPage, the contact
+  page a ContactPage: its title, its description, its picture and the organisation it belongs
+  to, from its programme field (blank is the Gallery, as gs-programme reads it). An article is a
+  BlogPosting: its title, dates, picture, author and the gallery as its publisher.
+
+  The home page has the site and the gallery (gs-data), so it prints nothing here.
+
+  @param {string} [description] - The page's description, as meta-tags works it out
+
+  @example
+  {%- render 'gs-data-page', description: description -%}
+{% enddoc %}
+{%- liquid
+  assign origin = shop.url
+  assign home = origin | append: routes.root_url
+  assign gallery_id = home | append: '#gallery'
+  assign site_name = 'general.site_title.gallery' | t
+-%}
+{%- capture gallery -%}
+  { "@type": "ArtGallery", "@id": {{ gallery_id | json }}, "name": {{ site_name | json }} }
+{%- endcapture -%}
+{%- if request.page_type == 'page' -%}
+  {%- liquid
+    assign kind = 'WebPage'
+    if page.id == settings.contact_page.id
+      assign kind = 'ContactPage'
+    endif
+    assign image = page.metafields.custom.hero_image.value
+    capture brand
+      render 'gs-programme', value: page.metafields.custom.programme.value
+    endcapture
+    assign brand = brand | strip
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": {{ kind | json }},
+      "name": {{ page.title | json }},
+      "url": {{ canonical_url | json }},
+      "inLanguage": {{ request.locale.iso_code | json }},
+      "isPartOf": { "@type": "WebSite", "@id": {{ home | append: '#website' | json }}, "name": {{ site_name | json }}, "url": {{ home | json }} },
+      "publisher":
+      {%- case brand -%}
+        {%- when 'artists-for-kids' -%}
+          { "@type": "Organization", "name": {{ 'general.site_title.artists_for_kids' | t | json }} }
+        {%- when 'foundation' -%}
+          { "@type": "Organization", "name": {{ 'general.site_title.foundation' | t | json }} }
+        {%- else -%}
+          {{ gallery }}
+      {%- endcase -%}
+      {%- if description != blank -%}
+        ,"description": {{ description | json }}
+      {%- endif -%}
+      {%- if image != blank -%}
+        ,"primaryImageOfPage": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+    }
+  </script>
+{%- elsif request.page_type == 'article' -%}
+  {%- liquid
+    assign words = description
+    if words == blank
+      assign words = article.excerpt_or_content | replace: '<', ' <' | strip_html | replace: '&nbsp;', ' ' | strip_newlines | split: ' ' | join: ' ' | truncatewords: 30
+    endif
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ article.title | truncate: 110 | json }},
+      "url": {{ canonical_url | json }},
+      "mainEntityOfPage": {{ canonical_url | json }},
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+      "dateModified": {{ article.updated_at | default: article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+      "publisher": {{ gallery }}
+      {%- if words != blank -%}
+        ,"description": {{ words | json }}
+      {%- endif -%}
+      {%- if article.image != blank -%}
+        ,"image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+      {%- if article.author != blank -%}
+        ,"author": { "@type": "Person", "name": {{ article.author | json }} }
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}
