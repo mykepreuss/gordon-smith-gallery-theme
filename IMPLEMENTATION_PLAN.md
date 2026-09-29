@@ -151,6 +151,7 @@ Open while iterating. Add what each review finds; take items off when they merge
 
 | Item | Owner | Notes |
 | --- | --- | --- |
+| Links between pages (DS-175, Proposed, 2026-09-28): Michael's decision; the gallery looks over the two lists of names | Michael, Gallery | `proposals/linked-names.md`. Asked for on The Smith Foundation page; built for every page |
 | Google's Rich Results Test, run 2026-09-28 (DS-173, decided): run it again on the review theme after any change to the structured data | Agent | `proposals/structured-data-review.md`, "Google's Rich Results Test". Every kind of page passes. validator.schema.org is not run: the check reads schema.org's own vocabulary instead |
 | Facts for the structured data, found 2026-09-28: the gallery confirms them (`gallery-questions.md` §11), steps A to D are built (DS-170, DS-171, DS-174); the Foundation's charity number waits for a check against the Canada Revenue Agency's list; Michael chooses between E and F | Gallery, Michael, then Agent | `proposals/structured-data-facts.md`; the artists' draft is `proposals/store-writes/aeo/artist-identifiers.json`. Nothing is in the theme or the store yet |
 | Structured data as one graph (DS-163 to DS-165, decided by Michael 2026-09-28, as built). Left: the facts listed under "What would make it better still"; and whether Pat and Rosemarie Keough stay one artist entry (the fifth choice, which has no decision number and stays as built) | Michael, Gallery, then Agent | `proposals/structured-data-review.md`, "The graph". Built on #87's branch |

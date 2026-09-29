@@ -58,6 +58,6 @@
 
   assign text = body | strip_html | strip
   if text != blank or body contains '<img' or body contains '<iframe'
-    render 'gs-rich-text', html: body
+    render 'gs-rich-text', html: body, link_names: true
   endif
 -%}
