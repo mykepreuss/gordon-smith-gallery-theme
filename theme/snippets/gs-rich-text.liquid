@@ -2,6 +2,7 @@
   Staff rich text, ready to print inside .gs-prose (DESIGN.md §6.11). Every rich text a section
   shows goes through here: a page's own text (gs-page-text), an exhibition's About and credits, an
   artist's biography, a work's About, a product's description, a lesson, an article, a hero caption.
+  Texts to read link the names in them (DS-175, DS-183); captions and policies don't.
 
   - An embedded video's width and height set its shape (DS-53).
   - A link to another site gets the external cue, as menus and cards do (§6.1): the arrow and
@@ -13,6 +14,7 @@
 
   @param {string} html - The rich text's HTML. Required
   @param {boolean} [link_names] - Link the names in the text to their pages (gs-linked-names)
+  @param {boolean} [names_only] - With link_names: the names only, not the general words (DS-183)
 
   @example
   {%- capture html -%}{{ entry.body | metafield_tag }}{%- endcapture -%}
@@ -156,7 +158,7 @@
   endif
 
   if link_names
-    render 'gs-linked-names', html: body
+    render 'gs-linked-names', html: body, names_only: names_only
   else
     echo body
   endif

@@ -33,7 +33,7 @@
       {%- if metaobject.inspired_by.value != blank -%}
         <div class="gs-details__item">
           <dt>{{ 'lessons.inspired_by' | t }}</dt>
-          <dd class="gs-lesson__rich">{%- capture html -%}{{ metaobject.inspired_by | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</dd>
+          <dd class="gs-lesson__rich">{%- capture html -%}{{ metaobject.inspired_by | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html, link_names: true, names_only: true -%}</dd>
         </div>
       {%- endif -%}
       {%- if metaobject.grades.value != blank -%}
