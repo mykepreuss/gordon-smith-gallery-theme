@@ -137,6 +137,8 @@ From the old smithfoundation.co site (`proposals/smith-foundation-site.md`). Eac
 
 ## 10. For search and answer engines
 
+Sent to the gallery as one document with section 11 and questions 1.3, 1.5 and 1.6 (a shared Claude doc, "Gordon Smith Gallery: questions for the gallery", 2026-09-29), numbered 1.1 to 8.2 there. Answered by Michael, 2026-09-29, and taken out: 10.10, the Permanent Collection's line stays round ("over 1,000 + Works"), because the collection grows; 10.16, which donation page is for what, isn't asked.
+
 From `proposals/aeo-geo-review.md`. These words show in search results, link previews and the answers of AI assistants, not on the pages themselves, except 10.4 and 10.5.
 
 | # | Question | Until then |
@@ -144,19 +146,18 @@ From `proposals/aeo-geo-review.md`. These words show in search results, link pre
 | 10.1 | Approve or change the description of each of the 40 pages, one or two sentences each, made from the page's own words (`proposals/store-writes/aeo/descriptions.json`). Three to check closely: Explore + Create says "free"; Shop says sales fund art education programs; Plan your visit gives the hours, so it must change when the hours do | The drafts show on the review theme |
 | 10.2 | Approve or change the home page's description: "The Gordon Smith Gallery of Canadian Art is a public art gallery at 2121 Lonsdale Avenue, North Vancouver, and the home of Artists for Kids. Exhibitions, programs and limited edition prints. Admission is by donation." | The draft shows on the review theme |
 | 10.3 | The alt text of 45 hero images and installation views, written from looking at each, is on the site (written 2026-09-29, P-62; `proposals/store-writes/aeo/alt.json`). No one is named. Is any of it wrong? Eleven have a note to check: for example the Shop's hero may be a mock-up, *Endless Summer*'s hero is a file named "Contact-Us", and the Foundation page's album photo may show Gordon Smith | As written |
-| 10.4 | Visiting questions for the FAQ page, which has questions about the Shop only. Drafts from Plan your visit's own words are in `proposals/aeo-geo-review.md`, "Drafts for the gallery". Approve, change or add | The FAQ stays as it is |
+| 10.4 | Would the gallery like visiting questions added to the FAQ page, which has questions about the Shop only: hours, admission, directions, parking and accessibility? Eight are drafted from Plan your visit's own words in `proposals/aeo-geo-review.md`, "Drafts for the gallery". They are kept out of the document sent to the gallery, so as not to confuse (Michael, 2026-09-29) | The FAQ stays as it is |
 | 10.5 | Short biographies, two or three sentences, for the artists people ask about most, starting with the founding patrons: Gordon Smith, Jack Shadbolt and Bill Reid. A draft for Gordon Smith, from the Gordon and Marion page's words, is in the same place. 149 of the 171 artist pages have no biography | The page gives name, dates and the number of works |
 | 10.6 | One sentence that says what the gallery is, for the home page near Visit, with a link to About. The About page's own opening could serve | The home page has none |
 | 10.7 | Does the gallery, or do its artists, have entries on Wikipedia or Wikidata? Linking them tells engines which Gordon Smith is meant | Not linked |
 | 10.8 | Approve or change the words of the site's file for AI assistants (`/llms.txt`), which says what the gallery is and keeps four names apart: the gallery, Artists for Kids ("An art education program for children and youth, established in 1989. It publishes the limited editions sold on this site."), the Foundation ("A foundation founded in 2002. It funds visual arts programs for children and presents public programs and exhibitions at the gallery.") and Gordon Smith ("The artist Gordon Appelbe Smith, 1919 to 2020, a Canadian Modernist painter. A person, not the gallery.") | The drafts show on the review theme once it is pushed |
 | 10.9 | One name and one spelling. The site writes "Artists for Kids" 97 times, "Artists For Kids" 21 times and "Artist for Kids" 4 times (Artists and Artists For Kids pages). Bill Reid's first edition is "Xhuwaji / Haida Grizzly" on two pages and "Xhuwaji/Haida Grizzly Bear" on the Permanent Collection page. Which are right? | As written |
-| 10.10 | The Permanent Collection page's line reads "Explore over 1,000 + Works", and the count under it, from the store, reads 1,174 works. Should the line give the number, or stay round? | As written |
 | 10.11 | Who owns or operates the gallery's building, and when did the gallery open? The site gives 1989 for Artists for Kids and 2002 for the Foundation, and no date for the gallery | Not stated |
 | 10.12 | How does a class visit work, who is it for and how is it booked? Schools and teachers is a list of links, so it answers none of these itself | Not stated |
 | 10.13 | Does the gallery sell works from its collection, or represent artists? People ask answer engines this, and no page says | Not stated |
 | 10.14 | The shop ships within Canada only (the store's one shipping zone, 2026-09-28). May the FAQ say so? | Not stated |
-| 10.15 | Marion Smith's dates, for the Gordon and Marion page | Not stated |
-| 10.16 | Which donation route is for what? Donate is the Foundation's and Support Artists for Kids is the program's. One sentence on each page that names the other would do | Not stated |
+| 10.18 | Would the gallery ship to the United States, or worldwide? (Michael, 2026-09-29) | Canada only |
+| 10.15 | In what year was Marion Smith born, and in what year did she die? The Gordon and Marion page gives Gordon Smith's dates and none for her | Not stated |
 | 10.17 | Two claims to confirm with a source: that the gallery was "established as Canada's first public art gallery for young audiences" (Artists For Kids page), and the museums that hold Gordon Smith's work (Gordon and Marion page) | As written |
 
 ## 11. Facts for search and answer engines to confirm
