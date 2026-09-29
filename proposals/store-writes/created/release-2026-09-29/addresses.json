@@ -1,0 +1,474 @@
+[
+ {
+  "call": "hide0",
+  "kind": "page",
+  "at": "2026-09-29T23:09:51+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/141077479721",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/141077479721",
+     "handle": "about",
+     "templateSuffix": "",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide1",
+  "kind": "page",
+  "at": "2026-09-29T23:09:52+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155718615337",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155718615337",
+     "handle": "engage",
+     "templateSuffix": "page",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide2",
+  "kind": "page",
+  "at": "2026-09-29T23:09:53+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155806335273",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155806335273",
+     "handle": "exhibition-from-the-ground",
+     "templateSuffix": "exhibition-ftg",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide3",
+  "kind": "page",
+  "at": "2026-09-29T23:09:54+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155776450857",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155776450857",
+     "handle": "exhibition-one-hundred-artists-deep",
+     "templateSuffix": "exhibition-ohad-2026",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide4",
+  "kind": "page",
+  "at": "2026-09-29T23:09:55+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155807351081",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155807351081",
+     "handle": "exhibition-playhouse",
+     "templateSuffix": "exhibition-playhouse",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide5",
+  "kind": "page",
+  "at": "2026-09-29T23:09:56+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155807383849",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155807383849",
+     "handle": "exhibition-prevailing-landscapes",
+     "templateSuffix": "exhibition-prevailing",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide6",
+  "kind": "page",
+  "at": "2026-09-29T23:09:57+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155806466345",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155806466345",
+     "handle": "exhibition-stitched-merging-photography-and-textile-practices",
+     "templateSuffix": "exhibition-stitched",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide7",
+  "kind": "page",
+  "at": "2026-09-29T23:09:58+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155807711529",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155807711529",
+     "handle": "exhibition-the-art-of-conversation",
+     "templateSuffix": "exhibition-taoc",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide8",
+  "kind": "page",
+  "at": "2026-09-29T23:09:59+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155759378729",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155759378729",
+     "handle": "exhibitions-1",
+     "templateSuffix": "exhibitions-overview",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "hide9",
+  "kind": "page",
+  "at": "2026-09-29T23:10:00+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155703312681",
+   "page": {
+    "isPublished": false
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155703312681",
+     "handle": "our-story",
+     "templateSuffix": "shop",
+     "isPublished": false
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r0",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:01+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/exhibition-one-hundred-artists-deep",
+    "target": "/pages/exhibitions/one-hundred-artists-deep"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266314025",
+     "path": "/pages/exhibition-one-hundred-artists-deep",
+     "target": "/pages/exhibitions/one-hundred-artists-deep"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r1",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:02+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/exhibition-from-the-ground",
+    "target": "/pages/exhibitions/from-the-ground"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266346793",
+     "path": "/pages/exhibition-from-the-ground",
+     "target": "/pages/exhibitions/from-the-ground"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r2",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:03+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/exhibition-stitched-merging-photography-and-textile-practices",
+    "target": "/pages/exhibitions/stitched"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266379561",
+     "path": "/pages/exhibition-stitched-merging-photography-and-textile-practices",
+     "target": "/pages/exhibitions/stitched"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r3",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:04+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/exhibition-playhouse",
+    "target": "/pages/exhibitions/playhouse"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266412329",
+     "path": "/pages/exhibition-playhouse",
+     "target": "/pages/exhibitions/playhouse"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r4",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:05+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/exhibition-prevailing-landscapes",
+    "target": "/pages/exhibitions/prevailing-landscapes"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266445097",
+     "path": "/pages/exhibition-prevailing-landscapes",
+     "target": "/pages/exhibitions/prevailing-landscapes"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r5",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:06+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/exhibition-the-art-of-conversation",
+    "target": "/pages/exhibitions/the-art-of-conversation"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266477865",
+     "path": "/pages/exhibition-the-art-of-conversation",
+     "target": "/pages/exhibitions/the-art-of-conversation"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r6",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:07+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/exhibitions-1",
+    "target": "/pages/on-now"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266510633",
+     "path": "/pages/exhibitions-1",
+     "target": "/pages/on-now"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r7",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:08+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/about",
+    "target": "/pages/about-us"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266543401",
+     "path": "/pages/about",
+     "target": "/pages/about-us"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r8",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:09+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/our-story",
+    "target": "/pages/artists-for-kids"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266576169",
+     "path": "/pages/our-story",
+     "target": "/pages/artists-for-kids"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "r9",
+  "kind": "redirect",
+  "at": "2026-09-29T23:10:10+00:00",
+  "variables": {
+   "urlRedirect": {
+    "path": "/pages/engage",
+    "target": "/pages/public-programs-1"
+   }
+  },
+  "answer": {
+   "urlRedirectCreate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/688266608937",
+     "path": "/pages/engage",
+     "target": "/pages/public-programs-1"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "u0",
+  "kind": "repoint",
+  "at": "2026-09-29T23:10:11+00:00",
+  "variables": {
+   "id": "gid://shopify/UrlRedirect/687900852521",
+   "urlRedirect": {
+    "target": "/pages/artists-for-kids"
+   }
+  },
+  "answer": {
+   "urlRedirectUpdate": {
+    "urlRedirect": {
+     "id": "gid://shopify/UrlRedirect/687900852521",
+     "path": "/pages/who-we-are",
+     "target": "/pages/artists-for-kids"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

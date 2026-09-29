@@ -1,0 +1,53 @@
+[
+ {
+  "call": "event pages on",
+  "kind": "event",
+  "at": "2026-09-29T23:07:49+00:00",
+  "variables": {
+   "id": "gid://shopify/MetaobjectDefinition/23753392425",
+   "definition": {
+    "capabilities": {
+     "renderable": {
+      "enabled": true,
+      "data": {
+       "metaTitleKey": "title",
+       "metaDescriptionKey": "summary"
+      }
+     },
+     "onlineStore": {
+      "enabled": true,
+      "data": {
+       "urlHandle": "events",
+       "createRedirects": false
+      }
+     }
+    }
+   }
+  },
+  "answer": {
+   "metaobjectDefinitionUpdate": {
+    "metaobjectDefinition": {
+     "id": "gid://shopify/MetaobjectDefinition/23753392425",
+     "type": "event",
+     "capabilities": {
+      "renderable": {
+       "enabled": true,
+       "data": {
+        "metaTitleKey": "title",
+        "metaDescriptionKey": "summary"
+       }
+      },
+      "onlineStore": {
+       "enabled": true,
+       "data": {
+        "urlHandle": "events"
+       }
+      }
+     }
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

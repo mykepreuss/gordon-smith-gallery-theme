@@ -979,3 +979,37 @@ Each page is filed under the page whose cards lead to it. Artists-in-Residence h
 **Effect on the review theme:** the crumbs show at once, since the review theme holds the code already.
 
 **Undo:** clear `custom.eyebrow` on the 13 pages: `metafieldsDelete` with the variables from `afk_crumbs.py undo`. None had a value before. For one page, clear its Eyebrow field in the page's editor (Label above the title).
+
+## 2026-09-29: the release
+
+**Why:** Michael, 2026-09-29: "We're ready to put the new theme live". Then, after the release gate package (`verification/2026-09-29-release-gate.md`): "Everything is approved", "Supporters confirmed, keep in", "All good, release as is" (the newsletter consent wording, which is empty), "Proceed with your recommendation" (the writes made from files through the Shopify CLI), "Everything can be put live now".
+
+**Checked first:** store `ed35ee-ea.myshopify.com` ("Artists for Kids & The Gordon Smith Gallery", gordonsmithgallery.com), by the connector and by `shopify theme list`. The live theme was `183162372393` "Colorblock: NEW WEBSITE" and matched `baseline/theme/` file for file. The candidate was `184767250729`, unpublished, and matched `main` at dee1885 (after #119 and #122), with no theme editor changes. The CLI's store access: `shopify store auth`, approved by Michael in his browser, signed in as the store's own account. Before-snapshot: `dry-runs/2026-09-29/pages-now.json` (all 58 pages: text, staged text, template, state, `seo.hidden`), read twice through the connector and saved without retyping; `dry-runs/2026-09-29/products-now.json`; `snapshots/frames-2026-09-26.json`. The store was read again through the CLI just before the first write: no page had changed since the export.
+
+**How:** `release_run.py`, which makes each call that `release.py --vars` prints, from files, one at a time, and stops at the first error. The store's answers are in `created/release-2026-09-29/`. 114 calls and the 2 of the fix below, none with an error.
+
+| Step | What | Through | When (UTC) |
+| --- | --- | --- | --- |
+| Event pages (§8e, DS-176) | Web pages on for the Event definition `gid://shopify/MetaobjectDefinition/23753392425`: `renderable` (title and summary) and `onlineStore` (`urlHandle: events`, no redirects). Then read on the candidate: `check_structured_data.py` on five event pages, Upcoming events, Past events and Home, 0 errors; `check_answers.py`, 27 answered, 5 known gaps, 0 errors | CLI, `metaobjectDefinitionUpdate` | 23:07:49 |
+| Publish | `184767250729` "New theme for review (do not publish)" is the live theme. `183162372393` is unpublished and kept | `shopify theme publish` | 23:08:52 |
+| Templates (§3) | 40 pages take a new template name. Two of them wrongly: see "A fault" below | CLI, `pageUpdate` | 23:09:04 to 23:09:44 |
+| Addresses (§5) | 10 pages hidden, 10 redirects made (`gid://shopify/UrlRedirect/688266314025` to `…608937`), and the older redirect from `/pages/who-we-are` sent straight to `/pages/artists-for-kids` | CLI, `pageUpdate`, `urlRedirectCreate`, `urlRedirectUpdate` | 23:09:51 to 23:10:11 |
+| Staged text (§8) | 32 pages take their staged text, 4 of them none. Donate's "donor page" links to Supporters (P-43). Then the 32 staged values and the `release_body` definition (`gid://shopify/MetafieldDefinition/272804249897`) are deleted | CLI, `pageUpdate`, `metafieldsDelete`, `metafieldDefinitionDelete` | 23:10:21 to 23:10:56 |
+| New pages shown (§8b, §8c) | `seo.hidden` deleted from 23 pages: 18 Artists for Kids, 3 Smith Foundation, Past events and Current events | CLI, `metafieldsDelete` | 23:11:13 |
+| Frames (§9, P-19) | 16 active frames are Unlisted; the draft one stays a draft | CLI, `productUpdate` | 23:11:14 to 23:11:36 |
+
+**A fault, found and fixed.** `release.py templates` gave Permanent Collection and Artists the standard page template. Each has a template of its own under the name it already had (`page.permanent-collection`, `page.artists`; DESIGN.md §7.4, "the same name, so nothing is reassigned"): the script was written on 2026-09-26, the day before the collection moved in, and the dry runs showed both rows without anyone catching it, the agent included. From 23:09 to 23:16:54 UTC the Permanent Collection page showed its text without its search, ways in and featured works, and the Artists page its text without the A to Z. The links check on the live site found it: 982 errors, the collection's pages further than three clicks from home. Both pages were set back to their own template (`created/release-2026-09-29/templates-fix.json`), and read on the live site after: Permanent Collection links its 25 groupings, Artists its 171 artists. `release.py` now keeps both, and `dry-runs/2026-09-29/templates.md` shows the 38 pages that did change. Every other page's template was checked against §7.4: all as the specification gives them.
+
+**Read back after:** the whole store through the CLI, compared with what was sent.
+
+- Templates, hidden pages, redirects, frames, event pages: as set. No staged value or `seo.hidden` left. No page's title or address changed. The 26 pages without staged text are untouched.
+- Page text: 25 of the 32 pages hold their text character for character. The other 7 hold the same tags, attributes and words: Shopify adds a line break between some tags when it saves, and keeps `&nbsp;` and `&#x27;` as the characters themselves (Music at the Smith, Donate, Paradise Valley Summer Camps, Gallery Program, Amelia Butcher, Awards and Scholarships, Support Artists for Kids).
+- On gordonsmithgallery.com: all 45 published pages answer, in the new theme, with no Liquid error, and every run of each page's text is on its page. Each of the 11 old addresses answers 301 to its new page. The new pages no longer ask not to be listed and are in the sitemap; the hidden pages are out of it.
+- `check_answers.py` on the live site: 27 answered, 5 known gaps, 0 errors. `check_structured_data.py` on 20 live pages, three event pages among them: 0 errors.
+- A print's Framed choice adds its frame under the print in the cart ($1,200 and $400, subtotal $1,600). The cart was emptied; no order was placed. Frames are out of the collections' lists.
+- A search for "smith" still listed 15 frames in the first minutes after the change, while Shopify's search index caught up. Read again at 23:30 UTC: no frames.
+- `check_links.py` on the live site, after the fix above: 1,636 pages read, 0 errors, 4 notes.
+
+**Not done, as agreed:** the print descriptions (§7) and the descriptions in the search engine listings (§8d) wait for the gallery's approval. `custom.release_description` and its definition stay until then.
+
+**Undo:** `verification/2026-09-29-release-gate.md`, "Rollback". Republish `183162372393`; set each of the 38 templates back from `dry-runs/2026-09-29/templates.md`; delete the 10 redirects, publish the 10 pages and set `/pages/who-we-are` back to `/pages/our-story`; restore each page's text from `dry-runs/2026-09-29/pages-now.json` (it holds the staged text too); set `seo.hidden` to 1 on the 23 pages; set the 16 frames back to Active; turn the Event definition's `renderable` and `onlineStore` off.

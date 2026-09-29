@@ -1,0 +1,48 @@
+[
+ {
+  "call": "permanent-collection back to its own template",
+  "kind": "page",
+  "at": "2026-09-29T23:16:53+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720548649",
+   "page": {
+    "templateSuffix": "permanent-collection"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720548649",
+     "handle": "permanent-collection",
+     "templateSuffix": "permanent-collection",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artists back to its own template",
+  "kind": "page",
+  "at": "2026-09-29T23:16:54+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/140886573353",
+   "page": {
+    "templateSuffix": "artists"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/140886573353",
+     "handle": "artists",
+     "templateSuffix": "artists",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

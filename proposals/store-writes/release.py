@@ -60,8 +60,12 @@ AFK_NEW = AFK_PROGRAMME | AFK_STANDARD | AFK_STORY
 # on the standard page template. Supporters waits for the gallery to confirm its donor list (P-43,
 # gallery-questions.md 8.1): until then it stays hidden at release, and its card leaves the Foundation page's
 # "Get involved" group. Take it out of HOLD_AT_RELEASE when the gallery confirms.
+# Confirmed: Michael, 2026-09-29 ("Supporters confirmed, keep in"). Supporters goes live with the rest,
+# and Donate's "donor page" links to it (P-43).
 FOUNDATION_NEW = {"smith-foundation-scholarships", "brilliance-gala", "smith-foundation-supporters"}
-HOLD_AT_RELEASE = {"smith-foundation-supporters"}
+HOLD_AT_RELEASE = set()
+DONATE_OLD = "including the donor page of each website."
+DONATE_NEW = 'including the <a href="/pages/smith-foundation-supporters">donor page</a> of each website.'
 # Past events (DS-147) and Current events (DS-149): made empty and hidden from search engines, 2026-09-28.
 EVENTS_NEW = {"past-events", "current-events"}
 NEW_PAGES = AFK_NEW | FOUNDATION_NEW | EVENTS_NEW
@@ -87,6 +91,11 @@ def new_template(page):
         return "contact"
     if h == "shop":
         return "shop"
+    if h in ("permanent-collection", "artists"):
+        # Each has a template of its own, under the name it already had (DS-62; DESIGN.md §7.4: "the same
+        # name, so nothing is reassigned"). This line was missing at the release, 2026-09-29: both pages took
+        # the standard template for eight minutes and lost their search, browse and A to Z, then were set back.
+        return h
     return ""  # the standard page template
 
 
@@ -123,6 +132,11 @@ REDIRECTS = [
     ("/pages/our-story", "/pages/artists-for-kids"),     # P-25: its history is on Artists for Kids
     ("/pages/engage", "/pages/public-programs-1"),       # DS-129: Public programs opens with its text
 ]
+# Redirects the store already has that point at a page hidden above (read 2026-09-29): sent straight to
+# the new page, so no address takes two steps. (id, path, target now, target at release)
+REPOINT = [
+    ("gid://shopify/UrlRedirect/687900852521", "/pages/who-we-are", "/pages/our-story", "/pages/artists-for-kids"),
+]
 
 
 def addresses(pages, want_vars):
@@ -131,14 +145,18 @@ def addresses(pages, want_vars):
     if want_vars:
         out = {f"hide{i}": {"id": p["id"], "page": {"isPublished": False}} for i, p in enumerate(hide)}
         out.update({f"r{i}": {"path": a, "target": b} for i, (a, b) in enumerate(REDIRECTS)})
+        out.update({f"u{i}": {"id": rid, "urlRedirect": {"target": new}} for i, (rid, _, _, new) in enumerate(REPOINT)})
         return out
     rows = [f"| `{p['handle']}` | {'published' if p['isPublished'] else 'hidden'} | hidden |" for p in hide]
     rrows = [f"| `{a}` | `{b}` |" for a, b in REDIRECTS]
+    urows = [f"| `{path}` | `{old}` | `{new}` |" for _, path, old, new in REPOINT]
 
     return "\n".join(["## Addresses", "", "Hide first: a redirect only works from an address that no longer loads a page.", "",
                       "| Page | Now | At release |", "| --- | --- | --- |"] + rows +
                      ["", "| Redirect from | To |", "| --- | --- |"] + rrows +
-                     ["", f"Rollback: delete the {len(REDIRECTS)} redirects, publish the {len(hide)} pages."])
+                     ["", "| Redirect the store has | Goes to now | At release |", "| --- | --- | --- |"] + urows +
+                     ["", f"Rollback: delete the {len(REDIRECTS)} redirects, publish the {len(hide)} pages, "
+                          f"set the {len(REPOINT)} older redirect back to where it went."])
 
 
 # ---------------------------------------------------------------------------
@@ -154,6 +172,9 @@ def staged(pages, want_vars):
             snap = ""  # made empty before release (P-35); its text is all staged
         new = p["staged"]["value"]
         new_body = "" if new.strip().startswith(CLEARED_PREFIX) and new.strip().endswith("-->") else new
+        if p["handle"] == "donate" and "smith-foundation-supporters" not in HOLD_AT_RELEASE:
+            assert new_body.count(DONATE_OLD) == 1, "Donate's sentence on the donor page isn't there once"
+            new_body = new_body.replace(DONATE_OLD, DONATE_NEW)
         same = snap is not None and p["body"] == snap
         if not same:
             stop.append(p["handle"])
