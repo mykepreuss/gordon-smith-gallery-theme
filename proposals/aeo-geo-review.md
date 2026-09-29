@@ -290,7 +290,7 @@ Michael, 2026-09-28, asked what else would help the site be referenced, from the
 
 ### Open, for Michael
 
-- **Events have no address of their own.** An event shows only as a row in a list. Engines cite pages, and Google's event results expect one page for each event. The event entries could get pages from the fields they hold. A content model change.
+- **Events have no address of their own.** An event shows only as a row in a list. Engines cite pages, and Google's event results expect one page for each event. The event entries could get pages from the fields they hold. A content model change. Written up as `proposals/event-pages.md` and decided by Michael, 2026-09-29 (DS-176).
 
 ### At release
 
