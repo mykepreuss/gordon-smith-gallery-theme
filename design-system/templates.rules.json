@@ -40,7 +40,8 @@
       "gs-work-grid",
       "gs-artist-index",
       "gs-collection-ways",
-      "gs-collection-featured"
+      "gs-collection-featured",
+      "gs-collection-row"
     ],
     "cards": [
       "gs-card-groups"
