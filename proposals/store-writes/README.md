@@ -952,4 +952,3 @@ The words were written from looking at each picture (`aeo/alt.json`, drafted 202
 **Effect on the live site:** for about 80 seconds, event addresses existed and answered 404 under the live theme. The live sitemap showed none when read after. No page of the live site changed.
 
 **Undo:** done. At release the same call turns the pages on for good (`proposals/store-changes.md` §8e).
-
