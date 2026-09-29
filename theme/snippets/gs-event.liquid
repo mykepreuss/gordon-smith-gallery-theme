@@ -129,7 +129,7 @@
           assign ticket_label = 'events.tickets' | t
         endif
       -%}
-      {%- render 'gs-link', link: event.tickets.value, label: ticket_label, class: 'gs-cta-link' -%}
+      {%- render 'gs-link', link: event.tickets.value, label: ticket_label, class: 'gs-cta-link', about: event.title.value -%}
     {%- endif -%}
     {%- unless past -%}{%- render 'gs-data-event', event: event -%}{%- endunless -%}
   </div>

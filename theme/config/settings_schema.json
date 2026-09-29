@@ -487,7 +487,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Where a text names something the site has a page for, the name links to that page. It is linked once in a text, never on its own page, and never inside a heading or another link. This covers page text, cards, events, exhibitions, artists and groupings."
+        "content": "Where a text names something the site has a page for, the name links to that page. It is linked once in a text, never on its own page, and never inside a heading or another link. This covers page text, cards, events, exhibitions, artists and groupings. Texts about an artist or a work (an edition's or a portfolio's description, a work's About, an exhibition's credits, a lesson) link the names only, not the general words."
       },
       {
         "type": "textarea",

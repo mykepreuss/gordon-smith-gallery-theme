@@ -31,6 +31,7 @@
   },
   "footer": {
     "visit": "Visit",
+    "visit_page": "Plan your visit",
     "contact": "Contact",
     "contact_page": "Contact form",
     "explore": "Explore",
@@ -88,7 +89,8 @@
     "more": "More exhibitions",
     "about": "About the exhibition",
     "all": "All exhibitions",
-    "crumb": "Exhibitions"
+    "crumb": "Exhibitions",
+    "visit": "Plan your visit"
   },
   "events": {
     "time_range": "{{ start }} to {{ end }}",
@@ -152,7 +154,8 @@
     "disclosure": "Disclosure",
     "about_work": "About the work",
     "details": "Details",
-    "view_of": "View {{ number }} of {{ total }}"
+    "view_of": "View {{ number }} of {{ total }}",
+    "see_work": "See this work in the collection"
   },
   "contact": {
     "details_heading": "Visit and contact",
@@ -276,6 +279,7 @@
     "credit": "Credit",
     "accession": "Accession number",
     "shown_in": "Shown in",
+    "lessons": "Lessons",
     "browse": "Browse",
     "index_heading": "Artists A to Z",
     "find_artist": "Find an artist",

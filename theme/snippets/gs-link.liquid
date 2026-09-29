@@ -11,6 +11,9 @@
   @param {string} [label] - Visible text. Default: the link's own text or title
   @param {string} [class] - Classes for the <a>, e.g. 'gs-button' or 'gs-cta-link'
   @param {boolean} [cue_wraps] - "(PDF)" may go to the next line whole (card and tile titles in narrow columns)
+  @param {string} [about] - What the link is about, for a label that says only what it does
+    ("Register"): added for screen readers and engines, which read a link's words on their own,
+    so a list of links says "Register: Curatorial Tour" (DS-185)
 
   @example
   {%- render 'gs-link', link: page.metafields.custom.cta.value, class: 'gs-button' -%}
@@ -31,6 +34,7 @@
 -%}
 <a{% if classes != blank %} class="{{ classes }}"{% endif %} href="{{ r[0] }}">
   {{- text | escape | replace: ' - ', '&nbsp;- ' | replace: ' | ', '&nbsp;| ' -}}
+  {%- if about != blank -%}<span class="gs-visually-hidden">: {{ about | escape }}</span>{%- endif -%}
   {%- if r[2] == '1' %}{% if cue_wraps %} {% else %}&nbsp;{% endif %}{{ 'general.pdf' | t }}{% endif -%}
   {%- if r[1] == '1' -%}<span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>{%- endif -%}
 </a>

@@ -1,6 +1,6 @@
 # Questions for the gallery
 
-What only the gallery can answer or confirm, in one list (updated 2026-09-28). Nothing here blocks the review. Each question says what the site does until it's answered. Section 1 is needed before release.
+What only the gallery can answer or confirm, in one list (updated 2026-09-29). Nothing here blocks the review. Each question says what the site does until it's answered. Section 1 is needed before release.
 
 Where we could find the answer ourselves, the question asks you to confirm it. Questions already answered have been removed; Git history keeps them.
 
@@ -178,3 +178,14 @@ Found on 2026-09-28 without asking (`proposals/structured-data-facts.md`). Each 
 | 11.10 | For 101 artists, a list of where each is described elsewhere (Wikidata, the Getty's list of artists, Wikipedia) is drafted in `proposals/store-writes/aeo/artist-identifiers.json`. 59 are confirmed by their dates. May the other 42 be checked by someone who knows the collection? | Not linked. This answers 10.7 |
 | 11.11 | Is shipping a flat $20 within Canada? The shipping policy says so, and also that shipping "will be calculated and confirmed with you at the time of the order". Google's shopping results are now told $20 (DS-170). The FAQ says shipping is "calculated and confirmed at checkout", so three places give two answers | $20 |
 | 11.12 | Is "admission by donation" free to enter, for anyone? Search engines are now told the gallery is free to enter (DS-171) | Free to enter |
+
+## 12. Links between pages
+
+From the review of the site's links, 2026-09-29 (`proposals/internal-linking-review.md`).
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 12.1 | Two names on exhibition pages nearly match an artist's page: "Irene Whittome" (the artist's page says Irene F. Whittome) and "Leonhard Epp" (the artist's page says Leonard Epp). Which spellings are right? | As written; the two names don't link to the artists' pages |
+| 12.2 | Seven limited editions have no work in the Permanent Collection that names them: Cup and Saucer (Amelia Butcher), Short Gumboots (Marlene Yuen), What Remains After Bloom (Russna Kaur), Mount Orpheus and Seven Sisters Range (Arnold Shives), The Byway (Gordon Smith) and Moodyville Notes (Wayne Eastcott). Is the first edition of each in the collection? | Their pages don't link to a work in the collection |
+| 12.3 | New words on the site: "Plan your visit" (a button on an exhibition that is on or coming up, and a link in the footer), "See this work in the collection" (on a limited edition) and "Lessons" (on a work that inspired ArtReach videos). Are they right? | As written |
+| 12.4 | Three more names link to their pages wherever a text has them: "Gordon and Marion Smith Foundation for Young Artists" (to The Smith Foundation), and "Artists in Residence" and "Artist in Residence" (to Artists in Residence). Add or remove any? | As listed. The lists are in Theme settings, Links between pages (DS-175) |

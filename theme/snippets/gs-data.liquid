@@ -17,6 +17,7 @@
     A page, an article               WebPage, ContactPage, FAQPage, CollectionPage, BlogPosting
                                      (gs-data-page), and what a list page lists (gs-data-index)
     Entries, editions, portfolios    BreadcrumbList: Home, the list the page belongs to, the page
+    A page with a crumb              BreadcrumbList: Home, the page its crumb names, the page (DS-184)
 
   One graph, not separate notes (DS-163): everything has one name for machines (@id), made from
   its own address, and is called by that name wherever it is mentioned. So the artist on a
@@ -125,6 +126,17 @@
     assign crumb_name = 'shop.crumb' | t
     assign crumb_url = settings.shop_page.url
     assign here = collection.title
+  elsif request.page_type == 'page'
+    # A page whose eyebrow names another page shows a crumb to it (DS-80): the data says the same.
+    capture back_handle
+      render 'gs-page-back'
+    endcapture
+    assign back_handle = back_handle | strip
+    if back_handle != blank
+      assign crumb_name = page.metafields.custom.eyebrow.value | strip
+      assign crumb_url = pages[back_handle].url
+      assign here = page.title
+    endif
   endif
 -%}
 {%- if show_gallery -%}

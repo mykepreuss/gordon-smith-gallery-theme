@@ -1,0 +1,20 @@
+{% doc %}
+  The page a page's crumb leads back to (DS-80, DS-184): the handle of the page its eyebrow names
+  ("Artists in Residence" names artists-in-residence), or nothing when the eyebrow is blank, names
+  no page, or names the page itself. The page header shows the crumb (gs-page-hero, by the same
+  rule); the structured data says the same (gs-data, gs-data-page).
+
+  @example
+  {%- capture back_handle -%}{% render 'gs-page-back' %}{%- endcapture -%}
+  {%- assign back = pages[back_handle] -%}
+{% enddoc %}
+{%- liquid
+  assign eyebrow = page.metafields.custom.eyebrow.value | strip
+  if eyebrow != blank
+    assign handle = eyebrow | handleize
+    assign back = pages[handle]
+    if back.id != blank and back.id != page.id
+      echo handle
+    endif
+  endif
+-%}

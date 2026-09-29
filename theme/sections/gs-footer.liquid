@@ -46,6 +46,12 @@
         {%- if hours != blank -%}
           <p>{{ hours }}</p>
         {%- endif -%}
+        {%- comment -%} The address and hours lead to the rest: parking, access, admission (DS-186). {%- endcomment -%}
+        {%- if settings.visit_page != blank -%}
+          <ul>
+            <li><a href="{{ settings.visit_page.url }}">{{ 'footer.visit_page' | t }}</a></li>
+          </ul>
+        {%- endif -%}
       </div>
 
       <div>
