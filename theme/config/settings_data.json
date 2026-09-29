@@ -54,6 +54,17 @@
     "returns": "final",
     "shipping_rate": "20",
     "shipping_days_min": "3",
-    "shipping_days_max": "5"
+    "shipping_days_max": "5",
+    "email": "artistsforkids@sd44.ca",
+    "social_instagram": "https://www.instagram.com/afk_smithgallery",
+    "social_facebook": "https://www.facebook.com/afksmithgallery",
+    "social_x": "https://x.com/afksmithgallery",
+    "social_youtube": "https://www.youtube.com/channel/UCBo3tcqxdV8lTdNEnT1lCwg",
+    "foundation_instagram": "https://www.instagram.com/the_smith_foundation",
+    "foundation_facebook": "https://www.facebook.com/gordonandmarionsmithfoundation",
+    "afk_founded": "1989",
+    "afk_operator": "North Vancouver School District",
+    "afk_operator_url": "https://www.sd44.ca",
+    "foundation_founded": "2002"
   }
 }

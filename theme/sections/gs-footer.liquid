@@ -7,7 +7,7 @@
   land acknowledgement are theme settings (Gallery details, Social links), so they're the same on
   every page.
 {%- endcomment -%}
-{%- assign socials = 'instagram,facebook,youtube,vimeo,linkedin' | split: ',' -%}
+{%- assign socials = 'instagram,facebook,x,youtube,vimeo,linkedin' | split: ',' -%}
 {%- capture social_items -%}
   {%- for key in socials -%}
     {%- assign setting_id = 'social_' | append: key -%}

@@ -13,6 +13,12 @@
 
   Artists for Kids' and the Foundation's pages are chosen in Theme settings, Gallery details.
 
+  The full form also says, from Theme settings and as the site's own pages say it (DS-174):
+  the year each was established; the Foundation's full name and, once it is filled in, its
+  charity registration number; that Artists for Kids is run by the North Vancouver School
+  District and funded by the Foundation; and each one's profiles elsewhere. Artists for Kids
+  shares the gallery's profiles. An empty setting says nothing.
+
   @param {string} [programme] - A programme field's value: Gallery, Smith Foundation or Artists for Kids
   @param {boolean} [full] - The full form
 
@@ -45,6 +51,29 @@
       assign name = 'general.site_title.gallery' | t
       assign logo = 'gs-logo-gallery.svg'
   endcase
+  # The full form's facts, from Theme settings (DS-174). A year is given only when it is a year.
+  assign full_name = ''
+  assign founded = ''
+  assign profile_keys = ''
+  case brand
+    when 'artists-for-kids'
+      assign founded = settings.afk_founded | strip
+      assign profile_keys = 'social_instagram,social_facebook,social_x,social_youtube,social_vimeo,social_linkedin'
+    when 'foundation'
+      assign full_name = 'general.site_title.foundation_full' | t
+      assign founded = settings.foundation_founded | strip
+      assign profile_keys = 'foundation_instagram,foundation_facebook'
+  endcase
+  assign founded_back = founded | plus: 0 | append: ''
+  assign profiles = ''
+  assign profile_keys = profile_keys | split: ','
+  for key in profile_keys
+    if settings[key] != blank
+      assign profiles = profiles | append: settings[key] | append: '|'
+    endif
+  endfor
+  assign profiles = profiles | split: '|'
+
   assign url = home
   if brand != 'gallery'
     assign url = ''
@@ -62,8 +91,33 @@
   {%- endif -%}
   {%- if full -%}
     ,"logo": {{ logo | asset_url | prepend: 'https:' | json }}
-    {%- if own_page != blank -%}
-      ,"mainEntityOfPage": {{ own_page.url | prepend: origin | json }}
+    {%- if full_name != blank and full_name != name -%}
+      ,"alternateName": {{ full_name | json }}
+    {%- endif -%}
+    {%- if founded.size == 4 and founded_back == founded -%}
+      ,"foundingDate": {{ founded | json }}
+    {%- endif -%}
+    {%- if profiles.size > 0 -%}
+      ,"sameAs": {{ profiles | json }}
+    {%- endif -%}
+    {%- if brand == 'artists-for-kids' -%}
+      {%- if settings.afk_operator != blank -%}
+        ,"parentOrganization": {
+          "@type": "Organization",
+          "name": {{ settings.afk_operator | json }}
+          {%- if settings.afk_operator_url != blank -%}
+            ,"url": {{ settings.afk_operator_url | json }}
+          {%- endif -%}
+        }
+      {%- endif -%}
+      ,"funder": { "@type": "Organization", "@id": {{ home | append: '#foundation' | json }}, "name": {{ 'general.site_title.foundation' | t | json }} }
+    {%- endif -%}
+    {%- if brand == 'foundation' and settings.foundation_charity_number != blank -%}
+      ,"identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Canada Revenue Agency charity registration number",
+        "value": {{ settings.foundation_charity_number | strip | json }}
+      }
     {%- endif -%}
   {%- endif -%}
 }
