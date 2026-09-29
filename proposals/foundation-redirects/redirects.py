@@ -44,7 +44,8 @@ NEW_SITE = "https://gordonsmithgallery.com"
 PORT = 8377
 
 
-# WordPress's own rules, as they are in the old server's .htaccess. Only the test uses them.
+# WordPress's own rules, as they are in the old server's .htaccess, and some of its files. Only the
+# test uses them.
 WORDPRESS = """
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
@@ -57,6 +58,9 @@ RewriteRule . /index.php [L]
 </IfModule>
 # END WordPress
 """
+WORDPRESS_FILES = ("index.php", "wp-login.php", "wp-cron.php", "wp-admin/index.php",
+                   "wp-content/themes/Avada/style.css", "wp-content/uploads/2017/07/Facebook-icon.jpg",
+                   "wp-content/uploads/2023/07/EndlessSummer_ExhibitionBooklet.pdf")
 
 
 def rows():
@@ -104,9 +108,9 @@ def build():
 # Made by proposals/foundation-redirects/redirects.py from redirects.csv. Change the list and
 # make the file again. Don't edit this file by hand.
 #
-# Where it goes: the top of the .htaccess file in the website's main folder on the old server
-# (public_html, beside wp-config.php), above everything already in that file. What is there
-# stays: the host's PHP settings are kept in it. Keep a copy of the file first.
+# Where it goes: the website's main folder on the old server (public_html), as the file named
+# .htaccess. It needs nothing else there: WordPress and all its files can be deleted. If an
+# .htaccess is still there when this goes in, these rules go above everything in it.
 # {len(found)} old addresses are listed. Anything else goes to the new home page.
 
 <IfModule mod_rewrite.c>
@@ -121,25 +125,19 @@ RewriteRule ^ - [L]
 RewriteRule ^\\.well-known/ - [L]
 RewriteRule ^robots\\.txt$ - [L]
 
-# 3. WordPress's sign-in and admin keep working, so staff can still get at the old site.
-# Delete these three lines when WordPress is removed, or sooner if nobody needs to sign in.
-RewriteRule ^(wp-admin|wp-includes)(/|$) - [L]
-RewriteRule ^wp-content/(plugins|themes)/ - [L]
-RewriteRule ^wp-(login|cron)\\.php$ - [L]
-
-# 4. WordPress's numbered addresses (/?p=126, /?page_id=9).
+# 3. WordPress's numbered addresses (/?p=126, /?page_id=9).
 """
     for new in sorted(by_id):
         ids = "|".join(sorted(by_id[new], key=int))
         out += f"RewriteCond %{{QUERY_STRING}} (^|&)(p|page_id)=({ids})(&|$)\n"
         out += f"RewriteRule ^(index\\.php)?$ {NEW_SITE}{new}? [R=301,L]\n"
-    out += "\n# 5. Pages, exhibitions and events. Each rule covers the address and anything under it.\n"
+    out += "\n# 4. Pages, exhibitions and events. Each rule covers the address and anything under it.\n"
     out += "\n".join(rule(r["old"], r["new"]) for r in pages) + "\n"
-    out += "\n# 6. Documents, each to the page that holds it or what replaced it. And the sitemap.\n"
+    out += "\n# 5. The old site's documents (PDF), each to the new page that holds it or replaced it.\n# And the sitemap.\n"
     out += "\n".join(rule(r["old"], r["new"]) for r in files) + "\n"
     out += f"""
-# 7. Everything else: the old home page, and the media library's pictures and other files,
-# whether or not they are still on the server (P-63).
+# 6. Everything else: the old home page, WordPress's own addresses, and the media library's
+# pictures and other files, whether or not they are still on the server (P-63).
 RewriteRule ^ {NEW_SITE}/? [R=301,L]
 </IfModule>
 """
@@ -167,7 +165,8 @@ def expected():
     home = NEW_SITE + "/"
     cases += [(p, home) for p in ("/no-such-page/", "/feed/", "/author/admin/", "/slide/volunteer/",
                                   "/?p=999999", "/?utm_source=north%20shore%20news", "/index.php",
-                                  "/xmlrpc.php", "/wp-json/wp/v2/pages",
+                                  "/xmlrpc.php", "/wp-json/wp/v2/pages", "/wp-login.php", "/wp-admin/",
+                                  "/wp-cron.php", "/wp-content/themes/Avada/style.css",
                                   "/wp-content/uploads/2017/07/Facebook-icon.jpg",  # still on the server
                                   "/wp-content/uploads/2017/07/gone.jpg", "/wp-content/uploads/")]
     return cases
@@ -203,20 +202,25 @@ def test():
         sys.exit("This check needs httpd (Apache) and curl.")
     modules = next(p for p in (pathlib.Path("/usr/libexec/apache2"), pathlib.Path("/usr/lib/apache2/modules"),
                                pathlib.Path("/usr/lib64/httpd/modules")) if p.exists())
-    with tempfile.TemporaryDirectory() as tmp:
-        tmp = pathlib.Path(tmp)
-        root = tmp / "public_html"
-        # What is on the old server: a picture and a document in the media library, WordPress.
-        for kept in ("wp-content/uploads/2017/07/Facebook-icon.jpg", "wp-login.php", "index.php",
-                     "wp-content/uploads/2023/07/EndlessSummer_ExhibitionBooklet.pdf",
-                     "wp-admin/index.php", "wp-content/themes/Avada/style.css", "other-site/index.html"):
-            (root / kept).parent.mkdir(parents=True, exist_ok=True)
-            (root / kept).write_text("kept")
-        # As on the server: the file's rules first, then what WordPress keeps in .htaccess.
-        (root / ".htaccess").write_text(OUT.read_text() + WORDPRESS)
-        load = "\n".join(f"LoadModule {name}_module {modules}/mod_{name}.so"
-                         for name in ("mpm_prefork", "authz_core", "unixd", "dir", "rewrite"))
-        (tmp / "httpd.conf").write_text(f"""{load}
+    load = "\n".join(f"LoadModule {name}_module {modules}/mod_{name}.so"
+                     for name in ("mpm_prefork", "authz_core", "unixd", "dir", "rewrite"))
+    # The old server as it will be, with WordPress deleted and the file alone in its folder. And as
+    # it is if the rules go in first: WordPress's files there, and its rules under ours.
+    states = [("WordPress deleted", (), OUT.read_text()),
+              ("WordPress still there", WORDPRESS_FILES, OUT.read_text() + WORDPRESS)]
+    cases, failures, count = expected(), [], 0
+    left_alone = [("/robots.txt", OLD_HOST, 404), ("/.well-known/acme-challenge/abc", OLD_HOST, 404),
+                  ("/other-site/", "another-site.example", 200),  # another site in the account
+                  ("/about/", "another-site.example", 404)]
+    for state, files, rules in states:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = pathlib.Path(tmp)
+            root = tmp / "public_html"
+            for name in files + ("other-site/index.html",):
+                (root / name).parent.mkdir(parents=True, exist_ok=True)
+                (root / name).write_text("kept")
+            (root / ".htaccess").write_text(rules)
+            (tmp / "httpd.conf").write_text(f"""{load}
 ServerName localhost
 Listen 127.0.0.1:{PORT}
 PidFile {tmp}/httpd.pid
@@ -229,35 +233,30 @@ DirectoryIndex index.php index.html
   Options FollowSymLinks
 </Directory>
 """)
-        server = subprocess.Popen([httpd, "-X", "-f", str(tmp / "httpd.conf")],
-                                  stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
-        try:
-            base = f"http://127.0.0.1:{PORT}"
-            for _ in range(50):
-                if ask(base + "/robots.txt", OLD_HOST)[0]:
-                    break
-                if server.poll() is not None:
-                    sys.exit("Apache didn't start:\n" + server.stdout.read() + (tmp / "error.log").read_text())
-                time.sleep(0.1)
-            failures, cases = [], expected()
-            for path, new in cases:
-                for host in (OLD_HOST, "www." + OLD_HOST):
+            server = subprocess.Popen([httpd, "-X", "-f", str(tmp / "httpd.conf")],
+                                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            try:
+                base = f"http://127.0.0.1:{PORT}"
+                for _ in range(50):
+                    if ask(base + "/robots.txt", OLD_HOST)[0]:
+                        break
+                    if server.poll() is not None:
+                        sys.exit("Apache didn't start:\n" + server.stdout.read() + (tmp / "error.log").read_text())
+                    time.sleep(0.1)
+                for path, new in cases:
+                    for host in (OLD_HOST, "www." + OLD_HOST):
+                        got = ask(base + path, host)
+                        if got != (301, new):
+                            failures.append(f"{state}: {host}{path}: {got[0]} {got[1]}, not 301 {new}")
+                for path, host, status in left_alone:
                     got = ask(base + path, host)
-                    if got != (301, new):
-                        failures.append(f"{host}{path}: {got[0]} {got[1]}, not 301 {new}")
-            kept = [("/wp-login.php", OLD_HOST, 200), ("/wp-admin/", OLD_HOST, 200),
-                    ("/wp-content/themes/Avada/style.css", OLD_HOST, 200),
-                    ("/robots.txt", OLD_HOST, 404), ("/.well-known/acme-challenge/abc", OLD_HOST, 404),
-                    ("/other-site/", "another-site.example", 200),  # another site in the account
-                    ("/about/", "another-site.example", 404)]
-            for path, host, status in kept:
-                got = ask(base + path, host)
-                if got[0] != status or got[1]:
-                    failures.append(f"{host}{path}: {got[0]} {got[1]}, not {status} with no redirect")
-            return report(failures, 2 * len(cases) + len(kept), "requests answered as they should")
-        finally:
-            server.terminate()
-            server.wait()
+                    if got[0] != status or got[1]:
+                        failures.append(f"{state}: {host}{path}: {got[0]} {got[1]}, not {status} with no redirect")
+                count += 2 * len(cases) + len(left_alone)
+            finally:
+                server.terminate()
+                server.wait()
+    return report(failures, count, "requests answered as they should")
 
 
 def targets(address, theme):

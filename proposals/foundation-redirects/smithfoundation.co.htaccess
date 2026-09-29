@@ -3,9 +3,9 @@
 # Made by proposals/foundation-redirects/redirects.py from redirects.csv. Change the list and
 # make the file again. Don't edit this file by hand.
 #
-# Where it goes: the top of the .htaccess file in the website's main folder on the old server
-# (public_html, beside wp-config.php), above everything already in that file. What is there
-# stays: the host's PHP settings are kept in it. Keep a copy of the file first.
+# Where it goes: the website's main folder on the old server (public_html), as the file named
+# .htaccess. It needs nothing else there: WordPress and all its files can be deleted. If an
+# .htaccess is still there when this goes in, these rules go above everything in it.
 # 174 old addresses are listed. Anything else goes to the new home page.
 
 <IfModule mod_rewrite.c>
@@ -20,13 +20,7 @@ RewriteRule ^ - [L]
 RewriteRule ^\.well-known/ - [L]
 RewriteRule ^robots\.txt$ - [L]
 
-# 3. WordPress's sign-in and admin keep working, so staff can still get at the old site.
-# Delete these three lines when WordPress is removed, or sooner if nobody needs to sign in.
-RewriteRule ^(wp-admin|wp-includes)(/|$) - [L]
-RewriteRule ^wp-content/(plugins|themes)/ - [L]
-RewriteRule ^wp-(login|cron)\.php$ - [L]
-
-# 4. WordPress's numbered addresses (/?p=126, /?page_id=9).
+# 3. WordPress's numbered addresses (/?p=126, /?page_id=9).
 RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(9)(&|$)
 RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/? [R=301,L]
 RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(1517|1520)(&|$)
@@ -126,7 +120,7 @@ RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/upcoming-exhibi
 RewriteCond %{QUERY_STRING} (^|&)(p|page_id)=(59)(&|$)
 RewriteRule ^(index\.php)?$ https://gordonsmithgallery.com/pages/volunteer? [R=301,L]
 
-# 5. Pages, exhibitions and events. Each rule covers the address and anything under it.
+# 4. Pages, exhibitions and events. Each rule covers the address and anything under it.
 RewriteRule ^curate/upcoming-exhibition/beyond-the-horizon(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/beyond-the-horizon? [R=301,NC,L]
 RewriteRule ^curate/upcoming-exhibition/unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
 RewriteRule ^curate/upcoming-exhibition/unfixed(/.*)?$ https://gordonsmithgallery.com/pages/exhibitions/unfixed? [R=301,NC,L]
@@ -265,7 +259,8 @@ RewriteRule ^venue(/.*)?$ https://gordonsmithgallery.com/pages/plan-your-visit? 
 RewriteRule ^visit(/.*)?$ https://gordonsmithgallery.com/pages/plan-your-visit? [R=301,NC,L]
 RewriteRule ^winter-appeal(/.*)?$ https://gordonsmithgallery.com/pages/donate? [R=301,NC,L]
 
-# 6. Documents, each to the page that holds it or what replaced it. And the sitemap.
+# 5. The old site's documents (PDF), each to the new page that holds it or replaced it.
+# And the sitemap.
 RewriteRule ^sitemap\.xml$ https://gordonsmithgallery.com/sitemap.xml? [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2017/07/GSF-Volunteer-Application-Form-2015\.pdf$ https://gordonsmithgallery.com/pages/volunteer? [R=301,NC,L]
 RewriteRule ^wp-content/uploads/2018/08/To_Gordon_With_Love_Website\.pdf$ https://gordonsmithgallery.com/pages/brilliance-gala? [R=301,NC,L]
@@ -303,7 +298,7 @@ RewriteRule ^wp-content/uploads/2026/04/GSF-Volunteer-Application-Form_202603\.p
 RewriteRule ^wp-content/uploads/2026/06/SMITH-ANNUAL-REPORT-2025\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
 RewriteRule ^wp-sitemap\.xml$ https://gordonsmithgallery.com/sitemap.xml? [R=301,NC,L]
 
-# 7. Everything else: the old home page, and the media library's pictures and other files,
-# whether or not they are still on the server (P-63).
+# 6. Everything else: the old home page, WordPress's own addresses, and the media library's
+# pictures and other files, whether or not they are still on the server (P-63).
 RewriteRule ^ https://gordonsmithgallery.com/? [R=301,L]
 </IfModule>

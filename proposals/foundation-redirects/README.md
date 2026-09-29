@@ -6,11 +6,13 @@ Michael, 2026-09-29: "This is 404s but is technically still up and was not corre
 
 ## Summary
 
-- **The file to upload:** `smithfoundation.co.htaccess`. Its rules go at the top of the `.htaccess` file in the old server's main folder.
+- **The file to upload:** `smithfoundation.co.htaccess`. On the old server it is named `.htaccess` and sits in the website's main folder.
+- **It needs nothing else on the server.** WordPress comes down at release (Michael, 2026-09-29: "The entire wordpress site will be coming down and not exist"). Every old address, WordPress's own included, then leads to the new site.
+- **The hosting account and the domain have to stay.** The file is read by the old server each time someone asks for an old address. With no server, nothing redirects ("After release").
 - **What it does:** sends 174 old addresses to their new pages on gordonsmithgallery.com with permanent (301) redirects. Anything else goes to the new home page.
 - **Don't upload it before release.** 29 of the 51 new pages are exhibition pages, which answer 404 on the live site until the new theme is published.
 - **One setting outside the file has to change too:** the domain's forwarding, at GoDaddy. Today about half of all visits never reach the old server ("What is wrong today").
-- **Tested** on Apache on this Mac: 2,309 requests, all answered as they should. Every new page answers on the review theme.
+- **Tested** on Apache on this Mac, as the only file on the server and beside WordPress: 4,628 requests, all answered as they should. Every new page answers on the review theme.
 
 ## What is wrong today
 
@@ -40,7 +42,7 @@ So the same old link gives the old page on one visit and an error on the next. N
 | --- | --- |
 | The WordPress export (2026-09-28): 44 pages, 35 exhibitions and fundraisers, 14 events, and the earlier addresses WordPress kept for 5 of them | 100 |
 | The Internet Archive's record of the site since 2017: pages since renamed or removed (`/curate/`, `/tickets/`, `/winter-appeal/`), lists (`/events/`, `/portfolio_category/past/`, `/product/`) and the sitemap | 40 |
-| Documents (PDF) that have a page to go to: 32 from the media library, 2 more from the Internet Archive | 34 |
+| Old addresses of documents (PDF) whose content has a page on the new site: 32 from the media library, 2 more from the Internet Archive | 34 |
 
 ## How each address was matched
 
@@ -66,20 +68,28 @@ The choices, decided by Michael on 2026-09-29 (P-63): "Those choices are approve
 | Pictures and other files in the media library | The new home page | Proposed: still served while they are on the old server. Michael decided otherwise ("Files") |
 | Supporters | Supporters | **If Supporters is held back at release** (`store-changes.md` §8c), change its row to `/pages/the-smith-foundation`, then `write` and `test`. Change it back when the page goes live |
 
-## Files
+## The old site's files
 
-- **Documents with a page to go to** go to that page. There are 34, all in the list.
-- **Pictures, videos and the other 7 documents** go to the new home page, whether or not the file is still on the server (P-63).
-- **What that changes elsewhere:** a picture from the old site that an old email or another website shows stops showing there. The new site uses none of them: its pictures are in the store's Files ("Checks").
-- **The media library can be deleted** from the server at any time. Nothing reads it once the rules are in.
+None of them has to stay on the old server. Each rule answers for an address, whether or not a file is behind it.
+
+| Old addresses | Go to, on the new site |
+| --- | --- |
+| 14 scholarship forms (PDF) | Scholarships |
+| 8 volunteer application forms (PDF) | Volunteer |
+| 6 Year in Review reports (PDF) | The Smith Foundation |
+| 3 from past fundraisers (PDF): the 2019 auction catalogue, two for To Gordon With Love | Brilliance Gala |
+| The *Unfixed* book and the *Endless Summer* booklet (PDF) | Their exhibitions' pages, which hold them |
+| The Music at the Smith rack card (PDF) | Music at the Smith |
+| Every picture and video, and the other 7 documents | The new home page (P-63) |
+
+**What that changes elsewhere:** a picture from the old site that an old email or another website shows stops showing there. The new site uses none of them: its pictures are in the store's Files ("Checks").
 
 ## What the file leaves alone
 
 | What | Why |
 | --- | --- |
-| WordPress's sign-in and admin (`/wp-login.php`, `/wp-admin/`) | So staff can still sign in to the old site. Its media library lists the files but shows no pictures, since their addresses redirect. Three lines in the file, marked, to delete when WordPress is removed |
 | `/.well-known/` | The host's checks that renew the security certificate. Without the certificate, no `https://` address redirects |
-| `/robots.txt` | The server has none once WordPress no longer answers, which tells search engines they may read every address. That is how they find the redirects |
+| `/robots.txt` | The server has none once WordPress is gone, which tells search engines they may read every address. That is how they find the redirects |
 | Any other website in the same hosting account | The rules apply to `smithfoundation.co` and `www.smithfoundation.co` only |
 
 ## On release day
@@ -93,8 +103,8 @@ After the new theme is published and the release scripts have run (`proposals/st
    ```
 
    If Supporters is held back, change its row first (above). For any other page that fails, fix the row, then `write` and `test`.
-2. **Keep a copy of the server's `.htaccess`.** In cPanel's File Manager, turn on "Show hidden files" in Settings, open `public_html`, and download `.htaccess`.
-3. **Add the file's rules.** Edit the server's `.htaccess` and paste everything in `smithfoundation.co.htaccess` at the very top, above what is there. Leave the rest: the host keeps its PHP settings in that file, and WordPress its own rules. Those rules no longer run for visitors, since ours answer first. If the server has no `.htaccess`, upload the file and rename it `.htaccess`.
+2. **Take WordPress down.** Keep a copy of what the Foundation wants to keep first. The export and the media library were saved on 2026-09-28 (`proposals/smith-foundation-site.md`, "Sources"). Then delete WordPress's files from `public_html` in cPanel's File Manager, its `.htaccess` among them ("Show hidden files" in Settings shows it).
+3. **Put the file in.** Upload `smithfoundation.co.htaccess` to `public_html` and rename it `.htaccess`. It can be the only file there. It also works before WordPress is deleted: its rules then go at the very top of the `.htaccess` that is there, and WordPress's sign-in stops opening, since every address redirects.
 4. **Clear the firewall's cache** (GoDaddy Website Security, Firewall, Clear cache). It keeps copies of pages, so the old answers can show for a while otherwise.
 5. **Check the server**, asking it directly:
 
@@ -113,13 +123,13 @@ After the new theme is published and the release scripts have run (`proposals/st
 
 ## After release
 
-- **Keep the hosting and the domain.** The redirects work only while the server answers and the domain points at it. Search engines need about a year to move everything over. Links on other sites need them for as long as the links exist.
-- **WordPress can be deleted** once nobody needs it. The rules work alone, as the only thing in `.htaccess`. Delete the three marked lines in them then.
-- **If the hosting is to end**, the redirects can move to Shopify: `smithfoundation.co` becomes a domain of the store, and the list becomes URL redirects there. The list would need a second form, since Shopify matches exact addresses only.
+- **Keep the hosting account and the domain.** The redirects work only while the server answers and the domain points at it. The account can be the host's smallest: it holds one file. Search engines need about a year to move everything over. Links on other sites need the redirects for as long as the links exist.
+- **The firewall** (GoDaddy Website Security) can stay or go. If it goes, the domain's address changes from the firewall's to the server's own, at GoDaddy.
+- **If the hosting account is to end too**, this file has nowhere to run. The redirects then move to Shopify: `smithfoundation.co` becomes a domain of the store, and the list becomes URL redirects there. Shopify matches exact addresses only, so the list needs a second form, and an address not in it shows the new site's "page not found" instead of the home page.
 
 ## Undo
 
-Put the copy of the old `.htaccess` back, or delete our rules from the top of the file, and clear the firewall's cache. Browsers remember a permanent redirect, so a visitor who followed one may keep being sent on for a while.
+Delete the file from the server, or put back what was there, and clear the firewall's cache. Browsers remember a permanent redirect, so a visitor who followed one may keep being sent on for a while.
 
 ## Checks
 
@@ -131,7 +141,7 @@ python3 proposals/foundation-redirects/redirects.py targets https://ed35ee-ea.my
 
 | Check | Result, 2026-09-29 |
 | --- | --- |
-| `test`: Apache 2.4.67 on this Mac, with the file at the top of its `.htaccess` and WordPress's rules under it. Every listed address, as written, without its last slash, in capitals, with a query, with a page under it, by its WordPress number, and as `www`. A picture that is still on the server, and one that is gone. Then what must be left alone | 2,309 of 2,309 |
+| `test`: Apache 2.4.67 on this Mac, twice. Once with the file alone on the server, WordPress deleted. Once with WordPress's files there and its rules under ours. Every listed address, as written, without its last slash, in capitals, with a query, with a page under it, by its WordPress number, and as `www`. WordPress's own addresses, a picture and an address that never existed. Then what must be left alone | 4,628 of 4,628 |
 | `targets`, the review theme | 51 of 51 new pages answer |
 | `targets`, the live site | 22 of 51. The 29 exhibition pages answer 404 until release, which is why the file waits |
 | Files and links on the old domain in the new site: 54 pages read on the review theme (the 50 new pages in the list and four more), and the repo searched | None |
