@@ -11,8 +11,14 @@
     Entries and editions             BreadcrumbList: Home, the list the page belongs to, the page
     A page of questions              FAQPage: each question and its answer (DS-160, Proposed)
 
-  - Events print their own with each row and card (gs-data-event). Editions keep Shopify's
-    Product data (meta-tags).
+  More kinds of page have their own snippet, rendered from here (DS-158, DS-159):
+
+    A lesson                         LearningResource with its video (gs-data-lesson)
+    A grouping, a portfolio          CollectionPage (gs-data-list)
+    A page, an article               WebPage, ContactPage, BlogPosting (gs-data-page)
+    An edition                       Product and VisualArtwork (gs-data-product)
+
+  - Events print their own with each row and card (gs-data-event).
   - An exhibition's artists are typed as names, some of them collectives, so they are given as
     what the exhibition is about, not as people.
   - A page of questions is a page whose text has two or more headings that end with a question
@@ -95,6 +101,10 @@
     assign crumb_name = 'shop.crumb' | t
     assign crumb_url = settings.shop_page.url
     assign here = label | default: product.title
+  elsif request.page_type == 'collection'
+    assign crumb_name = 'shop.crumb' | t
+    assign crumb_url = settings.shop_page.url
+    assign here = collection.title
   endif
 -%}
 {%- if show_gallery -%}
@@ -308,6 +318,18 @@
     }
   </script>
 {%- endif -%}
+
+{%- liquid
+  if type == 'lesson'
+    render 'gs-data-lesson', description: description
+  elsif type == 'collection_group' or request.page_type == 'collection'
+    render 'gs-data-list', description: description
+  elsif request.page_type == 'product'
+    render 'gs-data-product', label: label
+  elsif type == blank
+    render 'gs-data-page', description: description
+  endif
+-%}
 
 {%- if here != blank and crumb_name != blank and crumb_url != blank -%}
   <script type="application/ld+json">

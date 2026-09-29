@@ -25,7 +25,8 @@
     letters a search engine can't read (DS-156).
   - The link preview names the programme, as the title does, and says what its picture shows and
     how large it is (DS-155).
-  - Structured data for search and answer engines comes from gs-data (DS-154).
+  - Structured data for search and answer engines comes from gs-data (DS-154), an edition's
+    too, in place of Shopify's structured_data filter (DS-159).
 
   @example
   {% render 'meta-tags' %}
@@ -277,10 +278,6 @@
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}
-  <script type="application/ld+json">
-    {{ product | structured_data }}
-  </script>
-
   <meta
     property="og:price:amount"
     content="{{ product.price | money_without_currency | strip_html }}"

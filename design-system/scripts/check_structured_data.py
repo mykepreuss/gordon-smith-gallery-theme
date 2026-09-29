@@ -37,6 +37,12 @@ REQUIRED = {
     "FAQPage": ["mainEntity"],
     "Product": ["name", "offers"],
     "ProductGroup": ["name", "hasVariant|offers"],
+    "LearningResource": ["name", "url"],
+    "VideoObject": ["name", "thumbnailUrl", "uploadDate"],
+    "CollectionPage": ["name", "url"],
+    "WebPage": ["name", "url"],
+    "ContactPage": ["name", "url"],
+    "BlogPosting": ["headline", "datePublished"],
 }
 DATE_FIELDS = ("startDate", "endDate", "birthDate", "deathDate", "dateCreated")
 URL_FIELDS = ("url", "image", "item", "mainEntityOfPage")
