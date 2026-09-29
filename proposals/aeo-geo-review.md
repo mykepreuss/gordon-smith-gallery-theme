@@ -1,6 +1,6 @@
 # Review for answer engines and generative engines
 
-Status: **Step 1 built and decided by Michael, 2026-09-28** (DS-154 to DS-157; see "Built in step 1"). Michael, 2026-09-28: "Yes, start on step 1", then "DS-154 to DS-157 approved, merge the PR". Nothing in the store changed. Steps 2 to 4 wait for his go-ahead and the gallery's words.
+Status: **Step 1 built and decided by Michael, 2026-09-28. Steps 2 to 4 built 2026-09-28, for his review** (see "Built in steps 2 to 4"). Step 1: (DS-154 to DS-157; see "Built in step 1"). Michael, 2026-09-28: "Yes, start on step 1", then "DS-154 to DS-157 approved, merge the PR". Nothing in the store changed. Steps 2 to 4 wait for his go-ahead and the gallery's words.
 
 ## What this review asks
 
@@ -220,6 +220,58 @@ Left as they are:
 - **Descriptions the store already has** are Shopify's own, made from the page's text with the line breaks dropped ("Lonsdale AvenueNorth Vancouver"). The theme can't change them. They are recommendation 3c.
 - **An event's location**, when typed, is given by name only ("Main Floor"), without the gallery's address: the field can name a place elsewhere.
 - **The FAQ's structured data** (1h) needs the questions as fields, so it waits for step 4.
+
+## Built in steps 2 to 4
+
+Michael, 2026-09-28: "Proceed with step 2 ... and 3 ... 4". Built on `claude/aeo-steps-2-to-4`, on top of the other structured data branch (#85, DS-158 and DS-159), which it includes.
+
+| Step | What was done | Where | Decision |
+| --- | --- | --- | --- |
+| 2 | The 21 product titles are in plain letters | Store, live now | P-61 |
+| 2 | Descriptions for 40 pages, drafted from each page's own words and staged in a field only the new theme reads | Store, staged | DS-160 |
+| 2 | The 21 editions describe themselves: label, medium, edition, size. No store write and no new words | Theme | DS-160 |
+| 2 | Shopify's own run-together descriptions are recognised and replaced by the page's words | Theme | DS-160 |
+| 3 | The home page's description, in Theme settings | Theme setting, draft | DS-160 |
+| 3 | Alt text for 45 hero images and installation views, drafted from looking at each | Draft file, not written to the store | For the gallery |
+| 3 | Visiting questions for the FAQ, a biography for Gordon Smith | Drafts below | For the gallery |
+| 3 | Social profiles: three found on the Artists for Kids site | Gallery question 1.6 | For the gallery |
+| 4 | An exhibition's artists link to their pages, matched by name | Theme | DS-161 |
+| 4 | The FAQ is a page of questions in its structured data, read from the page's text | Theme | DS-162 |
+
+Step 4 needed no change to the content model. The artist names are matched as typed, and the FAQ's questions are read from its headings.
+
+Tested on a development theme, 15 pages, one or more of every kind: `check_structured_data.py` found 0 errors. The known error on edition pages is gone, since the titles are plain and the theme writes the edition's data itself (DS-159).
+
+### What the gallery still decides
+
+All in `proposals/gallery-questions.md` §10 and 1.6: the descriptions' words, the alt text, the FAQ's visiting questions, the biographies, the home page sentence and the social accounts. Nothing drafted here is on the live site.
+
+## Drafts for the gallery
+
+Made from words already on the site. Nothing here is written to a page.
+
+### Visiting questions for the FAQ (10.4)
+
+| Question | Answer, from Plan your visit |
+| --- | --- |
+| When is the gallery open? | Thursday to Saturday, 12 to 4 PM. |
+| How much is admission? | Admission to the Gordon Smith Gallery is by donation. |
+| Where is the gallery? | 2121 Lonsdale Avenue, North Vancouver, on the west side of Lonsdale Avenue, three blocks south of Exit 18 off the Trans Canada Highway. |
+| How do I get there by public transport? | From downtown Vancouver, take the SeaBus to Lonsdale Quay, then the 229 or 230 bus towards Upper Lonsdale. The stop at 21st and Lonsdale is across the street from the gallery. |
+| Where can I park? | One-hour street parking surrounds the gallery, and pay parking is on Lonsdale Avenue. There are a few underground spaces on P1 and P2, except on weekends and holidays. |
+| Is the gallery wheelchair accessible? | Yes. There are accessible washrooms, an elevator from the underground parking, accessible parking on P1 and P2, and a ramp to the south entrance from Lonsdale Avenue. |
+| Are assistance dogs welcome? | Yes. A water bowl is available on request. |
+| What can families do at the gallery? | Explore + Create is a drop-in art program for families with children ages 5 to 12, Saturdays from 1 to 3 PM. |
+
+The FAQ page would group its questions under two headings, "Visiting" and "Buying prints". With these, the page's structured data carries the visiting answers too (DS-162).
+
+### Gordon Smith's biography (10.5)
+
+From the Gordon and Marion page:
+
+> Gordon Appelbe Smith, CM, OBC, LLD (1919 to 2020) is a cornerstone in the history of Modernist painting in Canada. His works are held in the collections of the National Gallery of Canada, the Vancouver Art Gallery, the Museum of Modern Art in New York, and the Victoria and Albert Museum in London.
+
+No drafts for Jack Shadbolt or Bill Reid: the site has no words about them to draw from, and a biography shouldn't come from anywhere else without the gallery's say.
 
 ## Limits of this review
 

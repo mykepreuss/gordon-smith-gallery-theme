@@ -126,7 +126,7 @@ Values the theme's settings need (Online Store, Themes, Customize, Theme setting
 
 Script: `release.py products` (dry run for the gallery: `dry-runs/2026-09-26/products.md`; the 21 titles and descriptions before any change: `snapshots/prints-descriptions-2026-09-26.json`).
 
-The 21 limited editions' titles carry Unicode italic letters (L-03). At release, each title becomes the same words in plain text (`proposals/store-writes/shop.py`, `plain()`). The new theme shows the label fields, so this changes the admin, order emails, search and the browser tab. The live theme shows the titles, which is why this waits for release.
+**The titles are done: changed to plain letters on 2026-09-28, ahead of release, at Michael's request (P-61; `proposals/store-writes/README.md`). `release.py products` now finds them unchanged and changes the descriptions only.** As planned before that: the 21 limited editions' titles carry Unicode italic letters (L-03). At release, each title becomes the same words in plain text (`proposals/store-writes/shop.py`, `plain()`). The new theme shows the label fields, so this changes the admin, order emails, search and the browser tab. The live theme shows the titles, which is why this waits for release.
 
 Rollback: restore each title from `proposals/store-writes/snapshots/prints-2026-09-25.json`.
 
@@ -189,6 +189,18 @@ The same as the Artists for Kids pages (§8b): published with a title only and `
 **Supporters waits for the gallery** (P-43, `gallery-questions.md` 8.1). It is in `HOLD_AT_RELEASE`, so `staged` and `unhide` skip it. If the gallery hasn't confirmed the list by release, the same day: take Supporters out of the new theme's menu (`menuUpdate`, the other items keep their IDs), take `foundation-supporters` out of the card group `foundation-take-part`, and hide the page. When the gallery confirms: take it out of `HOLD_AT_RELEASE`, run the three steps for it, put it back in the menu and the group, and link Donate's "donor page" to it (the one change to Donate's staged text still to make).
 
 Rollback: set `seo.hidden` back to 1 on each page, or hide the pages. The exhibitions and cards can stay: the old theme reads none of them.
+
+## 8d. Descriptions for search engines at release (DS-160)
+
+The 40 pages' written descriptions are staged in `custom.release_description` (`proposals/store-writes/aeo/descriptions.json`), which only the new theme reads. The home page's is in Theme settings, Gallery details, Home page description.
+
+At release, after the gallery approves the words:
+
+- Each page's description moves to its search engine listing (the page's `global.description_tag` field; in the admin, the page's "Search engine listing", Meta description). The new theme then reads it as the store's description.
+- The `custom.release_description` values and the definition can then be deleted. Until they are, the theme still reads them first, so the two must say the same.
+- The store's own description (Online Store, Preferences, Meta description) can take the home page's words too, for checkout and emails. The theme doesn't need it.
+
+Rollback: clear each page's Meta description. The theme falls back to the page's own words.
 
 ## 9. Frame products at release (P-19)
 

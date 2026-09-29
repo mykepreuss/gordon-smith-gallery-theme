@@ -19,7 +19,7 @@
     settings. Shopify makes a description from a page's or a product's text when the store has
     none, and drops the spaces between its lines ("AvenueNorth Vancouver"). A description that
     starts as the text does is that one, so the page's own words are used instead, and an
-    edition describes itself by its label, medium, edition and size (DS-158, Proposed).
+    edition describes itself by its label, medium, edition and size (DS-160, Proposed).
   - A work's and an edition's title is its label in plain letters, "Artist, Title, year", from
     the entry's or the product's fields, never the product title, whose italics are Unicode
     letters a search engine can't read (DS-156).
@@ -74,7 +74,10 @@
       for fact in facts
         assign value = f[fact].value | strip
         if value != blank
-          assign entry_text = entry_text | append: '. ' | append: value
+          # Each fact starts with a capital. Not capitalize, which lower-cases the rest.
+          assign first_char = value | slice: 0 | upcase
+          assign rest = value | slice: 1, value.size
+          assign entry_text = entry_text | append: '. ' | append: first_char | append: rest
         endif
       endfor
       assign entry_text = entry_text | truncate: 300
@@ -139,7 +142,7 @@
     endcase
   endif
   # Shopify's own description, made from the text with its spaces dropped: it starts as the text
-  # does once both have lost their spaces. The page's own words are used instead (DS-158).
+  # does once both have lost their spaces. The page's own words are used instead (DS-160).
   assign stored = page_description
   if stored != blank and made_from != blank
     assign nb = ' '
