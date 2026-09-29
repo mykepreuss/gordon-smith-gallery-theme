@@ -11,6 +11,8 @@
                                              collage without its white border, the black bars cut from seven
                                              lesson covers (all replaced in place, same IDs), and the lesson
                                              covers' alt text cleared: each cover's title follows it (DS-58)
+  python3 files.py camp <folder>             the nine Paradise Valley camp photos (DS-172), from the folder
+                                             Michael saved them to; then run urls
   python3 files.py replace <export folder>   upload fresh web copies over pictures already in Files
                                              (fileUpdate, same IDs): used once, 2026-09-27, when the
                                              first upload had enlarged the smaller pictures to 3,000 px
@@ -141,6 +143,32 @@ IMAGES = {
                        "Clay tiles pressed with fossil and shell shapes, drying on a board"),
 }
 
+# The Paradise Valley camp photos, one file each (DS-172, Michael, 2026-09-28), in place of the one
+# picture of nine on the camp page. They are the nine in afk-paradise-valley-camp.jpg, each redrawn
+# larger at 4:3 with ChatGPT (small details, faces and edges are the tool's, not the camera's): the
+# gallery's own files would replace them in place (fileUpdate, same IDs).
+# key: (the file Michael sent, the name in Files, alt text)
+CAMP = {
+    "pv-collage": ("ChatGPT Image Sep 27, 2026, 03_57_15 PM-1.png", "afk-paradise-valley-collage.jpg",
+                   "Campers in aprons making collages at a long picnic table under the trees, a teacher looking on"),
+    "pv-studio": ("ChatGPT Image Sep 27, 2026, 03_57_15 PM-2.png", "afk-paradise-valley-studio.jpg",
+                  "Two campers smiling at a studio table covered in coloured paper, magazines and scissors"),
+    "pv-cabin": ("ChatGPT Image Sep 27, 2026, 03_57_16 PM-3.png", "afk-paradise-valley-cabin.jpg",
+                 "Campers and teachers lined up along the railing of a cedar cabin's porch in the forest"),
+    "pv-archery": ("ChatGPT Image Sep 27, 2026, 03_57_16 PM-4.png", "afk-paradise-valley-archery.jpg",
+                   "Campers in a line drawing their bows at a covered archery range in the forest"),
+    "pv-canoe": ("ChatGPT Image Sep 27, 2026, 03_57_17 PM-5.png", "afk-paradise-valley-canoe.jpg",
+                 "Two campers in life jackets paddling a canoe on green river water, seen through the leaves"),
+    "pv-dock": ("ChatGPT Image Sep 27, 2026, 03_57_17 PM-6.png", "afk-paradise-valley-dock.jpg",
+                "A camper in an apron sitting on a wooden dock by the water, drawing in a sketchbook"),
+    "pv-forest": ("ChatGPT Image Sep 27, 2026, 03_57_18 PM-7.png", "afk-paradise-valley-forest.jpg",
+                  "Campers sitting on the forest floor among the ferns, drawing in their sketchbooks"),
+    "pv-painting": ("ChatGPT Image Sep 27, 2026, 03_57_18 PM-8.png", "afk-paradise-valley-painting.jpg",
+                    "Three campers kneeling on the grass beside their paintings and jars of water"),
+    "pv-drawing": ("ChatGPT Image Sep 27, 2026, 03_57_19 PM-9.png", "afk-paradise-valley-drawing.jpg",
+                   "Campers lying and sitting on the grass with their drawing boards, smiling at the camera"),
+}
+
 # key: (the old site's address, after ASSETS; the name in Files)
 PDFS = {
     "guide-art-camp": ("documents/learn/learning-guides/Lessons-from-Art-Camp_Sara-Jeanne-Bourget_2025.pdf", "afk-lessons-from-art-camp-sara-jeanne-bourget-2025.pdf"),
@@ -251,6 +279,21 @@ def upload(export):
         print(f"PDFs {min(i + 5, len(pdfs))}/{len(pdfs)}", flush=True)
 
 
+def camp(folder):
+    """Web copies of the camp photos, uploaded unless they're in Files already."""
+    import tempfile
+    folder = pathlib.Path(folder).expanduser()
+    out = pathlib.Path(tempfile.mkdtemp())
+    created = json.loads(CREATED.read_text())
+    todo = [(f"img:{k}", name, alt) for k, (_src, name, alt) in CAMP.items() if f"img:{k}" not in created]
+    for key, name, _alt in todo:
+        web_copy(folder / CAMP[key[4:]][0], out / name)
+    if todo:
+        created.update(upload_batch(todo, out, "IMAGE", "image/jpeg"))
+        CREATED.write_text(json.dumps(created, indent=1, sort_keys=True))
+    print(f"camp photos uploaded: {len(todo)}", flush=True)
+
+
 REPLACE = """mutation Replace($files: [FileUpdateInput!]!) {
   fileUpdate(files: $files) { files { id } userErrors { field message } }
 }"""
@@ -358,3 +401,5 @@ if __name__ == "__main__":
         replace(sys.argv[2])
     elif step == "revise":
         revise(sys.argv[2])
+    elif step == "camp":
+        camp(sys.argv[2])

@@ -46,14 +46,16 @@ PROGRAMME = {"artists-for-kids", "the-smith-foundation", "public-programs-1", "s
 # The Artists for Kids pages made before release (P-35, proposals/artists-for-kids-integration.md): they
 # carry the live theme's On Now template name until now, so the live site shows only their title.
 AFK_PROGRAMME = {"classes-and-camps", "schools-and-teachers", "after-school-art", "day-camps",
-                 "paradise-valley-summer-camp", "gallery-program", "artists-in-residence", "studio-art-academy",
+                 "gallery-program", "artists-in-residence", "studio-art-academy",
                  "learning-guides", "learning-kits", "artreach-videos", "professional-development",
                  "awards-and-scholarships"}
 # Support Artists for Kids: its ways to give follow all of its text, as on Donate (design review 2026-09-27).
 AFK_STANDARD = {"artist-in-residence-amelia-butcher", "artist-in-residence-mark-johnsen",
                 "artist-in-residence-becky-bair", "artist-in-residence-sara-jeanne-bourget",
                 "support-artists-for-kids"}
-AFK_NEW = AFK_PROGRAMME | AFK_STANDARD
+# Paradise Valley: nine camp photos set into its text as a story (DS-172).
+AFK_STORY = {"paradise-valley-summer-camp"}
+AFK_NEW = AFK_PROGRAMME | AFK_STANDARD | AFK_STORY
 # The Smith Foundation's pages made before release the same way (P-35, P-42; proposals/smith-foundation-site.md),
 # on the standard page template. Supporters waits for the gallery to confirm its donor list (P-43,
 # gallery-questions.md 8.1): until then it stays hidden at release, and its card leaves the Foundation page's
@@ -64,7 +66,7 @@ HOLD_AT_RELEASE = {"smith-foundation-supporters"}
 EVENTS_NEW = {"past-events", "current-events"}
 NEW_PAGES = AFK_NEW | FOUNDATION_NEW | EVENTS_NEW
 # Story pages: long reads whose text is one column with its pictures set into it (DS-145).
-STORY = {"gordon-and-marion", "brilliance-gala", "plan-your-visit", "donate"}
+STORY = {"gordon-and-marion", "brilliance-gala", "plan-your-visit", "donate"} | AFK_STORY
 HIDDEN_AT_RELEASE = {"exhibition-one-hundred-artists-deep", "exhibition-from-the-ground",
                      "exhibition-stitched-merging-photography-and-textile-practices", "exhibition-playhouse",
                      "exhibition-prevailing-landscapes", "exhibition-the-art-of-conversation", "exhibitions-1",
