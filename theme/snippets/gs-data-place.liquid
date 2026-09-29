@@ -52,7 +52,7 @@
   assign open_days = open_days | split: ','
 
   assign profiles = ''
-  assign socials = 'social_instagram,social_facebook,social_youtube,social_vimeo,social_linkedin' | split: ','
+  assign socials = 'social_instagram,social_facebook,social_x,social_youtube,social_vimeo,social_linkedin' | split: ','
   for key in socials
     if settings[key] != blank
       assign profiles = profiles | append: settings[key] | append: '|'
