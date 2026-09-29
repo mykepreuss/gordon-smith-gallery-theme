@@ -1,7 +1,10 @@
 {% doc %}
   A lesson as structured data (schema.org LearningResource, DS-158): an ArtReach video from Artists
   for Kids, with its grade levels, the day it was posted, what it makes and its video. It says
-  what the lesson's page says. gs-data prints the crumb.
+  what the lesson's page says. gs-data prints the crumb. The lesson has one name for machines
+  (@id), the same in the ArtReach videos page's list, and the page names it as what it is
+  about (DS-163). The works from the collection that inspired it are left to the page: its
+  list is paged by gs-work-grid.
 
   - The video (VideoObject) needs a picture and a date to be read as a video: the lesson's cover,
     else YouTube's own picture of the video, and the day the lesson was posted. Without both, the
@@ -55,10 +58,13 @@
     {
       "@context": "https://schema.org",
       "@type": "LearningResource",
+      "@id": {{ canonical_url | append: '#lesson' | json }},
+      "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} },
+      "learningResourceType": "Video lesson",
       "name": {{ lesson.title.value | json }},
       "url": {{ canonical_url | json }},
       "inLanguage": {{ request.locale.iso_code | json }},
-      "provider": { "@type": "Organization", "name": {{ 'general.site_title.artists_for_kids' | t | json }} }
+      "provider": {% render 'gs-data-org', programme: 'Artists for Kids' %}
       {%- if words != blank -%}
         ,"description": {{ words | json }}
       {%- endif -%}
@@ -83,4 +89,6 @@
       {%- endif -%}
     }
   </script>
+  {%- assign lesson_id = canonical_url | append: '#lesson' -%}
+  {%- render 'gs-data-webpage', subject: lesson_id, name: lesson.title.value, description: words, image: lesson.cover.value, programme: 'Artists for Kids', crumb: true -%}
 {%- endif -%}

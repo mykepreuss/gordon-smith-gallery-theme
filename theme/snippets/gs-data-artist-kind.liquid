@@ -1,0 +1,28 @@
+{% doc %}
+  Whether an artist entry is a person or a group, for structured data (DS-164): prints Person or
+  Organization. An artist entry can be a collective or a co-operative ("T&T Collective", "West
+  Baffin Eskimo Co-operative"), and the entry has no field that says so. Until it has, the
+  groups are named in Theme settings, Permanent Collection, one to a line, and matched whole,
+  without regard to capitals. Every other artist is a person. Nothing is read from the name
+  itself: "Pat and Rosemarie Keough" are two people and "Xwalacktun" is one.
+
+  Capture the output and strip it.
+
+  @param {string} name - The artist's name, as the entry has it
+
+  @example
+  {%- capture kind -%}{%- render 'gs-data-artist-kind', name: artist.name.value -%}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign key = name | strip | downcase
+  assign groups = settings.artist_groups | downcase | newline_to_br | strip_newlines | split: '<br />'
+  assign kind = 'Person'
+  for group in groups
+    assign group_key = group | strip
+    if group_key != blank and group_key == key
+      assign kind = 'Organization'
+      break
+    endif
+  endfor
+  echo kind
+-%}

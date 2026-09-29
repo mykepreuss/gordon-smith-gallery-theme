@@ -1,0 +1,169 @@
+{% doc %}
+  What a list page lists, as structured data (schema.org ItemList, DS-163), so the page that
+  holds the list says so: the Artists page names every artist, the three exhibition pages their
+  exhibitions, the ArtReach videos page its lessons, the Shop its portfolios. Each page is the
+  one chosen for that list in Theme settings. Any other page prints nothing.
+
+  - Each item is named as on its own page and has the same name for machines (@id) as there, so
+    the list and the pages are read as the same things.
+  - Artists are in the order of the page, by sort name (surname first). Exhibitions and lessons
+    are in the page's order (gs-exhibition-index, gs-lesson-index).
+  - An exhibition without a page of its own (no summary or text) is named without an address,
+    as the page shows it without a link.
+  - Events are printed with their rows (gs-data-event), so the events pages list nothing here.
+
+  The list's name for machines is the page's address and "#list"; gs-data-page names it as what
+  the page is mainly about.
+
+  Prints "true" before the script when it printed a list, for the caller to read.
+
+  @example
+  {%- capture listed -%}{%- render 'gs-data-index' -%}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign origin = shop.url
+  assign kind = ''
+  if page.id == settings.artists_page.id
+    assign kind = 'artists'
+  elsif page.id == settings.exhibitions_on_now_page.id
+    assign kind = 'exhibitions'
+    assign status = 'on-now'
+    assign order = 'asc'
+  elsif page.id == settings.exhibitions_upcoming_page.id
+    assign kind = 'exhibitions'
+    assign status = 'upcoming'
+    assign order = 'asc'
+  elsif page.id == settings.exhibitions_past_page.id
+    assign kind = 'exhibitions'
+    assign status = 'past'
+    assign order = 'desc'
+  elsif page.id == settings.lessons_page.id
+    assign kind = 'lessons'
+  elsif page.id == settings.shop_page.id
+    assign kind = 'portfolios'
+  endif
+  assign list_id = canonical_url | append: '#list'
+-%}
+{%- capture items -%}
+  {%- case kind -%}
+    {%- when 'artists' -%}
+      {%- paginate shop.metaobjects.artist.values by 250 -%}
+        {%- liquid
+          assign rows = ''
+          for a in shop.metaobjects.artist.values
+            assign key = a.sort_name.value | default: a.name.value | downcase | strip
+            capture kind
+              render 'gs-data-artist-kind', name: a.name.value
+            endcapture
+            assign kind = kind | strip
+            capture row
+              echo '{ "@type": "' | append: kind | append: '", "@id": '
+              echo a.system.url | prepend: origin | append: '#artist' | json
+              echo ', "name": '
+              echo a.name.value | json
+              echo ', "url": '
+              echo a.system.url | prepend: origin | json
+              echo ' }'
+            endcapture
+            assign rows = rows | append: key | append: '~~key~~' | append: row | append: '~~row~~'
+          endfor
+          assign rows = rows | split: '~~row~~' | sort
+        -%}
+        {%- for row in rows -%}
+          { "@type": "ListItem", "position": {{ forloop.index }}, "item": {{ row | split: '~~key~~' | last }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      {%- endpaginate -%}
+    {%- when 'exhibitions' -%}
+      {%- capture ids -%}{%- render 'gs-exhibition-index', status: status, order: order -%}{%- endcapture -%}
+      {%- assign ids = ids | strip | split: ',' -%}
+      {%- paginate shop.metaobjects.exhibition.values by 250 -%}
+        {%- for id in ids -%}
+          {%- assign n = id | plus: 0 -%}
+          {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
+            {%- liquid
+              assign linked = false
+              if entry.summary.value != blank or entry.body.value != blank
+                assign linked = true
+              endif
+            -%}
+            {
+              "@type": "ListItem",
+              "position": {{ forloop.parentloop.index }},
+              "item": {
+                "@type": "ExhibitionEvent",
+                {%- if linked -%}
+                  "@id": {{ entry.system.url | prepend: origin | append: '#exhibition' | json }},
+                  "url": {{ entry.system.url | prepend: origin | json }},
+                {%- endif -%}
+                "name": {{ entry.title.value | json }},
+                {%- if entry.dates_note.value != blank -%}
+                  "startDate": {{ entry.start_date.value | date: '%Y-%m' | json }},
+                {%- else -%}
+                  "startDate": {{ entry.start_date.value | date: '%Y-%m-%d' | json }},
+                  {%- if entry.end_date.value != blank -%}
+                    "endDate": {{ entry.end_date.value | date: '%Y-%m-%d' | json }},
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if entry.key_image.value != blank -%}
+                  "image": {{ entry.key_image.value | image_url: width: 1200 | prepend: 'https:' | json }},
+                {%- endif -%}
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "location": {% render 'gs-data-place' %},
+                "organizer": {% render 'gs-data-org', programme: entry.programme.value %}
+              }
+            }
+          {%- endfor -%}
+          {%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      {%- endpaginate -%}
+    {%- when 'lessons' -%}
+      {%- capture ids -%}{%- render 'gs-lesson-index' -%}{%- endcapture -%}
+      {%- assign ids = ids | strip | split: ',' -%}
+      {%- paginate shop.metaobjects.lesson.values by 250 -%}
+        {%- for id in ids -%}
+          {%- assign n = id | plus: 0 -%}
+          {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+            {
+              "@type": "ListItem",
+              "position": {{ forloop.parentloop.index }},
+              "item": {
+                "@type": "LearningResource",
+                "@id": {{ lesson.system.url | prepend: origin | append: '#lesson' | json }},
+                "name": {{ lesson.title.value | json }},
+                "url": {{ lesson.system.url | prepend: origin | json }}
+              }
+            }
+          {%- endfor -%}
+          {%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      {%- endpaginate -%}
+    {%- when 'portfolios' -%}
+      {%- for portfolio in settings.portfolio_collections -%}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.index }},
+          "item": {
+            "@type": "CollectionPage",
+            "@id": {{ portfolio.url | prepend: origin | append: '#webpage' | json }},
+            "name": {{ portfolio.title | json }},
+            "url": {{ portfolio.url | prepend: origin | json }}
+          }
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+  {%- endcase -%}
+{%- endcapture -%}
+{%- assign items = items | strip -%}
+{%- if items != blank -%}
+  true
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": {{ list_id | json }},
+      "name": {{ page.title | json }},
+      "url": {{ canonical_url | json }},
+      "itemListElement": [{{ items }}]
+    }
+  </script>
+{%- endif -%}

@@ -63,6 +63,72 @@ These are in `aeo-geo-review.md` too, steps 2 to 4:
 | An artist's own website as `sameAs` | The first build included it. `main`'s artist data doesn't. The field is filled for many artists | Michael |
 | Exhibition videos | An exhibition's Videos and publications (DS-138) have no date or picture, which a video needs | Agent, if fields are added |
 
+## The graph (DS-163 to DS-165, Proposed)
+
+Michael, 2026-09-28: "I have a feeling we can do much better with the schema.org implementation and we're not close to done yet." He was right. The data was valid, and that was all.
+
+### What an audit found
+
+Read from 27 pages of the build before this one, against schema.org's vocabulary and Google's field lists:
+
+| Finding | Measure |
+| --- | --- |
+| Separate notes, not a graph | 82 of 326 things had a name for machines (`@id`). An artist on a work's page and on their own page were two unrelated things |
+| No page said what it is about | No `mainEntity` on any entry page |
+| An exhibition's artists were plain things | 19 names on *Collect, Assemble, Gather*, none tied to the 171 artist pages |
+| List pages said nothing | Artists, On now, Upcoming, Past exhibitions, Permanent Collection, ArtReach videos and Shop were bare pages |
+| Three organisations, one described | Artists for Kids and the Foundation were a name |
+| Every artist entry was a person | Three are groups: T&T Collective, Vancouver School Collective, West Baffin Eskimo Co-operative |
+| Fields Google recommends | Events: no status, no registration link. Gallery: no logo, no map position |
+
+### What changed
+
+| Thing | Before | Now |
+| --- | --- | --- |
+| Names for machines | 82 of 326 | 629 of 1,103 on 33 pages. The rest are parts that need none (an address, an offer, a list row) |
+| Entry pages | The thing alone | The thing, the page that is about it, and the crumb, each naming the others |
+| Exhibition | Dates, place, summary, one picture, names | Also: status, its organisation, installation views, works from the collection, reception, events, and artists as the collection's own where names match (13 of 19) |
+| Work | Label and facts | Also: every picture with its size, themes, the exhibitions that showed it, its edition in the Shop |
+| Artist | A person | A person or a group, on a profile page, with their exhibitions and own website |
+| List pages | Bare | Artists (171), exhibitions by status, lessons (27), portfolios |
+| Organisations | The gallery | Also Artists for Kids and the Foundation, each with its page and logo |
+| Gallery | Address, hours, phone | Also logo, map position, directions, description |
+| Event | Separate copies in each list | One event by name, with status, organisation and registration link |
+| Edition with options | One product | A group of products, one for each option |
+
+### The check
+
+`check_structured_data.py` now fails on a type or property schema.org doesn't have, on a property used on a type it isn't for, and on a mention of something the page doesn't describe. It warns about fields Google recommends. On 35 pages of the development theme: 0 errors, 18 warnings, all of them facts the store doesn't hold (an event without a summary or an end time, the gallery without social links).
+
+The vocabulary check caught one real fault while this was built: an edition with options carried artwork fields on a type that doesn't take them.
+
+### Decisions for Michael
+
+| # | Decision | Built as | Alternative |
+| --- | --- | --- | --- |
+| 1 | DS-163: one graph | As above | Any part can be left out |
+| 2 | DS-163: an artist's own website as `sameAs` | Included. Gordon Smith's is his estate's page at Equinox Gallery | Leave out. #85's rework had dropped it |
+| 3 | DS-164: groups | Three names in Theme settings | A field on the artist entry (a store write) |
+| 4 | DS-165: an event's room | Inside the gallery, with its address | The name alone, as DS-154 had it. Google then reads no place for those events |
+| 5 | Pat and Rosemarie Keough | One person, as before | Two artist entries, or a group |
+
+### What would make it better still, and needs facts
+
+| Item | Why it matters | Needs |
+| --- | --- | --- |
+| Wikidata and Getty (ULAN) addresses for artists | The strongest way to say which Gordon Smith. Assistants lean on these | A field on the artist entry, and the addresses |
+| The gallery's social profiles and a Wikipedia or Wikidata entry | Ties the site to the gallery's other presences | The gallery |
+| How the three organisations are related | The data names each and doesn't say which is part of which | The gallery. The brand guide calls the Gallery the umbrella identity, which is about logos |
+| The organisations' kinds | The Foundation is likely a charity (NGO), Artists for Kids an education programme. Built as plain organisations | The gallery |
+| Admission | "By donation" is text. Engines want free or a price | Michael |
+| Returns and shipping on editions | Google's shopping results ask for both | Michael, from the store's policies |
+| An event's price | Registration links have no price, so an offer has an address only | The event entry, if wanted |
+| A work's height and width as numbers | The size is text, and the order of its sides isn't recorded | The gallery |
+| Copyright and licence for images of works | Google's image results show a licence when given | The gallery |
+| Curators as people | The curator credit is one line of text | A field, if wanted |
+| Accessibility of the building | Engines answer "is it wheelchair accessible" from data | The gallery |
+| An exhibition's videos | A video needs a date and a picture. The links have neither | Fields, if wanted |
+
 ## A side effect to know about
 
 Pushing to a named development theme made it the CLI's current development theme. Another session's `shopify theme dev` then synced its files into `schema-seo`, which is how this build's first test read stale pages. Later pushes here name the theme by its ID. Sessions that run `theme dev` may now be previewing on `schema-seo`: restart `theme dev` to give it its own theme again.

@@ -1,0 +1,30 @@
+{% doc %}
+  A picture as structured data (schema.org ImageObject, DS-163): its address at 1200 px wide,
+  its size, and what it shows, from its alt text in Files. One JSON object without its script
+  tag. Prints null when there is no picture, so a caller can test for it first or not.
+
+  @param {object} [image] - An image, or a product's media
+
+  @example
+  "primaryImageOfPage": {% render 'gs-data-image', image: page.metafields.custom.hero_image.value %}
+{% enddoc %}
+{%- if image != blank -%}
+  {%- liquid
+    assign width = image.width | default: 1200 | at_most: 1200
+    assign ratio = image.aspect_ratio | default: image.preview_image.aspect_ratio
+  -%}
+  {
+    "@type": "ImageObject",
+    "url": {{ image | image_url: width: 1200 | prepend: 'https:' | json }},
+    "contentUrl": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+    {%- if image.width and ratio -%}
+      ,"width": {{ width | json }}
+      ,"height": {{ width | divided_by: ratio | round | json }}
+    {%- endif -%}
+    {%- if image.alt != blank -%}
+      ,"caption": {{ image.alt | json }}
+    {%- endif -%}
+  }
+{%- else -%}
+  null
+{%- endif -%}

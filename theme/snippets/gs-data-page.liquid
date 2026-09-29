@@ -9,9 +9,18 @@
   question and the text up to the next heading is its answer, so the FAQ needs no fields of its
   own. The text is the page's, as gs-page-text picks it (DS-39).
 
+  A page an artist entry names as its About page (Gordon and Marion, for Gordon Smith) says it
+  is about that artist, by the artist's own name for machines.
+
+  What a page is mainly about (DS-163): a list page, its list (gs-data-index); Artists for Kids'
+  and the Foundation's own pages, the organisation, printed here in full with its logo; Plan
+  your visit and Contact, the gallery. The page's own picture is given with its size and what
+  it shows.
+
   The home page has the site and the gallery (gs-data), so it prints nothing here.
 
   @param {string} [description] - The page's description, as meta-tags works it out
+  @param {object} [image] - The page's own picture, as meta-tags picks it
 
   @example
   {%- render 'gs-data-page', description: description -%}
@@ -22,20 +31,14 @@
   assign gallery_id = home | append: '#gallery'
   assign site_name = 'general.site_title.gallery' | t
 -%}
-{%- capture gallery -%}
-  { "@type": "ArtGallery", "@id": {{ gallery_id | json }}, "name": {{ site_name | json }} }
-{%- endcapture -%}
+{%- capture gallery -%}{%- render 'gs-data-org' -%}{%- endcapture -%}
 {%- if request.page_type == 'page' -%}
   {%- liquid
     assign kind = 'WebPage'
     if page.id == settings.contact_page.id
       assign kind = 'ContactPage'
     endif
-    assign image = page.metafields.custom.hero_image.value
-    capture brand
-      render 'gs-programme', value: page.metafields.custom.programme.value
-    endcapture
-    assign brand = brand | strip
+    assign image = image | default: page.metafields.custom.hero_image.value
 
     # The questions and answers in the page's text (DS-162).
     assign body = page.content
@@ -79,29 +82,89 @@
     if total > 1
       assign kind = 'FAQPage'
     endif
+
+    # What the page is mainly about, when it is one thing (DS-163).
+    assign subject = ''
+    assign own_org = ''
+    if page.id == settings.artists_for_kids_page.id
+      assign own_org = 'Artists for Kids'
+      assign subject = home | append: '#artists-for-kids'
+    elsif page.id == settings.foundation_page.id
+      assign own_org = 'Smith Foundation'
+      assign subject = home | append: '#foundation'
+    elsif page.id == settings.visit_page.id or page.id == settings.contact_page.id
+      assign subject = gallery_id
+    endif
+    if page.id == settings.collection_page.id
+      assign kind = 'CollectionPage'
+      assign subject = home | append: '#collection'
+    endif
+    capture listed
+      render 'gs-data-index'
+    endcapture
+
+    # The artist a page is about: the artist entry that names this page as its About page
+    # (Gordon and Marion, for Gordon Smith). Read inside its own paginate tag (DS-152).
+    assign about_id = ''
+    assign about_name = ''
+    paginate shop.metaobjects.artist.values by 250
+      for a in shop.metaobjects.artist.values
+        if a.about_page.value.id == page.id
+          assign about_id = a.system.url | prepend: origin | append: '#artist'
+          assign about_name = a.name.value
+          assign about_url = a.system.url | prepend: origin
+          break
+        endif
+      endfor
+    endpaginate
+    if listed contains 'true'
+      assign kind = 'CollectionPage'
+      assign subject = canonical_url | append: '#list'
+    endif
   -%}
+  {{ listed | remove_first: 'true' }}
+  {%- if own_org != blank -%}
+    {%- capture org -%}{%- render 'gs-data-org', programme: own_org, full: true -%}{%- endcapture -%}
+    <script type="application/ld+json">
+      {{ org | strip | replace_first: '{', '{ "@context": "https://schema.org",' }}
+    </script>
+  {%- endif -%}
+  {%- if page.id == settings.collection_page.id -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Collection",
+        "@id": {{ subject | json }},
+        "name": {{ page.title | json }},
+        "url": {{ canonical_url | json }},
+        "provider": {{ gallery }}
+        {%- if description != blank -%}
+          ,"description": {{ description | json }}
+        {%- endif -%}
+      }
+    </script>
+  {%- endif -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": {{ kind | json }},
+      "@id": {{ canonical_url | append: '#webpage' | json }},
       "name": {{ page.title | json }},
       "url": {{ canonical_url | json }},
       "inLanguage": {{ request.locale.iso_code | json }},
       "isPartOf": { "@type": "WebSite", "@id": {{ home | append: '#website' | json }}, "name": {{ site_name | json }}, "url": {{ home | json }} },
-      "publisher":
-      {%- case brand -%}
-        {%- when 'artists-for-kids' -%}
-          { "@type": "Organization", "name": {{ 'general.site_title.artists_for_kids' | t | json }} }
-        {%- when 'foundation' -%}
-          { "@type": "Organization", "name": {{ 'general.site_title.foundation' | t | json }} }
-        {%- else -%}
-          {{ gallery }}
-      {%- endcase -%}
+      "publisher": {% render 'gs-data-org', programme: page.metafields.custom.programme.value %}
       {%- if description != blank -%}
         ,"description": {{ description | json }}
       {%- endif -%}
       {%- if image != blank -%}
-        ,"primaryImageOfPage": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+        ,"primaryImageOfPage": {% render 'gs-data-image', image: image %}
+      {%- endif -%}
+      {%- if about_id != blank -%}
+        ,"about": { "@type": "Person", "@id": {{ about_id | json }}, "name": {{ about_name | json }}, "url": {{ about_url | json }} }
+      {%- endif -%}
+      {%- if subject != blank and total < 2 -%}
+        ,"mainEntity": { "@id": {{ subject | json }} }
       {%- endif -%}
       {%- if total > 1 -%}
         ,"mainEntity": [
