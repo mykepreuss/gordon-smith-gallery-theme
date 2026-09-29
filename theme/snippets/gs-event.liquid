@@ -16,6 +16,9 @@
   (DS-115). The programme is left out when the event has the programme's own name, as the event
   card does.
 
+  An event with a page of its own links its title to it (DS-176, gs-event-page-link). The lines
+  under the date still name and link its exhibition and its programme.
+
   @param {object} event - An event entry
   @param {boolean} [compact] - Title, time, place and tickets only
   @param {string} [heading] - Element for the title: 'h3' (default), 'h4', or 'p' where a heading would skip a level
@@ -47,6 +50,10 @@
   if compact != true and image != blank
     assign has_media = true
   endif
+  capture own_page
+    render 'gs-event-page-link', event: event
+  endcapture
+  assign own_page = own_page | strip
   assign date_led = false
   if page_title != blank
     assign a = event.title.value | strip | downcase
@@ -63,12 +70,20 @@
   <div class="gs-event__text">
     {%- if date_led -%}
       <{{ tag }} class="gs-h4">
+        {%- if own_page != blank -%}<a class="gs-link" href="{{ own_page }}">{%- endif -%}
         <time datetime="{{ event.starts.value }}">
           {%- render 'gs-time-range', start: event.starts.value, end: event.ends.value -%}
         </time>
+        {%- if own_page != blank -%}</a>{%- endif -%}
       </{{ tag }}>
     {%- else -%}
-      <{{ tag }} class="{% if compact %}gs-h4{% else %}gs-h3{% endif %}">{{ event.title.value | escape }}</{{ tag }}>
+      <{{ tag }} class="{% if compact %}gs-h4{% else %}gs-h3{% endif %}">
+        {%- if own_page != blank -%}
+          <a class="gs-link" href="{{ own_page }}">{{ event.title.value | escape }}</a>
+        {%- else -%}
+          {{- event.title.value | escape -}}
+        {%- endif -%}
+      </{{ tag }}>
       <p class="gs-status__dates">
         <time datetime="{{ event.starts.value }}">
           {%- render 'gs-time-range', start: event.starts.value, end: event.ends.value -%}

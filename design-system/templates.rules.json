@@ -14,7 +14,8 @@
       "gs-title",
       "main-page",
       "gs-entry-head",
-      "gs-lesson"
+      "gs-lesson",
+      "gs-event-detail"
     ],
     "collectionHead": [
       "gs-collection-head",
@@ -81,7 +82,8 @@
       "gs-artist-editions",
       "gs-artist-exhibitions",
       "gs-artist-documents",
-      "gs-lesson-more"
+      "gs-lesson-more",
+      "gs-event-more"
     ],
     "legacy": [
       "custom-liquid",
@@ -183,6 +185,18 @@
       ],
       "maxPerGroup": {
         "listing": 1,
+        "related": 1
+      }
+    },
+    "metaobject/event": {
+      "purpose": "An event's own page (DS-176): the event from its entry, then more in its programme",
+      "firstGroups": [
+        "pageHead"
+      ],
+      "require": [
+        "pageHead"
+      ],
+      "maxPerGroup": {
         "related": 1
       }
     },

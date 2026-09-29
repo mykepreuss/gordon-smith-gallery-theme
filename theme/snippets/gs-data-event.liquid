@@ -8,7 +8,8 @@
     shows it, so its row on Upcoming events and its card on Home are read as one event (DS-163).
   - Whose event it is comes from its programme page's programme field, else its exhibition's.
   - A tickets or registration link is given as the event's offer, at that address.
-  - An event has no page of its own. Its address is its exhibition's page, else its programme's.
+  - Its address is its own page when it has one (DS-176, gs-event-page-link), else its
+    exhibition's page, else its programme's.
   - An event of an exhibition names it as the larger event. On the exhibition's own page it
     names it by its name for machines alone, since the page describes it in full: two
     descriptions of one thing with different types made Google drop the exhibition (DS-173).
@@ -21,8 +22,13 @@
 {%- liquid
   assign exhibition = event.exhibition.value
   assign programme = event.programme_page.value
-  assign url = ''
-  if exhibition != blank
+  capture url
+    render 'gs-event-page-link', event: event
+  endcapture
+  assign url = url | strip
+  if url != blank
+    # its own page
+  elsif exhibition != blank
     assign url = exhibition.system.url
   elsif programme != blank
     assign url = programme.url

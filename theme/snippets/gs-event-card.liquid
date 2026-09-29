@@ -2,7 +2,8 @@
   An event as a card, for rows that mix events with exhibitions (Home's What's on, DS-54): image,
   what it belongs to, title, when. The event's own image, else its exhibition's key image, else its
   programme page's hero image, so every card has a picture without anyone adding one twice.
-  The whole card links to the exhibition, else the programme page, else the tickets.
+  The whole card links to the event's own page when it has one (DS-176), else the exhibition,
+  else the programme page, else the tickets.
 
   A line under the date names the exhibition ("Collect, Assemble, Gather") or the programme ("Music
   at the Smith"); an event titled like its programme ("Explore + Create") has none. It sits under
@@ -67,9 +68,16 @@
       assign ex_linked = true
     endif
   endif
+  # An event with a page of its own links there (DS-176); else as before.
+  capture own_page
+    render 'gs-event-page-link', event: event
+  endcapture
+  assign own_page = own_page | strip
   assign href = ''
   assign by_tickets = false
-  if ex_linked
+  if own_page != blank
+    assign href = own_page
+  elsif ex_linked
     assign href = exhibition.system.url
   elsif programme != blank
     assign href = programme.url

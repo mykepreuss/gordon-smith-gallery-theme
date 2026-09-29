@@ -1,0 +1,20 @@
+{% doc %}
+  The address of an event's own page, when it has one to show (DS-176). Prints nothing when it
+  hasn't, so a caller links the event as it did before.
+
+  An event has a page of its own once the store shows the event entry type as web pages, which
+  waits for release. Until then every event's address is blank and this prints nothing. After
+  that, an event with a summary has a page worth opening. One without a summary has a page that
+  would hold a title, a date and a room, so its rows keep linking to its programme.
+
+  Capture the output and strip it.
+
+  @param {object} event - An event entry
+
+  @example
+  {%- capture own_page -%}{% render 'gs-event-page-link', event: event %}{%- endcapture -%}
+  {%- assign own_page = own_page | strip -%}
+{% enddoc %}
+{%- if event.system.url != blank and event.summary.value != blank -%}
+  {{- event.system.url -}}
+{%- endif -%}

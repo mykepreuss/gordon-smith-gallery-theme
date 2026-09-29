@@ -110,7 +110,13 @@
     "count": {
       "one": "1 event",
       "other": "{{ count }} events"
-    }
+    },
+    "when": "When",
+    "where": "Where",
+    "exhibition": "Exhibition",
+    "ended": "This event has ended",
+    "more": "More in {{ programme }}",
+    "more_link": "See the program"
   },
   "shop": {
     "portfolios": "Portfolios",
