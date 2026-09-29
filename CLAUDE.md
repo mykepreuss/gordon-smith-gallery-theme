@@ -8,6 +8,7 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 - Design specification: `design-system/DESIGN.md` (§9 maps it onto the theme). Tokens are the only source of values (`design-system/tokens.css`); components in `components.css`; scripts in `js/`; checks in `design-system/scripts/`.
 - The theme: `theme/`. Its `gs-` snippets, sections, templates and wording (`locales/en.default.json`) are edited there. `assets/gs-tokens.css`, `gs-components.css`, `gs-nav.js`, `gs-forms.js` and `snippets/gs-logo-*.liquid` are copies: edit the design-system file, then run `python3 design-system/scripts/sync_theme.py theme/`.
 - Content model (page fields, exhibitions, product labels, card groups, events): `design-system/proposals/content-model.md`.
+- For search and answer engines: the review and what is built, `proposals/aeo-geo-review.md`; the content side (the four entities, the 32 questions, how to measure), `aeo/`.
 - What the current theme holds and where it goes: `proposals/content-migration.md`. Store changes for review and release: `proposals/store-changes.md`.
 - The live theme (Colorblock, ID `183162372393`) is in `baseline/theme/` as a reference for content and placement only. Don't copy its code or settings, and never write to it.
 
