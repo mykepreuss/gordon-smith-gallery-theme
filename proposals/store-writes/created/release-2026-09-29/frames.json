@@ -1,0 +1,354 @@
+[
+ {
+  "call": "f0",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:14+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10095715057961",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10095715057961",
+     "handle": "russna-kaur-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f1",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:16+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10095749431593",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10095749431593",
+     "handle": "gathie-falk-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f2",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:17+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10095796584745",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10095796584745",
+     "handle": "ann-kipling-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f3",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:19+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10095798812969",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10095798812969",
+     "handle": "lauren-brevner-james-harry-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f4",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:20+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096174563625",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096174563625",
+     "handle": "gordon-smith-byway-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f5",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:22+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096175350057",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096175350057",
+     "handle": "ian-wallace-drums-and-paint-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f6",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:23+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096175939881",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096175939881",
+     "handle": "karin-bubas-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f7",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:24+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096187867433",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096187867433",
+     "handle": "wayne-eastcott-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f8",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:26+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096188653865",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096188653865",
+     "handle": "sandeep-johal-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f9",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:28+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096189079849",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096189079849",
+     "handle": "sara-khan-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f10",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:29+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096189538601",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096189538601",
+     "handle": "anna-binta-diallo-prairie-girl-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f11",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:30+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096190390569",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096190390569",
+     "handle": "anna-binta-diallo-red-feather-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f12",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:32+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10096190718249",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10096190718249",
+     "handle": "samuel-roy-bois-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f13",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:33+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10194099044649",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10194099044649",
+     "handle": "short-gumboots-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f14",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:35+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10194100551977",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10194100551977",
+     "handle": "arnold-shives-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "f15",
+  "kind": "frame",
+  "at": "2026-09-29T23:11:36+00:00",
+  "variables": {
+   "product": {
+    "id": "gid://shopify/Product/10194102976809",
+    "status": "UNLISTED"
+   }
+  },
+  "answer": {
+   "productUpdate": {
+    "product": {
+     "id": "gid://shopify/Product/10194102976809",
+     "handle": "gordon-smith-pender-harbour-frame",
+     "status": "UNLISTED"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

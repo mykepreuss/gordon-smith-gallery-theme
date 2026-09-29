@@ -1,0 +1,249 @@
+[
+ {
+  "call": "seo.hidden 1 to 23",
+  "kind": "fields",
+  "at": "2026-09-29T23:11:13+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/165837373737",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837930793",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837996329",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837963561",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838029097",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837898025",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838160169",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838225705",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165856444713",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837734185",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165858115881",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837799721",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837865257",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838094633",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838127401",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837832489",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165857689897",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838192937",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165837766953",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165856379177",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165856477481",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838061865",
+     "namespace": "seo",
+     "key": "hidden"
+    },
+    {
+     "ownerId": "gid://shopify/Page/165838258473",
+     "namespace": "seo",
+     "key": "hidden"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsDelete": {
+    "deletedMetafields": [
+     {
+      "ownerId": "gid://shopify/Page/165837373737",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837930793",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837996329",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837963561",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838029097",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837898025",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838160169",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838225705",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165856444713",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837734185",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165858115881",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837799721",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837865257",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838094633",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838127401",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837832489",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165857689897",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838192937",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165837766953",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165856379177",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165856477481",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838061865",
+      "namespace": "seo",
+      "key": "hidden"
+     },
+     {
+      "ownerId": "gid://shopify/Page/165838258473",
+      "namespace": "seo",
+      "key": "hidden"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

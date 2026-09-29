@@ -91,6 +91,11 @@ def new_template(page):
         return "contact"
     if h == "shop":
         return "shop"
+    if h in ("permanent-collection", "artists"):
+        # Each has a template of its own, under the name it already had (DS-62; DESIGN.md §7.4: "the same
+        # name, so nothing is reassigned"). This line was missing at the release, 2026-09-29: both pages took
+        # the standard template for eight minutes and lost their search, browse and A to Z, then were set back.
+        return h
     return ""  # the standard page template
 
 

@@ -1,5 +1,7 @@
 # Proposed store-level changes
 
+**Released 2026-09-29.** Made that day, with Michael's approval: §3 (templates), §5 (addresses), §8 (staged text), §8b and §8c (the new pages shown, Supporters among them), §8e (event pages) and §9 (frames). Still to make, after the gallery's approval: §7 (the print descriptions) and §8d (the descriptions in the search engine listings). The log: `proposals/store-writes/README.md`, "2026-09-29: the release". The sections below read as they did before the release.
+
 Changes to Shopify Admin resources that the theme work needs. None of these is made until the gallery approves the structure (approval package) and, for live resources, until release approval. Menus, pages, fields and products are shared by every theme, so a preview theme does not isolate them (`AGENTS.md`). Baseline state: `baseline/store-manifest.md`.
 
 ## 1. Main menu map (NAV-01 to NAV-04, EXH-01, EXH-02, SHOP-02)

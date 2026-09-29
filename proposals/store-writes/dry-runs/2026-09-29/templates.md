@@ -1,6 +1,6 @@
 ## Template names
 
-40 pages change. Rollback: set each back to the "Now" value.
+38 pages change. Rollback: set each back to the "Now" value.
 
 | Page | Now | At release |
 | --- | --- | --- |
@@ -13,7 +13,7 @@
 | `artist-in-residence-becky-bair` | `current-on-now-exhibition` | **`(default)`** |
 | `artist-in-residence-mark-johnsen` | `current-on-now-exhibition` | **`(default)`** |
 | `artist-in-residence-sara-jeanne-bourget` | `current-on-now-exhibition` | **`(default)`** |
-| `artists` | `artists` | **`(default)`** |
+| `artists` | `artists` | already right |
 | `artists-for-kids` | `artists-for-kids` | **`programme`** |
 | `artists-in-residence` | `current-on-now-exhibition` | **`programme`** |
 | `artreach-videos` | `current-on-now-exhibition` | **`programme`** |
@@ -46,7 +46,7 @@
 | `paradise-valley-summer-camp` | `current-on-now-exhibition` | **`story`** |
 | `past-events` | `(default)` | already right |
 | `past-exhibitions` | `past-exhibitions` | **`(default)`** |
-| `permanent-collection` | `permanent-collection` | **`(default)`** |
+| `permanent-collection` | `permanent-collection` | already right |
 | `plan-your-visit` | `plan-your-visit` | **`story`** |
 | `professional-development` | `current-on-now-exhibition` | **`programme`** |
 | `public-programs` | `page` | unchanged (unpublished) |

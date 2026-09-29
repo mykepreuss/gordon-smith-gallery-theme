@@ -1,0 +1,922 @@
+[
+ {
+  "call": "p0",
+  "kind": "page",
+  "at": "2026-09-29T23:09:04+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155687813417",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155687813417",
+     "handle": "about-us",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p1",
+  "kind": "page",
+  "at": "2026-09-29T23:09:05+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837373737",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837373737",
+     "handle": "after-school-art",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p2",
+  "kind": "page",
+  "at": "2026-09-29T23:09:06+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720253737",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720253737",
+     "handle": "art-in-good-company",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p3",
+  "kind": "page",
+  "at": "2026-09-29T23:09:07+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837930793",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837930793",
+     "handle": "artist-in-residence-amelia-butcher",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p4",
+  "kind": "page",
+  "at": "2026-09-29T23:09:08+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837996329",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837996329",
+     "handle": "artist-in-residence-becky-bair",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p5",
+  "kind": "page",
+  "at": "2026-09-29T23:09:09+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837963561",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837963561",
+     "handle": "artist-in-residence-mark-johnsen",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p6",
+  "kind": "page",
+  "at": "2026-09-29T23:09:10+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838029097",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838029097",
+     "handle": "artist-in-residence-sara-jeanne-bourget",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p7",
+  "kind": "page",
+  "at": "2026-09-29T23:09:12+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/140886573353",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/140886573353",
+     "handle": "artists",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p8",
+  "kind": "page",
+  "at": "2026-09-29T23:09:13+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720810793",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720810793",
+     "handle": "artists-for-kids",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p9",
+  "kind": "page",
+  "at": "2026-09-29T23:09:14+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837898025",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837898025",
+     "handle": "artists-in-residence",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p10",
+  "kind": "page",
+  "at": "2026-09-29T23:09:15+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838160169",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838160169",
+     "handle": "artreach-videos",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p11",
+  "kind": "page",
+  "at": "2026-09-29T23:09:16+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838225705",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838225705",
+     "handle": "awards-and-scholarships",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p12",
+  "kind": "page",
+  "at": "2026-09-29T23:09:17+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165856444713",
+   "page": {
+    "templateSuffix": "story"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165856444713",
+     "handle": "brilliance-gala",
+     "templateSuffix": "story",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p13",
+  "kind": "page",
+  "at": "2026-09-29T23:09:18+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837734185",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837734185",
+     "handle": "classes-and-camps",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p14",
+  "kind": "page",
+  "at": "2026-09-29T23:09:19+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837799721",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837799721",
+     "handle": "day-camps",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p15",
+  "kind": "page",
+  "at": "2026-09-29T23:09:20+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155885863209",
+   "page": {
+    "templateSuffix": "story"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155885863209",
+     "handle": "donate",
+     "templateSuffix": "story",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p16",
+  "kind": "page",
+  "at": "2026-09-29T23:09:21+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720089897",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720089897",
+     "handle": "explore-create",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p17",
+  "kind": "page",
+  "at": "2026-09-29T23:09:22+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/154942865705",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/154942865705",
+     "handle": "frequently-asked-questions",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p18",
+  "kind": "page",
+  "at": "2026-09-29T23:09:23+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837865257",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837865257",
+     "handle": "gallery-program",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p19",
+  "kind": "page",
+  "at": "2026-09-29T23:09:24+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155692957993",
+   "page": {
+    "templateSuffix": "story"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155692957993",
+     "handle": "gordon-and-marion",
+     "templateSuffix": "story",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p20",
+  "kind": "page",
+  "at": "2026-09-29T23:09:25+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838094633",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838094633",
+     "handle": "learning-guides",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p21",
+  "kind": "page",
+  "at": "2026-09-29T23:09:26+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838127401",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838127401",
+     "handle": "learning-kits",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p22",
+  "kind": "page",
+  "at": "2026-09-29T23:09:27+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155719696681",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155719696681",
+     "handle": "music-at-the-smith",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p23",
+  "kind": "page",
+  "at": "2026-09-29T23:09:28+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155763999017",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155763999017",
+     "handle": "on-now",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p24",
+  "kind": "page",
+  "at": "2026-09-29T23:09:29+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837832489",
+   "page": {
+    "templateSuffix": "story"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837832489",
+     "handle": "paradise-valley-summer-camp",
+     "templateSuffix": "story",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p25",
+  "kind": "page",
+  "at": "2026-09-29T23:09:30+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155763736873",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155763736873",
+     "handle": "past-exhibitions",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p26",
+  "kind": "page",
+  "at": "2026-09-29T23:09:31+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720548649",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720548649",
+     "handle": "permanent-collection",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p27",
+  "kind": "page",
+  "at": "2026-09-29T23:09:32+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155670151465",
+   "page": {
+    "templateSuffix": "story"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155670151465",
+     "handle": "plan-your-visit",
+     "templateSuffix": "story",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p28",
+  "kind": "page",
+  "at": "2026-09-29T23:09:33+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838192937",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838192937",
+     "handle": "professional-development",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p29",
+  "kind": "page",
+  "at": "2026-09-29T23:09:34+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155718943017",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155718943017",
+     "handle": "public-programs-1",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p30",
+  "kind": "page",
+  "at": "2026-09-29T23:09:35+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837766953",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837766953",
+     "handle": "schools-and-teachers",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p31",
+  "kind": "page",
+  "at": "2026-09-29T23:09:36+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165856379177",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165856379177",
+     "handle": "smith-foundation-scholarships",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p32",
+  "kind": "page",
+  "at": "2026-09-29T23:09:37+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165856477481",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165856477481",
+     "handle": "smith-foundation-supporters",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p33",
+  "kind": "page",
+  "at": "2026-09-29T23:09:38+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155719434537",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155719434537",
+     "handle": "speaker-series",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p34",
+  "kind": "page",
+  "at": "2026-09-29T23:09:39+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838061865",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838061865",
+     "handle": "studio-art-academy",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p35",
+  "kind": "page",
+  "at": "2026-09-29T23:09:40+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838258473",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838258473",
+     "handle": "support-artists-for-kids",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p36",
+  "kind": "page",
+  "at": "2026-09-29T23:09:41+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155705409833",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155705409833",
+     "handle": "the-smith-foundation",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p37",
+  "kind": "page",
+  "at": "2026-09-29T23:09:42+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155669168425",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155669168425",
+     "handle": "upcoming-events",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p38",
+  "kind": "page",
+  "at": "2026-09-29T23:09:43+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155763376425",
+   "page": {
+    "templateSuffix": ""
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155763376425",
+     "handle": "upcoming-exhibitions",
+     "templateSuffix": "",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "p39",
+  "kind": "page",
+  "at": "2026-09-29T23:09:44+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155902738729",
+   "page": {
+    "templateSuffix": "programme"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155902738729",
+     "handle": "volunteer",
+     "templateSuffix": "programme",
+     "isPublished": true
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
