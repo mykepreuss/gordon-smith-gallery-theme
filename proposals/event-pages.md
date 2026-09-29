@@ -1,6 +1,6 @@
 # Event pages: a page for each event
 
-Date: 2026-09-29. Decision: DS-176, **Proposed**. Nothing is built, and nothing in the store changed.
+Date: 2026-09-29. Decision: DS-176, **decided by Michael, 2026-09-29** ("DS-176 approved with all recommendations, merge #110"). Not built yet, and nothing in the store changed.
 
 Asked for by Michael, 2026-09-29 ("Write up the proposal for event pages"), from the open item in `proposals/aeo-geo-review.md`, "Technical follow-up".
 
@@ -115,6 +115,8 @@ The yearly tidy-up of ended events (DS-148) stays as it is. A deleted event's pa
 | New words on any page | Every part comes from a field the entry has |
 
 ## For Michael
+
+Michael, 2026-09-29: "DS-176 approved with all recommendations, merge #110". All five choices stand as recommended.
 
 | # | Question | Recommended | Alternative |
 | --- | --- | --- | --- |
