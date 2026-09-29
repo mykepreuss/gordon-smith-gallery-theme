@@ -79,7 +79,7 @@ Michael, 2026-09-28: "DS-175 approved, merge #106". Choice 1 is decided. Choices
 
 ## Since then
 
-2026-09-29, DS-183 (Proposed; `proposals/internal-linking-review.md`, finding 6): names are linked in the texts about works too (an edition's description and its archive note, a portfolio's description, a work's About, an exhibition's credits, a lesson's text). Those texts link the names only, not the general words. Three names joined the list: Gordon and Marion Smith Foundation for Young Artists, Artists in Residence, Artist in Residence.
+2026-09-29, DS-183 (decided by Michael the same day; `proposals/internal-linking-review.md`, finding 6): names are linked in the texts about works too (an edition's description and its archive note, a portfolio's description, a work's About, an exhibition's credits, a lesson's text). Those texts link the names only, not the general words. Three names joined the list: Gordon and Marion Smith Foundation for Young Artists, Artists in Residence, Artist in Residence.
 
 ## Limits
 

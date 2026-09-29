@@ -1,6 +1,6 @@
 # Links between pages: review, rules and what is built
 
-Date: 2026-09-29. Decisions: DS-178 to DS-187, **Proposed**, built on the branch `claude/internal-linking-strategy-c70143`.
+Date: 2026-09-29. Decisions: DS-178 to DS-187, **decided by Michael, 2026-09-29** ("DS-178 to DS-187 approved, merge #118"), as built. Pull request #118.
 
 ## What Michael asked
 
@@ -221,7 +221,7 @@ New words, ours until the gallery says otherwise: "Plan your visit" (twice), "Se
 
 ## For Michael
 
-Ten decisions, each built as described. Approve them together or one by one.
+Michael, 2026-09-29: "DS-178 to DS-187 approved, merge #118". All ten are decided as built. The options below, A to F, have no decision and stay unbuilt.
 
 | # | Decision | Built as | Alternative |
 | --- | --- | --- | --- |
@@ -272,7 +272,8 @@ It reports, without failing, links that are sent on and pages with fewer than tw
 
 | Theme | Result |
 | --- | --- |
-| Review theme, `main` at 55fbe63 | 4 errors: the four addresses of finding 5 that are in the sitemap. 15 notes, among them 23 exhibitions with fewer than two links in |
+| Review theme before, `main` at 55fbe63 | 4 errors: the four addresses of finding 5 that are in the sitemap. 15 notes, among them 23 exhibitions with fewer than two links in |
+| Review theme after, the branch at c4b8f22 | 0 errors, 14 notes, as the development theme |
 | Development theme, this branch | 0 errors. 14 notes: the ten old pages, and the pages with fewer than two links in (4 pages, 4 groupings, the 4 policies and Search) |
 
 ## Tested
