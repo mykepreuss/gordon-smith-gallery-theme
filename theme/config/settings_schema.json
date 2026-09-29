@@ -375,6 +375,12 @@
         "info": "Linked from the Visit section on the home page."
       },
       {
+        "type": "textarea",
+        "id": "home_description",
+        "label": "Home page description",
+        "info": "One or two sentences for search engines and link previews: what the gallery is, where it is and when it is open. Left empty, the store's description is used."
+      },
+      {
         "type": "richtext",
         "id": "land_acknowledgement",
         "label": "Land acknowledgement",

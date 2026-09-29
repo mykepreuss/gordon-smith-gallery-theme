@@ -839,3 +839,58 @@ On a programme page the card groups sit between the opening text and its later p
 **Effect on the live site:** none. The live theme doesn't read card groups or staged text, and the new cards have no pages of their own.
 
 **Undo:** set the page's `card_groups` and `release_body` back to the snapshot's values (`metafieldsSet`); delete the group `afk-team`, its four cards and the four files in `created/afk-team.json`.
+
+## 2026-09-28: product titles in plain letters, and staged page descriptions (`proposals/aeo-geo-review.md`, steps 2 and 3)
+
+**Why:** Michael, 2026-09-28: "Proceed with step 2 Written descriptions for the 41 pages and 21 products, and the product titles in plain letters and 3 ... 4". The titles are an exception to "Store writes before release" (P-61): the live theme shows them. The descriptions are staged in a field the live theme doesn't read (DS-160).
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 "Colorblock: NEW WEBSITE" (live) and the review theme 184767250729 (unpublished), by `shopify theme list`; neither touched. `baseline/theme/` has no mention of `release_description`. Read through the connector before writing: no page had a description of its own (`global.description_tag`) or a `custom.release_description`; the 21 titles matched `snapshots/prints-2026-09-25.json`, which is the before-snapshot. The titles before and after are also in `aeo/product-titles.json`.
+
+### Product titles (P-61)
+
+`productUpdate` with `title` only, 21 products, one call. Handles, addresses, descriptions and everything else are unchanged.
+
+| Handle | Before | After |
+| --- | --- | --- |
+| `samuel-roy-bois` | Samuel Roy-Bois, 𝘎𝘰𝘰𝘥 𝘓𝘶𝘤𝘬 (𝘸𝘩𝘦𝘦𝘭𝘣𝘢𝘳𝘳𝘰𝘸), 2023 | Samuel Roy-Bois, Good Luck (wheelbarrow), 2023 |
+| `anna-binta-diallo` | Anna Binta Diallo, 𝘙𝘦𝘥 𝘍𝘦𝘢𝘵𝘩𝘦r, 2024 | Anna Binta Diallo, Red Feather, 2024 |
+| `prairie-girl` | Anna Binta Diallo, 𝘗𝘳𝘢𝘪𝘳𝘪𝘦 𝘎𝘪𝘳𝘭, 2024 | Anna Binta Diallo, Prairie Girl, 2024 |
+| `sara-khan-self-portrait-2024` | Sara Khan, 𝘚𝘦𝘭𝘧 𝘗𝘰𝘳𝘵𝘳𝘢𝘪𝘵, 2024 | Sara Khan, Self Portrait, 2024 |
+| `sandeep-johal-i-am-easy-to-find-2024` | Sandeep Johal, 𝘐 𝘢𝘮 𝘦𝘢𝘴𝘺 𝘵𝘰 𝘧𝘪𝘯𝘥, 2024 | Sandeep Johal, I am easy to find, 2024 |
+| `wayne-eastcott-moodyville-notes` | Wayne Eastcott, 𝘔𝘰𝘰𝘥𝘺𝘷𝘪𝘭𝘭𝘦 𝘕𝘰𝘵𝘦𝘴, 2005 | Wayne Eastcott, Moodyville Notes, 2005 |
+| `karin-bubas-late-winter-lynn-creek-2010` | Karin Bubaš, 𝘓𝘢𝘵𝘦 𝘞𝘪𝘯𝘵𝘦𝘳, 𝘓𝘺𝘯𝘯 𝘊𝘳𝘦𝘦𝘬, 2010 | Karin Bubaš, Late Winter, Lynn Creek, 2010 |
+| `ian-wallace-drums-and-paint-2010` | Ian Wallace, 𝘋𝘳𝘶𝘮𝘴 𝘢𝘯𝘥 𝘗𝘢𝘪𝘯𝘵, 2010 | Ian Wallace, Drums and Paint, 2010 |
+| `michael-snow-smoke-and-mirrors-1994` | Michael Snow, 𝘚𝘮𝘰𝘬𝘦 𝘢𝘯𝘥 𝘔𝘪𝘳𝘳𝘰𝘳𝘴, 1994 | Michael Snow, Smoke and Mirrors, 1994 |
+| `gordon-smith-the-byway-2009` | Gordon Smith, 𝘛𝘩𝘦 𝘉𝘺𝘸𝘢𝘺, 2009 | Gordon Smith, The Byway, 2009 |
+| `jack-shadbolt-toward-a-white-garden-1996` | Jack Shadbolt, 𝘛𝘰𝘸𝘢𝘳𝘥 𝘢 𝘞𝘩𝘪𝘵𝘦 𝘎𝘢𝘳𝘥𝘦𝘯, 1996 | Jack Shadbolt, Toward a White Garden, 1996 |
+| `kwikwi-lauren-brevner-james-harry-sinulhḵay-2025` | Lauren Brevner & James Harry, 𝘚í𝘯𝘶𝘭𝘩ḵ𝘢𝘺, 2025 | Lauren Brevner & James Harry, Sínulhḵay, 2025 |
+| `ann-kipling-dog-in-the-sky-1999` | Ann Kipling, 𝘋𝘰𝘨 𝘪𝘯 𝘵𝘩𝘦 𝘚𝘬𝘺, 1999 | Ann Kipling, Dog in the Sky, 1999 |
+| `russna-kaur-what-remains-after-bloom-2026` | Russna Kaur, 𝘞𝘩𝘢𝘵 𝘳𝘦𝘮𝘢𝘪𝘯𝘴 𝘢𝘧𝘵𝘦𝘳 𝘣𝘭𝘰𝘰𝘮, 2026 | Russna Kaur, What remains after bloom, 2026 |
+| `gathie-falk-north-shore-roses-1992` | Gathie Falk, 𝘕𝘰𝘳𝘵𝘩 𝘚𝘩𝘰𝘳𝘦 𝘙𝘰𝘴𝘦𝘴, 1992 | Gathie Falk, North Shore Roses, 1992 |
+| `elizabeth-mcintosh-diamonds-2019` | Elizabeth McIntosh, 𝘋𝘪𝘢𝘮𝘰𝘯𝘥𝘴, 2019 | Elizabeth McIntosh, Diamonds, 2019 |
+| `marlene-yuen-short-gumboots-2026` | Marlene Yuen, 𝘚𝘩𝘰𝘳𝘵 𝘎𝘶𝘮𝘣𝘰𝘰𝘵𝘴, 2026 | Marlene Yuen, Short Gumboots, 2026 |
+| `gordon-smith-pender-harbour-2006` | Gordon Smith, 𝘗𝘦𝘯𝘥𝘦𝘳 𝘏𝘢𝘳𝘣𝘰𝘶𝘳, 2006 | Gordon Smith, Pender Harbour, 2006 |
+| `arnold-shives-mount-orpheus-2003` | Arnold Shives, 𝘔𝘰𝘶𝘯𝘵 𝘖𝘳𝘱𝘩𝘦𝘶𝘴, 2003 | Arnold Shives, Mount Orpheus, 2003 |
+| `arnold-shives-seven-sisters-range-2003` | Arnold Shives, 𝘚𝘦𝘷𝘦𝘯 𝘚𝘪𝘴𝘵𝘦𝘳𝘴 𝘙𝘢𝘯𝘨𝘦, 2003 | Arnold Shives, Seven Sisters Range, 2003 |
+| `amelia-butcher-cup-and-saucer-2026` | Amelia Butcher, 𝘊𝘶𝘱 𝘢𝘯𝘥 𝘚𝘢𝘶𝘤𝘦𝘳, 2026 | Amelia Butcher, Cup and Saucer, 2026 |
+
+**Checked after:** the call returned every product with its new title, its handle unchanged and no errors. On gordonsmithgallery.com, `/products/gordon-smith-pender-harbour-2006` and `/collections/all-prints` answer 200 and hold no Unicode styled letters.
+
+**Effect on the live site:** the 21 titles show in plain letters, without the italic look, on product pages, collection pages, the cart, search, the browser tab, and in new order emails and the admin. Search on the site and in search engines can now match the titles' words.
+
+**Undo:** `productUpdate` on each product with the `before` title from `aeo/product-titles.json`.
+
+### Page descriptions, staged (DS-160)
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Definition `custom.release_description` on pages: "Release description", multi-line text, pinned, storefront read | Connector, `metafieldDefinitionCreate` | `gid://shopify/MetafieldDefinition/273366122793` |
+| 40 values, one for each page the new site uses | Connector, `metafieldsSet`, two calls of 20 | The words and page IDs: `aeo/descriptions.json` |
+
+The words are drafts made from each page's own text, facts first, for the gallery to approve (`proposals/gallery-questions.md` §10). Left out: `data-sale-opt-out` (Shopify's page), the pages the new site doesn't use, and the home page, whose description is a theme setting.
+
+**Checked after:** both calls returned 20 values and no errors. On the development theme each page shows its written description. The live pages `/pages/plan-your-visit` and `/pages/about-us` answer 200 and look as before.
+
+**Effect on the live site:** none. The live theme doesn't read the field.
+
+**Undo:** `metafieldsDelete` for the 40 values (owner IDs in `aeo/descriptions.json`, namespace `custom`, key `release_description`), then `metafieldDefinitionDelete` on the definition. The new theme falls back to each page's own words.
