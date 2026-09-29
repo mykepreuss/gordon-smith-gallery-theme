@@ -1,5 +1,5 @@
 {% doc %}
-  A product as structured data (schema.org Product, DS-159, Proposed), in place of Shopify's
+  A product as structured data (schema.org Product, DS-159), in place of Shopify's
   structured_data filter, so the data says what the page says:
 
   - A limited edition is named by its label in plain letters ("Artist, Title, year", DS-156),
@@ -9,20 +9,23 @@
   - Whether it can be bought follows the page: not on sale yet (custom.coming_soon) and sold out
     are both out of stock, since neither can be ordered.
   - One offer for each option, at its own address and price, sold by the gallery.
+  - A product with options (a print in three colours) is a group of products (ProductGroup),
+    one for each option, named by what differs between them (DS-163). Without options it is one
+    Product.
+  - It has one name for machines (@id), the same in a portfolio's list and on the work in the
+    collection it is an edition of, and the page names it as what it is about.
 
   A frame (product type Frame) is sold only with its print and its page is kept out of search
   engines (DS-137), so it has no data.
 
+  @param {string} [description] - The page's description, as meta-tags works it out
   @param {string} [label] - The edition's label in plain text, "Artist, Title, year"
 
   @example
-  {%- render 'gs-data-product', label: entry_label -%}
+  {%- render 'gs-data-product', description: description, label: entry_label -%}
 {% enddoc %}
 {%- liquid
   assign origin = shop.url
-  assign home = origin | append: routes.root_url
-  assign gallery_id = home | append: '#gallery'
-  assign site_name = 'general.site_title.gallery' | t
   assign f = product.metafields.custom
   assign is_edition = false
   if label != blank
@@ -42,81 +45,138 @@
     assign coming_soon = true
   endif
   assign artists = f.artist_entries.value
+  assign id = product.url | prepend: origin | append: '#product'
+  assign name = label | default: product.title
+  assign grouped = true
+  if product.has_only_default_variant
+    assign grouped = false
+  endif
 -%}
 {%- unless product.type == 'Frame' -%}
+  {%- capture artwork -%}
+    {%- if is_edition -%}
+      ,"creator": [
+        {%- if artists != blank -%}
+          {%- for artist in artists -%}
+            {%- capture kind -%}{%- render 'gs-data-artist-kind', name: artist.name.value -%}{%- endcapture -%}
+            {
+              "@type": {{ kind | strip | json }},
+              "@id": {{ artist.system.url | prepend: origin | append: '#artist' | json }},
+              "name": {{ artist.name.value | json }},
+              "url": {{ artist.system.url | prepend: origin | json }}
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        {%- else -%}
+          { "@type": "Person", "name": {{ f.artist.value | json }} }
+        {%- endif -%}
+      ]
+      {%- if year != blank -%}
+        ,"dateCreated": {{ year | json }}
+      {%- endif -%}
+      {%- if f.medium.value != blank -%}
+        ,"artMedium": {{ f.medium.value | json }}
+      {%- endif -%}
+      {%- if f.edition.value != blank -%}
+        ,"artEdition": {{ f.edition.value | json }}
+      {%- endif -%}
+      {%- if f.dimensions.value != blank -%}
+        ,"size": {{ f.dimensions.value | json }}
+      {%- endif -%}
+    {%- elsif product.vendor != blank -%}
+      ,"brand": { "@type": "Brand", "name": {{ product.vendor | json }} }
+    {%- endif -%}
+  {%- endcapture -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": {% if is_edition %}["Product", "VisualArtwork"]{% else %}"Product"{% endif %},
-      "name": {{ label | default: product.title | json }},
-      "url": {{ product.url | prepend: origin | json }}
+      {%- if grouped -%}
+        "@type": {% if is_edition %}["ProductGroup", "VisualArtwork"]{% else %}"ProductGroup"{% endif %},
+        "productGroupID": {{ product.id | append: '' | json }},
+        "variesBy": {{ product.options | json }},
+      {%- elsif is_edition -%}
+        "@type": ["Product", "VisualArtwork"],
+      {%- else -%}
+        "@type": "Product",
+      {%- endif -%}
+      "@id": {{ id | json }},
+      "name": {{ name | json }},
+      "url": {{ product.url | prepend: origin | json }},
+      "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} }
       {%- if words != blank -%}
         ,"description": {{ words | json }}
       {%- endif -%}
       {%- if product.featured_media != blank -%}
-        ,"image": {{ product.featured_media | image_url: width: 1200 | prepend: 'https:' | json }}
-      {%- endif -%}
-      {%- if product.selected_or_first_available_variant.sku != blank -%}
-        ,"sku": {{ product.selected_or_first_available_variant.sku | json }}
-      {%- endif -%}
-      {%- if is_edition -%}
-        ,"creator": [
-          {%- if artists != blank -%}
-            {%- for artist in artists -%}
-              {
-                "@type": "Person",
-                "name": {{ artist.name.value | json }},
-                "url": {{ artist.system.url | prepend: origin | json }}
-              }{% unless forloop.last %},{% endunless %}
-            {%- endfor -%}
-          {%- else -%}
-            { "@type": "Person", "name": {{ f.artist.value | json }} }
-          {%- endif -%}
-        ]
-        {%- if year != blank -%}
-          ,"dateCreated": {{ year | json }}
-        {%- endif -%}
-        {%- if f.medium.value != blank -%}
-          ,"artMedium": {{ f.medium.value | json }}
-        {%- endif -%}
-        {%- if f.edition.value != blank -%}
-          ,"artEdition": {{ f.edition.value | json }}
-        {%- endif -%}
-        {%- if f.dimensions.value != blank -%}
-          ,"size": {{ f.dimensions.value | json }}
-        {%- endif -%}
-      {%- elsif product.vendor != blank -%}
-        ,"brand": { "@type": "Brand", "name": {{ product.vendor | json }} }
-      {%- endif -%}
-      ,"offers": [
-        {%- for variant in product.variants -%}
-          {%- liquid
-            assign offer_url = product.url | prepend: origin
-            unless product.has_only_default_variant
-              assign offer_url = variant.url | prepend: origin
-            endunless
-            assign availability = 'https://schema.org/InStock'
-            if coming_soon or variant.available == false
-              assign availability = 'https://schema.org/OutOfStock'
-            endif
-          -%}
-          {
-            "@type": "Offer",
-            "url": {{ offer_url | json }},
-            {%- unless product.has_only_default_variant -%}
-              "name": {{ variant.title | json }},
-            {%- endunless -%}
-            {%- if variant.sku != blank -%}
-              "sku": {{ variant.sku | json }},
+        ,"image": [
+          {%- assign first = true -%}
+          {%- for media in product.media limit: 8 -%}
+            {%- if media.media_type == 'image' -%}
+              {%- unless first -%},{%- endunless -%}
+              {%- assign first = false -%}
+              {{ media | image_url: width: 1200 | prepend: 'https:' | json }}
             {%- endif -%}
-            "price": {{ variant.price | divided_by: 100.0 | json }},
-            "priceCurrency": {{ cart.currency.iso_code | json }},
-            "availability": {{ availability | json }},
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": { "@type": "ArtGallery", "@id": {{ gallery_id | json }}, "name": {{ site_name | json }} }
-          }{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
-      ]
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+      {{ artwork }}
+      {%- if grouped -%}
+        ,"hasVariant": [
+          {%- for variant in product.variants -%}
+            {%- liquid
+              assign availability = 'https://schema.org/InStock'
+              if coming_soon or variant.available == false
+                assign availability = 'https://schema.org/OutOfStock'
+              endif
+              assign picture = variant.featured_media | default: product.featured_media
+            -%}
+            {
+              "@type": {% if is_edition %}["Product", "VisualArtwork"]{% else %}"Product"{% endif %},
+              "@id": {{ variant.url | prepend: origin | append: '#product' | json }},
+              "name": {{ name | append: ', ' | append: variant.title | json }},
+              "url": {{ variant.url | prepend: origin | json }}
+              {%- if variant.sku != blank -%}
+                ,"sku": {{ variant.sku | json }}
+              {%- endif -%}
+              {%- if picture != blank -%}
+                ,"image": {{ picture | image_url: width: 1200 | prepend: 'https:' | json }}
+              {%- endif -%}
+              {%- if words != blank -%}
+                ,"description": {{ words | json }}
+              {%- endif -%}
+              {{ artwork }}
+              ,"offers": {
+                "@type": "Offer",
+                "url": {{ variant.url | prepend: origin | json }},
+                "price": {{ variant.price | divided_by: 100.0 | json }},
+                "priceCurrency": {{ cart.currency.iso_code | json }},
+                "availability": {{ availability | json }},
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": {% render 'gs-data-org' %}
+              }
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      {%- else -%}
+        {%- liquid
+          assign variant = product.selected_or_first_available_variant
+          assign availability = 'https://schema.org/InStock'
+          if coming_soon or product.available == false
+            assign availability = 'https://schema.org/OutOfStock'
+          endif
+        -%}
+        {%- if variant.sku != blank -%}
+          ,"sku": {{ variant.sku | json }}
+        {%- endif -%}
+        ,"offers": {
+          "@type": "Offer",
+          "url": {{ product.url | prepend: origin | json }},
+          "price": {{ variant.price | divided_by: 100.0 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "availability": {{ availability | json }},
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {% render 'gs-data-org' %}
+        }
+      {%- endif -%}
     }
   </script>
+  {%- render 'gs-data-webpage', kind: 'ItemPage', subject: id, name: name, description: description, image: product.featured_media, crumb: true -%}
 {%- endunless -%}

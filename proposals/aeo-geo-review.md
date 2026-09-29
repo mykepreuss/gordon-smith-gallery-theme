@@ -253,8 +253,8 @@ The three framework files (#88: the framework, the query set and the zero-click 
 | Item | What was done | Decision |
 | --- | --- | --- |
 | 1 | The gallery's own `/llms.txt`. Shopify added this to themes in May 2026. `/agents.md` stays Shopify's | DS-166 |
-| 2 | Artists for Kids and the Foundation as organisations | Left to the structured data session, which was already building it |
-| 3 | Gordon and Marion points to the artist | Passed to the structured data session, with how it was built here |
+| 2 | Artists for Kids and the Foundation as organisations | Built by the structured data session (#91, DS-163) |
+| 3 | Gordon and Marion points to the artist | Built by the structured data session (#91, DS-163) |
 | 4 | The query set as a repeatable check, `check_answers.py`: 32 questions | DS-167 |
 
 Items 2 and 3 were built here first, then taken out: another session had the same organisation data in progress in the same snippets, and two versions would have collided.

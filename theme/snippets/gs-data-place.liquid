@@ -6,10 +6,14 @@
   - The address is two lines: the street, then "City, Province Postal code". A second line in
     another form is given as typed, in one piece.
   - The short form is the name, address and web address: what a location needs.
-  - The full form adds the other names the gallery goes by, telephone, email, opening hours and
-    the social profiles.
+  - The full form adds the other names the gallery goes by, telephone, email, opening hours, the
+    social profiles, the logo, where it is on the map and a link for directions (DS-163). The
+    map position is in Theme settings, Gallery details: it is the store's own address record.
+  - With a room, the place is that room as part of the gallery ("Main Floor"): a Place with the
+    gallery's address, inside the gallery.
 
   @param {boolean} [full] - The full form
+  @param {string} [room] - Where in the building ("Main Floor"), for an exhibition's or an event's place
 
   @example
   <script type="application/ld+json">{% render 'gs-data-place', full: true %}</script>
@@ -55,10 +59,16 @@
   assign profiles = profiles | split: '|'
 -%}
 {
-  "@type": "ArtGallery",
-  "@id": {{ gallery_id | json }},
-  "name": {{ name | json }},
-  "url": {{ home | json }}
+  {%- if room != blank -%}
+    "@type": "Place",
+    "name": {{ room | append: ', ' | append: name | json }},
+    "containedInPlace": { "@type": "ArtGallery", "@id": {{ gallery_id | json }}, "name": {{ name | json }}, "url": {{ home | json }} }
+  {%- else -%}
+    "@type": "ArtGallery",
+    "@id": {{ gallery_id | json }},
+    "name": {{ name | json }},
+    "url": {{ home | json }}
+  {%- endif -%}
   {%- if street != blank -%}
     ,"address":
     {%- if city != blank -%}
@@ -101,6 +111,16 @@
     {%- endif -%}
     {%- if profiles.size > 0 -%}
       ,"sameAs": {{ profiles | json }}
+    {%- endif -%}
+    ,"logo": {{ 'gs-logo-gallery.svg' | asset_url | prepend: 'https:' | json }}
+    {%- if settings.latitude != blank and settings.longitude != blank -%}
+      ,"geo": { "@type": "GeoCoordinates", "latitude": {{ settings.latitude | json }}, "longitude": {{ settings.longitude | json }} }
+    {%- endif -%}
+    {%- if settings.address != blank -%}
+      ,"hasMap": {{ settings.address | newline_to_br | replace: '<br />', ', ' | strip_newlines | url_encode | prepend: 'https://www.google.com/maps/dir/?api=1&destination=' | json }}
+    {%- endif -%}
+    {%- if settings.home_description != blank -%}
+      ,"description": {{ settings.home_description | strip_newlines | json }}
     {%- endif -%}
   {%- endif -%}
 }

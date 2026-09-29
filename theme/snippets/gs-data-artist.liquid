@@ -1,0 +1,113 @@
+{% doc %}
+  An artist as structured data (DS-154, DS-163): the page is a schema.org ProfilePage and the
+  artist its Person, or its Organization when the entry is a group (gs-data-artist-kind). It says what the artist's page says: the names the artist is known by,
+  nationality or Nation, the years of birth and death, the portrait, the page on this site
+  about their life, and the exhibitions here that showed their work.
+
+  - The Person has one name for machines (@id), the same on every work, exhibition and edition
+    that names the artist.
+  - Life dates are read from "1882 to 1974" and "born 1946"; anything else stays on the page.
+  - The artist's own website is given as the same person elsewhere (sameAs). It is data: the
+    page still shows no link out (DS-63).
+
+  @param {string} [description] - The page's description, as meta-tags works it out
+
+  @example
+  {%- render 'gs-data-artist', description: description -%}
+{% enddoc %}
+{%- liquid
+  assign artist = metaobject
+  assign origin = shop.url
+  assign id = canonical_url | append: '#artist'
+  assign other = ''
+  if artist.other_names.value != blank
+    assign other = other | append: artist.other_names.value | append: '|'
+  endif
+  if artist.full_name.value != blank
+    assign other = other | append: artist.full_name.value | append: '|'
+  endif
+  assign other = other | split: '|'
+
+  assign born = ''
+  assign died = ''
+  assign dates = artist.life_dates.value | append: '' | strip | downcase
+  assign to_word = 'open.to' | t | prepend: ' ' | append: ' '
+  if dates contains to_word
+    assign pair = dates | split: to_word
+    if pair.size == 2
+      assign born = pair[0] | strip
+      assign died = pair[1] | strip
+    endif
+  elsif dates contains 'born '
+    assign born = dates | remove_first: 'born ' | strip
+  endif
+  assign born_back = born | plus: 0 | append: ''
+  if born.size != 4 or born_back != born
+    assign born = ''
+  endif
+  assign died_back = died | plus: 0 | append: ''
+  if died.size != 4 or died_back != died
+    assign died = ''
+  endif
+  assign about_page = artist.about_page.value
+  assign site = artist.website.value.url
+  capture kind
+    render 'gs-data-artist-kind', name: artist.name.value
+  endcapture
+  assign kind = kind | strip
+  assign has_about = false
+  if about_page.url != blank or artist.exhibitions.value != blank
+    assign has_about = true
+  endif
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {{ kind | json }},
+    "@id": {{ id | json }},
+    "name": {{ artist.name.value | json }},
+    "url": {{ canonical_url | json }},
+    "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} }
+    {%- if kind == 'Person' -%}
+      ,"jobTitle": "Artist"
+    {%- endif -%}
+    {%- if other.size > 0 -%}
+      ,"alternateName": {{ other | json }}
+    {%- endif -%}
+    {%- if artist.nationality.value != blank and kind == 'Person' -%}
+      ,"nationality": {{ artist.nationality.value | json }}
+    {%- endif -%}
+    {%- if born != blank and kind == 'Person' -%}
+      ,"birthDate": {{ born | json }}
+    {%- endif -%}
+    {%- if died != blank and kind == 'Person' -%}
+      ,"deathDate": {{ died | json }}
+    {%- endif -%}
+    {%- if description != blank -%}
+      ,"description": {{ description | json }}
+    {%- endif -%}
+    {%- if artist.portrait.value != blank -%}
+      ,"image": {% render 'gs-data-image', image: artist.portrait.value %}
+    {%- endif -%}
+    {%- if site != blank -%}
+      ,"sameAs": [{{ site | json }}]
+    {%- endif -%}
+    {%- if has_about -%}
+      ,"subjectOf": [
+        {%- if about_page.url != blank -%}
+          { "@type": "WebPage", "name": {{ about_page.title | json }}, "url": {{ about_page.url | prepend: origin | json }} }
+          {%- if artist.exhibitions.value != blank -%},{%- endif -%}
+        {%- endif -%}
+        {%- for shown in artist.exhibitions.value -%}
+          {
+            "@type": "ExhibitionEvent",
+            "@id": {{ shown.system.url | prepend: origin | append: '#exhibition' | json }},
+            "name": {{ shown.title.value | json }},
+            "url": {{ shown.system.url | prepend: origin | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    {%- endif -%}
+  }
+</script>
+{%- render 'gs-data-webpage', kind: 'ProfilePage', subject: id, name: artist.name.value, description: description, image: artist.portrait.value, crumb: true -%}
