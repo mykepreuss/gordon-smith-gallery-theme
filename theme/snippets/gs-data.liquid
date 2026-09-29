@@ -1,0 +1,342 @@
+{% doc %}
+  Structured data (schema.org, as JSON-LD) for search and answer engines, so they read the facts
+  a page shows without guessing (DS-154). It repeats what the page says and adds nothing
+  the page doesn't show. Rendered by meta-tags, in the head.
+
+    Home, Plan your visit, Contact   the gallery (ArtGallery): address, hours, telephone
+    Home                             the site (WebSite) and its search
+    An exhibition                    ExhibitionEvent: dates, place, summary, picture, artists
+    A work in the collection         VisualArtwork: artist, year, medium, edition, size, credit
+    An artist                        Person: names, nationality, life dates, portrait
+    Entries and editions             BreadcrumbList: Home, the list the page belongs to, the page
+
+  More kinds of page have their own snippet, rendered from here (DS-158, DS-159):
+
+    A lesson                         LearningResource with its video (gs-data-lesson)
+    A grouping, a portfolio          CollectionPage (gs-data-list)
+    A page, an article               WebPage, ContactPage, BlogPosting (gs-data-page)
+    An edition                       Product and VisualArtwork (gs-data-product)
+
+  - Events print their own with each row and card (gs-data-event).
+  - An exhibition's artists are typed as names, some of them collectives, so they are given as
+    what the exhibition is about, not as people.
+  - A year is given only when it is a plain year ("1985"); "n.d." and "1950-1959" stay on the
+    page. Life dates are read from "1882 to 1974" and "born 1946".
+  - Addresses start with the shop's own domain (shop.url), as the canonical address does, so a
+    preview or the development theme names the same pages the live site will.
+  - Every value goes through the json filter, so a quotation mark in a title can't break the data.
+
+  @param {string} [description] - The page's description, as meta-tags works it out
+  @param {string} [label] - A work's or an edition's label in plain text, "Artist, Title, year"
+
+  @example
+  {% render 'gs-data', description: description, label: entry_label %}
+{% enddoc %}
+{%- liquid
+  assign origin = shop.url
+  assign home = origin | append: routes.root_url
+  assign gallery_id = home | append: '#gallery'
+  assign site_name = 'general.site_title.gallery' | t
+  # The search address's placeholder is built from its parts: a closing brace inside an output
+  # tag ends the tag.
+  assign search_terms = '{search_term_string}'
+  assign type = ''
+  if metaobject != blank
+    assign type = metaobject.system.type
+  endif
+
+  # The gallery's own pages: home, Plan your visit and Contact.
+  assign show_gallery = false
+  if request.page_type == 'index'
+    assign show_gallery = true
+  elsif request.page_type == 'page'
+    if page.id == settings.visit_page.id or page.id == settings.contact_page.id
+      assign show_gallery = true
+    endif
+  endif
+
+  # The crumb: the list the page belongs to, as the page's own link back names it.
+  assign crumb_name = ''
+  assign crumb_url = ''
+  assign here = ''
+  case type
+    when 'exhibition'
+      capture status
+        render 'gs-exhibition-status', start: metaobject.start_date.value, end: metaobject.end_date.value
+      endcapture
+      assign status = status | strip
+      case status
+        when 'upcoming'
+          assign back = settings.exhibitions_upcoming_page
+        when 'past'
+          assign back = settings.exhibitions_past_page
+        else
+          assign back = settings.exhibitions_on_now_page
+      endcase
+      assign crumb_name = 'exhibitions.crumb' | t
+      assign crumb_url = back.url
+      assign here = metaobject.title.value
+    when 'artwork'
+      assign crumb_name = settings.collection_page.title
+      assign crumb_url = settings.collection_page.url
+      assign here = label | default: metaobject.title.value
+    when 'artist'
+      assign crumb_name = settings.artists_page.title
+      assign crumb_url = settings.artists_page.url
+      assign here = metaobject.name.value
+    when 'collection_group'
+      assign crumb_name = settings.collection_page.title
+      assign crumb_url = settings.collection_page.url
+      assign here = metaobject.name.value
+    when 'lesson'
+      assign crumb_name = settings.lessons_page.title
+      assign crumb_url = settings.lessons_page.url
+      assign here = metaobject.title.value
+  endcase
+  if request.page_type == 'product' and product.type != 'Frame'
+    assign crumb_name = 'shop.crumb' | t
+    assign crumb_url = settings.shop_page.url
+    assign here = label | default: product.title
+  elsif request.page_type == 'collection'
+    assign crumb_name = 'shop.crumb' | t
+    assign crumb_url = settings.shop_page.url
+    assign here = collection.title
+  endif
+-%}
+{%- if show_gallery -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {% render 'gs-data-place', full: true %}
+        {%- if request.page_type == 'index' -%}
+          ,{
+            "@type": "WebSite",
+            "@id": {{ home | append: '#website' | json }},
+            "name": {{ site_name | json }},
+            "alternateName": [{{ 'general.site_title.gallery_full' | t | json }}, {{ shop.name | replace: '&amp;', '&' | json }}],
+            "url": {{ home | json }},
+            "publisher": { "@id": {{ gallery_id | json }} },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": {{ origin | append: routes.search_url | append: '?q=[terms]' | replace: '[terms]', search_terms | json }}
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }
+        {%- endif -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{%- if type == 'exhibition' and metaobject.start_date.value != blank -%}
+  {%- liquid
+    assign image = metaobject.key_image.value
+    assign about = ''
+    for name in metaobject.artists.value
+      assign about = about | append: name | append: '|'
+    endfor
+    for name in metaobject.collection_artists.value
+      assign about = about | append: name | append: '|'
+    endfor
+    assign about = about | split: '|' | uniq
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ExhibitionEvent",
+      "name": {{ metaobject.title.value | json }},
+      "url": {{ canonical_url | json }},
+      "startDate": {{ metaobject.start_date.value | date: '%Y-%m-%d' | json }},
+      {%- if metaobject.end_date.value != blank -%}
+        "endDate": {{ metaobject.end_date.value | date: '%Y-%m-%d' | json }},
+      {%- endif -%}
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {% render 'gs-data-place' %},
+      "organizer": {% render 'gs-data-place' %}
+      {%- if metaobject.subtitle.value != blank -%}
+        ,"alternateName": {{ metaobject.subtitle.value | json }}
+      {%- endif -%}
+      {%- if description != blank -%}
+        ,"description": {{ description | json }}
+      {%- endif -%}
+      {%- if image != blank -%}
+        ,"image": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+      {%- if about.size > 0 -%}
+        ,"about": [
+          {%- for name in about -%}
+            { "@type": "Thing", "name": {{ name | json }} }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}
+
+{%- if type == 'artwork' -%}
+  {%- liquid
+    assign work = metaobject
+    assign image = nil
+    for view in work.images.value limit: 1
+      assign image = view
+    endfor
+    # A plain year only: four digits and nothing else.
+    assign year = work.year.value | append: '' | strip
+    assign year_number = year | plus: 0
+    assign year_back = year_number | append: ''
+    if year.size != 4 or year_back != year
+      assign year = ''
+    endif
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VisualArtwork",
+      "name": {{ work.title.value | json }},
+      "url": {{ canonical_url | json }}
+      {%- if work.artists.value != blank -%}
+        ,"creator": [
+          {%- for artist in work.artists.value -%}
+            {
+              "@type": "Person",
+              "name": {{ artist.name.value | json }},
+              "url": {{ artist.system.url | prepend: origin | json }}
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      {%- endif -%}
+      {%- if year != blank -%}
+        ,"dateCreated": {{ year | json }}
+      {%- endif -%}
+      {%- if work.category.value != blank -%}
+        ,"artform": {{ work.category.value | json }}
+      {%- endif -%}
+      {%- if work.medium.value != blank -%}
+        ,"artMedium": {{ work.medium.value | json }}
+      {%- endif -%}
+      {%- if work.edition.value != blank -%}
+        ,"artEdition": {{ work.edition.value | json }}
+      {%- endif -%}
+      {%- if work.dimensions.value != blank -%}
+        ,"size": {{ work.dimensions.value | json }}
+      {%- endif -%}
+      {%- if work.accession_number.value != blank -%}
+        ,"identifier": {{ work.accession_number.value | json }}
+      {%- endif -%}
+      {%- if work.credit_line.value != blank -%}
+        ,"creditText": {{ work.credit_line.value | json }}
+      {%- endif -%}
+      {%- if description != blank -%}
+        ,"description": {{ description | json }}
+      {%- endif -%}
+      {%- if image != blank -%}
+        ,"image": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+      ,"isPartOf": {
+        "@type": "Collection",
+        "name": {{ settings.collection_page.title | default: site_name | json }}
+        {%- if settings.collection_page != blank -%}
+          ,"url": {{ settings.collection_page.url | prepend: origin | json }}
+        {%- endif -%}
+      }
+      ,"provider": { "@type": "ArtGallery", "@id": {{ gallery_id | json }}, "name": {{ site_name | json }} }
+    }
+  </script>
+{%- endif -%}
+
+{%- if type == 'artist' -%}
+  {%- liquid
+    assign other = ''
+    if metaobject.other_names.value != blank
+      assign other = other | append: metaobject.other_names.value | append: '|'
+    endif
+    if metaobject.full_name.value != blank
+      assign other = other | append: metaobject.full_name.value | append: '|'
+    endif
+    assign other = other | split: '|'
+
+    # Life dates: "1882 to 1974" or "born 1946". Anything else stays on the page.
+    assign born = ''
+    assign died = ''
+    assign dates = metaobject.life_dates.value | append: '' | strip | downcase
+    assign to_word = 'open.to' | t | prepend: ' ' | append: ' '
+    if dates contains to_word
+      assign pair = dates | split: to_word
+      if pair.size == 2
+        assign born = pair[0] | strip
+        assign died = pair[1] | strip
+      endif
+    elsif dates contains 'born '
+      assign born = dates | remove_first: 'born ' | strip
+    endif
+    assign born_back = born | plus: 0 | append: ''
+    if born.size != 4 or born_back != born
+      assign born = ''
+    endif
+    assign died_back = died | plus: 0 | append: ''
+    if died.size != 4 or died_back != died
+      assign died = ''
+    endif
+    assign about_page = metaobject.about_page.value
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": {{ metaobject.name.value | json }},
+      "url": {{ canonical_url | json }},
+      "mainEntityOfPage": {{ canonical_url | json }}
+      {%- if other.size > 0 -%}
+        ,"alternateName": {{ other | json }}
+      {%- endif -%}
+      {%- if metaobject.nationality.value != blank -%}
+        ,"nationality": {{ metaobject.nationality.value | json }}
+      {%- endif -%}
+      {%- if born != blank -%}
+        ,"birthDate": {{ born | json }}
+      {%- endif -%}
+      {%- if died != blank -%}
+        ,"deathDate": {{ died | json }}
+      {%- endif -%}
+      {%- if description != blank -%}
+        ,"description": {{ description | json }}
+      {%- endif -%}
+      {%- if metaobject.portrait.value != blank -%}
+        ,"image": {{ metaobject.portrait.value | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+      {%- if about_page.url != blank -%}
+        ,"subjectOf": { "@type": "WebPage", "url": {{ about_page.url | prepend: origin | json }} }
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}
+
+{%- liquid
+  if type == 'lesson'
+    render 'gs-data-lesson', description: description
+  elsif type == 'collection_group' or request.page_type == 'collection'
+    render 'gs-data-list', description: description
+  elsif request.page_type == 'product'
+    render 'gs-data-product', label: label
+  elsif type == blank
+    render 'gs-data-page', description: description
+  endif
+-%}
+
+{%- if here != blank and crumb_name != blank and crumb_url != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {{ site_name | json }}, "item": {{ home | json }} },
+        { "@type": "ListItem", "position": 2, "name": {{ crumb_name | json }}, "item": {{ crumb_url | prepend: origin | json }} },
+        { "@type": "ListItem", "position": 3, "name": {{ here | json }}, "item": {{ canonical_url | json }} }
+      ]
+    }
+  </script>
+{%- endif -%}

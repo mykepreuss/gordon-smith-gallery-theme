@@ -95,5 +95,6 @@
     {%- if label != blank -%}
       <p class="gs-meta">{{ label | escape }}</p>
     {%- endif -%}
+    {%- render 'gs-data-event', event: event -%}
   </div>
 </article>
