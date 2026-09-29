@@ -135,7 +135,7 @@ Many of these were found on 2026-09-28: `proposals/structured-data-facts.md`.
 | Accessibility of the building | Engines answer "is it wheelchair accessible" from data | The gallery |
 | An exhibition's videos | A video needs a date and a picture. The links have neither | Fields, if wanted |
 
-## Google's Rich Results Test (DS-173, Proposed)
+## Google's Rich Results Test (DS-173)
 
 Run on 2026-09-28, at Michael's request, on the review theme's pages. The test can't open a preview link, which needs a cookie, so each page's structured data was pasted in as code.
 
@@ -184,9 +184,11 @@ No page has an invalid item. Every note left is optional and is a fact the store
 
 `check_structured_data.py` fails on the two faults the test found that it could have caught: one thing with two types on a page, and a thing that points back at the page that is about it. 21 tests. On 34 pages of the development theme: 0 errors.
 
-### For Michael
+### Decided
 
-| # | Decision | Built as | Alternative |
+Michael approved both as built, 2026-09-28. The alternatives are kept for the record.
+
+| # | Decision | Decided, as built | Alternative, not taken |
 | --- | --- | --- | --- |
 | 1 | DS-173: an exhibition's type | Event, with ExhibitionEvent as its further type | ExhibitionEvent, as DS-154 had it. More exact, and Google reads no event |
 | 2 | DS-173: the gallery where it is only mentioned | Organization | ArtGallery everywhere. Google then notes four missing fields on every page |
