@@ -1,6 +1,6 @@
 # The old Smith Foundation site's addresses (smithfoundation.co)
 
-Status: **Made 2026-09-29. Not uploaded. It waits for release.** Where each address goes is Proposed (P-63), for Michael to confirm.
+Status: **Made 2026-09-29. Not uploaded. It waits for release.** Where each address goes is decided (P-63, Michael, 2026-09-29).
 
 Michael, 2026-09-29: "This is 404s but is technically still up and was not correctly 301 redirected to our new site, the them we're working on in this project. Please create a 301 redirect file I can upload to our server for when we get the new site live to properly redirect."
 
@@ -10,7 +10,7 @@ Michael, 2026-09-29: "This is 404s but is technically still up and was not corre
 - **What it does:** sends 174 old addresses to their new pages on gordonsmithgallery.com with permanent (301) redirects. Anything else goes to the new home page.
 - **Don't upload it before release.** 29 of the 51 new pages are exhibition pages, which answer 404 on the live site until the new theme is published.
 - **One setting outside the file has to change too:** the domain's forwarding, at GoDaddy. Today about half of all visits never reach the old server ("What is wrong today").
-- **Tested** on Apache on this Mac: 2,308 requests, all answered as they should. Every new page answers on the review theme.
+- **Tested** on Apache on this Mac: 2,309 requests, all answered as they should. Every new page answers on the review theme.
 
 ## What is wrong today
 
@@ -51,9 +51,9 @@ So the same old link gives the old page on one visit and an error on the next. N
 - **Anything under a listed address goes where that address goes.** `/about/supporters/attachment/a-photo/` goes to Supporters.
 - **The last slash, capital letters and anything after a "?" don't matter.** `/Visit`, `/visit/` and `/visit/?utm_source=news` all go to Plan your visit.
 - **WordPress's numbered addresses** (`/?p=126`) go where their page goes.
-- **Anything else** goes to the new home page: slides, author pages, feeds, photo pages.
+- **Anything else** goes to the new home page: slides, author pages, feeds, photo pages, and the media library's pictures.
 
-Choices to confirm (P-63):
+The choices, decided by Michael on 2026-09-29 (P-63): "Those choices are approved, mark P-63 as decided except "Pictures in the media library" redirect to the homepage".
 
 | Old | Goes to | Why |
 | --- | --- | --- |
@@ -63,19 +63,21 @@ Choices to confirm (P-63):
 | Fund, Support Us, Friends of the Gallery, the appeals | Donate | Donate is the Support section's main page |
 | Old forms: volunteer applications, scholarship forms from closed rounds | Volunteer, Scholarships | The page says what applies now |
 | Year in Review reports, 2019 to 2025 | The Smith Foundation | Only the newest shows, from that page's button (P-47) |
+| Pictures and other files in the media library | The new home page | Proposed: still served while they are on the old server. Michael decided otherwise ("Files") |
 | Supporters | Supporters | **If Supporters is held back at release** (`store-changes.md` §8c), change its row to `/pages/the-smith-foundation`, then `write` and `test`. Change it back when the page goes live |
 
 ## Files
 
-- **Documents with a page to go to** are redirected even while the file is on the server. There are 34, all in the list.
-- **Pictures, videos and the other 7 documents** are served as long as they are on the server. Old emails, and other websites that show the Foundation's pictures, keep working.
-- **Once the media library is deleted** from the server, those addresses go to the new home page.
+- **Documents with a page to go to** go to that page. There are 34, all in the list.
+- **Pictures, videos and the other 7 documents** go to the new home page, whether or not the file is still on the server (P-63).
+- **What that changes elsewhere:** a picture from the old site that an old email or another website shows stops showing there. The new site uses none of them: its pictures are in the store's Files ("Checks").
+- **The media library can be deleted** from the server at any time. Nothing reads it once the rules are in.
 
 ## What the file leaves alone
 
 | What | Why |
 | --- | --- |
-| WordPress's sign-in and admin (`/wp-login.php`, `/wp-admin/`) | So staff can still sign in to the old site. Three lines in the file, marked, to delete when WordPress is removed |
+| WordPress's sign-in and admin (`/wp-login.php`, `/wp-admin/`) | So staff can still sign in to the old site. Its media library lists the files but shows no pictures, since their addresses redirect. Three lines in the file, marked, to delete when WordPress is removed |
 | `/.well-known/` | The host's checks that renew the security certificate. Without the certificate, no `https://` address redirects |
 | `/robots.txt` | The server has none once WordPress no longer answers, which tells search engines they may read every address. That is how they find the redirects |
 | Any other website in the same hosting account | The rules apply to `smithfoundation.co` and `www.smithfoundation.co` only |
@@ -129,8 +131,9 @@ python3 proposals/foundation-redirects/redirects.py targets https://ed35ee-ea.my
 
 | Check | Result, 2026-09-29 |
 | --- | --- |
-| `test`: Apache 2.4.67 on this Mac, with the file at the top of its `.htaccess` and WordPress's rules under it. Every listed address, as written, without its last slash, in capitals, with a query, with a page under it, by its WordPress number, and as `www`. Then what must be left alone | 2,308 of 2,308 |
+| `test`: Apache 2.4.67 on this Mac, with the file at the top of its `.htaccess` and WordPress's rules under it. Every listed address, as written, without its last slash, in capitals, with a query, with a page under it, by its WordPress number, and as `www`. A picture that is still on the server, and one that is gone. Then what must be left alone | 2,309 of 2,309 |
 | `targets`, the review theme | 51 of 51 new pages answer |
 | `targets`, the live site | 22 of 51. The 29 exhibition pages answer 404 until release, which is why the file waits |
+| Files and links on the old domain in the new site: 54 pages read on the review theme (the 50 new pages in the list and four more), and the repo searched | None |
 
 `live` has not run: nothing is uploaded.

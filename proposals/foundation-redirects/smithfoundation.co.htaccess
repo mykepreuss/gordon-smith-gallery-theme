@@ -303,12 +303,7 @@ RewriteRule ^wp-content/uploads/2026/04/GSF-Volunteer-Application-Form_202603\.p
 RewriteRule ^wp-content/uploads/2026/06/SMITH-ANNUAL-REPORT-2025\.pdf$ https://gordonsmithgallery.com/pages/the-smith-foundation? [R=301,NC,L]
 RewriteRule ^wp-sitemap\.xml$ https://gordonsmithgallery.com/sitemap.xml? [R=301,NC,L]
 
-# 7. Pictures and other files in the media library are still served while they are on the
-# server, so they keep showing in old emails and on other websites. Once the folder is deleted
-# they go to the new home page like everything else.
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^wp-content/uploads/ - [L]
-
-# 8. Everything else, the old home page included.
+# 7. Everything else: the old home page, and the media library's pictures and other files,
+# whether or not they are still on the server (P-63).
 RewriteRule ^ https://gordonsmithgallery.com/? [R=301,L]
 </IfModule>

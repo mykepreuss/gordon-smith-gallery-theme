@@ -20,7 +20,8 @@ either site.
 
 A row's old address covers itself, with or without its last slash, and anything under it
 (/attachment/..., /embed/, /feed/) that has no row of its own. An old address that ends in a file
-name covers that file only. Anything with no row goes to the new home page.
+name covers that file only. Anything with no row goes to the new home page, the media library's
+pictures included (P-63).
 """
 import argparse
 import csv
@@ -137,13 +138,8 @@ RewriteRule ^wp-(login|cron)\\.php$ - [L]
     out += "\n# 6. Documents, each to the page that holds it or what replaced it. And the sitemap.\n"
     out += "\n".join(rule(r["old"], r["new"]) for r in files) + "\n"
     out += f"""
-# 7. Pictures and other files in the media library are still served while they are on the
-# server, so they keep showing in old emails and on other websites. Once the folder is deleted
-# they go to the new home page like everything else.
-RewriteCond %{{REQUEST_FILENAME}} -f
-RewriteRule ^wp-content/uploads/ - [L]
-
-# 8. Everything else, the old home page included.
+# 7. Everything else: the old home page, and the media library's pictures and other files,
+# whether or not they are still on the server (P-63).
 RewriteRule ^ {NEW_SITE}/? [R=301,L]
 </IfModule>
 """
@@ -172,6 +168,7 @@ def expected():
     cases += [(p, home) for p in ("/no-such-page/", "/feed/", "/author/admin/", "/slide/volunteer/",
                                   "/?p=999999", "/?utm_source=north%20shore%20news", "/index.php",
                                   "/xmlrpc.php", "/wp-json/wp/v2/pages",
+                                  "/wp-content/uploads/2017/07/Facebook-icon.jpg",  # still on the server
                                   "/wp-content/uploads/2017/07/gone.jpg", "/wp-content/uploads/")]
     return cases
 
@@ -209,7 +206,7 @@ def test():
     with tempfile.TemporaryDirectory() as tmp:
         tmp = pathlib.Path(tmp)
         root = tmp / "public_html"
-        # What stays on the old server: a picture and a document in the media library, WordPress.
+        # What is on the old server: a picture and a document in the media library, WordPress.
         for kept in ("wp-content/uploads/2017/07/Facebook-icon.jpg", "wp-login.php", "index.php",
                      "wp-content/uploads/2023/07/EndlessSummer_ExhibitionBooklet.pdf",
                      "wp-admin/index.php", "wp-content/themes/Avada/style.css", "other-site/index.html"):
@@ -248,8 +245,7 @@ DirectoryIndex index.php index.html
                     got = ask(base + path, host)
                     if got != (301, new):
                         failures.append(f"{host}{path}: {got[0]} {got[1]}, not 301 {new}")
-            kept = [("/wp-content/uploads/2017/07/Facebook-icon.jpg", OLD_HOST, 200),  # a picture still there
-                    ("/wp-login.php", OLD_HOST, 200), ("/wp-admin/", OLD_HOST, 200),
+            kept = [("/wp-login.php", OLD_HOST, 200), ("/wp-admin/", OLD_HOST, 200),
                     ("/wp-content/themes/Avada/style.css", OLD_HOST, 200),
                     ("/robots.txt", OLD_HOST, 404), ("/.well-known/acme-challenge/abc", OLD_HOST, 404),
                     ("/other-site/", "another-site.example", 200),  # another site in the account
