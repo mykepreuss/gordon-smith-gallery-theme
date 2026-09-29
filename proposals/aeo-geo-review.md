@@ -265,6 +265,49 @@ The check on the development theme, 2026-09-28: 27 answered, 0 missing, 5 known 
 
 After release (the plan's Release backlog): run the questions by hand in the main answer engines for a baseline, and again 30 days later; bring the gallery's map and business listings in step with the site's hours.
 
+## Technical follow-up
+
+Michael, 2026-09-28, asked what else would help the site be referenced, from the technical side only, with no new content. Measured on the live site and the review theme that day.
+
+### Sound already
+
+| Check | Result |
+| --- | --- |
+| AI crawlers by name, 12 of them (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, bingbot and others) | All were served the page. Tested by name from one machine, so it shows nothing blocks them by name |
+| `robots.txt` | Allows all crawlers and names the sitemap |
+| Sitemap | 1,508 addresses, nearly all with a last-changed date |
+| Home page links | 41, none broken or redirected |
+| Page weight | 34 to 49 KB compressed, under a second |
+
+### Built (`claude/aeo-technical`)
+
+| Item | What was built | Decision |
+| --- | --- | --- |
+| 1 | Each page of a grouping's works names itself: canonical address, title, the pages before and after | DS-168 |
+| 2 | Large picture previews and free quoting allowed on every page but a frame's | DS-169 |
+| 3 | A last-changed date in the page data | Not possible. Liquid gives no such date for pages, products, collections or entries. Tested on the development theme |
+| 4 | `twitter:image` and its alt text | DS-169 |
+
+### Open, for Michael
+
+- **Events have no address of their own.** An event shows only as a row in a list. Engines cite pages, and Google's event results expect one page for each event. The event entries could get pages from the fields they hold. A content model change.
+
+### At release
+
+- **The old sites' domains.** Redirecting `smithfoundation.co` and `artistsforkids.sd44.ca` page by page carries over what search engines trust. The ten redirects inside the store are planned (`store-changes.md` §5). Domain redirects are not, and the school district controls one.
+- **The live sitemap lists entry pages that answer 404** under the live theme: 11 of 12 sampled, 2026-09-28. It ends at release.
+
+### Outside the site
+
+| Task | Why |
+| --- | --- |
+| Google Search Console and Bing Webmaster Tools: verify, submit the sitemap | No verification tags on the live site, though it may be verified by DNS. Bing's index feeds ChatGPT search and Copilot |
+| Google Business Profile and Apple Maps: the site's hours and name | "Is it open" is often answered from the map listing |
+| A Wikidata entry for the gallery, linked from the site's data | The strongest signal for which Gordon Smith is meant |
+| Google Merchant Center, through Shopify's Google channel | Puts the editions in shopping results |
+| Google's Rich Results Test, one page of each kind | Our check says the data is valid. Only Google's says Google accepts it |
+| Referrals from `chatgpt.com`, `perplexity.ai`, `copilot.microsoft.com`, `gemini.google.com` and `claude.ai` | The store has no analytics but Shopify's own, so a visitor sent by an assistant can't be told apart |
+
 ## Drafts for the gallery
 
 Made from words already on the site. Nothing here is written to a page.
