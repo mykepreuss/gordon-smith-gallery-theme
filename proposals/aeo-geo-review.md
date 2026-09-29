@@ -246,6 +246,25 @@ Tested on a development theme, 15 pages, one or more of every kind: `check_struc
 
 All in `proposals/gallery-questions.md` §10 and 1.6: the descriptions' words, the alt text, the FAQ's visiting questions, the biographies, the home page sentence and the social accounts. Nothing drafted here is on the live site.
 
+## Built from the AEO frameworks
+
+The three framework files (#88: the framework, the query set and the zero-click framework) are the content side of this review. Michael, 2026-09-28: "Yes, go ahead with items 1 to 4". Built on `claude/aeo-entities-llms`, on top of #87.
+
+| Item | What was done | Decision |
+| --- | --- | --- |
+| 1 | The gallery's own `/llms.txt`. Shopify added this to themes in May 2026. `/agents.md` stays Shopify's | DS-166 |
+| 2 | Artists for Kids and the Foundation as organisations | Left to the structured data session, which was already building it |
+| 3 | Gordon and Marion points to the artist | Passed to the structured data session, with how it was built here |
+| 4 | The query set as a repeatable check, `check_answers.py`: 32 questions | DS-167 |
+
+Items 2 and 3 were built here first, then taken out: another session had the same organisation data in progress in the same snippets, and two versions would have collided.
+
+What `/llms.txt` can and can't do: Shopify renders it without the store's objects, so it can't list the current exhibition or count the collection. It reads Theme settings and the locale file. So the hours and address are always the ones in force, and everything else is a pointer to the page that holds the fact.
+
+The check on the development theme, 2026-09-28: 27 answered, 0 missing, 5 known gaps. The gaps are gallery questions 10.11 to 10.15.
+
+After release (the plan's Release backlog): run the questions by hand in the main answer engines for a baseline, and again 30 days later; bring the gallery's map and business listings in step with the site's hours.
+
 ## Drafts for the gallery
 
 Made from words already on the site. Nothing here is written to a page.
