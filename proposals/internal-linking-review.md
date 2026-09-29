@@ -264,7 +264,7 @@ Professional Development has no crumb. It is a programme in the Programming rows
 
 A crumb names the page one step up. After School Art's data reads Home, Classes and camps, After School Art, without Artists for Kids between. The whole path would be a change to DS-184.
 
-**2026-09-29, option B (DS-188, Proposed).** Michael: "Go ahead with option B, Home links to the collection". Home has a new row after What's on, "From the collection": the first three featured works, the collection's size, and links to the Permanent Collection page and to Artists A to Z. A theme change only.
+**2026-09-29, option B (DS-188).** Michael: "Go ahead with option B, Home links to the collection", then, after testing it on the review theme, "DS-188 approved, merge #122". Decided as built. Home has a new row after What's on, "From the collection": the first three featured works, the collection's size, and links to the Permanent Collection page and to Artists A to Z. A theme change only.
 
 | | Before | After |
 | --- | --- | --- |
