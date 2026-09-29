@@ -11,7 +11,7 @@
                                              collage without its white border, the black bars cut from seven
                                              lesson covers (all replaced in place, same IDs), and the lesson
                                              covers' alt text cleared: each cover's title follows it (DS-58)
-  python3 files.py camp <folder>             the nine Paradise Valley camp photos (DS-168), from the folder
+  python3 files.py camp <folder>             the nine Paradise Valley camp photos (DS-172), from the folder
                                              Michael saved them to; then run urls
   python3 files.py replace <export folder>   upload fresh web copies over pictures already in Files
                                              (fileUpdate, same IDs): used once, 2026-09-27, when the
@@ -143,7 +143,7 @@ IMAGES = {
                        "Clay tiles pressed with fossil and shell shapes, drying on a board"),
 }
 
-# The Paradise Valley camp photos, one file each (DS-168, Michael, 2026-09-28), in place of the one
+# The Paradise Valley camp photos, one file each (DS-172, Michael, 2026-09-28), in place of the one
 # picture of nine on the camp page. They are the nine in afk-paradise-valley-camp.jpg, each redrawn
 # larger at 4:3 with ChatGPT (small details, faces and edges are the tool's, not the camera's): the
 # gallery's own files would replace them in place (fileUpdate, same IDs).

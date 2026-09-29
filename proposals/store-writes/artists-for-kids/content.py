@@ -169,7 +169,7 @@ def pages():
          "hero": "day-camps", "caption": "Photo by Khim Mata Hipol", "cta": (CAMPS_REG, "Register for camps"),
          "groups": ["afk-more-classes-and-camps"],
          "body": "<p>Students enjoy a week full of studio art activities including drawing, painting and printmaking taught by BC certified art specialist teachers. Each week is unique and campers learn in small cohorts. Campers experiment with many art materials and techniques while having opportunity to explore outdoor art making and recreation time.</p>"},
-        # Story template (DS-168): the camp photos, one file each, as rows of three after the opening
+        # Story template (DS-172): the camp photos, one file each, as rows of three after the opening
         # and after Bursaries; the Past camps films two and two.
         {"handle": "paradise-valley-summer-camp", "title": "Paradise Valley Summer Camps", "template": "story",
          "cta": (PV_REG, "Register for camp"), "intro": "5 days, 4 nights, inclusive",

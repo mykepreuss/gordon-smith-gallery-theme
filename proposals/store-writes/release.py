@@ -53,7 +53,7 @@ AFK_PROGRAMME = {"classes-and-camps", "schools-and-teachers", "after-school-art"
 AFK_STANDARD = {"artist-in-residence-amelia-butcher", "artist-in-residence-mark-johnsen",
                 "artist-in-residence-becky-bair", "artist-in-residence-sara-jeanne-bourget",
                 "support-artists-for-kids"}
-# Paradise Valley: nine camp photos set into its text as a story (DS-168, Proposed).
+# Paradise Valley: nine camp photos set into its text as a story (DS-172, Proposed).
 AFK_STORY = {"paradise-valley-summer-camp"}
 AFK_NEW = AFK_PROGRAMME | AFK_STANDARD | AFK_STORY
 # The Smith Foundation's pages made before release the same way (P-35, P-42; proposals/smith-foundation-site.md),

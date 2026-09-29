@@ -895,7 +895,7 @@ The words are drafts made from each page's own text, facts first, for the galler
 
 **Undo:** `metafieldsDelete` for the 40 values (owner IDs in `aeo/descriptions.json`, namespace `custom`, key `release_description`), then `metafieldDefinitionDelete` on the definition. The new theme falls back to each page's own words.
 
-## 2026-09-28: Paradise Valley's nine camp photos (DS-168)
+## 2026-09-28: Paradise Valley's nine camp photos (DS-172)
 
 **Why:** Michael, 2026-09-28: "For https://gordonsmithgallery.com/pages/paradise-valley-summer-camp Let's use these 9 images … instead of the single image", so the page can be laid out like Gordon and Marion.
 
