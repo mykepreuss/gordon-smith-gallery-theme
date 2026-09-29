@@ -1,6 +1,6 @@
 # Structured data: the kinds of page step 1 left out
 
-Date: 2026-09-28. Decisions: DS-158 and DS-159, both **Proposed**. This adds to `proposals/aeo-geo-review.md`, whose step 1 built the gallery, exhibitions, events, works, artists and crumbs (DS-154, decided).
+Date: 2026-09-28. Decisions: DS-158 and DS-159, both **decided by Michael, 2026-09-28** ("approve DS-158 and DS-159 as built"). This adds to `proposals/aeo-geo-review.md`, whose step 1 built the gallery, exhibitions, events, works, artists and crumbs (DS-154, decided).
 
 ## How this came about
 
@@ -43,9 +43,11 @@ The pages were saved with a preview cookie and checked with `--file`, since the 
 
 Not checked yet: Google's Rich Results Test and validator.schema.org. Paste a block from the page source into either.
 
-## For Michael
+## Decided
 
-| # | Question | Built as | Alternative |
+Michael approved all three as built, 2026-09-28. The alternatives are kept for the record.
+
+| # | Question | Decided, as built | Alternative, not taken |
 | --- | --- | --- | --- |
 | 1 | DS-158: more kinds of page | As the table above | Leave any kind out |
 | 2 | DS-159: the editions' own data | Replaces Shopify's | Keep Shopify's and wait for the titles to change at release |
