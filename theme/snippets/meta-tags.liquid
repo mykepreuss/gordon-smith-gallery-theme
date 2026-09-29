@@ -77,13 +77,9 @@
     assign made_from = page.content
     assign entry_text = page.metafields.custom.intro.value
     if entry_text == blank
-      # The start of the page's text, as gs-page-text picks it (DS-39). A space before each tag
-      # keeps the words of two paragraphs apart.
-      assign body = page.content
-      if page.metafields.custom.release_body != blank
-        assign body = page.metafields.custom.release_body.value
-      endif
-      assign entry_text = body | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | replace: ' ,', ',' | replace: ' .', '.' | truncatewords: 30
+      # The start of the page's text. A space before each tag keeps the words of two paragraphs
+      # apart.
+      assign entry_text = page.content | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | replace: ' ,', ',' | replace: ' .', '.' | truncatewords: 30
     endif
   elsif request.page_type == 'product'
     assign f = product.metafields.custom

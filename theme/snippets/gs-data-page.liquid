@@ -7,7 +7,7 @@
   A page of questions is a FAQPage (DS-162): a page whose text has two or more
   headings that end with a question mark, all at one level (H3, else H2). Each heading is a
   question and the text up to the next heading is its answer, so the FAQ needs no fields of its
-  own. The text is the page's, as gs-page-text picks it (DS-39).
+  own. The text is the page's own.
 
   A page an artist entry names as its About page (Gordon and Marion, for Gordon Smith) says it
   is about that artist, by the artist's own name for machines.
@@ -42,9 +42,6 @@
 
     # The questions and answers in the page's text (DS-162).
     assign body = page.content
-    if page.metafields.custom.release_body != blank
-      assign body = page.metafields.custom.release_body.value
-    endif
     assign level = ''
     if body contains '<h3'
       assign level = 'h3'
