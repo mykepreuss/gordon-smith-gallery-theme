@@ -263,7 +263,7 @@ What `/llms.txt` can and can't do: Shopify renders it without the store's object
 
 The check on the development theme, 2026-09-28: 27 answered, 0 missing, 5 known gaps. The gaps are gallery questions 10.11 to 10.15.
 
-After release (the plan's Release backlog): run the questions by hand in the main answer engines for a baseline, and again 30 days later; bring the gallery's map and business listings in step with the site's hours.
+After release (the plan's "Open after the release"): run the questions by hand in the main answer engines for a baseline, and again 30 days later; bring the gallery's map and business listings in step with the site's hours.
 
 ## Technical follow-up
 
