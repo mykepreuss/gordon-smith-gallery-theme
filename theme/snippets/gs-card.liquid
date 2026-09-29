@@ -83,7 +83,7 @@
     </{{ tag }}>
     <div class="gs-card__body">
       {%- if card.text.value != blank -%}
-        <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value -%}</div>
+        <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value, link_names: true -%}</div>
       {%- endif -%}
       {%- if labelled -%}
         {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}
@@ -109,7 +109,7 @@
       {%- endif -%}
     </{{ tag }}>
     {%- if card.text.value != blank -%}
-      <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value -%}</div>
+      <div class="gs-card__text">{%- render 'gs-paragraphs', text: card.text.value, link_names: true -%}</div>
     {%- endif -%}
     {%- if labelled -%}
       {%- render 'gs-link', link: link, class: 'gs-cta-link' -%}

@@ -1182,6 +1182,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 /* Card text is paragraphs (gs-paragraphs): a blank line in the field starts a new one. */
 .gs-card__text > p { margin: 0; }
 .gs-card__text > p + p { margin-block-start: 1em; }
+/* A name linked in a card's text (gs-linked-names, DS-175) sits above the card's stretched title
+   link, so it goes to its own page and the rest of the card to the card's. */
+.gs-card__text a { position: relative; z-index: 1; }
 /* People cards: the line about the person is in the small size, so the name leads (DS-37). */
 .gs-grid--people .gs-card__text { font-size: var(--gs-text-small); line-height: var(--gs-leading-small); }
 /* A card without an image: the rule marks where it starts. */

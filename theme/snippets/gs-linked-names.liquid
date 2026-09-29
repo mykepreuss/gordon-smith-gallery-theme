@@ -1,0 +1,146 @@
+{% doc %}
+  Links the names in a text to their pages (DS-175): where a text names something the
+  site has a page for ("Speaker Series", "donors", "Artists for Kids"), the name becomes a link to
+  that page. People read on, and search and answer engines follow the links between pages.
+
+  The names are in Theme settings, Links between pages, one to a line: the words, an equals
+  sign, the page's handle ("Speaker Series = speaker-series"). Staff change the list there;
+  nobody edits the texts. A line whose page doesn't exist is passed over.
+
+  There are two lists. Names mean one thing wherever they stand ("Speaker Series"), so they are
+  linked on every page. General words mean different things for different organisations: on an
+  Artists for Kids page, "donors" are its own, not the Foundation's. So a general word is
+  linked only where the page it leads to belongs to the same organisation as the page it is on,
+  or to the Gallery, which all three share.
+
+  Rules, so a text is never crowded with links:
+  - A name is linked once in a text, the first time it stands as whole words, whatever its
+    capitals.
+  - Never to the page it is on, and never to a page the text already links to.
+  - Never inside a link or a heading.
+  - Names are taken in the order of the list, so a longer name goes above a shorter one inside
+    it ("Gordon and Marion Smith Foundation" above "Smith Foundation").
+
+  The text comes in as HTML, already escaped (from gs-paragraphs or gs-rich-text), and goes out
+  as HTML.
+
+  @param {string} html - The text, as HTML. Required
+  @param {string} [skip] - An address the text's own card links to already
+
+  @example
+  {%- render 'gs-linked-names', html: para, skip: card_url -%}
+{% enddoc %}
+{%- liquid
+  assign out = html
+  assign letters = 'abcdefghijklmnopqrstuvwxyz0123456789'
+  capture here
+    render 'gs-brand'
+  endcapture
+  assign here = here | strip
+  # Names, then general words, each line marked with which list it is from.
+  assign names = settings.linked_names | newline_to_br | strip_newlines | split: '<br />'
+  assign general_lines = settings.linked_words | newline_to_br | strip_newlines | replace: '<br />', '<br />~' | prepend: '~' | split: '<br />'
+  assign lines = names | concat: general_lines
+  for line in lines
+    # A loop's own variable can't be reassigned inside it, so the line without its mark is a new one.
+    assign general = false
+    assign entry = line | strip
+    assign first_char = entry | slice: 0, 1
+    if first_char == '~'
+      assign general = true
+      assign entry = entry | remove_first: '~'
+    endif
+    assign parts = entry | split: '='
+    if parts.size != 2
+      continue
+    endif
+    assign phrase = parts[0] | strip | escape
+    assign handle = parts[1] | strip
+    if phrase == blank or handle == blank
+      continue
+    endif
+    assign target = pages[handle]
+    if target.url == blank or target.id == page.id or target.url == skip
+      continue
+    endif
+    if general
+      capture there
+        render 'gs-programme', value: target.metafields.custom.programme.value
+      endcapture
+      assign there = there | strip
+      if there != 'gallery' and there != here
+        continue
+      endif
+    endif
+    assign marker = 'href="' | append: target.url | append: '"'
+    assign low_out = out | downcase
+    assign low_phrase = phrase | downcase
+    if out contains marker
+      continue
+    endif
+    unless low_out contains low_phrase
+      continue
+    endunless
+
+    assign pieces = out | split: '<'
+    assign rebuilt = ''
+    assign inside = 0
+    assign done = false
+    for piece in pieces
+      if forloop.first
+        assign tag = ''
+        assign text = piece
+      else
+        assign tag = piece | split: '>' | first
+        assign text = piece | remove_first: tag | remove_first: '>'
+        assign tag_name = tag | split: ' ' | first | downcase
+        case tag_name
+          when 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+            assign inside = inside | plus: 1
+          when '/a', '/h1', '/h2', '/h3', '/h4', '/h5', '/h6'
+            assign inside = inside | minus: 1
+        endcase
+      endif
+
+      if done == false and inside < 1 and text != blank
+        assign low_text = text | downcase
+        if low_text contains low_phrase
+          assign start = low_text | split: low_phrase | first | size
+          assign length = low_phrase.size
+          assign after_at = start | plus: length
+          assign whole = true
+          if start > 0
+            assign before_at = start | minus: 1
+            assign before_char = low_text | slice: before_at, 1
+            if before_char != blank and letters contains before_char
+              assign whole = false
+            endif
+          endif
+          assign after_char = low_text | slice: after_at, 1
+          if after_char != blank and letters contains after_char
+            assign whole = false
+          endif
+          if whole
+            assign head = text | slice: 0, start
+            assign words = text | slice: start, length
+            assign rest_size = text.size | minus: after_at
+            assign tail = ''
+            if rest_size > 0
+              assign tail = text | slice: after_at, rest_size
+            endif
+            assign text = head | append: '<a class="gs-link" href="' | append: target.url | append: '">' | append: words | append: '</a>' | append: tail
+            assign done = true
+          endif
+        endif
+      endif
+
+      if forloop.first
+        assign rebuilt = text
+      else
+        assign rebuilt = rebuilt | append: '<' | append: tag | append: '>' | append: text
+      endif
+    endfor
+    assign out = rebuilt
+  endfor
+  echo out
+-%}

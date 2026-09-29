@@ -12,6 +12,7 @@
     jumping as it loads (DS-77, Proposed).
 
   @param {string} html - The rich text's HTML. Required
+  @param {boolean} [link_names] - Link the names in the text to their pages (gs-linked-names)
 
   @example
   {%- capture html -%}{{ entry.body | metafield_tag }}{%- endcapture -%}
@@ -154,5 +155,9 @@
     assign body = out
   endif
 
-  echo body
+  if link_names
+    render 'gs-linked-names', html: body
+  else
+    echo body
+  endif
 -%}

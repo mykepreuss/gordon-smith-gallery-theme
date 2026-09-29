@@ -483,6 +483,27 @@
     ]
   },
   {
+    "name": "Links between pages",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Where a text names something the site has a page for, the name links to that page. It is linked once in a text, never on its own page, and never inside a heading or another link. This covers page text, cards, events, exhibitions, artists and groupings."
+      },
+      {
+        "type": "textarea",
+        "id": "linked_names",
+        "label": "Names and their pages",
+        "info": "Linked on every page. One to a line: the words, an equals sign, the page's handle. For example: Speaker Series = speaker-series. Capitals don't matter. Put a longer name above a shorter one inside it."
+      },
+      {
+        "type": "textarea",
+        "id": "linked_words",
+        "label": "General words and their pages",
+        "info": "Words that mean different things for different organisations, such as donors. Linked only where the page they lead to belongs to the same organisation as the page they are on, or to the Gallery. Written the same way: donors = smith-foundation-supporters."
+      }
+    ]
+  },
+  {
     "name": "Exhibitions and events",
     "settings": [
       {

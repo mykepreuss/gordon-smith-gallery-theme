@@ -105,7 +105,7 @@
     {%- endif -%}
     {%- comment -%} A blank line in the summary starts a new paragraph; a single line break stays a break (Part 1 / Part 2). {%- endcomment -%}
     {%- if compact != true and event.summary.value != blank -%}
-      <div class="gs-event__summary">{%- render 'gs-paragraphs', text: event.summary.value -%}</div>
+      <div class="gs-event__summary">{%- render 'gs-paragraphs', text: event.summary.value, link_names: true -%}</div>
     {%- endif -%}
     {%- if event.tickets.value.url != blank and past != true -%}
       {%- liquid

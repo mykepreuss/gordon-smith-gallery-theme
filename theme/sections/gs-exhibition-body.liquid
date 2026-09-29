@@ -27,7 +27,7 @@
       {%- endif -%}
 
       {%- if entry.body.value != blank -%}
-        <div class="gs-prose gs-about__body">{%- capture html -%}{{ entry.body | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+        <div class="gs-prose gs-about__body">{%- capture html -%}{{ entry.body | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html, link_names: true -%}</div>
       {%- endif -%}
 
       {%- if has_credits -%}

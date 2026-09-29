@@ -63,7 +63,7 @@
             <p class="gs-deck">{{ facts | escape }}</p>
           {%- endif -%}
           {%- if metaobject.biography.value != blank -%}
-            <div class="gs-prose">{%- capture html -%}{{ metaobject.biography | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+            <div class="gs-prose">{%- capture html -%}{{ metaobject.biography | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html, link_names: true -%}</div>
           {%- endif -%}
           {%- assign about = metaobject.about_page.value -%}
           {%- if about.url != blank -%}
@@ -82,7 +82,7 @@
     {%- else -%}
       <h1 class="gs-h1"{% render 'gs-fit', text: title %}>{{ title | escape }}</h1>
       {%- if metaobject.introduction.value != blank -%}
-        <div class="gs-prose">{%- render 'gs-paragraphs', text: metaobject.introduction.value -%}</div>
+        <div class="gs-prose">{%- render 'gs-paragraphs', text: metaobject.introduction.value, link_names: true -%}</div>
       {%- endif -%}
     {%- endif -%}
   </header>

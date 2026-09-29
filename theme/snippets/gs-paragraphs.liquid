@@ -3,13 +3,25 @@
   single line break stays a break (Part 1 / Part 2). The caller wraps them (.gs-card__text,
   .gs-event__summary, .gs-prose), which spaces them 1em apart.
 
+  With link_names, the names in the text link to their pages, all the paragraphs as one text,
+  so a name is linked once (DS-175).
+
   @param {string} text - The field's text. Required
+  @param {boolean} [link_names] - Link the names in the text to their pages (gs-linked-names)
+  @param {string} [skip] - An address the text's own card links to already
 
   @example
   <div class="gs-card__text">{% render 'gs-paragraphs', text: card.text.value %}</div>
 {% enddoc %}
 {%- assign paras = text | escape | newline_to_br | strip_newlines | split: '<br /><br />' -%}
-{%- for para in paras -%}
-  {%- assign para = para | strip -%}
-  {%- if para != blank -%}<p>{{ para }}</p>{%- endif -%}
-{%- endfor -%}
+{%- capture out -%}
+  {%- for para in paras -%}
+    {%- assign para = para | strip -%}
+    {%- if para != blank -%}<p>{{ para }}</p>{%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if link_names -%}
+  {%- render 'gs-linked-names', html: out, skip: skip -%}
+{%- else -%}
+  {{- out -}}
+{%- endif -%}
