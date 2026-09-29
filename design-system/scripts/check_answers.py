@@ -12,12 +12,16 @@ updated.
 
 Standard library only.
 Usage:
-  python3 design-system/scripts/check_answers.py BASE [--json report.json] [--only N[,N]]
-BASE is the theme dev address or a preview address, without a path, for example
-http://127.0.0.1:9292 . Exit code 1 when a question that should be answered isn't.
+  python3 design-system/scripts/check_answers.py BASE [--theme ID] [--json report.json] [--only N[,N]]
+BASE is the site's address without a path: the theme dev address (http://127.0.0.1:9292), a
+preview address, or the store's own. With --theme, the pages are read as that theme shows them
+(an unpublished or development theme): the store is asked for the theme once, and the cookie it
+answers with is kept for every page after. Exit code 1 when a question that should be answered
+isn't.
 """
 import argparse
 import html
+import http.cookiejar
 import json
 import pathlib
 import re
@@ -30,10 +34,20 @@ BLOCK = re.compile(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>
 DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
+# Cookies are kept between pages: a preview of an unpublished theme is held in one.
+OPENER = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+
+
 def fetch(url):
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (answers check)"})
-    with urllib.request.urlopen(request, timeout=60) as response:
+    with OPENER.open(request, timeout=60) as response:
         return response.read().decode("utf-8", "replace")
+
+
+def theme_shown(page):
+    """The id of the theme a page was drawn with, as Shopify writes it in the page."""
+    found = re.search(r'Shopify\.theme = \{[^}]*"id":(\d+)', page)
+    return found.group(1) if found else ""
 
 
 def visible_text(page):
@@ -106,12 +120,24 @@ def check_hours(page):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("base")
+    parser.add_argument("--theme", help="read the pages as this theme shows them (a theme id)")
     parser.add_argument("--json", help="write the report here")
     parser.add_argument("--only", default="", help="question numbers, comma-separated")
     args = parser.parse_args(argv)
     base = args.base.rstrip("/")
     only = {int(n) for n in args.only.split(",") if n.strip()}
     spec = json.loads(QUESTIONS.read_text())
+
+    if args.theme:
+        try:
+            shown = theme_shown(fetch(f"{base}/?preview_theme_id={args.theme}"))
+        except (OSError, urllib.error.URLError) as exc:
+            print(f"ERROR       the theme {args.theme} didn't load: {exc}")
+            return 1
+        if shown != args.theme:
+            print(f"ERROR       asked for theme {args.theme}, the store showed {shown or 'no theme id'}")
+            return 1
+        print(f"Reading theme {args.theme}")
 
     pages, report, failed, closed = {}, [], 0, []
 

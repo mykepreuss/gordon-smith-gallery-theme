@@ -690,7 +690,7 @@ Since then every page has had a design pass with its real content, on the develo
 | Linter tests | `python3 design-system/scripts/tests/test_lint_theme.py` (15 tests) | When the linter or rules change |
 | Rendered links | `python3 design-system/scripts/audit_links.py <preview URLs>` (needs Playwright) | After a change to link styles, on the pages it touches |
 | Structured data | `python3 design-system/scripts/check_structured_data.py <preview URLs>`; its tests, `python3 design-system/scripts/tests/test_check_structured_data.py` (11 tests) | After a change to `meta-tags` or a `gs-data` snippet, on one page of each kind |
-| Answers | `python3 design-system/scripts/check_answers.py <preview or theme dev address>`; its tests, `python3 design-system/scripts/tests/test_check_answers.py` (8 tests) | After a change to a page the questions depend on, when the hours change, and before release |
+| Answers | `python3 design-system/scripts/check_answers.py <preview or theme dev address>`; its tests, `python3 design-system/scripts/tests/test_check_answers.py` (9 tests) | After a change to a page the questions depend on, when the hours change, and before release |
 | Rendered fonts | `python3 design-system/scripts/audit_fonts.py <preview URLs>` (needs Playwright) | Before release, on the review theme's representative pages |
 | Manual | Keyboard through the header on desktop and mobile, with JavaScript off once; a real phone for tap feedback; Windows High Contrast once; hero crops at 1440 / 768 / 390 and the longest real title at 320; staff edit of two pages on one template | Before release (plan verification rules) |
 
