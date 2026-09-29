@@ -127,7 +127,7 @@
   --gs-tracking-label: 0.08em;
   --gs-tracking-nav: 0.05em;
 
-  --gs-measure: 68ch;        /* body copy line length */
+  --gs-measure: 58ch;        /* body copy line length: about 72 characters of Mulish, whose "0" is wider than its average letter (DS-72) */
   --gs-measure-deck: 42ch;
   --gs-measure-heading: 22ch;
 
@@ -157,7 +157,6 @@
 
   --gs-width-wide: 90rem;     /* 1440: heroes, image grids */
   --gs-width-content: 75rem;  /* 1200: card grids, footer (the header runs full width, DS-07) */
-  --gs-width-prose: 45rem;    /* 720: the logo cards' text (text columns use --gs-measure) */
   --gs-header-logo-h: 4rem;   /* 64 mobile; see DESIGN.md §6.1 */
   --gs-header-logo-h-lg: 6rem; /* 96 at ≥ 990px; the header's height there on every page */
   --gs-nav-gap: clamp(2rem, 2.9vw - 0.2rem, 2.75rem); /* main nav item gap from 1200 px: 32 at 1200, 39 at 1440, 44 from about 1630. Six section labels leave room at 1200 on every programme's pages (DS-136); seven would need checking */
@@ -223,7 +222,7 @@
   --gs-nav-line: 3px;              /* the nav's current and hover underline */
   --gs-control-h: 3rem;            /* 48: buttons and fields */
   --gs-link-thickness: 2px;
-  --gs-link-thickness-hover: 3px; /* hover and press on standalone links, crumbs and card titles: the line thickens, so the cue shows where the line is already the text colour (Artists for Kids and Foundation pages) */
+  --gs-link-thickness-hover: 3px; /* hover and press on every link, inline ones too (DS-81): the line thickens, so the cue shows where the line is already the text colour and the fill is faint (Artists for Kids and Foundation pages) */
   --gs-link-offset: 0.22em;
   --gs-link-offset-heading: 0.16em; /* underline under caps card titles */
   --gs-focus-width: 3px;

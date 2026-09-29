@@ -326,7 +326,7 @@ What the build changed from the plan above, and why. Each is small; none changes
 ## Still open
 
 - The gallery's and the team's answers: `proposals/gallery-questions.md` §6 (text corrections for Gallery Program, two missing PDFs, names, "AFK" in body text, the lessons' works, the new labels, and T3 to T6).
-- DS-69 to DS-71 and DS-73 to DS-83, all but DS-81, were decided by Michael on 2026-09-29. Left: his choice on the rules the design review proposed but didn't build: DS-72 (a 58ch measure), DS-79 (pictures stay in the reading order on phones), DS-81 (the rule-colour hover fill), DS-70a (three lesson options), and Q12 (the Foundation logo and the navigation from 1200 to 1400 px).
+- DS-69 to DS-71 and DS-73 to DS-83, all but DS-81, were decided by Michael on 2026-09-29. DS-72 and DS-81 (option B) were decided and built the same day. As first listed, the rules the design review proposed but didn't build: DS-72 (a 58ch measure), DS-79 (pictures stay in the reading order on phones), DS-81 (the rule-colour hover fill), DS-70a (three lesson options), and Q12 (the Foundation logo and the navigation from 1200 to 1400 px).
 - Held from the design review for a later pass across the site: the hero title's measure token, the hero photo's corner below 990 px, and the standalone link's arrow following its last word.
 - Focal points to set by hand in Files: the Paradise Valley camp photo `pvssa_25` at about 50% across, 75% down; the 2026 residency hero at about 30%, 35%.
 - The undated educators' workshops (a curator's tour of *Against the Latitude of "Progress"*, four printmaking kit introductions, portfolio building): events once they have dates.
