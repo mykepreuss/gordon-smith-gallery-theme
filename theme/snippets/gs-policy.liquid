@@ -1,0 +1,23 @@
+{% doc %}
+  A store policy's page (/policies/…), laid out as a page without a hero (DS-177): the page
+  header, then the policy's text as page text. Shopify gives these pages no template and its own
+  markup, so the layout renders this in its place. The text is the store's (Settings, Policies);
+  .gs-prose neutralises fonts pasted from Word, as on every page (§6.11).
+
+  @param {object} policy - The policy, from shop.policies. Required
+
+  @example
+  {%- render 'gs-policy', policy: policy -%}
+{% enddoc %}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    {%- render 'gs-title-block', title: policy.title -%}
+  </header>
+</div>
+{%- if policy.body != blank -%}
+  <div class="gs-section gs-surface-paper">
+    <div class="gs-container">
+      <div class="gs-prose">{%- render 'gs-rich-text', html: policy.body -%}</div>
+    </div>
+  </div>
+{%- endif -%}
