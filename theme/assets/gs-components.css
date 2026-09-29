@@ -2479,6 +2479,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 .gs-entry-head .gs-media { max-width: 20rem; }
 @media (min-width: 990px) {
   .gs-entry-head:has(> .gs-entry-head__aside) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; }
+  /* An event's page (DS-176): its text runs long, so the picture starts level with the title
+     instead of ending level with the last line. */
+  .gs-entry-head--top:has(> .gs-entry-head__aside) { align-items: start; }
 }
 
 /* A to Z: each letter large beside its names, which run in columns (as DS-45). The big letters are

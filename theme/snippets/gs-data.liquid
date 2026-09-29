@@ -31,7 +31,8 @@
     an edition         <its page>#product      a page              <its page>#webpage
     a crumb            <its page>#breadcrumb   a page's list       <its page>#list
 
-  - Events print their own with each row and card (gs-data-event).
+  - Events print their own with each row and card (gs-data-event), and on an event's own page
+    (DS-176), where the event is what the page is about.
   - A year is given only when it is a plain year ("1985"); "n.d." and "1950-1959" stay on the
     page. Life dates are read from "1882 to 1974" and "born 1946".
   - Addresses start with the shop's own domain (shop.url), as the canonical address does, so a
@@ -105,6 +106,16 @@
       assign crumb_name = settings.lessons_page.title
       assign crumb_url = settings.lessons_page.url
       assign here = metaobject.title.value
+    when 'event'
+      # The list the event's page links back to: its programme, else the events list (gs-event-detail).
+      assign back = metaobject.programme_page.value
+      assign crumb_name = back.title
+      if back == blank
+        assign back = settings.events_page
+        assign crumb_name = settings.events_title | default: back.title
+      endif
+      assign crumb_url = back.url
+      assign here = metaobject.title.value
   endcase
   if request.page_type == 'product' and product.type != 'Frame'
     assign crumb_name = 'shop.crumb' | t
@@ -157,6 +168,14 @@
       render 'gs-data-lesson', description: description
     when 'collection_group'
       render 'gs-data-list', description: description
+    when 'event'
+      assign event_id = home | append: '#event-' | append: metaobject.system.handle
+      assign event_programme = metaobject.programme_page.value.metafields.custom.programme.value
+      if event_programme == blank
+        assign event_programme = metaobject.exhibition.value.programme.value
+      endif
+      render 'gs-data-event', event: metaobject
+      render 'gs-data-webpage', subject: event_id, name: metaobject.title.value, description: description, image: image, programme: event_programme, crumb: true
     else
       if request.page_type == 'collection'
         render 'gs-data-list', description: description

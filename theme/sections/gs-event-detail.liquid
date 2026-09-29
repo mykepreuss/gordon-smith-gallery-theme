@@ -1,0 +1,143 @@
+{%- comment -%}
+  An event's own page (DS-176, proposals/event-pages.md), from the event entry's fields and
+  nothing else: a link back to its programme (else the events list), whether it has ended, the
+  title, then when, where and its exhibition as a details list, the summary, and
+  the registration or tickets link. The picture sits beside them, as an artist's portrait does
+  (the entry header, DESIGN.md §6.6, starting level with the title since the text runs long): the event's own, else its exhibition's key image, else its
+  programme page's picture, as the rows choose it (DS-150).
+
+  A blank location means the gallery, so the place is the gallery's name and address from
+  Theme settings. An event that has ended says so and offers no registration (DS-147).
+
+  More events in the same programme follow (gs-event-more).
+{%- endcomment -%}
+{%- liquid
+  assign event = metaobject
+  assign programme = event.programme_page.value
+  assign exhibition = event.exhibition.value
+
+  assign back = programme
+  assign back_label = programme.title
+  if back == blank
+    assign back = settings.events_page
+    assign back_label = settings.events_title | default: settings.events_page.title
+  endif
+
+  assign now = 'now' | date: '%s' | plus: 0
+  assign finish = event.ends.value | default: event.starts.value
+  assign finish_s = finish | date: '%s' | plus: 0
+  assign ended = false
+  if finish_s < now
+    assign ended = true
+  endif
+
+  assign image = event.image.value
+  assign mode = 'photo'
+  if image == blank and exhibition != blank
+    assign image = exhibition.key_image.value
+    if image != blank and exhibition.key_image_is_artwork.value == true
+      assign mode = 'artwork'
+    endif
+  endif
+  if image == blank and programme != blank
+    assign image = programme.metafields.custom.hero_image.value
+    if image != blank and programme.metafields.custom.hero_is_artwork.value == true
+      assign mode = 'artwork'
+    endif
+  endif
+
+  assign ex_linked = false
+  if exhibition != blank
+    if exhibition.summary.value != blank or exhibition.body.value != blank
+      assign ex_linked = true
+    endif
+  endif
+-%}
+<div class="gs-container gs-lead-in">
+  <header class="gs-page-head">
+    {%- if back != blank -%}
+      <p class="gs-crumb"><a href="{{ back.url }}">{{ back_label | escape }}</a></p>
+    {%- endif -%}
+    <div class="gs-entry-head gs-entry-head--top">
+      <div class="gs-entry-head__main">
+        {%- if ended -%}
+          <div class="gs-status"><span class="gs-chip">{{ 'events.ended' | t }}</span></div>
+        {%- endif -%}
+        <h1 class="gs-h1"{% render 'gs-fit', text: event.title.value %}>{{ event.title.value | escape }}</h1>
+        <dl class="gs-details gs-details--stack">
+          <div class="gs-details__item">
+            <dt>{{ 'events.when' | t }}</dt>
+            <dd>
+              <time datetime="{{ event.starts.value }}">
+                {%- render 'gs-time-range', start: event.starts.value, end: event.ends.value -%}
+              </time>
+            </dd>
+          </div>
+          <div class="gs-details__item">
+            <dt>{{ 'events.where' | t }}</dt>
+            <dd>
+              {%- if event.location.value != blank -%}
+                {{- event.location.value | escape -}}
+              {%- else -%}
+                {{- 'general.site_title.gallery' | t -}}
+                {%- if settings.address != blank -%}
+                  <address>{{ settings.address | escape | newline_to_br }}</address>
+                {%- endif -%}
+              {%- endif -%}
+            </dd>
+          </div>
+          {%- if exhibition != blank -%}
+            <div class="gs-details__item">
+              <dt>{{ 'events.exhibition' | t }}</dt>
+              <dd>
+                {%- if ex_linked -%}
+                  <a class="gs-link" href="{{ exhibition.system.url }}">{{ exhibition.title.value | escape }}</a>
+                {%- else -%}
+                  {{- exhibition.title.value | escape -}}
+                {%- endif -%}
+              </dd>
+            </div>
+          {%- endif -%}
+        </dl>
+        {%- if event.summary.value != blank -%}
+          <div class="gs-prose">{%- render 'gs-paragraphs', text: event.summary.value, link_names: true -%}</div>
+        {%- endif -%}
+        {%- if event.tickets.value.url != blank and ended == false -%}
+          {%- liquid
+            assign ticket_label = event.tickets.value.text
+            if ticket_label == blank
+              assign ticket_label = 'events.tickets' | t
+            endif
+          -%}
+          <div class="gs-actions">{%- render 'gs-link', link: event.tickets.value, label: ticket_label, class: 'gs-button' -%}</div>
+        {%- endif -%}
+      </div>
+      {%- if image != blank -%}
+        <div class="gs-entry-head__aside">
+          {%- render 'gs-media', image: image, sizes: '(min-width: 990px) 320px, 80vw', mode: mode, ratio: 'var(--gs-ratio-card)' -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Event",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Everything here comes from the Event entry, in Content, Metaobjects."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Event"
+    }
+  ]
+}
+{% endschema %}

@@ -1,6 +1,6 @@
 # Event pages: a page for each event
 
-Date: 2026-09-29. Decision: DS-176, **decided by Michael, 2026-09-29** ("DS-176 approved with all recommendations, merge #110"). Not built yet, and nothing in the store changed.
+Date: 2026-09-29. Decision: DS-176, **decided by Michael, 2026-09-29** ("DS-176 approved with all recommendations, merge #110"). Built 2026-09-29 (see "Built"). Nothing in the store changed.
 
 Asked for by Michael, 2026-09-29 ("Write up the proposal for event pages"), from the open item in `proposals/aeo-geo-review.md`, "Technical follow-up".
 
@@ -133,6 +133,57 @@ Michael, 2026-09-29: "DS-176 approved with all recommendations, merge #110". All
 3. The rule for events with no summary.
 4. The checks: Theme Check, the linter with the new template in its rules, `check_structured_data.py` on an event page, `check_answers.py`.
 5. A pull request, with the store change logged in `proposals/store-writes/README.md` and listed in `proposals/store-changes.md` for release.
+
+## Built
+
+2026-09-29, on `claude/event-pages`. Theme only.
+
+| Part | File |
+| --- | --- |
+| The page | `theme/templates/metaobject/event.json`, `sections/gs-event-detail.liquid`, `sections/gs-event-more.liquid` |
+| Whether an event has a page to link to | `snippets/gs-event-page-link.liquid` |
+| Links from rows and cards | `snippets/gs-event.liquid`, `snippets/gs-event-card.liquid` |
+| Title, description, the request not to be listed | `snippets/meta-tags.liquid` |
+| Structured data and the crumb | `snippets/gs-data.liquid`, `snippets/gs-data-event.liquid` |
+| The picture level with the title | `.gs-entry-head--top` in `design-system/components.css` |
+| The template in the closed set | `design-system/templates.rules.json`, DESIGN.md §7 |
+
+Two changes from the proposal, both smaller:
+
+- **No Program row in the details.** The link back above the title names the programme already.
+- **More in the programme uses compact rows:** title, when, where and the registration link. Each event with more to say has its page.
+
+### What could be tested, and what couldn't
+
+The store doesn't show events as pages yet, so no address draws the new template. The page's body was tested by drawing the same sections on an ordinary page, for five events, with test files that were deleted afterwards and never committed.
+
+| Tested on a development theme | Result |
+| --- | --- |
+| An event with a summary, a picture and a registration link | All parts show, the button reads "Register" |
+| An event with an exhibition and no place typed | The gallery's name and address, and a link to the exhibition |
+| An event with no summary | Title, when and where only |
+| An event that has ended | "This event has ended", and no registration link |
+| More in the programme | Up to three, without the event itself. None when the programme has nothing else coming |
+| 1440 px and 375 px | No sideways scroll. The picture starts level with the title from 990 px and follows the text on a phone |
+| Lists today (Home, Upcoming events, a programme, an exhibition) | Unchanged: no row links to an event page, since no event has an address yet |
+| `check_structured_data.py`, 6 pages; `check_answers.py` | 0 errors; 27 answered, 5 known gaps |
+
+### Tested on real event addresses
+
+Michael asked for the rest to be tested before release (2026-09-29). The store showed events as pages for about 80 seconds, from 16:15:55 to 16:17:14 UTC, and was then set back (`proposals/store-writes/README.md`).
+
+| Tested | Result |
+| --- | --- |
+| The title | "Art Education, For Life: Reflections from Omer Arbel, November 26, 2026", then the programme's name |
+| The description | Starts with when: "Thursday, November 26, 2026, 6 PM. Doors 6 PM..." |
+| An event with no summary | Its page asks not to be listed, and has no description. Its structured data gives the programme's address |
+| The structured data | The event, the page that is about it, and the crumb (Home, the programme, the event), each naming the others. `check_structured_data.py` on nine pages: 0 errors |
+| Rows and cards | Link to the event's page when it has a summary: 2 on Home, 7 on Upcoming events, 3 on the exhibition. None broken |
+| After turning off | Event addresses answer 404, and every row and card links as before, by itself |
+
+One fault found and fixed: Shopify hands an entry's description over with its apostrophes already written as HTML, and the tag wrote them as HTML again, so "Tang's" would have read "Tang&#39;s" in a search result. This reached every entry page with a description of its own, not only events.
+
+At release the first step is still to turn the pages on and read three event pages before publishing.
 
 ## Limits
 

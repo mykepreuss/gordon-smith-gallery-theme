@@ -1,0 +1,75 @@
+{%- comment -%}
+  More in an event's programme (DS-176): the programme's next events, soonest first, three at
+  most, without the event the page is about. Compact rows: the title, when, where and the
+  registration link, since each event with more to say has a page of its own. An event titled
+  like its programme leads with its date (DS-36). Nothing shows when the event has
+  no programme or the programme has nothing else coming.
+{%- endcomment -%}
+{%- liquid
+  assign programme = metaobject.programme_page.value
+  assign ids = ''
+  if programme != blank
+    capture ids
+      render 'gs-event-index', for_page: programme
+    endcapture
+  endif
+  assign ids = ids | strip | split: ','
+
+  # The places of the three to show: the programme's next events, without this one.
+  assign picks = ''
+  assign shown = 0
+  paginate shop.metaobjects.event.values by 250
+    for id in ids
+      assign n = id | plus: 0
+      for event in shop.metaobjects.event.values offset: n limit: 1
+        if event.system.handle != metaobject.system.handle and shown < 3
+          assign shown = shown | plus: 1
+          assign picks = picks | append: id | append: ','
+        endif
+      endfor
+    endfor
+  endpaginate
+  assign picks = picks | split: ','
+-%}
+{%- if picks.size > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        {%- assign programme_name = programme.title | escape -%}
+        <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'events.more' | t: programme: programme_name }}</h2>
+        <a class="gs-cta-link gs-cta-link--more" href="{{ programme.url }}">{{ 'events.more_link' | t }}</a>
+      </div>
+      <ul class="gs-events gs-events--compact" role="list">
+        {%- paginate shop.metaobjects.event.values by 250 -%}
+          {%- for id in picks -%}
+            {%- assign n = id | plus: 0 -%}
+            {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
+              {%- render 'gs-event', event: event, page_title: programme.title, heading: 'h3', compact: true -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "More in the programme",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["metaobject"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The next events of the event's programme, three at most."
+    }
+  ],
+  "presets": [
+    {
+      "name": "More in the programme"
+    }
+  ]
+}
+{% endschema %}

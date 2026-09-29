@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "event": {
+      "type": "gs-event-detail"
+    },
+    "more": {
+      "type": "gs-event-more"
+    }
+  },
+  "order": [
+    "event",
+    "more"
+  ]
+}

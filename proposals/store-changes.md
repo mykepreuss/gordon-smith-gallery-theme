@@ -202,6 +202,20 @@ At release, after the gallery approves the words:
 
 Rollback: clear each page's Meta description. The theme falls back to the page's own words.
 
+## 8e. Event pages at release (DS-176)
+
+The theme has a page for each event (`metaobject/event`). The store doesn't show events as pages yet: the Event definition (`gid://shopify/MetaobjectDefinition/23753392425`) can be published and read by the storefront, and has no web pages setting.
+
+At release:
+
+1. Turn on web pages for the Event definition (`metaobjectDefinitionUpdate`, capabilities `renderable` with `metaTitleKey: title` and `metaDescriptionKey: summary`, and `onlineStore` with `urlHandle: events`). Each event then answers at `/pages/events/<handle>`.
+2. Read three event pages on the review theme with `check_structured_data.py` and `check_answers.py --theme`: one with a summary, one without, one that has ended. They were tested once already, on 2026-09-29, with the pages turned on for about 80 seconds (`proposals/event-pages.md`, "Built").
+3. Publish only when both pass.
+
+Before then, nothing changes: no event has an address, so rows and cards link as they do today.
+
+Rollback: turn the two capabilities off. Event addresses then answer 404, and rows and cards link to the programme or the exhibition again, by themselves.
+
 ## 9. Frame products at release (P-19)
 
 Script: `release.py frames` (dry run: `dry-runs/2026-09-26/frames.md`).
