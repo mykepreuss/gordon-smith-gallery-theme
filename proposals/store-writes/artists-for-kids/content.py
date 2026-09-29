@@ -341,8 +341,9 @@ def pages():
     ]
 
 
-# The Artists for Kids page (existing): its history gains two paragraphs from Who We Are, then the team
-# and the annual report (P-24's History section).
+# The Artists for Kids page (existing): its history gains two paragraphs from Who We Are, then the annual
+# report (P-24's History section). The team was a group photo at the end; since 2026-09-28 it is the card
+# group afk-team, four portraits like the Foundation's board (team.py).
 AFK_HISTORY_ADD = "\n".join([
     "<p>In 1989, the founders of AFK sought to find a financial model to support arts education in our schools, one that was sustainable, and in turn, would support visual arts enrichment. By purchasing art from artists, then in turn inviting each artist to create original, limited-edition prints that the program could sell, the founders created a unique and lasting fundraising vehicle. With the generosity, commitment and support of founding artist-patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists for Kids was born, and with it, the acclaimed Artist for Kids and Gordon Smith Gallery Permanent Collection of Canadian Art.</p>",
     "<p>Thanks to the ongoing support of our community, artist-patrons, and the North Vancouver School District, Artist for Kids has grown from an idea onto a world-class art program.</p>",
@@ -358,27 +359,13 @@ def afk_report():
     ])
 
 
-def afk_team():
-    """The team: the photo with the old page's words as its caption, the names in bold. A part with
-    only a picture shows it at the reading width under its heading (DS-78)."""
-    caption = "".join([
-        "<p>From left to right:</p><ul>",
-        "<li><strong>Allison Kerr</strong>, Director, Artist for Kids and Gordon Smith Gallery, and District Principal, Arts Education</li>",
-        "<li><strong>Amelia Epp</strong>, District Visual Arts Teacher, Educational Coordinator</li>",
-        "<li><strong>Chantal Pinard</strong>, Artists For Kids Administrative and Program Assistant</li>",
-        "<li><strong>Emily Neufeld</strong>, Artists for Kids Studio Technician, Gallery Collection Preparator</li>",
-        "</ul>",
-    ])
-    return "\n".join(["<h2>Meet the Artists for Kids Team</h2>", figure("team", caption)])
-
-
 def afk_release_body(current):
     """The Artists for Kids page's staged text with the additions, from its current value."""
     assert AFK_HISTORY_AFTER in current, "the History section's first paragraph has changed: check by hand"
     if "In 1989, the founders of AFK" in current:
         return current  # already added
     body = current.replace(AFK_HISTORY_AFTER, AFK_HISTORY_AFTER + "\n" + AFK_HISTORY_ADD, 1)
-    return body.rstrip() + "\n" + afk_report() + "\n" + afk_team()
+    return body.rstrip() + "\n" + afk_report()
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -554,7 +541,7 @@ GROUPS = [
 # Existing groups that gain a card: (handle, card added at the end).
 GROUPS_EXTENDED = [("public-programs", "programs-afk-classes-and-camps"), ("donate-ways-to-give", "donate-artists-for-kids")]
 AFK_PAGE_GROUPS = ["afk-this-season", "afk-community-programs", "afk-school-programs", "afk-learning-resources",
-                   "afk-awards-and-support"]
+                   "afk-awards-and-support", "afk-team"]  # afk-team: team.py, 2026-09-28
 
 
 def card_entries():
@@ -738,6 +725,7 @@ def pages_payload():
 def page_fields():
     made = json.loads((CREATED / "afk-pages.json").read_text())
     groups = json.loads((CREATED / "afk-card-groups.json").read_text())
+    groups["afk-team"] = json.loads((CREATED / "afk-team.json").read_text())["afk-team"]
     rows = []
     for p in pages():
         owner = made[p["handle"]]
