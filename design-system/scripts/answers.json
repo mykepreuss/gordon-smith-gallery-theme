@@ -1,0 +1,342 @@
+{
+  "about": "The questions people ask answer engines about the gallery, the page meant to answer each, and the evidence that page must show. From the AEO query set (proposals, 2026-09-28). Evidence is a list of regular expressions, matched without regard to capitals against the words a visitor sees and the page's description. A gap is a question the site doesn't answer yet. For a gap, the evidence is only the missing fact.",
+  "hours_page": "/pages/plan-your-visit",
+  "llms_title": "# The Gordon Smith Gallery of Canadian Art",
+  "questions": [
+    {
+      "n": 1,
+      "question": "What is the Gordon Smith Gallery?",
+      "page": "/",
+      "evidence": [
+        "public art gallery",
+        "North Vancouver"
+      ],
+      "data": [
+        "ArtGallery",
+        "WebSite"
+      ]
+    },
+    {
+      "n": 2,
+      "question": "Who runs the Gordon Smith Gallery?",
+      "page": "/pages/about-us",
+      "evidence": [
+        "(operated|owned|run) by"
+      ],
+      "gap": "The page doesn't say who owns or operates the building. A question for the gallery."
+    },
+    {
+      "n": 3,
+      "question": "What is the difference between the gallery, Artists for Kids and the Smith Foundation?",
+      "page": "/llms.txt",
+      "evidence": [
+        "Four names",
+        "Artists for Kids",
+        "Foundation for Young Artists",
+        "A person, not the gallery"
+      ]
+    },
+    {
+      "n": 4,
+      "question": "What is Artists for Kids?",
+      "page": "/pages/artists-for-kids",
+      "evidence": [
+        "1989",
+        "Artists for Kids"
+      ],
+      "data": [
+        "Organization"
+      ]
+    },
+    {
+      "n": 5,
+      "question": "What is the Gordon and Marion Smith Foundation?",
+      "page": "/pages/the-smith-foundation",
+      "evidence": [
+        "2002",
+        "Vancouver Foundation"
+      ],
+      "data": [
+        "Organization"
+      ]
+    },
+    {
+      "n": 6,
+      "question": "When is the Gordon Smith Gallery open?",
+      "page": "/pages/plan-your-visit",
+      "evidence": [
+        "Thursday to Saturday",
+        "12 to 4 PM"
+      ],
+      "data": [
+        "ArtGallery",
+        "OpeningHoursSpecification"
+      ]
+    },
+    {
+      "n": 7,
+      "question": "How much does it cost to visit?",
+      "page": "/pages/plan-your-visit",
+      "evidence": [
+        "by donation"
+      ]
+    },
+    {
+      "n": 8,
+      "question": "Where is the gallery and how do I get there?",
+      "page": "/pages/plan-your-visit",
+      "evidence": [
+        "2121 Lonsdale Avenue",
+        "SeaBus",
+        "Lonsdale Quay",
+        "230"
+      ],
+      "data": [
+        "PostalAddress"
+      ]
+    },
+    {
+      "n": 9,
+      "question": "Is there parking?",
+      "page": "/pages/plan-your-visit",
+      "evidence": [
+        "street parking",
+        "underground parking"
+      ]
+    },
+    {
+      "n": 10,
+      "question": "Is the gallery wheelchair accessible?",
+      "page": "/pages/plan-your-visit",
+      "evidence": [
+        "wheelchair accessible",
+        "elevator",
+        "Assistance dogs"
+      ]
+    },
+    {
+      "n": 11,
+      "question": "What is on at the gallery right now?",
+      "page": "/pages/on-now",
+      "evidence": [
+        "On now",
+        "\\b20\\d\\d\\b",
+        "Curated by"
+      ]
+    },
+    {
+      "n": 12,
+      "question": "What is the current exhibition about, and which artists are in it?",
+      "page": "/",
+      "evidence": [
+        "About the exhibition"
+      ],
+      "data": [
+        "ArtGallery"
+      ]
+    },
+    {
+      "n": 13,
+      "question": "What events are coming up?",
+      "page": "/pages/upcoming-events",
+      "evidence": [
+        "Upcoming",
+        "\\b(AM|PM)\\b"
+      ],
+      "data": [
+        "Event"
+      ]
+    },
+    {
+      "n": 14,
+      "question": "What past exhibitions has the gallery shown?",
+      "page": "/pages/past-exhibitions",
+      "evidence": [
+        "Past",
+        "Curated by"
+      ]
+    },
+    {
+      "n": 15,
+      "question": "What can kids and families do at the gallery?",
+      "page": "/pages/explore-create",
+      "evidence": [
+        "ages 5",
+        "Saturdays",
+        "free",
+        "supervision"
+      ]
+    },
+    {
+      "n": 16,
+      "question": "What art classes and camps does Artists for Kids offer?",
+      "page": "/pages/classes-and-camps",
+      "evidence": [
+        "After School Art",
+        "Day Camps",
+        "Paradise Valley"
+      ]
+    },
+    {
+      "n": 17,
+      "question": "Can a school class visit the gallery?",
+      "page": "/pages/schools-and-teachers",
+      "evidence": [
+        "how to book|to book a|book a (class )?visit"
+      ],
+      "gap": "The page is a list of links. It doesn't say how a class visit works or how to book. A question for the gallery."
+    },
+    {
+      "n": 18,
+      "question": "What programs does the gallery have for seniors?",
+      "page": "/pages/art-in-good-company",
+      "evidence": [
+        "seniors",
+        "second Thursday",
+        "drop-in"
+      ]
+    },
+    {
+      "n": 19,
+      "question": "What professional development does the gallery offer teachers?",
+      "page": "/pages/professional-development",
+      "evidence": [
+        "professional development",
+        "educators"
+      ]
+    },
+    {
+      "n": 20,
+      "question": "Who was Gordon Smith?",
+      "page": "/pages/gordon-and-marion",
+      "evidence": [
+        "Gordon Appelbe Smith",
+        "1919",
+        "2020",
+        "National Gallery of Canada"
+      ],
+      "data": [
+        "Person"
+      ]
+    },
+    {
+      "n": 21,
+      "question": "Who was Marion Smith?",
+      "page": "/pages/gordon-and-marion",
+      "evidence": [
+        "Marion( \\w+)? Smith[ ,(]+(born |b\\. )?(18|19)\\d\\d"
+      ],
+      "gap": "The page gives no dates for Marion Smith. A question for the gallery."
+    },
+    {
+      "n": 22,
+      "question": "Where can I see or buy work by Gordon Smith?",
+      "page": "/pages/artists/gordon-smith",
+      "evidence": [
+        "Works in the collection",
+        "Gordon Smith"
+      ],
+      "data": [
+        "Person",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "n": 23,
+      "question": "What is in the permanent collection?",
+      "page": "/pages/permanent-collection",
+      "evidence": [
+        "\\d,\\d{3} works",
+        "\\d+ artists",
+        "Canadian"
+      ]
+    },
+    {
+      "n": 24,
+      "question": "What are the Artists for Kids limited editions?",
+      "page": "/pages/shop",
+      "evidence": [
+        "Limited Edition",
+        "1990",
+        "Bill Reid"
+      ]
+    },
+    {
+      "n": 25,
+      "question": "Where does the money go when I buy a print?",
+      "page": "/pages/shop",
+      "evidence": [
+        "scholarships|bursaries|programs"
+      ]
+    },
+    {
+      "n": 26,
+      "question": "Does the gallery ship prints, and can I get one framed?",
+      "page": "/pages/frequently-asked-questions",
+      "evidence": [
+        "ship(s|ping)? (only )?(to|within) Canada"
+      ],
+      "gap": "The FAQ doesn't say where the shop ships. The store ships to Canada only. A question for the gallery."
+    },
+    {
+      "n": 27,
+      "question": "Does the gallery sell works from its collection or represent artists?",
+      "page": "/pages/frequently-asked-questions",
+      "evidence": [
+        "represent|works from the (permanent )?collection (are|is) not"
+      ],
+      "gap": "No page says. A limit worth stating once the gallery confirms it."
+    },
+    {
+      "n": 28,
+      "question": "How do I donate, and do I get a tax receipt?",
+      "page": "/pages/donate",
+      "evidence": [
+        "tax receipt",
+        "gift"
+      ]
+    },
+    {
+      "n": 29,
+      "question": "What scholarships are there for young artists?",
+      "page": "/pages/smith-foundation-scholarships",
+      "evidence": [
+        "scholarships",
+        "North Vancouver",
+        "Grade 12"
+      ]
+    },
+    {
+      "n": 30,
+      "question": "How do I volunteer?",
+      "page": "/pages/volunteer",
+      "evidence": [
+        "Gallery Attendant",
+        "Event Assistant",
+        "form"
+      ]
+    },
+    {
+      "n": 31,
+      "question": "What is the Brilliance Gala?",
+      "page": "/pages/brilliance-gala",
+      "evidence": [
+        "Brilliance Gala",
+        "Artists for Kids"
+      ]
+    },
+    {
+      "n": 32,
+      "question": "What is the official website and contact for the gallery?",
+      "page": "/pages/contact",
+      "evidence": [
+        "2121 Lonsdale Avenue",
+        "\\(604\\) 903-3798"
+      ],
+      "data": [
+        "ContactPage",
+        "ArtGallery"
+      ]
+    }
+  ]
+}

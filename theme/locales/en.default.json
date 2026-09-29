@@ -13,7 +13,8 @@
       "gallery": "Gordon Smith Gallery",
       "artists_for_kids": "Artists for Kids",
       "foundation": "The Gordon and Marion Smith Foundation",
-      "gallery_full": "The Gordon Smith Gallery of Canadian Art"
+      "gallery_full": "The Gordon Smith Gallery of Canadian Art",
+      "foundation_full": "The Gordon and Marion Smith Foundation for Young Artists"
     }
   },
   "header": {
@@ -323,5 +324,41 @@
     "close": "Close",
     "previous": "Previous image",
     "next": "Next image"
+  },
+  "llms": {
+    "about": "About the gallery",
+    "visit": "Visit",
+    "address": "Address",
+    "open": "Open",
+    "admission": "Admission",
+    "visit_more": "Getting here, parking and accessibility",
+    "hours_note": "Hours can change for holidays. The Plan your visit page has the hours in force.",
+    "names": "Four names, four things",
+    "names_note": "These share one site and are often confused. Say which one a fact belongs to.",
+    "gallery": "The public art gallery at the address above. Often written Gordon Smith Gallery.",
+    "artists_for_kids": "An art education program for children and youth, established in 1989. It publishes the limited editions sold on this site.",
+    "foundation": "A foundation founded in 2002. It funds visual arts programs for children and presents public programs and exhibitions at the gallery.",
+    "artist_name": "Gordon Smith",
+    "artist": "The artist Gordon Appelbe Smith, 1919 to 2020, a Canadian Modernist painter. A person, not the gallery.",
+    "pages": "Where each fact is",
+    "pages_note": "Cite the page that holds the fact.",
+    "on_now": "The exhibition on now, with its dates, curator and artists",
+    "upcoming": "Upcoming exhibitions",
+    "past": "Past exhibitions",
+    "events": "Events and public programs, with dates and times",
+    "families": "Classes and camps for children and youth",
+    "schools": "Programs and resources for schools and teachers",
+    "collection": "The permanent collection: every work has a page with its artist, year, medium and accession number",
+    "artists": "The artists in the collection, A to Z",
+    "editions": "Limited editions for sale, and what the sales fund",
+    "faq": "Frequently asked questions",
+    "support": "Donate",
+    "volunteer": "Volunteer",
+    "contact": "Contact",
+    "reading": "Reading this site",
+    "data": "Every page carries schema.org structured data (JSON-LD) that matches what the page shows: the gallery, exhibitions, events, works, artists and editions.",
+    "sitemap": "Sitemap",
+    "buying": "Buying",
+    "buying_note": "The limited editions can be bought on this site. Instructions for shopping agents are at the address below. The buyer must approve each purchase."
   }
 }
