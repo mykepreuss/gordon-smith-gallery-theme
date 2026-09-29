@@ -894,3 +894,24 @@ The words are drafts made from each page's own text, facts first, for the galler
 **Effect on the live site:** none. The live theme doesn't read the field.
 
 **Undo:** `metafieldsDelete` for the 40 values (owner IDs in `aeo/descriptions.json`, namespace `custom`, key `release_description`), then `metafieldDefinitionDelete` on the definition. The new theme falls back to each page's own words.
+
+## 2026-09-28: Paradise Valley's nine camp photos (DS-168)
+
+**Why:** Michael, 2026-09-28: "For https://gordonsmithgallery.com/pages/paradise-valley-summer-camp Let's use these 9 images … instead of the single image", so the page can be laid out like Gordon and Marion.
+
+**Checked first:** store `ed35ee-ea.myshopify.com` (through the connector); the live theme 183162372393 "Colorblock: NEW WEBSITE" (live) and the review theme 184767250729 (unpublished), by `shopify theme list`. The live theme doesn't read `custom.release_body` (none of `baseline/theme/` does). Before-snapshot: `snapshots/paradise-valley-2026-09-28-before.json` (the page and the field's value, last changed 2026-09-27 22:58 UTC).
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Nine pictures in Files, `afk-paradise-valley-collage.jpg`, `-studio`, `-cabin`, `-archery`, `-canoe`, `-dock`, `-forest`, `-painting`, `-drawing` (1448 × 1086, JPEG, sRGB), each with its alt text | Shopify CLI, `artists-for-kids/files.py camp` (staged upload, `fileCreate`) | IDs in `created/afk-files.json` under `img:pv-*` (`gid://shopify/MediaImage/46363968045353` to `46363968307497`) |
+| Paradise Valley's staged text (`custom.release_body`, DS-39): the picture of nine out; six of the new pictures after the opening paragraph, three after Bursaries. Every word, and the four films, unchanged | Shopify connector (`metafieldsSet`), value from `artists-for-kids/content.py` | `gid://shopify/Metafield/190417519313193` on `gid://shopify/Page/165837832489`, updated 00:46:08 UTC (2026-09-29 UTC) |
+
+The old picture, `afk-paradise-valley-camp.jpg` (`gid://shopify/MediaImage/46349865648425`), stays in Files; nothing else uses it.
+
+The photos are ChatGPT's larger redraws of the nine in the old picture (Michael's files), not the photographer's: faces, small details and the edges are the tool's. If the gallery sends the originals, `fileUpdate` puts them in place with the same IDs, and the staged text needs no change.
+
+**Checked after:** the value read back as intended, and apart from the pictures it is line for line the snapshot's. On the development theme 184806277417 (`paradise-valley-photos`) the page is a story: the opening, two rows of three, the films two and two, Bursaries and a row of three, at 1440, 768 and 390 px, no Liquid error. Gordon and Marion, Brilliance Gala, Plan your visit and Donate show as before.
+
+**Effect on the live site:** none. `/pages/paradise-valley-summer-camp` returns 200 with its title only and `noindex,nofollow`, as before; the new files are on no live page.
+
+**Undo:** set `custom.release_body` on `gid://shopify/Page/165837832489` back to the snapshot's value (`metafieldsSet`, type `multi_line_text_field`). The nine files can stay, or be deleted in Files once nothing uses them.

@@ -888,6 +888,9 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-story__flow > :is(.gs-story__row, .gs-story__split) { clear: both; margin-block: var(--gs-space-8); }
 .gs-story__flow > :is(.gs-story__row, .gs-story__split) + * { margin-block-start: 0; }
 .gs-story__row { display: grid; gap: var(--gs-space-6); }
+/* Rows that follow each other (a group of more than three pictures) are one group: the space
+   between them is the space between their pictures. */
+.gs-story__flow > .gs-story__row:has(+ .gs-story__row) { margin-block-end: var(--gs-space-6); }
 /* A row's credit ("Photography by ...", a short paragraph straight after it) sits under it. */
 .gs-story__flow > .gs-story__row:has(+ .gs-story__credit) { margin-block-end: var(--gs-space-3); }
 .gs-story__flow > .gs-story__credit { margin-block-end: var(--gs-space-8); font-size: var(--gs-text-caption); font-weight: var(--gs-weight-light); line-height: var(--gs-leading-caption); }
@@ -930,6 +933,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-story__row > figure { flex: var(--gs-r, 1) 1 0; min-width: 0; }
   .gs-story__row > figure:only-child { flex: 0 1 auto; }
   .gs-story__row > figure:not(:only-child) :is(img, iframe) { width: 100%; max-width: none; }
+  .gs-story__flow > .gs-story__row:has(+ .gs-story__row) { margin-block-end: var(--gs-space-4); }
   .gs-story__flow > .gs-story__credit { margin-inline-start: calc((100% - 100cqi) / 2); }
 }
 /* From 990 px an offset picture hangs out of the column to the edge of the content width, where the
