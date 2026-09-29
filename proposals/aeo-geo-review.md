@@ -232,7 +232,7 @@ Michael, 2026-09-28: "Proceed with step 2 ... and 3 ... 4". Built on `claude/aeo
 | 2 | The 21 editions describe themselves: label, medium, edition, size. No store write and no new words | Theme | DS-160 |
 | 2 | Shopify's own run-together descriptions are recognised and replaced by the page's words | Theme | DS-160 |
 | 3 | The home page's description, in Theme settings | Theme setting, draft | DS-160 |
-| 3 | Alt text for 45 hero images and installation views, drafted from looking at each | Draft file, not written to the store | For the gallery |
+| 3 | Alt text for 45 hero images and installation views, written from looking at each | Store, live since 2026-09-29 | P-62 |
 | 3 | Visiting questions for the FAQ, a biography for Gordon Smith | Drafts below | For the gallery |
 | 3 | Social profiles: three found on the Artists for Kids site | Gallery question 1.6 | For the gallery |
 | 4 | An exhibition's artists link to their pages, matched by name | Theme | DS-161 |

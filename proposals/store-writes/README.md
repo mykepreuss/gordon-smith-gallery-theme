@@ -915,3 +915,21 @@ The photos are ChatGPT's larger redraws of the nine in the old picture (Michael'
 **Effect on the live site:** none. `/pages/paradise-valley-summer-camp` returns 200 with its title only and `noindex,nofollow`, as before; the new files are on no live page.
 
 **Undo:** set `custom.release_body` on `gid://shopify/Page/165837832489` back to the snapshot's value (`metafieldsSet`, type `multi_line_text_field`). The nine files can stay, or be deleted in Files once nothing uses them.
+
+## 2026-09-29: alt text for 45 hero images and installation views (P-62)
+
+**Why:** Michael, 2026-09-29: "Yes, write all 45 alt texts to the store". The images had no alt text, and 44 of them show on the live site. An exception to "Store writes before release" (P-62): the live theme reads alt text from Files.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 "Colorblock: NEW WEBSITE" (live) and the review theme 184767250729 (unpublished), by `shopify theme list`; neither touched. Each of the 45 file names was looked up through the connector (`files`, by filename): each matched one file, and every alt text was empty. Before-snapshot: `snapshots/alt-text-2026-09-29-before.json`, with each file's ID, name, and alt text before and after.
+
+| What | Through | IDs and notes |
+| --- | --- | --- |
+| Alt text on 45 image files: 22 hero images (13 exhibitions, 9 pages) and 23 installation views | Connector, `fileUpdate` with `alt` only, three calls of 15 | The IDs and words: the snapshot. The words and where each image shows: `aeo/alt.json` |
+
+The words were written from looking at each picture (`aeo/alt.json`, drafted 2026-09-28). No one is named. One names its artwork, from the caption on its page: Samuel Roy-Bois, *My Sun*, 2024. Eleven carry a note for the gallery, about the picture more than the words.
+
+**Checked after:** all three calls returned their 15 files with the new alt text, status ready, and no errors. On gordonsmithgallery.com, 18 pages checked: all answer 200, and 43 of the 44 images shown there carry their new alt text. The other, `DSC1389.jpg`, sits inside the On Now page's own text with an empty `alt` typed there, which Files doesn't change. On the review theme, all 45 show their alt text.
+
+**Effect on the live site:** screen readers now read a description for these images, and search engines can index one. Nothing a sighted visitor sees changes. On the new theme, these hero images were decorative for lack of alt text (DS-58); they are now described.
+
+**Undo:** `fileUpdate` on each file with `alt` set to an empty string. The IDs are in the snapshot.
