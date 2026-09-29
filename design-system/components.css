@@ -320,7 +320,7 @@
 .gs-card .gs-card__cue { transition: none; } /* changes with the title, whose underline can't fade */
 
 /* A link staff mark as a standalone link (class="gs-cta-link") keeps that style in page text,
-   without the inline link's fill (DS-82, Proposed). */
+   without the inline link's fill (DS-82). */
 .gs-prose a.gs-cta-link { color: var(--gs-color-fg); transition: text-decoration-color var(--gs-duration-fast) var(--gs-ease), text-decoration-thickness var(--gs-duration-fast) var(--gs-ease); }
 .gs-prose a.gs-cta-link:active { background-color: transparent; color: var(--gs-color-fg); }
 @media (hover: hover) and (pointer: fine) {
@@ -441,7 +441,7 @@
 /* Text to actions: 24 px (this and the box's 16 px gap), in every box that ends on its actions (§5.1). */
 :is(.gs-page-head, .gs-hero__box, .gs-feature__text) > .gs-actions,
 .gs-visit__head > .gs-cta-link { margin-block-start: var(--gs-space-2); }
-/* A long programme page repeats its button after its text (DS-83, Proposed). */
+/* A long programme page repeats its button after its text (DS-83). */
 .gs-page-body__actions { margin-block-start: var(--gs-space-6); }
 
 /* ---------- Chips (status, category) ---------- */
@@ -780,7 +780,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 /* A picture with its caption. An artwork keeps square corners (DS-05); only photos are rounded. */
 .gs-prose figure { margin-inline: 0; display: grid; gap: var(--gs-space-3); }
-/* A caption can hold more than a line: a team's names as a list (DS-78, Proposed). */
+/* A caption can hold more than a line: a team's names as a list (DS-78). */
 .gs-prose figcaption > * { margin-block: 0; }
 .gs-prose figcaption > * + * { margin-block-start: var(--gs-space-2); }
 .gs-prose figcaption > ul { padding-inline-start: 0; list-style: none; }
@@ -790,8 +790,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   outline-offset: calc(-1 * var(--gs-border));
 }
 /* A photo in the text stays inside the screen: it stops at --gs-figure-max-h and keeps its shape
-   (DS-77, Proposed). Its shape comes from its width and height (gs-page-text), so nothing jumps.
-   On phones the cap is the screen's height alone, so a photo fills the column (DS-89, Proposed). */
+   (DS-77). Its shape comes from its width and height (gs-page-text), so nothing jumps.
+   On phones the cap is the screen's height alone, so a photo fills the column (DS-89). */
 @media (max-width: 749px) {
   :root { --gs-figure-max-h: 80svh; }
 }
@@ -828,7 +828,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-text-media + .gs-text-media { margin-block-start: 1em; }
 .gs-text-media + .gs-text-media--head { margin-block-start: calc(1.8 * var(--gs-text-h4)); }
 /* A passage whose text opens with a picture shows its pictures first below 990 px, after its
-   heading, as the text does (DS-94, Proposed; DS-142). */
+   heading, as the text does (DS-94; DS-142). */
 @media (max-width: 989.98px) {
   .gs-text-media--lead > .gs-text-media__aside { order: -1; }
   .gs-text-media--lead > .gs-text-media__head { order: -2; }
@@ -846,7 +846,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 990px) and (min-height: 50rem) {
   .gs-text-media:not(.gs-text-media--media) > .gs-text-media__aside:not(:has(> * + *)) { position: sticky; top: var(--gs-space-6); }
 }
-/* Two tall photos in a row sit side by side (DS-77, Proposed). */
+/* Two tall photos in a row sit side by side (DS-77). */
 @media (min-width: 750px) {
   .gs-text-media__aside:has(> [data-gs-tall] + [data-gs-tall]) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gs-space-6) var(--gs-space-4); align-items: start; }
   .gs-text-media__aside:has(> [data-gs-tall] + [data-gs-tall]) > * { grid-column: 1 / -1; margin-block-start: 0; }
@@ -854,7 +854,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   .gs-text-media__aside > [data-gs-tall] + [data-gs-tall] { grid-column: auto; }
 }
 /* A part with no words, only pictures, lays them out under its heading: one at the reading width,
-   two or more side by side from 750 px, the first taking the row when the count is odd (DS-78, Proposed). */
+   two or more side by side from 750 px, the first taking the row when the count is odd (DS-78). */
 @media (min-width: 750px) {
   .gs-text-media--media > .gs-text-media__aside:has(> * + *) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: var(--gs-space-6) var(--gs-gutter); max-width: none; }
   .gs-text-media--media > .gs-text-media__aside:has(> * + *) > * { grid-column: auto; margin-block-start: 0; }
@@ -866,7 +866,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-prose iframe:is([src*="vimeo.com"], [src*="youtube.com"], [src*="youtube-nocookie.com"]) {
   display: block;
   width: 100%;
-  max-width: min(100%, calc(var(--gs-figure-max-h) * var(--gs-video-ratio, var(--gs-ratio-video)))); /* stops at the photo cap, keeping its shape (DS-89, Proposed) */
+  max-width: min(100%, calc(var(--gs-figure-max-h) * var(--gs-video-ratio, var(--gs-ratio-video)))); /* stops at the photo cap, keeping its shape (DS-89) */
   height: auto;
   aspect-ratio: var(--gs-video-ratio, var(--gs-ratio-video));
   border: 0;
@@ -1041,7 +1041,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   grid-template-columns: minmax(0, 1fr);
   gap: var(--gs-space-4);
   justify-items: start;
-  margin: calc(-1 * var(--gs-hero-overlap)) 0 0; /* the box spans the image, so only its own corner shows (DS-86, Proposed) */
+  margin: calc(-1 * var(--gs-hero-overlap)) 0 0; /* the box spans the image, so only its own corner shows (DS-86) */
   border-radius: var(--gs-shape-lg);
 }
 /* The brand's boxes (the hero's title box, a feature panel, the visit details) share one inset. */
@@ -1876,7 +1876,7 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-footer__cols > :first-child { grid-column: 1 / -1; }
 }
 /* From 990 px the closing rows (Visit on Home, the newsletter band, the footer) share one column
-   split and the gutter, so their second columns start at one edge (DS-87, Proposed). */
+   split and the gutter, so their second columns start at one edge (DS-87). */
 @media (min-width: 990px) {
   .gs-footer__top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gs-footer__top,
@@ -1972,7 +1972,7 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
 }
 @media (min-width: 750px) { .gs-details { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 990px) { .gs-details { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-/* One fact to a row at every width, for a side column and a work's label (DS-90, Proposed). */
+/* One fact to a row at every width, for a side column and a work's label (DS-90). */
 .gs-details--stack { grid-template-columns: minmax(0, 1fr); gap: var(--gs-space-4); width: 100%; }
 .gs-details__item {
   display: grid;
