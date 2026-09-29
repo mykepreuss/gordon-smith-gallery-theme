@@ -101,8 +101,7 @@
       {%- endif -%}
       "@id": {{ id | json }},
       "name": {{ name | json }},
-      "url": {{ product.url | prepend: origin | json }},
-      "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} }
+      "url": {{ product.url | prepend: origin | json }}
       {%- if words != blank -%}
         ,"description": {{ words | json }}
       {%- endif -%}

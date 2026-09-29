@@ -10,7 +10,12 @@
     some are collectives.
   - The place is the gallery, with the venue field ("Main gallery") as the part of it.
   - Whose exhibition it is comes from its programme field.
-  - A dates note means the day isn't set yet ("Opens fall 2027"), so only the month is given.
+  - Its type is Event, with ExhibitionEvent as its further type (DS-173): Google's Rich Results
+    Test reads an Event as an event and doesn't read an ExhibitionEvent at all. Where another
+    page only mentions an exhibition (an artist's, a work's, an event's), the mention keeps
+    ExhibitionEvent, so Google doesn't take a name and an address for an event without a date.
+  - A dates note means the day isn't set yet ("Opens fall 2027"), so only the month is given,
+    and the type stays ExhibitionEvent: Google wants a day.
   - The opening reception is given until it has ended, as on the page (gs-exhibition-facts).
   - Works from the collection are read from the entry looked up by its handle, so the page's own
     list is still unread when gs-work-grid pages it.
@@ -64,11 +69,15 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ExhibitionEvent",
+      {%- if entry.dates_note.value != blank -%}
+        "@type": "ExhibitionEvent",
+      {%- else -%}
+        "@type": "Event",
+        "additionalType": "https://schema.org/ExhibitionEvent",
+      {%- endif -%}
       "@id": {{ id | json }},
       "name": {{ entry.title.value | json }},
       "url": {{ canonical_url | json }},
-      "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} },
       {%- if entry.dates_note.value != blank -%}
         "startDate": {{ entry.start_date.value | date: '%Y-%m' | json }},
       {%- else -%}

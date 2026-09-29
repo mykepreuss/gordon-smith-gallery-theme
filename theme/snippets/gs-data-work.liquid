@@ -38,8 +38,7 @@
     "@type": "VisualArtwork",
     "@id": {{ id | json }},
     "name": {{ work.title.value | json }},
-    "url": {{ canonical_url | json }},
-    "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} }
+    "url": {{ canonical_url | json }}
     {%- if work.artists.value != blank -%}
       ,"creator": [
         {%- for artist in work.artists.value -%}

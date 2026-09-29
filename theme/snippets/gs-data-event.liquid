@@ -9,7 +9,9 @@
   - Whose event it is comes from its programme page's programme field, else its exhibition's.
   - A tickets or registration link is given as the event's offer, at that address.
   - An event has no page of its own. Its address is its exhibition's page, else its programme's.
-  - An event of an exhibition names it as the larger event.
+  - An event of an exhibition names it as the larger event. On the exhibition's own page it
+    names it by its name for machines alone, since the page describes it in full: two
+    descriptions of one thing with different types made Google drop the exhibition (DS-173).
 
   @param {object} event - An event entry
 
@@ -70,12 +72,16 @@
         ,"image": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
       {%- endif -%}
       {%- if exhibition != blank -%}
-        ,"superEvent": {
-          "@type": "ExhibitionEvent",
-          "@id": {{ exhibition.system.url | prepend: shop.url | append: '#exhibition' | json }},
-          "name": {{ exhibition.title.value | json }},
-          "url": {{ exhibition.system.url | prepend: shop.url | json }}
-        }
+        {%- if metaobject.system.type == 'exhibition' and metaobject.system.handle == exhibition.system.handle -%}
+          ,"superEvent": { "@id": {{ exhibition.system.url | prepend: shop.url | append: '#exhibition' | json }} }
+        {%- else -%}
+          ,"superEvent": {
+            "@type": "ExhibitionEvent",
+            "@id": {{ exhibition.system.url | prepend: shop.url | append: '#exhibition' | json }},
+            "name": {{ exhibition.title.value | json }},
+            "url": {{ exhibition.system.url | prepend: shop.url | json }}
+          }
+        {%- endif -%}
       {%- endif -%}
       {%- if event.tickets.value.url != blank -%}
         ,"offers": { "@type": "Offer", "url": {{ event.tickets.value.url | json }} }
