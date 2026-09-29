@@ -90,7 +90,12 @@
               "@type": "ListItem",
               "position": {{ forloop.parentloop.index }},
               "item": {
-                "@type": "ExhibitionEvent",
+                {%- if entry.dates_note.value != blank -%}
+                  "@type": "ExhibitionEvent",
+                {%- else -%}
+                  "@type": "Event",
+                  "additionalType": "https://schema.org/ExhibitionEvent",
+                {%- endif -%}
                 {%- if linked -%}
                   "@id": {{ entry.system.url | prepend: origin | append: '#exhibition' | json }},
                   "url": {{ entry.system.url | prepend: origin | json }},

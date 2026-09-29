@@ -6,7 +6,10 @@
   Each organisation has one name for machines (its @id), so a page, an exhibition, an event and
   a lesson that belong to it all point at the same thing. The short form is that name, the
   organisation's name and its page. The full form, printed on the organisation's own page, adds
-  its logo. The Gallery's full form is gs-data-place.
+  its logo. The Gallery's full form is gs-data-place, where it is an ArtGallery with its
+  address and hours. A mention of it here is an Organization under the same name for machines
+  (DS-173): Google takes every ArtGallery on a page for a local business and notes what it
+  lacks, so a bare mention drew four notes on every page.
 
   Artists for Kids' and the Foundation's pages are chosen in Theme settings, Gallery details.
 
@@ -37,7 +40,7 @@
       assign own_page = settings.foundation_page
       assign logo = 'gs-logo-foundation.svg'
     else
-      assign kind = 'ArtGallery'
+      # A mention is an Organization. The gallery's full data, an ArtGallery, is gs-data-place.
       assign id = home | append: '#gallery'
       assign name = 'general.site_title.gallery' | t
       assign logo = 'gs-logo-gallery.svg'

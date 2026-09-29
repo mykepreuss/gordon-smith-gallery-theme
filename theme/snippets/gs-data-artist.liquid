@@ -4,6 +4,8 @@
   nationality or Nation, the years of birth and death, the portrait, the page on this site
   about their life, and the exhibitions here that showed their work.
 
+  - The person is printed inside the page's own data, as what the page is mainly about: Google
+    reads a profile page's person only there (DS-173, found with its Rich Results Test).
   - The Person has one name for machines (@id), the same on every work, exhibition and edition
     that names the artist.
   - Life dates are read from "1882 to 1974" and "born 1946"; anything else stays on the page.
@@ -60,14 +62,12 @@
     assign has_about = true
   endif
 -%}
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+{%- capture person -%}
+{
     "@type": {{ kind | json }},
     "@id": {{ id | json }},
     "name": {{ artist.name.value | json }},
-    "url": {{ canonical_url | json }},
-    "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} }
+    "url": {{ canonical_url | json }}
     {%- if kind == 'Person' -%}
       ,"jobTitle": "Artist"
     {%- endif -%}
@@ -108,6 +108,6 @@
         {%- endfor -%}
       ]
     {%- endif -%}
-  }
-</script>
-{%- render 'gs-data-webpage', kind: 'ProfilePage', subject: id, name: artist.name.value, description: description, image: artist.portrait.value, crumb: true -%}
+}
+{%- endcapture -%}
+{%- render 'gs-data-webpage', kind: 'ProfilePage', subject: id, entity: person, name: artist.name.value, description: description, image: artist.portrait.value, crumb: true -%}

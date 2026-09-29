@@ -135,6 +135,66 @@ Many of these were found on 2026-09-28: `proposals/structured-data-facts.md`.
 | Accessibility of the building | Engines answer "is it wheelchair accessible" from data | The gallery |
 | An exhibition's videos | A video needs a date and a picture. The links have neither | Fields, if wanted |
 
+## Google's Rich Results Test (DS-173, Proposed)
+
+Run on 2026-09-28, at Michael's request, on the review theme's pages. The test can't open a preview link, which needs a cookie, so each page's structured data was pasted in as code.
+
+### First run, on what was in `main`
+
+| Page | Result | Fault |
+| --- | --- | --- |
+| Edition | Valid: Product snippets, Merchant listings, Breadcrumbs | None |
+| Lesson | Valid: Videos, Breadcrumbs | The video's date had no time zone |
+| Artist | Breadcrumbs only | **No Profile page.** The person was a separate block the page pointed to |
+| Exhibition | Its workshop only | **The exhibition wasn't read as an event** |
+
+### What the exhibition's fault was
+
+Found by changing one thing at a time, 11 runs:
+
+| Tried | Read as an event |
+| --- | --- |
+| The exhibition alone, as built | No |
+| Both types together | No |
+| A plain place; a picture as an address; times on its dates; a start in the future; a short run; no organiser; no artists | No, each time |
+| The workshop that passed, retyped as ExhibitionEvent | No |
+| The exhibition typed Event, with ExhibitionEvent as its further type | **Yes** |
+
+So Google's test reads no ExhibitionEvent as an event, whatever it holds. Two more faults showed only once that was fixed:
+
+- With its workshop on the page, the exhibition was dropped again. The workshop mentioned it as an ExhibitionEvent, so one thing had two types. Naming it by its name for machines alone fixed it.
+- The artist's page passed with the person inside it, then failed again in full. The person pointed back at the page. Without that, it passed.
+
+### Last run, on the fixes
+
+| Page | Result | Notes left |
+| --- | --- | --- |
+| Home | Local business, Organization | Price range (optional) |
+| Exhibition with its workshop | 2 events | Exhibition: 2 optional. Workshop: performer, and the price, currency, availability and start of its registration offer (all optional) |
+| Artist | Profile page, Breadcrumbs | None |
+| Lesson | Videos, Breadcrumbs | None |
+| Edition | Product snippets, Merchant listings, Breadcrumbs | Reviews and ratings; a global identifier such as a brand; the carrier's delivery time (all optional) |
+| Edition with options | The same | The same |
+| On now | Carousel | One optional |
+| FAQ | Not shown as a result | Google shows FAQ results for government and health sites only. The data is still read |
+
+No page has an invalid item. Every note left is optional and is a fact the store doesn't hold.
+
+### What the check now knows
+
+`check_structured_data.py` fails on the two faults the test found that it could have caught: one thing with two types on a page, and a thing that points back at the page that is about it. 21 tests. On 34 pages of the development theme: 0 errors.
+
+### For Michael
+
+| # | Decision | Built as | Alternative |
+| --- | --- | --- | --- |
+| 1 | DS-173: an exhibition's type | Event, with ExhibitionEvent as its further type | ExhibitionEvent, as DS-154 had it. More exact, and Google reads no event |
+| 2 | DS-173: the gallery where it is only mentioned | Organization | ArtGallery everywhere. Google then notes four missing fields on every page |
+
+### Found in passing
+
+The FAQ answers "How much is shipping?" with "calculated and confirmed at checkout". The shipping policy and the structured data say $20. Gallery question 11.11.
+
 ## A side effect to know about
 
 Pushing to a named development theme made it the CLI's current development theme. Another session's `shopify theme dev` then synced its files into `schema-seo`, which is how this build's first test read stale pages. Later pushes here name the theme by its ID. Sessions that run `theme dev` may now be previewing on `schema-seo`: restart `theme dev` to give it its own theme again.

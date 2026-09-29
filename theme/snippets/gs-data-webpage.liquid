@@ -3,11 +3,15 @@
   exhibition, a work, an artist, a lesson, an edition. It says what the page is mainly about
   (mainEntity), where it sits in the site (breadcrumb, isPartOf), whose it is (publisher) and
   which picture is its own. The thing itself is printed by its own snippet under the same name
-  (@id), so the two are read as one.
+  (@id), so the two are read as one. The page points to the thing; the thing doesn't point
+  back, since Google drops a page whose subject points back at it (DS-173).
 
   An artist's page is a ProfilePage and an edition's an ItemPage; the others are a WebPage.
 
   @param {string} subject - The @id of what the page is about
+  @param {string} [entity] - What the page is about, whole, as a JSON object. Google reads a
+    profile page's person only when it is inside the page's own data, not from its name alone
+    (DS-173), so an artist's page passes its person here
   @param {string} name - The page's name
   @param {string} [kind] - 'WebPage' (default), 'ProfilePage' or 'ItemPage'
   @param {string} [description] - The page's description, as meta-tags works it out
@@ -31,7 +35,7 @@
     "inLanguage": {{ request.locale.iso_code | json }},
     "isPartOf": { "@type": "WebSite", "@id": {{ home | append: '#website' | json }}, "name": {{ 'general.site_title.gallery' | t | json }}, "url": {{ home | json }} },
     "publisher": {% render 'gs-data-org', programme: programme %},
-    "mainEntity": { "@id": {{ subject | json }} }
+    "mainEntity": {% if entity != blank %}{{ entity }}{% else %}{ "@id": {{ subject | json }} }{% endif %}
     {%- if description != blank -%}
       ,"description": {{ description | json }}
     {%- endif -%}

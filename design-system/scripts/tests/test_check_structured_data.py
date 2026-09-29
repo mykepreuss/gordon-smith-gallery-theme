@@ -81,13 +81,43 @@ class CheckStructuredData(unittest.TestCase):
         self.assertIn("Gallery: not a schema.org type", errors)
 
     def test_a_mention_of_something_the_page_does_not_describe(self):
-        work = {"@type": "VisualArtwork", "@id": "https://example.com/a#work", "name": "A",
-                "url": "https://example.com/a", "mainEntityOfPage": {"@id": "https://example.com/a#webpage"}}
-        _, errors, _ = check.check_page(page(work))
-        self.assertIn("a mention of https://example.com/a#webpage, which the page doesn't describe", errors)
         web = {"@type": "WebPage", "@id": "https://example.com/a#webpage", "name": "A",
                "url": "https://example.com/a", "mainEntity": {"@id": "https://example.com/a#work"}}
+        _, errors, _ = check.check_page(page(web))
+        self.assertIn("a mention of https://example.com/a#work, which the page doesn't describe", errors)
+        work = {"@type": "VisualArtwork", "@id": "https://example.com/a#work", "name": "A",
+                "url": "https://example.com/a"}
         _, errors, _ = check.check_page(page(work, web))
+        self.assertEqual(errors, [])
+
+    def test_one_thing_with_two_types(self):
+        show = {"@type": "Event", "@id": "https://example.com/a#exhibition", "name": "A",
+                "url": "https://example.com/a", "startDate": "2026-09-25", "location": PLACE}
+        talk = {"@type": "Event", "@id": "https://example.com/#event-talk", "name": "Talk",
+                "startDate": "2026-10-01", "location": PLACE,
+                "superEvent": {"@type": "ExhibitionEvent", "@id": "https://example.com/a#exhibition", "name": "A"}}
+        _, errors, _ = check.check_page(page(show, talk))
+        self.assertIn("https://example.com/a#exhibition has different types on one page: Event, ExhibitionEvent", errors)
+        talk["superEvent"] = {"@id": "https://example.com/a#exhibition"}
+        _, errors, _ = check.check_page(page(show, talk))
+        self.assertEqual(errors, [])
+
+    def test_an_organisation_typed_more_or_less_closely(self):
+        full = dict(PLACE, **{"@id": "https://example.com/#gallery"})
+        web = {"@type": "WebPage", "@id": "https://example.com/a#webpage", "name": "A", "url": "https://example.com/a",
+               "publisher": {"@type": "Organization", "@id": "https://example.com/#gallery", "name": "Gallery"}}
+        _, errors, _ = check.check_page(page(full, web))
+        self.assertEqual(errors, [])
+
+    def test_a_thing_that_points_back_at_its_page(self):
+        web = {"@type": "ProfilePage", "@id": "https://example.com/a#webpage", "name": "A", "url": "https://example.com/a",
+               "mainEntity": {"@type": "Person", "@id": "https://example.com/a#artist", "name": "A",
+                              "url": "https://example.com/a",
+                              "mainEntityOfPage": {"@id": "https://example.com/a#webpage"}}}
+        _, errors, _ = check.check_page(page(web))
+        self.assertIn("https://example.com/a#artist points back at the page that is about it (mainEntityOfPage)", errors)
+        del web["mainEntity"]["mainEntityOfPage"]
+        _, errors, _ = check.check_page(page(web))
         self.assertEqual(errors, [])
 
     def test_a_main_thing_without_a_name_for_machines(self):

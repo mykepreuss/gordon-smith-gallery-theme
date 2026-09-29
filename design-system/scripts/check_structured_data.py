@@ -12,6 +12,10 @@ reads the pages themselves, so it catches:
   - a type or a property that schema.org doesn't have, or a property on a type it doesn't belong
     to ("artMedium" on a ProductGroup), read from data/schema-org.json
   - a mention by name alone ({"@id": ...}) of something the page doesn't describe
+  - one thing given two different types on one page (the same @id as an Event here and an
+    ExhibitionEvent there): Google's Rich Results Test then drops it
+  - a thing that points back at the page that is about it (mainEntityOfPage to a page whose
+    mainEntity it is): Google then drops a profile page
   - warnings: a main thing without a name for machines (@id), and the fields Google recommends
     for its results that a thing doesn't carry
 
@@ -72,6 +76,8 @@ RECOMMENDED = {
 }
 # Properties Google reads that schema.org doesn't list.
 EXTRA_PROPERTIES = {"query-input"}
+# Kinds of one organisation, which may be typed more or less closely in one page.
+ORGANISATIONS = {"Organization", "ArtGallery", "LocalBusiness", "Place"}
 # Types whose main things need no name for machines: they are read where they stand.
 NO_ID = {"BreadcrumbList", "ListItem", "Question", "Answer", "BlogPosting"}
 STYLED = re.compile("[\U0001D400-\U0001D7FF]")
@@ -196,6 +202,32 @@ def described_ids(node):
             yield from described_ids(value)
 
 
+def typed_ids(node):
+    """Each @id with the types it is given, wherever it is described or mentioned with a type."""
+    if isinstance(node, list):
+        for item in node:
+            yield from typed_ids(item)
+    elif isinstance(node, dict):
+        if "@id" in node and "@type" in node:
+            kinds = node["@type"] if isinstance(node["@type"], list) else [node["@type"]]
+            yield node["@id"], tuple(sorted(str(k) for k in kinds))
+        for value in node.values():
+            yield from typed_ids(value)
+
+
+def links(node, field):
+    """(from @id, to @id) for each time a thing with an @id names another in this field."""
+    if isinstance(node, list):
+        for item in node:
+            yield from links(item, field)
+    elif isinstance(node, dict):
+        target = node.get(field)
+        if "@id" in node and isinstance(target, dict) and "@id" in target:
+            yield node["@id"], target["@id"]
+        for value in node.values():
+            yield from links(value, field)
+
+
 def mentioned_ids(node):
     """The @id of everything the page mentions by that name alone."""
     if isinstance(node, list):
@@ -212,6 +244,7 @@ def check_page(text, expect=(), vocabulary=None):
     """Returns (types found, errors, warnings) for one page's HTML."""
     errors, warnings, found = [], [], []
     described, mentioned = set(), set()
+    types_of, about, back = {}, set(), set()
     head = text.split("</head>")[0]
 
     title = re.search(r"<title>(.*?)</title>", head, re.S)
@@ -255,6 +288,20 @@ def check_page(text, expect=(), vocabulary=None):
                             warnings.append(f"{label}: no {field.replace('|', ' or ')} (recommended)")
         described.update(d for d in described_ids(data))
         mentioned.update(m for m in mentioned_ids(data))
+        for name, kinds in typed_ids(data):
+            types_of.setdefault(name, set()).add(kinds)
+        about.update(links(data, "mainEntity"))
+        back.update(links(data, "mainEntityOfPage"))
+
+    # An organisation may be an ArtGallery where it is described and an Organization where it is
+    # only mentioned: one is a kind of the other. Anything else with two types is a fault.
+    for name, kinds in sorted(types_of.items()):
+        flat = {k for group in kinds for k in group}
+        if len(kinds) > 1 and not flat <= ORGANISATIONS:
+            errors.append(f"{name} has different types on one page: {', '.join('/'.join(k) for k in sorted(kinds))}")
+    for page_id, thing_id in sorted(about):
+        if (thing_id, page_id) in back:
+            errors.append(f"{thing_id} points back at the page that is about it (mainEntityOfPage)")
 
     for name in sorted(mentioned - described):
         errors.append(f"a mention of {name}, which the page doesn't describe")
