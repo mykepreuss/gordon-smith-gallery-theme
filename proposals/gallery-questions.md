@@ -158,3 +158,20 @@ From `proposals/aeo-geo-review.md`. These words show in search results, link pre
 | 10.15 | Marion Smith's dates, for the Gordon and Marion page | Not stated |
 | 10.16 | Which donation route is for what? Donate is the Foundation's and Support Artists for Kids is the program's. One sentence on each page that names the other would do | Not stated |
 | 10.17 | Two claims to confirm with a source: that the gallery was "established as Canada's first public art gallery for young audiences" (Artists For Kids page), and the museums that hold Gordon Smith's work (Gordon and Marion page) | As written |
+
+## 11. Facts for search and answer engines to confirm
+
+Found on 2026-09-28 without asking (`proposals/structured-data-facts.md`). Each needs a yes, a no or a correction.
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 11.1 | Six artist pages read "born" of artists who have since died: David Blackwood (2022), Christopher Pratt (2022), Joe Fafard (2019), Gathie Falk (2025), Victor Cicansky (2025), Audrey Capel Doray (2025). Correct? | As written |
+| 11.2 | Molly Lamb Bobak: the page gives 1922 to 2014. Other sources give 1920 | As written |
+| 11.3 | Spellings: "Patterson Ewen" or "Paterson Ewen"; "Charles Gagon" or "Charles Gagnon"; "Atilla Lukacs" or "Attila Lukacs"; "Jean McEwan" or "Jean McEwen" | As written |
+| 11.4 | Are these the gallery's and Artists for Kids' profiles, and still in use? Instagram `afk_smithgallery`, Facebook `afksmithgallery`, X `afksmithgallery`, and the YouTube channel on the sd44.ca pages. Does the gallery have its own? | Not linked |
+| 11.5 | Are these the Foundation's, and still in use? Instagram `the_smith_foundation`, Facebook `gordonandmarionsmithfoundation` | Not linked |
+| 11.6 | The Foundation's charity number: 866075658RR0001? | Not given |
+| 11.7 | How are the three related? The site says Artists for Kids is operated by the North Vancouver School District, and that the Foundation funds Artists for Kids. Who does the gallery belong to: the school district, the Foundation, or both? | Not stated |
+| 11.8 | Office hours: Monday to Friday 8 AM to 3 PM (the site), or 8:30 AM to 4:30 PM, closed July and August (the store's contact page)? | The site's |
+| 11.9 | The general email for the site: `artistsforkids@sd44.ca`? | None shown in the data |
+| 11.10 | For 101 artists, a list of where each is described elsewhere (Wikidata, the Getty's list of artists, Wikipedia) is drafted in `proposals/store-writes/aeo/artist-identifiers.json`. 59 are confirmed by their dates. May the other 42 be checked by someone who knows the collection? | Not linked. This answers 10.7 |

@@ -1,0 +1,1884 @@
+{
+  "about": "Draft, for the gallery to check. Nothing here is written to the store. Where each artist is described elsewhere, found by searching Wikidata on 2026-09-28 for each of the 171 artist entries. \"confirmed\": the years of birth and death in our entry agree with Wikidata's. \"likely\": one Canadian artist of that name, and no year of ours to check against. \"possible\": a name that matches and nothing else. Only the addresses are meant for use: Wikidata's dates are shown for checking and are not always right.",
+  "counts": {
+    "not found": 70,
+    "confirmed": 59,
+    "likely": 34,
+    "possible": 8
+  },
+  "artists": [
+    {
+      "handle": "jane-adams",
+      "name": "Jane Adams",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "latcholassie-akesuk",
+      "name": "Latcholassie Akesuk",
+      "our_dates": "1919 to 2000",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Latcholassie Akesuk",
+      "wikidata_says": "Inuit sculptor (1919–2000)",
+      "wikidata_dates": "1919 to 2000",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q55218707",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500126307",
+        "wikipedia": "https://en.wikipedia.org/wiki/Latcholassie_Akesuk"
+      }
+    },
+    {
+      "handle": "vikky-alexander",
+      "name": "Vikky Alexander",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Vikky Alexander",
+      "wikidata_says": "Canadian contemporary artist (born 1959)",
+      "wikidata_dates": "1959",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7929531",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500386205",
+        "wikipedia": "https://en.wikipedia.org/wiki/Vikky_Alexander"
+      }
+    },
+    {
+      "handle": "fred-amess",
+      "name": "Fred Amess",
+      "our_dates": "1909 to 1970",
+      "status": "not found"
+    },
+    {
+      "handle": "patrick-amiot",
+      "name": "Patrick Amiot",
+      "our_dates": "1959",
+      "status": "not found"
+    },
+    {
+      "handle": "elizabeth-angrnaqquaq",
+      "name": "Elizabeth Angrnaqquaq",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Elizabeth Angrnaqquaq",
+      "wikidata_says": "Inuk textile artist (1916–2003)",
+      "wikidata_dates": "1916 to 2003",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q50414312",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500126332",
+        "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_Angrnaqquaq"
+      }
+    },
+    {
+      "handle": "kenojuak-ashevak",
+      "name": "Kenojuak Ashevak",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Kenojuak Ashevak",
+      "wikidata_says": "Inuit artist (1927–2013)",
+      "wikidata_dates": "1927 to 2013",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q122347",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500126356",
+        "wikipedia": "https://en.wikipedia.org/wiki/Kenojuak_Ashevak"
+      }
+    },
+    {
+      "handle": "ottochie-ashoona",
+      "name": "Ottochie Ashoona",
+      "our_dates": "1942 to 1970",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Ottochie Ashoona",
+      "wikidata_says": "Inuit [Cape Dorset/Kinngait] artist (1942-1970)",
+      "wikidata_dates": "1942 to 1970",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q82574216",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500783417"
+      }
+    },
+    {
+      "handle": "heather-aston",
+      "name": "Heather Aston",
+      "our_dates": "1946",
+      "status": "not found"
+    },
+    {
+      "handle": "anne-meredith-barry",
+      "name": "Anne Meredith Barry",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Anne Meredith Barry",
+      "wikidata_says": "Canadian painter (1931 or 1932-2003)",
+      "wikidata_dates": "1931 to 2003",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q56033428",
+        "wikipedia": "https://en.wikipedia.org/wiki/Anne_Meredith_Barry"
+      }
+    },
+    {
+      "handle": "robert-bateman",
+      "name": "Robert Bateman",
+      "our_dates": "1930",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Robert Bateman",
+      "wikidata_says": "Canadian artist (born 1930)",
+      "wikidata_dates": "1930",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q304160",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500055892",
+        "wikipedia": "https://en.wikipedia.org/wiki/Robert_Bateman_(painter)"
+      }
+    },
+    {
+      "handle": "maxwell-bennett-bates",
+      "name": "Maxwell Bennett Bates",
+      "our_dates": "1906 to 1980",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Maxwell Bates",
+      "wikidata_says": "Canadian architect and painter (1906-1980)",
+      "wikidata_dates": "1906 to 1980",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q6796080",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500029843",
+        "wikipedia": "https://en.wikipedia.org/wiki/Maxwell_Bates"
+      }
+    },
+    {
+      "handle": "iain-baxter",
+      "name": "Iain Baxter",
+      "our_dates": "1936",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Iain Baxter",
+      "wikidata_says": "Canadian artist (born 1936)",
+      "wikidata_dates": "1936",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q522534",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500073717",
+        "wikipedia": "https://en.wikipedia.org/wiki/Iain_Baxter&"
+      }
+    },
+    {
+      "handle": "jackson-beardy",
+      "name": "Jackson Beardy",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Jackson Beardy",
+      "wikidata_says": "First Nations artist (1944-1984)",
+      "wikidata_dates": "1944 to 1984",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q1923173",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500126405",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jackson_Beardy"
+      }
+    },
+    {
+      "handle": "judson-beaumont",
+      "name": "Judson Beaumont",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "alistair-bell",
+      "name": "Alistair Bell",
+      "our_dates": "1913 to 1997",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Alistair Macready Bell",
+      "wikidata_says": "",
+      "wikidata_dates": "1913 to 1997",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q106541985",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500466271"
+      }
+    },
+    {
+      "handle": "rebecca-belmore",
+      "name": "Rebecca Belmore",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Rebecca Belmore",
+      "wikidata_says": "Canadian and Ojibwa artist (born 1960)",
+      "wikidata_dates": "1960",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7301664",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500126429",
+        "wikipedia": "https://en.wikipedia.org/wiki/Rebecca_Belmore"
+      }
+    },
+    {
+      "handle": "douglas-biden",
+      "name": "Douglas Biden",
+      "our_dates": "1956 to 2007",
+      "status": "not found"
+    },
+    {
+      "handle": "b-c-binning",
+      "name": "B.C. Binning",
+      "our_dates": "1909 to 1976",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "B. C. Binning",
+      "wikidata_says": "Canadian artist (1909-1976)",
+      "wikidata_dates": "1909 to 1976",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q4833928",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500003586",
+        "wikipedia": "https://en.wikipedia.org/wiki/B._C._Binning"
+      }
+    },
+    {
+      "handle": "penny-birnbaum",
+      "name": "Penny Birnbaum",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "david-blackwood",
+      "name": "David Blackwood",
+      "our_dates": "1941",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "David Blackwood",
+      "wikidata_says": "Canadian artist (1941–2022)",
+      "wikidata_dates": "1941 to 2022",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q5231445",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500175573",
+        "wikipedia": "https://en.wikipedia.org/wiki/David_Blackwood"
+      }
+    },
+    {
+      "handle": "molly-lamb-bobak",
+      "name": "Molly Lamb Bobak",
+      "our_dates": "1922 to 2014",
+      "status": "likely",
+      "why": "our year 1922, Wikidata 1920",
+      "wikidata_name": "Molly Bobak",
+      "wikidata_says": "Canadian artist (1920-2014)",
+      "wikidata_dates": "1920 to 2014",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3319624",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500012181",
+        "wikipedia": "https://en.wikipedia.org/wiki/Molly_Lamb_Bobak"
+      }
+    },
+    {
+      "handle": "rachel-brett",
+      "name": "Rachel Brett",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "lauren-brevner",
+      "name": "Lauren Brevner",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "elaine-brewer-white",
+      "name": "Elaine Brewer-White",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "karin-bubas",
+      "name": "Karin Bubaš",
+      "our_dates": "1976",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Karin Bubaš",
+      "wikidata_says": "Canadian artist",
+      "wikidata_dates": "1976",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q19609807",
+        "wikipedia": "https://en.wikipedia.org/wiki/Karin_Bubaš"
+      }
+    },
+    {
+      "handle": "edward-burtynsky",
+      "name": "Edward Burtynsky",
+      "our_dates": "1955",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Edward Burtynsky",
+      "wikidata_says": "Canadian photographer (born 1955)",
+      "wikidata_dates": "1955",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q967163",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500037033",
+        "wikipedia": "https://en.wikipedia.org/wiki/Edward_Burtynsky"
+      }
+    },
+    {
+      "handle": "amelia-butcher",
+      "name": "Amelia Butcher",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "emma-campbell",
+      "name": "Emma Campbell",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "terry-campbell",
+      "name": "Terry Campbell",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "taiga-chiba",
+      "name": "Taiga Chiba",
+      "our_dates": "1927 to 2013",
+      "status": "not found"
+    },
+    {
+      "handle": "yung-wing-chow",
+      "name": "Yung Wing Chow",
+      "our_dates": "1951",
+      "status": "not found"
+    },
+    {
+      "handle": "victor-cicansky",
+      "name": "Victor Cicansky",
+      "our_dates": "1935",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Victor Cicansky",
+      "wikidata_says": "Canadian sculptor (1935–2025)",
+      "wikidata_dates": "1935 to 2025",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q22003654",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500089511",
+        "wikipedia": "https://en.wikipedia.org/wiki/Victor_Cicansky"
+      }
+    },
+    {
+      "handle": "dana-claxton",
+      "name": "Dana Claxton",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Dana Claxton",
+      "wikidata_says": "Hunkpapa Lakota filmmaker, photographer and performance artist (born 1959)",
+      "wikidata_dates": "1959",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q5214695",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500487559",
+        "wikipedia": "https://en.wikipedia.org/wiki/Dana_Claxton"
+      }
+    },
+    {
+      "handle": "pierre-coupey",
+      "name": "Pierre Coupey",
+      "our_dates": "1942",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Pierre Coupey",
+      "wikidata_says": "Canadian artist",
+      "wikidata_dates": "1942",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7192155",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500075148",
+        "wikipedia": "https://en.wikipedia.org/wiki/Pierre_Coupey"
+      }
+    },
+    {
+      "handle": "douglas-coupland",
+      "name": "Douglas Coupland",
+      "our_dates": "1961",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Douglas Coupland",
+      "wikidata_says": "Canadian novelist, short story writer, playwright, and graphic designer (born 1961)",
+      "wikidata_dates": "1961",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q322060",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500291268",
+        "wikipedia": "https://en.wikipedia.org/wiki/Douglas_Coupland"
+      }
+    },
+    {
+      "handle": "robert-davidson",
+      "name": "Robert Davidson",
+      "our_dates": "1946",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Robert Davidson",
+      "wikidata_says": "Haida artist (born 1946)",
+      "wikidata_dates": "1946",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7343412",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500126607",
+        "wikipedia": "https://en.wikipedia.org/wiki/Robert_Davidson_(artist)"
+      }
+    },
+    {
+      "handle": "anna-binta-diallo",
+      "name": "Anna Binta Diallo",
+      "our_dates": "1983",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Anna Binta Diallo",
+      "wikidata_says": "Canadian visual artist",
+      "wikidata_dates": "1983",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q112901157"
+      }
+    },
+    {
+      "handle": "beau-dick",
+      "name": "Beau Dick",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Beau Dick",
+      "wikidata_says": "Kwakwaka'wakw woodcarver and chief from Canada (1955–2017)",
+      "wikidata_dates": "1955 to 2017",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q16186640",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500126624",
+        "wikipedia": "https://en.wikipedia.org/wiki/Beau_Dick"
+      }
+    },
+    {
+      "handle": "christos-dikeakos",
+      "name": "Christos Dikeakos",
+      "our_dates": null,
+      "status": "possible",
+      "why": "a name that matches; nothing else to check it against",
+      "wikidata_name": "Christos Dikeakos",
+      "wikidata_says": "photographer",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q131618197"
+      }
+    },
+    {
+      "handle": "pat-dixon",
+      "name": "Pat Dixon",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "audrey-capel-doray",
+      "name": "Audrey Capel Doray",
+      "our_dates": "1931",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Audrey Capel Doray",
+      "wikidata_says": "Canadian painter (born 1931)",
+      "wikidata_dates": "1931 to 2025",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q19877469",
+        "wikipedia": "https://en.wikipedia.org/wiki/Audrey_Capel_Doray"
+      }
+    },
+    {
+      "handle": "stan-douglas",
+      "name": "Stan Douglas",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Stan Douglas",
+      "wikidata_says": "Canadian photographer (born 1960)",
+      "wikidata_dates": "1960",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q129554",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500116129",
+        "wikipedia": "https://en.wikipedia.org/wiki/Stan_Douglas"
+      }
+    },
+    {
+      "handle": "wayne-eastcott",
+      "name": "Wayne Eastcott",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "leonard-epp",
+      "name": "Leonard Epp",
+      "our_dates": "1932 to 2018",
+      "status": "not found"
+    },
+    {
+      "handle": "enn-erisalu",
+      "name": "Enn Erisalu",
+      "our_dates": "1943 to 2005",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Enn Erisalu",
+      "wikidata_says": "Estonian painter (1943-2005)",
+      "wikidata_dates": "1943 to 2005",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q50359531"
+      }
+    },
+    {
+      "handle": "john-k-essler",
+      "name": "John K. Essler",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "jamie-evrard",
+      "name": "Jamie Evrard",
+      "our_dates": "1949",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Jamie Evrard",
+      "wikidata_says": "American painter",
+      "wikidata_dates": "1949",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q131917901"
+      }
+    },
+    {
+      "handle": "patterson-ewen",
+      "name": "Patterson Ewen",
+      "our_dates": null,
+      "status": "possible",
+      "why": "found under another spelling: Wikidata has Paterson Ewen and Charles Gagnon",
+      "wikidata_name": "Paterson Ewen",
+      "wikidata_says": "Canadian artist (1925-2002)",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7144588"
+      }
+    },
+    {
+      "handle": "joe-fafard",
+      "name": "Joe Fafard",
+      "our_dates": "1942",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Joe Fafard",
+      "wikidata_says": "Canadian sculptor (1942–2019)",
+      "wikidata_dates": "1942 to 2019",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3184926",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500081193",
+        "wikipedia": "https://en.wikipedia.org/wiki/Joe_Fafard"
+      }
+    },
+    {
+      "handle": "gathie-falk",
+      "name": "Gathie Falk",
+      "our_dates": "1928",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Gathie Falk",
+      "wikidata_says": "Canadian artist (born 1928)",
+      "wikidata_dates": "1928 to 2025",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q17626630",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500079625",
+        "wikipedia": "https://en.wikipedia.org/wiki/Gathie_Falk"
+      }
+    },
+    {
+      "handle": "geoffrey-farmer",
+      "name": "Geoffrey Farmer",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Geoffrey Farmer",
+      "wikidata_says": "Canadian artist (born 1967)",
+      "wikidata_dates": "1967",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q5534595",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500355861",
+        "wikipedia": "https://en.wikipedia.org/wiki/Geoffrey_Farmer"
+      }
+    },
+    {
+      "handle": "james-warren-felter",
+      "name": "James Warren Felter",
+      "our_dates": "1943",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "James Warren Felter",
+      "wikidata_says": "",
+      "wikidata_dates": "1943",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q105651493",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500202507"
+      }
+    },
+    {
+      "handle": "mary-h-filer",
+      "name": "Mary H. Filer",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "charles-gagon",
+      "name": "Charles Gagon",
+      "our_dates": null,
+      "status": "possible",
+      "why": "found under another spelling: Wikidata has Paterson Ewen and Charles Gagnon",
+      "wikidata_name": "Charles Gagnon",
+      "wikidata_says": "Canadian painter and photographer (1934-2003)",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q2959156"
+      }
+    },
+    {
+      "handle": "angela-george",
+      "name": "Angela George",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "damian-george",
+      "name": "Damian George",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "graham-gillmore",
+      "name": "Graham Gillmore",
+      "our_dates": "1963",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Graham Gillmore",
+      "wikidata_says": "",
+      "wikidata_dates": "1963",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q22236797",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500333326"
+      }
+    },
+    {
+      "handle": "betty-goodwin",
+      "name": "Betty Goodwin",
+      "our_dates": "1923 to 2008",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Betty Goodwin",
+      "wikidata_says": "Canadian artist (1923-2008)",
+      "wikidata_dates": "1923 to 2008",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q2900236",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500089080",
+        "wikipedia": "https://en.wikipedia.org/wiki/Betty_Goodwin"
+      }
+    },
+    {
+      "handle": "rodney-graham",
+      "name": "Rodney Graham",
+      "our_dates": "1949 to 2022",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Rodney Graham",
+      "wikidata_says": "Canadian artist and musician (1949–2022)",
+      "wikidata_dates": "1949 to 2022",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q320241",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500115975",
+        "wikipedia": "https://en.wikipedia.org/wiki/Rodney_Graham"
+      }
+    },
+    {
+      "handle": "angela-grossmann",
+      "name": "Angela Grossmann",
+      "our_dates": "1955",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Angela Grossmann",
+      "wikidata_says": "Canadian artist (born 1955)",
+      "wikidata_dates": "1955",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q27049880",
+        "wikipedia": "https://en.wikipedia.org/wiki/Angela_Grossmann"
+      }
+    },
+    {
+      "handle": "gu-xiong",
+      "name": "Gu Xiong",
+      "our_dates": "1953",
+      "status": "not found"
+    },
+    {
+      "handle": "ted-harrison",
+      "name": "Ted Harrison",
+      "our_dates": "1926 to 2015",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Ted Harrison",
+      "wikidata_says": "Canadian artist and author (1926-2015)",
+      "wikidata_dates": "1926 to 2015",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7693273",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ted_Harrison"
+      }
+    },
+    {
+      "handle": "james-harry",
+      "name": "James Harry",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "john-hartman",
+      "name": "John Hartman",
+      "our_dates": "1950",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "John Hartman",
+      "wikidata_says": "Canadian painter",
+      "wikidata_dates": "1950",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q105069901",
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Hartman_(artist)"
+      }
+    },
+    {
+      "handle": "j-carl-heywood",
+      "name": "J. Carl Heywood",
+      "our_dates": null,
+      "status": "possible",
+      "why": "a name that matches; nothing else to check it against",
+      "wikidata_name": "J.C. Heywood",
+      "wikidata_says": "Canadian, born 1941; artist (1941–2022)",
+      "wikidata_dates": "1941 to 2022",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q55218412",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500068212",
+        "wikipedia": "https://en.wikipedia.org/wiki/J._C._Heywood"
+      }
+    },
+    {
+      "handle": "tom-hopkins",
+      "name": "Tom Hopkins",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Tom Hopkins",
+      "wikidata_says": "Canadian artist (1944–2011)",
+      "wikidata_dates": "1944 to 2011",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q59646204",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500197228"
+      }
+    },
+    {
+      "handle": "tom-hudson",
+      "name": "Tom Hudson",
+      "our_dates": "1922 to 1997",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Tom Hudson",
+      "wikidata_says": "1922-1997 British Artist and Lecturer (1922–1997)",
+      "wikidata_dates": "1922 to 1997",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q21461493",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500193916",
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Hudson_(art_educator)"
+      }
+    },
+    {
+      "handle": "e-j-hughes",
+      "name": "E.J. Hughes",
+      "our_dates": "1913 to 2007",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "E. J. Hughes",
+      "wikidata_says": "Canadian artist (1913-2007)",
+      "wikidata_dates": "1913 to 2007",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q5321948",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500004757",
+        "wikipedia": "https://en.wikipedia.org/wiki/E._J._Hughes"
+      }
+    },
+    {
+      "handle": "george-hunt-jr",
+      "name": "George Hunt Jr.",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "jacques-hurtubise",
+      "name": "Jacques Hurtubise",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Jacques Hurtubise",
+      "wikidata_says": "Canadian painter (1939-2014)",
+      "wikidata_dates": "1939 to 2014",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3159128",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500006927",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jacques_Hurtubise_(painter)"
+      }
+    },
+    {
+      "handle": "nuveeya-ipellie",
+      "name": "Nuveeya Ipellie",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Nuveeya Ipellie",
+      "wikidata_says": "born 1920, lives Iqaluit, Nunavut; artist (1920–2010)",
+      "wikidata_dates": "1920 to 2010",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q55219047",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127265"
+      }
+    },
+    {
+      "handle": "a-y-jackson",
+      "name": "A.Y. Jackson",
+      "our_dates": "1882 to 1974",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "A. Y. Jackson",
+      "wikidata_says": "Canadian painter (1882-1974)",
+      "wikidata_dates": "1882 to 1974",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3499926",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500022432",
+        "wikipedia": "https://en.wikipedia.org/wiki/A._Y._Jackson"
+      }
+    },
+    {
+      "handle": "allen-james",
+      "name": "Allen James",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "kenneth-james",
+      "name": "Kenneth James",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "jack-jeffrey",
+      "name": "Jack Jeffrey",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "sandeep-johal",
+      "name": "Sandeep Johal",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "mark-johnsen",
+      "name": "Mark Johnsen",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "patricia-johnston",
+      "name": "Patricia Johnston",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "bonnie-jordan",
+      "name": "Bonnie Jordan",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "jennifer-judge",
+      "name": "Jennifer Judge",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "denis-juneau",
+      "name": "Denis Juneau",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Denis Juneau",
+      "wikidata_says": "Canadian artist (1925-2014)",
+      "wikidata_dates": "1925 to 2014",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3022759",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500004478",
+        "wikipedia": "https://en.wikipedia.org/wiki/Denis_Juneau"
+      }
+    },
+    {
+      "handle": "helen-kalvak",
+      "name": "Helen Kalvak",
+      "our_dates": "1901 to 1984",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Helen Kalvak",
+      "wikidata_says": "graphic artist (1901–1984)",
+      "wikidata_dates": "1901 to 1984",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q15498548",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500034115",
+        "wikipedia": "https://en.wikipedia.org/wiki/Helen_Kalvak"
+      }
+    },
+    {
+      "handle": "russna-kaur",
+      "name": "Russna Kaur",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "pat-and-rosemarie-keough",
+      "name": "Pat and Rosemarie Keough",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "sara-khan",
+      "name": "Sara Khan",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "pudlo-kilabuk",
+      "name": "Pudlo Kilabuk",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "michael-kim",
+      "name": "Michael Kim",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "ann-kipling",
+      "name": "Ann Kipling",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Ann Kipling",
+      "wikidata_says": "Canadian artist (1934–2023)",
+      "wikidata_dates": "1934 to 2023",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q19592563",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500078498",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ann_Kipling"
+      }
+    },
+    {
+      "handle": "roy-kiyooka",
+      "name": "Roy Kiyooka",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Roy Kiyooka",
+      "wikidata_says": "Canadian artist (1926-1994)",
+      "wikidata_dates": "1926 to 1994",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3445789",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500022431",
+        "wikipedia": "https://en.wikipedia.org/wiki/Roy_Kiyooka"
+      }
+    },
+    {
+      "handle": "john-koerner",
+      "name": "John Koerner",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "John Koerner",
+      "wikidata_says": "Czech-born Canadian artist (1913–2014)",
+      "wikidata_dates": "1913 to 2014",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q16989273",
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Koerner_(artist)"
+      }
+    },
+    {
+      "handle": "kapik-kolola",
+      "name": "Kapik Kolola",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Kapik Kolola",
+      "wikidata_says": "(1926–1985)",
+      "wikidata_dates": "1926 to 1985",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q78901461"
+      }
+    },
+    {
+      "handle": "george-littlechild",
+      "name": "George Littlechild",
+      "our_dates": "1958",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "",
+      "wikidata_says": "",
+      "wikidata_dates": "1958",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q134395173",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127027"
+      }
+    },
+    {
+      "handle": "daylen-luchsinger",
+      "name": "Daylen Luchsinger",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "atilla-lukacs",
+      "name": "Atilla Lukacs",
+      "our_dates": "1962",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "",
+      "wikidata_says": "Canadian artist (born 1962)",
+      "wikidata_dates": "1962",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q758111",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127861",
+        "wikipedia": "https://en.wikipedia.org/wiki/Attila_Richard_Lukacs"
+      }
+    },
+    {
+      "handle": "landon-mackenzie",
+      "name": "Landon MacKenzie",
+      "our_dates": "1954",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Landon Mackenzie",
+      "wikidata_says": "Canadian artist (born 1954)",
+      "wikidata_dates": "1954",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q6484894",
+        "wikipedia": "https://en.wikipedia.org/wiki/Landon_Mackenzie"
+      }
+    },
+    {
+      "handle": "victoria-mamnguqsualuk",
+      "name": "Victoria Mamnguqsualuk",
+      "our_dates": "1930 to 2016",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Victoria Mamnguqsualuk",
+      "wikidata_says": "Canadian Inuit artist (1930–2016)",
+      "wikidata_dates": "1930 to 2016",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q28335055",
+        "wikipedia": "https://en.wikipedia.org/wiki/Victoria_Mamnguqsualuk"
+      }
+    },
+    {
+      "handle": "roz-marshall",
+      "name": "Roz Marshall",
+      "our_dates": "1947",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Roz Marshall",
+      "wikidata_says": "",
+      "wikidata_dates": "1947",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q131786269"
+      }
+    },
+    {
+      "handle": "jean-mcewan",
+      "name": "Jean McEwan",
+      "our_dates": "1923 to 1999",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Jean McEwen",
+      "wikidata_says": "Canadian painter (1923–1999)",
+      "wikidata_dates": "1923 to 1999",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3173479",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500015819",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jean_McEwen"
+      }
+    },
+    {
+      "handle": "pat-mcguire",
+      "name": "Pat McGuire",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "elizabeth-mcintosh",
+      "name": "Elizabeth McIntosh",
+      "our_dates": "1967",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Elizabeth McIntosh",
+      "wikidata_says": "Canadian painter (born 1967)",
+      "wikidata_dates": "1967",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q23418597",
+        "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_McIntosh_(artist)"
+      }
+    },
+    {
+      "handle": "erin-mcsavaney",
+      "name": "Erin McSavaney",
+      "our_dates": "1973",
+      "status": "not found"
+    },
+    {
+      "handle": "mario-merola",
+      "name": "Mario Merola",
+      "our_dates": "1931",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Mario Merola",
+      "wikidata_says": "Canadian painter (1931-)",
+      "wikidata_dates": "1931",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q19631321",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500005342"
+      }
+    },
+    {
+      "handle": "guido-molinari",
+      "name": "Guido Molinari",
+      "our_dates": "1933 to 2004",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Guido Molinari",
+      "wikidata_says": "Canadian artist (1933-2004)",
+      "wikidata_dates": "1933 to 2004",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q320422",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500033033",
+        "wikipedia": "https://en.wikipedia.org/wiki/Guido_Molinari"
+      }
+    },
+    {
+      "handle": "damian-moppett",
+      "name": "Damian Moppett",
+      "our_dates": "1969",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Damian Moppett",
+      "wikidata_says": "Canadian artist (born 1969)",
+      "wikidata_dates": "1969",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q43134392",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500574727",
+        "wikipedia": "https://en.wikipedia.org/wiki/Damian_Moppett"
+      }
+    },
+    {
+      "handle": "jean-morrison",
+      "name": "Jean Morrison",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "greg-murdock",
+      "name": "Greg Murdock",
+      "our_dates": "1954",
+      "status": "not found"
+    },
+    {
+      "handle": "albert-normandin",
+      "name": "Albert Normandin",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "patricia-o-hara",
+      "name": "Patricia O'Hara",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "toni-onley",
+      "name": "Toni Onley",
+      "our_dates": "1928 to 2004",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Toni Onley",
+      "wikidata_says": "Canadian artist (1928-2004)",
+      "wikidata_dates": "1928 to 2004",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7821311",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500002853",
+        "wikipedia": "https://en.wikipedia.org/wiki/Toni_Onley"
+      }
+    },
+    {
+      "handle": "lyndal-osborne",
+      "name": "Lyndal Osborne",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Lyndal Osborne",
+      "wikidata_says": "Canadian artist (born 1940)",
+      "wikidata_dates": "1940",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q62036497",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500086961",
+        "wikipedia": "https://en.wikipedia.org/wiki/Lyndal_Osborne"
+      }
+    },
+    {
+      "handle": "melia-padluq",
+      "name": "Melia Padluq",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Melia Padluq",
+      "wikidata_says": "lives Cape Dorset, Nunavut; artist (born 1940)",
+      "wikidata_dates": "1940",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q55218912"
+      }
+    },
+    {
+      "handle": "josie-p-papialuk",
+      "name": "Josie P. Papialuk",
+      "our_dates": "1943",
+      "status": "possible",
+      "why": "a name that matches; nothing else to check it against",
+      "wikidata_name": "Josie Papialuk",
+      "wikidata_says": "Canadian artist (1918-1996)",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3186065"
+      }
+    },
+    {
+      "handle": "david-gerry-partridge",
+      "name": "David Gerry Partridge",
+      "our_dates": null,
+      "status": "possible",
+      "why": "a name that matches; nothing else to check it against",
+      "wikidata_name": "",
+      "wikidata_says": "American painter and sculptor (1919-2006)",
+      "wikidata_dates": "1919 to 2006",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q21452817",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500060164",
+        "wikipedia": "https://en.wikipedia.org/wiki/David_Partridge_(artist)"
+      }
+    },
+    {
+      "handle": "jim-paull",
+      "name": "Jim Paull",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "parvin-peivandi",
+      "name": "Parvin Peivandi",
+      "our_dates": "1974",
+      "status": "not found"
+    },
+    {
+      "handle": "ross-penhall",
+      "name": "Ross Penhall",
+      "our_dates": "1959",
+      "status": "not found"
+    },
+    {
+      "handle": "victor-john-penner",
+      "name": "Victor John Penner",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "george-pennier",
+      "name": "George Pennier",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "frank-perry",
+      "name": "Frank Perry",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "joe-peters",
+      "name": "Joe Peters",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "setsuko-piroche",
+      "name": "Setsuko Piroche",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "susan-point",
+      "name": "Susan Point",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Susan Point",
+      "wikidata_says": "Musqueam Coast Salish artist from Canada (born 1952)",
+      "wikidata_dates": "1952",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q16151913",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127346",
+        "wikipedia": "https://en.wikipedia.org/wiki/Susan_Point"
+      }
+    },
+    {
+      "handle": "jane-ash-poitras",
+      "name": "Jane Ash Poitras",
+      "our_dates": "1951",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Jane Ash Poitras",
+      "wikidata_says": "Canadian artist (born 1951)",
+      "wikidata_dates": "1951",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q16150005",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127349",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jane_Ash_Poitras"
+      }
+    },
+    {
+      "handle": "christopher-pratt",
+      "name": "Christopher Pratt",
+      "our_dates": "1935",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Christopher Pratt",
+      "wikidata_says": "Canadian painter (1935–2022)",
+      "wikidata_dates": "1935 to 2022",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3296257",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500024052",
+        "wikipedia": "https://en.wikipedia.org/wiki/Christopher_Pratt"
+      }
+    },
+    {
+      "handle": "mary-pratt",
+      "name": "Mary Pratt",
+      "our_dates": "1935 to 2018",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Mary Pratt",
+      "wikidata_says": "Canadian artist (1935-2018)",
+      "wikidata_dates": "1935 to 2018",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q1622821",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500071836",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mary_Pratt_(painter)"
+      }
+    },
+    {
+      "handle": "pudlo-pudlat",
+      "name": "Pudlo Pudlat",
+      "our_dates": "1916 to 1992",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Pudlo Pudlat",
+      "wikidata_says": "Canadian artist (1916–1992)",
+      "wikidata_dates": "1916 to 1992",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q2399275",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127376",
+        "wikipedia": "https://en.wikipedia.org/wiki/Pudlo_Pudlat"
+      }
+    },
+    {
+      "handle": "newgaleak-qimirpik",
+      "name": "Newgaleak Qimirpik",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Nuyaliaq Qimirpik",
+      "wikidata_says": "",
+      "wikidata_dates": "1937 to 2007",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q107067282"
+      }
+    },
+    {
+      "handle": "leah-qumaluk",
+      "name": "Leah Qumaluk",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "george-rammell",
+      "name": "George Rammell",
+      "our_dates": "1952",
+      "status": "not found"
+    },
+    {
+      "handle": "bill-reid",
+      "name": "Bill Reid",
+      "our_dates": "1920 to 1998",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Bill Reid",
+      "wikidata_says": "Canadian sculptor, jeweler, painter (1920–1998)",
+      "wikidata_dates": "1920 to 1998",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q615962",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127408",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bill_Reid"
+      }
+    },
+    {
+      "handle": "leslie-reid",
+      "name": "Leslie Reid",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Leslie Reid",
+      "wikidata_says": "Canadian painter and printmaker (born 1947)",
+      "wikidata_dates": "1947",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q59540077",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500074906",
+        "wikipedia": "https://en.wikipedia.org/wiki/Leslie_Reid_(artist)"
+      }
+    },
+    {
+      "handle": "jean-paul-riopelle",
+      "name": "Jean-Paul Riopelle",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Jean Paul Riopelle",
+      "wikidata_says": "Canadian artist (1923–2002)",
+      "wikidata_dates": "1923 to 2002",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q708544",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500017908",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jean-Paul_Riopelle"
+      }
+    },
+    {
+      "handle": "derek-root",
+      "name": "Derek Root",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "samuel-roy-bois",
+      "name": "Samuel Roy-Bois",
+      "our_dates": "1973",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Samuel Roy-Bois",
+      "wikidata_says": "Canadian artist",
+      "wikidata_dates": "1973",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7412519",
+        "wikipedia": "https://en.wikipedia.org/wiki/Samuel_Roy-Bois"
+      }
+    },
+    {
+      "handle": "martin-schliessler",
+      "name": "Martin Schliessler",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "marianna-schmidt",
+      "name": "Marianna Schmidt",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Marianna Schmidt",
+      "wikidata_says": "Hungarian-Canadian artist (1918–2005)",
+      "wikidata_dates": "1918 to 2005",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q19665215",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500466562",
+        "wikipedia": "https://en.wikipedia.org/wiki/Marianna_Schmidt"
+      }
+    },
+    {
+      "handle": "jack-shadbolt",
+      "name": "Jack Shadbolt",
+      "our_dates": "1909 to 1998",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Jack Shadbolt",
+      "wikidata_says": "Canadian artist (1909-1998)",
+      "wikidata_dates": "1909 to 1998",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q6115081",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500029888",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jack_Shadbolt"
+      }
+    },
+    {
+      "handle": "jeremy-shaw",
+      "name": "Jeremy Shaw",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Jeremy Shaw",
+      "wikidata_says": "Canadian artist (born 1977)",
+      "wikidata_dates": "1977",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q28870539",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500471533",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jeremy_Shaw"
+      }
+    },
+    {
+      "handle": "arnold-shives",
+      "name": "Arnold Shives",
+      "our_dates": "1943",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Arnold Shives",
+      "wikidata_says": "Canadian artist (born 1943)",
+      "wikidata_dates": "1943",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q27088521",
+        "wikipedia": "https://en.wikipedia.org/wiki/Arnold_Shives"
+      }
+    },
+    {
+      "handle": "gordon-smith",
+      "name": "Gordon Smith",
+      "our_dates": "1919 to 2020",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Gordon A. Smith",
+      "wikidata_says": "Canadian artist (1919-2020)",
+      "wikidata_dates": "1919 to 2020",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q5584785",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500009414",
+        "wikipedia": "https://en.wikipedia.org/wiki/Gordon_A._Smith"
+      }
+    },
+    {
+      "handle": "joan-smith",
+      "name": "Joan Smith",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "michael-snow",
+      "name": "Michael Snow",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Michael Snow",
+      "wikidata_says": "Canadian artist (1928–2023)",
+      "wikidata_dates": "1928 to 2023",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q558332",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500012551",
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_Snow"
+      }
+    },
+    {
+      "handle": "ron-stonier",
+      "name": "Ron Stonier",
+      "our_dates": "1933 to 2001",
+      "status": "confirmed",
+      "why": "birth and death year agree",
+      "wikidata_name": "Ron Stonier",
+      "wikidata_says": "Canadian artist",
+      "wikidata_dates": "1933 to 2001",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q105604922",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ron_Stonier"
+      }
+    },
+    {
+      "handle": "t-and-t-collective",
+      "name": "T&T Collective",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "sylvia-tait",
+      "name": "Sylvia Tait",
+      "our_dates": "1932",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Sylvia Tait",
+      "wikidata_says": "Canadian abstract painter (born 1932)",
+      "wikidata_dates": "1932",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7661018",
+        "wikipedia": "https://en.wikipedia.org/wiki/Sylvia_Tait"
+      }
+    },
+    {
+      "handle": "takao-tanabe",
+      "name": "Takao Tanabe",
+      "our_dates": "1926",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Takao Tanabe",
+      "wikidata_says": "Canadian painter (born 1926)",
+      "wikidata_dates": "1926",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3514181",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500108957",
+        "wikipedia": "https://en.wikipedia.org/wiki/Takao_Tanabe"
+      }
+    },
+    {
+      "handle": "martin-tessler",
+      "name": "Martin Tessler",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "vivian-thierfelder",
+      "name": "Vivian Thierfelder",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Vivian Thierfelder",
+      "wikidata_says": "Canadian artist and botanical (1949 - )",
+      "wikidata_dates": "1949",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q56090171"
+      }
+    },
+    {
+      "handle": "art-thompson",
+      "name": "Art Thompson",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "tukuki",
+      "name": "Tukuki",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "ashevak-tunnillie",
+      "name": "Ashevak Tunnillie",
+      "our_dates": null,
+      "status": "possible",
+      "why": "a name that matches; nothing else to check it against",
+      "wikidata_name": "Ashevak Tunnillie",
+      "wikidata_says": "born 1956, lives Cape Dorset, Nunavut; artist (born 1956)",
+      "wikidata_dates": "1956",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q55217783"
+      }
+    },
+    {
+      "handle": "kabubuwa-tunnillie",
+      "name": "Kabubuwa Tunnillie",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Qavaroak Tunnillie",
+      "wikidata_says": "Canadian sculptor (1928–1993)",
+      "wikidata_dates": "1928 to 1993",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q96904478"
+      }
+    },
+    {
+      "handle": "unknown-inuit-artist",
+      "name": "Unknown Inuit artist",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "charles-van-sandwyk",
+      "name": "Charles Van Sandwyk",
+      "our_dates": "1966",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Charles van Sandwyk",
+      "wikidata_says": "Canadian artist and creator of children's books",
+      "wikidata_dates": "1966",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q5084056",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charles_van_Sandwyk"
+      }
+    },
+    {
+      "handle": "vancouver-school-collective",
+      "name": "Vancouver School Collective",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "charlene-vickers",
+      "name": "Charlene Vickers",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Charlene Vickers",
+      "wikidata_says": "Canadian painter",
+      "wikidata_dates": null,
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q27487414",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charlene_Vickers"
+      }
+    },
+    {
+      "handle": "roy-henry-vickers",
+      "name": "Roy Henry Vickers",
+      "our_dates": "1946",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Roy Henry Vickers",
+      "wikidata_says": "First Nations artist, author, and philanthropist",
+      "wikidata_dates": "1946",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q7372939",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500127702",
+        "wikipedia": "https://en.wikipedia.org/wiki/Roy_Henry_Vickers"
+      }
+    },
+    {
+      "handle": "ian-wallace",
+      "name": "Ian Wallace",
+      "our_dates": "1943",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Ian Wallace",
+      "wikidata_says": "Canadian photographer (1943-2007)",
+      "wikidata_dates": "1943 to 2007",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q5983181",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500069013",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ian_Wallace_(artist)"
+      }
+    },
+    {
+      "handle": "ken-wallace",
+      "name": "Ken Wallace",
+      "our_dates": "1945",
+      "status": "not found"
+    },
+    {
+      "handle": "west-baffin-eskimo-co-operative",
+      "name": "West Baffin Eskimo Co-operative",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a group of this name",
+      "wikidata_name": "Kinngait Co-operative",
+      "wikidata_says": "inuit artist's co-operative",
+      "wikidata_dates": null,
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q96386018",
+        "wikipedia": "https://en.wikipedia.org/wiki/West_Baffin_Eskimo_Cooperative"
+      }
+    },
+    {
+      "handle": "irene-f-whittome",
+      "name": "Irene F. Whittome",
+      "our_dates": "1942",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Irene Whittome",
+      "wikidata_says": "Canadian artist (born 1942)",
+      "wikidata_dates": "1942",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q3154327",
+        "getty_ulan": "https://vocab.getty.edu/page/ulan/500104100",
+        "wikipedia": "https://en.wikipedia.org/wiki/Irene_Whittome"
+      }
+    },
+    {
+      "handle": "david-wilson",
+      "name": "David Wilson",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "David Wilson",
+      "wikidata_says": "Canadian artist",
+      "wikidata_dates": null,
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q115016689"
+      }
+    },
+    {
+      "handle": "alan-wood",
+      "name": "Alan Wood",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "steve-woodhouse",
+      "name": "Steve Woodhouse",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "xwalacktun",
+      "name": "Xwalacktun",
+      "our_dates": null,
+      "status": "possible",
+      "why": "a name that matches; nothing else to check it against",
+      "wikidata_name": "Xwalacktun",
+      "wikidata_says": "squamish artist",
+      "wikidata_dates": null,
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q111939144",
+        "wikipedia": "https://en.wikipedia.org/wiki/Xwalacktun"
+      }
+    },
+    {
+      "handle": "robert-young",
+      "name": "Robert Young",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "marlene-yuen",
+      "name": "Marlene Yuen",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "etienne-zack",
+      "name": "Etienne Zack",
+      "our_dates": "1976",
+      "status": "confirmed",
+      "why": "birth year agree",
+      "wikidata_name": "Etienne Zack",
+      "wikidata_says": "Canadian artist (born 1976)",
+      "wikidata_dates": "1976",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q55218061",
+        "wikipedia": "https://en.wikipedia.org/wiki/Etienne_Zack"
+      }
+    },
+    {
+      "handle": "karen-zalamea",
+      "name": "Karen Zalamea",
+      "our_dates": null,
+      "status": "not found"
+    },
+    {
+      "handle": "barbara-zeigler",
+      "name": "Barbara Zeigler",
+      "our_dates": null,
+      "status": "likely",
+      "why": "a Canadian artist of this name; no year of ours to check against",
+      "wikidata_name": "Barbara Zeigler",
+      "wikidata_says": "Canadian visual artist",
+      "wikidata_dates": "1949",
+      "same_as": {
+        "wikidata": "https://www.wikidata.org/wiki/Q50505038",
+        "wikipedia": "https://en.wikipedia.org/wiki/Barbara_Zeigler"
+      }
+    }
+  ]
+}

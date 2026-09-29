@@ -118,6 +118,8 @@ Michael, 2026-09-28: "DS-163 to DS-165 approved, merge #92". Choices 1 to 4 stan
 
 ### What would make it better still, and needs facts
 
+Many of these were found on 2026-09-28: `proposals/structured-data-facts.md`.
+
 | Item | Why it matters | Needs |
 | --- | --- | --- |
 | Wikidata and Getty (ULAN) addresses for artists | The strongest way to say which Gordon Smith. Assistants lean on these | A field on the artist entry, and the addresses |
