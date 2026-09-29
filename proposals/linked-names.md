@@ -1,6 +1,6 @@
 # Links between pages: names in a text link to their pages
 
-Date: 2026-09-28. Decision: DS-175, **Proposed**.
+Date: 2026-09-28. Decision: DS-175, **decided by Michael, 2026-09-28** ("DS-175 approved, merge #106"), as built.
 
 ## What Michael asked
 
@@ -67,6 +67,8 @@ On 21 pages of the development theme, against the review theme:
 On every page the words are the same, no link sits inside another link, and there are no Liquid errors.
 
 ## For Michael
+
+Michael, 2026-09-28: "DS-175 approved, merge #106". Choice 1 is decided. Choices 2 to 4 have no decision number and stay as built.
 
 | # | Question | Built as | Alternative |
 | --- | --- | --- | --- |
