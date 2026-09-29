@@ -9,6 +9,8 @@
   - The full form adds the other names the gallery goes by, telephone, email, opening hours, the
     social profiles, the logo, where it is on the map and a link for directions (DS-163). The
     map position is in Theme settings, Gallery details: it is the store's own address record.
+  - The full form also says that anyone can come in without paying, when Theme settings says
+    so, and what makes the building easy to get into (DS-171). Both repeat Plan your visit.
   - With a room, the place is that room as part of the gallery ("Main Floor"): a Place with the
     gallery's address, inside the gallery.
 
@@ -57,6 +59,17 @@
     endif
   endfor
   assign profiles = profiles | split: '|'
+
+  # What makes the building easy to get into, one to a line in Theme settings (DS-171).
+  assign access = ''
+  assign access_lines = settings.access_features | newline_to_br | strip_newlines | split: '<br />'
+  for line in access_lines
+    assign feature = line | strip
+    if feature != blank
+      assign access = access | append: feature | append: '|'
+    endif
+  endfor
+  assign access = access | split: '|'
 -%}
 {
   {%- if room != blank -%}
@@ -121,6 +134,17 @@
     {%- endif -%}
     {%- if settings.home_description != blank -%}
       ,"description": {{ settings.home_description | strip_newlines | json }}
+    {%- endif -%}
+    {%- if settings.admission_free -%}
+      ,"isAccessibleForFree": true
+      ,"publicAccess": true
+    {%- endif -%}
+    {%- if access.size > 0 -%}
+      ,"amenityFeature": [
+        {%- for feature in access -%}
+          { "@type": "LocationFeatureSpecification", "name": {{ feature | json }}, "value": true }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
     {%- endif -%}
   {%- endif -%}
 }

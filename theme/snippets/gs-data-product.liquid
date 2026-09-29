@@ -8,7 +8,8 @@
     artist is the same person as on the artist's page.
   - Whether it can be bought follows the page: not on sale yet (custom.coming_soon) and sold out
     are both out of stock, since neither can be ordered.
-  - One offer for each option, at its own address and price, sold by the gallery.
+  - One offer for each option, at its own address and price, sold by the gallery, with the
+    terms of buying it: returns and shipping (gs-data-offer-terms, DS-170).
   - A product with options (a print in three colours) is a group of products (ProductGroup),
     one for each option, named by what differs between them (DS-163). Without options it is one
     Product.
@@ -151,6 +152,7 @@
                 "availability": {{ availability | json }},
                 "itemCondition": "https://schema.org/NewCondition",
                 "seller": {% render 'gs-data-org' %}
+          {%- render 'gs-data-offer-terms' -%}
               }
             }{% unless forloop.last %},{% endunless %}
           {%- endfor -%}
@@ -174,6 +176,7 @@
           "availability": {{ availability | json }},
           "itemCondition": "https://schema.org/NewCondition",
           "seller": {% render 'gs-data-org' %}
+          {%- render 'gs-data-offer-terms' -%}
         }
       {%- endif -%}
     }

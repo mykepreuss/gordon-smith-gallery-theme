@@ -27,6 +27,19 @@
         "info": "Shown on the Plan your visit page, under Admission."
       },
       {
+        "type": "checkbox",
+        "id": "admission_free",
+        "label": "Anyone can come in without paying",
+        "info": "Tick when admission is free or by donation. Search engines are told the gallery is free to enter. The Admission text above is what visitors read.",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "access_features",
+        "label": "Access",
+        "info": "What makes the building easy to get into, one to a line, for search engines: for example Wheelchair accessible. Keep it in step with the Accessibility part of Plan your visit, which is what visitors read."
+      },
+      {
         "type": "textarea",
         "id": "office_hours",
         "label": "Artists for Kids office hours",
@@ -577,6 +590,48 @@
         "type": "collection",
         "id": "all_editions_collection",
         "label": "All limited editions"
+      },
+      {
+        "type": "header",
+        "content": "For search engines"
+      },
+      {
+        "type": "paragraph",
+        "content": "These repeat the store's refund and shipping policies (Settings, Policies) for Google's shopping results. Change them when the policies change. Leave one empty to say nothing about it."
+      },
+      {
+        "type": "select",
+        "id": "returns",
+        "label": "Returns",
+        "options": [
+          {
+            "value": "",
+            "label": "Say nothing"
+          },
+          {
+            "value": "final",
+            "label": "All sales are final"
+          }
+        ],
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "shipping_rate",
+        "label": "Shipping, flat rate",
+        "info": "A number, in the store's currency: 20. For an unframed print, to anywhere the store ships."
+      },
+      {
+        "type": "text",
+        "id": "shipping_days_min",
+        "label": "Days to send a print, at least",
+        "info": "Business days to prepare and send: 3."
+      },
+      {
+        "type": "text",
+        "id": "shipping_days_max",
+        "label": "Days to send a print, at most",
+        "info": "5."
       }
     ]
   }

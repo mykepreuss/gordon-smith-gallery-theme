@@ -175,3 +175,5 @@ Found on 2026-09-28 without asking (`proposals/structured-data-facts.md`). Each 
 | 11.8 | Office hours: Monday to Friday 8 AM to 3 PM (the site), or 8:30 AM to 4:30 PM, closed July and August (the store's contact page)? | The site's |
 | 11.9 | The general email for the site: `artistsforkids@sd44.ca`? | None shown in the data |
 | 11.10 | For 101 artists, a list of where each is described elsewhere (Wikidata, the Getty's list of artists, Wikipedia) is drafted in `proposals/store-writes/aeo/artist-identifiers.json`. 59 are confirmed by their dates. May the other 42 be checked by someone who knows the collection? | Not linked. This answers 10.7 |
+| 11.11 | Is shipping a flat $20 within Canada? The shipping policy says so, and also that shipping "will be calculated and confirmed with you at the time of the order". Google's shopping results are now told $20 (DS-170) | $20 |
+| 11.12 | Is "admission by donation" free to enter, for anyone? Search engines are now told the gallery is free to enter (DS-171) | Free to enter |

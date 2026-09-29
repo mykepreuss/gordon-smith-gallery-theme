@@ -48,6 +48,12 @@
     "foundation_page": "the-smith-foundation",
     "latitude": "49.3291934",
     "longitude": "-123.0726507",
-    "artist_groups": "T&T Collective\nVancouver School Collective\nWest Baffin Eskimo Co-operative"
+    "artist_groups": "T&T Collective\nVancouver School Collective\nWest Baffin Eskimo Co-operative",
+    "admission_free": true,
+    "access_features": "Wheelchair accessible\nAccessible washrooms\nAccessible parking\nElevator\nRamp to the entrance",
+    "returns": "final",
+    "shipping_rate": "20",
+    "shipping_days_min": "3",
+    "shipping_days_max": "5"
   }
 }
