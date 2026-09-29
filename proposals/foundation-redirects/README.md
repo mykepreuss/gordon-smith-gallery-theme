@@ -8,7 +8,7 @@ Michael, 2026-09-29: "This is 404s but is technically still up and was not corre
 
 - **The file to upload:** `smithfoundation.co.htaccess`. On the old server it is named `.htaccess` and sits in the website's main folder.
 - **It needs nothing else on the server.** WordPress comes down at release (Michael, 2026-09-29: "The entire wordpress site will be coming down and not exist"). Every old address, WordPress's own included, then leads to the new site.
-- **The hosting account and the domain have to stay.** The file is read by the old server each time someone asks for an old address. With no server, nothing redirects ("After release").
+- **The hosting account and the domain stay** (Michael, 2026-09-29: "The hosting account is staying, only WordPress is going"). The old server reads the file each time someone asks for an old address, so they stay for as long as the redirects are wanted ("After release").
 - **What it does:** sends 174 old addresses to their new pages on gordonsmithgallery.com with permanent (301) redirects. Anything else goes to the new home page.
 - **Don't upload it before release.** 29 of the 51 new pages are exhibition pages, which answer 404 on the live site until the new theme is published.
 - **One setting outside the file has to change too:** the domain's forwarding, at GoDaddy. Today about half of all visits never reach the old server ("What is wrong today").
@@ -123,9 +123,9 @@ After the new theme is published and the release scripts have run (`proposals/st
 
 ## After release
 
-- **Keep the hosting account and the domain.** The redirects work only while the server answers and the domain points at it. The account can be the host's smallest: it holds one file. Search engines need about a year to move everything over. Links on other sites need the redirects for as long as the links exist.
+- **The hosting account and the domain stay** (Michael, 2026-09-29). The redirects work only while the server answers and the domain points at it. The account can be the host's smallest: it holds one file. Search engines need about a year to move everything over. Links on other sites need the redirects for as long as the links exist.
 - **The firewall** (GoDaddy Website Security) can stay or go. If it goes, the domain's address changes from the firewall's to the server's own, at GoDaddy.
-- **If the hosting account is to end too**, this file has nowhere to run. The redirects then move to Shopify: `smithfoundation.co` becomes a domain of the store, and the list becomes URL redirects there. Shopify matches exact addresses only, so the list needs a second form, and an address not in it shows the new site's "page not found" instead of the home page.
+- **If the hosting account ever ends**, this file has nowhere to run. The redirects then move to Shopify: `smithfoundation.co` becomes a domain of the store, and the list becomes URL redirects there. Shopify matches exact addresses only, so the list needs a second form, and an address not in it shows the new site's "page not found" instead of the home page.
 
 ## Undo
 
