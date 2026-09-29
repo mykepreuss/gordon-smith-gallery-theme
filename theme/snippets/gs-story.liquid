@@ -14,7 +14,8 @@
   - Short text and one picture: the text, with its heading, and the picture side by side, across
     the column and its right margin.
   - Otherwise (two or more pictures, or a picture with no text before it): a row across the page,
-    each picture as wide as its shape needs for them all to stand the same height. A paragraph of
+    each picture as wide as its shape needs for them all to stand the same height. A row holds
+    three at most: more make rows as even as they can be, the longer first. A paragraph of
     eight words or fewer straight after a row is its credit, under it in the caption style.
   The page's first paragraph is its lede, in the deck size. Below 750 px every picture takes the
   column, where the story puts it.
@@ -250,8 +251,30 @@
             endif
             assign out = out | append: '<div class="' | append: split_class | append: '"><div class="gs-prose">' | append: rest | append: '</div>' | append: figs[0] | append: '</div>'
           else
-            assign row = body | remove: cut_fig
-            assign out = out | append: before | append: '<div class="gs-story__row">' | append: row | append: '</div>'
+            # A row holds three pictures at most. More make rows as even as they can be, the
+            # longer first: four are two and two, five three and two, seven three, two and two.
+            assign lines = count | plus: 2 | divided_by: 3
+            assign per_line = count | divided_by: lines
+            assign longer = count | modulo: lines
+            assign rows = ''
+            assign line = ''
+            assign in_line = 0
+            assign line_index = 0
+            for f in figs
+              assign line = line | append: f
+              assign in_line = in_line | plus: 1
+              assign line_size = per_line
+              if line_index < longer
+                assign line_size = per_line | plus: 1
+              endif
+              if in_line == line_size
+                assign rows = rows | append: '<div class="gs-story__row">' | append: line | append: '</div>'
+                assign line = ''
+                assign in_line = 0
+                assign line_index = line_index | plus: 1
+              endif
+            endfor
+            assign out = out | append: before | append: rows
             assign after_row = true
           endif
           assign before = ''

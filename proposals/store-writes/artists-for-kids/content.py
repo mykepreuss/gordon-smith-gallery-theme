@@ -119,7 +119,7 @@ def figure(key, caption=None, artwork=False):
     """A picture in page text, as the Artists for Kids page's are: its Files address, size and alt text."""
     f = files()[f"img:{key}"]
     import files as filesmod  # the alt text lives with the picture
-    alt = filesmod.IMAGES[key][2]
+    alt = {**filesmod.IMAGES, **filesmod.CAMP}[key][2]
     url, w, h = f["url"], f["width"], f["height"]
     if w > 1440:
         h, w = round(h * 1440 / w), 1440
@@ -169,18 +169,21 @@ def pages():
          "hero": "day-camps", "caption": "Photo by Khim Mata Hipol", "cta": (CAMPS_REG, "Register for camps"),
          "groups": ["afk-more-classes-and-camps"],
          "body": "<p>Students enjoy a week full of studio art activities including drawing, painting and printmaking taught by BC certified art specialist teachers. Each week is unique and campers learn in small cohorts. Campers experiment with many art materials and techniques while having opportunity to explore outdoor art making and recreation time.</p>"},
-        {"handle": "paradise-valley-summer-camp", "title": "Paradise Valley Summer Camps", "template": "programme",
+        # Story template (DS-172): the camp photos, one file each, as rows of three after the opening
+        # and after Bursaries; the Past camps films two and two.
+        {"handle": "paradise-valley-summer-camp", "title": "Paradise Valley Summer Camps", "template": "story",
          "cta": (PV_REG, "Register for camp"), "intro": "5 days, 4 nights, inclusive",
          "body": "\n".join([
              "<p>Young artists ages 9 - 15 will explore their surroundings in the beautiful setting of Paradise Valley. This environment provides an ideal source to explore concepts of form and colour. Students will receive in-depth instruction in collage, drawing, painting and printmaking. Working in small studio groups, teachers support individual skill development and artistic voice. This week long camp is thoughtfully balanced with outdoor recreation and studio time.</p>",
-             figure("paradise-valley"),
+             *[figure(k) for k in ("pv-collage", "pv-studio", "pv-dock", "pv-painting", "pv-forest", "pv-drawing")],
              "<h2>Past camps</h2>",
              video("-by8rt8rGvM", "Sara Jean Bourget was the visiting Artist In Residence in July 2025. Campers focused on drawing and printmaking."),
              video("C7jmm9VTn6g", "Paradise Valley Summer School of Visual Art Camp 2024 with artist Samuel Roy-Bois"),
              video("bExdIeVLnLg", "Paradise Valley Summer School of Visual Art Camp 2023 with artist Charlene Vickers"),
              video("cBllGmwNrgw", "Paradise Valley Summer School of Visual Art Camp 2022 with artist Annie Canto"),
              "<h2>Bursaries</h2>",
-             f"<p>Bursaries are available for families in need of financial support. Please contact {EMAIL} for more information.</p>"])},
+             f"<p>Bursaries are available for families in need of financial support. Please contact {EMAIL} for more information.</p>",
+             *[figure(k) for k in ("pv-canoe", "pv-archery", "pv-cabin")]])},
         {"handle": "gallery-program", "title": "Gallery Program", "template": "programme",
          "hero": "gallery-program", "caption": "Photo by Khim Mata Hipol, Spring 2025 Gallery Program.",
          "cta": (GALLERY_BOOKING, "Register a Grade 5 class"),

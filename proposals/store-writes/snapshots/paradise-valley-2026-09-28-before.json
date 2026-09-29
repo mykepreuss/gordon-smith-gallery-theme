@@ -1,0 +1,21 @@
+{
+ "read": "2026-09-28, Shopify connector (Admin GraphQL), before the write",
+ "store": "ed35ee-ea.myshopify.com",
+ "page": {
+  "id": "gid://shopify/Page/165837832489",
+  "handle": "paradise-valley-summer-camp",
+  "title": "Paradise Valley Summer Camps",
+  "templateSuffix": "current-on-now-exhibition",
+  "isPublished": true,
+  "body": "",
+  "updatedAt": "2026-09-29T00:03:08Z"
+ },
+ "metafield": {
+  "id": "gid://shopify/Metafield/190417519313193",
+  "namespace": "custom",
+  "key": "release_body",
+  "type": "multi_line_text_field",
+  "updatedAt": "2026-09-27T22:58:36Z",
+  "value": "<p>Young artists ages 9 - 15 will explore their surroundings in the beautiful setting of Paradise Valley. This environment provides an ideal source to explore concepts of form and colour. Students will receive in-depth instruction in collage, drawing, painting and printmaking. Working in small studio groups, teachers support individual skill development and artistic voice. This week long camp is thoughtfully balanced with outdoor recreation and studio time.</p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-camp.jpg?v=1790549763\" alt=\"Nine photos from Paradise Valley camp: campers drawing at picnic tables, on a dock, in a canoe and painting on the grass in the forest\" width=\"1308\" height=\"955\" loading=\"lazy\"></figure>\n<h2>Past camps</h2>\n<figure><iframe src=\"https://www.youtube-nocookie.com/embed/-by8rt8rGvM\" title=\"Sara Jean Bourget was the visiting Artist In Residence in July 2025. Campers focused on drawing and printmaking.\" width=\"560\" height=\"315\" loading=\"lazy\" allowfullscreen></iframe><figcaption>Sara Jean Bourget was the visiting Artist In Residence in July 2025. Campers focused on drawing and printmaking.</figcaption></figure>\n<figure><iframe src=\"https://www.youtube-nocookie.com/embed/C7jmm9VTn6g\" title=\"Paradise Valley Summer School of Visual Art Camp 2024 with artist Samuel Roy-Bois\" width=\"560\" height=\"315\" loading=\"lazy\" allowfullscreen></iframe><figcaption>Paradise Valley Summer School of Visual Art Camp 2024 with artist Samuel Roy-Bois</figcaption></figure>\n<figure><iframe src=\"https://www.youtube-nocookie.com/embed/bExdIeVLnLg\" title=\"Paradise Valley Summer School of Visual Art Camp 2023 with artist Charlene Vickers\" width=\"560\" height=\"315\" loading=\"lazy\" allowfullscreen></iframe><figcaption>Paradise Valley Summer School of Visual Art Camp 2023 with artist Charlene Vickers</figcaption></figure>\n<figure><iframe src=\"https://www.youtube-nocookie.com/embed/cBllGmwNrgw\" title=\"Paradise Valley Summer School of Visual Art Camp 2022 with artist Annie Canto\" width=\"560\" height=\"315\" loading=\"lazy\" allowfullscreen></iframe><figcaption>Paradise Valley Summer School of Visual Art Camp 2022 with artist Annie Canto</figcaption></figure>\n<h2>Bursaries</h2>\n<p>Bursaries are available for families in need of financial support. Please contact <a href=\"mailto:artistsforkids@sd44.ca\">artistsforkids@sd44.ca</a> for more information.</p>"
+ }
+}

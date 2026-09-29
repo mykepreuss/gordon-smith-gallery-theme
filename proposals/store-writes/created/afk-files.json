@@ -482,6 +482,69 @@
   "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-program-guide-2026-2027.jpg?v=1790549763",
   "width": 1618
  },
+ "img:pv-archery": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968143657",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-archery.jpg?v=1790642730",
+  "width": 1448
+ },
+ "img:pv-cabin": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968110889",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-cabin.jpg?v=1790642730",
+  "width": 1448
+ },
+ "img:pv-canoe": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968176425",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-canoe.jpg?v=1790642730",
+  "width": 1448
+ },
+ "img:pv-collage": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968045353",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-collage.jpg?v=1790642730",
+  "width": 1448
+ },
+ "img:pv-dock": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968209193",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-dock.jpg?v=1790642730",
+  "width": 1448
+ },
+ "img:pv-drawing": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968307497",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-drawing.jpg?v=1790642730",
+  "width": 1448
+ },
+ "img:pv-forest": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968241961",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-forest.jpg?v=1790642731",
+  "width": 1448
+ },
+ "img:pv-painting": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968274729",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-painting.jpg?v=1790642730",
+  "width": 1448
+ },
+ "img:pv-studio": {
+  "height": 1086,
+  "id": "gid://shopify/MediaImage/46363968078121",
+  "status": "READY",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-paradise-valley-studio.jpg?v=1790642730",
+  "width": 1448
+ },
  "img:studio-art-academy": {
   "height": 1920,
   "id": "gid://shopify/MediaImage/46349865681193",
