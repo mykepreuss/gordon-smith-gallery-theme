@@ -149,7 +149,6 @@ Done between 23:07 and 23:17 UTC (4:07 to 4:17 PM Pacific). The full log, with e
 
 - The print descriptions (§7) and the descriptions in the search engine listings (§8d): the gallery's approval.
 - The newsletter consent wording, the staff editing test, the newsletter test, the exhibition date check, the seven hero focal points.
-- A review theme. The old one is the live theme now, so there is none. Until Michael approves a new unpublished theme, no theme is pushed to (`AGENTS.md`).
-- The live theme's name still says "for review (do not publish)". Renaming it is a theme write, for Michael to approve.
+- Done 2026-09-29: a new review theme, `184823611689`, made from `main` at Michael's request, and the live theme renamed "Gordon Smith Gallery" (`PROJECT.md`, milestone 4b).
 - Outside the store: the Artists for Kids site cut back to registration (P-30); the redirect file on smithfoundation.co's server and GoDaddy's forwarding off (P-63).
-- The follow-up pull request: the pre-release bridges out of the theme, and the unlinked list in `links.json` emptied.
+- Done 2026-09-29, in `main` and on the review theme, not yet on the live site: the pre-release bridges out of the theme, and the unlinked list in `links.json` emptied (#123). It goes live at the next release Michael approves.

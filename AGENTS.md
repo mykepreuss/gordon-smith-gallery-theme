@@ -7,9 +7,10 @@ For any person or agent (Claude, Codex, or other) working in this repo. These ru
 | | |
 | --- | --- |
 | Store | `ed35ee-ea.myshopify.com` (public domain `gordonsmithgallery.com`) |
-| Live theme | `184767250729` "New theme for review (do not publish)", role MAIN since the release on 2026-09-29. It was the review theme until then, so older records call it that. **Never write to it.** |
+| Live theme | `184767250729` "Gordon Smith Gallery", role MAIN since the release on 2026-09-29. It was the review theme until then, named "New theme for review (do not publish)", so older records call it that. **Never write to it.** |
 | Old theme | `183162372393` "Colorblock: NEW WEBSITE", role UNPUBLISHED since the release. Kept unchanged for rollback. **Never write to it, never delete it.** |
-| Review theme | None since the release. No theme is pushed to until Michael approves a new unpublished theme and its ID is written here. The rules for the review theme below apply to that one |
+| Review theme | `184823611689` "Review theme (do not publish)", role UNPUBLISHED. Created 2026-09-29 from `main` at f6bf867, at Michael's request. It follows `main`: after a merge, push `main` to it (editor JSON checked first) and record the commit in `PROJECT.md`. Push only to this ID |
+| How a change goes live | Only at a release Michael approves. No push goes to the live theme, so a release publishes the review theme; the theme it replaces is kept for rollback, and a new review theme is made from `main` and written here |
 
 Before any write to Shopify, recheck: store domain, live theme ID and role, the review theme's ID and `UNPUBLISHED` role, and the CLI account.
 
