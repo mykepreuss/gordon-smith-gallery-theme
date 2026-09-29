@@ -19,6 +19,16 @@
       render 'gs-brand'
     endcapture
     assign brand = brand | strip
+
+    # A store policy has no template, so its page is laid out here, as a page (DS-177).
+    assign policy = nil
+    if request.page_type == 'policy'
+      for p in shop.policies
+        if p.url == request.path
+          assign policy = p
+        endif
+      endfor
+    endif
   -%}
   <body class="gs-type" data-gs-brand="{{ brand }}">
     <a class="gs-skip-link" href="#main">{{ 'general.skip_to_content' | t }}</a>
@@ -26,7 +36,11 @@
     {% sections 'header-group' %}
 
     <main id="main" class="gs-main" tabindex="-1">
-      {{ content_for_layout }}
+      {%- if policy != blank -%}
+        {%- render 'gs-policy', policy: policy -%}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
     </main>
 
     {% sections 'footer-group' %}
