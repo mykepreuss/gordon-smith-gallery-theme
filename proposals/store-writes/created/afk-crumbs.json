@@ -1,0 +1,92 @@
+{
+ "made": "2026-09-29T22:14:30Z, through the Shopify connector, one metafieldsSet call, no errors",
+ "field": "custom.eyebrow (single_line_text_field)",
+ "values": [
+  {
+   "page": "after-school-art",
+   "page_id": "gid://shopify/Page/165837373737",
+   "metafield_id": "gid://shopify/Metafield/190492709060905",
+   "value": "Classes and camps"
+  },
+  {
+   "page": "day-camps",
+   "page_id": "gid://shopify/Page/165837799721",
+   "metafield_id": "gid://shopify/Metafield/190492709093673",
+   "value": "Classes and camps"
+  },
+  {
+   "page": "paradise-valley-summer-camp",
+   "page_id": "gid://shopify/Page/165837832489",
+   "metafield_id": "gid://shopify/Metafield/190492709126441",
+   "value": "Classes and camps"
+  },
+  {
+   "page": "gallery-program",
+   "page_id": "gid://shopify/Page/165837865257",
+   "metafield_id": "gid://shopify/Metafield/190492709159209",
+   "value": "Schools and teachers"
+  },
+  {
+   "page": "artists-in-residence",
+   "page_id": "gid://shopify/Page/165837898025",
+   "metafield_id": "gid://shopify/Metafield/190492709191977",
+   "value": "Schools and teachers"
+  },
+  {
+   "page": "studio-art-academy",
+   "page_id": "gid://shopify/Page/165838061865",
+   "metafield_id": "gid://shopify/Metafield/190492709224745",
+   "value": "Schools and teachers"
+  },
+  {
+   "page": "learning-guides",
+   "page_id": "gid://shopify/Page/165838094633",
+   "metafield_id": "gid://shopify/Metafield/190492709257513",
+   "value": "Schools and teachers"
+  },
+  {
+   "page": "learning-kits",
+   "page_id": "gid://shopify/Page/165838127401",
+   "metafield_id": "gid://shopify/Metafield/190492709290281",
+   "value": "Schools and teachers"
+  },
+  {
+   "page": "artreach-videos",
+   "page_id": "gid://shopify/Page/165838160169",
+   "metafield_id": "gid://shopify/Metafield/190492709323049",
+   "value": "Schools and teachers"
+  },
+  {
+   "page": "professional-development",
+   "page_id": "gid://shopify/Page/165838192937",
+   "metafield_id": "gid://shopify/Metafield/190492709355817",
+   "value": "Schools and teachers",
+   "removed": "2026-09-29T22:30:17Z, metafieldsDelete, at Michael's word; the page has no eyebrow, as before"
+  },
+  {
+   "page": "classes-and-camps",
+   "page_id": "gid://shopify/Page/165837734185",
+   "metafield_id": "gid://shopify/Metafield/190492709388585",
+   "value": "Artists for Kids"
+  },
+  {
+   "page": "schools-and-teachers",
+   "page_id": "gid://shopify/Page/165837766953",
+   "metafield_id": "gid://shopify/Metafield/190492709421353",
+   "value": "Artists for Kids"
+  },
+  {
+   "page": "awards-and-scholarships",
+   "page_id": "gid://shopify/Page/165838225705",
+   "metafield_id": "gid://shopify/Metafield/190492709454121",
+   "value": "Artists for Kids"
+  },
+  {
+   "page": "support-artists-for-kids",
+   "page_id": "gid://shopify/Page/165838258473",
+   "metafield_id": "gid://shopify/Metafield/190492709486889",
+   "value": "Artists for Kids"
+  }
+ ],
+ "note": "13 values stand. Professional Development's was written with the others and taken off again the same day (DS-146)."
+}
