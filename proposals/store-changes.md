@@ -78,7 +78,7 @@ Creating definitions is additive and doesn't change what visitors see, but it is
 
 ## 5. Addresses at release (P-10, P-20, P-24, P-25, DS-129)
 
-Script: `release.py addresses` (dry run: `dry-runs/2026-09-26/addresses.md`).
+Script: `release.py addresses` (dry run: `dry-runs/2026-09-29/addresses.md`; the first, `dry-runs/2026-09-26/addresses.md`).
 
 Redirects only work from addresses that no longer load a page, so the order matters. At release, after the theme is published and the exhibition entries are active:
 
@@ -98,8 +98,9 @@ Redirects only work from addresses that no longer load a page, so the order matt
 | `/pages/our-story` | `/pages/artists-for-kids` |
 | `/pages/engage` | `/pages/public-programs-1` |
 
-3. Open each old address and check it lands on its entry.
-4. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
+3. **Proposed 2026-09-29, waits for Michael's go-ahead:** send the store's older redirect from `/pages/who-we-are` (`gid://shopify/UrlRedirect/687900852521`) straight to `/pages/artists-for-kids`. It goes to `/pages/our-story` today, which step 2 sends on, so the old address would take two steps. The store's other two redirects are between products and stay. Rollback: set its target back to `/pages/our-story`.
+4. Open each old address and check it lands on its entry.
+5. Move the staged page text into its pages (§8). This clears the exhibition text repeated in the On Now, Upcoming and Upcoming Events page bodies; it lives in the entries now.
 
 The Exhibitions overview stays live until release: Michael chose not to hide it early, 2026-09-26. No short forwarding addresses such as `/exhibitions` or `/exhibitions/on-now` (Shopify serves pages only at `/pages/`; Michael, 2026-09-26: keep the addresses as they are).
 

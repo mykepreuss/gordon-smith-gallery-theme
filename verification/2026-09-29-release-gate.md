@@ -1,0 +1,117 @@
+# Release gate, 2026-09-29
+
+Michael, 2026-09-29: "We're ready to put the new theme live". This is the package the plan asks for before release approval ("Release gate and rollback"). Everything here was read only: nothing was written to the store or to any theme.
+
+**Not done yet:** publishing, and every store change below. Each waits for Michael's explicit approval.
+
+## What is being released
+
+| | |
+| --- | --- |
+| Store | `ed35ee-ea.myshopify.com`, "Artists for Kids & The Gordon Smith Gallery", gordonsmithgallery.com (connector and CLI agree) |
+| Live theme | `183162372393` "Colorblock: NEW WEBSITE", role live. Kept for rollback |
+| Candidate | `184767250729` "New theme for review (do not publish)", role unpublished |
+| Git commit | `main` at 5d498ae (after #120). The theme's files last changed at c4b8f22 (#118) |
+| Theme checksum | Git tree of `theme/`: `16dc93141b90ccca0f1b9c0199736ef994aa21f5`, 184 files |
+| CLI | Shopify CLI 4.8.2 |
+| Open pull requests | #119, the redirect file for smithfoundation.co. It changes no theme file |
+
+## Checks
+
+| Check | Result | Notes |
+| --- | --- | --- |
+| Live theme against the baseline | PASS | Downloaded whole to a scratch folder: it matches `baseline/theme/` file for file. No one has changed the live theme since 2026-09-25 |
+| Review theme against `main` | PASS | Downloaded whole: 179 files. 22 JSON files differ only by the empty settings Shopify adds; `config/settings_data.json` is identical. No theme editor changes. `.theme-check.yml` and `LICENSE.md` are in Git only |
+| Theme Check | PASS | 165 files, no offences |
+| Design system linter, strict | PASS | 0 errors, 0 warnings; its 16 tests pass |
+| Contrast | PASS | 85 of 85 pairings |
+| Theme copies match the design system | PASS | `sync_theme.py --check` |
+| Tests of the three page checks | PASS | Structured data, answers, links |
+| Links between pages, review theme | PASS | 1,627 addresses read, 0 errors, 14 notes. Ten notes are the pages hidden at release |
+| Questions the site must answer, review theme | PASS | 27 answered, 5 known gaps for the gallery, 0 errors |
+| Structured data, review theme | PASS | 17 pages, 0 errors, 15 warnings (events without a description or an end time) |
+| Fonts, review theme | PASS | 4 pages. Only the land acknowledgement's 12 characters fall back to Arial (L-06, accepted, P-58) |
+| Events drop off after they end | PASS | The Explore + Create session of September 26 is on Past events only. Current shows October 3 and 5, Upcoming starts October 8 |
+| Exhibition status at midnight Pacific | NOT RUN | No start or end date falls before February 20, 2027. Needs a test entry, with Michael's go-ahead |
+| Every exhibition entry ready to be seen | PASS | 32 entries, all active. 30 have pages with text, read by the links check. *Fall 2027 Exhibition* and *Against the Latitude of "Progress"* have no text: their addresses answer 200, ask not to be listed, and nothing links to them |
+| App embeds | PASS | Neither theme has any, so publishing turns none off |
+| Staff editing test | NOT RUN | Gallery staff, in the review theme's editor |
+| Newsletter test | NOT RUN | Needs an approved test address and Mailchimp access |
+| Hero focal points | NOT CHECKED | Seven points for Michael to set in Content, Files (`proposals/hero-focal-points.md`). The API can't read or set them |
+
+## The store today, read 2026-09-29
+
+Exports and dry runs: `proposals/store-writes/dry-runs/2026-09-29/`.
+
+- **58 pages.** Read twice through the connector, saved without retyping, and compared with the storefront's own copy of each published page: all agree.
+- **Page text:** the 32 published pages in `snapshots/pages-2026-09-25.json` match it character for character. The 23 pages made before release are still empty. So no one has edited a page's text since the staged text was written.
+- **The 21 prints:** every description matches `snapshots/prints-descriptions-2026-09-26.json`. Every title is in plain letters (P-61).
+- **Frames:** 16 active and one draft, as in `snapshots/frames-2026-09-26.json`.
+- **Menus:** `new-theme-main-2`, `new-theme-explore-2`, `new-theme-legal` and `new-theme-programmes` exist and hold what `store-changes.md` §1 and §2 say. The live header's `new-website-menu-1` is unchanged.
+- **Redirects:** three exist. None is from an address the release redirects. One, `/pages/who-we-are`, goes to `/pages/our-story`, which the release hides and sends on (below).
+- **Event pages:** off (`renderable` and `onlineStore` both off), as left on 2026-09-29.
+- **Descriptions for search engines:** staged on 40 pages; no page has one in its search engine listing yet.
+
+## The change set, in order
+
+| # | Step | What changes | Ready? |
+| --- | --- | --- | --- |
+| 0a | Theme settings still to fill | Newsletter consent wording is empty, so the band shows none. Hours, phone, email and social links are set, from the current sites; the gallery hasn't confirmed them | Michael decides: release as it is, or wait for the gallery |
+| 0b | Mailchimp | The app's permission update, and its app embed for site tracking after 2027-03-01 (`baseline/mailchimp-audit.md`) | Michael decides. Neither blocks publishing |
+| 0c | Supporters (§8c) | The gallery hasn't confirmed the donor list on record. If it still hasn't: Supporters leaves `new-theme-main-2`, its card leaves `foundation-take-part`, and the page is hidden | Michael says which |
+| 0d | Event pages (§8e) | Web pages on for the Event definition, then three event pages read with both checks on the review theme | Ready. Tested once on 2026-09-29 |
+| 1 | Publish | `shopify theme publish --theme 184767250729` | Ready |
+| 2 | Templates (§3) | 40 pages take their new template name. 5 are already right, 13 are left alone (10 hidden at release, 3 unpublished) | Ready. `templates.md` |
+| 3 | Addresses (§5) | 10 pages hidden, then 10 redirects. Proposed today: the older `/pages/who-we-are` redirect goes straight to `/pages/artists-for-kids` | Ready. `addresses.md` |
+| 4 | Staged text (§8) | 31 pages take their staged text; 4 of them are cleared. Supporters is held. Then the staged values and the `release_body` definition are deleted | Ready: all pages match. `staged.md` |
+| 5 | New pages shown (§8b, §8c) | 22 pages lose `seo.hidden`. Supporters is held | Ready. `unhide.md` |
+| 6 | Print descriptions (§7) | The clean-up on the 21 prints | Waits for the gallery's approval of `products.md`. Can follow later: the new theme shows the label and the description as they are |
+| 7 | Frames (§9) | 16 active frames become Unlisted | Ready. `frames.md` |
+| 8 | Descriptions to the search listings (§8d) | 40 pages | Waits for the gallery's approval of the words. Can follow later: the new theme reads the staged descriptions |
+
+The release script's order is publish, templates, addresses, staged, unhide, products, frames. Steps 0c and 0d come before publishing because the new theme shows them the moment it is live.
+
+**Outside the store, the same day:** the Artists for Kids team cuts artistsforkids.sd44.ca back to registration (P-30). The redirect file goes on smithfoundation.co's server and GoDaddy's forwarding goes off (#119, P-63).
+
+## Since the first dry runs (2026-09-26)
+
+- Pages: 35 then, 58 now (18 Artists for Kids, 3 Foundation, Past events and Current events).
+- Template names: 20 pages changed then, 40 now.
+- Staged text: 9 pages then, 31 now. Contact and Frequently Asked Questions have staged text too.
+- Product titles: done ahead of release (P-61), so step 6 changes descriptions only.
+
+## How the writes are made
+
+Steps 2 to 5 and 7 make 162 changes, 31 of them whole page texts. Two ways:
+
+1. **Shopify CLI, from files** (`shopify store execute --variable-file`). Each value goes to the store exactly as the script printed it. The CLI's store access covers entries and files today; a page read was refused ("ACCESS_DENIED"). Michael would add pages, redirects, products and definitions with `shopify store auth`.
+2. **The connector**, as every write so far. Each page's text is passed by hand, then read back from the storefront and compared with the export, so a slip is caught and fixed.
+
+## Decisions
+
+None is Proposed for anything built. DS-70a is Proposed and not built, so nothing of it ships.
+
+## Requirements
+
+29 requirements. 26 are In progress: built, checked by the agent, not yet through the staff editing test. 3 are Blocked on gallery input (ACCESS-01, ACCESS-03, ACCESS-04). None is Done, since Done needs the staff test (`REQUIREMENTS.md`).
+
+## Rollback
+
+1. Republish `183162372393`: `shopify theme publish --theme 183162372393`. It is unchanged and matches the baseline.
+2. Templates: set each page back to the "Now" column of `dry-runs/2026-09-29/templates.md`.
+3. Addresses: delete the 10 redirects, publish the 10 pages, set `/pages/who-we-are` back to `/pages/our-story`.
+4. Page text: restore each page from `dry-runs/2026-09-29/pages-now.json`, which holds today's text and the staged text. Make the `release_body` definition again if the staged values are wanted back.
+5. New pages: set `seo.hidden` to 1 on the 22.
+6. Frames: set the 16 back to Active.
+7. Event pages: turn `renderable` and `onlineStore` off.
+8. Descriptions: restore from `snapshots/prints-descriptions-2026-09-26.json`.
+
+Republishing the old theme alone does not undo steps 2 to 8.
+
+## After release
+
+- Open every page, then run `check_links.py`, `check_answers.py` and `check_structured_data.py` on gordonsmithgallery.com.
+- A search for "smith" shows no frames; a print's Framed choice adds its frame to the cart. No order is placed.
+- Each of the 11 old addresses lands on its new page.
+- Record the final theme ID, commit and results here and in `PROJECT.md`.
+- Follow-up pull request: remove the pre-release bridges (`gs-page-text`'s fallback, the old names in `gs-is-programme-page` and `gs-is-story-page`), empty the unlinked list in `links.json`.
