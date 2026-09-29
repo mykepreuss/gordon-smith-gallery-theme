@@ -168,13 +168,22 @@ The store doesn't show events as pages yet, so no address draws the new template
 | Lists today (Home, Upcoming events, a programme, an exhibition) | Unchanged: no row links to an event page, since no event has an address yet |
 | `check_structured_data.py`, 6 pages; `check_answers.py` | 0 errors; 27 answered, 5 known gaps |
 
-| Not tested, and why | When it can be |
-| --- | --- |
-| The page's title, description and request not to be listed | These read the page's own entry, which exists only on a real event address. On the day the store change is made |
-| The event's structured data on its own page, and the crumb | The same |
-| Rows and cards linking to event pages | The same: the links appear once events have addresses |
+### Tested on real event addresses
 
-So the first step at release is to turn the pages on, read three event pages with both checks, and only then publish. If anything is wrong, turning the pages off again undoes it.
+Michael asked for the rest to be tested before release (2026-09-29). The store showed events as pages for about 80 seconds, from 16:15:55 to 16:17:14 UTC, and was then set back (`proposals/store-writes/README.md`).
+
+| Tested | Result |
+| --- | --- |
+| The title | "Art Education, For Life: Reflections from Omer Arbel, November 26, 2026", then the programme's name |
+| The description | Starts with when: "Thursday, November 26, 2026, 6 PM. Doors 6 PM..." |
+| An event with no summary | Its page asks not to be listed, and has no description. Its structured data gives the programme's address |
+| The structured data | The event, the page that is about it, and the crumb (Home, the programme, the event), each naming the others. `check_structured_data.py` on nine pages: 0 errors |
+| Rows and cards | Link to the event's page when it has a summary: 2 on Home, 7 on Upcoming events, 3 on the exhibition. None broken |
+| After turning off | Event addresses answer 404, and every row and card links as before, by itself |
+
+One fault found and fixed: Shopify hands an entry's description over with its apostrophes already written as HTML, and the tag wrote them as HTML again, so "Tang's" would have read "Tang&#39;s" in a search result. This reached every entry page with a description of its own, not only events.
+
+At release the first step is still to turn the pages on and read three event pages before publishing.
 
 ## Limits
 

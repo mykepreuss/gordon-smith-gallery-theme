@@ -168,7 +168,7 @@ Done so far: every page's content, the 15 exhibitions, the card groups and event
 
 | Item | Owner | Notes |
 | --- | --- | --- |
-| Event pages (DS-176): turn on web pages for the Event definition, read three event pages with both checks, then publish | Agent, with Michael's go-ahead | `proposals/store-changes.md` §8e. The page's head tags and structured data can't be tested before this |
+| Event pages (DS-176): turn on web pages for the Event definition, read three event pages with both checks, then publish | Agent, with Michael's go-ahead | `proposals/store-changes.md` §8e. Tested once on 2026-09-29, with the pages on for about 80 seconds |
 | Answer engines after release: run `check_answers.py` on the live site; ask the 32 questions of `answers.json` by hand in the main answer engines for a baseline, and again 30 days later (hours, address, admission, the current exhibition, the four names kept apart); bring the map and business listings outside the site in step with the site's hours | Agent, Michael | `proposals/aeo-geo-review.md`, "Built from the AEO frameworks". The preview is hidden from engines, so the baseline waits for release |
 | Search and answer engines, outside the site (`proposals/aeo-geo-review.md`, "Technical follow-up"): Search Console and Bing Webmaster Tools; the map listings' hours and name; a Wikidata entry; Merchant Center; Google's Rich Results Test on one page of each kind; referrals from AI assistants in analytics; redirects from the old sites' domains | Michael, gallery, the school district for its domain | Account and listing tasks. None changes the theme |
 | The gallery approves the product description clean-up | Gallery | The before-and-after list: `proposals/store-writes/dry-runs/2026-09-26/products.md` |

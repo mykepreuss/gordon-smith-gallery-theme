@@ -173,7 +173,9 @@
   endif
   # Shopify's own description, made from the text with its spaces dropped: it starts as the text
   # does once both have lost their spaces. The page's own words are used instead (DS-160).
-  assign stored = page_description
+  # Shopify hands an entry's description over with its apostrophes and quotation marks already
+  # written as HTML, and the tags below write them as HTML again. Read back as plain text first.
+  assign stored = page_description | replace: '&#39;', "'" | replace: '&quot;', '"' | replace: '&amp;', '&'
   if stored != blank and made_from != blank
     assign nb = ' '
     assign a = stored | strip_newlines | remove: ' ' | remove: nb | remove: '&amp;' | remove: '&' | slice: 0, 40

@@ -933,3 +933,23 @@ The words were written from looking at each picture (`aeo/alt.json`, drafted 202
 **Effect on the live site:** screen readers now read a description for these images, and search engines can index one. Nothing a sighted visitor sees changes. On the new theme, these hero images were decorative for lack of alt text (DS-58); they are now described.
 
 **Undo:** `fileUpdate` on each file with `alt` set to an empty string. The IDs are in the snapshot.
+
+## 2026-09-29: event pages turned on for a test, then off (DS-176)
+
+**Why:** to test the part of an event's page that can't be read without a real event address: its title, description, request not to be listed, structured data and crumb, and the links from rows and cards. Michael, 2026-09-29: "Yes, I want this - proceed", to "I could turn event pages on for a few minutes, run the checks, and turn them off".
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; the live theme 183162372393 "Colorblock: NEW WEBSITE" (live) and the review theme 184767250729 (unpublished), by `shopify theme list`; neither touched. Before: the Event definition could be published, and its web pages settings (`renderable`, `onlineStore`) were off; an event address answered 404 on the live site and on the development theme; the live sitemap held no event addresses.
+
+| What | Through | When (UTC) |
+| --- | --- | --- |
+| Web pages on for the Event definition `gid://shopify/MetaobjectDefinition/23753392425`: `renderable` (title and summary as its search listing) and `onlineStore` (`urlHandle: events`, no redirects) | Connector, `metaobjectDefinitionUpdate` | 16:15:55 |
+| Both turned off again | The same | 16:17:14 |
+
+**Tested while on**, on a development theme holding `claude/event-pages`: five event pages read (with a summary, without one, ended, with an exhibition, with a registration link); `check_structured_data.py` on nine pages, 0 errors; `check_answers.py`, 27 answered, 5 known gaps, 0 errors; rows and cards on Home, Upcoming events, Explore + Create, an exhibition and Past events linked to event pages, none broken. One fault found and fixed: a description with an apostrophe was written as HTML twice.
+
+**Checked after:** the definition reads `renderable` off and `onlineStore` off. An event address answers 404 on the live site and the development theme. The live sitemap holds no event addresses. Rows and cards link as before. The live Home, Upcoming events and On Now pages answer 200.
+
+**Effect on the live site:** for about 80 seconds, event addresses existed and answered 404 under the live theme. The live sitemap showed none when read after. No page of the live site changed.
+
+**Undo:** done. At release the same call turns the pages on for good (`proposals/store-changes.md` §8e).
+

@@ -209,7 +209,7 @@ The theme has a page for each event (`metaobject/event`). The store doesn't show
 At release:
 
 1. Turn on web pages for the Event definition (`metaobjectDefinitionUpdate`, capabilities `renderable` with `metaTitleKey: title` and `metaDescriptionKey: summary`, and `onlineStore` with `urlHandle: events`). Each event then answers at `/pages/events/<handle>`.
-2. Read three event pages on the review theme with `check_structured_data.py` and `check_answers.py --theme`: one with a summary, one without, one that has ended. The head tags and structured data of an event page can't be tested before this step (`proposals/event-pages.md`, "Built").
+2. Read three event pages on the review theme with `check_structured_data.py` and `check_answers.py --theme`: one with a summary, one without, one that has ended. They were tested once already, on 2026-09-29, with the pages turned on for about 80 seconds (`proposals/event-pages.md`, "Built").
 3. Publish only when both pass.
 
 Before then, nothing changes: no event has an address, so rows and cards link as they do today.
