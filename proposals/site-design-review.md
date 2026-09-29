@@ -1,6 +1,6 @@
 # Whole-site design review
 
-Status: **Built on the branch, 2026-09-27 and 28; in review.** Michael decided DS-97 to DS-130 on 2026-09-28 and they are built too (see "Decided and built, 2026-09-28"). Every page of the new site was reviewed with the design skills and the fixes are built on `claude/site-design-review`, which sits on the Artists for Kids branch (pull request 42). The new rules are **Proposed** (DS-84 to DS-130) for Michael. Nothing the live site shows has changed.
+Status: **Built, 2026-09-27 and 28.** Michael decided DS-84 to DS-96 on 2026-09-29, and DS-97 to DS-130 on 2026-09-28, and they are built too (see "Decided and built, 2026-09-28"). Every page of the new site was reviewed with the design skills and the fixes are built on `claude/site-design-review`, which sits on the Artists for Kids branch (pull request 42). The new rules are **Proposed** (DS-84 to DS-130) for Michael. Nothing the live site shows has changed.
 
 ## Why
 
