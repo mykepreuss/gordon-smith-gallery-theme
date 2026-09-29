@@ -26,6 +26,9 @@
 
   @param {string} html - The text, as HTML. Required
   @param {string} [skip] - An address the text's own card links to already
+  @param {boolean} [names_only] - Leave the general words out. For texts about an artist or a
+    work (an edition's description, a work's About, credits), where "volunteers" or "donors" is
+    seldom the gallery's own (DS-183)
 
   @example
   {%- render 'gs-linked-names', html: para, skip: card_url -%}
@@ -40,7 +43,11 @@
   # Names, then general words, each line marked with which list it is from.
   assign names = settings.linked_names | newline_to_br | strip_newlines | split: '<br />'
   assign general_lines = settings.linked_words | newline_to_br | strip_newlines | replace: '<br />', '<br />~' | prepend: '~' | split: '<br />'
-  assign lines = names | concat: general_lines
+  if names_only
+    assign lines = names
+  else
+    assign lines = names | concat: general_lines
+  endif
   for line in lines
     # A loop's own variable can't be reassigned inside it, so the line without its mark is a new one.
     assign general = false

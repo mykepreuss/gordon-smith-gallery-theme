@@ -1,0 +1,20 @@
+{
+  "about": "Limits and known exceptions for check_links.py (proposals/internal-linking-review.md).",
+  "sitemap": "https://gordonsmithgallery.com/sitemap.xml",
+  "hosts": ["gordonsmithgallery.com", "www.gordonsmithgallery.com", "ed35ee-ea.myshopify.com"],
+  "max_depth": 3,
+  "min_content_links": 2,
+  "entries": ["pages/exhibitions", "pages/artists", "pages/collection", "pages/lessons", "pages/events", "products"],
+  "unlinked": [
+    { "address": "/pages/about", "why": "hidden at release and sent on to About us (store-changes.md 5, P-24)" },
+    { "address": "/pages/our-story", "why": "hidden at release and sent on to Artists for Kids (store-changes.md 5, P-25)" },
+    { "address": "/pages/engage", "why": "hidden at release and sent on to Public programs (store-changes.md 5, DS-129)" },
+    { "address": "/pages/exhibitions-1", "why": "hidden at release and sent on to On now (store-changes.md 5, P-20)" },
+    { "address": "/pages/exhibition-from-the-ground", "why": "hidden at release and sent on to its entry (store-changes.md 5, P-10)" },
+    { "address": "/pages/exhibition-one-hundred-artists-deep", "why": "hidden at release and sent on to its entry (store-changes.md 5, P-10)" },
+    { "address": "/pages/exhibition-playhouse", "why": "hidden at release and sent on to its entry (store-changes.md 5, P-10)" },
+    { "address": "/pages/exhibition-prevailing-landscapes", "why": "hidden at release and sent on to its entry (store-changes.md 5, P-10)" },
+    { "address": "/pages/exhibition-stitched-merging-photography-and-textile-practices", "why": "hidden at release and sent on to its entry (store-changes.md 5, P-10)" },
+    { "address": "/pages/exhibition-the-art-of-conversation", "why": "hidden at release and sent on to its entry (store-changes.md 5, P-10)" }
+  ]
+}

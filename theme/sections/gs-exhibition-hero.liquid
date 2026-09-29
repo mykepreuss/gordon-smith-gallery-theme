@@ -10,7 +10,8 @@
   So the page is plainly not the home page's hero again (DS-66): a link back to the list the
   exhibition is in ("Exhibitions", to On now, Upcoming or Past) sits above the status, and the
   summary is in the box, the first thing to read. About the exhibition follows with the facts
-  and text.
+  and text. An exhibition that is on now or coming up ends its box with the way to Plan your
+  visit (DS-180).
 {%- endcomment -%}
 {%- liquid
   assign entry = metaobject
@@ -52,6 +53,12 @@
       {%- endif -%}
       {%- if entry.summary.value != blank -%}
         <p class="gs-hero__summary">{{ entry.summary.value | escape | newline_to_br }}</p>
+      {%- endif -%}
+      {%- comment -%} An exhibition to come and see leads to how to come (DS-180). A past one doesn't. {%- endcomment -%}
+      {%- if status != 'past' and settings.visit_page != blank -%}
+        <div class="gs-actions">
+          <a class="gs-button" href="{{ settings.visit_page.url }}">{{ 'exhibitions.visit' | t }}</a>
+        </div>
       {%- endif -%}
     </div>
     {%- if mode != 'artwork' -%}{{ caption }}{%- endif -%}

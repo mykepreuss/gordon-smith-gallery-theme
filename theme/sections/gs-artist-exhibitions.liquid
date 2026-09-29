@@ -1,24 +1,62 @@
 {%- comment -%}
   The exhibitions at the gallery that included an artist (DESIGN.md §7.5, DS-62): compact
-  exhibition cards from the artist's Exhibitions list, newest first.
+  exhibition cards, newest first.
+
+  Two sources, so an exhibition and its artists always link each other (DS-178): the artist's
+  Exhibitions list, and every exhibition whose Artists or From the collection list names the
+  artist. Those names are typed, so they are matched as the exhibition's page matches them
+  (gs-exhibition-facts, DS-161): whole, without regard to capitals. An exhibition found both ways
+  shows once. Entries are read inside a paginate tag: a plain loop stops at 50 (DS-152).
 {%- endcomment -%}
-{%- if metaobject.exhibitions.value != blank -%}
+{%- liquid
+  assign me = metaobject.name.value | strip | downcase
+  assign listed = '|'
+  for entry in metaobject.exhibitions.value
+    assign listed = listed | append: entry.system.handle | append: '|'
+  endfor
+
+  # Each exhibition's place in the store's list, keyed by its start date, then sorted newest first.
+  assign rows = ''
+  paginate shop.metaobjects.exhibition.values by 250
+    for entry in shop.metaobjects.exhibition.values
+      assign key = entry.system.handle | prepend: '|' | append: '|'
+      assign keep = false
+      if listed contains key
+        assign keep = true
+      elsif me != blank
+        for name in entry.artists.value
+          assign typed = name | strip | downcase
+          if typed == me
+            assign keep = true
+            break
+          endif
+        endfor
+        unless keep
+          for name in entry.collection_artists.value
+            assign typed = name | strip | downcase
+            if typed == me
+              assign keep = true
+              break
+            endif
+          endfor
+        endunless
+      endif
+      if keep
+        assign day = entry.start_date.value | date: '%Y%m%d'
+        assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
+        assign rows = rows | append: day | append: '-' | append: pos | append: ','
+      endif
+    endfor
+  endpaginate
+  assign rows = rows | split: ',' | sort | reverse
+-%}
+{%- if rows.size > 0 -%}
   {%- liquid
     # How many cards, first: the count classes (DS-44, DS-52) set each card's picture size.
-    assign count = 0
-    for entry in metaobject.exhibitions.value
-      assign count = count | plus: 1
-    endfor
     capture mods
-      render 'gs-grid-modifiers', count: count
+      render 'gs-grid-modifiers', count: rows.size
     endcapture
     assign mods = mods | strip_newlines
-    # Newest first: each entry's place in the list is keyed by its start date, then the keys are sorted.
-    assign rows = ''
-    for entry in metaobject.exhibitions.value
-      assign rows = rows | append: entry.start_date.value | append: '~~at~~' | append: forloop.index0 | append: '~~row~~'
-    endfor
-    assign rows = rows | split: '~~row~~' | sort | reverse
   -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
     <div class="gs-container">
@@ -26,20 +64,20 @@
         <h2 class="gs-h2" id="{{ section.id }}-heading">{{ 'collection.exhibitions_heading' | t }}</h2>
       </div>
       <ul class="gs-grid gs-grid--cards{{ mods }}" role="list">
-        {%- for row in rows -%}
-          {%- liquid
-            assign at = row | split: '~~at~~' | last | plus: 0
-            capture card_sizes
-              render 'gs-grid-sizes', mods: mods, index: forloop.index
-            endcapture
-            assign card_sizes = card_sizes | strip
-          -%}
-          {%- for entry in metaobject.exhibitions.value -%}
-            {%- if forloop.index0 == at -%}
+        {%- paginate shop.metaobjects.exhibition.values by 250 -%}
+          {%- for row in rows -%}
+            {%- liquid
+              assign n = row | split: '-' | last | plus: 0
+              capture card_sizes
+                render 'gs-grid-sizes', mods: mods, index: forloop.index
+              endcapture
+              assign card_sizes = card_sizes | strip
+            -%}
+            {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
               <li>{%- render 'gs-exhibition-card', entry: entry, compact: true, heading: 'h3', sizes: card_sizes -%}</li>
-            {%- endif -%}
+            {%- endfor -%}
           {%- endfor -%}
-        {%- endfor -%}
+        {%- endpaginate -%}
       </ul>
     </div>
   </section>
@@ -55,7 +93,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "The exhibitions in the artist's Exhibitions list, newest first."
+      "content": "The exhibitions in the artist's Exhibitions list, and every exhibition whose lists of artists name them, newest first."
     }
   ],
   "presets": [

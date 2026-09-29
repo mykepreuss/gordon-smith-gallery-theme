@@ -7,8 +7,9 @@
   leads, then the label, then the other views (DS-110); from 990 px on a tall screen the label stays
   in view beside a long run of views (DS-112).
 
-  The facts link out to where the work belongs: the exhibitions that showed it, and its category and
-  themes when they have a page (a Collection grouping with the same handle).
+  The facts link out to where the work belongs: the exhibitions that showed it, the lessons it
+  inspired (DS-181), and its category and themes when they have a page (a Collection grouping with
+  the same handle).
 {%- endcomment -%}
 {%- liquid
   assign work = metaobject
@@ -105,6 +106,24 @@
           endfor
           echo links
         endcapture
+
+        # The lessons this work inspired (DS-181): the lessons whose Works list names it, so a
+        # lesson and its works link each other. Read inside a paginate tag (DS-152).
+        assign lessons = ''
+        paginate shop.metaobjects.lesson.values by 250
+          for lesson in shop.metaobjects.lesson.values
+            for w in lesson.works.value
+              if w.system.id == work.system.id
+                if lessons != blank
+                  assign lessons = lessons | append: ', '
+                endif
+                assign lesson_title = lesson.title.value | escape
+                assign lessons = lessons | append: '<a class="gs-link" href="' | append: lesson.system.url | append: '">' | append: lesson_title | append: '</a>'
+                break
+              endif
+            endfor
+          endfor
+        endpaginate
       -%}
       <dl class="gs-details gs-details--stack">
         {%- if work.medium.value != blank -%}
@@ -132,6 +151,9 @@
             </dd>
           </div>
         {%- endif -%}
+        {%- if lessons != blank -%}
+          <div class="gs-details__item"><dt>{{ 'collection.lessons' | t }}</dt><dd>{{ lessons }}</dd></div>
+        {%- endif -%}
         {%- if browse != blank -%}
           <div class="gs-details__item"><dt>{{ 'collection.browse' | t }}</dt><dd>{{ browse }}</dd></div>
         {%- endif -%}
@@ -143,7 +165,8 @@
           <h2 class="gs-h4" id="{{ id }}-shop">{{ 'collection.in_the_shop' | t }}</h2>
           <p>{{ 'collection.edition_for_sale' | t }}</p>
           <p><cite>{{ edition.metafields.custom.artwork_title.value | default: edition.title | escape }}</cite>, {% render 'gs-price', product: edition %}</p>
-          <a class="gs-cta-link" href="{{ edition.url }}">{{ 'collection.see_edition' | t }}</a>
+          {%- comment -%} The link names the edition for a screen reader's list of links and for engines, which read a link's words on their own (DS-185). {%- endcomment -%}
+          <a class="gs-cta-link" href="{{ edition.url }}">{{ 'collection.see_edition' | t }}<span class="gs-visually-hidden">: {{ edition.metafields.custom.artwork_title.value | default: edition.title | escape }}</span></a>
         </section>
       {%- endif -%}
     </div>
@@ -161,7 +184,7 @@
     {%- if work.about.value != blank -%}
       <section class="gs-artwork__about" aria-labelledby="{{ id }}-about">
         <h2 class="gs-label" id="{{ id }}-about">{{ 'products.about_work' | t }}</h2>
-        <div class="gs-prose">{%- capture html -%}{{ work.about | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+        <div class="gs-prose">{%- capture html -%}{{ work.about | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html, link_names: true, names_only: true -%}</div>
       </section>
     {%- endif -%}
   </div>

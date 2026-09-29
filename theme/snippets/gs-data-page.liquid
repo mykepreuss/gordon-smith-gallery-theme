@@ -163,6 +163,12 @@
       {%- if about_id != blank -%}
         ,"about": { "@type": "Person", "@id": {{ about_id | json }}, "name": {{ about_name | json }}, "url": {{ about_url | json }} }
       {%- endif -%}
+      {%- comment -%} A page with a crumb (DS-80) names it, as an entry's page does; gs-data prints the crumb (DS-184). {%- endcomment -%}
+      {%- capture back_handle -%}{%- render 'gs-page-back' -%}{%- endcapture -%}
+      {%- assign back_handle = back_handle | strip -%}
+      {%- if back_handle != blank -%}
+        ,"breadcrumb": { "@id": {{ canonical_url | append: '#breadcrumb' | json }} }
+      {%- endif -%}
       {%- if subject != blank and total < 2 -%}
         ,"mainEntity": { "@id": {{ subject | json }} }
       {%- endif -%}

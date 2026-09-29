@@ -229,8 +229,33 @@
         {%- endif -%}
       {%- endform -%}
 
+      {%- liquid
+        # The collection's copy of this edition (DS-181): the work whose In the Shop field names this
+        # product, so the two pages link each other. Liquid can't find an entry by a field's value,
+        # so it is looked for among the works of the edition's artists (its Artist pages field),
+        # read inside a paginate tag: a plain loop stops at 50 (DS-152).
+        assign collection_work_url = ''
+        if is_edition
+          for a in f.artist_entries.value
+            paginate a.works.value by 250
+              for w in a.works.value
+                if w.in_the_shop.value.id == product.id
+                  assign collection_work_url = w.system.url
+                  break
+                endif
+              endfor
+            endpaginate
+            if collection_work_url != blank
+              break
+            endif
+          endfor
+        endif
+      -%}
       {%- if is_edition and section.settings.archive_note != blank -%}
-        <div class="gs-prose gs-caption">{{ section.settings.archive_note }}</div>
+        <div class="gs-prose gs-caption">{%- render 'gs-linked-names', html: section.settings.archive_note, names_only: true -%}</div>
+      {%- endif -%}
+      {%- if collection_work_url != blank -%}
+        <p><a class="gs-cta-link" href="{{ collection_work_url }}">{{ 'products.see_work' | t }}</a></p>
       {%- endif -%}
 
       {%- comment -%}
@@ -265,7 +290,7 @@
     <section class="gs-artwork__about" aria-labelledby="{{ form_id }}-about">
       <h2 class="gs-label" id="{{ form_id }}-about">{% if is_edition %}{{ 'products.about_work' | t }}{% else %}{{ 'products.details' | t }}{% endif %}</h2>
       {%- if product.description != blank -%}
-        <div class="gs-prose">{%- capture html -%}{{ product.description }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+        <div class="gs-prose">{%- capture html -%}{{ product.description }}{%- endcapture -%}{%- render 'gs-rich-text', html: html, link_names: true, names_only: true -%}</div>
       {%- endif -%}
       {%- for disclosure in disclosures -%}
         {%- assign surfaces = disclosure.display_preferences.value.surfaces -%}

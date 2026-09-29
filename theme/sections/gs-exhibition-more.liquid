@@ -1,27 +1,100 @@
 {%- comment -%}
-  More exhibitions, at the end of an exhibition's page (DESIGN.md §7.5): three compact cards,
-  first what's on now and coming up, then, to fill the row, the most recent past exhibitions that
-  have their own page (DS-130). A row with a current show says each card's status. Never the
-  exhibition being shown. Entries are read back inside a paginate tag: a plain loop stops at 50
-  (DS-152).
+  More exhibitions, at the end of an exhibition's page (DESIGN.md §7.5): three compact cards.
+  Never the exhibition being shown, and only exhibitions that have their own page.
+
+  - On an exhibition that is on now or coming up: what's on now and coming up first, then, to
+    fill the row, the most recent past exhibitions (DS-130).
+  - On a past exhibition: what's on now (or next) first, one card, then the exhibitions nearest
+    to it in time, the one after and the one before (DS-179). So every exhibition is linked from
+    its neighbours, not only from the Past list, and each page leads somewhere different, as a
+    lesson's does.
+
+  A row with a current show says each card's status. Entries are read back inside a paginate
+  tag: a plain loop stops at 50 (DS-152).
 {%- endcomment -%}
 {%- liquid
   assign handle = metaobject.system.handle
-  capture ids
-    render 'gs-exhibition-index', status: 'current', exclude: handle, linked_only: true, limit: 3
+  capture own_status
+    render 'gs-exhibition-status', start: metaobject.start_date.value, end: metaobject.end_date.value
   endcapture
-  assign ids = ids | strip | split: ','
-  assign show_status = true
-  if ids.size == 0
-    assign show_status = false
-  endif
-  if ids.size < 3
-    assign need = 3 | minus: ids.size
+  assign own_status = own_status | strip
+
+  # A past exhibition's place among the past ones that have a page, newest first.
+  assign at = -1
+  if own_status == 'past'
     capture past
-      render 'gs-exhibition-index', status: 'past', order: 'desc', exclude: handle, linked_only: true, limit: need
+      render 'gs-exhibition-index', status: 'past', order: 'desc', linked_only: true
     endcapture
     assign past = past | strip | split: ','
-    assign ids = ids | concat: past
+    assign here = ''
+    paginate shop.metaobjects.exhibition.values by 250
+      for entry in shop.metaobjects.exhibition.values
+        if entry.system.handle == handle
+          assign here = forloop.index0 | append: ''
+          break
+        endif
+      endfor
+    endpaginate
+    for pos in past
+      if pos == here
+        assign at = forloop.index0
+        break
+      endif
+    endfor
+  endif
+
+  if at >= 0 and past.size > 1
+    capture ids
+      render 'gs-exhibition-index', status: 'current', linked_only: true, limit: 1
+    endcapture
+    assign ids = ids | strip | split: ','
+    assign need = 3 | minus: ids.size
+    # The nearest in time: one step newer, one step older, then two steps, until the row is full.
+    assign picked = '|'
+    assign taken = 0
+    for step in (1..3)
+      assign newer = at | minus: step
+      assign older = at | plus: step
+      if newer >= 0 and taken < need
+        assign picked = picked | append: past[newer] | append: '|'
+        assign taken = taken | plus: 1
+      endif
+      if older < past.size and taken < need
+        assign picked = picked | append: past[older] | append: '|'
+        assign taken = taken | plus: 1
+      endif
+    endfor
+    # In the Past list's order, newest first.
+    assign near = ''
+    for pos in past
+      assign key = pos | prepend: '|' | append: '|'
+      if picked contains key
+        assign near = near | append: pos | append: ','
+      endif
+    endfor
+    assign near = near | split: ','
+    assign show_status = true
+    if ids.size == 0
+      assign show_status = false
+    endif
+    assign ids = ids | concat: near
+  else
+    capture ids
+      render 'gs-exhibition-index', status: 'current', exclude: handle, linked_only: true, limit: 3
+    endcapture
+    assign ids = ids | strip | split: ','
+    assign show_status = true
+    if ids.size == 0
+      assign show_status = false
+    endif
+    if ids.size < 3
+      assign need = 3 | minus: ids.size
+      capture recent
+        render 'gs-exhibition-index', status: 'past', order: 'desc', exclude: handle, linked_only: true, limit: need
+      endcapture
+      assign recent = recent | strip | split: ','
+      assign ids = ids | concat: recent
+    endif
   endif
   capture mods
     render 'gs-grid-modifiers', count: ids.size
@@ -67,7 +140,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Three other exhibitions: on now and upcoming first, then the most recent past ones."
+      "content": "Three other exhibitions. On a current or upcoming exhibition: on now and upcoming first, then the most recent past ones. On a past exhibition: what's on now, then the exhibitions before and after it in time."
     }
   ],
   "presets": [
