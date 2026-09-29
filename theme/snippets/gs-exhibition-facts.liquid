@@ -4,6 +4,10 @@
   from the collection, and upcoming events tied to the exhibition. Empty fields show nothing;
   with no facts at all the snippet outputs nothing.
 
+  An artist's name links to their page when the collection has an artist entry with the same
+  name (DS-159, Proposed). The names are typed, so they are matched as typed, whole and without
+  regard to capitals; a name with no match stays plain text.
+
   @param {object} entry - An exhibition entry
 
   @example
@@ -28,6 +32,18 @@
 
   assign artists = entry.artists.value
   assign collection_artists = entry.collection_artists.value
+
+  # Every artist entry's name and address, to link the typed names (DS-159). Read inside its own
+  # paginate tag, as the other lists of entries are (DS-152).
+  assign artist_map = '|'
+  if artists != blank or collection_artists != blank
+    paginate shop.metaobjects.artist.values by 250
+      for a in shop.metaobjects.artist.values
+        assign key = a.name.value | strip | downcase
+        assign artist_map = artist_map | append: key | append: '::' | append: a.system.url | append: '|'
+      endfor
+    endpaginate
+  endif
 
   assign has_any = false
   if entry.curator_credit.value != blank or entry.venue.value != blank or show_reception
@@ -92,7 +108,16 @@
         <dt>{{ 'exhibitions.artists' | t }}</dt>
         <dd>
           <ul class="gs-names">
-            {%- for name in artists -%}<li>{{ name | escape }}</li>{%- endfor -%}
+            {%- for name in artists -%}
+              {%- liquid
+                assign key = name | strip | downcase | prepend: '|' | append: '::'
+                assign url = ''
+                if artist_map contains key
+                  assign url = artist_map | split: key | last | split: '|' | first
+                endif
+              -%}
+              <li>{% if url != blank %}<a class="gs-link" href="{{ url }}">{{ name | escape }}</a>{% else %}{{ name | escape }}{% endif %}</li>
+            {%- endfor -%}
           </ul>
         </dd>
       </div>
@@ -104,7 +129,16 @@
         <dt>{{ settings.collection_artists_label | default: collection_label | escape_once }}</dt>
         <dd>
           <ul class="gs-names">
-            {%- for name in collection_artists -%}<li>{{ name | escape }}</li>{%- endfor -%}
+            {%- for name in collection_artists -%}
+              {%- liquid
+                assign key = name | strip | downcase | prepend: '|' | append: '::'
+                assign url = ''
+                if artist_map contains key
+                  assign url = artist_map | split: key | last | split: '|' | first
+                endif
+              -%}
+              <li>{% if url != blank %}<a class="gs-link" href="{{ url }}">{{ name | escape }}</a>{% else %}{{ name | escape }}{% endif %}</li>
+            {%- endfor -%}
           </ul>
         </dd>
       </div>

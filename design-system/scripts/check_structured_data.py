@@ -34,6 +34,7 @@ REQUIRED = {
     "VisualArtwork": ["name", "url"],
     "Person": ["name", "url"],
     "BreadcrumbList": ["itemListElement"],
+    "FAQPage": ["mainEntity"],
     "Product": ["name", "offers"],
     "ProductGroup": ["name", "hasVariant|offers"],
 }

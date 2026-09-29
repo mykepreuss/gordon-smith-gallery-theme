@@ -14,6 +14,12 @@
     without an introduction say how many works the collection holds. An exhibition's description
     starts with its dates. A page with nothing to say prints no description, and only the home
     page uses the store's (DS-155).
+  - A written description comes first: a page's in its Release description field until release
+    (custom.release_description, as DS-39 stages a page's text), the home page's in Theme
+    settings. Shopify makes a description from a page's or a product's text when the store has
+    none, and drops the spaces between its lines ("AvenueNorth Vancouver"). A description that
+    starts as the text does is that one, so the page's own words are used instead, and an
+    edition describes itself by its label, medium, edition and size (DS-158, Proposed).
   - A work's and an edition's title is its label in plain letters, "Artist, Title, year", from
     the entry's or the product's fields, never the product title, whose italics are Unicode
     letters a search engine can't read (DS-156).
@@ -41,6 +47,8 @@
   assign works_note = ''
   if request.page_type == 'page'
     assign own_image = page.metafields.custom.hero_image.value
+    assign written = page.metafields.custom.release_description.value
+    assign made_from = page.content
     assign entry_text = page.metafields.custom.intro.value
     if entry_text == blank
       # The start of the page's text, as gs-page-text picks it (DS-39). A space before each tag
@@ -49,15 +57,26 @@
       if page.metafields.custom.release_body != blank
         assign body = page.metafields.custom.release_body.value
       endif
-      assign entry_text = body | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | truncatewords: 30
+      assign entry_text = body | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | replace: ' ,', ',' | replace: ' .', '.' | truncatewords: 30
     endif
   elsif request.page_type == 'product'
     assign f = product.metafields.custom
+    assign made_from = product.description
     if f.artist.value != blank and f.artwork_title.value != blank
       assign entry_label = f.artist.value | append: ', ' | append: f.artwork_title.value
       if f.year.value != blank
         assign entry_label = entry_label | append: ', ' | append: f.year.value
       endif
+      # The label's facts, in the order of the page (DS-16): medium, edition, size.
+      assign entry_text = entry_label
+      assign facts = 'medium,edition,dimensions' | split: ','
+      for fact in facts
+        assign value = f[fact].value | strip
+        if value != blank
+          assign entry_text = entry_text | append: '. ' | append: value
+        endif
+      endfor
+      assign entry_text = entry_text | truncate: 300
     endif
   elsif metaobject != blank
     case metaobject.system.type
@@ -118,7 +137,25 @@
         endif
     endcase
   endif
-  assign description = page_description | default: entry_text
+  # Shopify's own description, made from the text with its spaces dropped: it starts as the text
+  # does once both have lost their spaces. The page's own words are used instead (DS-158).
+  assign stored = page_description
+  if stored != blank and made_from != blank
+    assign nb = ' '
+    assign a = stored | strip_newlines | remove: ' ' | remove: nb | remove: '&amp;' | remove: '&' | slice: 0, 40
+    assign b = made_from | strip_html | strip_newlines | remove: ' ' | remove: nb | remove: '&amp;' | remove: '&nbsp;' | remove: '&' | slice: 0, 40
+    if a == b
+      assign stored = ''
+    endif
+  endif
+  # An edition always describes itself by its label: one form for every edition.
+  if request.page_type == 'product' and entry_label != blank
+    assign stored = ''
+  endif
+  if request.page_type == 'index' and settings.home_description != blank
+    assign stored = settings.home_description
+  endif
+  assign description = written | default: stored | default: entry_text
   if works_note != blank and page_description == blank
     # How many works the collection holds. The count comes from the entry looked up by its handle,
     # so the page's own list is still unread when gs-work-grid pages it.

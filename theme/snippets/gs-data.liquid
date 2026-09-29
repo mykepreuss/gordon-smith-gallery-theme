@@ -9,11 +9,15 @@
     A work in the collection         VisualArtwork: artist, year, medium, edition, size, credit
     An artist                        Person: names, nationality, life dates, portrait
     Entries and editions             BreadcrumbList: Home, the list the page belongs to, the page
+    A page of questions              FAQPage: each question and its answer (DS-160, Proposed)
 
   - Events print their own with each row and card (gs-data-event). Editions keep Shopify's
     Product data (meta-tags).
   - An exhibition's artists are typed as names, some of them collectives, so they are given as
     what the exhibition is about, not as people.
+  - A page of questions is a page whose text has two or more headings that end with a question
+    mark, all at one level (H3, else H2). Each heading is a question and the text up to the
+    next heading is its answer, so the FAQ needs no fields of its own.
   - A year is given only when it is a plain year ("1985"); "n.d." and "1950-1959" stay on the
     page. Life dates are read from "1882 to 1974" and "born 1946".
   - Addresses start with the shop's own domain (shop.url), as the canonical address does, so a
@@ -317,4 +321,65 @@
       ]
     }
   </script>
+{%- endif -%}
+
+{%- if request.page_type == 'page' -%}
+  {%- liquid
+    # The page's text, as gs-page-text picks it (DS-39).
+    assign body = page.content
+    if page.metafields.custom.release_body != blank
+      assign body = page.metafields.custom.release_body.value
+    endif
+    assign level = ''
+    if body contains '<h3'
+      assign level = 'h3'
+    elsif body contains '<h2'
+      assign level = 'h2'
+    endif
+    assign questions = ''
+    assign answers = ''
+    assign total = 0
+    if level != ''
+      assign open = '<' | append: level
+      assign close = '</' | append: level | append: '>'
+      assign pieces = body | split: open
+      for piece in pieces offset: 1
+        assign halves = piece | split: close
+        if halves.size < 2
+          continue
+        endif
+        assign question = halves[0] | prepend: open | strip_html | strip_newlines | strip
+        assign last_char = question | slice: -1
+        if last_char != '?'
+          continue
+        endif
+        assign answer = halves[1] | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | replace: ' .', '.' | replace: ' ,', ','
+        if answer == blank
+          continue
+        endif
+        assign questions = questions | append: question | append: '~~row~~'
+        assign answers = answers | append: answer | append: '~~row~~'
+        assign total = total | plus: 1
+      endfor
+      assign questions = questions | split: '~~row~~'
+      assign answers = answers | split: '~~row~~'
+    endif
+  -%}
+  {%- if total > 1 -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- for question in questions -%}
+            {
+              "@type": "Question",
+              "name": {{ question | json }},
+              "acceptedAnswer": { "@type": "Answer", "text": {{ answers[forloop.index0] | json }} }
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {%- endif -%}
 {%- endif -%}
