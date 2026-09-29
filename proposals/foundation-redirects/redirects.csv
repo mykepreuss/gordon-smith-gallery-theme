@@ -1,0 +1,175 @@
+old,new,wp_id,what,note
+/,/,9,Page: Home,
+/2021-appeal/,/pages/donate,3416,Page: 2021 APPEAL,A past appeal
+/about/,/pages/the-smith-foundation,25,Page: About,"The old site was the Foundation's, so its About is the Foundation's page"
+/about/board-of-directors/,/pages/the-smith-foundation,1297,Page: Board of Directors,The board is on the Foundation's page
+/about/gordon-and-marion/,/pages/gordon-and-marion,126,Page: Gordon and Marion,
+/about/our-foundation/,/pages/the-smith-foundation,907,Page: Our Foundation,
+/about/supporters/,/pages/smith-foundation-supporters,1597,Page: Supporters,"If Supporters is held back at release (store-changes.md 8c), use /pages/the-smith-foundation until it is live"
+/brilliancegala/,/pages/brilliance-gala,4285,Page: Brilliance Gala,
+/brilliancegala/call-for-artists/,/pages/brilliance-gala,4394,Page: Call for Artists,A past call
+/cart/,/cart,1517,Page: Cart,
+/checkout/,/cart,1520,Page: Checkout,
+/contact/,/pages/contact,888,Page: Contact,
+/donate-now/,/pages/donate,12,Page: Donate Now,
+/donate-now/giving-tuesday/,/pages/donate,4267,Page: GIVING TUESDAY,A past appeal
+/donate/,/pages/donate,2069,Page: Donate,
+/donate/winter-appeal/,/pages/donate,4274,Page: Winter Appeal,A past appeal
+/engage/,/pages/public-programs-1,35,Page: Engage,As the store's own Engage page will (store-changes.md 5)
+/engage/curatorial-fellowship/,/pages/contact,6274,Page: Curatorial Fellowship,"A job posting or call, which stays behind. Contact is where to ask"
+/engage/public-programs/,/pages/public-programs-1,57,Page: Public Programs,
+/engage/public-programs/art-in-good-company/,/pages/art-in-good-company,6348,Page: Art In Good Company,
+/engage/public-programs/explore-create-public-program/,/pages/explore-create,5893,Page: Explore + Create Public Program,
+/engage/public-programs/music-at-the-smith/,/pages/music-at-the-smith,5940,Page: Music At the Smith,
+/engage/public-programs/speaker-series/,/pages/speaker-series,5892,Page: Speaker Series,
+/engage/volunteer/,/pages/volunteer,59,Page: Volunteer,
+/engage/work-with-us-2/,/pages/contact,6596,Page: Work With us 2,"A job posting or call, which stays behind. Contact is where to ask"
+/engage/work-with-us/,/pages/contact,6609,Page: WORK WITH US,"A job posting or call, which stays behind. Contact is where to ask"
+/engage/workwithus1/,/pages/contact,5700,Page: Work With Us 1,"A job posting or call, which stays behind. Contact is where to ask"
+/event/art-in-good-company-2/,/pages/art-in-good-company,6415,Event: Art In Good Company,A past event. Its programme's page lists what is coming
+/event/art-in-good-company-3/,/pages/art-in-good-company,6427,Event: Art In Good Company,A past event. Its programme's page lists what is coming
+/event/art-in-good-company-4/,/pages/art-in-good-company,6547,Event: Art In Good Company,A past event. Its programme's page lists what is coming
+/event/art-in-good-company-5/,/pages/art-in-good-company,6551,Event: Art in Good Company,A past event. Its programme's page lists what is coming
+/event/art-in-good-company/,/pages/art-in-good-company,6313,Event: Art In Good Company,A past event. Its programme's page lists what is coming
+/event/explore-create-2/,/pages/explore-create,6436,Event: Explore + Create,A past event. Its programme's page lists what is coming
+/event/explore-create-saturday-may-9th/,/pages/explore-create,6418,Event: Explore + Create / Saturday May 9th,A past event. Its programme's page lists what is coming
+/event/explore-create/,/pages/explore-create,6430,Event: Explore + Create,A past event. Its programme's page lists what is coming
+/event/music-at-the-smith-the-giving-shapes/,/pages/music-at-the-smith,6201,Event: MUSIC AT THE SMITH - The Giving Shapes,A past event. Its programme's page lists what is coming
+/event/one-hundred-artists-deep-opening-reception/,/pages/exhibitions/one-hundred-artists-deep,6193,Event: One Hundred Artists Deep - Opening Reception,A past event of this exhibition
+/event/public-event-curatorial-tour-one-hundred-artists-deep/,/pages/exhibitions/one-hundred-artists-deep,6299,Event: Public Event- Curatorial Tour: One Hundred Artists Deep,A past event of this exhibition
+/event/speaker-series-art-education-for-life-fashion-cultural-memory-and-design-as-living-practice-in-conversation-with-rebecca-baker-grenier/,/pages/speaker-series,6196,"Event: Speaker Series - Art Education, For Life: Rebecca Baker-Grenier",A past event. Its programme's page lists what is coming
+/event/speaker-series-artistic-approaches-in-dialogue-with-jack-shadbolt/,/pages/speaker-series,6204,Event: Speaker Series - Artistic Approaches in Dialogue: Responses to Jack Shadbolt,A past event. Its programme's page lists what is coming
+/event/special-explore-create-with-artist-manuel-axel-strain/,/pages/explore-create,6423,Event: Special Explore + Create with artist Manuel Axel Strain,A past event. Its programme's page lists what is coming
+/exhibitions-items/2013-spring-luncheon/,/pages/brilliance-gala,1733,Fundraiser: 2013 Spring Luncheon,"Its text and photos are on the gala page, under Past galas"
+/exhibitions-items/2018-luncheon-photos/,/pages/brilliance-gala,1659,Fundraiser: 2018 Spring Luncheon,"Its text and photos are on the gala page, under Past galas"
+/exhibitions-items/2019-spring-luncheon/,/pages/brilliance-gala,2988,Fundraiser: 2019 Spring Luncheon,"Its text and photos are on the gala page, under Past galas"
+/exhibitions-items/2025-gala-at-camp-smith/,/pages/brilliance-gala,5471,Fundraiser: 2025 Gala at Camp Smith,"Its text and photos are on the gala page, under Past galas"
+/exhibitions-items/accidentally-on-purpose-ross-penhall/,/pages/exhibitions/accidentally-on-purpose-ross-penhall,1183,Exhibition: Accidentally on Purpose: Ross Penhall,
+/exhibitions-items/beyond-the-horizon/,/pages/exhibitions/beyond-the-horizon,3885,Exhibition: Beyond the Horizon,
+/exhibitions-items/brilliance-gala-2026/,/pages/brilliance-gala,6069,Fundraiser: Brilliance Gala 2026,"Its text and photos are on the gala page, under Past galas"
+/exhibitions-items/brilliance-gala/,/pages/brilliance-gala,4635,Fundraiser: 2023 Brilliance Gala,"Its text and photos are on the gala page, under Past galas"
+/exhibitions-items/clean-water/,/pages/exhibitions/robert-davidson-progression-of-form,441,Exhibition: Robert Davidson: Progression of Form,
+/exhibitions-items/collection-connection-and-the-making-of-meaning/,/pages/exhibitions/collection-connection-and-the-making-of-meaning,1216,"Exhibition: Collection, Connection and the Making of Meaning",
+/exhibitions-items/dwelling-people-and-place/,/pages/exhibitions/dwelling-people-and-place,3245,Exhibition: Dwelling: People and Place,
+/exhibitions-items/education/,/pages/exhibitions/phantoms-in-the-front-yard-over-the-counter-culture,92,Exhibition: Phantoms in the Front Yard: Over the Counter Culture,
+/exhibitions-items/endless-summer/,/pages/exhibitions/endless-summer,4261,Exhibition: Endless Summer,
+/exhibitions-items/expressionist-renderings-the-prints-of-alistair-bell/,/pages/exhibitions/expressionist-renderings-the-prints-of-alistair-bell,1213,Exhibition: Expressionist Renderings: The Prints of Alistair Bell,
+/exhibitions-items/fair-trade/,/pages/exhibitions/thirteen-ways-to-summon-ghosts,443,Exhibition: 13 Ways to Summon Ghosts,
+/exhibitions-items/agricultural/,/pages/exhibitions/thirteen-ways-to-summon-ghosts,,Exhibition: 13 Ways to Summon Ghosts,An earlier address of the same item
+/exhibitions-items/farming/,/pages/exhibitions/art-school-high,442,Exhibition: Art School High,
+/exhibitions-items/womans-rights/,/pages/exhibitions/art-school-high,,Exhibition: Art School High,An earlier address of the same item
+/exhibitions-items/womens-rights/,/pages/exhibitions/art-school-high,,Exhibition: Art School High,An earlier address of the same item
+/exhibitions-items/figurative-contemplation/,/pages/exhibitions/figurative-contemplation,1191,Exhibition: Figurative Contemplation,
+/exhibitions-items/from-the-ground/,/pages/exhibitions/from-the-ground,5744,Exhibition: From The Ground,
+/exhibitions-items/gu-xiong-a-journey-exposed/,/pages/exhibitions/gu-xiong-a-journey-exposed,1206,Exhibition: Gu Xiong: A Journey Exposed,
+/exhibitions-items/one-hundred-artists-deep-april-11th-june-20th-2026/,/pages/exhibitions/one-hundred-artists-deep,5968,Exhibition: One Hundred Artists Deep,
+/exhibitions-items/one-hundred-artists-deep-april-10th-june-20th-2026/,/pages/exhibitions/one-hundred-artists-deep,,Exhibition: One Hundred Artists Deep,An earlier address of the same item
+/exhibitions-items/paths/,/pages/exhibitions/paths,5109,Exhibition: Paths,
+/exhibitions-items/play/,/pages/exhibitions/play,3356,Exhibition: Play,
+/exhibitions-items/playhouse/,/pages/exhibitions/playhouse,5293,Exhibition: Playhouse,
+/exhibitions-items/prevailing-landscapes/,/pages/exhibitions/prevailing-landscapes,5026,Exhibition: Prevailing Landscapes,
+/exhibitions-items/reframed-painting-collage-by-tiko-kerr/,/pages/exhibitions/reframed-painting-and-collage-by-tiko-kerr,2591,Exhibition: Reframed: Painting & Collage by Tiko Kerr,
+/exhibitions-items/robert-young-spacial-understanding/,/pages/exhibitions/robert-young-spatial-understanding,1188,Exhibition: Robert Young: Spacial Understanding,
+/exhibitions-items/shelter/,/pages/exhibitions/memory-history-story,183,"Exhibition: Memory, History, Story",
+/exhibitions-items/internet-free/,/pages/exhibitions/memory-history-story,,"Exhibition: Memory, History, Story",An earlier address of the same item
+/exhibitions-items/free-internet/,/pages/exhibitions/memory-history-story,,"Exhibition: Memory, History, Story",An earlier address of the same item
+/exhibitions-items/stitched-merging-photography-and-textile-practices/,/pages/exhibitions/stitched,5432,Exhibition: Stitched: Merging Photography and Textile Practices,
+/exhibitions-items/the-art-of-conversation/,/pages/exhibitions/the-art-of-conversation,5100,Exhibition: The Art of Conversation,
+/exhibitions-items/transformations/,/pages/exhibitions/transformations,2539,Exhibition: Transformations,
+/exhibitions-items/unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang/,/pages/exhibitions/unfixed,3352,Exhibition: Unfixed,
+/exhibitions-items/vaccines/,/pages/exhibitions/readymades,94,Exhibition: Readymades,
+/exhibitions-items/caccines/,/pages/exhibitions/readymades,,Exhibition: Readymades,An earlier address of the same item
+/exhibitions-items/victor-john-penner-not-safe-to-occupy/,/pages/exhibitions/victor-john-penner-not-safe-to-occupy,1210,Exhibition: Victor John Penner: Not Safe to Occupy,
+/exhibitions-items/we-can-only-hint-at-this-with-words/,/pages/exhibitions/we-can-only-hint-at-this-with-words,3904,Exhibition: We can only hint at this with words,
+/exhibitions-items/work-is-art/,/pages/exhibitions/work-is-art,1194,Exhibition: Work Is Art,
+/fund/,/pages/donate,29,Page: Fund,The old fundraising overview. Donate is the Support section's main page
+/fund/gallery-shop/,/pages/shop,55,Page: Shop,
+/fund/membership/,/pages/donate,61,Page: Friends of the Gallery,"Friends of the Gallery, an empty page"
+/fund/our-impact/,/pages/the-smith-foundation,1720,Page: Our Impact,
+/fund/scholarship-opportunity/,/pages/smith-foundation-scholarships,3386,Page: Scholarship Opportunity,
+/fund/special-events-gala/,/pages/brilliance-gala,2863,Page: Special Events - Gala,
+/fund/support/,/pages/donate,38,Page: Support Us,
+/music_at_the_smith/,/pages/music-at-the-smith,4077,Page: Music at the Smith,
+/music_at_the_smith/fall-fete-2022/,/pages/music-at-the-smith,4216,Page: FALL FÊTE 2022,A past event
+/public-events/,/pages/upcoming-events,6539,Page: Public Events,
+/to-gordon-with-love-tickets/,/pages/brilliance-gala,2221,Page: To Gordon With Love: Tickets,Tickets for a past fundraiser
+/upcoming-exhibition/,/pages/upcoming-exhibitions,4438,Page: Upcoming Exhibition,
+/visit/,/pages/plan-your-visit,33,Page: Visit,
+/visit/request-for-proposals/,/pages/contact,3978,Page: Request for Proposals,"A job posting or call, which stays behind. Contact is where to ask"
+/visit/upcoming-exhibition/,/pages/on-now,49,Page: Exhibitions,"The old Exhibitions page: current, upcoming and past"
+/visit/upcoming-exhibition/beyond-the-horizon/,/pages/exhibitions/beyond-the-horizon,3824,Page: Beyond the Horizon,
+/visit/upcoming-exhibition/unfixed/,/pages/exhibitions/unfixed,3432,Page: Unfixed: The Entangled Works of Chris Curreri and Laurie Kang,
+/exhibitions-items/,/pages/past-exhibitions,,Any other exhibition address,
+/exhibitions-items/unfixed/,/pages/exhibitions/unfixed,,Exhibition: Unfixed,WordPress answered at this short address too
+/portfolio_category/past/,/pages/past-exhibitions,,List: past exhibitions,
+/portfolio_category/current/,/pages/on-now,,List: current exhibition,
+/portfolio_category/upcoming/,/pages/upcoming-exhibitions,,List: upcoming exhibition,
+/portfolio_category/spring-luncheon/,/pages/brilliance-gala,,List: fundraisers,
+/portfolio_category/brilliance-gala/,/pages/brilliance-gala,,List: fundraisers,
+/portfolio_category/,/pages/past-exhibitions,,Any other list of exhibitions,
+/current-exhibition/,/pages/on-now,,Page: Current Exhibition,"Internet Archive, 2023"
+/curate/,/pages/plan-your-visit,,"Page: Visit, under its earlier name","Internet Archive, 2019"
+/curate/upcoming-exhibition/,/pages/on-now,,"Page: Exhibitions, under its earlier name","Internet Archive, 2019"
+/curate/upcoming-exhibition/beyond-the-horizon/,/pages/exhibitions/beyond-the-horizon,,Exhibition: Beyond the Horizon,"Internet Archive, 2021"
+/curate/upcoming-exhibition/unfixed/,/pages/exhibitions/unfixed,,Exhibition: Unfixed,"Internet Archive, 2023"
+/curate/upcoming-exhibition/unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang/,/pages/exhibitions/unfixed,,Exhibition: Unfixed,"Internet Archive, 2021"
+/curate/unfixed/,/pages/exhibitions/unfixed,,Exhibition: Unfixed,"Internet Archive, 2021"
+/curate/unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang/,/pages/exhibitions/unfixed,,Exhibition: Unfixed,"Internet Archive, 2021"
+/curate/request-for-proposals/,/pages/contact,,Page: Request for Proposals,"A job posting or call, which stays behind. Contact is where to ask"
+/engage/curatorial-call/,/pages/contact,,Page: Curatorial Call,"A job posting or call, which stays behind. Contact is where to ask"
+/engage/fundraising-event-manager/,/pages/contact,,Page: Fundraising Event Manager,"A job posting or call, which stays behind. Contact is where to ask"
+/engage/work-with-us-programming-and-communications-manager/,/pages/contact,,Page: Work With Us,"A job posting or call, which stays behind. Contact is where to ask"
+/engage/explore-and-create-art-saturdays/,/pages/explore-create,,Page: Explore + Create,"Internet Archive, 2022"
+/engage/explore-create/,/pages/explore-create,,Page: Explore + Create,"Internet Archive, 2022"
+/engage/music-at-the-smith/,/pages/music-at-the-smith,,Page: Music at the Smith,"Internet Archive, 2022"
+/engage/membership/,/pages/donate,,Page: Friends of the Gallery,"Internet Archive, 2019"
+/fund/special-events/,/pages/brilliance-gala,,Page: Special Events,"Internet Archive, 2019"
+/spring-gala-2022-ticket/,/pages/brilliance-gala,,Page: tickets for a past gala,"Internet Archive, 2023"
+/tickets/,/pages/brilliance-gala,,Page: tickets for a past fundraiser,"Internet Archive, 2019"
+/winter-appeal/,/pages/donate,,Page: Winter Appeal,"Internet Archive, 2023"
+/update-your-information/,/pages/contact,,Page: Update your information,"Internet Archive, 2022"
+/events/,/pages/upcoming-events,,"The events calendar, in any view, day or category",
+/event/,/pages/upcoming-events,,Any other event,
+/event/artist-talk-unfixed-the-entangled-works-of-chris-curreri-and-laurie-kang/,/pages/exhibitions/unfixed,,"Event: Artist Talk, Unfixed",A past event of this exhibition. Its video is on the exhibition's page
+/organizer/,/pages/upcoming-events,,The calendar's organizer pages,
+/venue/,/pages/plan-your-visit,,The calendar's venue page,
+/product/,/pages/shop,,"The old shop's 12 products (catalogues, cards, a tote bag)",The gallery hasn't said if it still sells them (gallery-questions.md 8.7)
+/product-category/,/pages/shop,,The old shop's categories,
+/shop/,/pages/shop,,The old shop,
+/home/,/,,"Home, as a page address",
+/sitemap.xml,/sitemap.xml,,"Sitemap, for search engines",
+/wp-sitemap.xml,/sitemap.xml,,"Sitemap, for search engines",
+/wp-content/uploads/2017/07/GSF-Volunteer-Application-Form-2015.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form
+/wp-content/uploads/2018/08/To_Gordon_With_Love_Website.pdf,/pages/brilliance-gala,,"PDF: To Gordon With Love, a past fundraiser",A past fundraiser
+/wp-content/uploads/2018/08/To_Gordon_With_Love_Website_Edit.pdf,/pages/brilliance-gala,,"PDF: To Gordon With Love, a past fundraiser",A past fundraiser
+/wp-content/uploads/2019/05/Auction-2019-catalogue-7x7-ONLINE.pdf,/pages/brilliance-gala,,PDF: 2019 auction catalogue,The new page holds this file
+/wp-content/uploads/2020/01/Gordon-Smith-Music-at-the-Smith-Rack-Cards-V3.pdf,/pages/music-at-the-smith,,PDF: Music at the Smith rack card,An old programme card
+/wp-content/uploads/2020/11/2019-A-YEAR-IN-REVIEW.pdf,/pages/the-smith-foundation,,PDF: Year in review,"Only the newest report shows, from the Foundation's page (P-47)"
+/wp-content/uploads/2021/06/UnfixedInterior_spreadsNoFrame.pdf,/pages/exhibitions/unfixed,,"PDF: Unfixed, the book",The new page holds this file
+/wp-content/uploads/2021/10/GSF-Volunteer-Application-Form-2021.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form. No longer in the media library; the Internet Archive saw it in 2021
+/wp-content/uploads/2022/07/2021-A-YEAR-IN-REVIEW_sm.pdf,/pages/the-smith-foundation,,PDF: Year in review,"Only the newest report shows, from the Foundation's page (P-47)"
+/wp-content/uploads/2022/09/GSF-Volunteer-Application-Form-2022.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form
+/wp-content/uploads/2023/01/GMSF-NV-2023.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed. No longer in the media library; the Internet Archive saw it in 2023
+/wp-content/uploads/2023/01/GMSF-V-2023.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2023/01/GMSF-WV-2023.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2023/07/EndlessSummer_ExhibitionBooklet.pdf,/pages/exhibitions/endless-summer,,"PDF: Endless Summer, the booklet",The new page holds this file
+/wp-content/uploads/2023/11/2022-A-YEAR-IN-REVIEW.pdf,/pages/the-smith-foundation,,PDF: Year in review,"Only the newest report shows, from the Foundation's page (P-47)"
+/wp-content/uploads/2023/12/GSF-Volunteer-Application-Form.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form
+/wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-North-Vancouver-2024-1.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-North-Vancouver-2024.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-Vancouver-2024-1.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-Vancouver-2024-2.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-Vancouver-2024.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-West-Vancouver-2024-1.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2024/01/GMSF-Young-Artist-Scholarship-West-Vancouver-2024.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2024/06/GSG-Volunteer-Application-Form.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form
+/wp-content/uploads/2024/07/2023-A-YEAR-IN-REVIEW.pdf,/pages/the-smith-foundation,,PDF: Year in review,"Only the newest report shows, from the Foundation's page (P-47)"
+/wp-content/uploads/2025/10/2024-A-Year-in-Review_with-FS.pdf,/pages/the-smith-foundation,,PDF: Year in review,"Only the newest report shows, from the Foundation's page (P-47)"
+/wp-content/uploads/2025/10/GSF-Volunteer-Application-Form_202510.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form
+/wp-content/uploads/2026/03/GSF-Volunteer-Application-Form_202603.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form
+/wp-content/uploads/2026/03/NV-Scholarship-Invitation.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2026/03/Van-Scholarship-Invitation.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2026/03/WV-Scholarship-Invitation-1.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2026/03/WV-Scholarship-Invitation.pdf,/pages/smith-foundation-scholarships,,PDF: Scholarship form,A form for a round that has closed
+/wp-content/uploads/2026/04/GSF-Volunteer-Application-Form_202603.pdf,/pages/volunteer,,PDF: Volunteer application form,An old form
+/wp-content/uploads/2026/06/SMITH-ANNUAL-REPORT-2025.pdf,/pages/the-smith-foundation,,PDF: Year in review,"Only the newest report shows, from the Foundation's page (P-47)"
