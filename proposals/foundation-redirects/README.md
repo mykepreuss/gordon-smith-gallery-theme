@@ -1,22 +1,22 @@
 # The old Smith Foundation site's addresses (smithfoundation.co)
 
-Status: **Made 2026-09-29. Not uploaded. It waits for release.** Where each address goes is decided (P-63, Michael, 2026-09-29).
+Status: **On the old server since 2026-09-29, 5:02 PM Pacific, the day the new site went live.** Every old address redirects. Where each goes is decided (P-63, Michael, 2026-09-29). What is left is under "Still to do".
 
 Michael, 2026-09-29: "This is 404s but is technically still up and was not correctly 301 redirected to our new site, the them we're working on in this project. Please create a 301 redirect file I can upload to our server for when we get the new site live to properly redirect."
 
 ## Summary
 
-- **The file to upload:** `smithfoundation.co.htaccess`. On the old server it is named `.htaccess` and sits in the website's main folder.
+- **The file:** `smithfoundation.co.htaccess`. On the old server it is named `.htaccess` and sits in the website's main folder, `public_html`.
 - **It needs nothing else on the server.** WordPress comes down at release (Michael, 2026-09-29: "The entire wordpress site will be coming down and not exist"). Every old address, WordPress's own included, then leads to the new site.
 - **The hosting account and the domain stay** (Michael, 2026-09-29: "The hosting account is staying, only WordPress is going"). The old server reads the file each time someone asks for an old address, so they stay for as long as the redirects are wanted ("After release").
 - **What it does:** sends 174 old addresses to their new pages on gordonsmithgallery.com with permanent (301) redirects. Anything else goes to the new home page.
-- **Don't upload it before release.** 29 of the 51 new pages are exhibition pages, which answer 404 on the live site until the new theme is published.
-- **One setting outside the file has to change too:** the domain's forwarding, at GoDaddy. Today about half of all visits never reach the old server ("What is wrong today").
-- **Tested** on Apache on this Mac, as the only file on the server and beside WordPress: 4,628 requests, all answered as they should. Every new page answers on the review theme.
+- **It waited for release.** 29 of the 51 new pages are exhibition pages, which answered 404 on the live site until the new theme was published.
+- **One setting outside the file changed too:** the domain's forwarding, at GoDaddy, which took about half of all visits ("What was wrong before").
+- **Checked** on the real server: 175 of 175 old addresses redirect. Tested before that on Apache on this Mac, as the only file on the server and beside WordPress: 4,634 requests, all answered as they should.
 
-## What is wrong today
+## What was wrong before
 
-Checked 2026-09-29.
+Checked 2026-09-29, before the changes.
 
 | What | Found |
 | --- | --- |
@@ -88,62 +88,77 @@ None of them has to stay on the old server. Each rule answers for an address, wh
 
 | What | Why |
 | --- | --- |
-| `/.well-known/` | The host's checks that renew the security certificate. Without the certificate, no `https://` address redirects |
-| `/robots.txt` | The server has none once WordPress is gone, which tells search engines they may read every address. That is how they find the redirects |
+| `/.well-known/` | The host's checks that renew the security certificate: a check's file is served. Without the certificate, no `https://` address redirects |
+| `/robots.txt` | A `robots.txt` put on the server would be served. There is none, so the server turns to its "not found" page, and that address goes to the new home page like any other. Search engines find no rules there, so they may read every address, which is how they find the redirects |
 | Any other website in the same hosting account | The rules apply to `smithfoundation.co` and `www.smithfoundation.co` only |
 
-## On release day
+## What was done, 2026-09-29
 
-After the new theme is published and the release scripts have run (`proposals/store-changes.md`).
+After the new theme went live (4:08 PM Pacific), with Michael's yes to each change ("1. Yes and delete the old one we don't need to keep it 2. Yes, proceed 3. Approved, proced"). Through his GoDaddy account in Chrome, where he had signed in.
 
-1. **Check the new pages.** All 51 must answer:
+| Time (Pacific) | What | Result |
+| --- | --- | --- |
+| Before | Every new page asked of the live site (`targets`) | 51 of 51 answer |
+| Before | The server's `.htaccess` read and copied to `server/htaccess-before-2026-09-29.txt` | 42 lines, 1,287 bytes: WordPress's rules, an https rule, a cache plugin's block. The copy matches byte for byte |
+| 5:02 PM | `smithfoundation.co.htaccess` uploaded to `public_html` as `.htaccess`, over the old one (cPanel, File Manager, Upload) | On the server: 31,753 bytes, the same as the file in Git, byte for byte. The old lines are not kept on the server, at Michael's word |
+| 5:03 PM | The firewall's cache cleared (GoDaddy Website Security, Firewall, Clear Cache) | Cleared |
+| 5:05 PM | Every old address asked of the server through the firewall (`live --ip 192.124.249.10`) | 175 of 175 |
+| 5:06 PM | The domain's forwarding deleted (GoDaddy, the domain, DNS, Forwarding) | Deleted. **GoDaddy then reset the domain's addresses:** both A records became "Parked", `sucuriip` went, and `www` was added as a CNAME |
+| 5:09 PM | The A record set back to the firewall, `192.124.249.10`, by Michael. The agent is not allowed to edit DNS records | Both of GoDaddy's name servers gave it by 5:10 PM |
+| 5:12 PM | Every old address again, at the address the name servers give | 175 of 175 |
 
-   ```bash
-   python3 proposals/foundation-redirects/redirects.py targets https://gordonsmithgallery.com
-   ```
+For about four minutes GoDaddy's name servers gave its parked page for the domain. Lookups kept elsewhere from before held the old addresses through it.
 
-   If Supporters is held back, change its row first (above). For any other page that fails, fix the row, then `write` and `test`.
-2. **Take WordPress down.** Keep a copy of what the Foundation wants to keep first. The export and the media library were saved on 2026-09-28 (`proposals/smith-foundation-site.md`, "Sources"). Then delete WordPress's files from `public_html` in cPanel's File Manager, its `.htaccess` among them ("Show hidden files" in Settings shows it).
-3. **Put the file in.** Upload `smithfoundation.co.htaccess` to `public_html` and rename it `.htaccess`. It can be the only file there. It also works before WordPress is deleted: its rules then go at the very top of the `.htaccess` that is there, and WordPress's sign-in stops opening, since every address redirects.
-4. **Clear the firewall's cache** (GoDaddy Website Security, Firewall, Clear cache). It keeps copies of pages, so the old answers can show for a while otherwise.
-5. **Check the server**, asking it directly:
+**If this is ever done again:** set the A record to the firewall's address first, then delete the forwarding, and look at the DNS records straight after. Deleting the forwarding resets them.
 
-   ```bash
-   python3 proposals/foundation-redirects/redirects.py live --ip 192.124.249.10
-   ```
+## What is there now
 
-6. **Turn off the domain's forwarding.** At GoDaddy: the domain `smithfoundation.co`, DNS, Forwarding, delete. That removes `3.33.251.168`, so every visit reaches the server. Optional: add `www` as a CNAME to `smithfoundation.co`, so old links with `www` work too. The firewall has to know the `www` name for that.
-7. **Check the domain** as visitors reach it. DNS changes take up to an hour:
+| What | Now |
+| --- | --- |
+| `smithfoundation.co` | One address, the firewall's (`192.124.249.10`), which passes each request to the server |
+| Any old address | A permanent redirect to its new page, or to the new home page |
+| `http://` addresses, and `http://www.` | Redirect the same way |
+| `https://www.smithfoundation.co` | Does not open: the firewall's certificate names `smithfoundation.co` only. Old links didn't use `www`: the Internet Archive has 15 such addresses, all from the 2017 "coming soon" page |
+| WordPress | Still on the server, and nothing reaches it, its sign-in included |
+| The forwarding | Gone |
 
-   ```bash
-   python3 proposals/foundation-redirects/redirects.py live
-   ```
+## Still to do
 
-8. **Tell Google**, if the old domain is in Search Console: Settings, Change of address, to gordonsmithgallery.com.
+| What | Who |
+| --- | --- |
+| Delete WordPress's files from `public_html`, all but `.htaccess`, when the Foundation has what it wants from them. The export and the media library were saved on 2026-09-28 (`proposals/smith-foundation-site.md`, "Sources"). The account's disk is 82.73 GB of 95 GB full | Michael |
+| Optional: `https://www.` addresses. The firewall needs the `www` name added so its certificate covers it | Michael |
+| Optional: tell Google, if the old domain is in Search Console (Settings, Change of address, to gordonsmithgallery.com) | Michael |
 
-## After release
+## Keeping it working
 
 - **The hosting account and the domain stay** (Michael, 2026-09-29). The redirects work only while the server answers and the domain points at it. The account can be the host's smallest: it holds one file. Search engines need about a year to move everything over. Links on other sites need the redirects for as long as the links exist.
-- **The firewall** (GoDaddy Website Security) can stay or go. If it goes, the domain's address changes from the firewall's to the server's own, at GoDaddy.
+- **The firewall** (GoDaddy Website Security) can stay or go. If it goes, the domain's A record changes from the firewall's address to the server's own, at GoDaddy.
+- **To change where an address goes:** change its row in `redirects.csv`, run `write` and `test`, upload the file over the one on the server, clear the firewall's cache, and run `live`.
 - **If the hosting account ever ends**, this file has nowhere to run. The redirects then move to Shopify: `smithfoundation.co` becomes a domain of the store, and the list becomes URL redirects there. Shopify matches exact addresses only, so the list needs a second form, and an address not in it shows the new site's "page not found" instead of the home page.
 
 ## Undo
 
-Delete the file from the server, or put back what was there, and clear the firewall's cache. Browsers remember a permanent redirect, so a visitor who followed one may keep being sent on for a while.
+Upload `server/htaccess-before-2026-09-29.txt` to `public_html` as `.htaccess` and clear the firewall's cache. WordPress then answers again, as long as its files are there. The forwarding can be added again at GoDaddy; it changes the DNS records too. Browsers remember a permanent redirect, so a visitor who followed one may keep being sent on for a while.
 
 ## Checks
 
 ```bash
 python3 proposals/foundation-redirects/redirects.py write
 python3 proposals/foundation-redirects/redirects.py test
-python3 proposals/foundation-redirects/redirects.py targets https://ed35ee-ea.myshopify.com --theme 184767250729
+python3 proposals/foundation-redirects/redirects.py targets https://gordonsmithgallery.com
+python3 proposals/foundation-redirects/redirects.py live
 ```
 
 | Check | Result, 2026-09-29 |
 | --- | --- |
-| `test`: Apache 2.4.67 on this Mac, twice. Once with the file alone on the server, WordPress deleted. Once with WordPress's files there and its rules under ours. Every listed address, as written, without its last slash, in capitals, with a query, with a page under it, by its WordPress number, and as `www`. WordPress's own addresses, a picture and an address that never existed. Then what must be left alone | 4,628 of 4,628 |
-| `targets`, the review theme | 51 of 51 new pages answer |
-| `targets`, the live site | 22 of 51. The 29 exhibition pages answer 404 until release, which is why the file waits |
+| `test`: Apache 2.4.67 on this Mac, twice. Once with the file alone on the server, WordPress deleted. Once with WordPress's files there and its rules under ours. Every listed address, as written, without its last slash, in capitals, with a query, with a page under it, by its WordPress number, and as `www`. WordPress's own addresses, a picture and an address that never existed. Then what must be left alone. The test's server turns to a "not found" page as the real one does | 4,634 of 4,634 |
+| `targets`, the review theme, before release | 51 of 51 new pages answer |
+| `targets`, the live site, before release | 22 of 51. The 29 exhibition pages answered 404 until release, which is why the file waited |
+| `targets`, the live site, after release | 51 of 51 |
+| `live --ip 192.124.249.10`, the real server through the firewall, after the upload and again after the DNS change | 175 of 175, both times |
+| By hand on the real server: a picture, a listed PDF, WordPress's sign-in and admin, a numbered address, a query, capitals, a feed, plain `http`, `http://www.` | Each redirects as it should. One followed to its end lands on its exhibition's page with 200, after one redirect |
+| The file on the server against the file in Git (SHA-256) | The same: `03654f86...202c46` |
 | Files and links on the old domain in the new site: 54 pages read on the review theme (the 50 new pages in the list and four more), and the repo searched | None |
 
-`live` has not run: nothing is uploaded.
+`live` without `--ip` asks by this computer's own lookup, which held the old addresses for up to an hour after the change. The name servers and four public resolvers gave the firewall's address by 5:12 PM.

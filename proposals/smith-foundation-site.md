@@ -248,7 +248,7 @@ One branch and one pull request after the decisions, as the Artists for Kids wor
 
   Either is the Foundation's to choose, with its DNS. The old and new addresses are in the review sheet.
 
-  Chosen 2026-09-29 (P-63, decided by Michael the same day): a third way, since the old server still runs. A file on it sends each old address to its new page, and the domain's forwarding is turned off so every visit reaches the server. The file, its list of 174 addresses and the steps for the day: `proposals/foundation-redirects/`.
+  Chosen 2026-09-29 (P-63, decided by Michael the same day): a third way, since the old server still runs. A file on it sends each old address to its new page, and the domain's forwarding is turned off so every visit reaches the server. Done 2026-09-29, after the release. The file, its list of 174 addresses and what was done: `proposals/foundation-redirects/`.
 - Rollback: hide the three pages. Entries, files and the field can stay; the old theme reads none of them.
 
 ## Found while reading
