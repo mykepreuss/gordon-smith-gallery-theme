@@ -1008,8 +1008,14 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   padding: var(--gs-artwork-inset);
   background-color: var(--gs-color-mat);
 }
+/* The work fills the mat and carries the inset itself. Safari resolves a height of 100% inside the
+   padded mat to the mat's full height, which pushed the work down and cut off its foot. */
 .gs-media--artwork > img,
 .gs-media--artwork > picture > img {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: var(--gs-artwork-inset);
   object-fit: contain;
   object-position: 50% 50% !important; /* beats image_tag's inline focal point: artworks are never shifted */
 }
