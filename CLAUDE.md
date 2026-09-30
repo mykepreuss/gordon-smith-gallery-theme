@@ -23,7 +23,7 @@ The new theme is live: `184767250729` "Gordon Smith Gallery", from `main` at dee
 - Still open after release: `verification/2026-09-29-release-gate.md`, "Still open after release".
 
 - Work the loop in the plan's "How we iterate": branch from `main`, work against the development theme, design system first, record decisions as Proposed for Michael, open a pull request. After Michael merges, update the review theme from `main`, checking its editor JSON first. Staff may edit the live theme in its editor: before a release, bring those changes into Git too.
-- Open work: the plan's "Iteration backlog", and what is left of its "Release backlog" (the staff and newsletter tests, the gallery's approvals). The plan still reads as before the release; Michael says when it changes.
+- Open work: the plan's "Iteration backlog" and "Open after the release" (the staff and newsletter tests, the gallery's approvals, the tasks outside the store). The plan was brought up to date with the release on 2026-09-29, at Michael's request.
 - `custom.release_body` is gone: a page's text is the page's own text again (DS-39), and a page's template alone decides its layout (L-08). `custom.release_description` stays until the descriptions move to the search engine listings (`store-changes.md` §8d).
 - Another session may be working in this repo at the same time: pull `main` before starting, and merge `main` into your branch if it moved.
 
