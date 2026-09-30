@@ -163,7 +163,10 @@ def expected():
             cases += [(f"/?p={r['wp_id']}", new), (f"/?page_id={r['wp_id']}", new),
                       (f"/index.php?p={r['wp_id']}&preview=true", new)]
     home = NEW_SITE + "/"
+    # The last two are left alone by the rules, but the server has no such file, so it turns to its
+    # "not found" page (/404.shtml), and that address goes to the new home page like any other.
     cases += [(p, home) for p in ("/no-such-page/", "/feed/", "/author/admin/", "/slide/volunteer/",
+                                  "/robots.txt", "/.well-known/acme-challenge/not-there",
                                   "/?p=999999", "/?utm_source=north%20shore%20news", "/index.php",
                                   "/xmlrpc.php", "/wp-json/wp/v2/pages", "/wp-login.php", "/wp-admin/",
                                   "/wp-cron.php", "/wp-content/themes/Avada/style.css",
@@ -209,14 +212,14 @@ def test():
     states = [("WordPress deleted", (), OUT.read_text()),
               ("WordPress still there", WORDPRESS_FILES, OUT.read_text() + WORDPRESS)]
     cases, failures, count = expected(), [], 0
-    left_alone = [("/robots.txt", OLD_HOST, 404), ("/.well-known/acme-challenge/abc", OLD_HOST, 404),
+    left_alone = [("/.well-known/acme-challenge/token", OLD_HOST, 200),  # a certificate check's file
                   ("/other-site/", "another-site.example", 200),  # another site in the account
                   ("/about/", "another-site.example", 404)]
     for state, files, rules in states:
         with tempfile.TemporaryDirectory() as tmp:
             tmp = pathlib.Path(tmp)
             root = tmp / "public_html"
-            for name in files + ("other-site/index.html",):
+            for name in files + ("other-site/index.html", ".well-known/acme-challenge/token"):
                 (root / name).parent.mkdir(parents=True, exist_ok=True)
                 (root / name).write_text("kept")
             (root / ".htaccess").write_text(rules)
@@ -227,6 +230,7 @@ PidFile {tmp}/httpd.pid
 ErrorLog {tmp}/error.log
 DocumentRoot "{root}"
 DirectoryIndex index.php index.html
+ErrorDocument 404 /404.shtml
 <Directory "{root}">
   AllowOverride All
   Require all granted
@@ -238,7 +242,7 @@ DirectoryIndex index.php index.html
             try:
                 base = f"http://127.0.0.1:{PORT}"
                 for _ in range(50):
-                    if ask(base + "/robots.txt", OLD_HOST)[0]:
+                    if ask(base + "/", OLD_HOST)[0]:
                         break
                     if server.poll() is not None:
                         sys.exit("Apache didn't start:\n" + server.stdout.read() + (tmp / "error.log").read_text())

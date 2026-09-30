@@ -11,7 +11,7 @@ A new Shopify theme for gordonsmithgallery.com (store `ed35ee-ea.myshopify.com`)
 - For search and answer engines: the review and what is built, `proposals/aeo-geo-review.md`; the content side (the four entities, the 32 questions, how to measure), `aeo/`.
 - The links between pages (the rules, what each kind of page links to, the check): `proposals/internal-linking-review.md`; names in texts, `proposals/linked-names.md`.
 - What the current theme holds and where it goes: `proposals/content-migration.md`. Store changes for review and release: `proposals/store-changes.md`.
-- The old Foundation site's addresses (smithfoundation.co) and the redirect file for its server, to upload now the site is live: `proposals/foundation-redirects/`.
+- The old Foundation site's addresses (smithfoundation.co) and the redirect file on its server since 2026-09-29: `proposals/foundation-redirects/`.
 - The old theme (Colorblock, ID `183162372393`, live until the release) is in `baseline/theme/` as a reference for content and placement only. Don't copy its code or settings, and never write to it: the store keeps it unchanged for rollback.
 
 ## Current phase: released on 2026-09-29

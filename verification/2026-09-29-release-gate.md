@@ -150,5 +150,6 @@ Done between 23:07 and 23:17 UTC (4:07 to 4:17 PM Pacific). The full log, with e
 - The print descriptions (§7) and the descriptions in the search engine listings (§8d): the gallery's approval.
 - The newsletter consent wording, the staff editing test, the newsletter test, the exhibition date check, the seven hero focal points.
 - Done 2026-09-29: a new review theme, `184823611689`, made from `main` at Michael's request, and the live theme renamed "Gordon Smith Gallery" (`PROJECT.md`, milestone 4b).
-- Outside the store: the Artists for Kids site cut back to registration (P-30); the redirect file on smithfoundation.co's server and GoDaddy's forwarding off (P-63).
+- Outside the store: the Artists for Kids site cut back to registration (P-30).
+- Done 2026-09-29, 5:02 to 5:12 PM Pacific: the redirect file on smithfoundation.co's server, GoDaddy's forwarding off, and the domain pointing at the firewall alone. 175 of 175 old addresses redirect (P-63; `proposals/foundation-redirects/README.md`, "What was done"). Left for Michael: deleting WordPress's files from the old server.
 - Done 2026-09-29, in `main` and on the review theme, not yet on the live site: the pre-release bridges out of the theme, and the unlinked list in `links.json` emptied (#123). It goes live at the next release Michael approves.
