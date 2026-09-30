@@ -13,6 +13,8 @@ Copied
   js/*.js           -> assets/<same name>
   logos/*.svg       -> snippets/gs-logo-*.liquid (through build_logo_snippets.py)
   three logos       -> assets/gs-logo-<organisation>.svg (LOGO_FILES, for structured data)
+  logos/favicon/*   -> assets/gs-favicon.svg, gs-favicon-32.png, gs-apple-touch-icon.png
+                       (FAVICON_FILES; build them with build_favicon.py)
 """
 import argparse
 import filecmp
@@ -32,6 +34,12 @@ LOGO_FILES = {
     "gs-logo-foundation.svg": "foundation-full-colour-box.svg",
 }
 
+FAVICON_FILES = {
+    "gs-favicon.svg": "gallery-favicon.svg",
+    "gs-favicon-32.png": "gallery-favicon-32.png",
+    "gs-apple-touch-icon.png": "gallery-apple-touch-icon.png",
+}
+
 
 def pairs(theme):
     yield ROOT / "tokens.css", theme / "assets" / "gs-tokens.css"
@@ -42,6 +50,9 @@ def pairs(theme):
     # a logo's address, and the page's own logos are drawn inline.
     for name, logo in LOGO_FILES.items():
         yield ROOT / "logos" / logo, theme / "assets" / name
+    # The site's icons (DS-189), drawn from the Gallery's simple stacked logo by build_favicon.py.
+    for name, icon in FAVICON_FILES.items():
+        yield ROOT / "logos" / "favicon" / icon, theme / "assets" / name
 
 
 def main(argv=None):
