@@ -1036,3 +1036,19 @@ The order was the page, then the links to it, then the Artists for Kids page, so
 **Effect on the review theme:** the same, since menus, pages and entries are shared.
 
 **Undo:** `afk_about.py undo` prints the calls, in order: the Artists for Kids page's text and card groups back to the snapshot (`pageUpdate`, `metafieldsSet`), the menu back to the snapshot's items (`menuUpdate`), the card's link back (`metaobjectUpdate`), then `pageDelete` on `gid://shopify/Page/165878104361`.
+
+## 2026-09-29: "Artist for Kids" in the live theme's name list
+
+**Why:** Michael, 2026-09-29, of Allison Kerr's role on About Artists for Kids: "These should link like the other peoples'", then "Let's get it live now", then "I merged the PR and allow it for this session". The line came in #129 (`proposals/linked-names.md`, "Since then"). A theme setting, not a store resource, but logged here: it is the one write to a live theme since the releases, made only because Michael allowed it for this session. `AGENTS.md` still says never to write to the live theme; that rule is unchanged.
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; by `shopify theme list`, `184823611689` "Gordon Smith Gallery" live (since the second release, from `main` at 8bcfaa7), `184767250729` the rollback and `184824398121` the review theme, both unpublished. Before-snapshot: the live theme's `config/settings_data.json`, downloaded into a scratch folder. It matched `theme/config/settings_data.json` at 8bcfaa7 exactly, so no one had changed it in the editor since the release. The only difference from `main` was the new line.
+
+| What | Through | Notes |
+| --- | --- | --- |
+| The live theme's own `config/settings_data.json`, with "Artist for Kids = artists-for-kids" added under "Artists for Kids = artists-for-kids" in Links between pages, Names and their pages. Nothing else changed: after the edit the file matched `main` byte for byte | CLI, `shopify theme push --theme 184823611689 --only config/settings_data.json --allow-live` | The file was the live theme's, downloaded just before, not Git's, so an editor change made since the release could not have been lost |
+
+**Checked after:** the live theme's file, downloaded again, matches `main`. `/pages/about-artists-for-kids` on gordonsmithgallery.com, drawn with `184823611689`: Allison Kerr's role links "Artist for Kids" to the Artists for Kids page, as Chantal Pinard's and Emily Neufeld's roles link "Artists for Kids"; no Liquid errors. The same line on the development theme added no other link on the site's pages (#129).
+
+**Review theme:** `main` at 641370d pushed to `184824398121` with `--strict` after its editor files were checked (they matched 8bcfaa7 apart from the empty settings Shopify adds). Its settings file, read back, matches `main`.
+
+**Undo:** in the live theme's editor, Theme settings, Links between pages, delete the line "Artist for Kids = artists-for-kids" and save. Or push the before-snapshot's copy of the file the same way, if Michael allows a live write again.
