@@ -7,11 +7,11 @@ For any person or agent (Claude, Codex, or other) working in this repo. These ru
 | | |
 | --- | --- |
 | Store | `ed35ee-ea.myshopify.com` (public domain `gordonsmithgallery.com`) |
-| Live theme | `184823611689` "Gordon Smith Gallery", role MAIN since the second release, 2026-09-29 at 00:51 UTC on the 30th (5:51 PM Pacific), from `main` at 8bcfaa7. It was the review theme until then, named "Review theme (do not publish)", so older records call it that. **Never write to it.** |
+| Live theme | `184823611689` "Gordon Smith Gallery", role MAIN since the second release, 2026-09-29 at 00:51 UTC on the 30th (5:51 PM Pacific), from `main` at 8bcfaa7. It was the review theme until then, named "Review theme (do not publish)", so older records call it that. **Write to it only as "Small fixes on the live theme" below says.** |
 | Rollback theme | `184767250729` "Gordon Smith Gallery (rollback, 2026-09-29)", role UNPUBLISHED. The live theme from the first release until the second, from `main` at dee1885, and the review theme before that, named "New theme for review (do not publish)". Kept unchanged to roll back the second release. **Never write to it.** |
 | Old theme | `183162372393` "Colorblock: NEW WEBSITE", role UNPUBLISHED since the release. Kept unchanged for rollback. **Never write to it, never delete it.** |
 | Review theme | `184824398121` "Review theme (do not publish)", role UNPUBLISHED. Created 2026-09-29 from `main` at 8bcfaa7, at the second release. It follows `main`: after a merge, push `main` to it (editor JSON checked first) and record the commit in `PROJECT.md`. Push only to this ID |
-| How a change goes live | Only at a release Michael approves. No push goes to the live theme, so a release publishes the review theme; the theme it replaces is kept for rollback, and a new review theme is made from `main` and written here |
+| How a change goes live | At a release Michael approves: a release publishes the review theme; the theme it replaces is kept for rollback, and a new review theme is made from `main` and written here. Between releases, a small fix to the live theme's settings or page layouts can go live on its own, with Michael's go-ahead (below). Code goes live only at a release |
 
 Before any write to Shopify, recheck: store domain, live theme ID and role, the review theme's ID and `UNPUBLISHED` role, and the CLI account.
 
@@ -29,7 +29,21 @@ Before any write to Shopify, recheck: store domain, live theme ID and role, the 
 - Before a push to the review theme, pull its `config/settings_data.json` and `templates/*.json` into a scratch folder and compare them with Git. Changes made in its theme editor (staff testing) come into Git first, so a push never overwrites them.
 - The review theme is shared: every session pushes to the same one, and none sees another's push until it lands. Before a push to it, read the open pull requests (`gh pr list --state open`) and `PROJECT.md`, milestone 4. If either says the review theme is ahead of `main`, stop. Push only once that pull request has merged, or when Michael says to.
 - A branch that goes to the review theme merges `main` in first, so the push takes nothing off the theme. Its pull request says so under a "Review theme" heading, with the commit, and `PROJECT.md` records it. After any push, read the theme back (a page, or the pushed files) to see that it held.
-- Theme writes: only `shopify theme push --theme <verified unpublished id> --strict`. Never use `--allow-live`, never `theme push --publish`, never `theme publish` without explicit release approval.
+- Theme writes: `shopify theme push --theme <verified unpublished id> --strict`. `--allow-live` only for a small fix on the live theme, below. Never `theme push --publish`, never `theme publish` without explicit release approval.
+
+### Small fixes on the live theme
+
+The site is live, so a small fix need not wait for a release. An agent may write to the live theme only when all of these hold:
+
+1. **Michael has said yes to this change,** in the session. A yes to one change isn't a yes to the next.
+2. **Only the files the theme editor changes:** `config/settings_data.json`, `templates/*.json`, `templates/metaobject/*.json` and `sections/*.json`. No Liquid, CSS, JavaScript, `locales/` or assets: code goes live only at a release, through the review theme.
+3. **The live theme's own file, not Git's.** Pull that file from the live theme into a scratch folder and keep the copy. Compare it with `main`: anything else that differs is an editor change, which stays and comes into Git. Change only what was agreed, and check the difference is only that.
+4. **One file at a time:** `shopify theme push --store ed35ee-ea.myshopify.com --theme <live id> --path <scratch folder> --only <file> --allow-live`. Never a whole-theme push to the live theme.
+5. **Read it back:** pull the file again, and read the page it changes on gordonsmithgallery.com.
+6. **Log it** in `proposals/store-writes/README.md`, with why, the before copy and the undo (push the before copy the same way, or undo it in the editor).
+7. **The same change in Git,** through a pull request, and on the review theme once it merges, so the live theme, the review theme and `main` stay alike.
+
+The rollback and old themes are never written to.
 - Theme Check: `shopify theme check --path theme` without auto-correct. The new theme has no errors; explain any warning in the pull request. `baseline/theme-check.json` records the old theme for comparison only.
 - Admin writes through the Shopify connector or Admin only for approved store-resource changes, with a before-snapshot in `baseline/` or the PR.
 
