@@ -1,0 +1,75 @@
+{
+ "read": "2026-09-29, through the Shopify connector (Admin GraphQL), store ed35ee-ea.myshopify.com, 'Artists for Kids & The Gordon Smith Gallery', primary domain gordonsmithgallery.com",
+ "existing": "no page with the handle about-artists-for-kids; no redirect from /pages/about-artists-for-kids. /pages/about forwards to /pages/about-us (gid://shopify/UrlRedirect/688266543401, P-24); the hidden page 'About' (gid://shopify/Page/141077479721, handle about) is unpublished",
+ "hub": {
+  "id": "gid://shopify/Page/155720810793",
+  "handle": "artists-for-kids",
+  "title": "Artists For Kids",
+  "templateSuffix": "programme",
+  "updatedAt": "2026-09-29T23:10:53Z",
+  "body": "<p>Artists for Kids brings together educators and the community at large, to provide inspiring, highly relevant educational experiences and enrichment, for thousands of young people annually, while encouraging students to pursue and share their own artistic voice and narrative. Through the Gordon Smith Gallery of Canadian Art, established as Canada's first public art gallery for young audiences, Artists for Kids has created a space for young audiences and our community to experience the narrative of Canadian Art through a significant collection of visual art. As a visual arts catalyst in the community, Artists for Kids is proud to contribute to the development of a rich cultural aesthetic.</p>\n<p>The continued growth and development of our acclaimed program in North Vancouver during the past three decades, provides substantial documentation that intentional art education in schools led by art specialists, can significantly transform young lives, inform programming in schools and ultimately shape a community in ways once thought unimaginable. We see clearly what can be accomplished and possible in education with intentional commitment, understanding and engagement.</p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Gordon_Smith_PVSSA.jpg?v=1785270372\" alt=\"At Paradise Valley Summer Camp in 1994, a group of children painting at an outdoor table with Gordon Smith in a light blue shirt and black apron standing and guiding the art activity.\" width=\"1764\" height=\"993\" loading=\"lazy\"><figcaption>Gordon Smith and a group of young artists at the Paradise Valley Summer School of Visual Art Camp in 1996.</figcaption></figure>\n<h2>History</h2>\n<p>Artists for Kids was founded in 1989 with the singular intent to support art education, for all.</p>\n<p>In 1989, the founders of AFK sought to find a financial model to support arts education in our schools, one that was sustainable, and in turn, would support visual arts enrichment. By purchasing art from artists, then in turn inviting each artist to create original, limited-edition prints that the program could sell, the founders created a unique and lasting fundraising vehicle. With the generosity, commitment and support of founding artist-patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists for Kids was born, and with it, the acclaimed Artist for Kids and Gordon Smith Gallery Permanent Collection of Canadian Art.</p>\n<p>Thanks to the ongoing support of our community, artist-patrons, and the North Vancouver School District, Artist for Kids has grown from an idea onto a world-class art program.</p>\n<p>Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators.</p>\n<p>In 1990, with the support of art educators and artist patrons Bill Reid, Jack Shadbolt, and Gordon Smith, the first Artists for Kids Limited Edition Portfolio print, <em>Xhuwaji / Haida Grizzly</em> was published - marking the beginning of an extraordinary partnership between Canadian artists and Artists for Kids.</p>\n<figure class=\"gs-figure--artwork\"><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Reid_REID002_Xhuwaji_HaidaGrizzly.jpg?v=1728074721&amp;width=1440\" alt=\"Bill Reid, Xhuwaji / Haida Grizzly Bear, 1990\" width=\"1440\" height=\"1456\" loading=\"lazy\"><figcaption>Bill Reid, (Canadian, 1920 – 1998) <em>XHUWAJI/Haida Grizzly Bear</em>, (1990) Serigraph, 22 in x 22 in.</figcaption></figure>\n<p>Entering its 37th year, Artists for Kids continues to work with renowned Canadian artists and print studios across Canada to publish <a href=\"/pages/shop\">contemporary limited editions</a>; its portfolio is now revered as one of the most significant limited edition collections in Canada.</p>\n<p>The Artists for Kids Limited Edition Portfolio program funds educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for the Artists for Kids and the Gordon Smith Gallery Permanent Collection.</p>\n<h3>Annual Report</h3>\n<p><a class=\"gs-cta-link\" href=\"/cdn/shop/files/afk-annual-report-2024-2025.pdf\">Annual Report 2024-2025 (PDF)</a></p>",
+  "card_groups": {
+   "id": "gid://shopify/Metafield/190392217338153",
+   "updatedAt": "2026-09-29T00:15:01Z",
+   "value": ["gid://shopify/Metaobject/608982794537", "gid://shopify/Metaobject/608982827305", "gid://shopify/Metaobject/608982892841", "gid://shopify/Metaobject/608982925609", "gid://shopify/Metaobject/609011106089", "gid://shopify/Metaobject/609458585897"],
+   "handles": ["afk-this-season", "afk-community-programs", "afk-school-programs", "afk-learning-resources", "afk-awards-and-support", "afk-team"]
+  },
+  "cta": {"text": "Download the guide", "url": "https://gordonsmithgallery.com/cdn/shop/files/gordon-smith-gallery-program-guide-2026-2027.pdf"}
+ },
+ "foundation_page": {
+  "id": "gid://shopify/Page/155705409833",
+  "handle": "the-smith-foundation",
+  "templateSuffix": "programme",
+  "fields": ["hero_image (photo)", "programme = Smith Foundation", "cta = 2025 A Year In Review (the annual report PDF)", "card_groups = foundation-take-part, foundation-board", "release_description"],
+  "body": "two paragraphs, no heading, no figure"
+ },
+ "about_us_card": {
+  "id": "gid://shopify/Metaobject/608631882025",
+  "handle": "about-us-artists-for-kids",
+  "updatedAt": "2026-09-26T16:34:08Z",
+  "link": "{\"text\":\"More about Artists for Kids\",\"url\":\"https://gordonsmithgallery.com/pages/artists-for-kids\"}"
+ },
+ "reid_print": {
+  "id": "gid://shopify/MediaImage/40274179096873",
+  "alt": "Bill Reid, Xhuwaji / Haida Grizzly Bear, 1990",
+  "url": "https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Reid_REID002_Xhuwaji_HaidaGrizzly.jpg?v=1728074721",
+  "width": 3589,
+  "height": 3629
+ },
+ "menu": {
+  "id": "gid://shopify/Menu/305944068393",
+  "handle": "new-theme-main-2",
+  "title": "Main menu (new theme, 2026-09-28)",
+  "items": [
+   {"id": "gid://shopify/MenuItem/767723045161", "title": "Exhibitions", "type": "PAGE", "resourceId": "gid://shopify/Page/155763999017", "items": []},
+   {"id": "gid://shopify/MenuItem/767723077929", "title": "Collection", "type": "PAGE", "resourceId": "gid://shopify/Page/155720548649", "items": [
+    {"id": "gid://shopify/MenuItem/767723110697", "title": "The collection", "type": "PAGE", "resourceId": "gid://shopify/Page/155720548649", "items": []},
+    {"id": "gid://shopify/MenuItem/767723143465", "title": "Artists", "type": "PAGE", "resourceId": "gid://shopify/Page/140886573353", "items": []}]},
+   {"id": "gid://shopify/MenuItem/767723176233", "title": "Programs", "type": "PAGE", "resourceId": "gid://shopify/Page/155669168425", "items": [
+    {"id": "gid://shopify/MenuItem/767723209001", "title": "Upcoming events", "type": "PAGE", "resourceId": "gid://shopify/Page/155669168425", "items": []},
+    {"id": "gid://shopify/MenuItem/767723241769", "title": "Public programs", "type": "PAGE", "resourceId": "gid://shopify/Page/155718943017", "items": [
+     {"id": "gid://shopify/MenuItem/767723274537", "title": "Speaker series", "type": "PAGE", "resourceId": "gid://shopify/Page/155719434537", "items": []},
+     {"id": "gid://shopify/MenuItem/767723307305", "title": "Music at the Smith", "type": "PAGE", "resourceId": "gid://shopify/Page/155719696681", "items": []},
+     {"id": "gid://shopify/MenuItem/767723340073", "title": "Explore + Create", "type": "PAGE", "resourceId": "gid://shopify/Page/155720089897", "items": []},
+     {"id": "gid://shopify/MenuItem/767723372841", "title": "Art in Good Company", "type": "PAGE", "resourceId": "gid://shopify/Page/155720253737", "items": []}]},
+    {"id": "gid://shopify/MenuItem/767723405609", "title": "Artists for Kids", "type": "PAGE", "resourceId": "gid://shopify/Page/155720810793", "items": [
+     {"id": "gid://shopify/MenuItem/767723438377", "title": "Classes and camps", "type": "PAGE", "resourceId": "gid://shopify/Page/165837734185", "items": []},
+     {"id": "gid://shopify/MenuItem/767723471145", "title": "Schools and teachers", "type": "PAGE", "resourceId": "gid://shopify/Page/165837766953", "items": []}]},
+    {"id": "gid://shopify/MenuItem/767723503913", "title": "Scholarships and awards", "type": "HTTP", "url": "#", "items": [
+     {"id": "gid://shopify/MenuItem/767728910633", "title": "Smith Foundation scholarships", "type": "PAGE", "resourceId": "gid://shopify/Page/165856379177", "items": []},
+     {"id": "gid://shopify/MenuItem/767723536681", "title": "Artists for Kids awards", "type": "PAGE", "resourceId": "gid://shopify/Page/165838225705", "items": []}]}]},
+   {"id": "gid://shopify/MenuItem/767723569449", "title": "Support", "type": "PAGE", "resourceId": "gid://shopify/Page/155885863209", "items": [
+    {"id": "gid://shopify/MenuItem/767723602217", "title": "Give to the Smith Foundation", "type": "PAGE", "resourceId": "gid://shopify/Page/155885863209", "items": []},
+    {"id": "gid://shopify/MenuItem/767723634985", "title": "Give to Artists for Kids", "type": "PAGE", "resourceId": "gid://shopify/Page/165838258473", "items": []},
+    {"id": "gid://shopify/MenuItem/767728943401", "title": "Brilliance Gala", "type": "PAGE", "resourceId": "gid://shopify/Page/165856444713", "items": []},
+    {"id": "gid://shopify/MenuItem/767723667753", "title": "Volunteer", "type": "PAGE", "resourceId": "gid://shopify/Page/155902738729", "items": []},
+    {"id": "gid://shopify/MenuItem/767728976169", "title": "Supporters", "type": "PAGE", "resourceId": "gid://shopify/Page/165856477481", "items": []}]},
+   {"id": "gid://shopify/MenuItem/767723700521", "title": "About", "type": "PAGE", "resourceId": "gid://shopify/Page/155687813417", "items": [
+    {"id": "gid://shopify/MenuItem/767723733289", "title": "About the gallery", "type": "PAGE", "resourceId": "gid://shopify/Page/155687813417", "items": []},
+    {"id": "gid://shopify/MenuItem/767723766057", "title": "Plan your visit", "type": "PAGE", "resourceId": "gid://shopify/Page/155670151465", "items": []},
+    {"id": "gid://shopify/MenuItem/767723798825", "title": "Gordon and Marion Smith", "type": "PAGE", "resourceId": "gid://shopify/Page/155692957993", "items": []},
+    {"id": "gid://shopify/MenuItem/767723831593", "title": "The Smith Foundation", "type": "PAGE", "resourceId": "gid://shopify/Page/155705409833", "items": []}]},
+   {"id": "gid://shopify/MenuItem/767723864361", "title": "Shop", "type": "PAGE", "resourceId": "gid://shopify/Page/155762786601", "items": []}
+  ]
+ }
+}
