@@ -82,7 +82,8 @@ Use these as the durable anchors:
 - `/pages/about-us`: what the gallery is and how the three organizations work together
 - `/pages/plan-your-visit`: address, hours, admission, transit, parking, accessibility
 - `/pages/gordon-and-marion`: the artist and Marion Smith
-- `/pages/artists-for-kids`: the program, its history and its team
+- `/pages/artists-for-kids`: the program and its programmes
+- `/pages/about-artists-for-kids`: its history, its team and its annual report
 - `/pages/the-smith-foundation`: the Foundation, its endowment and its board
 - `/pages/permanent-collection`: the collection, its size and its groupings
 - `/pages/shop` and `/pages/frequently-asked-questions`: the limited editions and how buying works

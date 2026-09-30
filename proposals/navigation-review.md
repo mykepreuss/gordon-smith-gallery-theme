@@ -446,3 +446,6 @@ All decided by Michael, 2026-09-28, as recommended ("Proceed with implementing t
 - **Not built here:** the three Foundation pages. They belong to `proposals/smith-foundation-site.md`, which is still waiting for Michael's decisions; when they're made they join the menu where §1 of `proposals/store-changes.md` says, and the Foundation page's gala and scholarship cards get their links.
 - **Checked** on the development theme: the bar at 1200 with each programme's logo and at 1280, 1366 and 1440, one row each time; the drawer at 768 and 375; the keyboard at 1200; 33 pages for the current section. Theme Check, the linter and its tests, contrast and sync pass. The live site is unchanged.
 
+### Since then
+
+- 2026-09-29: About gets a fifth item, About Artists for Kids (`/pages/about-artists-for-kids`), after The Smith Foundation. The history and the team moved there from the Artists for Kids page, which keeps its programmes (P-65). Its label says "About" because Programs already has an "Artists for Kids" that goes to the main page.
