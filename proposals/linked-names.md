@@ -81,6 +81,8 @@ Michael, 2026-09-28: "DS-175 approved, merge #106". Choice 1 is decided. Choices
 
 2026-09-29, DS-183 (decided by Michael the same day; `proposals/internal-linking-review.md`, finding 6): names are linked in the texts about works too (an edition's description and its archive note, a portfolio's description, a work's About, an exhibition's credits, a lesson's text). Those texts link the names only, not the general words. Three names joined the list: Gordon and Marion Smith Foundation for Young Artists, Artists in Residence, Artist in Residence.
 
+2026-09-29, Michael, on the Artists for Kids team: "These should link like the other peoples'". Allison Kerr's role says "Artist for Kids", as written, so the name didn't match. "Artist for Kids" joined the list below "Artists for Kids", as "Artist in Residence" did. The words stay as the gallery wrote them. On the development theme it adds one link on the site's pages (all but the collection's works): hers on About Artists for Kids. The history text there, which says "Artist for Kids" twice, links the name once already, so it gets no new link.
+
 ## Limits
 
 - Pages only. A name can't lead to an exhibition, an artist or an edition.
