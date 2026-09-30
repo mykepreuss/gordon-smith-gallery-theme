@@ -34,7 +34,10 @@
   <body class="gs-type" data-gs-brand="{{ brand }}">
     <a class="gs-skip-link" href="#main">{{ 'general.skip_to_content' | t }}</a>
 
-    {% sections 'header-group' %}
+    {%- comment -%} The header's group sits in its own box so that, on phones, it can stay at the top of the screen (DS-190): Shopify's section box is only as tall as the header, so the header can't stick inside it. {%- endcomment -%}
+    <div class="gs-header-group">
+      {% sections 'header-group' %}
+    </div>
 
     <main id="main" class="gs-main" tabindex="-1">
       {%- if policy != blank -%}
