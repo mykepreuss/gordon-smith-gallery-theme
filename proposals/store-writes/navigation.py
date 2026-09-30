@@ -11,7 +11,8 @@ menu until its code can show the new one. The development theme reads the new me
 
 The three Foundation pages from `proposals/smith-foundation-site.md` (Scholarships, Brilliance Gala,
 Supporters) were made on 2026-09-28 and added where `MAIN` has them, with `menuUpdate` keeping the
-other items' IDs. `LATER` is empty.
+other items' IDs. About Artists for Kids joined About on 2026-09-29 the same way (P-65, `afk_about.py`).
+`LATER` is empty.
 
 Run: python3 proposals/store-writes/navigation.py
 """
@@ -58,6 +59,7 @@ FAQ = 154942865705
 FOUNDATION_SCHOLARSHIPS = 165856379177  # made 2026-09-28 (proposals/smith-foundation-site.md, P-42)
 BRILLIANCE_GALA = 165856444713
 FOUNDATION_SUPPORTERS = 165856477481
+ABOUT_AFK = 165878104361  # made 2026-09-29 (P-65, afk_about.py)
 
 MAIN = {
     "title": "Main menu (new theme, 2026-09-28)",
@@ -97,6 +99,7 @@ MAIN = {
             page("Plan your visit", PLAN_VISIT),
             page("Gordon and Marion Smith", GORDON_MARION),
             page("The Smith Foundation", FOUNDATION),
+            page("About Artists for Kids", ABOUT_AFK),
         ]),
         page("Shop", SHOP),
     ],
