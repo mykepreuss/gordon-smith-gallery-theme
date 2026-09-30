@@ -16,6 +16,8 @@
  *   - Choosing a link in the drawer closes the drawer (matters for links within the page).
  *   - Crossing the 1200px breakpoint closes everything.
  *   - One-open-at-a-time on the bar for browsers without <details name> support.
+ *   - Below 990px the header stays at the top of the screen (DS-190): once the page scrolls
+ *     under it, data-stuck on the header draws a hairline along its edge.
  *   - A card in a sideways row (.gs-rail) that gets keyboard focus scrolls into view whole.
  *
  * Markup contract:
@@ -118,6 +120,11 @@
         close(drawer);
       });
     }
+
+    /* The header only sticks below 990px (components.css), and only there does the hairline show. */
+    function markStuck() { header.toggleAttribute("data-stuck", window.scrollY > 0); }
+    window.addEventListener("scroll", markStuck, { passive: true });
+    markStuck();
 
     if (DESKTOP.addEventListener) DESKTOP.addEventListener("change", closeAll);
     else if (DESKTOP.addListener) DESKTOP.addListener(closeAll);

@@ -847,7 +847,7 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 }
 /* A passage's only picture or quote stays in view while its longer text scrolls past, and stops
    with the passage (DS-142). Only on a screen tall enough for a capped photo and its
-   caption; the header never sticks (DS-23), so it sits a small margin from the top. */
+   caption; from 990 px the header never sticks (DS-23, DS-190), so it sits a small margin from the top. */
 @media (min-width: 990px) and (min-height: 50rem) {
   .gs-text-media:not(.gs-text-media--media) > .gs-text-media__aside:not(:has(> * + *)) { position: sticky; top: var(--gs-space-6); }
 }
@@ -1581,6 +1581,24 @@ html:has(.gs-lightbox[open]) { overflow: hidden; }
   .gs-header { --_logo-h: var(--gs-header-logo-h-lg); --_header-h: var(--gs-header-logo-h-lg); }
 }
 [data-gs-brand="foundation"] .gs-header { --_logo-h: var(--gs-header-logo-h-foundation); }
+/* On phones and small tablets the header stays at the top of the screen while the page scrolls under
+   it (DS-190, amends DS-23), so Menu is always one tap away. Only below 990 px, where the header is
+   64 px (72 px on Foundation pages), and only on a screen at least 30rem tall: a phone on its side, or
+   a desktop zoomed to 200%, keeps the whole screen for the page. From 990 px it scrolls away as
+   before. The box is the header group's (layout/theme.liquid): Shopify's own section box is only as
+   tall as the header, so nothing inside it can stick. Anything scrolled into view stops under it
+   (WCAG 2.4.11), and once the page moves under it a hairline marks its edge (js/gs-nav.js sets
+   data-stuck), as under the letter bar (DS-65). */
+@media (max-width: 989px) and (min-height: 30rem) {
+  :root { --_header-stuck-h: var(--gs-header-logo-h); scroll-padding-block-start: var(--_header-stuck-h); }
+  :root:has(> body[data-gs-brand="foundation"]) { --_header-stuck-h: var(--gs-header-logo-h-foundation); }
+  .gs-header-group { position: sticky; top: 0; z-index: var(--gs-z-header); }
+  .gs-header {
+    box-shadow: 0 var(--gs-border) 0 transparent;
+    transition: box-shadow var(--gs-duration-fast) var(--gs-ease);
+  }
+  .gs-header[data-stuck] { box-shadow: 0 var(--gs-border) 0 var(--gs-color-rule); }
+}
 /* The boxed logo hangs flush from the top-left corner of the page, rounded corner facing in. */
 .gs-header__logo { display: block; flex: none; line-height: 0; }
 /* The logo is flush with the page's corner, so its ring goes inside it, where nothing cuts it off. */
@@ -2187,7 +2205,7 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
 .gs-artwork__info { display: grid; align-content: start; justify-items: start; gap: var(--gs-space-5); }
 /* On a tall enough screen a work's label stays in view beside a long run of views, ending with
    them, before About the work (DS-112). Only the work page: its label has no form and always fits
-   (537 to 672 px). The header itself never sticks (DS-23). */
+   (537 to 672 px). From 990 px the header never sticks (DS-23, DS-190). */
 @media (min-width: 990px) and (min-height: 50rem) {
   .gs-artwork__info--follow { position: sticky; top: var(--gs-space-5); }
 }
@@ -2525,6 +2543,14 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
 :root:has(.gs-letters:not([hidden])) { scroll-padding-block-start: calc(var(--gs-tap-target) + var(--gs-space-2) * 2 + var(--gs-space-4)); }
 @media (min-width: 750px) and (max-width: 1199px) {
   :root:has(.gs-letters:not([hidden])) { scroll-padding-block-start: calc(var(--gs-tap-target) * 2 + var(--gs-space-2) * 2 + var(--gs-space-4)); }
+}
+/* Under the stuck header (DS-190) the letter bar sticks just below it, and a jump stops below both. */
+@media (max-width: 989px) and (min-height: 30rem) {
+  .gs-letters { top: calc(var(--_header-stuck-h) - var(--gs-border)); }
+  :root:has(.gs-letters:not([hidden])) { scroll-padding-block-start: calc(var(--_header-stuck-h) + var(--gs-tap-target) + var(--gs-space-2) * 2 + var(--gs-space-4)); }
+}
+@media (min-width: 750px) and (max-width: 989px) and (min-height: 30rem) {
+  :root:has(.gs-letters:not([hidden])) { scroll-padding-block-start: calc(var(--_header-stuck-h) + var(--gs-tap-target) * 2 + var(--gs-space-2) * 2 + var(--gs-space-4)); }
 }
 .gs-letters ul { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1200px) {
