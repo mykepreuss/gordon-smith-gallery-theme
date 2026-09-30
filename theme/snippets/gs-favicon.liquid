@@ -1,0 +1,16 @@
+{% doc %}
+  The site's icons, for browser tabs, bookmarks, search results and home screens (DS-189): the
+  Gallery's simple stacked colour box logo on every page, whatever the programme, since the site
+  is the Gallery's. Built by design-system/scripts/build_favicon.py (DESIGN.md §8.1) and copied
+  into assets by sync_theme.py; not a theme setting, as the logos aren't.
+
+  - The SVG is for browsers that draw one. The 32 px PNG, with its size given, is for the others,
+    and the SVG comes after it so browsers that read both choose it.
+  - The home screen icon is the logo on white, 180 px, as iOS expects; Android reads it too.
+
+  @example
+  {%- render 'gs-favicon' -%}
+{% enddoc %}
+<link rel="icon" href="{{ 'gs-favicon-32.png' | asset_url }}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{ 'gs-favicon.svg' | asset_url }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ 'gs-apple-touch-icon.png' | asset_url }}">
