@@ -153,7 +153,7 @@ From the review of the site's links, 2026-09-29 (`proposals/internal-linking-rev
 
 ## 13. From the answers of 2026-10-01
 
-What the gallery's answers left open. None holds anything up.
+What the gallery's answers left open. None holds anything up. Drafted for the gallery on 2026-10-01 as a shared doc, "Gordon Smith Gallery: follow-up questions" (https://claude.ai/code/artifact/9dee4333-73fc-49dc-8ffb-fef1cb22636b), numbered 1 to 12 there: 13.1 to 13.5 as 1 to 5, 13.6 as 6, and the six questions for the Artists for Kids team in `proposals/class-listings.md` as 7 to 12.
 
 | # | Question | Until then |
 | --- | --- | --- |
@@ -162,5 +162,5 @@ What the gallery's answers left open. None holds anything up.
 | 13.3 | *Unfixed* and the picture's file name Laurie Kang; the gallery's image description says Lotus Kang, as the artist is now known. Should the exhibition's page say Lotus L. Kang? | The page as written; the image description says Lotus Kang |
 | 13.4 | The Gallery Program's description now says K-12 classes. Its page and button say Grade 5 for the guided program, and K-12 for self-guided tours. Which should the page say? | The page as written |
 | 13.5 | A class visit "is booked through the registration link", and Schools and teachers now says so. Who is it for, what happens on the day and what does it cost? The page answers none of these itself | How to book only |
-| 13.6 | Does the gallery have its own entry on Wikipedia or Wikidata? Not answered; we can look it up | Not linked |
+| 13.6 | Does the gallery have its own entry on Wikipedia or Wikidata? Looked up 2026-10-01: none, for the gallery, Artists for Kids or the Foundation; Wikipedia only names them in artists' articles. Asked instead: may we create a Wikidata entry for the gallery? | Not linked |
 | 13.7 | The gallery's note on the document: each class and camp listed on the site with its times, teacher, theme and ages, linking straight to its registration page. It ties to 6.9 to 6.12: who keeps the list up to date each term, and do the registration addresses change? | Decided and built 2026-10-01 (P-68, `proposals/class-listings.md`): After School Art lists its six fall classes, each with its own Register link, since the fifth release that day. The six questions for the team there still stand. Day camps and Paradise Valley still link to the old site's pages until their camps are entered |
