@@ -136,6 +136,10 @@ ABOUT_US = "\n".join(f"<p>{p}</p>" for p in [
 ])
 # Marion Smith's years, as the gallery gave them (3.7). Michael: trust the document.
 MARION = ("<strong>Marion Smith</strong> was said to have two careers", "<strong>Marion Smith</strong> (1941 to 2018), was said to have two careers")
+# "His wife", not "His late wife", now that the sentence gives her years. Michael, 2026-10-01:
+# "could just be 'His wife, Marion Smith (1941 to 2018), was said to have two careers' because
+# they are both dead".
+LATE = ("His late wife, <strong>Marion Smith</strong>", "His wife, <strong>Marion Smith</strong>")
 # What the gallery sells (2.5), as the FAQ's first question.
 FAQ_FIRST = "<h3>Are all prints limited edition?</h3>"
 FAQ_SELLS = ("<h3>What does the gallery sell?</h3>\n<p>The Gallery sells limited edition prints from renowned Canadian Artists that were gifted directly "
@@ -384,11 +388,17 @@ def step_pages():
             write(handle, text, what)
         elif "".join(text.split()) not in "".join(body.split()):
             sys.exit(f"STOPPED: page {handle} has text of its own now; add the new words by hand")
-    body = store["gordon-and-marion"]["body"]
-    if MARION[1] not in body:
-        if body.count(MARION[0]) != 1:
+    body = new = store["gordon-and-marion"]["body"]
+    if MARION[1] not in new:
+        if new.count(MARION[0]) != 1:
             sys.exit("STOPPED: Gordon and Marion no longer has the sentence about Marion Smith as it was")
-        write("gordon-and-marion", body.replace(MARION[0], MARION[1]), "Marion Smith's years")
+        new = new.replace(MARION[0], MARION[1])
+    if LATE[0] in new:
+        if new.count(LATE[0]) != 1:
+            sys.exit("STOPPED: Gordon and Marion says \"His late wife\" more than once")
+        new = new.replace(LATE[0], LATE[1])
+    if new != body:
+        write("gordon-and-marion", new, "Marion Smith's years, and \"His wife\"")
     body = store["frequently-asked-questions"]["body"]
     if "<h3>What does the gallery sell?</h3>" not in body:
         if body.count(FAQ_FIRST) != 1:
