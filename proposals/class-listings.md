@@ -1,6 +1,6 @@
 # Class and camp listings: each class on the site, with its own Register link
 
-Date: 2026-10-01. Status: **decided by Michael, 2026-10-01** ("All seven decisions approved, merge #141 and build it"; P-68), and **built** the same day: see "Built" at the end. The class list's design is DS-198, Proposed. Live only at a release.
+Date: 2026-10-01. Status: **decided by Michael, 2026-10-01** ("All seven decisions approved, merge #141 and build it"; P-68), and **built** the same day: see "Built" at the end. The class list's design is DS-198, decided by Michael the same day. Live only at a release.
 
 Asked for by the gallery, in a note on its answers of 2026-10-01 (`proposals/gallery-answers/2026-10-01-answers.md`, last lines), and set aside by Michael as a project of its own (P-67). Michael, 2026-10-01: "Write the class listings proposal".
 
@@ -170,7 +170,7 @@ The first four are open since 2026-09-27 (`proposals/gallery-questions.md` 6.9 t
 
 ## Built, 2026-10-01
 
-- **Theme:** `sections/gs-classes`, on the programme template between the opening and the events, and first on the story template; `snippets/gs-class` (one class), `gs-class-index` (which classes, in what order), `gs-data-class` (the data). A programme page with classes splits its text around them (`gs-page-body`), so on After School Art the classes come after the introduction and before "Important Notes". The design is DS-198.
+- **Theme:** `sections/gs-classes`, on the programme template between the opening and the events, and first on the story template; `snippets/gs-class` (one class), `gs-class-index` (which classes, in what order), `gs-data-class` (the data). A programme page with classes splits its text around them (`gs-page-body`), so on After School Art the classes come after the introduction and before "Important Notes". The design is DS-198, decided.
 - **Store:** the Class definition and After School Art's 6 fall classes, typed from the district's page word for word (`proposals/store-writes/classes.py`; log in `proposals/store-writes/README.md`). The live theme reads neither until the release.
 - **Order:** by first day, then by name.
 - **Words that are ours:** "Fall 2026 classes" (the group), the labels When, Time, For, Fee, Teacher, Where, Places, the statuses' words, and "Classes and registration" for a class with no group. The gallery approves labels (EXH-04); until then these show.
