@@ -22,8 +22,7 @@
       "page": "/pages/about-us",
       "evidence": [
         "(operated|owned|run) by"
-      ],
-      "gap": "The page doesn't say who owns or operates the building. A question for the gallery."
+      ]
     },
     {
       "n": 3,
@@ -183,8 +182,7 @@
       "page": "/pages/schools-and-teachers",
       "evidence": [
         "how to book|to book a|book a (class )?visit"
-      ],
-      "gap": "The page is a list of links. It doesn't say how a class visit works or how to book. A question for the gallery."
+      ]
     },
     {
       "n": 18,
@@ -225,8 +223,7 @@
       "page": "/pages/gordon-and-marion",
       "evidence": [
         "Marion( \\w+)? Smith[ ,(]+(born |b\\. )?(18|19)\\d\\d"
-      ],
-      "gap": "The page gives no dates for Marion Smith. A question for the gallery."
+      ]
     },
     {
       "n": 22,
@@ -275,17 +272,15 @@
       "page": "/pages/frequently-asked-questions",
       "evidence": [
         "ship(s|ping)? (only )?(to|within) Canada"
-      ],
-      "gap": "The FAQ doesn't say where the shop ships. The store ships to Canada only. A question for the gallery."
+      ]
     },
     {
       "n": 27,
       "question": "Does the gallery sell works from its collection or represent artists?",
       "page": "/pages/frequently-asked-questions",
       "evidence": [
-        "represent|works from the (permanent )?collection (are|is) not"
-      ],
-      "gap": "No page says. A limit worth stating once the gallery confirms it."
+        "sells limited edition prints"
+      ]
     },
     {
       "n": 28,

@@ -35,7 +35,8 @@ All the gallery's questions, in one list to send: `proposals/gallery-questions.m
 
 | Item | From | Blocks |
 | --- | --- | --- |
-| Signup wording, consent wording, the site email, social URLs; confirming the hours and phone taken from the current site | Gallery | ACCESS-01 to ACCESS-04 |
+| Signup wording and consent wording; confirming the gallery hours and phone taken from the current site. The site email, the social accounts and the office hours were confirmed on 2026-10-01 | Gallery | ACCESS-01, ACCESS-04 |
+| The gallery's answers of 2026-10-01 to the search and answer engine questions (`proposals/gallery-answers/README.md`). Done that day: the store writes and two settings on the live theme. The four additions to page text followed the same day, on Michael's yes. Left: two policy edits in the admin (Michael); the theme changes, at the next release; seven questions back to the gallery (`gallery-questions.md` §13); class and camp listings, a project of their own | Michael, then Agent; Gallery | Nothing |
 | Mailchimp: approve the app's permission update or not; turn on its app embed to keep site tracking after 2027-03-01 or not (`baseline/mailchimp-audit.md`, "Open from this check"). Shopify's spam protection is already on (P-59, checked 2026-09-28) | Michael | Nothing for review; decide before release |
 | Room names for the exhibition venue field and the label for the second artist group (content model "Still open"; *Stitched* opened April 3, as the old site's post says) | Gallery | Exhibition entries (defaults apply until answered) |
 | The Smith Foundation's old website, built 2026-09-28 (P-41 to P-49, DS-138): the gallery's answers in `gallery-questions.md` §8 (donor list, scholarships, figures, credits, the three key images from the collection, alt text), 4.6, 4.7, 4.9 and 7.3 | Gallery | Supporters and Donate's link to it (P-43); the facts in P-49. The rest is built (`proposals/smith-foundation-site.md`) |

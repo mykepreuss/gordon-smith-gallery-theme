@@ -141,12 +141,12 @@ One thing to settle first. The shipping policy says $20 and also that shipping "
 
 | Step | Facts | Needs |
 | --- | --- | --- |
-| A. Returns and shipping on each edition | Section 7 | **Built 2026-09-28 (DS-170).** The gallery's answer on the $20 is still open: if shipping isn't a flat $20, empty the setting |
-| B. The gallery's social profiles and email | Sections 4 and 5 | **Built 2026-09-28 (DS-174).** The footer now shows them. The gallery still confirms them: to take one off, empty its setting |
+| A. Returns and shipping on each edition | Section 7 | **Built 2026-09-28 (DS-170).** The gallery confirmed the flat $20 within Canada on 2026-10-01 |
+| B. The gallery's social profiles and email | Sections 4 and 5 | **Built 2026-09-28 (DS-174).** The gallery confirmed them on 2026-10-01, all but X, which it doesn't have: its setting is empty since that day |
 | C. Admission and access on the gallery | Section 6 | **Built 2026-09-28 (DS-171)** |
 | D. The organisations: dates founded, the Foundation's full name and charity number, the school district as Artists for Kids' parent | Section 3 | **Built 2026-09-28 (DS-174)**, but for the charity number: its setting is empty until it is checked against the Canada Revenue Agency's list |
-| E. Artists described elsewhere | Section 1 | A new field on the artist entry and 101 values: a store write, so Michael's go-ahead and a before-snapshot |
-| F. Corrections to artists' dates and names | Section 2 | The gallery's check, then a store write |
+| E. Artists described elsewhere | Section 1 | **In the store 2026-10-01:** the gallery checked the 42 unsure records and said yes to each, and the field "Described elsewhere" holds its value on 101 artists (`proposals/store-writes/README.md`). The theme reads it from the next release |
+| F. Corrections to artists' dates and names | Section 2 | **Made 2026-10-01**, as the gallery confirmed them: four spellings, six death years, Molly Lamb Bobak's 1920, Josie P. Papialuk's 1918 to 1996 |
 
 ## How the search was done
 

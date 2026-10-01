@@ -1,0 +1,118 @@
+[
+ {
+  "call": "alt text on 11 images: 230616_brilliance_gala-1980-scaled.jpg, Butterfly-Tattoos_96-x-72-in_2019-1200x922.jpg, GSG_2026_Fall_Edition_1.jpg, GSG_One_Hundred_Artists_011.jpg, GSG_Stitched_017.jpg, KMH853740.jpg, Knot-Laurie-Kang-8622-x-78-Unfixed-unprocessed-photographic-papeR_1-1200x801.jpg, OneHundredAD_ORecep81.jpg, SpeakerSeries_PrevailingLandscapes_05-09-24_1-scaled.jpg, khimhipol210921_7318.jpg, warehouse_thumbnail.jpg",
+  "kind": "files",
+  "at": "2026-10-01T19:31:32+00:00",
+  "variables": {
+   "files": [
+    {
+     "id": "gid://shopify/MediaImage/45739448631593",
+     "alt": "An album page holding a colour photograph of smiling artist Gordon Smith with distinctive white hair in a plaid jacket and red shirt"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45717172257065",
+     "alt": "Large yellow painting by Russna Kaur crossed by winding pale paths edged in bright colours, with green tent shapes and a small pastel panel"
+    },
+    {
+     "id": "gid://shopify/MediaImage/46274243363113",
+     "alt": "Two visitors look at framed prints and a ceramic cup displayed on a white wall in front of tall windows in the Gallery lobby"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45566339481897",
+     "alt": "A long rainbow-coloured triptych painting, a dark wall relief, a draped office chair sculpture and small standing figures on a low plinth"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45717041807657",
+     "alt": "A patterned wall with a blue and yellow banner that reads “Dreamworld” and a street photograph, beside a folding screen hung with fringed portraits"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45746709102889",
+     "alt": "A group of children sit on the gallery floor facing an art educator in front of a large wooden frame covered in colourful cut-out figures by artist Maya Beaudry"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45717198831913",
+     "alt": "An artwork by Lotus Kang featuring shiny metal cans filled with copper-coloured strands, standing among bundles of yellow and black netting on the floor"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45633125712169",
+     "alt": "Seen from above, visitors at an exhibition opening interact with a wall mounted sculpture affixed with small magnetic coloured cylinders"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45739407114537",
+     "alt": "A speaker with a microphone introduces four seated panelists to an audience, in front of a wall of landscape pictures"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45717190967593",
+     "alt": "A visitor walks past a tall wall grid of blurred landscape photographs, with a hanging sculpture resembling dried leaves beyond"
+    },
+    {
+     "id": "gid://shopify/MediaImage/45669029970217",
+     "alt": "Sliding mesh storage racks in the art vault, with a bright yellow and pink painting by artist Russna Kaur on the nearest rack"
+    }
+   ]
+  },
+  "answer": {
+   "fileUpdate": {
+    "files": [
+     {
+      "id": "gid://shopify/MediaImage/45739448631593",
+      "alt": "An album page holding a colour photograph of smiling artist Gordon Smith with distinctive white hair in a plaid jacket and red shirt",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45717172257065",
+      "alt": "Large yellow painting by Russna Kaur crossed by winding pale paths edged in bright colours, with green tent shapes and a small pastel panel",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46274243363113",
+      "alt": "Two visitors look at framed prints and a ceramic cup displayed on a white wall in front of tall windows in the Gallery lobby",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45566339481897",
+      "alt": "A long rainbow-coloured triptych painting, a dark wall relief, a draped office chair sculpture and small standing figures on a low plinth",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45717041807657",
+      "alt": "A patterned wall with a blue and yellow banner that reads “Dreamworld” and a street photograph, beside a folding screen hung with fringed portraits",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45746709102889",
+      "alt": "A group of children sit on the gallery floor facing an art educator in front of a large wooden frame covered in colourful cut-out figures by artist Maya Beaudry",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45717198831913",
+      "alt": "An artwork by Lotus Kang featuring shiny metal cans filled with copper-coloured strands, standing among bundles of yellow and black netting on the floor",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45633125712169",
+      "alt": "Seen from above, visitors at an exhibition opening interact with a wall mounted sculpture affixed with small magnetic coloured cylinders",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45739407114537",
+      "alt": "A speaker with a microphone introduces four seated panelists to an audience, in front of a wall of landscape pictures",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45717190967593",
+      "alt": "A visitor walks past a tall wall grid of blurred landscape photographs, with a hanging sculpture resembling dried leaves beyond",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45669029970217",
+      "alt": "Sliding mesh storage racks in the art vault, with a bright yellow and pink painting by artist Russna Kaur on the nearest rack",
+      "fileStatus": "READY"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

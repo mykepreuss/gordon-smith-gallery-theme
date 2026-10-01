@@ -91,12 +91,13 @@ ALIASES = {
     "Alistair Macready Bell": ["Alistair Bell"],
     "Angela Grossman": ["Angela Grossmann"],
     "Ann Meredith Barry": ["Anne Meredith Barry"],
-    "Attila Richard Lukacs": ["Atilla Lukacs"],
-    "Attlia Richard Lukacs": ["Atilla Lukacs"],
+    "Attila Richard Lukacs": ["Attila Lukacs"],
+    "Attlia Richard Lukacs": ["Attila Lukacs"],
     "Barbara Zeigler and Joan Smith": ["Barbara Zeigler", "Joan Smith"],
     "Benjamin Kerry (Beau) Dick": ["Beau Dick"],
     "Bertram Charles (BC) Binning": ["B.C. Binning"],
     "Betty Roodish Goodwin": ["Betty Goodwin"],
+    "Charles Gagon": ["Charles Gagnon"],
     "Charles Noel Van Sandwyk": ["Charles Van Sandwyk"],
     "Damian George (Stalaston)": ["Damian George"],
     "David LLoyd Blackwood": ["David Blackwood"],
@@ -108,16 +109,18 @@ ALIASES = {
     "Gordon Appelbe Smith": ["Gordon Smith"],
     "Graham Gilllmore": ["Graham Gillmore"],
     "Graham Gillmore, Angela Grossman, Attila Richard Lukacs, Derek Root, Vikky Alexander, Rebecca Belmore, Dana Claxton":
-        ["Graham Gillmore", "Angela Grossmann", "Atilla Lukacs", "Derek Root", "Vikky Alexander", "Rebecca Belmore", "Dana Claxton"],
+        ["Graham Gillmore", "Angela Grossmann", "Attila Lukacs", "Derek Root", "Vikky Alexander", "Rebecca Belmore", "Dana Claxton"],
     "Ian Hugh Wallace": ["Ian Wallace"],
     "Irene F. Whittome": ["Irene F. Whittome"],
     "Jack Leonard Shadbolt": ["Jack Shadbolt"],
-    "Jean Albert McEwen": ["Jean McEwan"],
+    "Jean Albert McEwen": ["Jean McEwen"],
+    "Jean McEwan": ["Jean McEwen"],
     "Jim Paull [James Edwin Gerald Paull]": ["Jim Paull"],
     "Karin Bubas": ["Karin Bubaš"],
     "Lauren Brevner and James Harry (Studio Lauren James)": ["Lauren Brevner", "James Harry"],
     "Norman Anthony (Toni) Onley": ["Toni Onley"],
     "Pat & Rosemarie Keough": ["Pat and Rosemarie Keough"],
+    "Patterson Ewen": ["Paterson Ewen"],
     "Reid, Leslie (female)": ["Leslie Reid"],
     "Robert Davidson (Guud san glans)": ["Robert Davidson"],
     "Robert Davidson (Haida Name: Guud san glans)": ["Robert Davidson"],
@@ -136,7 +139,7 @@ ALIASES = {
 ARTISTS = {
     "A.Y. Jackson": {"full": "Alexander Young Jackson"},
     "Alistair Bell": {"full": "Alistair Macready Bell"},
-    "Atilla Lukacs": {"full": "Attila Richard Lukacs"},
+    "Attila Lukacs": {"full": "Attila Richard Lukacs"},
     "B.C. Binning": {"full": "Bertram Charles Binning"},
     "Beau Dick": {"full": "Benjamin Kerry Dick"},
     "Betty Goodwin": {"full": "Betty Roodish Goodwin"},
@@ -152,7 +155,7 @@ ARTISTS = {
     "Ian Wallace": {"full": "Ian Hugh Wallace"},
     "Jack Shadbolt": {"full": "Jack Leonard Shadbolt"},
     "Jane Ash Poitras": {"sort": "Poitras, Jane Ash"},
-    "Jean McEwan": {"full": "Jean Albert McEwen"},
+    "Jean McEwen": {"full": "Jean Albert McEwen"},
     "Jim Paull": {"full": "James Edwin Gerald Paull"},
     "Kabubuwa Tunnillie": {"other": "Qavaroak"},
     "Newgaleak Qimirpik": {"other": "Nuyaliaq"},
@@ -165,11 +168,27 @@ ARTISTS = {
     "Ted Harrison": {"full": "Edward Hardy Harrison"},
     "Toni Onley": {"full": "Norman Anthony Onley"},
     "Unknown Inuit artist": {"sort": "Unknown Inuit artist"},
-    "Vancouver School Collective": {"full": "Douglas Coupland, Angela Grossmann, Graham Gillmore and Atilla Lukacs",
+    "Vancouver School Collective": {"full": "Douglas Coupland, Angela Grossmann, Graham Gillmore and Attila Lukacs",
                                     "sort": "Vancouver School Collective"},
     "West Baffin Eskimo Co-operative": {"full": "West Baffin Eskimo Coop. Ltd.", "sort": "West Baffin Eskimo Co-operative"},
     "Xwalacktun": {"other": "Rick Harry", "sort": "Xwalacktun"},
     "Yung Wing Chow": {"sort": "Chow, Yung Wing"},
+}
+# Life dates the gallery gave or confirmed on 2026-10-01 (proposals/gallery-answers/), where the
+# catalogue has none, gives the year of birth alone, or is wrong. They come before the catalogue's.
+# The four spellings above (Paterson Ewen, Charles Gagnon, Attila Lukacs, Jean McEwen) are the
+# gallery's too, and Pat and Rosemarie Keough stay one artist.
+LIFE_DATES = {
+    "David Blackwood": "1941 to 2022",
+    "Christopher Pratt": "1935 to 2022",
+    "Joe Fafard": "1942 to 2019",
+    "Gathie Falk": "1928 to 2025",
+    "Victor Cicansky": "1935 to 2025",
+    "Audrey Capel Doray": "1931 to 2025",
+    "Molly Lamb Bobak": "1920 to 2014",
+    "Josie P. Papialuk": "1918 to 1996",
+    "Newgaleak Qimirpik": "1937 to 2007",
+    "Ann Kipling": "1934 to 2023",
 }
 # Exhibition entries name some artists differently. Exhibition spelling -> display name.
 EXHIBITION_NAMES = {
@@ -582,6 +601,8 @@ def main(export, out):
         if born and made and int(born.group(1)) + 10 > min(made):
             # A birth year after, or just before, the artist's earliest work is a typing error.
             a["life_dates"], a["dates_conflict"] = "", "Dates don't fit the works"
+        if a["name"] in LIFE_DATES:
+            a["life_dates"], a["dates_conflict"] = LIFE_DATES[a["name"]], False
         a["works"].sort(key=lambda h: (year_key(work_by_handle[h]["year"]), title_key(work_by_handle[h]["title"])))
     dup = collections.Counter(a["handle"] for a in artists.values())
     assert not [h for h, n in dup.items() if n > 1], [h for h, n in dup.items() if n > 1]

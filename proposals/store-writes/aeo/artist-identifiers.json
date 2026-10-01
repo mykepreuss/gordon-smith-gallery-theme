@@ -1,5 +1,5 @@
 {
-  "about": "Draft, for the gallery to check. Nothing here is written to the store. Where each artist is described elsewhere, found by searching Wikidata on 2026-09-28 for each of the 171 artist entries. \"confirmed\": the years of birth and death in our entry agree with Wikidata's. \"likely\": one Canadian artist of that name, and no year of ours to check against. \"possible\": a name that matches and nothing else. Only the addresses are meant for use: Wikidata's dates are shown for checking and are not always right.",
+  "about": "Draft, for the gallery to check. Nothing here is written to the store. Where each artist is described elsewhere, found by searching Wikidata on 2026-09-28 for each of the 171 artist entries. \"confirmed\": the years of birth and death in our entry agree with Wikidata's. \"likely\": one Canadian artist of that name, and no year of ours to check against. \"possible\": a name that matches and nothing else. Only the addresses are meant for use: Wikidata's dates are shown for checking and are not always right. 2026-10-01: the gallery checked the 42 likely and possible records and said each is the same person (\"gallery\" holds its words; proposals/gallery-answers/). So 101 artists have addresses to use: 59 confirmed by their years, 42 by the gallery. Written to the store the same day, as the artist entry's \"Described elsewhere\" field (described_at). Four artists carry the gallery's spelling of their names since then; \"was\" keeps the old one.",
   "counts": {
     "not found": 70,
     "confirmed": 59,
@@ -41,7 +41,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q7929531",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500386205",
         "wikipedia": "https://en.wikipedia.org/wiki/Vikky_Alexander"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "fred-amess",
@@ -68,7 +69,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q50414312",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500126332",
         "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_Angrnaqquaq"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "kenojuak-ashevak",
@@ -83,7 +85,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q122347",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500126356",
         "wikipedia": "https://en.wikipedia.org/wiki/Kenojuak_Ashevak"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "ottochie-ashoona",
@@ -117,7 +120,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q56033428",
         "wikipedia": "https://en.wikipedia.org/wiki/Anne_Meredith_Barry"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "robert-bateman",
@@ -177,7 +181,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q1923173",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500126405",
         "wikipedia": "https://en.wikipedia.org/wiki/Jackson_Beardy"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "judson-beaumont",
@@ -212,7 +217,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q7301664",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500126429",
         "wikipedia": "https://en.wikipedia.org/wiki/Rebecca_Belmore"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "douglas-biden",
@@ -269,7 +275,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q3319624",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500012181",
         "wikipedia": "https://en.wikipedia.org/wiki/Molly_Lamb_Bobak"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "rachel-brett",
@@ -376,7 +383,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q5214695",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500487559",
         "wikipedia": "https://en.wikipedia.org/wiki/Dana_Claxton"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "pierre-coupey",
@@ -449,7 +457,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q16186640",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500126624",
         "wikipedia": "https://en.wikipedia.org/wiki/Beau_Dick"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "christos-dikeakos",
@@ -461,7 +470,8 @@
       "wikidata_says": "photographer",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q131618197"
-      }
+      },
+      "gallery": "Yes, Canadian Photographer"
     },
     {
       "handle": "pat-dixon",
@@ -496,7 +506,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q129554",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500116129",
         "wikipedia": "https://en.wikipedia.org/wiki/Stan_Douglas"
-      }
+      },
+      "gallery": "yes"
     },
     {
       "handle": "wayne-eastcott",
@@ -543,8 +554,8 @@
       }
     },
     {
-      "handle": "patterson-ewen",
-      "name": "Patterson Ewen",
+      "handle": "paterson-ewen",
+      "name": "Paterson Ewen",
       "our_dates": null,
       "status": "possible",
       "why": "found under another spelling: Wikidata has Paterson Ewen and Charles Gagnon",
@@ -552,6 +563,11 @@
       "wikidata_says": "Canadian artist (1925-2002)",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q7144588"
+      },
+      "gallery": "Yes",
+      "was": {
+        "handle": "patterson-ewen",
+        "name": "Patterson Ewen"
       }
     },
     {
@@ -597,7 +613,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q5534595",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500355861",
         "wikipedia": "https://en.wikipedia.org/wiki/Geoffrey_Farmer"
-      }
+      },
+      "gallery": "yes"
     },
     {
       "handle": "james-warren-felter",
@@ -620,8 +637,8 @@
       "status": "not found"
     },
     {
-      "handle": "charles-gagon",
-      "name": "Charles Gagon",
+      "handle": "charles-gagnon",
+      "name": "Charles Gagnon",
       "our_dates": null,
       "status": "possible",
       "why": "found under another spelling: Wikidata has Paterson Ewen and Charles Gagnon",
@@ -629,6 +646,11 @@
       "wikidata_says": "Canadian painter and photographer (1934-2003)",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q2959156"
+      },
+      "gallery": "Yes",
+      "was": {
+        "handle": "charles-gagon",
+        "name": "Charles Gagon"
       }
     },
     {
@@ -754,7 +776,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q55218412",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500068212",
         "wikipedia": "https://en.wikipedia.org/wiki/J._C._Heywood"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "tom-hopkins",
@@ -768,7 +791,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q59646204",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500197228"
-      }
+      },
+      "gallery": "yes"
     },
     {
       "handle": "tom-hudson",
@@ -819,7 +843,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q3159128",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500006927",
         "wikipedia": "https://en.wikipedia.org/wiki/Jacques_Hurtubise_(painter)"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "nuveeya-ipellie",
@@ -833,7 +858,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q55219047",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500127265"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "a-y-jackson",
@@ -911,7 +937,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q3022759",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500004478",
         "wikipedia": "https://en.wikipedia.org/wiki/Denis_Juneau"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "helen-kalvak",
@@ -971,7 +998,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q19592563",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500078498",
         "wikipedia": "https://en.wikipedia.org/wiki/Ann_Kipling"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "roy-kiyooka",
@@ -986,7 +1014,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q3445789",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500022431",
         "wikipedia": "https://en.wikipedia.org/wiki/Roy_Kiyooka"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "john-koerner",
@@ -1000,7 +1029,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q16989273",
         "wikipedia": "https://en.wikipedia.org/wiki/John_Koerner_(artist)"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "kapik-kolola",
@@ -1013,7 +1043,8 @@
       "wikidata_dates": "1926 to 1985",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q78901461"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "george-littlechild",
@@ -1036,8 +1067,8 @@
       "status": "not found"
     },
     {
-      "handle": "atilla-lukacs",
-      "name": "Atilla Lukacs",
+      "handle": "attila-lukacs",
+      "name": "Attila Lukacs",
       "our_dates": "1962",
       "status": "confirmed",
       "why": "birth year agree",
@@ -1048,6 +1079,10 @@
         "wikidata": "https://www.wikidata.org/wiki/Q758111",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500127861",
         "wikipedia": "https://en.wikipedia.org/wiki/Attila_Richard_Lukacs"
+      },
+      "was": {
+        "handle": "atilla-lukacs",
+        "name": "Atilla Lukacs"
       }
     },
     {
@@ -1092,8 +1127,8 @@
       }
     },
     {
-      "handle": "jean-mcewan",
-      "name": "Jean McEwan",
+      "handle": "jean-mcewen",
+      "name": "Jean McEwen",
       "our_dates": "1923 to 1999",
       "status": "confirmed",
       "why": "birth and death year agree",
@@ -1104,6 +1139,10 @@
         "wikidata": "https://www.wikidata.org/wiki/Q3173479",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500015819",
         "wikipedia": "https://en.wikipedia.org/wiki/Jean_McEwen"
+      },
+      "was": {
+        "handle": "jean-mcewan",
+        "name": "Jean McEwan"
       }
     },
     {
@@ -1228,7 +1267,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q62036497",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500086961",
         "wikipedia": "https://en.wikipedia.org/wiki/Lyndal_Osborne"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "melia-padluq",
@@ -1241,7 +1281,8 @@
       "wikidata_dates": "1940",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q55218912"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "josie-p-papialuk",
@@ -1253,7 +1294,8 @@
       "wikidata_says": "Canadian artist (1918-1996)",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q3186065"
-      }
+      },
+      "gallery": "Yes, record dates are correct"
     },
     {
       "handle": "david-gerry-partridge",
@@ -1268,7 +1310,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q21452817",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500060164",
         "wikipedia": "https://en.wikipedia.org/wiki/David_Partridge_(artist)"
-      }
+      },
+      "gallery": "Yes, but he was Canadian"
     },
     {
       "handle": "jim-paull",
@@ -1331,7 +1374,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q16151913",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500127346",
         "wikipedia": "https://en.wikipedia.org/wiki/Susan_Point"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "jane-ash-poitras",
@@ -1404,7 +1448,8 @@
       "wikidata_dates": "1937 to 2007",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q107067282"
-      }
+      },
+      "gallery": "Yes, Nuyaliaq Qimirpik, 1937-2007"
     },
     {
       "handle": "leah-qumaluk",
@@ -1446,7 +1491,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q59540077",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500074906",
         "wikipedia": "https://en.wikipedia.org/wiki/Leslie_Reid_(artist)"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "jean-paul-riopelle",
@@ -1461,7 +1507,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q708544",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500017908",
         "wikipedia": "https://en.wikipedia.org/wiki/Jean-Paul_Riopelle"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "derek-root",
@@ -1502,7 +1549,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q19665215",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500466562",
         "wikipedia": "https://en.wikipedia.org/wiki/Marianna_Schmidt"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "jack-shadbolt",
@@ -1532,7 +1580,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q28870539",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500471533",
         "wikipedia": "https://en.wikipedia.org/wiki/Jeremy_Shaw"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "arnold-shives",
@@ -1582,7 +1631,8 @@
         "wikidata": "https://www.wikidata.org/wiki/Q558332",
         "getty_ulan": "https://vocab.getty.edu/page/ulan/500012551",
         "wikipedia": "https://en.wikipedia.org/wiki/Michael_Snow"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "ron-stonier",
@@ -1650,7 +1700,8 @@
       "wikidata_dates": "1949",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q56090171"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "art-thompson",
@@ -1675,7 +1726,8 @@
       "wikidata_dates": "1956",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q55217783"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "kabubuwa-tunnillie",
@@ -1688,7 +1740,8 @@
       "wikidata_dates": "1928 to 1993",
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q96904478"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "unknown-inuit-artist",
@@ -1728,7 +1781,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q27487414",
         "wikipedia": "https://en.wikipedia.org/wiki/Charlene_Vickers"
-      }
+      },
+      "gallery": "Yes, Canadian multi-disciplinary artist"
     },
     {
       "handle": "roy-henry-vickers",
@@ -1778,7 +1832,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q96386018",
         "wikipedia": "https://en.wikipedia.org/wiki/West_Baffin_Eskimo_Cooperative"
-      }
+      },
+      "gallery": "yes"
     },
     {
       "handle": "irene-f-whittome",
@@ -1806,7 +1861,8 @@
       "wikidata_dates": null,
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q115016689"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "alan-wood",
@@ -1832,7 +1888,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q111939144",
         "wikipedia": "https://en.wikipedia.org/wiki/Xwalacktun"
-      }
+      },
+      "gallery": "Yes"
     },
     {
       "handle": "robert-young",
@@ -1878,7 +1935,8 @@
       "same_as": {
         "wikidata": "https://www.wikidata.org/wiki/Q50505038",
         "wikipedia": "https://en.wikipedia.org/wiki/Barbara_Zeigler"
-      }
+      },
+      "gallery": "Yes"
     }
   ]
 }

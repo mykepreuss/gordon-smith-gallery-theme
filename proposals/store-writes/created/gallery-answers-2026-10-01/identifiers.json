@@ -1,0 +1,2959 @@
+[
+ {
+  "call": "artist field: Described elsewhere",
+  "kind": "artist_field",
+  "at": "2026-10-01T19:34:28+00:00",
+  "variables": {
+   "id": "gid://shopify/MetaobjectDefinition/23770661161",
+   "definition": {
+    "fieldDefinitions": [
+     {
+      "create": {
+       "key": "described_at",
+       "name": "Described elsewhere",
+       "type": "list.url",
+       "description": "Addresses that describe this artist elsewhere: Wikidata, Wikipedia, the Getty's list of artists. For search engines; not shown on the page."
+      }
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectDefinitionUpdate": {
+    "metaobjectDefinition": {
+     "id": "gid://shopify/MetaobjectDefinition/23770661161",
+     "fieldDefinitions": [
+      {
+       "key": "name",
+       "name": "Name",
+       "type": {
+        "name": "single_line_text_field"
+       }
+      },
+      {
+       "key": "sort_name",
+       "name": "Sort name",
+       "type": {
+        "name": "single_line_text_field"
+       }
+      },
+      {
+       "key": "full_name",
+       "name": "Full name",
+       "type": {
+        "name": "single_line_text_field"
+       }
+      },
+      {
+       "key": "other_names",
+       "name": "Other names",
+       "type": {
+        "name": "single_line_text_field"
+       }
+      },
+      {
+       "key": "life_dates",
+       "name": "Life dates",
+       "type": {
+        "name": "single_line_text_field"
+       }
+      },
+      {
+       "key": "nationality",
+       "name": "Nationality or Nation",
+       "type": {
+        "name": "single_line_text_field"
+       }
+      },
+      {
+       "key": "biography",
+       "name": "Biography",
+       "type": {
+        "name": "rich_text_field"
+       }
+      },
+      {
+       "key": "portrait",
+       "name": "Portrait",
+       "type": {
+        "name": "file_reference"
+       }
+      },
+      {
+       "key": "website",
+       "name": "Website (not shown)",
+       "type": {
+        "name": "link"
+       }
+      },
+      {
+       "key": "exhibitions",
+       "name": "Exhibitions",
+       "type": {
+        "name": "list.metaobject_reference"
+       }
+      },
+      {
+       "key": "works",
+       "name": "Works",
+       "type": {
+        "name": "list.metaobject_reference"
+       }
+      },
+      {
+       "key": "documents",
+       "name": "Documents",
+       "type": {
+        "name": "list.metaobject_reference"
+       }
+      },
+      {
+       "key": "about_page",
+       "name": "About page",
+       "type": {
+        "name": "page_reference"
+       }
+      },
+      {
+       "key": "described_at",
+       "name": "Described elsewhere",
+       "type": {
+        "name": "list.url"
+       }
+      }
+     ]
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist latcholassie-akesuk: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:30+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608741949737",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q55218707\", \"https://en.wikipedia.org/wiki/Latcholassie_Akesuk\", \"https://vocab.getty.edu/page/ulan/500126307\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608741949737",
+     "handle": "latcholassie-akesuk",
+     "displayName": "Latcholassie Akesuk",
+     "updatedAt": "2026-10-01T19:34:29Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist vikky-alexander: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:31+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608741982505",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7929531\", \"https://en.wikipedia.org/wiki/Vikky_Alexander\", \"https://vocab.getty.edu/page/ulan/500386205\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608741982505",
+     "handle": "vikky-alexander",
+     "displayName": "Vikky Alexander",
+     "updatedAt": "2026-10-01T19:34:30Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist elizabeth-angrnaqquaq: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:31+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742080809",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q50414312\", \"https://en.wikipedia.org/wiki/Elizabeth_Angrnaqquaq\", \"https://vocab.getty.edu/page/ulan/500126332\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742080809",
+     "handle": "elizabeth-angrnaqquaq",
+     "displayName": "Elizabeth Angrnaqquaq",
+     "updatedAt": "2026-10-01T19:34:31Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist kenojuak-ashevak: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:33+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742113577",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q122347\", \"https://en.wikipedia.org/wiki/Kenojuak_Ashevak\", \"https://vocab.getty.edu/page/ulan/500126356\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742113577",
+     "handle": "kenojuak-ashevak",
+     "displayName": "Kenojuak Ashevak",
+     "updatedAt": "2026-10-01T19:34:32Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ottochie-ashoona: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:34+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742146345",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q82574216\", \"https://vocab.getty.edu/page/ulan/500783417\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742146345",
+     "handle": "ottochie-ashoona",
+     "displayName": "Ottochie Ashoona",
+     "updatedAt": "2026-10-01T19:34:33Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist anne-meredith-barry: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:35+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742211881",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q56033428\", \"https://en.wikipedia.org/wiki/Anne_Meredith_Barry\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742211881",
+     "handle": "anne-meredith-barry",
+     "displayName": "Anne Meredith Barry",
+     "updatedAt": "2026-10-01T19:34:35Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist robert-bateman: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:36+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742244649",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q304160\", \"https://en.wikipedia.org/wiki/Robert_Bateman_(painter)\", \"https://vocab.getty.edu/page/ulan/500055892\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742244649",
+     "handle": "robert-bateman",
+     "displayName": "Robert Bateman",
+     "updatedAt": "2026-10-01T19:34:36Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist maxwell-bennett-bates: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:37+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742277417",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q6796080\", \"https://en.wikipedia.org/wiki/Maxwell_Bates\", \"https://vocab.getty.edu/page/ulan/500029843\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742277417",
+     "handle": "maxwell-bennett-bates",
+     "displayName": "Maxwell Bennett Bates",
+     "updatedAt": "2026-10-01T19:34:37Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist iain-baxter: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:38+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742310185",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q522534\", \"https://en.wikipedia.org/wiki/Iain_Baxter&\", \"https://vocab.getty.edu/page/ulan/500073717\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742310185",
+     "handle": "iain-baxter",
+     "displayName": "Iain Baxter",
+     "updatedAt": "2026-10-01T19:34:38Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jackson-beardy: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:39+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742342953",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q1923173\", \"https://en.wikipedia.org/wiki/Jackson_Beardy\", \"https://vocab.getty.edu/page/ulan/500126405\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742342953",
+     "handle": "jackson-beardy",
+     "displayName": "Jackson Beardy",
+     "updatedAt": "2026-10-01T19:34:39Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist alistair-bell: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:40+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742408489",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q106541985\", \"https://vocab.getty.edu/page/ulan/500466271\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742408489",
+     "handle": "alistair-bell",
+     "displayName": "Alistair Bell",
+     "updatedAt": "2026-10-01T19:34:40Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist rebecca-belmore: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:41+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742441257",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7301664\", \"https://en.wikipedia.org/wiki/Rebecca_Belmore\", \"https://vocab.getty.edu/page/ulan/500126429\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742441257",
+     "handle": "rebecca-belmore",
+     "displayName": "Rebecca Belmore",
+     "updatedAt": "2026-10-01T19:34:41Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist b-c-binning: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:42+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608742506793",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q4833928\", \"https://en.wikipedia.org/wiki/B._C._Binning\", \"https://vocab.getty.edu/page/ulan/500003586\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608742506793",
+     "handle": "b-c-binning",
+     "displayName": "B.C. Binning",
+     "updatedAt": "2026-10-01T19:34:42Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist david-blackwood: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:43+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895172905",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q5231445\", \"https://en.wikipedia.org/wiki/David_Blackwood\", \"https://vocab.getty.edu/page/ulan/500175573\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895172905",
+     "handle": "david-blackwood",
+     "displayName": "David Blackwood",
+     "updatedAt": "2026-10-01T19:34:43Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist molly-lamb-bobak: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:45+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895205673",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3319624\", \"https://en.wikipedia.org/wiki/Molly_Lamb_Bobak\", \"https://vocab.getty.edu/page/ulan/500012181\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895205673",
+     "handle": "molly-lamb-bobak",
+     "displayName": "Molly Lamb Bobak",
+     "updatedAt": "2026-10-01T19:34:44Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist karin-bubas: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:46+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895336745",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q19609807\", \"https://en.wikipedia.org/wiki/Karin_Buba\\u0161\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895336745",
+     "handle": "karin-bubas",
+     "displayName": "Karin Bubaš",
+     "updatedAt": "2026-10-01T19:34:46Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist edward-burtynsky: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:47+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895369513",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q967163\", \"https://en.wikipedia.org/wiki/Edward_Burtynsky\", \"https://vocab.getty.edu/page/ulan/500037033\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895369513",
+     "handle": "edward-burtynsky",
+     "displayName": "Edward Burtynsky",
+     "updatedAt": "2026-10-01T19:34:47Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist victor-cicansky: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:48+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895566121",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q22003654\", \"https://en.wikipedia.org/wiki/Victor_Cicansky\", \"https://vocab.getty.edu/page/ulan/500089511\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895566121",
+     "handle": "victor-cicansky",
+     "displayName": "Victor Cicansky",
+     "updatedAt": "2026-10-01T19:34:48Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist dana-claxton: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:49+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895598889",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q5214695\", \"https://en.wikipedia.org/wiki/Dana_Claxton\", \"https://vocab.getty.edu/page/ulan/500487559\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895598889",
+     "handle": "dana-claxton",
+     "displayName": "Dana Claxton",
+     "updatedAt": "2026-10-01T19:34:49Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist pierre-coupey: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:50+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895631657",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7192155\", \"https://en.wikipedia.org/wiki/Pierre_Coupey\", \"https://vocab.getty.edu/page/ulan/500075148\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895631657",
+     "handle": "pierre-coupey",
+     "displayName": "Pierre Coupey",
+     "updatedAt": "2026-10-01T19:34:50Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist douglas-coupland: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:51+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895664425",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q322060\", \"https://en.wikipedia.org/wiki/Douglas_Coupland\", \"https://vocab.getty.edu/page/ulan/500291268\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895664425",
+     "handle": "douglas-coupland",
+     "displayName": "Douglas Coupland",
+     "updatedAt": "2026-10-01T19:34:51Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist robert-davidson: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:52+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895697193",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7343412\", \"https://en.wikipedia.org/wiki/Robert_Davidson_(artist)\", \"https://vocab.getty.edu/page/ulan/500126607\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895697193",
+     "handle": "robert-davidson",
+     "displayName": "Robert Davidson",
+     "updatedAt": "2026-10-01T19:34:52Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist anna-binta-diallo: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:53+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895729961",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q112901157\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895729961",
+     "handle": "anna-binta-diallo",
+     "displayName": "Anna Binta Diallo",
+     "updatedAt": "2026-10-01T19:34:53Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist beau-dick: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:54+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895762729",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q16186640\", \"https://en.wikipedia.org/wiki/Beau_Dick\", \"https://vocab.getty.edu/page/ulan/500126624\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895762729",
+     "handle": "beau-dick",
+     "displayName": "Beau Dick",
+     "updatedAt": "2026-10-01T19:34:54Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist christos-dikeakos: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:55+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895795497",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q131618197\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895795497",
+     "handle": "christos-dikeakos",
+     "displayName": "Christos Dikeakos",
+     "updatedAt": "2026-10-01T19:34:55Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist audrey-capel-doray: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:56+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895861033",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q19877469\", \"https://en.wikipedia.org/wiki/Audrey_Capel_Doray\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895861033",
+     "handle": "audrey-capel-doray",
+     "displayName": "Audrey Capel Doray",
+     "updatedAt": "2026-10-01T19:34:56Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist stan-douglas: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:57+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895893801",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q129554\", \"https://en.wikipedia.org/wiki/Stan_Douglas\", \"https://vocab.getty.edu/page/ulan/500116129\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895893801",
+     "handle": "stan-douglas",
+     "displayName": "Stan Douglas",
+     "updatedAt": "2026-10-01T19:34:57Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist enn-erisalu: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:34:58+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895992105",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q50359531\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895992105",
+     "handle": "enn-erisalu",
+     "displayName": "Enn Erisalu",
+     "updatedAt": "2026-10-01T19:34:58Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jamie-evrard: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:00+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896057641",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q131917901\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896057641",
+     "handle": "jamie-evrard",
+     "displayName": "Jamie Evrard",
+     "updatedAt": "2026-10-01T19:34:59Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist paterson-ewen: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:01+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896090409",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7144588\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896090409",
+     "handle": "paterson-ewen",
+     "displayName": "Paterson Ewen",
+     "updatedAt": "2026-10-01T19:35:00Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist joe-fafard: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:02+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896123177",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3184926\", \"https://en.wikipedia.org/wiki/Joe_Fafard\", \"https://vocab.getty.edu/page/ulan/500081193\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896123177",
+     "handle": "joe-fafard",
+     "displayName": "Joe Fafard",
+     "updatedAt": "2026-10-01T19:35:01Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist gathie-falk: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:03+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896155945",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q17626630\", \"https://en.wikipedia.org/wiki/Gathie_Falk\", \"https://vocab.getty.edu/page/ulan/500079625\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896155945",
+     "handle": "gathie-falk",
+     "displayName": "Gathie Falk",
+     "updatedAt": "2026-10-01T19:35:03Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist geoffrey-farmer: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:04+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896188713",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q5534595\", \"https://en.wikipedia.org/wiki/Geoffrey_Farmer\", \"https://vocab.getty.edu/page/ulan/500355861\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896188713",
+     "handle": "geoffrey-farmer",
+     "displayName": "Geoffrey Farmer",
+     "updatedAt": "2026-10-01T19:35:04Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist james-warren-felter: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:05+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896221481",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q105651493\", \"https://vocab.getty.edu/page/ulan/500202507\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896221481",
+     "handle": "james-warren-felter",
+     "displayName": "James Warren Felter",
+     "updatedAt": "2026-10-01T19:35:05Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist charles-gagnon: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:06+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896287017",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q2959156\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896287017",
+     "handle": "charles-gagnon",
+     "displayName": "Charles Gagnon",
+     "updatedAt": "2026-10-01T19:35:06Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist graham-gillmore: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:07+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896385321",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q22236797\", \"https://vocab.getty.edu/page/ulan/500333326\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896385321",
+     "handle": "graham-gillmore",
+     "displayName": "Graham Gillmore",
+     "updatedAt": "2026-10-01T19:35:07Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist betty-goodwin: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:08+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896418089",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q2900236\", \"https://en.wikipedia.org/wiki/Betty_Goodwin\", \"https://vocab.getty.edu/page/ulan/500089080\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896418089",
+     "handle": "betty-goodwin",
+     "displayName": "Betty Goodwin",
+     "updatedAt": "2026-10-01T19:35:08Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist rodney-graham: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:09+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896450857",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q320241\", \"https://en.wikipedia.org/wiki/Rodney_Graham\", \"https://vocab.getty.edu/page/ulan/500115975\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896450857",
+     "handle": "rodney-graham",
+     "displayName": "Rodney Graham",
+     "updatedAt": "2026-10-01T19:35:09Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist angela-grossmann: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:10+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896483625",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q27049880\", \"https://en.wikipedia.org/wiki/Angela_Grossmann\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896483625",
+     "handle": "angela-grossmann",
+     "displayName": "Angela Grossmann",
+     "updatedAt": "2026-10-01T19:35:10Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ted-harrison: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:11+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896549161",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7693273\", \"https://en.wikipedia.org/wiki/Ted_Harrison\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896549161",
+     "handle": "ted-harrison",
+     "displayName": "Ted Harrison",
+     "updatedAt": "2026-10-01T19:35:11Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist john-hartman: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:12+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896614697",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q105069901\", \"https://en.wikipedia.org/wiki/John_Hartman_(artist)\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896614697",
+     "handle": "john-hartman",
+     "displayName": "John Hartman",
+     "updatedAt": "2026-10-01T19:35:12Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist j-carl-heywood: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:13+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896647465",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q55218412\", \"https://en.wikipedia.org/wiki/J._C._Heywood\", \"https://vocab.getty.edu/page/ulan/500068212\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896647465",
+     "handle": "j-carl-heywood",
+     "displayName": "J. Carl Heywood",
+     "updatedAt": "2026-10-01T19:35:13Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist tom-hopkins: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:14+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896680233",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q59646204\", \"https://vocab.getty.edu/page/ulan/500197228\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896680233",
+     "handle": "tom-hopkins",
+     "displayName": "Tom Hopkins",
+     "updatedAt": "2026-10-01T19:35:14Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist tom-hudson: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:15+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896713001",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q21461493\", \"https://en.wikipedia.org/wiki/Tom_Hudson_(art_educator)\", \"https://vocab.getty.edu/page/ulan/500193916\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896713001",
+     "handle": "tom-hudson",
+     "displayName": "Tom Hudson",
+     "updatedAt": "2026-10-01T19:35:15Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist e-j-hughes: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:16+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896745769",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q5321948\", \"https://en.wikipedia.org/wiki/E._J._Hughes\", \"https://vocab.getty.edu/page/ulan/500004757\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896745769",
+     "handle": "e-j-hughes",
+     "displayName": "E.J. Hughes",
+     "updatedAt": "2026-10-01T19:35:16Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jacques-hurtubise: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:17+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896811305",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3159128\", \"https://en.wikipedia.org/wiki/Jacques_Hurtubise_(painter)\", \"https://vocab.getty.edu/page/ulan/500006927\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896811305",
+     "handle": "jacques-hurtubise",
+     "displayName": "Jacques Hurtubise",
+     "updatedAt": "2026-10-01T19:35:17Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist nuveeya-ipellie: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:18+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896844073",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q55219047\", \"https://vocab.getty.edu/page/ulan/500127265\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896844073",
+     "handle": "nuveeya-ipellie",
+     "displayName": "Nuveeya Ipellie",
+     "updatedAt": "2026-10-01T19:35:18Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist a-y-jackson: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:19+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896876841",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3499926\", \"https://en.wikipedia.org/wiki/A._Y._Jackson\", \"https://vocab.getty.edu/page/ulan/500022432\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896876841",
+     "handle": "a-y-jackson",
+     "displayName": "A.Y. Jackson",
+     "updatedAt": "2026-10-01T19:35:19Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist denis-juneau: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:20+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897171753",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3022759\", \"https://en.wikipedia.org/wiki/Denis_Juneau\", \"https://vocab.getty.edu/page/ulan/500004478\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897171753",
+     "handle": "denis-juneau",
+     "displayName": "Denis Juneau",
+     "updatedAt": "2026-10-01T19:35:20Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist helen-kalvak: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:21+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897204521",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q15498548\", \"https://en.wikipedia.org/wiki/Helen_Kalvak\", \"https://vocab.getty.edu/page/ulan/500034115\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897204521",
+     "handle": "helen-kalvak",
+     "displayName": "Helen Kalvak",
+     "updatedAt": "2026-10-01T19:35:21Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ann-kipling: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:22+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897401129",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q19592563\", \"https://en.wikipedia.org/wiki/Ann_Kipling\", \"https://vocab.getty.edu/page/ulan/500078498\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897401129",
+     "handle": "ann-kipling",
+     "displayName": "Ann Kipling",
+     "updatedAt": "2026-10-01T19:35:22Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist roy-kiyooka: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:24+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897433897",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3445789\", \"https://en.wikipedia.org/wiki/Roy_Kiyooka\", \"https://vocab.getty.edu/page/ulan/500022431\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897433897",
+     "handle": "roy-kiyooka",
+     "displayName": "Roy Kiyooka",
+     "updatedAt": "2026-10-01T19:35:23Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist john-koerner: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:25+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897466665",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q16989273\", \"https://en.wikipedia.org/wiki/John_Koerner_(artist)\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897466665",
+     "handle": "john-koerner",
+     "displayName": "John Koerner",
+     "updatedAt": "2026-10-01T19:35:24Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist kapik-kolola: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:26+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897499433",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q78901461\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897499433",
+     "handle": "kapik-kolola",
+     "displayName": "Kapik Kolola",
+     "updatedAt": "2026-10-01T19:35:25Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist george-littlechild: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:27+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897532201",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q134395173\", \"https://vocab.getty.edu/page/ulan/500127027\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897532201",
+     "handle": "george-littlechild",
+     "displayName": "George Littlechild",
+     "updatedAt": "2026-10-01T19:35:27Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist attila-lukacs: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:28+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897597737",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q758111\", \"https://en.wikipedia.org/wiki/Attila_Richard_Lukacs\", \"https://vocab.getty.edu/page/ulan/500127861\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897597737",
+     "handle": "attila-lukacs",
+     "displayName": "Attila Lukacs",
+     "updatedAt": "2026-10-01T19:35:28Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist landon-mackenzie: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:29+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897630505",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q6484894\", \"https://en.wikipedia.org/wiki/Landon_Mackenzie\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897630505",
+     "handle": "landon-mackenzie",
+     "displayName": "Landon MacKenzie",
+     "updatedAt": "2026-10-01T19:35:29Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist victoria-mamnguqsualuk: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:30+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897663273",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q28335055\", \"https://en.wikipedia.org/wiki/Victoria_Mamnguqsualuk\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897663273",
+     "handle": "victoria-mamnguqsualuk",
+     "displayName": "Victoria Mamnguqsualuk",
+     "updatedAt": "2026-10-01T19:35:30Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist roz-marshall: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:31+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897696041",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q131786269\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897696041",
+     "handle": "roz-marshall",
+     "displayName": "Roz Marshall",
+     "updatedAt": "2026-10-01T19:35:31Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jean-mcewen: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:32+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897728809",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3173479\", \"https://en.wikipedia.org/wiki/Jean_McEwen\", \"https://vocab.getty.edu/page/ulan/500015819\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897728809",
+     "handle": "jean-mcewen",
+     "displayName": "Jean McEwen",
+     "updatedAt": "2026-10-01T19:35:32Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist elizabeth-mcintosh: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:33+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897794345",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q23418597\", \"https://en.wikipedia.org/wiki/Elizabeth_McIntosh_(artist)\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897794345",
+     "handle": "elizabeth-mcintosh",
+     "displayName": "Elizabeth McIntosh",
+     "updatedAt": "2026-10-01T19:35:33Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist mario-merola: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:34+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897859881",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q19631321\", \"https://vocab.getty.edu/page/ulan/500005342\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897859881",
+     "handle": "mario-merola",
+     "displayName": "Mario Merola",
+     "updatedAt": "2026-10-01T19:35:34Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist guido-molinari: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:35+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897892649",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q320422\", \"https://en.wikipedia.org/wiki/Guido_Molinari\", \"https://vocab.getty.edu/page/ulan/500033033\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897892649",
+     "handle": "guido-molinari",
+     "displayName": "Guido Molinari",
+     "updatedAt": "2026-10-01T19:35:35Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist damian-moppett: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:36+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897925417",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q43134392\", \"https://en.wikipedia.org/wiki/Damian_Moppett\", \"https://vocab.getty.edu/page/ulan/500574727\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897925417",
+     "handle": "damian-moppett",
+     "displayName": "Damian Moppett",
+     "updatedAt": "2026-10-01T19:35:36Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist toni-onley: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:37+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898089257",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7821311\", \"https://en.wikipedia.org/wiki/Toni_Onley\", \"https://vocab.getty.edu/page/ulan/500002853\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898089257",
+     "handle": "toni-onley",
+     "displayName": "Toni Onley",
+     "updatedAt": "2026-10-01T19:35:37Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist lyndal-osborne: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:38+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898122025",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q62036497\", \"https://en.wikipedia.org/wiki/Lyndal_Osborne\", \"https://vocab.getty.edu/page/ulan/500086961\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898122025",
+     "handle": "lyndal-osborne",
+     "displayName": "Lyndal Osborne",
+     "updatedAt": "2026-10-01T19:35:38Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist melia-padluq: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:40+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898154793",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q55218912\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898154793",
+     "handle": "melia-padluq",
+     "displayName": "Melia Padluq",
+     "updatedAt": "2026-10-01T19:35:39Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist josie-p-papialuk: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:41+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898187561",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3186065\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898187561",
+     "handle": "josie-p-papialuk",
+     "displayName": "Josie P. Papialuk",
+     "updatedAt": "2026-10-01T19:35:40Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist david-gerry-partridge: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:42+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898220329",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q21452817\", \"https://en.wikipedia.org/wiki/David_Partridge_(artist)\", \"https://vocab.getty.edu/page/ulan/500060164\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898220329",
+     "handle": "david-gerry-partridge",
+     "displayName": "David Gerry Partridge",
+     "updatedAt": "2026-10-01T19:35:41Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist susan-point: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:43+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898515241",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q16151913\", \"https://en.wikipedia.org/wiki/Susan_Point\", \"https://vocab.getty.edu/page/ulan/500127346\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898515241",
+     "handle": "susan-point",
+     "displayName": "Susan Point",
+     "updatedAt": "2026-10-01T19:35:42Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jane-ash-poitras: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:44+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898548009",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q16150005\", \"https://en.wikipedia.org/wiki/Jane_Ash_Poitras\", \"https://vocab.getty.edu/page/ulan/500127349\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898548009",
+     "handle": "jane-ash-poitras",
+     "displayName": "Jane Ash Poitras",
+     "updatedAt": "2026-10-01T19:35:44Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist christopher-pratt: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:45+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898580777",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3296257\", \"https://en.wikipedia.org/wiki/Christopher_Pratt\", \"https://vocab.getty.edu/page/ulan/500024052\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898580777",
+     "handle": "christopher-pratt",
+     "displayName": "Christopher Pratt",
+     "updatedAt": "2026-10-01T19:35:45Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist mary-pratt: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:46+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898613545",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q1622821\", \"https://en.wikipedia.org/wiki/Mary_Pratt_(painter)\", \"https://vocab.getty.edu/page/ulan/500071836\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898613545",
+     "handle": "mary-pratt",
+     "displayName": "Mary Pratt",
+     "updatedAt": "2026-10-01T19:35:46Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist pudlo-pudlat: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:47+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898646313",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q2399275\", \"https://en.wikipedia.org/wiki/Pudlo_Pudlat\", \"https://vocab.getty.edu/page/ulan/500127376\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898646313",
+     "handle": "pudlo-pudlat",
+     "displayName": "Pudlo Pudlat",
+     "updatedAt": "2026-10-01T19:35:47Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist newgaleak-qimirpik: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:48+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898679081",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q107067282\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898679081",
+     "handle": "newgaleak-qimirpik",
+     "displayName": "Newgaleak Qimirpik",
+     "updatedAt": "2026-10-01T19:35:48Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist bill-reid: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:49+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898777385",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q615962\", \"https://en.wikipedia.org/wiki/Bill_Reid\", \"https://vocab.getty.edu/page/ulan/500127408\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898777385",
+     "handle": "bill-reid",
+     "displayName": "Bill Reid",
+     "updatedAt": "2026-10-01T19:35:49Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist leslie-reid: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:50+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898810153",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q59540077\", \"https://en.wikipedia.org/wiki/Leslie_Reid_(artist)\", \"https://vocab.getty.edu/page/ulan/500074906\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898810153",
+     "handle": "leslie-reid",
+     "displayName": "Leslie Reid",
+     "updatedAt": "2026-10-01T19:35:50Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jean-paul-riopelle: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:51+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898842921",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q708544\", \"https://en.wikipedia.org/wiki/Jean-Paul_Riopelle\", \"https://vocab.getty.edu/page/ulan/500017908\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898842921",
+     "handle": "jean-paul-riopelle",
+     "displayName": "Jean-Paul Riopelle",
+     "updatedAt": "2026-10-01T19:35:51Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist samuel-roy-bois: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:52+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898908457",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7412519\", \"https://en.wikipedia.org/wiki/Samuel_Roy-Bois\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898908457",
+     "handle": "samuel-roy-bois",
+     "displayName": "Samuel Roy-Bois",
+     "updatedAt": "2026-10-01T19:35:52Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist marianna-schmidt: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:53+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898973993",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q19665215\", \"https://en.wikipedia.org/wiki/Marianna_Schmidt\", \"https://vocab.getty.edu/page/ulan/500466562\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898973993",
+     "handle": "marianna-schmidt",
+     "displayName": "Marianna Schmidt",
+     "updatedAt": "2026-10-01T19:35:53Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jack-shadbolt: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:54+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899006761",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q6115081\", \"https://en.wikipedia.org/wiki/Jack_Shadbolt\", \"https://vocab.getty.edu/page/ulan/500029888\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899006761",
+     "handle": "jack-shadbolt",
+     "displayName": "Jack Shadbolt",
+     "updatedAt": "2026-10-01T19:35:54Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jeremy-shaw: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:55+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899039529",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q28870539\", \"https://en.wikipedia.org/wiki/Jeremy_Shaw\", \"https://vocab.getty.edu/page/ulan/500471533\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899039529",
+     "handle": "jeremy-shaw",
+     "displayName": "Jeremy Shaw",
+     "updatedAt": "2026-10-01T19:35:55Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist arnold-shives: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:56+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899072297",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q27088521\", \"https://en.wikipedia.org/wiki/Arnold_Shives\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899072297",
+     "handle": "arnold-shives",
+     "displayName": "Arnold Shives",
+     "updatedAt": "2026-10-01T19:35:56Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist gordon-smith: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:58+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899105065",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q5584785\", \"https://en.wikipedia.org/wiki/Gordon_A._Smith\", \"https://vocab.getty.edu/page/ulan/500009414\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899105065",
+     "handle": "gordon-smith",
+     "displayName": "Gordon Smith",
+     "updatedAt": "2026-10-01T19:35:57Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist michael-snow: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:35:59+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899170601",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q558332\", \"https://en.wikipedia.org/wiki/Michael_Snow\", \"https://vocab.getty.edu/page/ulan/500012551\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899170601",
+     "handle": "michael-snow",
+     "displayName": "Michael Snow",
+     "updatedAt": "2026-10-01T19:35:58Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ron-stonier: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:00+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899203369",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q105604922\", \"https://en.wikipedia.org/wiki/Ron_Stonier\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899203369",
+     "handle": "ron-stonier",
+     "displayName": "Ron Stonier",
+     "updatedAt": "2026-10-01T19:35:59Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist sylvia-tait: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:01+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899268905",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7661018\", \"https://en.wikipedia.org/wiki/Sylvia_Tait\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899268905",
+     "handle": "sylvia-tait",
+     "displayName": "Sylvia Tait",
+     "updatedAt": "2026-10-01T19:36:00Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist takao-tanabe: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:02+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899301673",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3514181\", \"https://en.wikipedia.org/wiki/Takao_Tanabe\", \"https://vocab.getty.edu/page/ulan/500108957\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899301673",
+     "handle": "takao-tanabe",
+     "displayName": "Takao Tanabe",
+     "updatedAt": "2026-10-01T19:36:01Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist vivian-thierfelder: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:03+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899367209",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q56090171\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899367209",
+     "handle": "vivian-thierfelder",
+     "displayName": "Vivian Thierfelder",
+     "updatedAt": "2026-10-01T19:36:02Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ashevak-tunnillie: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:04+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899465513",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q55217783\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899465513",
+     "handle": "ashevak-tunnillie",
+     "displayName": "Ashevak Tunnillie",
+     "updatedAt": "2026-10-01T19:36:03Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist kabubuwa-tunnillie: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:05+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899531049",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q96904478\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899531049",
+     "handle": "kabubuwa-tunnillie",
+     "displayName": "Kabubuwa Tunnillie",
+     "updatedAt": "2026-10-01T19:36:04Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist charles-van-sandwyk: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:06+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899596585",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q5084056\", \"https://en.wikipedia.org/wiki/Charles_van_Sandwyk\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899596585",
+     "handle": "charles-van-sandwyk",
+     "displayName": "Charles Van Sandwyk",
+     "updatedAt": "2026-10-01T19:36:06Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist charlene-vickers: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:07+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899662121",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q27487414\", \"https://en.wikipedia.org/wiki/Charlene_Vickers\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899662121",
+     "handle": "charlene-vickers",
+     "displayName": "Charlene Vickers",
+     "updatedAt": "2026-10-01T19:36:07Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist roy-henry-vickers: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:08+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899694889",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q7372939\", \"https://en.wikipedia.org/wiki/Roy_Henry_Vickers\", \"https://vocab.getty.edu/page/ulan/500127702\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899694889",
+     "handle": "roy-henry-vickers",
+     "displayName": "Roy Henry Vickers",
+     "updatedAt": "2026-10-01T19:36:08Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ian-wallace: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:09+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899727657",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q5983181\", \"https://en.wikipedia.org/wiki/Ian_Wallace_(artist)\", \"https://vocab.getty.edu/page/ulan/500069013\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899727657",
+     "handle": "ian-wallace",
+     "displayName": "Ian Wallace",
+     "updatedAt": "2026-10-01T19:36:09Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist west-baffin-eskimo-co-operative: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:10+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899825961",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q96386018\", \"https://en.wikipedia.org/wiki/West_Baffin_Eskimo_Cooperative\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899825961",
+     "handle": "west-baffin-eskimo-co-operative",
+     "displayName": "West Baffin Eskimo Co-operative",
+     "updatedAt": "2026-10-01T19:36:10Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist irene-f-whittome: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:11+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899858729",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q3154327\", \"https://en.wikipedia.org/wiki/Irene_Whittome\", \"https://vocab.getty.edu/page/ulan/500104100\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899858729",
+     "handle": "irene-f-whittome",
+     "displayName": "Irene F. Whittome",
+     "updatedAt": "2026-10-01T19:36:11Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist david-wilson: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:12+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899891497",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q115016689\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899891497",
+     "handle": "david-wilson",
+     "displayName": "David Wilson",
+     "updatedAt": "2026-10-01T19:36:12Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist xwalacktun: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:13+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899989801",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q111939144\", \"https://en.wikipedia.org/wiki/Xwalacktun\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899989801",
+     "handle": "xwalacktun",
+     "displayName": "Xwalacktun",
+     "updatedAt": "2026-10-01T19:36:13Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist etienne-zack: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:14+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608900088105",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q55218061\", \"https://en.wikipedia.org/wiki/Etienne_Zack\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608900088105",
+     "handle": "etienne-zack",
+     "displayName": "Etienne Zack",
+     "updatedAt": "2026-10-01T19:36:14Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist barbara-zeigler: described elsewhere",
+  "kind": "entry",
+  "at": "2026-10-01T19:36:15+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608900153641",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "described_at",
+      "value": "[\"https://www.wikidata.org/wiki/Q50505038\", \"https://en.wikipedia.org/wiki/Barbara_Zeigler\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608900153641",
+     "handle": "barbara-zeigler",
+     "displayName": "Barbara Zeigler",
+     "updatedAt": "2026-10-01T19:36:15Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
