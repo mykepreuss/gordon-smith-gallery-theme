@@ -1,19 +1,18 @@
 # Questions for the gallery
 
-What only the gallery can answer or confirm, in one list (updated 2026-09-29). Nothing here blocks the review. Each question says what the site does until it's answered. Section 1 is needed before release.
+What only the gallery can answer or confirm, in one list (updated 2026-10-01). The site is live, so nothing here blocks anything. Each question says what the site does until it's answered.
+
+The gallery answered the search and answer engine questions on 2026-10-01: sections 10 and 11, with 1.3, 1.5 and 1.6. Its answers and what was done with each are in `proposals/gallery-answers/`. Those questions are out of this list; what the answers left open is in section 13.
 
 Where we could find the answer ourselves, the question asks you to confirm it. Questions already answered have been removed; Git history keeps them.
 
-## 1. Before release
+## 1. Asked before release, still open
 
 | # | Question | Until then |
 | --- | --- | --- |
-| 1.1 | Which email addresses should the footer and Contact page show? In use now or recently: artistsforkids@sd44.ca and admin@smithfoundation.ca (Contact page), AFKinfo@sd44.ca (the Foundation's old Contact page), info@smithfoundation.ca, and the Foundation's executivedirector@, programs@, coordinator@ and development@. Should Contact also give the Foundation's phone, 604.998.8563, "by appointment"? | No email in the footer; Contact lists artistsforkids@sd44.ca and admin@smithfoundation.ca |
+| 1.1 | The general email is confirmed: artistsforkids@sd44.ca (2026-10-01). Which other addresses should the Contact page show? In use now or recently: artistsforkids@sd44.ca and admin@smithfoundation.ca (Contact page), AFKinfo@sd44.ca (the Foundation's old Contact page), info@smithfoundation.ca, and the Foundation's executivedirector@, programs@, coordinator@ and development@. Should Contact also give the Foundation's phone, 604.998.8563, "by appointment"? | artistsforkids@sd44.ca in the footer; Contact lists it and admin@smithfoundation.ca |
 | 1.2 | Confirm: gallery hours Thursday to Saturday, 12 to 4 PM, and phone (604) 903-3798, as on the Foundation's Contact page (August 2026) | Shown as they are |
-| 1.3 | Artists for Kids office hours: Monday to Friday 8 AM to 3 PM (Plan your visit) or 8:30 AM to 4:30 PM (Contact, and the old Artists for Kids site)? | 8 AM to 3 PM on Plan your visit; Contact as written |
 | 1.4 | Confirm admission: a $5 suggested donation, and backpacks, large bags, food, drinks and umbrellas stay outside the exhibition spaces (both from the Foundation's Contact page, 2026) | "Admission by donation", no bag rule |
-| 1.5 | Is there a list of holiday closures for the year, so the "open today" line can say "Closed for the holiday"? | The line follows the weekly days and times |
-| 1.6 | Confirm the social accounts, or send the gallery's own. The Artists for Kids site (artistsforkids.sd44.ca, 2026-09-28) links Facebook `facebook.com/afksmithgallery`, Instagram `instagram.com/afk_smithgallery` and YouTube `youtube.com/channel/UCBo3tcqxdV8lTdNEnT1lCwg`. Once confirmed they go in Theme settings, and search and answer engines are told they are the gallery's (DS-154). From the Foundation's old site: Facebook `facebook.com/gordonandmarionsmithfoundation`, Instagram `instagram.com/the_smith_foundation`, X `twitter.com/AFKSmithGallery`, and the Artists for Kids YouTube channel `youtube.com/channel/UCBo3tcqxdV8lTdNEnT1lCwg` | No social links in the footer |
 | 1.7 | The newsletter sign-up's wording and its consent sentence. It uses "Join Our Newsletter" and "Be the first to know about new programs, upcoming exhibitions, public events, limited edition releases and other exclusive offers." from the old Contact page | That wording, with no consent sentence |
 | 1.8 | The newsletter list has recent sign-ups that look automated (made-up names with numbers). Some website sign-ups are real, from when the old site used Mailchimp. Would the gallery like to clean up the automated ones? Shopify's spam protection is on for the new form | Left as they are |
 | 1.9 | Choose six featured works for the Permanent Collection page. The first three also show on the home page, under "From the collection" (DS-188). In Shopify admin: Content, Metaobjects, Collection grouping, "Featured works", then the Works field (the first six show, in that order) | Bill Reid's *Xhuwaji/Haida Grizzly Bear*, Gordon Smith's *Painting After Goya*, Jack Shadbolt's *Winter Garden*, E.J. Hughes's *The Mill at Mesachie Lake*, Robert Davidson's *Crab of the Woods*, Kenojuak Ashevak's *Untitled [Loons Protect The Owl]* |
@@ -23,8 +22,8 @@ Where we could find the answer ourselves, the question asks you to confirm it. Q
 
 We found these in the site's text or the collection's records. Say if any is wrong; we make them once you confirm.
 
-- **Artist names.** Artists page: "Atilla Lukacs" to Attila Lukacs, "Jean McEwan" to Jean McEwen. Permanent Collection page: "Graham Gilmore" to Graham Gillmore. Artists for Kids pages: Mark Johnsen (once "Johnson"), Elizabeth McIntosh (once "MacIntosh"), Sara-Jeanne Bourget (once "Sara Jean"). All as the catalogue has them.
-- **Typos.** "Artists for Kids" (three times "Artist for Kids"); "If your child requires support" (After School Art); on the donor list, "Mission Hill Winery" and "The Benevity Community Impact Fund".
+- **Artist names.** Permanent Collection page: "Graham Gilmore" to Graham Gillmore. Artists for Kids pages: Mark Johnsen (once "Johnson"), Elizabeth McIntosh (once "MacIntosh"), Sara-Jeanne Bourget (once "Sara Jean"). All as the catalogue has them.
+- **Typos.** "If your child requires support" (After School Art); on the donor list, "Mission Hill Winery" and "The Benevity Community Impact Fund".
 - **Years.** *My Sun* by Samuel Roy-Bois: 2024 in the picture's description, as in its caption and the catalogue (the description says 2025). The Paradise Valley photo: 1996, as its caption says (its description says 1994, before the camp began: its 30th anniversary was in 2025).
 - **Lessons.** The works named in lessons, as the collection records them: *Harlequin* 2003 (the lesson says 2019), *Plains Cree Chiefs* 1995 (1996), *Einstein/Frankenstein* 2004 (2009 in one lesson), *Pender Harbour* 2006 (2009), and the full titles *Painting and Figure Maquette in Studio at Night* and *All Kinds of Birds*. Unless a lesson means another version of the work.
 - **Collection records.** REID001.2: 1988, like its other half (the year reads "1988 General note"). Three works by Anne Meredith Barry ("1932-2003") and three by Frank Perry ("circa 1923-2006") give the artist's life, not the work's date, so they become "n.d.". JEFF002: its year reads "Paper", which belongs to the medium, "Paper, Rubber and Graphite"; is it 2010, like its companion JEFF003? BARR002: medium "Lithograph on paper", edition 21/28. Pender Harbour's artist's proof: "AP (ed. of 100)".
@@ -44,7 +43,7 @@ Wording we wrote or changed. Until it's approved, the site shows it as below.
 - **Volunteer:** the heading "Join the team" and the last line "To apply, fill in the volunteer form (PDF). Questions? Contact us." Would you rather take applications through the site's contact form, so nobody has to print and scan?
 - **Portfolios:** the switcher reads "All editions, Fall 2026, Spring 2026, Fall 2025, Spring 2025, Fall 2024".
 - **Proposed, not made:** "Send a message" for the contact form's "Contact us"; "Download the report" for "2025 A Year In Review"; "Donate" for "Donate today", as on Home; a link label for Public Programs, like Donations'; buttons that say what they do ("Get the program guide", "Read the year in review", "See the learning guides", "Borrow a learning kit"); "More from this portfolio" for "You may also like"; award names as the headings of their points.
-- **Names across the site:** "Artists for Kids" or "Artists For Kids" (78 uses have a capital F); "Artists for Kids" for "AFK" in running text ("the founders of AFK", "the AFK studios"; titles and headings already say it in full); one name for each programme on its cards and page; programme titles in sentence case ("Music at the Smith"); one spelling of Artists-in-Residence (the page title's); curly quotes in *Against the Latitude of "Progress"*; the Shop's menu label against its page title.
+- **Names across the site:** "Artists for Kids" for "AFK" in running text ("the founders of AFK", "the AFK studios"; titles and headings already say it in full); one name for each programme on its cards and page; programme titles in sentence case ("Music at the Smith"); one spelling of Artists-in-Residence (the page title's); curly quotes in *Against the Latitude of "Progress"*; the Shop's menu label against its page title.
 
 ## 4. Exhibitions
 
@@ -73,7 +72,7 @@ On the review site: 1,174 works, 171 artists, 26 groupings. The review sheets ar
 | 5.5 | Years. Seven works have "N/A" as their year: do you know them? The catalogue writes other undated and estimated years many ways ("20th century", "circa 20c", "N.D. [20--]", "estimated date: 196-", "(Signed and Dated)"). May we write them one way, e.g. "n.d." and "circa 1960s"? | As the catalogue writes them |
 | 5.6 | The six works from "Things On Loan to AFK". *Before the Storm* (Gordon Smith) is lent to the gallery by Morris & Kumyuen Saldov. Three George Rammell sculptures are lent out, two to Lynn Valley Elementary and one to Dundee Realty; their dimensions read "size". REID-TC002 is the gallery's own print, hanging at Queen Mary Elementary. BOBA005's year reads "N/A". Should a page say a work is on loan, and how should its credit line read (e.g. "Lent by …")? And the sculptures' dimensions? | Credit lines as the catalogue records them; nothing says "on loan" |
 | 5.7 | Wording. The Artists page's two paragraphs are about the Limited Edition Portfolio artists, and now sit above the whole collection. The Permanent Collection page's introduction. One or two sentences for the three groupings without an introduction, and a shorter name for the Portfolio Collective. The Published Editions introduction says "Entering its 37th year", which dates itself: keep, or "since 1990"? | As written |
-| 5.8 | Bill Reid's 1990 print: *Xhuwaji / Haida Grizzly* or *XHUWAJI/Haida Grizzly Bear*? The catalogue uses both (REID003, REID008), and so does About Artists for Kids | As written |
+| 5.8 | Bill Reid's 1990 print is "Xhuwaji/Haida Grizzly Bear" (the gallery, 2026-10-01), and the pages say so. The collection's own records differ: 11 trial copies and REID008 say "Xhuwaji/Haida Grizzly", REID003 and REID-TC002 the full title. Shall they all take it? | The records as the catalogue has them |
 
 The 39 documents over Shopify's 20 MB limit are on the site as smaller copies (listed in `sheets/large-documents.csv`). If you have sharper copies under 20 MB, send them and they can replace these.
 
@@ -135,49 +134,9 @@ From the old smithfoundation.co site (`proposals/smith-foundation-site.md`). Eac
 | 9.4 | Is there a "GS logo clusters document" (the brand guide refers to it on pages 3 to 5)? Is About Us's `triad_logo_cluster.png` (329 × 201 px) the approved cluster, and is there a vector version? (Q1) | Logos side by side, each beside its description |
 | 9.5 | May the site use a teal version of the text-only Gallery logo, which the brand guide shows but wasn't supplied? (Q3) | Not used |
 
-## 10. For search and answer engines
+## 10 and 11. For search and answer engines
 
-Sent to the gallery as one document with section 11 and questions 1.3, 1.5 and 1.6 (a shared Claude doc, "Gordon Smith Gallery: questions for the gallery", 2026-09-29), numbered 1.1 to 8.2 there. Answered by Michael, 2026-09-29, and taken out: 10.10, the Permanent Collection's line stays round ("over 1,000 + Works"), because the collection grows; 10.16, which donation page is for what, isn't asked.
-
-From `proposals/aeo-geo-review.md`. These words show in search results, link previews and the answers of AI assistants, not on the pages themselves, except 10.4 and 10.5.
-
-| # | Question | Until then |
-| --- | --- | --- |
-| 10.1 | Approve or change the description of each of the 40 pages, one or two sentences each, made from the page's own words (`proposals/store-writes/aeo/descriptions.json`). Three to check closely: Explore + Create says "free"; Shop says sales fund art education programs; Plan your visit gives the hours, so it must change when the hours do | The drafts show on the review theme |
-| 10.2 | Approve or change the home page's description: "The Gordon Smith Gallery of Canadian Art is a public art gallery at 2121 Lonsdale Avenue, North Vancouver, and the home of Artists for Kids. Exhibitions, programs and limited edition prints. Admission is by donation." | The draft shows on the review theme |
-| 10.3 | The alt text of 45 hero images and installation views, written from looking at each, is on the site (written 2026-09-29, P-62; `proposals/store-writes/aeo/alt.json`). No one is named. Is any of it wrong? Eleven have a note to check: for example the Shop's hero may be a mock-up, *Endless Summer*'s hero is a file named "Contact-Us", and the Foundation page's album photo may show Gordon Smith | As written |
-| 10.4 | Would the gallery like visiting questions added to the FAQ page, which has questions about the Shop only: hours, admission, directions, parking and accessibility? Eight are drafted from Plan your visit's own words in `proposals/aeo-geo-review.md`, "Drafts for the gallery". They are kept out of the document sent to the gallery, so as not to confuse (Michael, 2026-09-29) | The FAQ stays as it is |
-| 10.5 | Short biographies, two or three sentences, for the artists people ask about most, starting with the founding patrons: Gordon Smith, Jack Shadbolt and Bill Reid. A draft for Gordon Smith, from the Gordon and Marion page's words, is in the same place. 149 of the 171 artist pages have no biography | The page gives name, dates and the number of works |
-| 10.6 | One sentence that says what the gallery is, for the home page near Visit, with a link to About. The About page's own opening could serve | The home page has none |
-| 10.7 | Does the gallery, or do its artists, have entries on Wikipedia or Wikidata? Linking them tells engines which Gordon Smith is meant | Not linked |
-| 10.8 | Approve or change the words of the site's file for AI assistants (`/llms.txt`), which says what the gallery is and keeps four names apart: the gallery, Artists for Kids ("An art education program for children and youth, established in 1989. It publishes the limited editions sold on this site."), the Foundation ("A foundation founded in 2002. It funds visual arts programs for children and presents public programs and exhibitions at the gallery.") and Gordon Smith ("The artist Gordon Appelbe Smith, 1919 to 2020, a Canadian Modernist painter. A person, not the gallery.") | The drafts show on the review theme once it is pushed |
-| 10.9 | One name and one spelling. The site writes "Artists for Kids" 97 times, "Artists For Kids" 21 times and "Artist for Kids" 4 times (Artists and Artists For Kids pages). Bill Reid's first edition is "Xhuwaji / Haida Grizzly" on two pages and "Xhuwaji/Haida Grizzly Bear" on the Permanent Collection page. Which are right? | As written |
-| 10.11 | Who owns or operates the gallery's building, and when did the gallery open? The site gives 1989 for Artists for Kids and 2002 for the Foundation, and no date for the gallery | Not stated |
-| 10.12 | How does a class visit work, who is it for and how is it booked? Schools and teachers is a list of links, so it answers none of these itself | Not stated |
-| 10.13 | Does the gallery sell works from its collection, or represent artists? People ask answer engines this, and no page says | Not stated |
-| 10.14 | The shop ships within Canada only (the store's one shipping zone, 2026-09-28). May the FAQ say so? | Not stated |
-| 10.18 | Would the gallery ship to the United States, or worldwide? (Michael, 2026-09-29) | Canada only |
-| 10.15 | In what year was Marion Smith born, and in what year did she die? The Gordon and Marion page gives Gordon Smith's dates and none for her | Not stated |
-| 10.17 | Two claims to confirm with a source: that the gallery was "established as Canada's first public art gallery for young audiences" (Artists For Kids page), and the museums that hold Gordon Smith's work (Gordon and Marion page) | As written |
-
-## 11. Facts for search and answer engines to confirm
-
-Found on 2026-09-28 without asking (`proposals/structured-data-facts.md`). Each needs a yes, a no or a correction.
-
-| # | Question | Until then |
-| --- | --- | --- |
-| 11.1 | Six artist pages read "born" of artists who have since died: David Blackwood (2022), Christopher Pratt (2022), Joe Fafard (2019), Gathie Falk (2025), Victor Cicansky (2025), Audrey Capel Doray (2025). Correct? | As written |
-| 11.2 | Molly Lamb Bobak: the page gives 1922 to 2014. Other sources give 1920 | As written |
-| 11.3 | Spellings: "Patterson Ewen" or "Paterson Ewen"; "Charles Gagon" or "Charles Gagnon"; "Atilla Lukacs" or "Attila Lukacs"; "Jean McEwan" or "Jean McEwen" | As written |
-| 11.4 | Are these the gallery's and Artists for Kids' profiles, and still in use? Instagram `afk_smithgallery`, Facebook `afksmithgallery`, X `afksmithgallery`, and the YouTube channel on the sd44.ca pages. Does the gallery have its own? | Not linked |
-| 11.5 | Are these the Foundation's, and still in use? Instagram `the_smith_foundation`, Facebook `gordonandmarionsmithfoundation` | Not linked |
-| 11.6 | The Foundation's charity number: 866075658RR0001? | Not given |
-| 11.7 | How are the three related? The site says Artists for Kids is operated by the North Vancouver School District, and that the Foundation funds Artists for Kids. Who does the gallery belong to: the school district, the Foundation, or both? | Not stated |
-| 11.8 | Office hours: Monday to Friday 8 AM to 3 PM (the site), or 8:30 AM to 4:30 PM, closed July and August (the store's contact page)? | The site's |
-| 11.9 | The general email for the site: `artistsforkids@sd44.ca`? | None shown in the data |
-| 11.10 | For 101 artists, a list of where each is described elsewhere (Wikidata, the Getty's list of artists, Wikipedia) is drafted in `proposals/store-writes/aeo/artist-identifiers.json`. 59 are confirmed by their dates. May the other 42 be checked by someone who knows the collection? | Not linked. This answers 10.7 |
-| 11.11 | Is shipping a flat $20 within Canada? The shipping policy says so, and also that shipping "will be calculated and confirmed with you at the time of the order". Google's shopping results are now told $20 (DS-170). The FAQ says shipping is "calculated and confirmed at checkout", so three places give two answers | $20 |
-| 11.12 | Is "admission by donation" free to enter, for anyone? Search engines are now told the gallery is free to enter (DS-171) | Free to enter |
+Answered by the gallery on 2026-10-01, all but one, and taken out: `proposals/gallery-answers/README.md` says what each answer became. The one left is 13.6.
 
 ## 12. Links between pages
 
@@ -191,3 +150,17 @@ From the review of the site's links, 2026-09-29 (`proposals/internal-linking-rev
 | 12.4 | Three more names link to their pages wherever a text has them: "Gordon and Marion Smith Foundation for Young Artists" (to The Smith Foundation), and "Artists in Residence" and "Artist in Residence" (to Artists in Residence). Add or remove any? | As listed. The lists are in Theme settings, Links between pages (DS-175) |
 | 12.5 | Thirteen Artists for Kids pages now show the page they belong to above their title, as a link back. After School Art, Spring & Summer Day Camps and Paradise Valley Summer Camps are under "Classes and camps". Gallery Program, Artists-in-Residence, Studio Art Academy, Learning Guides, Learning Kits and ArtReach Videos are under "Schools and teachers". Those two, Awards and Scholarships and Support Artists for Kids are under "Artists for Kids". Is each under the right page? | As listed (P-64) |
 | 12.6 | New words on the home page, over three works from the Permanent Collection: the heading "From the collection" and the link "Browse the collection". Are they right? | As written (DS-188) |
+
+## 13. From the answers of 2026-10-01
+
+What the gallery's answers left open. None holds anything up.
+
+| # | Question | Until then |
+| --- | --- | --- |
+| 13.1 | Newgaleak Qimirpik: the answer reads "Yes, Nuyaliaq Qimirpik, 1937-2007". Should the page's name change to Nuyaliaq Qimirpik? | "Newgaleak Qimirpik", with Nuyaliaq as another name and the years 1937 to 2007 |
+| 13.2 | Canada Day, July 1, 2027, is a Thursday and is not on the closures list. Is the gallery open that day? | Open |
+| 13.3 | *Unfixed* and the picture's file name Laurie Kang; the gallery's image description says Lotus Kang, as the artist is now known. Should the exhibition's page say Lotus L. Kang? | The page as written; the image description says Lotus Kang |
+| 13.4 | The Gallery Program's description now says K-12 classes. Its page and button say Grade 5 for the guided program, and K-12 for self-guided tours. Which should the page say? | The page as written |
+| 13.5 | A class visit "is booked through the registration link". Who is it for, what happens on the day and what does it cost? Schools and teachers still answers none of these itself | Not stated |
+| 13.6 | Does the gallery have its own entry on Wikipedia or Wikidata? Not answered; we can look it up | Not linked |
+| 13.7 | The gallery's note on the document: each class and camp listed on the site with its times, teacher, theme and ages, linking straight to its registration page. It ties to 6.9 to 6.12: who keeps the list up to date each term, and do the registration addresses change? | A project of its own (Michael, 2026-10-01). The buttons go to the old site's pages |

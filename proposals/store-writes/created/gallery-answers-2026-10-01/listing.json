@@ -1,0 +1,487 @@
+[
+ {
+  "call": "search listing descriptions 1 to 25",
+  "kind": "fields",
+  "at": "2026-10-01T19:32:40+00:00",
+  "variables": {
+   "id": null,
+   "sent": "(7479 characters; the words are in this script and its data files)"
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190530538144041",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "How Artists for Kids began in 1989 with Gordon Smith, Jack Shadbolt and Bill Reid, its Limited Edition Portfolio, its team and its annual report.",
+      "owner": {
+       "id": "gid://shopify/Page/165878104361",
+       "handle": "about-artists-for-kids"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538176809",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The Gordon Smith Gallery of Canadian Art in North Vancouver is home to Artists for Kids and the Gordon and Marion Smith Foundation: exhibitions, programs and art education.",
+      "owner": {
+       "id": "gid://shopify/Page/155687813417",
+       "handle": "about-us"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538209577",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "After School Art classes for students each fall, winter and spring term, led by BC certified art specialist teachers. All art materials are included.",
+      "owner": {
+       "id": "gid://shopify/Page/165837373737",
+       "handle": "after-school-art"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538242345",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "A drop-in program for seniors at the Gordon Smith Gallery: chat about and make art inspired by the current exhibition. Second Thursday of every month, 2:30 to 4 PM.",
+      "owner": {
+       "id": "gid://shopify/Page/155720253737",
+       "handle": "art-in-good-company"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538275113",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery, A to Z, with the works the collection holds by each.",
+      "owner": {
+       "id": "gid://shopify/Page/140886573353",
+       "handle": "artists"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538307881",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Artists for Kids, established in 1989, offers art education for children and youth: classes, camps, school programs, artists-in-residence, learning resources, professional development and the Gordon Smith Gallery of Canadian Art.",
+      "owner": {
+       "id": "gid://shopify/Page/155720810793",
+       "handle": "artists-for-kids"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538340649",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Students nominated by their teachers work for full days with a professional artist at the Artists for Kids studios, from ceramics and painting to collage and photography.",
+      "owner": {
+       "id": "gid://shopify/Page/165837898025",
+       "handle": "artists-in-residence"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538373417",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "ArtReach videos from Artists for Kids guide classrooms and people at home through art activities, with lessons from Kindergarten to Grade 12.",
+      "owner": {
+       "id": "gid://shopify/Page/165838160169",
+       "handle": "artreach-videos"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538406185",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Artists for Kids offers three scholarships to North Vancouver School District graduating students in Grade 12 visual and performing arts courses.",
+      "owner": {
+       "id": "gid://shopify/Page/165838225705",
+       "handle": "awards-and-scholarships"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538438953",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The Brilliance Gala supports art education for children and youth across the Lower Mainland through Artists for Kids and the Gordon Smith Gallery.",
+      "owner": {
+       "id": "gid://shopify/Page/165856444713",
+       "handle": "brilliance-gala"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538471721",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "After School Art classes, spring and summer day camps and the Paradise Valley summer camp for young artists, from Artists for Kids in North Vancouver.",
+      "owner": {
+       "id": "gid://shopify/Page/165837734185",
+       "handle": "classes-and-camps"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538504489",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Contact the Gordon Smith Gallery and Artists for Kids: 2121 Lonsdale Avenue, North Vancouver, BC V7M 2K6. Telephone (604) 903-3798.",
+      "owner": {
+       "id": "gid://shopify/Page/140660572457",
+       "handle": "contact"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538537257",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "What is on this week at the Gordon Smith Gallery in North Vancouver: talks, concerts, workshops and drop-in art programs.",
+      "owner": {
+       "id": "gid://shopify/Page/165858115881",
+       "handle": "current-events"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538570025",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Week-long spring and summer day camps with Artists for Kids: drawing, painting and printmaking taught in small groups by BC certified art specialist teachers.",
+      "owner": {
+       "id": "gid://shopify/Page/165837799721",
+       "handle": "day-camps"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538602793",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Give to the Gordon and Marion Smith Foundation for Young Artists. Your gift supports exhibitions, school programs, public engagement at the Gordon Smith Gallery, camps, bursaries and scholarships.",
+      "owner": {
+       "id": "gid://shopify/Page/155885863209",
+       "handle": "donate"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538635561",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "A free drop-in art program for families with children ages 5 to 12, Saturdays from 1 to 3 PM at the Gordon Smith Gallery. Donations are welcome.",
+      "owner": {
+       "id": "gid://shopify/Page/155720089897",
+       "handle": "explore-create"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538668329",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Answers about buying limited edition prints from Artists for Kids and accessing the Gallery: editions, payment, shipping, framed prints and pickup.",
+      "owner": {
+       "id": "gid://shopify/Page/154942865705",
+       "handle": "frequently-asked-questions"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538701097",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "K-12 classes experience the current exhibition in the gallery, then respond by making art in the studio, led by their classroom teacher and a visual art teacher from Artists for Kids.",
+      "owner": {
+       "id": "gid://shopify/Page/165837865257",
+       "handle": "gallery-program"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538733865",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Gordon Smith (1919 to 2020), a cornerstone of Modernist painting in Canada, and Marion Smith, and the belief in art education that grounds the foundation in their name.",
+      "owner": {
+       "id": "gid://shopify/Page/155692957993",
+       "handle": "gordon-and-marion"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538766633",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Learning guides to download from Artists for Kids: inter-disciplinary art lessons for the classroom, created with artists.",
+      "owner": {
+       "id": "gid://shopify/Page/165838094633",
+       "handle": "learning-guides"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538799401",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Teachers in the North Vancouver School District can book clay and collagraph kits from Artists for Kids for two weeks, with tools, lesson plans and step-by-step instructions.",
+      "owner": {
+       "id": "gid://shopify/Page/165838127401",
+       "handle": "learning-kits"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538832169",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "A seasonal concert series at the Gordon Smith Gallery: jazz, folk, indie, classical and world music, performed alongside the current exhibition.",
+      "owner": {
+       "id": "gid://shopify/Page/155719696681",
+       "handle": "music-at-the-smith"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538864937",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The exhibition on now at the Gordon Smith Gallery of Canadian Art, 2121 Lonsdale Avenue, North Vancouver. Admission is by donation.",
+      "owner": {
+       "id": "gid://shopify/Page/155763999017",
+       "handle": "on-now"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538897705",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "A summer art camp in Paradise Valley for young artists ages 9 to 15, five days and four nights: collage, drawing, painting and printmaking, with outdoor recreation.",
+      "owner": {
+       "id": "gid://shopify/Page/165837832489",
+       "handle": "paradise-valley-summer-camp"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538930473",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Past talks, concerts, workshops and drop-in art programs at the Gordon Smith Gallery in North Vancouver, newest first.",
+      "owner": {
+       "id": "gid://shopify/Page/165857689897",
+       "handle": "past-events"
+      }
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "search listing descriptions 26 to 41",
+  "kind": "fields",
+  "at": "2026-10-01T19:32:41+00:00",
+  "variables": {
+   "id": null,
+   "sent": "(4737 characters; the words are in this script and its data files)"
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190530538963241",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Past exhibitions at the Gordon Smith Gallery of Canadian Art in North Vancouver, newest first, with their dates and curators.",
+      "owner": {
+       "id": "gid://shopify/Page/155763736873",
+       "handle": "past-exhibitions"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530538996009",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Search and browse more than 1,200 works by Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery.",
+      "owner": {
+       "id": "gid://shopify/Page/155720548649",
+       "handle": "permanent-collection"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539028777",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The Gordon Smith Gallery is at 2121 Lonsdale Avenue, North Vancouver. Open Thursday to Saturday, 12 to 4 PM. Admission is by donation. Wheelchair accessible.",
+      "owner": {
+       "id": "gid://shopify/Page/155670151465",
+       "handle": "plan-your-visit"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539061545",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Professional development workshops from Artists for Kids for educators, to support Kindergarten to Grade 12 through the British Columbia Arts Education curriculum.",
+      "owner": {
+       "id": "gid://shopify/Page/165838192937",
+       "handle": "professional-development"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539094313",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Talks, workshops, family days, seniors programs, concerts and exhibition tours at the Gordon Smith Gallery in North Vancouver.",
+      "owner": {
+       "id": "gid://shopify/Page/155718943017",
+       "handle": "public-programs-1"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539127081",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists in Residence, learning guides and kits, ArtReach videos and professional development for educators.",
+      "owner": {
+       "id": "gid://shopify/Page/165837766953",
+       "handle": "schools-and-teachers"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539159849",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Limited edition prints by Canadian artists, published by Artists for Kids since 1989. Sales fund art education programs for children and youth.",
+      "owner": {
+       "id": "gid://shopify/Page/155762786601",
+       "handle": "shop"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539192617",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The Gordon and Marion Smith Foundation offers scholarships to three graduating Grade 12 students from North Vancouver, West Vancouver and Vancouver.",
+      "owner": {
+       "id": "gid://shopify/Page/165856379177",
+       "handle": "smith-foundation-scholarships"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539225385",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The donors, sponsors, grant agencies and foundations that support the Gordon and Marion Smith Foundation for Young Artists.",
+      "owner": {
+       "id": "gid://shopify/Page/165856477481",
+       "handle": "smith-foundation-supporters"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539258153",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Talks at the Gordon Smith Gallery: exhibition panels, conversations with curators and artists, and leaders in the creative community.",
+      "owner": {
+       "id": "gid://shopify/Page/155719434537",
+       "handle": "speaker-series"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539290921",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The Artists for Kids Studio Art Academy: hands-on learning with professional artists and a personal portfolio. Not offered for the 2026/2027 school year.",
+      "owner": {
+       "id": "gid://shopify/Page/165838061865",
+       "handle": "studio-art-academy"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539323689",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Artists for Kids is a not-for-profit art education program of the North Vancouver School District. Your gift supports the extensive programs offered by Artists for Kids that support the community at large.",
+      "owner": {
+       "id": "gid://shopify/Page/165838258473",
+       "handle": "support-artists-for-kids"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539356457",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "The Gordon and Marion Smith Foundation for Young Artists, founded in 2002, funds visual arts programs for children and youth delivered through Artists for Kids, and scholarships to students in West Vancouver, North Vancouver, and Vancouver, and presents programs and exhibitions at the Gordon Smith Gallery.",
+      "owner": {
+       "id": "gid://shopify/Page/155705409833",
+       "handle": "the-smith-foundation"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539389225",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Upcoming talks, concerts, workshops and drop-in art programs at the Gordon Smith Gallery in North Vancouver.",
+      "owner": {
+       "id": "gid://shopify/Page/155669168425",
+       "handle": "upcoming-events"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539421993",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Exhibitions opening soon at the Gordon Smith Gallery of Canadian Art in North Vancouver.",
+      "owner": {
+       "id": "gid://shopify/Page/155763376425",
+       "handle": "upcoming-exhibitions"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190530539454761",
+      "namespace": "global",
+      "key": "description_tag",
+      "type": "single_line_text_field",
+      "value": "Volunteer at the Gordon Smith Gallery as a gallery attendant or an event assistant. Download the form to apply.",
+      "owner": {
+       "id": "gid://shopify/Page/155902738729",
+       "handle": "volunteer"
+      }
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

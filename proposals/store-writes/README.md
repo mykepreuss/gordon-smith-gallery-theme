@@ -1052,3 +1052,51 @@ The order was the page, then the links to it, then the Artists for Kids page, so
 **Review theme:** `main` at 641370d pushed to `184824398121` with `--strict` after its editor files were checked (they matched 8bcfaa7 apart from the empty settings Shopify adds). Its settings file, read back, matches `main`.
 
 **Undo:** in the live theme's editor, Theme settings, Links between pages, delete the line "Artist for Kids = artists-for-kids" and save. Or push the before-snapshot's copy of the file the same way, if Michael allows a live write again.
+
+## 2026-10-01: the gallery's answers
+
+**Why:** the gallery returned its answers to the search and answer engine questions (`proposals/gallery-answers/`). Michael, 2026-10-01, after the review and plan: "May I remove the X link from the live theme today? Yes", the biographies "No, proceed", "go with what the gallery wants" for the 1,200, "We can trust what they sent in the doc", "fix all typos", then "Proceed". The plan listed these writes. What each answer became: `proposals/gallery-answers/README.md`.
+
+**Checked first:** store `ed35ee-ea.myshopify.com` ("Artists for Kids & The Gordon Smith Gallery", gordonsmithgallery.com), by the CLI and by the connector. By `shopify theme list`: `184824398121` "Gordon Smith Gallery" live, `184824725801` "Review theme (do not publish)" unpublished, the two rollback themes and the old theme unpublished; only the live theme's settings file was written. Before-snapshot: `snapshots/gallery-answers-2026-10-01-before.json`, which each step of `gallery_answers.py` fills just before it writes, from a fresh read of the store. 42 live pages were read before and after (words, title, description, alt text, Liquid errors).
+
+### The live theme's settings (P-66)
+
+| What | Through | Notes |
+| --- | --- | --- |
+| `config/settings_data.json` on the live theme: the X link (`social_x`) out; Artists for Kids office hours gain a third line, "Closed July and August" | CLI, `shopify theme push --theme 184824398121 --only config/settings_data.json --allow-live`, about 19:14 UTC | The file was the live theme's own, downloaded just before. It matched `main` byte for byte, so no editor change since the third release. The two lines are the whole difference |
+
+**Checked after:** the live theme's file, downloaded again, matches what was sent. The live footer links Instagram, Facebook and YouTube, and no X. Plan your visit shows "Monday to Friday, 8 AM to 3 PM, Closed July and August". No Liquid error.
+
+**Undo:** push `main`'s copy of the file at 1168190 the same way, with Michael's go-ahead, or set the two back in the live theme's editor.
+
+### Store writes, through the CLI (`gallery_answers.py`)
+
+Each step reads the store, sends only what differs, stops at the first error and writes the store's answers to `created/gallery-answers-2026-10-01/`. 157 calls, none with an error. Each step run again lists nothing.
+
+| Step | What | Calls | When (UTC) |
+| --- | --- | --- | --- |
+| `text` | "Artists for Kids" with a small f, 28 uses: Contact, FAQ, Plan your visit, Music at the Smith, the Artists for Kids page's title, Mark Johnsen, Professional Development, Smith Foundation scholarships, Brilliance Gala; six exhibitions, two events' titles, two cards, two card groups' headings, two documents' titles. "Artist for Kids" corrected, 5 uses: Artists, About Artists for Kids, an exhibition's summary, a team card. "Xhuwaji/Haida Grizzly Bear" on Shop, About Artists for Kids and the Published Editions introduction. Contact's office hours "8am - 3pm". The FAQ's shipping answer: "Shipping is a flat rate of $20 within Canada.", and a new question, "Do you ship outside Canada? Not at this time. We ship within Canada only." Permanent Collection's intro: "over 1,200 + Works" | 30: `pageUpdate` 12, `metafieldsSet` 1, `metaobjectUpdate` 17 | 19:27:20 to 19:27:53 |
+| `artists` | Paterson Ewen, Charles Gagnon, Attila Lukacs and Jean McEwen: name, sort name and handle, each with a redirect from the old address (`gid://shopify/UrlRedirect/688375988521` to `…688376086825`). The Vancouver School Collective's full name. Life dates: Blackwood, Pratt, Fafard, Falk, Cicansky, Capel Doray, Bobak (1920), Papialuk (1918 to 1996), Qimirpik (1937 to 2007), Kipling (1934 to 2023). Biographies for Gordon Smith, Jack Shadbolt, Bill Reid and Ann Kipling, as the gallery sent them (`gallery-answers/biographies.json`) | 19, `metaobjectUpdate` | 19:30:02 to 19:30:25 |
+| `alt` | The 11 image descriptions the gallery changed (`aeo/alt.json`) | 1, `fileUpdate` | 19:31:32 |
+| `descriptions` | The 14 descriptions the gallery changed, in the staged field the live theme reads first (`aeo/descriptions.json`) | 1, `metafieldsSet` | 19:31:35 |
+| `listing` | All 41 pages' descriptions in their search engine listings (`global.description_tag`), `store-changes.md` §8d | 2, `metafieldsSet` | 19:32:40 |
+| `unstage` | The staged description (`custom.release_description`) deleted on 40 pages | 2, `metafieldsDelete` | 19:33:37 |
+| `identifiers` | A new field on the artist entry, "Described elsewhere" (`described_at`, a list of addresses), and its value on 101 artists: Wikidata, then Wikipedia and the Getty's list where there is one (`aeo/artist-identifiers.json`) | 102: `metaobjectDefinitionUpdate` 1, `metaobjectUpdate` 101 | 19:34:28 to 19:36:15 |
+
+**Kept, on purpose.** The Smith Foundation keeps its staged description, and the field keeps its definition (`gid://shopify/MetafieldDefinition/273366122793`). Its new description starts as its page text does, for 40 letters, and the live theme takes such a search listing for one Shopify made from the text and drops it (DS-160). The next release compares more of the two; then `unstage` and `definition` finish §8d.
+
+**The biographies.** Michael chose to publish them as sent. For the record: Bill Reid's matches the Bill Reid Gallery's own page about him word for word, and Jack Shadbolt's says his family came to Victoria in 1921, where published accounts say 1912.
+
+**The old artist addresses.** Shopify made the four redirects, but they never fire: `/pages/artists/<anything>` answers 200 with the Artists page, as any address under a page's own does (`/pages/about-us/zzz` too). So an old address shows the A to Z list, with the artist under the new spelling. It was so before today for any mistyped artist address.
+
+**The collection's rules.** `collection/clean.py` and `sheets/artists.csv` carry the four names and ten life dates, so the import run again gives the same entries. `clean.py` could not be run to check: the catalogue export is not in Git.
+
+**Checked after:** each step read back from the store. On gordonsmithgallery.com, 42 pages before and after: the only differences are the words above; every title the same but Artists for Kids'; no Liquid error. All 42 descriptions (41 pages and Home) read the same after `descriptions`, after `listing` and after `unstage`. The four artist pages show their biographies; Artists A to Z lists the four new spellings and none of the old.
+
+**Not written.** The shipping policy (the note about calculating) and the contact information policy (office hours): the connector and the CLI may read policies but not write them (`write_legal_policies`). The texts before and after are in `snapshots/policies-2026-10-01.json`; Michael makes the two changes in the admin, Settings, Policies. Four additions to page text wait for his go-ahead (`proposals/gallery-answers/README.md`, "Left for Michael").
+
+**Effect on the live site:** the words above, at once. The descriptions show in search results and link previews as engines read the pages again. The "Described elsewhere" field shows nowhere until the theme reads it.
+
+**Effect on the review theme:** the same, since pages, entries and files are shared.
+
+**Undo:** each call's old values are in the snapshot, under its step. Text: `pageUpdate`, `metafieldsSet` or `metaobjectUpdate` with the `before` values. Artists: `metaobjectUpdate` with the old name, sort name, dates and handle (and delete the four redirects), or an empty biography. Alt text: `fileUpdate` with the old words. Descriptions: `metafieldsSet` on `custom.release_description` with the snapshot's words (the theme reads it first), and `metafieldsDelete` on `global.description_tag`. Artist links: `metaobjectDefinitionUpdate` deleting the field `described_at`, which removes its values.

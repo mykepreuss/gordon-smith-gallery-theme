@@ -1,6 +1,6 @@
 # Proposed store-level changes
 
-**Released 2026-09-29.** Made that day, with Michael's approval: §3 (templates), §5 (addresses), §8 (staged text), §8b and §8c (the new pages shown, Supporters among them), §8e (event pages) and §9 (frames). Still to make, after the gallery's approval: §7 (the print descriptions) and §8d (the descriptions in the search engine listings). The log: `proposals/store-writes/README.md`, "2026-09-29: the release". The sections below read as they did before the release.
+**Released 2026-09-29.** Made that day, with Michael's approval: §3 (templates), §5 (addresses), §8 (staged text), §8b and §8c (the new pages shown, Supporters among them), §8e (event pages) and §9 (frames). Still to make, after the gallery's approval: §7 (the print descriptions). §8d (the descriptions in the search engine listings) was made on 2026-10-01, all but its last step; that step and the FAQ's visiting questions wait for the next release (§9c). The log: `proposals/store-writes/README.md`, "2026-09-29: the release". The sections below read as they did before the release.
 
 Changes to Shopify Admin resources that the theme work needs. None of these is made until the gallery approves the structure (approval package) and, for live resources, until release approval. Menus, pages, fields and products are shared by every theme, so a preview theme does not isolate them (`AGENTS.md`). Baseline state: `baseline/store-manifest.md`.
 
@@ -205,6 +205,8 @@ At release, after the gallery approves the words:
 
 Rollback: clear each page's Meta description. The theme falls back to the page's own words.
 
+**Made 2026-10-01,** once the gallery approved the words (`proposals/gallery-answers/`): 41 pages' descriptions are in their search engine listings, and the staged value is deleted on 40. The Smith Foundation keeps its staged value, and the definition stays, until the next release (§9c). The log: `proposals/store-writes/README.md`, "2026-10-01: the gallery's answers".
+
 ## 8e. Event pages at release (DS-176)
 
 The theme has a page for each event (`metaobject/event`). The store doesn't show events as pages yet: the Event definition (`gid://shopify/MetaobjectDefinition/23753392425`) can be published and read by the storefront, and has no web pages setting.
@@ -228,6 +230,16 @@ Each print's frame is its own product (product type Frame, collection `framing`)
 This waits for release because the old theme's add-a-frame popup looks frames up by their collection. Smoke test after: a search for "smith" shows no frames, and a print's Framed choice still adds its frame, nested under the print in the cart and at checkout.
 
 Rollback: set the 16 back to Active from the snapshot.
+
+## 9c. At the next release, from the gallery's answers (2026-10-01)
+
+Each waits for theme code the live site doesn't have yet. `proposals/store-writes/gallery_answers.py` holds the steps; each needs Michael's go-ahead at the release.
+
+1. **The FAQ's visiting questions** (the gallery, 4.5: "Yes"). Eight questions from Plan your visit's own words under a heading "Visiting", and "Buying prints" over the questions the page has now, in place of the heading that repeats the page's title. Step `faq`. It waits because the live theme's data reads an answer up to the next question, so the last visiting answer would take the next group's heading with it; the next release stops an answer at any heading.
+2. **The Smith Foundation's staged description** deleted, then the staged field's definition (§8d). Steps `unstage` and `definition`. It waits because the live theme drops a search listing that starts as the page text does, for 40 letters; the next release compares the whole of it.
+3. **Theme settings** come with the theme: the closures, the gallery's year and owner, the two charity numbers, and the home page's sentence are in `config/settings_data.json` and `templates/index.json`.
+
+Rollback: the FAQ's text back from the snapshot the step saves; the staged description back with `metafieldsSet` (the theme reads either).
 
 ## 9b. Page fields from the whole-site design review (DS-122, DS-129)
 

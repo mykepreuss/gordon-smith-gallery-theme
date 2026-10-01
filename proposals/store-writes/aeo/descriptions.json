@@ -1,6 +1,11 @@
 {
+  "about": "Approved by the gallery, 2026-10-01 (proposals/gallery-answers/): the home page's and 26 pages' as drafted, 14 changed. Typing mistakes in six of the changes were fixed at Michael's request. About Artists for Kids was approved by Michael on 2026-09-29 (P-65).",
   "home": "The Gordon Smith Gallery of Canadian Art is a public art gallery at 2121 Lonsdale Avenue, North Vancouver, and the home of Artists for Kids. Exhibitions, programs and limited edition prints. Admission is by donation.",
   "pages": {
+    "about-artists-for-kids": {
+      "id": "gid://shopify/Page/165878104361",
+      "description": "How Artists for Kids began in 1989 with Gordon Smith, Jack Shadbolt and Bill Reid, its Limited Edition Portfolio, its team and its annual report."
+    },
     "about-us": {
       "id": "gid://shopify/Page/155687813417",
       "description": "The Gordon Smith Gallery of Canadian Art in North Vancouver is home to Artists for Kids and the Gordon and Marion Smith Foundation: exhibitions, programs and art education."
@@ -15,11 +20,11 @@
     },
     "artists": {
       "id": "gid://shopify/Page/140886573353",
-      "description": "The Canadian artists in the permanent collection of Artists for Kids and the Gordon Smith Gallery, A to Z, with the works the collection holds by each."
+      "description": "The Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery, A to Z, with the works the collection holds by each."
     },
     "artists-for-kids": {
       "id": "gid://shopify/Page/155720810793",
-      "description": "Artists for Kids, established in 1989, offers art education for children and youth in North Vancouver: classes, camps, school programs and the Gordon Smith Gallery of Canadian Art."
+      "description": "Artists for Kids, established in 1989, offers art education for children and youth: classes, camps, school programs, artists-in-residence, learning resources, professional development and the Gordon Smith Gallery of Canadian Art."
     },
     "artists-in-residence": {
       "id": "gid://shopify/Page/165837898025",
@@ -35,7 +40,7 @@
     },
     "brilliance-gala": {
       "id": "gid://shopify/Page/165856444713",
-      "description": "The Brilliance Gala supports art education for children and youth across the Lower Mainland through Artists for Kids, led by artists and educators."
+      "description": "The Brilliance Gala supports art education for children and youth across the Lower Mainland through Artists for Kids and the Gordon Smith Gallery."
     },
     "classes-and-camps": {
       "id": "gid://shopify/Page/165837734185",
@@ -55,7 +60,7 @@
     },
     "donate": {
       "id": "gid://shopify/Page/155885863209",
-      "description": "Give to the Gordon and Marion Smith Foundation for Young Artists. Your gift supports exhibitions, school programs, family art-making days, camps, bursaries and scholarships."
+      "description": "Give to the Gordon and Marion Smith Foundation for Young Artists. Your gift supports exhibitions, school programs, public engagement at the Gordon Smith Gallery, camps, bursaries and scholarships."
     },
     "explore-create": {
       "id": "gid://shopify/Page/155720089897",
@@ -63,11 +68,11 @@
     },
     "frequently-asked-questions": {
       "id": "gid://shopify/Page/154942865705",
-      "description": "Answers about buying limited edition prints from Artists for Kids: editions, payment, shipping, framed prints and pickup."
+      "description": "Answers about buying limited edition prints from Artists for Kids and accessing the Gallery: editions, payment, shipping, framed prints and pickup."
     },
     "gallery-program": {
       "id": "gid://shopify/Page/165837865257",
-      "description": "Grade 5 classes study the current exhibition in the gallery, then make art in the studio, taught by their classroom teacher and an art teacher from Artists for Kids."
+      "description": "K-12 classes experience the current exhibition in the gallery, then respond by making art in the studio, led by their classroom teacher and a visual art teacher from Artists for Kids."
     },
     "gordon-and-marion": {
       "id": "gid://shopify/Page/155692957993",
@@ -75,7 +80,7 @@
     },
     "learning-guides": {
       "id": "gid://shopify/Page/165838094633",
-      "description": "Learning guides to download from Artists for Kids: art lessons for the classroom, created with artists."
+      "description": "Learning guides to download from Artists for Kids: inter-disciplinary art lessons for the classroom, created with artists."
     },
     "learning-kits": {
       "id": "gid://shopify/Page/165838127401",
@@ -103,7 +108,7 @@
     },
     "permanent-collection": {
       "id": "gid://shopify/Page/155720548649",
-      "description": "Search and browse more than 1,000 works by Canadian artists in the permanent collection of Artists for Kids and the Gordon Smith Gallery."
+      "description": "Search and browse more than 1,200 works by Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery."
     },
     "plan-your-visit": {
       "id": "gid://shopify/Page/155670151465",
@@ -111,7 +116,7 @@
     },
     "professional-development": {
       "id": "gid://shopify/Page/165838192937",
-      "description": "Professional development workshops from Artists for Kids for Kindergarten to Grade 12 educators: learning through the visual arts."
+      "description": "Professional development workshops from Artists for Kids for educators, to support Kindergarten to Grade 12 through the British Columbia Arts Education curriculum."
     },
     "public-programs-1": {
       "id": "gid://shopify/Page/155718943017",
@@ -119,11 +124,11 @@
     },
     "schools-and-teachers": {
       "id": "gid://shopify/Page/165837766953",
-      "description": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists in Residence, learning guides and kits, ArtReach videos and professional development."
+      "description": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists in Residence, learning guides and kits, ArtReach videos and professional development for educators."
     },
     "shop": {
       "id": "gid://shopify/Page/155762786601",
-      "description": "Limited edition prints by Canadian artists, published by Artists for Kids since 1990. Sales fund art education programs for children and youth."
+      "description": "Limited edition prints by Canadian artists, published by Artists for Kids since 1989. Sales fund art education programs for children and youth."
     },
     "smith-foundation-scholarships": {
       "id": "gid://shopify/Page/165856379177",
@@ -135,7 +140,7 @@
     },
     "speaker-series": {
       "id": "gid://shopify/Page/155719434537",
-      "description": "Talks at the Gordon Smith Gallery: exhibition panels, conversations with curators and artists, and insights from designers and architects."
+      "description": "Talks at the Gordon Smith Gallery: exhibition panels, conversations with curators and artists, and leaders in the creative community."
     },
     "studio-art-academy": {
       "id": "gid://shopify/Page/165838061865",
@@ -143,11 +148,11 @@
     },
     "support-artists-for-kids": {
       "id": "gid://shopify/Page/165838258473",
-      "description": "Artists for Kids is a not-for-profit art education program of the North Vancouver School District. Your gift supports programs in schools and the community, and scholarships."
+      "description": "Artists for Kids is a not-for-profit art education program of the North Vancouver School District. Your gift supports the extensive programs offered by Artists for Kids that support the community at large."
     },
     "the-smith-foundation": {
       "id": "gid://shopify/Page/155705409833",
-      "description": "The Gordon and Marion Smith Foundation for Young Artists, founded in 2002, funds visual arts programs for children and presents programs and exhibitions at the Gordon Smith Gallery."
+      "description": "The Gordon and Marion Smith Foundation for Young Artists, founded in 2002, funds visual arts programs for children and youth delivered through Artists for Kids, and scholarships to students in West Vancouver, North Vancouver, and Vancouver, and presents programs and exhibitions at the Gordon Smith Gallery."
     },
     "upcoming-events": {
       "id": "gid://shopify/Page/155669168425",

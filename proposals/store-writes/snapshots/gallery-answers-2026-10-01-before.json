@@ -1,0 +1,1553 @@
+{
+ "taken": "2026-10-01",
+ "what": "What each step of gallery_answers.py was about to change, read from the store just before it ran. To undo a call, send its `before` values back with the same kind of call.",
+ "text": [
+  {
+   "call": "page contact body",
+   "kind": "page",
+   "id": "gid://shopify/Page/140660572457",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p><strong>Artists For Kids and the Gordon Smith Gallery of Canadian Art</strong></p>\n<p><strong>Address</strong><br>2121 Lonsdale Avenue<br>North Vancouver, BC V7M 2K6</p>\n<p><strong>Telephone</strong><br><a href=\"tel:+16049033798\">(604) 903-3798</a></p>\n<p><strong>Email</strong><br>Artists For Kids: <a href=\"mailto:artistsforkids@sd44.ca\">artistsforkids@sd44.ca</a><br>Gordon and Marion Smith Foundation: <a href=\"mailto:admin@smithfoundation.ca\">admin@smithfoundation.ca</a></p>\n<p><strong>Office Hours</strong><br>Monday to Friday 8:30am - 4:30pm<br>Closed for Statutory Holidays, July and August</p>"
+   }
+  },
+  {
+   "call": "page frequently-asked-questions body",
+   "kind": "page",
+   "id": "gid://shopify/Page/154942865705",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<h2>Frequently Asked Questions</h2>\n<h3>Are all prints limited edition?</h3>\n<p>Yes. All prints offered through Artists for Kids are limited editions created in collaboration with Canadian artists and printmakers. The first edition of a limited edition series is archived in the Artists For Kids and the Gordon Smith Gallery Permanent Collection.</p>\n<h3>Will the artwork look exactly like the images online?</h3>\n<p>We make every effort to display artwork accurately. However, colours may vary slightly depending on your screen or device.</p>\n<h3>What payment methods do you accept?</h3>\n<p>Payments are processed securely through Shopify Payments. Accepted methods may include major credit cards and other options presented at checkout.</p>\n<h3>How long does shipping take?</h3>\n<p>Unframed prints are typically shipped within 3–5 business days. Delivery time will depend on your location.</p>\n<h3>How much is shipping?</h3>\n<p>Shipping costs are calculated and confirmed at checkout (or during the order process, depending on your location and purchase).</p>\n<h3>Do you ship framed prints?</h3>\n<p>Framed prints are available for pickup only. Arranged courier delivery can be arranged at the customer's expense.</p>\n<h3>Do you offer in-store pickup?</h3>\n<p>Yes! We offer free in-store pickup.</p>\n<h3>How long does pickup take?</h3>\n<p>Unframed prints: ready in 1–2 business days. Framed prints: ready in 2–3 weeks.</p>\n<p>We will contact you when your order is ready!</p>"
+   }
+  },
+  {
+   "call": "page plan-your-visit body",
+   "kind": "page",
+   "id": "gid://shopify/Page/155670151465",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<h2>Getting Here</h2>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/gordonsmithgallery-exterior-image.jpg?v=1786659500&amp;width=1200\" alt=\"The entrance at 2121 Lonsdale Avenue, with the gallery's sign above the doors\" width=\"1200\" height=\"628\" loading=\"lazy\"></figure>\n<p>The Gordon Smith Gallery and Artists For Kids is located on the west side of Lonsdale Avenue, across from London Drugs, Steamworks, and Harry Jerome Community Recreation Centre. It is three blocks south from Exit 18 off Trans Canada Hwy 1.</p>\n<ul class=\"gs-points\">\n<li>\n<strong>Public Transport</strong><br>The most convenient way to visit The Gordon Smith Gallery by public transport from downtown Vancouver is via the SeaBus to North Shore’s Lonsdale Quay. From the Terminal, take the 230 or 229 bus towards Upper Lonsdale. This will get you to a stop across the street from the gallery on 21st and Lonsdale. Stop ID: 54200</li>\n<li>\n<strong>Parking</strong><br>One-Hour street parking is available surrounding the Gallery. Pay parking is available on Lonsdale Avenue. There are limited underground parking spaces on P1 and P2, excluding weekends and holidays.</li>\n</ul>\n<h2>Accessibility</h2>\n<ul>\n<li>The Gordon Smith Gallery and Artists For Kids is wheelchair accessible, with accessible washrooms on the Main level and level 1.</li>\n<li>There is wheelchair accessible parking on P1 and P2.</li>\n<li>There is an elevator, accessible through underground parking</li>\n<li>There is a ramp to the south facing entrance of the building from the street from Lonsdale Avenue.</li>\n<li>Assistance dogs are welcome. A water bowl is available on request.</li>\n<li>Please ask our staff if you require any assistance or have any questions.</li>\n</ul>"
+   }
+  },
+  {
+   "call": "page music-at-the-smith body",
+   "kind": "page",
+   "id": "gid://shopify/Page/155719696681",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p>Music At The Smith is a seasonal concert series dedicated to showcasing highly accomplished musical ensembles across a spectrum of genres, including jazz, folk, indie, classical, and world music. Set within the Gordon Smith Gallery, each performance unfolds alongside the current exhibition featuring Canadian artists. This intersection of disciplines offers the audiences a multi-sensory artistic experience where the visual and auditory arts complement each other.  Every ticket purchase directly supports Artists For Kids and the Gordon Smith Gallery programming, ensuring the next generation of creative voices continues to be nurtured and inspired.</p>\n<h2>Past concerts</h2>\n<h3>The Giving Shapes</h3>\n<p>June 13, 2026</p>\n<p>The Giving Shapes is a collaborative project between harpist/vocalist Elisa Thorn and pianist/vocalist Robyn Jacob that formed in fall 2017 at the Banff Centre for the Arts.</p>\n<h3>Fall 2023</h3>\n<p>Music at the Smith returns for a season of Jazz and Classical performances by preeminent BC musicians at the Gordon Smith Gallery.</p>\n<p>Selected by Guest Music Curator, Sarah Ballantyne.</p>\n<ul>\n<li>\n<strong>October 3rd, 2023</strong><br>New York State of Mind: American Music for clarinet, violin, and piano<br>Jose Franch-Ballester, clarinet<br>David Gillham, violin<br>Jane Hayes, piano</li>\n<li>\n<strong>October 24th, 2023</strong><br>Rising Stars: Benjamin Millman Piano Trio<br>Benjamin Millman, piano<br>Wynston Minkler, bass<br>Karl DeJong, drums</li>\n<li>\n<strong>November 7th, 2023</strong><br>Rising Stars: Elysian Trio<br>Joy Yeh, harp<br>Paul Hung, flute<br>Sarah Kwok, viola</li>\n<li>\n<strong>November 21st, 2023</strong><br>Artie Shaw's Gramercy Five<br>James Danderfer, clarinet<br>Bill Coon, guitar<br>Sharon Minemoto, piano<br>Atley King, vibraphone<br>Jodi Proznick, bass<br>Joe Poole, drums</li>\n</ul>\n<h2>The Steinway</h2>\n<p>The Smith Foundation is honoured to be the proud owner of a 100 year old Steinway &amp; Sons baby grand piano, donated by Kathryn Allison in memory of her mother Barbara Allison, a friend and student of Gordon Smith.</p>\n<figure class=\"gs-quote\"><blockquote><p>The donation of the Steinway piano is in memory of my mother, Barbara Allison. She trained as an opera singer, but when she became a single parent, she went back to school to become a teacher. She met Gordon Smith when she took his Fine Arts Teaching Methods course at UBC. They became great pals and he encouraged her to nurture every child’s creativity, not just the prodigies. Gordon Smith inspired my mother’s teaching practice, and made it possible for me to paint murals all over my bedroom walls. She relented, only because he approved!</p></blockquote>\n<figcaption><strong>Kathryn Allison</strong></figcaption></figure>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/sf-steinway-piano.jpg?v=1790629736&amp;width=1440\" alt=\"A pianist in a black dress plays a dark grand piano with its lid raised, in front of two large, brightly coloured paintings\" width=\"1440\" height=\"1059\" loading=\"lazy\"><figcaption>Lixia Li plays the 100-year-old Steinway &amp; Sons baby grand piano gifted to the Gordon &amp; Marion Smith Foundation by Kathryn Allison. Photo by Cindy Goodman.</figcaption></figure>"
+   }
+  },
+  {
+   "call": "page artists-for-kids title",
+   "kind": "page",
+   "id": "gid://shopify/Page/155720810793",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "title": "Artists For Kids"
+   }
+  },
+  {
+   "call": "page artist-in-residence-mark-johnsen body",
+   "kind": "page",
+   "id": "gid://shopify/Page/165837963561",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p><strong>April 2027</strong></p>\n<p>This April, Artists For Kids is excited to offer an Artist-in-Residence program for grade 9 students, providing an opportunity to work for two school days at the Artists For Kids studios with artist Mark Johnsen. The Artist-in-Residence programs provide vital skills training and the necessary dedicated time and focus that gives young artists the rare opportunity to immerse themselves in creativity and art making. Selected art students who are nominated by their school will work with professional printmaker, Mark Johnsen.</p>\n<h2>Mark Johnsen Biography</h2>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-mark-johnsen-studio.jpg?v=1790542648&amp;width=1440\" alt=\"Mark Johnsen holding up a print beside a press in a printmaking studio\" width=\"1440\" height=\"1440\" loading=\"lazy\"></figure>\n<p>Mark Johnsen (he/him) is an American visual artist living and working in Vancouver, British Columbia. His print-based practice examines the possibilities of the unique, hand-pulled impression in an era of digital reproduction. Through studies of material exploration, traditional and non-traditional printing techniques: he works to capture gestural and representational time stamps. He is the co-founder of <em>Patio Press</em>, a hybrid printmaking residency run alongside artist, Sara-Jeanne Bourget. He holds a BFA in Photography from California College of the Arts (2012) and an MFA from Emily Carr University of Art + Design (2020). He has exhibited throughout The United States, Canada, The United Kingdom, Turkey, Bosnia, Japan, Switzerland, and New Zealand and is currently an Assistant Professor in Print Media at Emily Carr University of Art + Design.</p>\n<p><a href=\"/pages/artists/mark-johnsen\">Mark Johnsen in the Permanent Collection</a></p>\n<h2>Past Workshops with Mark Johnsen</h2>\n<p><strong>February 2024 • Grades 10 to 12</strong></p>\n<p>This February, AFK is excited to offer an Artist-in-Residence program for senior art students, providing an opportunity to work for two school days at the AFK studios with artist Mark Johnson. The AFK Artist-in-Residence programs provide vital skills training and the necessary dedicated time and focus that gives young artists the rare opportunity to immerse themselves in creativity and art making. During two school days, senior art students who are nominated by their school will work with professional printmaker, Mark Johnsen.</p>"
+   }
+  },
+  {
+   "call": "page professional-development body",
+   "kind": "page",
+   "id": "gid://shopify/Page/165838192937",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p>Each year, Artists For Kids hosts professional development opportunities for K - 12 educators to enhance learning through the lens of the visual arts.</p>\n<p><strong>Mark your calendars!</strong></p>"
+   }
+  },
+  {
+   "call": "page smith-foundation-scholarships body",
+   "kind": "page",
+   "id": "gid://shopify/Page/165856379177",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p>The Gordon and Marion Smith Foundation for Young Artists recognizes the importance of the visual arts as a preservation and expression of culture. We would like to give the opportunity to the next generation of artists, designers, sculptures, painters, etc. to continue following their artistic and creative passion.</p>\n<p>The Gordon and Marion Smith Foundation is pleased to offer scholarships to three graduating students from North Vancouver, West Vancouver and Vancouver, who have completed or are enrolled in Grade 12. Applicants must be planning to enrol in an accredited college or university during the upcoming academic year, be in good academic standing and planning to pursue an arts-related major or minor in Canada.</p>\n<p>As part of applying, applicants must submit a digital portfolio of their work.</p>\n<h2>North Vancouver</h2>\n<p>The $2,500 Gordon and Marion Smith Foundation North Vancouver Young Artist Scholarship is available to a graduating student, enrolled in a public or private North Vancouver school, who has demonstrated excellence in the Visual Arts and is planning to continue their education in the Visual Arts in Canada (visual arts include traditional media as well as photographic and digital media).</p>\n<h2>West Vancouver</h2>\n<p>The $2,500 Gordon and Marion Smith Foundation West Vancouver Young Artist Scholarship is available to a graduating student, enrolled in a public or private West Vancouver school, who has demonstrated excellence in the Visual Arts and is planning to continue their education in the Visual Arts in Canada (visual arts include traditional media as well as photographic and digital media).</p>\n<h2>Vancouver</h2>\n<p>The $2,500 Gordon and Marion Smith Foundation Vancouver Young Artist Scholarship is available to a graduating student, enrolled in a public or private Vancouver school, who has demonstrated excellence in the Visual Arts and is planning to continue their education in the Visual Arts in Canada (visual arts include traditional media as well as photographic and digital media).</p>\n<p>For Artists For Kids Scholarships (separate from Gordon and Marion Smith Foundation Scholarships) Please visit: <a href=\"/pages/awards-and-scholarships\">Artists For Kids Scholarships</a></p>"
+   }
+  },
+  {
+   "call": "page brilliance-gala body",
+   "kind": "page",
+   "id": "gid://shopify/Page/165856444713",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p>The Brilliance Gala is a chance to come together to support a key facet of Gordon Smith’s legacy: quality, artist- and educator-led arts education for children and youth across the Lower Mainland through <a href=\"/pages/artists-for-kids\">Artists for Kids.</a> As public funding becomes increasingly constrained, your support helps safeguard long-term sustainability by protecting the specialized people, tools, and learning environments that make high-quality arts education possible.</p>\n<h2>Brilliance Gala 2026</h2>\n<p>Thank you for joining us for a wonderful evening on Wednesday March 11th, 2026! The Gordon And Marion Smith Foundation is incredibly grateful for your contributions to the success of Brilliance Gala 2026.</p>\n<p>Together with Co-Chairs Ian Wallace (O.C) and Krista Whitelock, our wonderful community of friends, artists, gallerists, donors, bidders, volunteers and more came together to raise $250,000, supporting the next generation of young artists at Artists For Kids and the Gordon Smith Gallery. Hosted by Fred Lee and Gloria Macarenko, guests enjoyed an evening of fine dining by Chef David Hawksworth, entertainment and a Live and Online Auction of a selection of curated artworks by Canadian artists, unique and luxury items, and one-of-a-kind experience packages.</p>\n<p>Co-Chairs: Ian Wallace (O.C) and Krista Whitelock</p>\n<p>Committee: John David James, Christos Dikeakos, Allison Kerr, Hilary Letwin, Alexandra Pony, Tyler Quarles, Richard Savage, Ed Tsumura, Dr. Anne Watt, and Bruce Munro Wright (O.B.C)</p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/sf-brilliance-gala-2026-2.jpg?v=1790629736&amp;width=1440\" alt=\"Four guests in evening wear hold drinks and smile in front of framed artworks under an Online Auction sign\" width=\"1440\" height=\"958\" loading=\"lazy\"></figure>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/sf-brilliance-gala-2026-4.jpg?v=1790629736\" alt=\"Guests fill round dinner tables below the word Smith on a wall washed in purple light and leaf patterns\" width=\"1262\" height=\"840\" loading=\"lazy\"></figure>\n<p>Photography by Jamie Lee Fuoco</p>\n<h2>The Gala at Camp Smith</h2>\n<p>Together with returning Brilliance co-chairs Ian Wallace and Patti Glass, we gathered on March 12, 2025 to celebrate the 30th anniversary of the <a href=\"/pages/paradise-valley-summer-camp\">Artists For Kids Paradise Valley Summer School for the Visual Arts</a>, and raised $228,000 to support the next generation of young artists.</p>\n<p>Hosted by Fred Lee and Gloria Macarenko, guests enjoyed an evening of fine dining by Chef David Hawksworth and live entertainment at The Gordon Smith Gallery of Canadian Art.</p>\n<p>The Gala at Camp Smith included a Live and Online Auction featuring a curated selection of artworks, luxury items and one-of-a-kind experience packages.</p>\n<figure><iframe src=\"https://player.vimeo.com/video/1066659420?dnt=1\" title=\"The Gala at Camp Smith\" width=\"426\" height=\"224\" allow=\"fullscreen; picture-in-picture\" loading=\"lazy\"></iframe><figcaption>Video by Bouva Media</figcaption></figure>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/sf-gala-at-camp-smith-2025-1.jpg?v=1790629736&amp;width=1440\" alt=\"Artworks for the live auction hang in a row on a white gallery wall under a round red Live Auction sign\" width=\"1440\" height=\"960\" loading=\"lazy\"></figure>\n<p>Photography by <a href=\"https://www.whentheyfindus.com/\">When They Find Us</a></p>\n<h2>Brilliance 2023</h2>\n<h3>In Tribute to the Life and Legacy of Gordon Smith</h3>\n<p>Together with Brilliance co-chairs Yoshi Karasawa, Ian Wallace and Patti Glass, we gathered on June 15, 2023 to celebrate the enduring legacy of Gordon Smith while supporting the cause closest to his heart: exceptional art education for all.</p>\n<p>Hosted by Vicki Gabereau and Fred Lee, guests enjoyed an evening of fine dining, entertainment and special tributes to Gordon Smith at the scenic Pipe Shop Venue at the North Vancouver Shipyards.</p>\n<p>Brilliance featured a unique auction format: a limited Live Auction featuring one piece from each of the Artists for Kids Founding Artist Patrons: Gordon Smith, Jack Shadbolt and Bill Reid. Select experience packages were also curated with Gordon Smith's love of art, modernist architecture, and the natural world in mind.</p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/sf-brilliance-gala-2023-1.jpg?v=1790629742&amp;width=1440\" alt=\"Guests in evening wear crowd a timber-beamed industrial hall strung with lights, with artworks hung along the far wall\" width=\"1440\" height=\"960\" loading=\"lazy\"></figure>\n<h3>The Friends of Gordon Collection</h3>\n<p>The primary focus of the evening was the extensive <em>Friends of Gordon</em> Collection, a new collection of over 50 artworks that serve as a remarkable testament to the exchange of creativity that Gordon Smith fostered among his peers, as well as those he met throughout his life. The artists represented each contributed an artwork that pays homage to Gordon Smith in some form, whether it be through direct creative kinship and mentorship, or by having worked closely with the Smith Foundation and Artists for Kids. The collection spans a wide range of artistic styles, valuation, and recognition - all with one purpose of showing the vast impact that Gordon had on so many.</p>\n<p>Guests: 300. Raised: $471,000.</p>\n<p><a class=\"gs-cta-link\" href=\"https://issuu.com/smithfoundation/docs/gordon_smith_catalogue_digital\">View the Catalogue</a></p>\n<figure><iframe src=\"https://player.vimeo.com/video/832771624?dnt=1\" title=\"Brilliance 2023 - Tribute to Gordon Smith\" width=\"426\" height=\"240\" allow=\"fullscreen; picture-in-picture\" loading=\"lazy\"></iframe><figcaption>Brilliance 2023: Tribute to Gordon Smith</figcaption></figure>\n<h2>Spring Luncheons</h2>\n<h3>16th Annual Spring Luncheon, June 2, 2019</h3>\n<p>Guests: 150. Raised: $148,000.</p>\n<p><a class=\"gs-cta-link\" href=\"/cdn/shop/files/smith-foundation-spring-luncheon-2019-auction-catalogue.pdf\">2019 auction catalogue (PDF)</a></p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/sf-spring-luncheon-2019-2.jpg?v=1790629742&amp;width=1440\" alt=\"A speaker at a podium addresses lunch guests at tables with white flowers, in front of a wall of framed colourful abstract works\" width=\"1440\" height=\"960\" loading=\"lazy\"></figure>\n<h2>Off the Wall: A Fundraiser with a Twist</h2>\n<p>Each year, fifteen of Vancouver’s most respected collectors donate an original work to the Smith Foundation. These works are then sold at a by-invitation-only auction held at Hawksworth Restaurant’s York Room at the Rosewood Hotel Georgia. All funds raised are directed to the Smith Foundation in support of its ongoing efforts to enhance art education in our community.</p>"
+   }
+  },
+  {
+   "call": "page artists body",
+   "kind": "page",
+   "id": "gid://shopify/Page/140886573353",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p>Artists for Kids is grateful for the generosity and commitment of the Canadian artists who have worked directly with children and youth through the many Artist for Kids' educational programs and who have gifted work to the Artists for Kids Limited Edition Portfolio for over 37 years.</p>\n<p>The Artists for Kids Limited Edition program releases Seasonal Portfolios of artworks for acquisition. The releases feature limited editions of both new and existing artist collaborators.</p>"
+   }
+  },
+  {
+   "call": "page about-artists-for-kids body",
+   "kind": "page",
+   "id": "gid://shopify/Page/165878104361",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p>Artists for Kids was founded in 1989 with the singular intent to support art education, for all.</p>\n<p>In 1989, the founders of AFK sought to find a financial model to support arts education in our schools, one that was sustainable, and in turn, would support visual arts enrichment. By purchasing art from artists, then in turn inviting each artist to create original, limited-edition prints that the program could sell, the founders created a unique and lasting fundraising vehicle. With the generosity, commitment and support of founding artist-patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists for Kids was born, and with it, the acclaimed Artist for Kids and Gordon Smith Gallery Permanent Collection of Canadian Art.</p>\n<p>Thanks to the ongoing support of our community, artist-patrons, and the North Vancouver School District, Artist for Kids has grown from an idea onto a world-class art program.</p>\n<p>Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators.</p>\n<p>In 1990, with the support of art educators and artist patrons Bill Reid, Jack Shadbolt, and Gordon Smith, the first Artists for Kids Limited Edition Portfolio print, <em>Xhuwaji / Haida Grizzly</em> was published - marking the beginning of an extraordinary partnership between Canadian artists and Artists for Kids.</p>\n<p>Entering its 37th year, Artists for Kids continues to work with renowned Canadian artists and print studios across Canada to publish <a href=\"/pages/shop\">contemporary limited editions</a>; its portfolio is now revered as one of the most significant limited edition collections in Canada.</p>\n<p>The Artists for Kids Limited Edition Portfolio program funds educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for the Artists for Kids and the Gordon Smith Gallery Permanent Collection.</p>"
+   }
+  },
+  {
+   "call": "page shop body",
+   "kind": "page",
+   "id": "gid://shopify/Page/155762786601",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "<p data-ogsc=\"\"><span data-ogsc=\"\"><span data-ogsc=\"\" data-olk-copy-source=\"MessageBody\">Artists for Kids was established in 1989 by tenacious educators and renowned B.C. artists Gordon Smith, Jack Shadbolt, and Bill Reid. Supported by the North Vancouver School District, it was founded with the singular intent to support children, their art education, and their future.</span></span></p>\n<p class=\"x_last-child\" data-ogsc=\"\"><span data-ogsc=\"\">Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students annually, as well as professional development opportunities for educators. </span></p>\n<p class=\"x_last-child\" data-ogsc=\"\"><span data-ogsc=\"\">In 1990, the program published<strong> the first Artists for Kids’ Limited Edition Portfolio print,</strong></span><strong><em data-ogsc=\"\"><span data-ogsc=\"\"> Xhuwaji / Haida Grizzly</span></em></strong><span data-ogsc=\"\"><strong>.</strong> This print by Bill Reid, based on a ceremonial drum, marked the beginning of an extraordinary partnership with now more than 100 Canadian artists, which has produced one of the most significant limited edition collections in the country. </span></p>\n<p class=\"x_last-child\" data-ogsc=\"\"><strong><span data-ogsc=\"\"><span data-olk-copy-source=\"MessageBody\">Acquiring a limited edition print by renowned Canadian artists funds our educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for Artists for Kids and the Gordon Smith Gallery Permanent Collection, directly supporting the future of children and youth.</span></span></strong></p>"
+   }
+  },
+  {
+   "call": "page permanent-collection custom.intro",
+   "kind": "fields",
+   "id": null,
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "custom.intro": "Explore over 1,000 + Works by Canadian Artists in the Collection"
+   }
+  },
+  {
+   "call": "exhibition collect-assemble-gather curator_credit",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608352043305",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "curator_credit": "Curated by Amelia Epp with support from the Artists For Kids team"
+   }
+  },
+  {
+   "call": "exhibition one-hundred-artists-deep body",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608352076073",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "body": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Over the course of their lives, Reid, Shadbolt, and Smith taught and mentored thousands of young artists and apprentices. Their ideas, values, and approaches to making continue to circulate—sometimes visibly, sometimes quietly—through subsequent generations of artists.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The eight participating artists were selected for the strength and diversity of their practices, as well as for their sensitive and intuitive approaches to art-making. They were invited to respond to works by Reid, Shadbolt, and Smith from the Artists For Kids and Gordon Smith Gallery Permanent Collection, with full freedom in how that response took shape. The historical works and the contemporary responses are presented together in the gallery, creating a space for conversation across time.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The exhibition’s title is drawn from a phrase that Smith often used, saying he was “a hundred artists deep” and stood “on the shoulders” of artists past and present. Every artist emerges from a layered history of influence—artistic, personal, familial, educational, and cultural. \"},{\"type\":\"text\",\"value\":\"One Hundred Artists Deep\",\"italic\":true},{\"type\":\"text\",\"value\":\" reflects on this accumulated inheritance and the many ways artistic knowledge is carried forward.\"}]}]}"
+   }
+  },
+  {
+   "call": "exhibition from-the-ground credits",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608388415785",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "credits": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"This exhibition is presented by Artists For Kids in partnership with The Gordon and Marion Smith Foundation for Young Artists, and supported by the North Vancouver School District and North Van Recreation and Culture, as well as The Tuey Charitable Foundation and The Christopher Foundation.\"}]}]}"
+   }
+  },
+  {
+   "call": "exhibition stitched credits",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608388448553",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "credits": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Stitched: Merging Photography and Textile Practices\",\"italic\":true},{\"type\":\"text\",\"value\":\" is co-presented by The Gordon Smith Gallery of Canadian Art and \"},{\"type\":\"link\",\"url\":\"https://capturephotofest.com/\",\"children\":[{\"type\":\"text\",\"value\":\"Capture Photography Festival\"}]},{\"type\":\"text\",\"value\":\". It is sponsored by \"},{\"type\":\"link\",\"url\":\"https://parcliving.ca/\",\"children\":[{\"type\":\"text\",\"value\":\"Parc Retirement Living\"}]},{\"type\":\"text\",\"value\":\" and is generously supported by the \"},{\"type\":\"link\",\"url\":\"https://audainfoundation.com/\",\"children\":[{\"type\":\"text\",\"value\":\"Audain Foundation\"}]},{\"type\":\"text\",\"value\":\", the Timothy A. Young Family Foundation, the \"},{\"type\":\"link\",\"url\":\"https://www.cnv.org/\",\"children\":[{\"type\":\"text\",\"value\":\"City of North Vancouver\"}]},{\"type\":\"text\",\"value\":\", the \"},{\"type\":\"link\",\"url\":\"https://www.dnv.org/\",\"children\":[{\"type\":\"text\",\"value\":\"District of North Vancouver\"}]},{\"type\":\"text\",\"value\":\" through the Arts & Culture Grants Program of the \"},{\"type\":\"link\",\"url\":\"https://www.nvrc.ca/\",\"children\":[{\"type\":\"text\",\"value\":\"North Vancouver Recreation and Culture Commission\"}]},{\"type\":\"text\",\"value\":\", \"},{\"type\":\"link\",\"url\":\"/pages/artists-for-kids\",\"children\":[{\"type\":\"text\",\"value\":\"Artists For Kids\"}]},{\"type\":\"text\",\"value\":\", the \"},{\"type\":\"link\",\"url\":\"/pages/the-smith-foundation\",\"children\":[{\"type\":\"text\",\"value\":\"Gordon and Marion Smith Foundation for Young Artists\"}]},{\"type\":\"text\",\"value\":\" and the \"},{\"type\":\"link\",\"url\":\"https://www.sd44.ca/Pages/default.aspx#/=\",\"children\":[{\"type\":\"text\",\"value\":\"North Vancouver School District\"}]},{\"type\":\"text\",\"value\":\".\"}]}]}"
+   }
+  },
+  {
+   "call": "exhibition playhouse credits",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608388481321",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "credits": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"This exhibition is presented by Artists For Kids and the Gordon Smith Gallery of Canadian Art in partnership with the Gordon and Marion Smith Foundation for Young Artists, the North Vancouver School District, the North Vancouver Recreation and Culture Commission, and is supported by the Canada Council for the Arts.\"}]}]}"
+   }
+  },
+  {
+   "call": "exhibition prevailing-landscapes credits",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608388514089",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "credits": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Prevailing Landscapes\",\"italic\":true},{\"type\":\"text\",\"value\":\" is presented by The Gordon and Marion Smith Foundation for Young Artists in Partnership with \"},{\"type\":\"link\",\"url\":\"/pages/artists-for-kids\",\"children\":[{\"type\":\"text\",\"value\":\"Artists For Kids\"}]},{\"type\":\"text\",\"value\":\", and is part of the 2024 \"},{\"type\":\"link\",\"url\":\"https://capturephotofest.com/\",\"children\":[{\"type\":\"text\",\"value\":\"Capture Photography Festival\"}]},{\"type\":\"text\",\"value\":\" Selected Exhibition Program.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The exhibition is generously supported by \"},{\"type\":\"link\",\"url\":\"https://parcliving.ca\",\"children\":[{\"type\":\"text\",\"value\":\"Parc Retirement Living\"}]},{\"type\":\"text\",\"value\":\", with additional support provided by the \"},{\"type\":\"link\",\"url\":\"https://www.nvrc.ca/\",\"children\":[{\"type\":\"text\",\"value\":\"North Vancouver Recreation and Culture Commission\"}]},{\"type\":\"text\",\"value\":\", the \"},{\"type\":\"link\",\"url\":\"https://www.sd44.ca/Pages/default.aspx#/=\",\"children\":[{\"type\":\"text\",\"value\":\"North Vancouver School District\"}]},{\"type\":\"text\",\"value\":\" and Iain Mant.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Select Public Programs are also supported by \"},{\"type\":\"link\",\"url\":\"https://audainfoundation.com/\",\"children\":[{\"type\":\"text\",\"value\":\"The Audain Foundation\"}]},{\"type\":\"text\",\"value\":\", \"},{\"type\":\"link\",\"url\":\"https://polyhomes.com/community/talistar/?utm_source=googleads&utm_medium=c&utm_campaign=20348639459&utm_term=polygon%20homes&utm_content=690518027938&cmc_adid=ga_690518027938_20348639459&gad_source=1&gclid=CjwKCAjw5ImwBhBtEiwAFHDZx0qqmUFHgaV_zXsnieyf8jP7JTM324AewP0qmCxs1c_AZeUBbayHwxoC07kQAvD_BwE\",\"children\":[{\"type\":\"text\",\"value\":\"Polygon Homes\"}]},{\"type\":\"text\",\"value\":\" and \"},{\"type\":\"link\",\"url\":\"https://anthemproperties.com/\",\"children\":[{\"type\":\"text\",\"value\":\"Anthem Properties\"}]},{\"type\":\"text\",\"value\":\".\"}]}]}"
+   }
+  },
+  {
+   "call": "exhibition robert-young-spatial-understanding summary",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/609380663593",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "summary": "Inspired by the construction of interior spaces as well as the jazz movement, Robert Young’s solo exhibition showcased his works from the Artist for Kids collection."
+   }
+  },
+  {
+   "call": "event pd-clay-kit-2026-10-05 title",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608984367401",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "title": "Introduction to the Artists For Kids Clay Kit"
+   }
+  },
+  {
+   "call": "event pd-clay-kit-2026-10-19 title",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608984400169",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "title": "Introduction to the Artists For Kids Clay Kit"
+   }
+  },
+  {
+   "call": "card about-artists-for-kids text",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608389267753",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "text": "Established in 1989 by renowned BC artist patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists For Kids was founded with the singular intent to support children, their art education, and their future."
+   }
+  },
+  {
+   "call": "card afk-team-chantal-pinard text",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/609458520361",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "text": "Artists For Kids Administrative and Program Assistant"
+   }
+  },
+  {
+   "call": "card afk-team-allison-kerr text",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/609458454825",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "text": "Director, Artist for Kids and Gordon Smith Gallery, and District Principal, Arts Education"
+   }
+  },
+  {
+   "call": "card_group afk-this-season heading",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608982794537",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "heading": "Fall 2026 at Artists For Kids"
+   }
+  },
+  {
+   "call": "card_group afk-guides-by-artists heading",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608983056681",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "heading": "Learning Guides Created by Artists with Artists For Kids"
+   }
+  },
+  {
+   "call": "document george-littlechild-5052 title",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608952582441",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "title": "Artists For Kids Group Photo"
+   }
+  },
+  {
+   "call": "document george-littlechild-5056 title",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608952615209",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "title": "Artists For Kids Edition"
+   }
+  },
+  {
+   "call": "collection_group published-editions introduction",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608941310249",
+   "read": "2026-10-01T19:27:19+00:00",
+   "before": {
+    "introduction": "In 1990, with the support of art educators and artist patrons Gordon Smith and Jack Shadbolt, Bill Reid worked with Artists for Kids to publish the first Artists for Kids Limited Edition Portfolio print, Xhuwaji / Haida Grizzly - marking the beginning of a extraordinary partnership between Canadian artists and Artists for Kids. Entering its 37th year, Artists for Kids continues to work with renowned Canadian artists and print studios across Canada to publish contemporary limited editions; its portfolio is now revered as one of the most significant limited edition collections in Canada. The Artists for Kids Limited Edition Portfolio program funds educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for the Artists for Kids and the Gordon Smith Gallery Permanent Collection."
+   }
+  }
+ ],
+ "artists": [
+  {
+   "call": "artist patterson-ewen: name, sort_name, handle",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896090409",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "name": "Patterson Ewen",
+    "sort_name": "Ewen, Patterson",
+    "handle": "patterson-ewen"
+   }
+  },
+  {
+   "call": "artist charles-gagon: name, sort_name, handle",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896287017",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "name": "Charles Gagon",
+    "sort_name": "Gagon, Charles",
+    "handle": "charles-gagon"
+   }
+  },
+  {
+   "call": "artist atilla-lukacs: name, sort_name, handle",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897597737",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "name": "Atilla Lukacs",
+    "sort_name": "Lukacs, Atilla",
+    "handle": "atilla-lukacs"
+   }
+  },
+  {
+   "call": "artist jean-mcewan: name, sort_name, handle",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897728809",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "name": "Jean McEwan",
+    "sort_name": "McEwan, Jean",
+    "handle": "jean-mcewan"
+   }
+  },
+  {
+   "call": "artist vancouver-school-collective: full_name",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899629353",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "full_name": "Douglas Coupland, Angela Grossmann, Graham Gillmore and Atilla Lukacs"
+   }
+  },
+  {
+   "call": "artist david-blackwood: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895172905",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "born 1941"
+   }
+  },
+  {
+   "call": "artist christopher-pratt: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898580777",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "born 1935"
+   }
+  },
+  {
+   "call": "artist joe-fafard: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896123177",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "born 1942"
+   }
+  },
+  {
+   "call": "artist gathie-falk: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896155945",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "born 1928"
+   }
+  },
+  {
+   "call": "artist victor-cicansky: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895566121",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "born 1935"
+   }
+  },
+  {
+   "call": "artist audrey-capel-doray: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895861033",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "born 1931"
+   }
+  },
+  {
+   "call": "artist molly-lamb-bobak: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895205673",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "1922 to 2014"
+   }
+  },
+  {
+   "call": "artist josie-p-papialuk: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898187561",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": "born 1943"
+   }
+  },
+  {
+   "call": "artist newgaleak-qimirpik: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898679081",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": null
+   }
+  },
+  {
+   "call": "artist ann-kipling: life_dates",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897401129",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "life_dates": null
+   }
+  },
+  {
+   "call": "artist gordon-smith: biography",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899105065",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "biography": null
+   }
+  },
+  {
+   "call": "artist jack-shadbolt: biography",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899006761",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "biography": null
+   }
+  },
+  {
+   "call": "artist bill-reid: biography",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898777385",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "biography": null
+   }
+  },
+  {
+   "call": "artist ann-kipling: biography",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897401129",
+   "read": "2026-10-01T19:30:01+00:00",
+   "before": {
+    "biography": null
+   }
+  }
+ ],
+ "alt": [
+  {
+   "call": "alt text on 11 images: 230616_brilliance_gala-1980-scaled.jpg, Butterfly-Tattoos_96-x-72-in_2019-1200x922.jpg, GSG_2026_Fall_Edition_1.jpg, GSG_One_Hundred_Artists_011.jpg, GSG_Stitched_017.jpg, KMH853740.jpg, Knot-Laurie-Kang-8622-x-78-Unfixed-unprocessed-photographic-papeR_1-1200x801.jpg, OneHundredAD_ORecep81.jpg, SpeakerSeries_PrevailingLandscapes_05-09-24_1-scaled.jpg, khimhipol210921_7318.jpg, warehouse_thumbnail.jpg",
+   "kind": "files",
+   "id": null,
+   "read": "2026-10-01T19:31:30+00:00",
+   "before": {
+    "gid://shopify/MediaImage/45739448631593": "An album page holding a colour photograph of a smiling white-haired man in a plaid jacket and red shirt",
+    "gid://shopify/MediaImage/45717172257065": "Large yellow painting crossed by winding pale paths edged in bright colours, with green tent shapes and a small pastel panel",
+    "gid://shopify/MediaImage/46274243363113": "Two visitors look at framed prints and a ceramic cup displayed on a white wall in front of tall windows",
+    "gid://shopify/MediaImage/45566339481897": "A long rainbow-coloured painting, a dark wall relief, a draped office chair sculpture and small standing figures on a low plinth",
+    "gid://shopify/MediaImage/45717041807657": "A patterned wall with a blue and yellow banner and a street photograph, beside a folding screen hung with fringed portraits",
+    "gid://shopify/MediaImage/45746709102889": "A group of children sit on the gallery floor facing a large wooden frame covered in colourful cut-out figures",
+    "gid://shopify/MediaImage/45717198831913": "Shiny metal cans filled with copper-coloured strands stand among bundles of yellow and black netting on the floor",
+    "gid://shopify/MediaImage/45633125712169": "Seen from above, visitors at an opening lean over a floor sculpture lined with small coloured cylinders",
+    "gid://shopify/MediaImage/45739407114537": "A speaker with a microphone introduces four seated panellists to an audience, in front of a wall of landscape pictures",
+    "gid://shopify/MediaImage/45717190967593": "A visitor walks past a tall wall grid of blurred landscape photographs, with a hanging sculpture of dried leaves beyond",
+    "gid://shopify/MediaImage/45669029970217": "Sliding mesh storage racks in the art vault, with a bright yellow and pink painting on the nearest rack"
+   }
+  }
+ ],
+ "descriptions": [
+  {
+   "call": "staged descriptions: artists, artists-for-kids, brilliance-gala, donate, frequently-asked-questions, gallery-program, learning-guides, permanent-collection, professional-development, schools-and-teachers, shop, speaker-series, support-artists-for-kids, the-smith-foundation",
+   "kind": "fields",
+   "id": null,
+   "read": "2026-10-01T19:31:34+00:00",
+   "before": {
+    "artists": "The Canadian artists in the permanent collection of Artists for Kids and the Gordon Smith Gallery, A to Z, with the works the collection holds by each.",
+    "artists-for-kids": "Artists for Kids, established in 1989, offers art education for children and youth in North Vancouver: classes, camps, school programs and the Gordon Smith Gallery of Canadian Art.",
+    "brilliance-gala": "The Brilliance Gala supports art education for children and youth across the Lower Mainland through Artists for Kids, led by artists and educators.",
+    "donate": "Give to the Gordon and Marion Smith Foundation for Young Artists. Your gift supports exhibitions, school programs, family art-making days, camps, bursaries and scholarships.",
+    "frequently-asked-questions": "Answers about buying limited edition prints from Artists for Kids: editions, payment, shipping, framed prints and pickup.",
+    "gallery-program": "Grade 5 classes study the current exhibition in the gallery, then make art in the studio, taught by their classroom teacher and an art teacher from Artists for Kids.",
+    "learning-guides": "Learning guides to download from Artists for Kids: art lessons for the classroom, created with artists.",
+    "permanent-collection": "Search and browse more than 1,000 works by Canadian artists in the permanent collection of Artists for Kids and the Gordon Smith Gallery.",
+    "professional-development": "Professional development workshops from Artists for Kids for Kindergarten to Grade 12 educators: learning through the visual arts.",
+    "schools-and-teachers": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists in Residence, learning guides and kits, ArtReach videos and professional development.",
+    "shop": "Limited edition prints by Canadian artists, published by Artists for Kids since 1990. Sales fund art education programs for children and youth.",
+    "speaker-series": "Talks at the Gordon Smith Gallery: exhibition panels, conversations with curators and artists, and insights from designers and architects.",
+    "support-artists-for-kids": "Artists for Kids is a not-for-profit art education program of the North Vancouver School District. Your gift supports programs in schools and the community, and scholarships.",
+    "the-smith-foundation": "The Gordon and Marion Smith Foundation for Young Artists, founded in 2002, funds visual arts programs for children and presents programs and exhibitions at the Gordon Smith Gallery."
+   }
+  }
+ ],
+ "listing": [
+  {
+   "call": "search listing descriptions 1 to 25",
+   "kind": "fields",
+   "id": null,
+   "read": "2026-10-01T19:32:39+00:00",
+   "before": {
+    "about-artists-for-kids": null,
+    "about-us": null,
+    "after-school-art": null,
+    "art-in-good-company": null,
+    "artists": null,
+    "artists-for-kids": null,
+    "artists-in-residence": null,
+    "artreach-videos": null,
+    "awards-and-scholarships": null,
+    "brilliance-gala": null,
+    "classes-and-camps": null,
+    "contact": null,
+    "current-events": null,
+    "day-camps": null,
+    "donate": null,
+    "explore-create": null,
+    "frequently-asked-questions": null,
+    "gallery-program": null,
+    "gordon-and-marion": null,
+    "learning-guides": null,
+    "learning-kits": null,
+    "music-at-the-smith": null,
+    "on-now": null,
+    "paradise-valley-summer-camp": null,
+    "past-events": null
+   }
+  },
+  {
+   "call": "search listing descriptions 26 to 41",
+   "kind": "fields",
+   "id": null,
+   "read": "2026-10-01T19:32:39+00:00",
+   "before": {
+    "past-exhibitions": null,
+    "permanent-collection": null,
+    "plan-your-visit": null,
+    "professional-development": null,
+    "public-programs-1": null,
+    "schools-and-teachers": null,
+    "shop": null,
+    "smith-foundation-scholarships": null,
+    "smith-foundation-supporters": null,
+    "speaker-series": null,
+    "studio-art-academy": null,
+    "support-artists-for-kids": null,
+    "the-smith-foundation": null,
+    "upcoming-events": null,
+    "upcoming-exhibitions": null,
+    "volunteer": null
+   }
+  }
+ ],
+ "unstage": [
+  {
+   "call": "staged descriptions 1 to 25 deleted",
+   "kind": "unset",
+   "id": null,
+   "read": "2026-10-01T19:33:36+00:00",
+   "before": {
+    "contact": "Contact the Gordon Smith Gallery and Artists for Kids: 2121 Lonsdale Avenue, North Vancouver, BC V7M 2K6. Telephone (604) 903-3798.",
+    "artists": "The Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery, A to Z, with the works the collection holds by each.",
+    "frequently-asked-questions": "Answers about buying limited edition prints from Artists for Kids and accessing the Gallery: editions, payment, shipping, framed prints and pickup.",
+    "upcoming-events": "Upcoming talks, concerts, workshops and drop-in art programs at the Gordon Smith Gallery in North Vancouver.",
+    "plan-your-visit": "The Gordon Smith Gallery is at 2121 Lonsdale Avenue, North Vancouver. Open Thursday to Saturday, 12 to 4 PM. Admission is by donation. Wheelchair accessible.",
+    "about-us": "The Gordon Smith Gallery of Canadian Art in North Vancouver is home to Artists for Kids and the Gordon and Marion Smith Foundation: exhibitions, programs and art education.",
+    "gordon-and-marion": "Gordon Smith (1919 to 2020), a cornerstone of Modernist painting in Canada, and Marion Smith, and the belief in art education that grounds the foundation in their name.",
+    "public-programs-1": "Talks, workshops, family days, seniors programs, concerts and exhibition tours at the Gordon Smith Gallery in North Vancouver.",
+    "speaker-series": "Talks at the Gordon Smith Gallery: exhibition panels, conversations with curators and artists, and leaders in the creative community.",
+    "music-at-the-smith": "A seasonal concert series at the Gordon Smith Gallery: jazz, folk, indie, classical and world music, performed alongside the current exhibition.",
+    "explore-create": "A free drop-in art program for families with children ages 5 to 12, Saturdays from 1 to 3 PM at the Gordon Smith Gallery. Donations are welcome.",
+    "art-in-good-company": "A drop-in program for seniors at the Gordon Smith Gallery: chat about and make art inspired by the current exhibition. Second Thursday of every month, 2:30 to 4 PM.",
+    "permanent-collection": "Search and browse more than 1,200 works by Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery.",
+    "artists-for-kids": "Artists for Kids, established in 1989, offers art education for children and youth: classes, camps, school programs, artists-in-residence, learning resources, professional development and the Gordon Smith Gallery of Canadian Art.",
+    "shop": "Limited edition prints by Canadian artists, published by Artists for Kids since 1989. Sales fund art education programs for children and youth.",
+    "upcoming-exhibitions": "Exhibitions opening soon at the Gordon Smith Gallery of Canadian Art in North Vancouver.",
+    "past-exhibitions": "Past exhibitions at the Gordon Smith Gallery of Canadian Art in North Vancouver, newest first, with their dates and curators.",
+    "on-now": "The exhibition on now at the Gordon Smith Gallery of Canadian Art, 2121 Lonsdale Avenue, North Vancouver. Admission is by donation.",
+    "donate": "Give to the Gordon and Marion Smith Foundation for Young Artists. Your gift supports exhibitions, school programs, public engagement at the Gordon Smith Gallery, camps, bursaries and scholarships.",
+    "volunteer": "Volunteer at the Gordon Smith Gallery as a gallery attendant or an event assistant. Download the form to apply.",
+    "after-school-art": "After School Art classes for students each fall, winter and spring term, led by BC certified art specialist teachers. All art materials are included.",
+    "classes-and-camps": "After School Art classes, spring and summer day camps and the Paradise Valley summer camp for young artists, from Artists for Kids in North Vancouver.",
+    "schools-and-teachers": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists in Residence, learning guides and kits, ArtReach videos and professional development for educators.",
+    "day-camps": "Week-long spring and summer day camps with Artists for Kids: drawing, painting and printmaking taught in small groups by BC certified art specialist teachers.",
+    "paradise-valley-summer-camp": "A summer art camp in Paradise Valley for young artists ages 9 to 15, five days and four nights: collage, drawing, painting and printmaking, with outdoor recreation."
+   }
+  },
+  {
+   "call": "staged descriptions 26 to 40 deleted",
+   "kind": "unset",
+   "id": null,
+   "read": "2026-10-01T19:33:36+00:00",
+   "before": {
+    "gallery-program": "K-12 classes experience the current exhibition in the gallery, then respond by making art in the studio, led by their classroom teacher and a visual art teacher from Artists for Kids.",
+    "artists-in-residence": "Students nominated by their teachers work for full days with a professional artist at the Artists for Kids studios, from ceramics and painting to collage and photography.",
+    "studio-art-academy": "The Artists for Kids Studio Art Academy: hands-on learning with professional artists and a personal portfolio. Not offered for the 2026/2027 school year.",
+    "learning-guides": "Learning guides to download from Artists for Kids: inter-disciplinary art lessons for the classroom, created with artists.",
+    "learning-kits": "Teachers in the North Vancouver School District can book clay and collagraph kits from Artists for Kids for two weeks, with tools, lesson plans and step-by-step instructions.",
+    "artreach-videos": "ArtReach videos from Artists for Kids guide classrooms and people at home through art activities, with lessons from Kindergarten to Grade 12.",
+    "professional-development": "Professional development workshops from Artists for Kids for educators, to support Kindergarten to Grade 12 through the British Columbia Arts Education curriculum.",
+    "awards-and-scholarships": "Artists for Kids offers three scholarships to North Vancouver School District graduating students in Grade 12 visual and performing arts courses.",
+    "support-artists-for-kids": "Artists for Kids is a not-for-profit art education program of the North Vancouver School District. Your gift supports the extensive programs offered by Artists for Kids that support the community at large.",
+    "smith-foundation-scholarships": "The Gordon and Marion Smith Foundation offers scholarships to three graduating Grade 12 students from North Vancouver, West Vancouver and Vancouver.",
+    "brilliance-gala": "The Brilliance Gala supports art education for children and youth across the Lower Mainland through Artists for Kids and the Gordon Smith Gallery.",
+    "smith-foundation-supporters": "The donors, sponsors, grant agencies and foundations that support the Gordon and Marion Smith Foundation for Young Artists.",
+    "past-events": "Past talks, concerts, workshops and drop-in art programs at the Gordon Smith Gallery in North Vancouver, newest first.",
+    "current-events": "What is on this week at the Gordon Smith Gallery in North Vancouver: talks, concerts, workshops and drop-in art programs.",
+    "about-artists-for-kids": "How Artists for Kids began in 1989 with Gordon Smith, Jack Shadbolt and Bill Reid, its Limited Edition Portfolio, its team and its annual report."
+   }
+  }
+ ],
+ "identifiers": [
+  {
+   "call": "artist field: Described elsewhere",
+   "kind": "artist_field",
+   "id": "gid://shopify/MetaobjectDefinition/23770661161",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "fields": [
+     "name",
+     "sort_name",
+     "full_name",
+     "other_names",
+     "life_dates",
+     "nationality",
+     "biography",
+     "portrait",
+     "website",
+     "exhibitions",
+     "works",
+     "documents",
+     "about_page"
+    ]
+   }
+  },
+  {
+   "call": "artist latcholassie-akesuk: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608741949737",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist vikky-alexander: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608741982505",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist elizabeth-angrnaqquaq: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742080809",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist kenojuak-ashevak: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742113577",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist ottochie-ashoona: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742146345",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist anne-meredith-barry: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742211881",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist robert-bateman: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742244649",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist maxwell-bennett-bates: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742277417",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist iain-baxter: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742310185",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jackson-beardy: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742342953",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist alistair-bell: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742408489",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist rebecca-belmore: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742441257",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist b-c-binning: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608742506793",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist david-blackwood: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895172905",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist molly-lamb-bobak: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895205673",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist karin-bubas: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895336745",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist edward-burtynsky: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895369513",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist victor-cicansky: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895566121",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist dana-claxton: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895598889",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist pierre-coupey: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895631657",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist douglas-coupland: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895664425",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist robert-davidson: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895697193",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist anna-binta-diallo: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895729961",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist beau-dick: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895762729",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist christos-dikeakos: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895795497",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist audrey-capel-doray: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895861033",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist stan-douglas: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895893801",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist enn-erisalu: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608895992105",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jamie-evrard: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896057641",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist paterson-ewen: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896090409",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist joe-fafard: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896123177",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist gathie-falk: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896155945",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist geoffrey-farmer: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896188713",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist james-warren-felter: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896221481",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist charles-gagnon: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896287017",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist graham-gillmore: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896385321",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist betty-goodwin: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896418089",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist rodney-graham: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896450857",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist angela-grossmann: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896483625",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist ted-harrison: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896549161",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist john-hartman: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896614697",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist j-carl-heywood: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896647465",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist tom-hopkins: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896680233",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist tom-hudson: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896713001",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist e-j-hughes: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896745769",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jacques-hurtubise: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896811305",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist nuveeya-ipellie: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896844073",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist a-y-jackson: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608896876841",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist denis-juneau: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897171753",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist helen-kalvak: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897204521",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist ann-kipling: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897401129",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist roy-kiyooka: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897433897",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist john-koerner: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897466665",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist kapik-kolola: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897499433",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist george-littlechild: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897532201",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist attila-lukacs: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897597737",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist landon-mackenzie: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897630505",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist victoria-mamnguqsualuk: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897663273",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist roz-marshall: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897696041",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jean-mcewen: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897728809",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist elizabeth-mcintosh: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897794345",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist mario-merola: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897859881",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist guido-molinari: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897892649",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist damian-moppett: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608897925417",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist toni-onley: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898089257",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist lyndal-osborne: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898122025",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist melia-padluq: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898154793",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist josie-p-papialuk: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898187561",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist david-gerry-partridge: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898220329",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist susan-point: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898515241",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jane-ash-poitras: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898548009",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist christopher-pratt: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898580777",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist mary-pratt: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898613545",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist pudlo-pudlat: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898646313",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist newgaleak-qimirpik: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898679081",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist bill-reid: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898777385",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist leslie-reid: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898810153",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jean-paul-riopelle: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898842921",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist samuel-roy-bois: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898908457",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist marianna-schmidt: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608898973993",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jack-shadbolt: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899006761",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist jeremy-shaw: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899039529",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist arnold-shives: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899072297",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist gordon-smith: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899105065",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist michael-snow: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899170601",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist ron-stonier: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899203369",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist sylvia-tait: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899268905",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist takao-tanabe: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899301673",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist vivian-thierfelder: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899367209",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist ashevak-tunnillie: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899465513",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist kabubuwa-tunnillie: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899531049",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist charles-van-sandwyk: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899596585",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist charlene-vickers: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899662121",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist roy-henry-vickers: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899694889",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist ian-wallace: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899727657",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist west-baffin-eskimo-co-operative: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899825961",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist irene-f-whittome: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899858729",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist david-wilson: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899891497",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist xwalacktun: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608899989801",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist etienne-zack: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608900088105",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  },
+  {
+   "call": "artist barbara-zeigler: described elsewhere",
+   "kind": "entry",
+   "id": "gid://shopify/Metaobject/608900153641",
+   "read": "2026-10-01T19:34:27+00:00",
+   "before": {
+    "described_at": null
+   }
+  }
+ ]
+}

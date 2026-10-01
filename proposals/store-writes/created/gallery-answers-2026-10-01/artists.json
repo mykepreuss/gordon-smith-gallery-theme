@@ -1,0 +1,558 @@
+[
+ {
+  "call": "artist patterson-ewen: name, sort_name, handle",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:02+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896090409",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "name",
+      "value": "Paterson Ewen"
+     },
+     {
+      "key": "sort_name",
+      "value": "Ewen, Paterson"
+     }
+    ],
+    "handle": "paterson-ewen",
+    "redirectNewHandle": true
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896090409",
+     "handle": "paterson-ewen",
+     "displayName": "Paterson Ewen",
+     "updatedAt": "2026-10-01T19:30:01Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist charles-gagon: name, sort_name, handle",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:03+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896287017",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "name",
+      "value": "Charles Gagnon"
+     },
+     {
+      "key": "sort_name",
+      "value": "Gagnon, Charles"
+     }
+    ],
+    "handle": "charles-gagnon",
+    "redirectNewHandle": true
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896287017",
+     "handle": "charles-gagnon",
+     "displayName": "Charles Gagnon",
+     "updatedAt": "2026-10-01T19:30:03Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist atilla-lukacs: name, sort_name, handle",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:04+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897597737",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "name",
+      "value": "Attila Lukacs"
+     },
+     {
+      "key": "sort_name",
+      "value": "Lukacs, Attila"
+     }
+    ],
+    "handle": "attila-lukacs",
+    "redirectNewHandle": true
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897597737",
+     "handle": "attila-lukacs",
+     "displayName": "Attila Lukacs",
+     "updatedAt": "2026-10-01T19:30:04Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jean-mcewan: name, sort_name, handle",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:05+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897728809",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "name",
+      "value": "Jean McEwen"
+     },
+     {
+      "key": "sort_name",
+      "value": "McEwen, Jean"
+     }
+    ],
+    "handle": "jean-mcewen",
+    "redirectNewHandle": true
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897728809",
+     "handle": "jean-mcewen",
+     "displayName": "Jean McEwen",
+     "updatedAt": "2026-10-01T19:30:05Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist vancouver-school-collective: full_name",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:07+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899629353",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "full_name",
+      "value": "Douglas Coupland, Angela Grossmann, Graham Gillmore and Attila Lukacs"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899629353",
+     "handle": "vancouver-school-collective",
+     "displayName": "Vancouver School Collective",
+     "updatedAt": "2026-10-01T19:30:06Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist david-blackwood: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:08+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895172905",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1941 to 2022"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895172905",
+     "handle": "david-blackwood",
+     "displayName": "David Blackwood",
+     "updatedAt": "2026-10-01T19:30:07Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist christopher-pratt: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:09+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898580777",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1935 to 2022"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898580777",
+     "handle": "christopher-pratt",
+     "displayName": "Christopher Pratt",
+     "updatedAt": "2026-10-01T19:30:09Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist joe-fafard: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:11+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896123177",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1942 to 2019"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896123177",
+     "handle": "joe-fafard",
+     "displayName": "Joe Fafard",
+     "updatedAt": "2026-10-01T19:30:11Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist gathie-falk: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:13+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608896155945",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1928 to 2025"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608896155945",
+     "handle": "gathie-falk",
+     "displayName": "Gathie Falk",
+     "updatedAt": "2026-10-01T19:30:13Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist victor-cicansky: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:14+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895566121",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1935 to 2025"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895566121",
+     "handle": "victor-cicansky",
+     "displayName": "Victor Cicansky",
+     "updatedAt": "2026-10-01T19:30:14Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist audrey-capel-doray: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:15+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895861033",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1931 to 2025"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895861033",
+     "handle": "audrey-capel-doray",
+     "displayName": "Audrey Capel Doray",
+     "updatedAt": "2026-10-01T19:30:15Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist molly-lamb-bobak: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:16+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895205673",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1920 to 2014"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895205673",
+     "handle": "molly-lamb-bobak",
+     "displayName": "Molly Lamb Bobak",
+     "updatedAt": "2026-10-01T19:30:16Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist josie-p-papialuk: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:18+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898187561",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1918 to 1996"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898187561",
+     "handle": "josie-p-papialuk",
+     "displayName": "Josie P. Papialuk",
+     "updatedAt": "2026-10-01T19:30:17Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist newgaleak-qimirpik: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:19+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898679081",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1937 to 2007"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898679081",
+     "handle": "newgaleak-qimirpik",
+     "displayName": "Newgaleak Qimirpik",
+     "updatedAt": "2026-10-01T19:30:19Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ann-kipling: life_dates",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:20+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897401129",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "life_dates",
+      "value": "1934 to 2023"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897401129",
+     "handle": "ann-kipling",
+     "displayName": "Ann Kipling",
+     "updatedAt": "2026-10-01T19:30:20Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist gordon-smith: biography",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:22+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899105065",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "biography",
+      "value": "{\"type\": \"root\", \"children\": [{\"type\": \"paragraph\", \"children\": [{\"type\": \"text\", \"value\": \"Gordon Appelbe Smith, CM, OBC, LLD (1919 to 2020) is a cornerstone in the history of Modernist painting in Canada. One of Canada’s most important painters, Smith lived and worked in Vancouver, producing abstracted landscapes until his passing in 2020. His work was an evolving search for balance between abstraction and his love of the land, which has given us insight into both the act of painting and the essence of the West Coast. He has been honoured with the Order of Canada, the Order of British Columbia and the Governor General’s Award for Visual Art. His works are held in the collections of the National Gallery of Canada, the Vancouver Art Gallery, the Museum of Modern Art in New York, and the Victoria and Albert Museum in London.\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899105065",
+     "handle": "gordon-smith",
+     "displayName": "Gordon Smith",
+     "updatedAt": "2026-10-01T19:30:21Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist jack-shadbolt: biography",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:23+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608899006761",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "biography",
+      "value": "{\"type\": \"root\", \"children\": [{\"type\": \"paragraph\", \"children\": [{\"type\": \"text\", \"value\": \"Jack Shadbolt (1909 - 1998) is one of Canada's most important artists. He is known for his paintings and murals that draw from his personal experiences and from the social and political conflicts that have taken place in British Columbia and world history, such as the struggles of First Nations, the Second World War, and the environmental movement.\"}]}, {\"type\": \"paragraph\", \"children\": [{\"type\": \"text\", \"value\": \"Jack Shadbolt was born in England in 1909 and with his family, came to Victoria, British Columbia in 1921. He lived and taught in Victoria, Duncan, Vancouver and Burnaby. His work is represented in all the major galleries across Canada as well as in corporate and private collections. Shadbolt's numerous awards include the Order of Canada in 1972, an Honorary Degree from the University of British Columbia, and in 1987 he and his wife, art historian and curator Doris Shadbolt, established VIVA, the Vancouver Institute for Visual Arts, which supports and recognizes the achievement of artists in British Columbia.\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608899006761",
+     "handle": "jack-shadbolt",
+     "displayName": "Jack Shadbolt",
+     "updatedAt": "2026-10-01T19:30:23Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist bill-reid: biography",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:24+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898777385",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "biography",
+      "value": "{\"type\": \"root\", \"children\": [{\"type\": \"paragraph\", \"children\": [{\"type\": \"text\", \"value\": \"Bill Reid (1920-1998) was an acclaimed master goldsmith, carver, sculptor, writer, broadcaster, mentor and community activist. Reid was born in Victoria, BC to a Haida mother and an American father with Scottish German roots, and only began exploring his Haida roots at the age of 23. This journey of discovery lasted a lifetime and shaped Reid's artistic career.\"}]}, {\"type\": \"paragraph\", \"children\": [{\"type\": \"text\", \"value\": \"Bill Reid infused Haida traditions with his own modernist aesthetic to create both exquisitely small as well as monumental work that captured the public's imagination, and introduced a timeless vocabulary to the modern world.\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898777385",
+     "handle": "bill-reid",
+     "displayName": "Bill Reid",
+     "updatedAt": "2026-10-01T19:30:24Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist ann-kipling: biography",
+  "kind": "entry",
+  "at": "2026-10-01T19:30:25+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608897401129",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "biography",
+      "value": "{\"type\": \"root\", \"children\": [{\"type\": \"paragraph\", \"children\": [{\"type\": \"text\", \"value\": \"Born in 1934 in Victoria, British Columbia, Kipling began attending the Vancouver School of Art (now Emily Carr University of Art and Design) in 1955, graduating with honours in 1960. Always a fiercely independent artist, she made drawing on paper the exclusive focus of her practice almost from the beginning, a choice she adhered to for the rest of her life. Reflecting on her identification with the medium of drawing, she once stated: “Drawing is exploratory. It defines and clarifies a visual idea. It is also the delight in mark making, the magical connection between things seen and described, the direct encounter.”\"}]}, {\"type\": \"paragraph\", \"children\": [{\"type\": \"text\", \"value\": \"The artist also attended the Institute Allende in San Miguel de Allende, Mexico. Kipling had numerous solo exhibitions, including a retrospective at the Vancouver Art Gallery in 1995. In 2004, she was the first recipient of the Audain Prize for Lifetime Achievement. Kipling’s drawings and prints are included in public and private collections in Canada and abroad, including those of the National Gallery of Canada, the Kamloops Art Gallery and the Vancouver Art Gallery. She died in late August 2023.\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608897401129",
+     "handle": "ann-kipling",
+     "displayName": "Ann Kipling",
+     "updatedAt": "2026-10-01T19:30:25Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

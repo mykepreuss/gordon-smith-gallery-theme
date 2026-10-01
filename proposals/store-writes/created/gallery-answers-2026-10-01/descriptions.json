@@ -1,0 +1,173 @@
+[
+ {
+  "call": "staged descriptions: artists, artists-for-kids, brilliance-gala, donate, frequently-asked-questions, gallery-program, learning-guides, permanent-collection, professional-development, schools-and-teachers, shop, speaker-series, support-artists-for-kids, the-smith-foundation",
+  "kind": "fields",
+  "at": "2026-10-01T19:31:35+00:00",
+  "variables": {
+   "id": null,
+   "sent": "(4526 characters; the words are in this script and its data files)"
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190432787792169",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "The Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery, A to Z, with the works the collection holds by each.",
+      "owner": {
+       "id": "gid://shopify/Page/140886573353",
+       "handle": "artists"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432787824937",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Artists for Kids, established in 1989, offers art education for children and youth: classes, camps, school programs, artists-in-residence, learning resources, professional development and the Gordon Smith Gallery of Canadian Art.",
+      "owner": {
+       "id": "gid://shopify/Page/155720810793",
+       "handle": "artists-for-kids"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432787956009",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "The Brilliance Gala supports art education for children and youth across the Lower Mainland through Artists for Kids and the Gordon Smith Gallery.",
+      "owner": {
+       "id": "gid://shopify/Page/165856444713",
+       "handle": "brilliance-gala"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432788119849",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Give to the Gordon and Marion Smith Foundation for Young Artists. Your gift supports exhibitions, school programs, public engagement at the Gordon Smith Gallery, camps, bursaries and scholarships.",
+      "owner": {
+       "id": "gid://shopify/Page/155885863209",
+       "handle": "donate"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432788185385",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Answers about buying limited edition prints from Artists for Kids and accessing the Gallery: editions, payment, shipping, framed prints and pickup.",
+      "owner": {
+       "id": "gid://shopify/Page/154942865705",
+       "handle": "frequently-asked-questions"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432788218153",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "K-12 classes experience the current exhibition in the gallery, then respond by making art in the studio, led by their classroom teacher and a visual art teacher from Artists for Kids.",
+      "owner": {
+       "id": "gid://shopify/Page/165837865257",
+       "handle": "gallery-program"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432788283689",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Learning guides to download from Artists for Kids: inter-disciplinary art lessons for the classroom, created with artists.",
+      "owner": {
+       "id": "gid://shopify/Page/165838094633",
+       "handle": "learning-guides"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432797917481",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Search and browse more than 1,200 works by Canadian artists in the Permanent Collection of Artists for Kids and the Gordon Smith Gallery.",
+      "owner": {
+       "id": "gid://shopify/Page/155720548649",
+       "handle": "permanent-collection"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432797983017",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Professional development workshops from Artists for Kids for educators, to support Kindergarten to Grade 12 through the British Columbia Arts Education curriculum.",
+      "owner": {
+       "id": "gid://shopify/Page/165838192937",
+       "handle": "professional-development"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432798048553",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists in Residence, learning guides and kits, ArtReach videos and professional development for educators.",
+      "owner": {
+       "id": "gid://shopify/Page/165837766953",
+       "handle": "schools-and-teachers"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432798081321",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Limited edition prints by Canadian artists, published by Artists for Kids since 1989. Sales fund art education programs for children and youth.",
+      "owner": {
+       "id": "gid://shopify/Page/155762786601",
+       "handle": "shop"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432798179625",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Talks at the Gordon Smith Gallery: exhibition panels, conversations with curators and artists, and leaders in the creative community.",
+      "owner": {
+       "id": "gid://shopify/Page/155719434537",
+       "handle": "speaker-series"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432798245161",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "Artists for Kids is a not-for-profit art education program of the North Vancouver School District. Your gift supports the extensive programs offered by Artists for Kids that support the community at large.",
+      "owner": {
+       "id": "gid://shopify/Page/165838258473",
+       "handle": "support-artists-for-kids"
+      }
+     },
+     {
+      "id": "gid://shopify/Metafield/190432798277929",
+      "namespace": "custom",
+      "key": "release_description",
+      "type": "multi_line_text_field",
+      "value": "The Gordon and Marion Smith Foundation for Young Artists, founded in 2002, funds visual arts programs for children and youth delivered through Artists for Kids, and scholarships to students in West Vancouver, North Vancouver, and Vancouver, and presents programs and exhibitions at the Gordon Smith Gallery.",
+      "owner": {
+       "id": "gid://shopify/Page/155705409833",
+       "handle": "the-smith-foundation"
+      }
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
