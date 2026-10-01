@@ -13,7 +13,10 @@
       "type": "gs-artwork-detail"
     },
     "related": {
-      "type": "gs-related"
+      "type": "gs-related",
+      "settings": {
+        "heading": "More from this portfolio"
+      }
     }
   },
   "order": [

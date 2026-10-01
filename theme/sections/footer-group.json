@@ -13,7 +13,9 @@
   "sections": {
     "newsletter": {
       "type": "gs-newsletter",
-      "settings": {}
+      "settings": {
+        "consent": "<p>By signing up, you agree to get email from the Gordon Smith Gallery about exhibitions, programs and limited editions. You can unsubscribe at any time.</p>"
+      }
     },
     "footer": {
       "type": "gs-footer",
