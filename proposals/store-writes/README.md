@@ -1232,3 +1232,20 @@ No call returned an error (`created/tidy-2026-10-01/deleted.json`).
 
 **Undo:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184856445225`. The fourth release's rollback can be made again with `shopify theme push --unpublished --strict` from 220213c.
 
+
+## 2026-10-01: the seventh release
+
+**Why:** Michael, 2026-10-01: "Merge #154 and do the release". The release carried #154 (DS-205). No store resource changed. Its record: `PROJECT.md`, row 6g; `IMPLEMENTATION_PLAN.md`, "The seventh release".
+
+**Checked first:** `shopify theme list`: `184857461033` live, `184858575145` the review theme, unpublished. Both downloaded whole and compared with Git: no theme editor changes. The live theme's four small fixes of 23:22 UTC were brought into `main` (#155), so the release kept them. The checks on `main` passed; `main` pushed to the review theme and read back.
+
+| Step, UTC | What | Through |
+| --- | --- | --- |
+| 23:37 | `184858575145` published | `shopify theme publish --theme 184858575145 --force` |
+| Right after | Renamed: `184858575145` "Gordon Smith Gallery", `184857461033` "Gordon Smith Gallery (rollback, sixth release)" | `shopify theme rename` |
+| After | New review theme `184859001129` from `main` at a6f2a6c, read back: 192 files, the same as `main` | `shopify theme push --unpublished --strict` |
+| After the live checks | `184856445225` "Gordon Smith Gallery (rollback, fifth release)" deleted (P-69), after it matched `main` at a03a1e4 file for file (189 files) | `shopify theme delete --theme 184856445225 --force` |
+
+**Checked after:** on gordonsmithgallery.com: Plan your visit's header line plain, the consent line and both labels kept, answers, structured data and links, as `PROJECT.md` row 6g lists. `shopify theme list`: `184858575145` live, `184857461033` rollback, `184859001129` review, `184806277417` and `184858345769` development.
+
+**Undo:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184857461033`. The fifth release's rollback can be made again with `shopify theme push --unpublished --strict` from a03a1e4.
