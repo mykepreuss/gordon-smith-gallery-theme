@@ -45,7 +45,8 @@
         {%- endfor -%}
       {%- endif -%}
       {%- if credit != blank -%}
-        <p class="gs-caption gs-gallery__credit">{{ credit | escape }}</p>
+        {%- capture credit_html -%}{{ credit | escape }}{%- endcapture -%}
+        <p class="gs-caption gs-gallery__credit">{%- render 'gs-keep-credit', html: credit_html -%}</p>
       {%- endif -%}
     </div>
   </section>

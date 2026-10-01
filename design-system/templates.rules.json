@@ -41,7 +41,8 @@
       "gs-artist-index",
       "gs-collection-ways",
       "gs-collection-featured",
-      "gs-collection-row"
+      "gs-collection-row",
+      "gs-lesson-row"
     ],
     "cards": [
       "gs-card-groups"
@@ -129,7 +130,7 @@
         "hero"
       ],
       "maxPerGroup": {
-        "listing": 3,
+        "listing": 4,
         "feature": 2,
         "visit": 1
       }

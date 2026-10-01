@@ -18,6 +18,10 @@
   @param {object} event - An event entry
   @param {string} [heading] - Heading element for the title: 'h3' (default) or 'h2'
   @param {string} [lead] - The handle of the exhibition the home hero leads with (gs-lead-exhibition)
+  @param {string} [pattern] - How the event's run repeats ("Saturdays, 1 to 3 PM", gs-event-pattern):
+    the card then says the pattern and the next date, not the one date (DS-200)
+  @param {string} [sizes] - The picture's sizes in a grid whose count changes the card's width
+    (gs-grid-sizes). Blank keeps the card preset's
 
   @example
   {%- render 'gs-event-card', event: event -%}
@@ -87,7 +91,7 @@
 -%}
 <article class="gs-card">
   {%- if image != blank -%}
-    {%- render 'gs-media', image: image, preset: 'card', mode: mode, ratio: 'var(--gs-ratio-card)' -%}
+    {%- render 'gs-media', image: image, preset: 'card', sizes: sizes, mode: mode, ratio: 'var(--gs-ratio-card)' -%}
   {%- endif -%}
   <div class="gs-card__body">
     <{{ tag }} class="gs-card__title">
@@ -99,7 +103,12 @@
         {{- event.title.value | escape -}}
       {%- endif -%}
     </{{ tag }}>
-    <p class="gs-status__dates"><time datetime="{{ event.starts.value }}">{% render 'gs-time-range', start: event.starts.value, end: event.ends.value %}</time></p>
+    {%- if pattern != blank -%}
+      {%- capture next_date -%}<time datetime="{{ event.starts.value }}">{{ event.starts.value | date: '%B %-d' }}</time>{%- endcapture -%}
+      <p class="gs-status__dates">{{ 'events.pattern_next_html' | t: pattern: pattern, date: next_date }}</p>
+    {%- else -%}
+      <p class="gs-status__dates"><time datetime="{{ event.starts.value }}">{% render 'gs-time-range', start: event.starts.value, end: event.ends.value %}</time></p>
+    {%- endif -%}
     {%- if label != blank -%}
       <p class="gs-meta">{{ label | escape }}</p>
     {%- endif -%}

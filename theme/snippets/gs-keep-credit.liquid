@@ -1,0 +1,35 @@
+{% doc %}
+  Keeps a photo credit on one line in a caption (DS-203): from "Photo by", "Photos by",
+  "Photograph by" or "Photography by" to the end of its sentence, the spaces become no-break
+  spaces, so "Photo by Michael Love." never splits; the caption breaks before the credit instead.
+  The rest of the caption wraps as usual. Takes text that is already escaped, or a rich text
+  field's HTML; tags are left alone.
+
+  @param {string} html - The caption, escaped or as HTML. Required
+
+  @example
+  {%- capture caption -%}{{ entry.installation_credit.value | escape }}{%- endcapture -%}
+  {%- render 'gs-keep-credit', html: caption -%}
+{% enddoc %}
+{%- liquid
+  # nb: a no-break space (U+00A0)
+  assign nb = ' '
+  assign out = html
+  assign markers = 'Photo by |Photos by |Photograph by |Photography by ' | split: '|'
+  for marker in markers
+    unless out contains marker
+      continue
+    endunless
+    assign pieces = out | split: marker
+    assign result = pieces[0]
+    for piece in pieces offset: 1
+      # The credit runs to the end of its sentence, or to the next tag.
+      assign head = piece | split: '<' | first | split: '. ' | first
+      assign rest = piece | remove_first: head
+      assign joined = marker | append: head | replace: ' ', nb
+      assign result = result | append: joined | append: rest
+    endfor
+    assign out = result
+  endfor
+  echo out
+-%}
