@@ -3,7 +3,7 @@
 (proposals/gallery-answers/). Michael, 2026-10-01: "Proceed", on the plan that lists them.
 
   python3 proposals/store-writes/gallery_answers.py <step> [--go]
-  steps, in order: text, artists, alt, descriptions, listing, unstage, identifiers
+  steps, in order: text, artists, alt, descriptions, listing, unstage, identifiers, pages
   at the next release (store-changes §9c): faq, unstage again, definition
 
 Each step reads the store first, so it sends only what still differs: a second run of a finished
@@ -24,6 +24,10 @@ store's answers to created/gallery-answers-2026-10-01/<step>.json.
   unstage      The staged descriptions deleted, once `listing` is read back.
   definition   The staged field's definition deleted, once the live pages are seen to keep their
                descriptions without it.
+  pages        Four additions to page text, from the gallery's answers (Michael, 2026-10-01: "Yes
+               to all four page text additions, proceed"): About Us's text, Marion Smith's
+               years, "What does the gallery sell?" on the FAQ, a booking line on Schools and
+               teachers.
   faq          The FAQ's eight visiting questions under "Visiting", and "Buying prints" over the
                rest. Only once the live theme stops an answer at any heading (store-changes §9c).
   identifiers  A new field on the artist entry, "Described elsewhere", and its 101 values
@@ -120,6 +124,25 @@ ARTISTS = {
 # So its staged description stays until the release that compares more of the two (DS-196); then
 # `unstage` deletes it and `definition` deletes the field.
 KEEP_STAGED = {"the-smith-foundation"}
+# Four additions to page text (proposals/gallery-answers/README.md, "Left for Michael"), each the
+# gallery's own answer with its typing mistakes fixed.
+# About Us had no text: the gallery's five sentences on what it is (2.3), then who owns it and
+# when it opened (2.1, 2.2).
+ABOUT_US = "\n".join(f"<p>{p}</p>" for p in [
+    "The Gordon Smith Gallery is open to the entire community through admission by donation, with engaged Art Education programs and experiences integrated into every exhibition through Artists for Kids. The Gordon Smith Gallery is a space to consider, to ask, to witness, to open spaces to understand about ourselves and each other.",
+    "The Artists for Kids and Gordon Smith Gallery permanent collection houses a collection of over 1,200 artworks by Canadian Artists from across the country, and has published over 150 limited edition prints from renowned Canadian Artists. We are the only gallery in Canada dedicated to Young Artists, with art education at the forefront of every curatorial choice.",
+    "Artists for Kids has collaborated with almost every collaborative printer in Canada, in every region in Canada, the archive of our extensive collection of limited editions from renowned Canadian Artists has become a national resource of print activity in Canada of almost 40 years.",
+    "The Gallery opened in 2012. It is owned by the North Vancouver School District, activated jointly by Artists for Kids and the Smith Foundation, and funded jointly through the school district and the Smith Foundation.",
+])
+# Marion Smith's years, as the gallery gave them (3.7). Michael: trust the document.
+MARION = ("<strong>Marion Smith</strong> was said to have two careers", "<strong>Marion Smith</strong> (1941 to 2018), was said to have two careers")
+# What the gallery sells (2.5), as the FAQ's first question.
+FAQ_FIRST = "<h3>Are all prints limited edition?</h3>"
+FAQ_SELLS = ("<h3>What does the gallery sell?</h3>\n<p>The Gallery sells limited edition prints from renowned Canadian Artists that were gifted directly "
+             "to Artists for Kids to directly fund Art Education programming.</p>\n")
+# How a class visit is booked (4.1), as Schools and teachers' opening line. The page had no text.
+SCHOOLS = '<p>To book a class visit, use the registration link on the <a href="/pages/gallery-program">Gallery Program</a> page.</p>'
+
 # The FAQ's visiting questions (the gallery, 4.5: "Yes"). The answers are Plan your visit's own
 # words, as drafted in proposals/aeo-geo-review.md, "Drafts for the gallery".
 FAQ_TITLE = "<h2>Frequently Asked Questions</h2>"
@@ -346,6 +369,34 @@ def step_definition():
                              "type": "multi_line_text_field", "ownerType": "PAGE", "pinned": True, "access": "storefront read"}})]
 
 
+def step_pages():
+    """Four additions to page text. Each is skipped once its words are on the page."""
+    store, out = pages(), []
+
+    def write(handle, body, what):
+        p = store[handle]
+        out.append((f"page {handle} body: {what}", "page", {"id": p["id"], "page": {"body": body}}, {"body": p["body"]}))
+
+    for handle, text, what in (("about-us", ABOUT_US, "what the gallery is, who owns it and when it opened"),
+                               ("schools-and-teachers", SCHOOLS, "how a class visit is booked")):
+        body = store[handle]["body"] or ""
+        if not body.strip():
+            write(handle, text, what)
+        elif "".join(text.split()) not in "".join(body.split()):
+            sys.exit(f"STOPPED: page {handle} has text of its own now; add the new words by hand")
+    body = store["gordon-and-marion"]["body"]
+    if MARION[1] not in body:
+        if body.count(MARION[0]) != 1:
+            sys.exit("STOPPED: Gordon and Marion no longer has the sentence about Marion Smith as it was")
+        write("gordon-and-marion", body.replace(MARION[0], MARION[1]), "Marion Smith's years")
+    body = store["frequently-asked-questions"]["body"]
+    if "<h3>What does the gallery sell?</h3>" not in body:
+        if body.count(FAQ_FIRST) != 1:
+            sys.exit("STOPPED: the FAQ no longer starts with its first question")
+        write("frequently-asked-questions", body.replace(FAQ_FIRST, FAQ_SELLS + FAQ_FIRST), "What does the gallery sell?")
+    return out
+
+
 def step_faq():
     """The visiting questions lead the FAQ under their own heading; "Buying prints" heads the rest."""
     p = pages()["frequently-asked-questions"]
@@ -383,7 +434,7 @@ def step_identifiers():
 
 STEPS = {"text": step_text, "artists": step_artists, "alt": step_alt, "descriptions": step_descriptions,
          "listing": step_listing, "unstage": step_unstage, "definition": step_definition, "identifiers": step_identifiers,
-         "faq": step_faq}
+         "pages": step_pages, "faq": step_faq}
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] not in STEPS:
