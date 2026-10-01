@@ -1,0 +1,201 @@
+[
+ {
+  "call": "definition: Class",
+  "kind": "definition",
+  "at": "2026-10-01T21:12:31+00:00",
+  "variables": {
+   "definition": {
+    "type": "class",
+    "name": "Class",
+    "description": "A class or camp from Artists for Kids. It lists on its programme page, with a link to its own registration page, and leaves the list after its last day.",
+    "displayNameKey": "name",
+    "access": {
+     "storefront": "PUBLIC_READ"
+    },
+    "capabilities": {
+     "publishable": {
+      "enabled": true
+     }
+    },
+    "fieldDefinitions": [
+     {
+      "key": "name",
+      "type": "single_line_text_field",
+      "name": "Name",
+      "required": true
+     },
+     {
+      "key": "programme_page",
+      "type": "page_reference",
+      "name": "Programme page",
+      "required": true,
+      "description": "The page that lists it: After School Art, Spring & Summer Day Camps or Paradise Valley Summer Camps."
+     },
+     {
+      "key": "group",
+      "type": "single_line_text_field",
+      "name": "Listed under",
+      "required": false,
+      "description": "The heading it is listed under, the same for every class in the group. For example: Fall 2026 classes, or Pro D day camps."
+     },
+     {
+      "key": "description",
+      "type": "multi_line_text_field",
+      "name": "Description",
+      "required": false,
+      "description": "As on the district's page. A blank line starts a new paragraph."
+     },
+     {
+      "key": "when",
+      "type": "single_line_text_field",
+      "name": "When",
+      "required": false,
+      "description": "As the team writes it. For example: 8 Tuesdays from Oct. 13 to Dec. 1"
+     },
+     {
+      "key": "time",
+      "type": "single_line_text_field",
+      "name": "Time",
+      "required": false,
+      "description": "For example: 3:00 - 4:30 pm"
+     },
+     {
+      "key": "first_day",
+      "type": "date",
+      "name": "First day",
+      "required": false,
+      "description": "Puts the list in order."
+     },
+     {
+      "key": "last_day",
+      "type": "date",
+      "name": "Last day",
+      "required": false,
+      "description": "The class leaves the list the day after."
+     },
+     {
+      "key": "for",
+      "type": "single_line_text_field",
+      "name": "For",
+      "required": false,
+      "description": "Grades or ages. For example: Grades 3-5"
+     },
+     {
+      "key": "fee",
+      "type": "single_line_text_field",
+      "name": "Fee",
+      "required": false,
+      "description": "For example: $230, or TBD"
+     },
+     {
+      "key": "teacher",
+      "type": "single_line_text_field",
+      "name": "Teacher",
+      "required": false
+     },
+     {
+      "key": "location",
+      "type": "multi_line_text_field",
+      "name": "Where",
+      "required": false,
+      "description": "One line for each part. For example: Boundary Elementary, then Room 011."
+     },
+     {
+      "key": "places",
+      "type": "number_integer",
+      "name": "Places",
+      "required": false,
+      "description": "Optional. The most it takes, for example 18."
+     },
+     {
+      "key": "status",
+      "type": "single_line_text_field",
+      "name": "Status",
+      "required": false,
+      "description": "Open shows the Register button. Full, Waitlist, Opens soon and Closed say so. Change it the moment the class fills, in the same sitting as on the district's page.",
+      "validations": [
+       {
+        "name": "choices",
+        "value": "[\"Open\", \"Full\", \"Waitlist\", \"Opens soon\", \"Closed\"]"
+       }
+      ]
+     },
+     {
+      "key": "opens_on",
+      "type": "date",
+      "name": "Registration opens",
+      "required": false,
+      "description": "Optional. Shown with the status Opens soon."
+     },
+     {
+      "key": "register",
+      "type": "url",
+      "name": "Registration link",
+      "required": false,
+      "description": "The class's own registration page on the district's site."
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectDefinitionCreate": {
+    "metaobjectDefinition": {
+     "id": "gid://shopify/MetaobjectDefinition/23881777449",
+     "type": "class",
+     "fieldDefinitions": [
+      {
+       "key": "name"
+      },
+      {
+       "key": "programme_page"
+      },
+      {
+       "key": "group"
+      },
+      {
+       "key": "description"
+      },
+      {
+       "key": "when"
+      },
+      {
+       "key": "time"
+      },
+      {
+       "key": "first_day"
+      },
+      {
+       "key": "last_day"
+      },
+      {
+       "key": "for"
+      },
+      {
+       "key": "fee"
+      },
+      {
+       "key": "teacher"
+      },
+      {
+       "key": "location"
+      },
+      {
+       "key": "places"
+      },
+      {
+       "key": "status"
+      },
+      {
+       "key": "opens_on"
+      },
+      {
+       "key": "register"
+      }
+     ]
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

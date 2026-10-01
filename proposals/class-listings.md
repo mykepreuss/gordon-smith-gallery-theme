@@ -1,6 +1,6 @@
 # Class and camp listings: each class on the site, with its own Register link
 
-Date: 2026-10-01. Status: **a proposal, for Michael's decision.** Nothing is built and nothing in the store changed.
+Date: 2026-10-01. Status: **decided by Michael, 2026-10-01** ("All seven decisions approved, merge #141 and build it"; P-68), and **built** the same day: see "Built" at the end. The class list's design is DS-198, Proposed. Live only at a release.
 
 Asked for by the gallery, in a note on its answers of 2026-10-01 (`proposals/gallery-answers/2026-10-01-answers.md`, last lines), and set aside by Michael as a project of its own (P-67). Michael, 2026-10-01: "Write the class listings proposal".
 
@@ -167,3 +167,22 @@ The first four are open since 2026-09-27 (`proposals/gallery-questions.md` 6.9 t
 - No form on this site. No child's details are collected here.
 - No payments, no counting of places, no waitlist system. Shopify could sell a class as a product, but the forms' medical and guardian questions don't belong in a shop's checkout.
 - No change to the Gallery Program, workshops or learning kits. They already link straight to their booking calendar or form (P-32).
+
+## Built, 2026-10-01
+
+- **Theme:** `sections/gs-classes`, on the programme template between the opening and the events, and first on the story template; `snippets/gs-class` (one class), `gs-class-index` (which classes, in what order), `gs-data-class` (the data). A programme page with classes splits its text around them (`gs-page-body`), so on After School Art the classes come after the introduction and before "Important Notes". The design is DS-198.
+- **Store:** the Class definition and After School Art's 6 fall classes, typed from the district's page word for word (`proposals/store-writes/classes.py`; log in `proposals/store-writes/README.md`). The live theme reads neither until the release.
+- **Order:** by first day, then by name.
+- **Words that are ours:** "Fall 2026 classes" (the group), the labels When, Time, For, Fee, Teacher, Where, Places, the statuses' words, and "Classes and registration" for a class with no group. The gallery approves labels (EXH-04); until then these show.
+- **Checked** on development theme 184806277417: the six classes at 1440, 768 and 390 px, no sideways scroll, the button 48 px tall and the column's width on a phone; each status (set on four classes for a minute, then back to Open); the data, 0 errors, 0 warnings; the other programme and story pages unchanged.
+- **At the release** (`proposals/store-changes.md` §9d): After School Art's button to the district's landing page is removed, so the page's way to register is each class's own button.
+
+## For the team: classes each term
+
+In the admin, Content, Metaobjects, Classes.
+
+1. **New term:** make each class's registration page on the district's site first. Then here, for each class, Add entry (or open last term's and Duplicate). Fill in the name, the Programme page, Listed under (the same words for every class of the term, for example "Winter 2027 classes"), the description, When, Time, First day, Last day, For, Fee, Teacher, Where, Status (Open), and the Registration link: the class's page on the district's site. Save. It shows on the page at once.
+2. **A class fills:** in the same sitting as on the district's site, open the class here and set Status to Full, or Waitlist if parents can still join a list. Save.
+3. **Before registration opens:** Status Opens soon, and the day in Registration opens.
+4. **A class ends:** nothing to do. It leaves the list the day after its last day. Delete old classes once a year, or set them to Draft.
+5. **A camp:** the same, with the camp's page as Programme page and, for the Pro D days, "Pro D day camps" in Listed under.

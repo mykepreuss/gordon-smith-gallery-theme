@@ -1,0 +1,83 @@
+{% doc %}
+  One class or camp in a programme page's list (P-68, DS-198): its name, a description, its facts
+  (when, time, who it is for, fee, teacher, where, places), then what to do. The words are the
+  team's, as they type them on the district's page.
+
+  What to do follows its status, which the team sets:
+  - Open: a Register button to the class's own registration page.
+  - Waitlist: "Full. Waitlist open." and a button to the same page, "Join the waitlist".
+  - Full: "Full".
+  - Opens soon: "Registration opens" and the day, or "Registration opens soon".
+  - Closed: "Registration closed".
+  No status reads as Open. A class with no registration link has no button.
+
+  @param {object} listing - A class entry
+  @param {string} [heading] - Element for the name: 'h3' (default) or 'h4' under a group heading
+
+  @example
+  <ul class="gs-classes">{%- render 'gs-class', listing: listing -%}</ul>
+{% enddoc %}
+{%- liquid
+  assign tag = heading | default: 'h3'
+  assign status = listing.status.value | default: 'Open'
+  assign name = listing.name.value
+  assign register = listing.register.value
+-%}
+<li class="gs-class">
+  <{{ tag }} class="gs-h3">{{ name | escape }}</{{ tag }}>
+  {%- if listing.description.value != blank -%}
+    <div class="gs-class__text">{%- render 'gs-paragraphs', text: listing.description.value -%}</div>
+  {%- endif -%}
+  <dl class="gs-class__facts">
+    {%- if listing.when.value != blank -%}
+      <div><dt>{{ 'classes.when' | t }}</dt><dd>{{ listing.when.value | escape | newline_to_br }}</dd></div>
+    {%- endif -%}
+    {%- if listing.time.value != blank -%}
+      <div><dt>{{ 'classes.time' | t }}</dt><dd>{{ listing.time.value | escape }}</dd></div>
+    {%- endif -%}
+    {%- if listing.for.value != blank -%}
+      <div><dt>{{ 'classes.for' | t }}</dt><dd>{{ listing.for.value | escape }}</dd></div>
+    {%- endif -%}
+    {%- if listing.fee.value != blank -%}
+      <div><dt>{{ 'classes.fee' | t }}</dt><dd>{{ listing.fee.value | escape }}</dd></div>
+    {%- endif -%}
+    {%- if listing.teacher.value != blank -%}
+      <div><dt>{{ 'classes.teacher' | t }}</dt><dd>{{ listing.teacher.value | escape }}</dd></div>
+    {%- endif -%}
+    {%- if listing.location.value != blank -%}
+      <div><dt>{{ 'classes.where' | t }}</dt><dd>{{ listing.location.value | escape | newline_to_br }}</dd></div>
+    {%- endif -%}
+    {%- if listing.places.value != blank -%}
+      <div><dt>{{ 'classes.places' | t }}</dt><dd>{{ 'classes.places_count' | t: count: listing.places.value }}</dd></div>
+    {%- endif -%}
+  </dl>
+  <div class="gs-class__action">
+    {%- case status -%}
+      {%- when 'Full' -%}
+        <p class="gs-class__status">{{ 'classes.full' | t }}</p>
+      {%- when 'Closed' -%}
+        <p class="gs-class__status">{{ 'classes.closed' | t }}</p>
+      {%- when 'Opens soon' -%}
+        <p class="gs-class__status">
+          {%- if listing.opens_on.value != blank -%}
+            {%- assign opens = listing.opens_on.value | date: '%B %-d, %Y' -%}
+            {{- 'classes.opens_on' | t: date: opens -}}
+          {%- else -%}
+            {{- 'classes.opens_soon' | t -}}
+          {%- endif -%}
+        </p>
+      {%- when 'Waitlist' -%}
+        <p class="gs-class__status">{{ 'classes.waitlist' | t }}</p>
+        {%- if register != blank -%}
+          {%- assign label = 'classes.join_waitlist' | t -%}
+          {%- render 'gs-link', url: register, label: label, class: 'gs-button', about: name -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- if register != blank -%}
+          {%- assign label = 'classes.register' | t -%}
+          {%- render 'gs-link', url: register, label: label, class: 'gs-button', about: name -%}
+        {%- endif -%}
+    {%- endcase -%}
+  </div>
+  {%- render 'gs-data-class', listing: listing -%}
+</li>

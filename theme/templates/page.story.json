@@ -18,6 +18,9 @@
         "part": "all"
       }
     },
+    "classes": {
+      "type": "gs-classes"
+    },
     "cards": {
       "type": "gs-card-groups"
     },
@@ -30,6 +33,7 @@
   },
   "order": [
     "hero",
+    "classes",
     "body",
     "cards",
     "events",

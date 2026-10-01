@@ -243,6 +243,18 @@ Each waits for theme code the live site doesn't have yet. `proposals/store-write
 
 Rollback: the FAQ's text back from the snapshot the step saves; the staged description back with `metafieldsSet` (the theme reads either).
 
+## 9d. At the next release: After School Art's classes (P-68)
+
+The class list (DS-198) shows After School Art's six fall classes from their entries, each with its own Register button. At the release that carries it:
+
+1. After School Art's button (its `custom.cta` field, "Register for classes" to the district's After School Art page) is deleted, so the page no longer sends parents to the district's landing page. The page shows its classes after its introduction instead. Before-snapshot, then `metafieldsDelete` on `gid://shopify/Page/165837373737`, `custom.cta`.
+2. `design-system/scripts/answers.json`, question 33: its gap comes out, since the page then answers it.
+3. The team cuts the district's After School Art landing page back to a link to this site (P-30, P-68). Not a store change.
+
+Day camps and Paradise Valley keep their buttons until their classes are entered.
+
+Rollback: set `custom.cta` back from the snapshot.
+
 ## 9b. Page fields from the whole-site design review (DS-122, DS-129)
 
 Decided by Michael on 2026-09-28; each waits for his go-ahead to write, with a before-snapshot, and is logged in `proposals/store-writes/README.md`. The theme is ready for both.

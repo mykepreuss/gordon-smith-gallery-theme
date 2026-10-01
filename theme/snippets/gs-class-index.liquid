@@ -1,0 +1,48 @@
+{% doc %}
+  Picks and orders a programme page's classes and camps (P-68, content model part 9). Outputs
+  comma-separated positions in shop.metaobjects.class.values: by first day, then by name. Read a
+  class back inside the same paginate tag, as the events are (gs-event-index, DS-148):
+
+    paginate shop.metaobjects.class.values by 250
+      for listing in shop.metaobjects.class.values offset: n limit: 1
+
+  A class drops off the list the day after its last day, in the store's time zone. A class with
+  no last day stays until it is set to Draft or deleted. Only active entries exist on the
+  storefront.
+
+  @param {object} for_page - Only classes whose programme page is this page
+
+  @example
+  {%- capture ids -%}{% render 'gs-class-index', for_page: page %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign today = 'now' | date: '%Y%m%d' | plus: 0
+  assign keys = ''
+  paginate shop.metaobjects.class.values by 250
+  for listing in shop.metaobjects.class.values
+    if listing.programme_page.value.id != for_page.id
+      continue
+    endif
+    if listing.last_day.value != blank
+      assign last = listing.last_day.value | date: '%Y%m%d' | plus: 0
+      if last < today
+        continue
+      endif
+    endif
+    assign first = '99999999'
+    if listing.first_day.value != blank
+      assign first = listing.first_day.value | date: '%Y%m%d'
+    endif
+    assign name = listing.name.value | downcase | replace: ',', ' ' | replace: '-', ' '
+    assign pos = forloop.index0 | prepend: '000' | slice: -3, 3
+    assign keys = keys | append: first | append: name | append: '-' | append: pos | append: ','
+  endfor
+  endpaginate
+  assign sorted = keys | split: ',' | sort
+  for key in sorted
+    echo key | split: '-' | last | plus: 0
+    unless forloop.last
+      echo ','
+    endunless
+  endfor
+-%}
