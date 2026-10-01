@@ -245,6 +245,8 @@ Rollback: the FAQ's text back from the snapshot the step saves; the staged descr
 
 ## 9d. At the next release: After School Art's classes (P-68)
 
+**Made at the fifth release, 2026-10-01** (`proposals/store-writes/README.md`, "2026-10-01: the fifth release"). The plan as written:
+
 The class list (DS-198) shows After School Art's six fall classes from their entries, each with its own Register button. At the release that carries it:
 
 1. After School Art's button (its `custom.cta` field, "Register for classes" to the district's After School Art page) is deleted, so the page no longer sends parents to the district's landing page. The page shows its classes after its introduction instead. Before-snapshot, then `metafieldsDelete` on `gid://shopify/Page/165837373737`, `custom.cta`.

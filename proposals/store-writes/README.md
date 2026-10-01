@@ -1158,3 +1158,20 @@ No call returned an error; each step run again lists nothing.
 
 **Undo:** delete the six entries (`metaobjectDelete`), then the definition (`metaobjectDefinitionDelete` on `gid://shopify/MetaobjectDefinition/23881777449`).
 
+## 2026-10-01: the fifth release
+
+**Why:** Michael, 2026-10-01: "Merge #143 and do the release". The release carried #142 (P-68, DS-198), and with it the store change `proposals/store-changes.md` §9d held for it. Its record: `PROJECT.md`, row 6e; `IMPLEMENTATION_PLAN.md`, "The fifth release".
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; by `shopify theme list`, `184824725801` live and `184856445225` the review theme, unpublished; both downloaded whole and matching Git, so no theme editor changes. The step dry-run before the publish.
+
+| When (UTC) | What | Through |
+| --- | --- | --- |
+| 21:33:12 | `184856445225` published; `184824725801` unpublished and kept for rollback. Renamed: "Gordon Smith Gallery", and "Gordon Smith Gallery (rollback, fourth release)" | `shopify theme publish --force`, `shopify theme rename` |
+| 21:33:19 | After School Art's button, "Register for classes" to `https://artistsforkids.sd44.ca/learn/after-school-art/` (`custom.cta` on `gid://shopify/Page/165837373737`), deleted. Its value was saved first: `snapshots/after-school-art-cta-before-release.json` | `classes.py release`, `metafieldsDelete` |
+
+No error; the step run again lists nothing.
+
+**Checked after:** on the live site, After School Art (theme `184856445225`, role main) shows its six classes under "Fall 2026 classes", each Register link going to the class's own page; no link to the district's landing page and no "Register for classes" is left, at the top or at the end. Day camps and Paradise Valley keep their buttons. The rest: `PROJECT.md`, row 6e.
+
+**Undo:** `IMPLEMENTATION_PLAN.md`, "The fifth release": the rollback theme, then `metafieldsSet` with the snapshot's value (type link).
+
