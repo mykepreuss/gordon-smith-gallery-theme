@@ -1,0 +1,30 @@
+[
+ {
+  "call": "exhibition from-the-ground collection_works: Turtle Clan Searchers as one tile",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:00+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608388415785",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "collection_works",
+      "value": "[\"gid://shopify/Metaobject/608917356841\",\"gid://shopify/Metaobject/608917389609\",\"gid://shopify/Metaobject/608909361449\",\"gid://shopify/Metaobject/608909492521\",\"gid://shopify/Metaobject/608909525289\",\"gid://shopify/Metaobject/608909689129\",\"gid://shopify/Metaobject/608909820201\",\"gid://shopify/Metaobject/608938492201\",\"gid://shopify/Metaobject/608913097001\",\"gid://shopify/Metaobject/608935903529\",\"gid://shopify/Metaobject/608917946665\",\"gid://shopify/Metaobject/608921878825\",\"gid://shopify/Metaobject/608923812137\",\"gid://shopify/Metaobject/608929808681\",\"gid://shopify/Metaobject/608932593961\",\"gid://shopify/Metaobject/608931184937\",\"gid://shopify/Metaobject/608931479849\",\"gid://shopify/Metaobject/608934035753\",\"gid://shopify/Metaobject/608937410857\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608388415785",
+     "handle": "from-the-ground",
+     "displayName": "From the Ground",
+     "updatedAt": "2026-10-01T23:20:00Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

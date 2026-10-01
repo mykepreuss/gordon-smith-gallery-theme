@@ -1,0 +1,29 @@
+{
+ "taken": "2026-10-01",
+ "what": "Newsletter sign-ups judged automated (follow-up doc 16; Michael, 2026-10-01: yes). Each was SUBSCRIBED with 0 orders, no tags, created 2026-09-17 to 2026-09-29: 12 named James Anderson or James Jones with an email naming someone else, and two bursts of stock names created seconds apart. Emails are left out on purpose. Undo: customerEmailMarketingConsentUpdate with marketingState SUBSCRIBED for each id.",
+ "before": "SUBSCRIBED",
+ "customers": [
+  "gid://shopify/Customer/10529508950313",
+  "gid://shopify/Customer/10529502986537",
+  "gid://shopify/Customer/10529467498793",
+  "gid://shopify/Customer/10529286521129",
+  "gid://shopify/Customer/10529168097577",
+  "gid://shopify/Customer/10529124548905",
+  "gid://shopify/Customer/10527178129705",
+  "gid://shopify/Customer/10523941536041",
+  "gid://shopify/Customer/10523941175593",
+  "gid://shopify/Customer/10523940454697",
+  "gid://shopify/Customer/10523940421929",
+  "gid://shopify/Customer/10550166028585",
+  "gid://shopify/Customer/31238951665961",
+  "gid://shopify/Customer/31238951371049",
+  "gid://shopify/Customer/31238950420777",
+  "gid://shopify/Customer/31238949110057",
+  "gid://shopify/Customer/31238949044521",
+  "gid://shopify/Customer/31238948258089",
+  "gid://shopify/Customer/31241110192425",
+  "gid://shopify/Customer/31241109602601",
+  "gid://shopify/Customer/31241109340457",
+  "gid://shopify/Customer/31243878039849"
+ ]
+}

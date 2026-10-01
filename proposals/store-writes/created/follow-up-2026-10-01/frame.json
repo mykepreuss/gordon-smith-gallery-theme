@@ -1,0 +1,41 @@
+[
+ {
+  "call": "product russna-kaur-frame: the stock-preview photo off, the shared frame photo on",
+  "kind": "files",
+  "at": "2026-10-01T23:20:04+00:00",
+  "variables": {
+   "files": [
+    {
+     "id": "gid://shopify/MediaImage/45366267937065",
+     "referencesToRemove": [
+      "gid://shopify/Product/10095715057961"
+     ]
+    },
+    {
+     "id": "gid://shopify/MediaImage/45366256894249",
+     "referencesToAdd": [
+      "gid://shopify/Product/10095715057961"
+     ]
+    }
+   ]
+  },
+  "answer": {
+   "fileUpdate": {
+    "files": [
+     {
+      "id": "gid://shopify/MediaImage/45366267937065",
+      "alt": "",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/45366256894249",
+      "alt": "",
+      "fileStatus": "READY"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

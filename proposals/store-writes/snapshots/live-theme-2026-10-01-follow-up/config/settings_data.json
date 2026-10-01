@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "address": "2121 Lonsdale Avenue\nNorth Vancouver, BC V7M 2K6",
+    "contact_page": "contact",
+    "visit_page": "plan-your-visit",
+    "hours": "Thursday to Saturday\n12 to 4 PM",
+    "admission": "Admission to The Gordon Smith Gallery is by donation.",
+    "office_hours": "Monday to Friday\n8 AM to 3 PM\nClosed July and August",
+    "phone": "(604) 903-3798",
+    "home_description": "The Gordon Smith Gallery of Canadian Art is a public art gallery at 2121 Lonsdale Avenue, North Vancouver, and the home of Artists for Kids. Exhibitions, programs and limited edition prints. Admission is by donation.",
+    "land_acknowledgement": "<p>Artists for Kids and the Gordon Smith Gallery are situated on the unceded territories of the sḵwx̱wú7mesh (Squamish) and səl̓ílwətaʔɬ (Tsleil-Waututh) Nations, and the xʷməθkʷəy̓əm (Musqueam) Band. We are grateful for the opportunity to create, connect, share, and learn on this land.</p>",
+    "exhibitions_on_now_page": "on-now",
+    "exhibitions_upcoming_page": "upcoming-exhibitions",
+    "exhibitions_past_page": "past-exhibitions",
+    "events_page": "upcoming-events",
+    "events_current_page": "current-events",
+    "events_past_page": "past-events",
+    "programmes_menu": "new-theme-programmes",
+    "collection_artists_label": "From the collection",
+    "collection_page": "permanent-collection",
+    "artists_page": "artists",
+    "lessons_page": "artreach-videos",
+    "lessons_note": "The Artists for Kids ArtReach video series and digital gallery tours contain copyrighted artworks and/or materials, the use of these artworks/materials have not been specifically authorized by the Rights owner(s). In accordance with our mission and goals as a non-profit art educational organization and gallery, we are sharing these artworks and materials as a public service for educational purposes only.",
+    "shop_page": "shop",
+    "portfolio_collections": [
+      "2026-fall-portfolio",
+      "2026-spring-portfolio",
+      "2025-fall-portfolio",
+      "2025-spring-portfolio",
+      "2024-fall-portfolio"
+    ],
+    "all_editions_collection": "all-prints",
+    "open_thursday": true,
+    "open_friday": true,
+    "open_saturday": true,
+    "opens_at": "12:00",
+    "closes_at": "16:00",
+    "closures": "October 12, 2026\nNovember 11, 2026\nDecember 21, 2026 to January 1, 2027\nFebruary 15, 2027\nMarch 15, 2027 to March 29, 2027\nMay 24, 2027\nJuly 10, 2027 to August 22, 2027",
+    "artists_for_kids_page": "artists-for-kids",
+    "foundation_page": "the-smith-foundation",
+    "latitude": "49.3291934",
+    "longitude": "-123.0726507",
+    "gallery_founded": "2012",
+    "gallery_owner": "North Vancouver School District",
+    "gallery_owner_url": "https://www.sd44.ca",
+    "artist_groups": "T&T Collective\nVancouver School Collective\nWest Baffin Eskimo Co-operative",
+    "admission_free": true,
+    "access_features": "Wheelchair accessible\nAccessible washrooms\nAccessible parking\nElevator\nRamp to the entrance",
+    "returns": "final",
+    "shipping_rate": "20",
+    "shipping_days_min": "3",
+    "shipping_days_max": "5",
+    "email": "artistsforkids@sd44.ca",
+    "social_instagram": "https://www.instagram.com/afk_smithgallery",
+    "social_facebook": "https://www.facebook.com/afksmithgallery",
+    "social_youtube": "https://www.youtube.com/channel/UCBo3tcqxdV8lTdNEnT1lCwg",
+    "foundation_instagram": "https://www.instagram.com/the_smith_foundation",
+    "foundation_facebook": "https://www.facebook.com/gordonandmarionsmithfoundation",
+    "afk_founded": "1989",
+    "afk_operator": "North Vancouver School District",
+    "afk_operator_url": "https://www.sd44.ca",
+    "afk_charity_number": "107961427RR0001",
+    "foundation_founded": "2002",
+    "foundation_charity_number": "866075658RR0001",
+    "linked_names": "Gordon and Marion Smith Foundation for Young Artists = the-smith-foundation\nGordon and Marion Smith Foundation = the-smith-foundation\nSmith Foundation = the-smith-foundation\nArtists for Kids = artists-for-kids\nArtist for Kids = artists-for-kids\nSpeaker Series = speaker-series\nMusic at The Smith = music-at-the-smith\nExplore + Create = explore-create\nArt In Good Company = art-in-good-company\nBrilliance Gala = brilliance-gala\nPermanent Collection = permanent-collection\npublic programs = public-programs-1\nArtists in Residence = artists-in-residence\nArtist in Residence = artists-in-residence",
+    "linked_words": "donors = smith-foundation-supporters\nscholarships = smith-foundation-scholarships\nvolunteers = volunteer"
+  }
+}

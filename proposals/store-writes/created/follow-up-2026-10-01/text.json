@@ -1,0 +1,1087 @@
+[
+ {
+  "call": "page public-programs body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:15+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155654586665",
+   "page": {
+    "body": "<p>Art in Good Company</p>\n<p><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/IMG_7208_JPG.jpg?v=1784578621\" alt=\"\"></p>\n<p>Explore + Create </p>\n<p>Music at the Smith</p>\n<p> </p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155654586665",
+     "handle": "public-programs",
+     "title": "Public Programs",
+     "updatedAt": "2026-10-01T23:20:15Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page the-smith-foundation body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:16+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155705409833",
+   "page": {
+    "body": "<p>The Gordon and Marion Smith Foundation for Young Artists was founded in 2002 to establish an endowment fund, the interest from which would fund ongoing visual arts enrichment opportunities for the children of British Columbia. The endowment is held and managed by the Vancouver Foundation. The Foundation’s role has evolved to include the presentation of a diverse and accessible range of visual arts programming including <a href=\"/pages/explore-create\">Explore + Create</a> Saturday Family Drop-In program, <a href=\"/pages/art-in-good-company\">Art in Good Company</a>, <a href=\"/pages/speaker-series\">Speaker Series</a>, <a href=\"/pages/music-at-the-smith\">Music at The Smith</a>, and the curation of high profile exhibitions at the Gordon Smith Gallery of Canadian Art.</p>\n<p>The Foundation is named after two champions of the arts and art education in Canada – <a href=\"/pages/gordon-and-marion\">Gordon A. Smith and his late wife, Marion.</a></p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155705409833",
+     "handle": "the-smith-foundation",
+     "title": "The Smith Foundation",
+     "updatedAt": "2026-10-01T23:20:16Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page the-smith-foundation custom.cta",
+  "kind": "fields",
+  "at": "2026-10-01T23:20:17+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/155705409833",
+     "namespace": "custom",
+     "key": "cta",
+     "type": "link",
+     "value": "{\"text\":\"Read the 2025 year in review\",\"url\":\"https://gordonsmithgallery.com/cdn/shop/files/SMITH_ANNUAL_REPORT_2025.pdf\"}"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190392217501993",
+      "namespace": "custom",
+      "key": "cta",
+      "value": "{\"text\":\"Read the 2025 year in review\",\"url\":\"https://gordonsmithgallery.com/cdn/shop/files/SMITH_ANNUAL_REPORT_2025.pdf\"}"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page music-at-the-smith title and body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:18+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155719696681",
+   "page": {
+    "title": "Music at the Smith",
+    "body": "<p>Music at the Smith is a seasonal concert series dedicated to showcasing highly accomplished musical ensembles across a spectrum of genres, including jazz, folk, indie, classical, and world music. Set within the Gordon Smith Gallery, each performance unfolds alongside the current exhibition featuring Canadian artists. This intersection of disciplines offers the audiences a multi-sensory artistic experience where the visual and auditory arts complement each other.  Every ticket purchase directly supports Artists for Kids and the Gordon Smith Gallery programming, ensuring the next generation of creative voices continues to be nurtured and inspired.</p>\n<h2>Past concerts</h2>\n<h3>The Giving Shapes</h3>\n<p>June 13, 2026</p>\n<p>The Giving Shapes is a collaborative project between harpist/vocalist Elisa Thorn and pianist/vocalist Robyn Jacob that formed in fall 2017 at the Banff Centre for the Arts.</p>\n<h3>Fall 2023</h3>\n<p>Music at the Smith returns for a season of Jazz and Classical performances by preeminent BC musicians at the Gordon Smith Gallery.</p>\n<p>Selected by Guest Music Curator, Sarah Ballantyne.</p>\n<ul>\n<li>\n<strong>October 3rd, 2023</strong><br>New York State of Mind: American Music for clarinet, violin, and piano<br>Jose Franch-Ballester, clarinet<br>David Gillham, violin<br>Jane Hayes, piano</li>\n<li>\n<strong>October 24th, 2023</strong><br>Rising Stars: Benjamin Millman Piano Trio<br>Benjamin Millman, piano<br>Wynston Minkler, bass<br>Karl DeJong, drums</li>\n<li>\n<strong>November 7th, 2023</strong><br>Rising Stars: Elysian Trio<br>Joy Yeh, harp<br>Paul Hung, flute<br>Sarah Kwok, viola</li>\n<li>\n<strong>November 21st, 2023</strong><br>Artie Shaw's Gramercy Five<br>James Danderfer, clarinet<br>Bill Coon, guitar<br>Sharon Minemoto, piano<br>Atley King, vibraphone<br>Jodi Proznick, bass<br>Joe Poole, drums</li>\n</ul>\n<h2>The Steinway</h2>\n<p>The Smith Foundation is honoured to be the proud owner of a 100 year old Steinway &amp; Sons baby grand piano, donated by Kathryn Allison in memory of her mother Barbara Allison, a friend and student of Gordon Smith.</p>\n<figure class=\"gs-quote\"><blockquote><p>The donation of the Steinway piano is in memory of my mother, Barbara Allison. She trained as an opera singer, but when she became a single parent, she went back to school to become a teacher. She met Gordon Smith when she took his Fine Arts Teaching Methods course at UBC. They became great pals and he encouraged her to nurture every child’s creativity, not just the prodigies. Gordon Smith inspired my mother’s teaching practice, and made it possible for me to paint murals all over my bedroom walls. She relented, only because he approved!</p></blockquote>\n<figcaption><strong>Kathryn Allison</strong></figcaption></figure>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/sf-steinway-piano.jpg?v=1790629736&amp;width=1440\" alt=\"A pianist in a black dress plays a dark grand piano with its lid raised, in front of two large, brightly coloured paintings\" width=\"1440\" height=\"1059\" loading=\"lazy\"><figcaption>Lixia Li plays the 100-year-old Steinway &amp; Sons baby grand piano gifted to the Gordon &amp; Marion Smith Foundation by Kathryn Allison. Photo by Cindy Goodman.</figcaption></figure>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155719696681",
+     "handle": "music-at-the-smith",
+     "title": "Music at the Smith",
+     "updatedAt": "2026-10-01T23:20:18Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page art-in-good-company title",
+  "kind": "page",
+  "at": "2026-10-01T23:20:19+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720253737",
+   "page": {
+    "title": "Art in Good Company"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720253737",
+     "handle": "art-in-good-company",
+     "title": "Art in Good Company",
+     "updatedAt": "2026-10-01T23:20:19Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page permanent-collection body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:20+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720548649",
+   "page": {
+    "body": "<p>The Gordon Smith Gallery of Canadian Art is home to the acclaimed Artists for Kids and the Gordon Smith Gallery Permanent Collection of Canadian Art. For over thirty-five years the Artists for Kids program has been acquiring masterworks from Canada’s leading artists, including our founding patrons, Gordon Smith, Jack Shadbolt and Bill Reid, as well as Robert Davidson, Graham Gillmore, E.J. Hughes, Russna Kaur, Rodney Graham, Guido Molinari, Elizabeth McIntosh and many more.</p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720548649",
+     "handle": "permanent-collection",
+     "title": "Permanent Collection",
+     "updatedAt": "2026-10-01T23:20:20Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artists-for-kids body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:21+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155720810793",
+   "page": {
+    "body": "<p>Artists for Kids brings together educators and the community at large, to provide inspiring, highly relevant educational experiences and enrichment, for thousands of young people annually, while encouraging students to pursue and share their own artistic voice and narrative. Through the Gordon Smith Gallery of Canadian Art, established as Canada's first public art gallery for young audiences, Artists for Kids has created a space for young audiences and our community to experience the narrative of Canadian Art through a significant collection of visual art. As a visual arts catalyst in the community, Artists for Kids is proud to contribute to the development of a rich cultural aesthetic.</p>\n<p>The continued growth and development of our acclaimed program in North Vancouver during the past three decades, provides substantial documentation that intentional art education in schools led by art specialists, can significantly transform young lives, inform programming in schools and ultimately shape a community in ways once thought unimaginable. We see clearly what can be accomplished and possible in education with intentional commitment, understanding and engagement.</p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Gordon_Smith_PVSSA.jpg?v=1785270372\" alt=\"At Paradise Valley Summer Camp in 1996, a group of children painting at an outdoor table with Gordon Smith in a light blue shirt and black apron standing and guiding the art activity.\" width=\"1764\" height=\"993\" loading=\"lazy\"><figcaption>Gordon Smith and a group of young artists at the Paradise Valley Summer School of Visual Art Camp in 1996.</figcaption></figure>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155720810793",
+     "handle": "artists-for-kids",
+     "title": "Artists for Kids",
+     "updatedAt": "2026-10-01T23:20:21Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artists-for-kids custom.cta",
+  "kind": "fields",
+  "at": "2026-10-01T23:20:22+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/155720810793",
+     "namespace": "custom",
+     "key": "cta",
+     "type": "link",
+     "value": "{\"text\":\"Get the program guide\",\"url\":\"https://gordonsmithgallery.com/cdn/shop/files/gordon-smith-gallery-program-guide-2026-2027.pdf\"}"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190392217305385",
+      "namespace": "custom",
+      "key": "cta",
+      "value": "{\"text\":\"Get the program guide\",\"url\":\"https://gordonsmithgallery.com/cdn/shop/files/gordon-smith-gallery-program-guide-2026-2027.pdf\"}"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page volunteer body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:23+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/155902738729",
+   "page": {
+    "body": "<p>As a nonprofit organization, the Gordon Smith Gallery relies on the generous support of our wonderful volunteers. Current volunteer roles include the following:</p>\n<h2>Join the team</h2>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/khimhipol221129_0389.jpg?v=1786662467&amp;width=1200\" alt=\"Guests are served drinks at a gallery event\" width=\"1200\" height=\"801\" loading=\"lazy\"></figure>\n<p>We acknowledge, articulate, and support the vital role of volunteers in achieving our mission. It’s important to us that volunteer roles involve people in meaningful ways that reflect their skills, needs, interests, and backgrounds. We’d be pleased to welcome you as a valued and integral member of the Gallery team.</p>\n<p>High school students interested in volunteering may count volunteer time towards service hours.</p>\n<p>To apply, fill in the <a href=\"/cdn/shop/files/GSF-Volunteer-Application-Form_202603.pdf\">volunteer form (PDF)</a> and email it with your CV to <a href=\"mailto:sgvolunteer1@gmail.com\">sgvolunteer1@gmail.com</a>, as the form asks. Questions? <a href=\"/pages/contact\">Contact us</a>.</p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/155902738729",
+     "handle": "volunteer",
+     "title": "Volunteer",
+     "updatedAt": "2026-10-01T23:20:23Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page after-school-art body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:24+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837373737",
+   "page": {
+    "body": "<p>Artists for Kids offers After School Art classes for students each Fall, Winter and Spring term.</p>\n<p>Led by BC certified art specialist teachers and assisted by secondary art students, our classes provide the opportunity to build skills and foster creative growth within the visual arts. Students will have the opportunity to expand their artistic abilities in a multitude of different mediums, including painting, felting, printmaking, and sculpting.</p>\n<p>Classes vary in duration, price, and medium. All art materials are included in the price of the program.</p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/3f3a59bf-f00d-dbb9-09dd-3d3706847ae4.jpg?v=1785953065\" alt=\"Two children sharing art materials at a paint-spattered studio table in an After School Art class\" width=\"1080\" height=\"721\" loading=\"lazy\"></figure>\n<h2>Important Notes</h2>\n<ul>\n<li>Artists for Kids does not provide supervision before class start times. Parents/Guardians are responsible for the supervision of their child from the end of the school day until the start of the After School Art class.</li>\n<li>Class start times do not change on professional development days or early dismissal days.</li>\n<li>Artists for Kids is unable to provide 1:1 support. If your child requires support at school, or will be attending classes with a support worker, please contact <a href=\"mailto:artistsforkids@sd44.ca\">artistsforkids@sd44.ca</a> as soon as possible after registering.</li>\n<li>A limited number of bursaries of up to 50% of program fees are available for those in need of financial support. In an effort to support as many families as possible, there is a limit of one bursary per child, per term for After School Art classes. Please <a href=\"mailto:artistsforkids@sd44.ca\">contact Artists for Kids</a> for more information on bursaries.</li>\n</ul>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837373737",
+     "handle": "after-school-art",
+     "title": "After School Art",
+     "updatedAt": "2026-10-01T23:20:24Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page schools-and-teachers global.description_tag",
+  "kind": "fields",
+  "at": "2026-10-01T23:20:25+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/165837766953",
+     "namespace": "global",
+     "key": "description_tag",
+     "type": "single_line_text_field",
+     "value": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists-in-Residence, learning guides and kits, ArtReach videos and professional development for educators."
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190530539127081",
+      "namespace": "global",
+      "key": "description_tag",
+      "value": "School programs and teaching resources from Artists for Kids: the Gallery Program, Artists-in-Residence, learning guides and kits, ArtReach videos and professional development for educators."
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page paradise-valley-summer-camp body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:26+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837832489",
+   "sent": "(4819 characters; see the snapshot)"
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837832489",
+     "handle": "paradise-valley-summer-camp",
+     "title": "Paradise Valley Summer Camps",
+     "updatedAt": "2026-10-01T23:20:26Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artists-in-residence body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:27+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837898025",
+   "page": {
+    "body": "<p>The Artists-in-Residence Program brings together artists, teachers, and students. From ceramics and painting to collage and photography, this vital program provides full-day, skill specific training that gives young artists the rare opportunity to immerse themselves in critical thinking and art making. Students who are nominated by their school district teachers have the opportunity to step outside the regular classroom stream to work closely with a professional artist at the Artists for Kids studios.</p>\n<p>Past Artists-in-Residence include <a href=\"/pages/artists/gordon-smith\">Gordon Smith</a>, <a href=\"/pages/artists/kenojuak-ashevak\">Kenojuak Ashevak</a>, <a href=\"/pages/artists/george-littlechild\">George Littlechild</a>, <a href=\"/pages/artists/rodney-graham\">Rodney Graham</a>, <a href=\"/pages/artists/gu-xiong\">Gu Xiong</a>, <a href=\"/pages/artists/russna-kaur\">Russna Kaur</a>, <a href=\"/pages/artists/karen-zalamea\">Karen Zalamea</a>, and <a href=\"/pages/artists/angela-george\">Angela George</a>, amongst many others.</p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837898025",
+     "handle": "artists-in-residence",
+     "title": "Artists-in-Residence",
+     "updatedAt": "2026-10-01T23:20:27Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artist-in-residence-amelia-butcher custom.eyebrow",
+  "kind": "fields",
+  "at": "2026-10-01T23:20:28+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/165837930793",
+     "namespace": "custom",
+     "key": "eyebrow",
+     "type": "single_line_text_field",
+     "value": "Artists-in-Residence"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190417527767337",
+      "namespace": "custom",
+      "key": "eyebrow",
+      "value": "Artists-in-Residence"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artist-in-residence-mark-johnsen body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:29+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165837963561",
+   "page": {
+    "body": "<p><strong>April 2027</strong></p>\n<p>This April, Artists for Kids is excited to offer an Artist-in-Residence program for grade 9 students, providing an opportunity to work for two school days at the Artists for Kids studios with artist Mark Johnsen. The Artist-in-Residence programs provide vital skills training and the necessary dedicated time and focus that gives young artists the rare opportunity to immerse themselves in creativity and art making. Selected art students who are nominated by their school will work with professional printmaker, Mark Johnsen.</p>\n<h2>Mark Johnsen Biography</h2>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-mark-johnsen-studio.jpg?v=1790542648&amp;width=1440\" alt=\"Mark Johnsen holding up a print beside a press in a printmaking studio\" width=\"1440\" height=\"1440\" loading=\"lazy\"></figure>\n<p>Mark Johnsen (he/him) is an American visual artist living and working in Vancouver, British Columbia. His print-based practice examines the possibilities of the unique, hand-pulled impression in an era of digital reproduction. Through studies of material exploration, traditional and non-traditional printing techniques: he works to capture gestural and representational time stamps. He is the co-founder of <em>Patio Press</em>, a hybrid printmaking residency run alongside artist, Sara-Jeanne Bourget. He holds a BFA in Photography from California College of the Arts (2012) and an MFA from Emily Carr University of Art + Design (2020). He has exhibited throughout The United States, Canada, The United Kingdom, Turkey, Bosnia, Japan, Switzerland, and New Zealand and is currently an Assistant Professor in Print Media at Emily Carr University of Art + Design.</p>\n<p><a href=\"/pages/artists/mark-johnsen\">Mark Johnsen in the Permanent Collection</a></p>\n<h2>Past Workshops with Mark Johnsen</h2>\n<p><strong>February 2024 • Grades 10 to 12</strong></p>\n<p>This February, Artists for Kids is excited to offer an Artist-in-Residence program for senior art students, providing an opportunity to work for two school days at the Artists for Kids studios with artist Mark Johnsen. The Artists for Kids Artist-in-Residence programs provide vital skills training and the necessary dedicated time and focus that gives young artists the rare opportunity to immerse themselves in creativity and art making. During two school days, senior art students who are nominated by their school will work with professional printmaker, Mark Johnsen.</p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165837963561",
+     "handle": "artist-in-residence-mark-johnsen",
+     "title": "Mark Johnsen",
+     "updatedAt": "2026-10-01T23:20:29Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artist-in-residence-mark-johnsen custom.eyebrow",
+  "kind": "fields",
+  "at": "2026-10-01T23:20:30+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/165837963561",
+     "namespace": "custom",
+     "key": "eyebrow",
+     "type": "single_line_text_field",
+     "value": "Artists-in-Residence"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190417527865641",
+      "namespace": "custom",
+      "key": "eyebrow",
+      "value": "Artists-in-Residence"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artist-in-residence-becky-bair custom.eyebrow",
+  "kind": "fields",
+  "at": "2026-10-01T23:20:31+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/165837996329",
+     "namespace": "custom",
+     "key": "eyebrow",
+     "type": "single_line_text_field",
+     "value": "Artists-in-Residence"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190417527963945",
+      "namespace": "custom",
+      "key": "eyebrow",
+      "value": "Artists-in-Residence"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artist-in-residence-sara-jeanne-bourget body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:32+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838029097",
+   "page": {
+    "body": "<p><strong>November 2025</strong></p>\n<figure><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/afk-air-2025-sara-jeanne-bourget.jpg?v=1790542648\" alt=\"Sara-Jeanne Bourget. Artist in residence, November 2025\" width=\"1080\" height=\"1350\" loading=\"lazy\"></figure>\n<p>In November 2025, Artists for Kids offered an Artist-in-Residence program for secondary students in grades 10, 11, and 12. During two school days, students who were nominated had the opportunity to work with artist Sara-Jeanne Bourget at the Artists for Kids Studios.</p>\n<p>Traditionally, drawing has been used to record and make sense of the world. In this workshop, we will use drawing to reveal the often overlooked or unseen details of our immediate environment. Moving from observation to imagination, drawing becomes a tool to discover new perspectives. Participants will begin with direct observational techniques, gradually transitioning to material- and process-based approaches. Through this progression, students will create a series of works that engage with and respond to their natural surroundings. The workshop is an invitation to explore the expanded possibilities of drawing, with a particular focus on working with charcoal.</p>\n<h2>Sara-Jeanne Bourget Biography</h2>\n<p>Artist Sara-Jeanne Bourget’s drawing and printmaking practice engages with cyclical processes that echo natural rhythms and phenomena. Through this work, the artist explores how the act of “mining”—traditionally associated with extraction and destruction—can be re-imagined as a method of uncovering ideas, relationships, and possibilities.</p>\n<p>Observing how non-human individuals mine their environment offers new perspectives to foster relationships with the world. A fascination with surfaces altered by animal/plant/human/time-based erosion creates space for new forms and future possibilities.</p>\n<p>In Bourget’s practice, materials and methods intrinsic to drawing and printmaking intertwine, creating hybrid images that blur the boundaries of both disciplines. The artist often works by “mining” from old or discarded charcoal drawings, using them as the foundation for new matrices. These are built through layering, covering, and excavating marks—actions that mirror natural and emotional cycles. Repeated patterns and forms appear seasonally, evolving through intuitive gestures and sustained repetition.</p>\n<p>Bourget is currently an assistant professor in Drawing at Emily Carr University.</p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838029097",
+     "handle": "artist-in-residence-sara-jeanne-bourget",
+     "title": "Sara-Jeanne Bourget",
+     "updatedAt": "2026-10-01T23:20:32Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artist-in-residence-sara-jeanne-bourget custom.eyebrow",
+  "kind": "fields",
+  "at": "2026-10-01T23:20:33+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/165838029097",
+     "namespace": "custom",
+     "key": "eyebrow",
+     "type": "single_line_text_field",
+     "value": "Artists-in-Residence"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsSet": {
+    "metafields": [
+     {
+      "id": "gid://shopify/Metafield/190417528062249",
+      "namespace": "custom",
+      "key": "eyebrow",
+      "value": "Artists-in-Residence"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page artreach-videos body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:34+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838160169",
+   "page": {
+    "body": "<p>This series of videos guides classrooms or individuals at home through art activities focused on principles of creative inquiry and play. Videos are posted to our website throughout the school year. Enjoy!</p>\n<p><a class=\"gs-cta-link\" href=\"/pages/learning-guides\">See the learning guides</a></p>\n<p><a class=\"gs-cta-link\" href=\"/pages/learning-kits\">Borrow a learning kit</a></p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838160169",
+     "handle": "artreach-videos",
+     "title": "ArtReach Videos",
+     "updatedAt": "2026-10-01T23:20:34Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page support-artists-for-kids body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:35+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165838258473",
+   "sent": "(7565 characters; see the snapshot)"
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165838258473",
+     "handle": "support-artists-for-kids",
+     "title": "Support Artists for Kids",
+     "updatedAt": "2026-10-01T23:20:35Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page smith-foundation-supporters body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:36+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165856477481",
+   "sent": "(9542 characters; see the snapshot)"
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165856477481",
+     "handle": "smith-foundation-supporters",
+     "title": "Supporters",
+     "updatedAt": "2026-10-01T23:20:36Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "page about-artists-for-kids body",
+  "kind": "page",
+  "at": "2026-10-01T23:20:37+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/165878104361",
+   "page": {
+    "body": "<p>Artists for Kids was founded in 1989 with the singular intent to support art education, for all.</p>\n<p>In 1989, the founders of Artists for Kids sought to find a financial model to support arts education in our schools, one that was sustainable, and in turn, would support visual arts enrichment. By purchasing art from artists, then in turn inviting each artist to create original, limited-edition prints that the program could sell, the founders created a unique and lasting fundraising vehicle. With the generosity, commitment and support of founding artist-patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists for Kids was born, and with it, the acclaimed Artists for Kids and Gordon Smith Gallery Permanent Collection of Canadian Art.</p>\n<p>Thanks to the ongoing support of our community, artist-patrons, and the North Vancouver School District, Artists for Kids has grown from an idea onto a world-class art program.</p>\n<p>Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators.</p>\n<p>In 1990, with the support of art educators and artist patrons Bill Reid, Jack Shadbolt, and Gordon Smith, the first Artists for Kids Limited Edition Portfolio print, <em>Xhuwaji/Haida Grizzly Bear</em> was published - marking the beginning of an extraordinary partnership between Canadian artists and Artists for Kids.</p>\n<p>Entering its 37th year, Artists for Kids continues to work with renowned Canadian artists and print studios across Canada to publish <a href=\"/pages/shop\">contemporary limited editions</a>; its portfolio is now revered as one of the most significant limited edition collections in Canada.</p>\n<p>The Artists for Kids Limited Edition Portfolio program funds educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for the Artists for Kids and the Gordon Smith Gallery Permanent Collection.</p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/165878104361",
+     "handle": "about-artists-for-kids",
+     "title": "About Artists for Kids",
+     "updatedAt": "2026-10-01T23:20:37Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card afk-artists-in-residence title",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:39+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608366362921",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Artist-in-Residence Enrichment Workshops"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608366362921",
+     "handle": "afk-artists-in-residence",
+     "displayName": "Artist-in-Residence Enrichment Workshops",
+     "updatedAt": "2026-10-01T23:20:39Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card programs-explore-create title",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:40+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608366526761",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Explore + Create"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608366526761",
+     "handle": "programs-explore-create",
+     "displayName": "Explore + Create",
+     "updatedAt": "2026-10-01T23:20:40Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card programs-art-in-good-company title",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:41+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608366559529",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Art in Good Company"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608366559529",
+     "handle": "programs-art-in-good-company",
+     "displayName": "Art in Good Company",
+     "updatedAt": "2026-10-01T23:20:41Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card programs-music-at-the-smith title",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:42+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608366625065",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Music at the Smith"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608366625065",
+     "handle": "programs-music-at-the-smith",
+     "displayName": "Music at the Smith",
+     "updatedAt": "2026-10-01T23:20:42Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card foundation-donations link",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:43+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608366690601",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "link",
+      "value": "{\"text\":\"Donate\",\"url\":\"https://gordonsmithgallery.com/pages/donate\"}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608366690601",
+     "handle": "foundation-donations",
+     "displayName": "Donations",
+     "updatedAt": "2026-10-01T23:20:43Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card afk-season-artists-in-residence title and text",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:44+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608981516585",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Artists-in-Residence Programs 2026-2027"
+     },
+     {
+      "key": "text",
+      "value": "Artists-in-Residence Workshops returns this Fall 2026"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608981516585",
+     "handle": "afk-season-artists-in-residence",
+     "displayName": "Artists-in-Residence Programs 2026-2027",
+     "updatedAt": "2026-10-01T23:20:44Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card afk-air-2027-amelia-butcher text",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:45+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608981680425",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "text",
+      "value": "In February 2027, artist Amelia Butcher will lead a clay and ceramic-based Artist-in-Residence workshop with Grade 7 students."
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608981680425",
+     "handle": "afk-air-2027-amelia-butcher",
+     "displayName": "Amelia Butcher, Winter 2027",
+     "updatedAt": "2026-10-01T23:20:45Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card afk-air-2026-marlene-yuen text",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:47+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608981811497",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "text",
+      "value": "Marlene Yuen leads Grade 3 Students in printmaking processes during her two-day Artist-in-Residence enrichment workshop in January."
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608981811497",
+     "handle": "afk-air-2026-marlene-yuen",
+     "displayName": "Marlene Yuen, Winter 2026",
+     "updatedAt": "2026-10-01T23:20:46Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card afk-air-2026-amelia-butcher text",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:48+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608981844265",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "text",
+      "value": "Artist Amelia Butcher leads Grade 7 students in clay processes in February 2026 during her two-day Artist-in-Residence enrichment workshop."
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608981844265",
+     "handle": "afk-air-2026-amelia-butcher",
+     "displayName": "Amelia Butcher, Winter 2026",
+     "updatedAt": "2026-10-01T23:20:48Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card afk-air-2026-rebecca-bair text",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:49+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608981877033",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "text",
+      "value": "Artist Rebecca Bair leads Grade 8 and 9 students in cyanotype photographic processes in May 2026 during her two-day Artist-in-Residence enrichment workshop."
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608981877033",
+     "handle": "afk-air-2026-rebecca-bair",
+     "displayName": "Rebecca Bair, Spring 2026",
+     "updatedAt": "2026-10-01T23:20:49Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card afk-explore-create title",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:50+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/609010745641",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Explore + Create"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/609010745641",
+     "handle": "afk-explore-create",
+     "displayName": "Explore + Create",
+     "updatedAt": "2026-10-01T23:20:50Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "card_group afk-air-2026-2027 heading",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:51+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608982991145",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "heading",
+      "value": "2026-2027 Artists-in-Residence"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608982991145",
+     "handle": "afk-air-2026-2027",
+     "displayName": "2026-2027 Artists-in-Residence",
+     "updatedAt": "2026-10-01T23:20:51Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition play summary",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:52+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608352141609",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "summary",
+      "value": "This interdisciplinary exhibition features works from the Artists for Kids Collection that exemplify the creative process of play and inquiry. With the singular intent of supporting teachers and our kids K-12 across the curriculum, we are considering how play with materials (including food!), storytelling, words, and place inspires us to grow and learn."
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608352141609",
+     "handle": "play",
+     "displayName": "Play",
+     "updatedAt": "2026-10-01T23:20:52Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition playhouse body",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:53+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608388481321",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "body",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Playhouse\",\"italic\":true},{\"type\":\"text\",\"value\":\" is inspired by comics, broadly interpreted as characters acting in frames, asserting control over their own narratives. Comics are accessible forms of sequential storytelling where the reader builds a relationship with characters over time. Throughout the exhibition we encounter sculptures, animation, paintings, and textiles containing active forms and figures performing within their panels and waiting to be interpreted by viewers of all ages.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The works of contemporary Canadian artists Whess Harman, Hannah Jickling and Reed H. Reed, Guná Jensen, and Cindy Mochizuki are shown alongside works from the Artists for Kids’ Permanent Collection. The perspectives of elementary and secondary students across the Lower Mainland are featured through textile artworks and zines.\"}]},{\"type\":\"heading\",\"level\":2,\"children\":[{\"type\":\"text\",\"value\":\"Public Programs\"}]},{\"type\":\"heading\",\"level\":3,\"children\":[{\"type\":\"text\",\"value\":\"Opening Reception: \"},{\"type\":\"text\",\"value\":\"Friday, September 20, 6-8pm\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Light refreshments will be served, including handcrafted cider provided by Bowen Cider House.\",\"italic\":true}]},{\"type\":\"heading\",\"level\":3,\"children\":[{\"type\":\"text\",\"value\":\"Curator's Tour: \"},{\"type\":\"text\",\"value\":\"Thursday, September 26, 3:30pm\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Led by Guest Curator Annie Canto\",\"italic\":true}]},{\"type\":\"heading\",\"level\":3,\"children\":[{\"type\":\"text\",\"value\":\"'The Giant Strawberry' Explore + Create:\"},{\"type\":\"text\",\"value\":\" Saturday, November 30, 1-3pm\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"With Artist Cindy Mochizuki\",\"italic\":true}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"This workshop will play with the artistic processes of miniature-making using air dry clay, paint and craft papers. Families will work with the artist to create their very own Giant Strawberry scene based on the stories of Mission's own Strawberry King - Kayemon Shikaze, a Japanese issei farmer who owned strawberry farms in Mission and was crowned the Strawberry King for having the largest berry. Families get an opportunity to look through archival photographs and read about stories that will provide insight into building their own 5\\\"X5\\\" giant berry patch. Participants are to use these parameters to play with size and scale to create their own unique berry.\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608388481321",
+     "handle": "playhouse",
+     "displayName": "Playhouse",
+     "updatedAt": "2026-10-01T23:20:53Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition unfixed installation_credit",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:54+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608388710697",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "installation_credit",
+      "value": "All Installation Photography by Michael Love. Courtesy Artists for Kids and The Gordon Smith Gallery of Canadian Art"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608388710697",
+     "handle": "unfixed",
+     "displayName": "Unfixed",
+     "updatedAt": "2026-10-01T23:20:54Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition memory-history-story summary and body",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:55+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/609380958505",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "summary",
+      "value": "This year’s Artists for Kids teaching exhibition is a celebration of the first people of our country."
+     },
+     {
+      "key": "body",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Memory • History • Story\",\"italic\":true},{\"type\":\"text\",\"value\":\" is an exploration of our indigenous artists, their perspectives and voices, through the lens of First People's Principles of Learning. This exhibition brings together pieces from Aboriginal and Inuit artists from the Artists for Kids permanent collection, including George Littlechild, Jane Ash Poitras, Xwalacktun, Kenojuak Ashevak, Robert Davidson, Beau Dick and others. Works in the exhibition include sculpture, textile, cedar carvings and weavings, as well as two-dimensional works, for a collection that inspires learning in our young people and understanding in our visitors.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The exhibition supports teachers in the indigenization of the curriculum as they explore the First People’s Principles of Learning, which reflect a respectful and holistic approach to teaching and learning. The exhibit also included the on-site carving of a welcome pole by master carver K’na’kweltn~ Darren Yelton.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"“This is one of the most important teaching exhibitions in our history,” says Yolande Martinello, Director of Artists for Kids. “Seeing the work of our first people, and their perspective on their experience provides an essential aspect to understanding the true scale, scope and story of our country.”\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/609380958505",
+     "handle": "memory-history-story",
+     "displayName": "Memory, History, Story",
+     "updatedAt": "2026-10-01T23:20:55Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition dwelling-people-and-place body",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:56+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/609381089577",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "body",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"A single or group of figures, or lack thereof, alters a space/structure and in exchange the space/structure has an effect on these bodies. The traces and evidence created by the relationship of habitation become the objects of interest and inquiry for artistic analysis. Drawing from the Artists for Kids teaching collection and borrowed works of supporting artists this exhibit spans mediums of sculpture, installation, painting, photography and drawing.\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/609381089577",
+     "handle": "dwelling-people-and-place",
+     "displayName": "Dwelling: People and Place",
+     "updatedAt": "2026-10-01T23:20:56Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "event art-in-good-company-2026-10-08 title",
+  "kind": "entry",
+  "at": "2026-10-01T23:20:58+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608367706409",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Art in Good Company"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608367706409",
+     "handle": "art-in-good-company-2026-10-08",
+     "displayName": "Art in Good Company",
+     "updatedAt": "2026-10-01T23:20:57Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
