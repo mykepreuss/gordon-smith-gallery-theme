@@ -13,7 +13,9 @@
   the Gallery everywhere else. It always links home.
 
   The utility links are fixed (P-07, P-15): today's opening line, linking to Plan your visit
-  (DS-132; on the bar it sits at the row's left, beside the logo, DS-135), then Contact (the
+  (DS-132; on the bar it sits at the row's left, beside the logo, DS-135), and plain text on Plan
+  your visit itself, where a link would lead back to the page and its current-page underline
+  would read as a link (DS-205), then Contact (the
   contact page in theme settings), Search and Cart. The opening line
   shows only when the opening days are set in Theme settings; the page names it for screen readers,
   since the line itself says the hours. Contact is always visible. The newsletter has no link here
@@ -30,8 +32,8 @@
   <ul class="gs-utility">
     {%- if open_line != blank -%}
       <li class="gs-utility__open">
-        {%- if settings.visit_page != blank -%}
-          <a href="{{ settings.visit_page.url }}"{% if page.id == settings.visit_page.id %} aria-current="page"{% endif %}>
+        {%- if settings.visit_page != blank and page.id != settings.visit_page.id -%}
+          <a href="{{ settings.visit_page.url }}">
             {{- open_line -}}
             <span class="gs-visually-hidden">{{ 'header.open_visit' | t }}</span>
           </a>

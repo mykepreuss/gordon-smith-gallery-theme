@@ -1683,6 +1683,8 @@ html:has(.gs-lightbox[open]) { overflow: hidden; }
 .gs-drawer__panel .gs-nav__group-title { min-height: var(--gs-tap-target); }
 .gs-drawer__panel .gs-utility { flex-direction: column; gap: 0; }
 .gs-drawer__panel .gs-utility a { display: flex; align-items: center; min-height: var(--gs-tap-target); }
+/* On Plan your visit the opening line is plain text (DS-205): it keeps the links' row height. */
+.gs-drawer__panel .gs-utility__open { display: flex; align-items: center; min-height: var(--gs-tap-target); }
 
 /* ----- Bar (1200px and up): utility row above the main nav ----- */
 .gs-header__bar { display: none; }
@@ -1700,7 +1702,8 @@ html:has(.gs-lightbox[open]) { overflow: hidden; }
   line-height: var(--gs-leading-small);
 }
 .gs-utility a { color: var(--gs-color-fg); }
-/* Today's opening line leads the row, in the row's own type, and links to Plan your visit (DS-132). */
+/* Today's opening line leads the row, in the row's own type, and links to Plan your visit (DS-132),
+   except on Plan your visit itself, where it is plain text (DS-205). */
 .gs-utility .gs-open { font-weight: inherit; }
 
 /* Two kinds of top-level item, never mixed:
@@ -1875,7 +1878,7 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-header__bar .gs-utility a { display: inline-flex; align-items: center; min-height: 2rem; }
   /* The opening line sits at the row's left, beside the logo, apart from Contact, Search and Cart
      (DS-135): what the place is doing, then the tools. */
-  .gs-header__bar .gs-utility__open { margin-inline-end: auto; }
+  .gs-header__bar .gs-utility__open { display: flex; align-items: center; margin-inline-end: auto; } /* plain text on Plan your visit lines up with the links (DS-205) */
   .gs-nav { gap: var(--gs-space-1) var(--gs-nav-gap); }
   /* A dropdown with groups (DS-133): the groups side by side, one column each (--gs-nav-groups, from
      gs-nav), and any links outside a group across the top, closed by a rule. The panel ends at the
