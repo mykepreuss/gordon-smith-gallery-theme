@@ -1232,3 +1232,28 @@ No call returned an error (`created/tidy-2026-10-01/deleted.json`).
 
 **Undo:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184856445225`. The fourth release's rollback can be made again with `shopify theme push --unpublished --strict` from 220213c.
 
+
+## 2026-10-01: the follow-up answers
+
+**Why:** Michael, 2026-10-01, on the triage of the follow-up doc's 92 questions: "Yes to all my questions and apply all other changes" (P-71). What each question came to: `proposals/gallery-answers/2026-10-01-follow-up.md`.
+
+**Checked first:** `shopify theme list`: `184857461033` live, `184856445225` the rollback, `184858575145` the review theme, unpublished. Each step's dry run read, word by word, before it ran (`followup_answers.py <step>` without `--go`).
+
+| Step | Calls | Through |
+| --- | --- | --- |
+| Newsletter: 22 automated sign-ups unsubscribed (12 named James Anderson or James Jones with someone else's email, and two bursts of stock names seconds apart, all from 2026-09-17 to 2026-09-29, none with an order). Not deleted | 1 (22 updates) | Shopify connector, `customerEmailMarketingConsentUpdate`; the CLI's store access can't read customers. Each read back as UNSUBSCRIBED |
+| `names`: two artists renamed and moved, Irene F. Whittome, Lotus L. Kang, curly quotes | 6 | `followup_answers.py names --go` |
+| `lessons`: four ArtReach lessons' works | 4 | `lessons --go` |
+| `tiles`: *Turtle Clan Searchers* as one tile on *From the Ground* | 1 | `tiles --go` |
+| `frame`: the stock-preview photo off the Russna Kaur frame, the shared frame photo on | 1 | `frame --go` |
+| `text`: pages, cards, events and exhibitions | 41 | `text --go` |
+| `alt`: a full stop on 47 artwork descriptions | 2 | `alt --go` |
+| `prints`: the 21 prints' descriptions and Shop labels | 21 | `prints --go` |
+| `collection`: 871 artwork records (medium, year, edition, one accession number) | 871 | `collection --go` |
+| Live theme, small fixes (P-66), one file at a time from the live theme's own copy, at 23:22 UTC: `config/settings_data.json` (linked names), `sections/footer-group.json` (the consent line), `templates/page.contact.json` ("Send a message"), `templates/product.json` ("More from this portfolio") | 4 pushes | `shopify theme push --theme 184857461033 --only <file> --allow-live`. Before each: the live copy matched `main` apart from Shopify's empty settings, so no editor change was lost |
+
+No call returned an error. The calls and the store's answers: `created/follow-up-2026-10-01/`. What each call changed, read just before it: `snapshots/follow-up-2026-10-01-before.json`; the newsletter's, `snapshots/newsletter-automated-2026-10-01-before.json` (customer IDs only, no emails).
+
+**Checked after:** the four theme files pulled back from the live theme: as sent. On gordonsmithgallery.com: Contact shows "Send a message" and the consent line; Artists-in-Residence, Volunteer, Sara-Jeanne Bourget, Music at the Smith and Pender Harbour's print show their new words; no Liquid error; `/pages/artists/nuyaliaq-qimirpik` and `/pages/artists/leonhard-epp` answer 200. The old artist addresses show the Artists page, not a redirect: the theme answers every `/pages/artists/…` address itself (as for the gallery's answers' four renames).
+
+**Undo:** each call's `before` values sent back with the same kind of call (`metaobjectUpdate`, `pageUpdate`, `metafieldsSet`, `fileUpdate`, `productUpdate`); an artist's old handle with `redirectNewHandle`. The frame: `fileUpdate` with the two references swapped back. The newsletter: `customerEmailMarketingConsentUpdate` with SUBSCRIBED for each ID in its snapshot. The theme files: push the before copies the same way (`proposals/store-writes/snapshots/live-theme-2026-10-01-follow-up/`), or change the settings in the theme editor.

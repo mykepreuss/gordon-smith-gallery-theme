@@ -1,0 +1,114 @@
+[
+ {
+  "call": "lesson artists-for-kids-trace-monotype-kit-self-portraits inspired_by",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:42+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608983384361",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "inspired_by",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Harlequin (2003) by Graham Gillmore, Plains Cree Chiefs (1995) by George Littlechild, and Group Chat (2023) by Janet Wang and North Vancouver School District Students\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608983384361",
+     "handle": "artists-for-kids-trace-monotype-kit-self-portraits",
+     "displayName": "Artists for Kids Trace Monotype Kit: Self Portraits",
+     "updatedAt": "2026-10-01T23:19:42Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "lesson transforming-words-into-art inspired_by",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:43+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608983744809",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "inspired_by",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Graham Gillmore's painting \"},{\"type\":\"text\",\"value\":\"Einstein/Frankenstein\",\"italic\":true},{\"type\":\"text\",\"value\":\" (2004)\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608983744809",
+     "handle": "transforming-words-into-art",
+     "displayName": "Transforming Words into Art",
+     "updatedAt": "2026-10-01T23:19:43Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "lesson landscape-painting inspired_by",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:44+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608984072489",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "inspired_by",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Gordon Smith's print \"},{\"type\":\"text\",\"value\":\"Pender Harbour\",\"italic\":true},{\"type\":\"text\",\"value\":\" (2006)\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608984072489",
+     "handle": "landscape-painting",
+     "displayName": "Landscape Painting",
+     "updatedAt": "2026-10-01T23:19:44Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "lesson stencilling-with-found-objects-and-images inspired_by",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:45+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608984301865",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "inspired_by",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Damian Moppett's painting \"},{\"type\":\"text\",\"value\":\"Painting and Figure Maquette in Studio at Night\",\"italic\":true},{\"type\":\"text\",\"value\":\" (2006)\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608984301865",
+     "handle": "stencilling-with-found-objects-and-images",
+     "displayName": "Stencilling with Found Objects and Images",
+     "updatedAt": "2026-10-01T23:19:45Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

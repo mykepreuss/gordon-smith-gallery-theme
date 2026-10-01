@@ -8,19 +8,23 @@
  * ------------------------------------------------------------
  */
 {
+  "type": "footer",
+  "name": "Footer",
   "sections": {
-    "artwork": {
-      "type": "gs-artwork-detail"
+    "newsletter": {
+      "type": "gs-newsletter",
+      "settings": {}
     },
-    "related": {
-      "type": "gs-related",
+    "footer": {
+      "type": "gs-footer",
       "settings": {
-        "heading": "More from this portfolio"
+        "menu": "new-theme-explore-2",
+        "legal_menu": "new-theme-legal"
       }
     }
   },
   "order": [
-    "artwork",
-    "related"
+    "newsletter",
+    "footer"
   ]
 }

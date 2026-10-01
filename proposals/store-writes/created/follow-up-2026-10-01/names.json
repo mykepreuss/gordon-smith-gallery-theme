@@ -1,0 +1,194 @@
+[
+ {
+  "call": "artist newgaleak-qimirpik: name, sort_name, other_names, handle",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:26+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608898679081",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "name",
+      "value": "Nuyaliaq Qimirpik"
+     },
+     {
+      "key": "sort_name",
+      "value": "Qimirpik, Nuyaliaq"
+     },
+     {
+      "key": "other_names",
+      "value": "Newgaleak"
+     }
+    ],
+    "handle": "nuyaliaq-qimirpik",
+    "redirectNewHandle": true
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608898679081",
+     "handle": "nuyaliaq-qimirpik",
+     "displayName": "Nuyaliaq Qimirpik",
+     "updatedAt": "2026-10-01T23:19:26Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "artist leonard-epp: name, sort_name, handle",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:27+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608895959337",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "name",
+      "value": "Leonhard Epp"
+     },
+     {
+      "key": "sort_name",
+      "value": "Epp, Leonhard"
+     }
+    ],
+    "handle": "leonhard-epp",
+    "redirectNewHandle": true
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608895959337",
+     "handle": "leonhard-epp",
+     "displayName": "Leonhard Epp",
+     "updatedAt": "2026-10-01T23:19:27Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition beyond-the-horizon artists",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:29+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608388677929",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "artists",
+      "value": "[\"Alan Wood\",\"Angela George\",\"Betty Goodwin\",\"Bill Reid\",\"Elizabeth Angrnaqquaq\",\"Esteban Pérez\",\"George Littlechild\",\"Gordon Smith\",\"Greg Murdock\",\"Holly Schmidt\",\"Irene F. Whittome\",\"Jack Shadbolt\",\"Jane Ash Poitras\",\"Karen Zalamea\",\"Robert Davidson\",\"Rodney Graham\",\"Sylvia Tait\",\"Takao Tanabe\",\"Toni Onley\",\"Xwalacktun\"]"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608388677929",
+     "handle": "beyond-the-horizon",
+     "displayName": "Beyond the Horizon",
+     "updatedAt": "2026-10-01T23:19:28Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition figurative-contemplation body",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:30+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/609380729129",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "body",
+      "value": "{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Exhibiting artists included Ed Burtynsky, Rodney Graham, Angela Grossmann, Gu Xiong, Karin Bubas, Gathie Falk, Jane Ash Poitras, Irene F. Whittome, and Attila Richard Lukacs among others. The exhibition was curated by Astrid Heyerdahl.\"}]}]}"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/609380729129",
+     "handle": "figurative-contemplation",
+     "displayName": "Figurative Contemplation",
+     "updatedAt": "2026-10-01T23:19:29Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition unfixed subtitle and artists and summary",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:31+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608388710697",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "subtitle",
+      "value": "The Entangled Works of Chris Curreri and Lotus L. Kang"
+     },
+     {
+      "key": "artists",
+      "value": "[\"Lotus L. Kang\",\"Chris Curreri\"]"
+     },
+     {
+      "key": "summary",
+      "value": "Unfixed explores how the concepts of fixing and unfixing operate as metaphorical and artistic strategies in the work of two Toronto-based Canadian artists: Chris Curreri and Lotus L. Kang."
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608388710697",
+     "handle": "unfixed",
+     "displayName": "Unfixed",
+     "updatedAt": "2026-10-01T23:19:31Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "exhibition against-the-latitude-of-progress title",
+  "kind": "entry",
+  "at": "2026-10-01T23:19:33+00:00",
+  "variables": {
+   "id": "gid://shopify/Metaobject/608352108841",
+   "metaobject": {
+    "fields": [
+     {
+      "key": "title",
+      "value": "Against the Latitude of “Progress”"
+     }
+    ]
+   }
+  },
+  "answer": {
+   "metaobjectUpdate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/608352108841",
+     "handle": "against-the-latitude-of-progress",
+     "displayName": "Against the Latitude of “Progress”",
+     "updatedAt": "2026-10-01T23:19:33Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

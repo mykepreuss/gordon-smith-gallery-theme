@@ -10,13 +10,12 @@
 {
   "sections": {
     "artwork": {
-      "type": "gs-artwork-detail"
+      "type": "gs-artwork-detail",
+      "settings": {}
     },
     "related": {
       "type": "gs-related",
-      "settings": {
-        "heading": "More from this portfolio"
-      }
+      "settings": {}
     }
   },
   "order": [

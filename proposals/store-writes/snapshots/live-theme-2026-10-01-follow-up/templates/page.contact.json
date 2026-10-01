@@ -9,18 +9,17 @@
  */
 {
   "sections": {
-    "artwork": {
-      "type": "gs-artwork-detail"
+    "hero": {
+      "type": "gs-page-hero",
+      "settings": {}
     },
-    "related": {
-      "type": "gs-related",
-      "settings": {
-        "heading": "More from this portfolio"
-      }
+    "contact": {
+      "type": "gs-contact",
+      "settings": {}
     }
   },
   "order": [
-    "artwork",
-    "related"
+    "hero",
+    "contact"
   ]
 }
