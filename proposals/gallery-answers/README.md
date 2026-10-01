@@ -27,7 +27,7 @@ The store writes are logged in `proposals/store-writes/README.md`, "2026-10-01: 
 | 3.4 | Paterson Ewen, Charles Gagnon, Attila Lukacs, Jean McEwen | Done | Four artist entries: name, sort name and address. The old addresses show the Artists A to Z page |
 | 3.5 | The six death years are right | Done | Blackwood, Pratt, Fafard, Falk, Cicansky, Capel Doray: "born 1941" reads "1941 to 2022", and so on |
 | 3.6 | Molly Lamb Bobak, 1920 | Done | "1920 to 2014" |
-| 3.7 | Marion Smith, 1941-2018 | Done | Gordon and Marion: "His late wife, Marion Smith (1941 to 2018), was said to have two careers". Michael: trust the document |
+| 3.7 | Marion Smith, 1941-2018 | Done | Gordon and Marion: "His wife, Marion Smith (1941 to 2018), was said to have two careers". Michael: trust the document, and "His wife" for "His late wife", since both have died |
 | 3.8 | A long list of collections that hold Gordon Smith's work | Nothing to change | The four the page names are all on the list |
 | 3.9 | Pat and Rosemarie Keough stay one entry | Nothing to change | |
 | 4.1 | A class visit is booked through the registration link | Done | Schools and teachers opens with "To book a class visit, use the registration link on the Gallery Program page." Who it is for and what happens is still unsaid (`gallery-questions.md` 13.5) |
@@ -64,7 +64,7 @@ At Michael's request. The gallery's words are otherwise as sent.
 
 Both texts, before and after: `proposals/store-writes/snapshots/policies-2026-10-01.json`.
 
-**Four additions to page text: written 2026-10-01.** Michael, the same day: "Yes to all four page text additions, proceed". About Us has the gallery's five sentences, then who owns it and when it opened. Gordon and Marion gives Marion Smith's years, "(1941 to 2018)". The FAQ opens with "What does the gallery sell?". Schools and teachers opens with "To book a class visit, use the registration link on the Gallery Program page." The words are in `proposals/store-writes/gallery_answers.py`, step `pages`; the log is `proposals/store-writes/README.md`. With them, `check_answers.py` has no known gap left: 32 of 32 answered on the live site.
+**Four additions to page text: written 2026-10-01.** Michael, the same day: "Yes to all four page text additions, proceed". About Us has the gallery's five sentences, then who owns it and when it opened. Gordon and Marion gives Marion Smith's years, "(1941 to 2018)", and says "His wife" where it said "His late wife" (Michael, the same day). The FAQ opens with "What does the gallery sell?". Schools and teachers opens with "To book a class visit, use the registration link on the Gallery Program page." The words are in `proposals/store-writes/gallery_answers.py`, step `pages`; the log is `proposals/store-writes/README.md`. With them, `check_answers.py` has no known gap left: 32 of 32 answered on the live site.
 
 ## Back to the gallery
 
