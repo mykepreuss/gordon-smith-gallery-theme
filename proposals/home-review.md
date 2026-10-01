@@ -110,3 +110,30 @@ On the development theme, Home at 1440, 1200, 1024 and 390 px, and 1920 × 1080:
 - **H6 (DS-202):** "Make art with us" after the Artists for Kids panel, the three newest lessons with the play mark, and "All ArtReach videos". It scrolls sideways on a phone.
 
 Not built: H1 needs photographs, which Michael hasn't asked for yet; H4 and H7 weren't approved.
+
+## Design review, 2026-10-01
+
+Asked for by Michael: "Review the design of the homepage, ensure consistency … without varying from our design system". Home on the development theme at 1440 × 900, 768 × 1024 and 390 × 844, against the design system first, then the better-ui, Emil Kowalski and frontend-design guidance where the design system is silent.
+
+### Found and fixed
+
+| Severity | Where | Before | After | Why |
+| --- | --- | --- | --- | --- |
+| Medium | `sections/gs-whats-on.liquid` | Today's line under "What's on", about 60 px under the same line in the hero (DS-199): twice on a laptop's first screen | Gone from What's on; the hero, the header (desktop) and Visit keep theirs (DS-204, **Proposed**) | One fact, said once per screen |
+| Medium | `sections/gs-lesson-row.liquid`, `sections/gs-whats-on.liquid` | Home's two rows of cards skipped the count rule: at 750 to 989 px the third ArtReach video sat alone on a row; What's on with four or five cards would have too | Both use `gs-grid-modifiers` and `gs-grid-sizes`, as every other grid of cards does (DS-52) | Consistency with the rest of the site |
+| Low | `components.css`, `.gs-hero__visit` | On phones Plan your visit grew to its 44 px target, so it sat 25 px from today's line, further than the line sat from the button (19 px): the two didn't read as a pair | The link gives the growth back in its margins, as the crumb does: 11 px from the line; the target stays 44 px | Grouping by nearness |
+
+### Checked and consistent
+
+- Space between sections: 112 px on desktop, 48 px on phones, 64 px after the hero (DS-66).
+- Headings: every section H2 the same size; section links sit at the foot of the heading block, on the right from 990 px, under it below (DS-119).
+- Corners: one rounded corner, 48 / 24 / 12 px for box, picture and button, everywhere.
+- Picture edges: a hairline inside every photo; artworks have the mat as their edge (DS-55). Not changed to the better-ui rule of a line on every image: the design system decides.
+- Motion: only buttons move (a press to 0.97 in 160 ms, `--gs-ease-press`); links change colour and underline in 120 ms; every transition names its properties; hover only on a fine pointer; nothing moves with reduced motion. The `transition: all` the browser reports on card titles is its default with no duration, not a transition.
+- The play mark: its triangle's centre of mass is at the disc's centre, so it looks centred (the optical nudge better-ui asks for).
+- Focus: the whole card shows the ring when its title link has focus; the rows on phones leave room for it.
+- No sideways scroll at any width; the rows scroll sideways on phones only, with the next card showing.
+
+Not changed, by the design system's own choice: the caps labels ("On now", "2026 Fall Portfolio") and the arrows after section links, which frontend-design counts as generic, are the brand's labels (§4) and link style (DS-81).
+
+Not verified: Safari and Firefox (Chrome only); a What's on row of four or five cards (the store has six coming up), checked in the code only.

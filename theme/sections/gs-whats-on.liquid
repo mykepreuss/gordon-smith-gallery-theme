@@ -5,8 +5,10 @@
   A run that repeats says so on its card, with the next date ("Saturdays, 1 to 3 PM. Next:
   October 3"), worked out from its events (gs-event-pattern, DS-200).
   An event of the hero's exhibition doesn't repeat the hero's picture (DS-95).
-  The heading carries today's opening line (gs-open-today) and links to all exhibitions and all
-  events. Everything comes from the entries and Theme settings; nothing here is typed by hand.
+  The heading links to all exhibitions and all events. Today's opening line is in the hero just
+  above (DS-199), so it isn't repeated here (DS-204). Everything comes from the entries and Theme
+  settings; nothing here is typed by hand. The row follows the count rule of every grid of cards,
+  so no card sits alone on a row (gs-grid-modifiers, DS-52).
 
   On phones the row scrolls sideways, the next card peeking in so it's clear there's more
   (.gs-rail); from 750 px it's the card grid.
@@ -70,6 +72,11 @@
   endfor
   endpaginate
   assign items = keys | split: ',' | sort
+  assign shown = items.size | at_most: 6
+  capture mods
+    render 'gs-grid-modifiers', count: shown
+  endcapture
+  assign mods = mods | strip_newlines
 -%}
 {%- if items.size > 0 -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
@@ -77,7 +84,6 @@
       <div class="gs-section-head">
         <div class="gs-section-head__text">
           <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
-          {%- render 'gs-open-today' -%}
         </div>
         <p class="gs-section-head__links">
           {%- if settings.exhibitions_on_now_page != blank -%}
@@ -88,7 +94,7 @@
           {%- endif -%}
         </p>
       </div>
-      <ul class="gs-grid gs-grid--cards gs-rail" role="list">
+      <ul class="gs-grid gs-grid--cards{{ mods }} gs-rail" role="list">
         {%- comment -%}
           Each kind has its own paginate tag, the innermost one around its loop: inside the other
           kind's tag its entries would be read 50 at a time again (DS-152).
@@ -97,12 +103,16 @@
           {%- liquid
             assign parts = item | split: '-'
             assign n = parts[2] | plus: 0
+            capture card_sizes
+              render 'gs-grid-sizes', mods: mods, index: forloop.index
+            endcapture
+            assign card_sizes = card_sizes | strip
           -%}
           <li>
             {%- if parts[1] == 'x' -%}
               {%- paginate shop.metaobjects.exhibition.values by 250 -%}
                 {%- for entry in shop.metaobjects.exhibition.values offset: n limit: 1 -%}
-                  {%- render 'gs-exhibition-card', entry: entry, show_status: true -%}
+                  {%- render 'gs-exhibition-card', entry: entry, show_status: true, sizes: card_sizes -%}
                 {%- endfor -%}
               {%- endpaginate -%}
             {%- else -%}
@@ -115,7 +125,7 @@
                     endcapture
                     assign pattern = pattern | strip
                   -%}
-                  {%- render 'gs-event-card', event: event, lead: lead_handle, pattern: pattern -%}
+                  {%- render 'gs-event-card', event: event, lead: lead_handle, pattern: pattern, sizes: card_sizes -%}
                 {%- endfor -%}
               {%- endpaginate -%}
             {%- endif -%}
@@ -138,7 +148,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "The next exhibitions and events, from their entries, soonest first. The line under the heading comes from the opening days and times in Theme settings, Gallery details."
+      "content": "The next exhibitions and events, from their entries, soonest first."
     },
     {
       "type": "text",

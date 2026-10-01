@@ -1071,6 +1071,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-hero__summary { margin: 0; max-width: var(--gs-measure); line-height: var(--gs-leading-body); text-wrap: pretty; }
 /* Today's opening line and Plan your visit, under the hero's button (DS-199). */
 .gs-hero__visit { display: grid; justify-items: start; gap: var(--gs-space-2); }
+/* On touch screens the link grows to the 44 px target; it gives the growth back, as the crumb
+   does, so it stays closer to today's line than the line is to the button. */
+@media (pointer: coarse) {
+  .gs-hero__visit > .gs-cta-link { margin-block: calc((var(--gs-tap-target) - var(--gs-leading-label) * 1em) / -2); }
+}
 /* Photo credit or artwork caption under a hero. */
 .gs-hero__caption { margin-block-start: var(--gs-space-3); max-width: var(--gs-measure); }
 .gs-hero__caption > *,

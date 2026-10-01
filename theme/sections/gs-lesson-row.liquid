@@ -3,12 +3,19 @@
   newest first by their Posted date, as lesson cards with a play mark, after the Artists for Kids
   panel. A reason to stay on Home that isn't a date, as the Louvre's films and MoMA's magazine
   are. The heading links to the ArtReach videos page (Theme settings, Artists for Kids). On
-  phones the row scrolls sideways (.gs-rail). Nothing shows without lessons.
+  phones the row scrolls sideways (.gs-rail); from 750 px it follows the count rule of every grid of
+  cards, so no card sits alone on a row (gs-grid-modifiers, DS-52). Nothing shows without lessons.
 
   Lessons are read back inside their own paginate tag: a plain loop stops at 50 (DS-152).
 {%- endcomment -%}
 {%- capture ids -%}{%- render 'gs-lesson-index', limit: 3 -%}{%- endcapture -%}
-{%- assign ids = ids | strip | split: ',' -%}
+{%- liquid
+  assign ids = ids | strip | split: ','
+  capture mods
+    render 'gs-grid-modifiers', count: ids.size
+  endcapture
+  assign mods = mods | strip_newlines
+-%}
 {%- if ids.size > 0 -%}
   <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
     <div class="gs-container">
@@ -22,12 +29,18 @@
           </p>
         {%- endif -%}
       </div>
-      <ul class="gs-grid gs-grid--cards gs-rail" role="list">
+      <ul class="gs-grid gs-grid--cards{{ mods }} gs-rail" role="list">
         {%- paginate shop.metaobjects.lesson.values by 250 -%}
           {%- for id in ids -%}
-            {%- assign n = id | plus: 0 -%}
+            {%- liquid
+              assign n = id | plus: 0
+              capture card_sizes
+                render 'gs-grid-sizes', mods: mods, index: forloop.index, phone: '75vw'
+              endcapture
+              assign card_sizes = card_sizes | strip | default: '(min-width: 1296px) 384px, (min-width: 990px) 31vw, (min-width: 750px) 47vw, 75vw'
+            -%}
             {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
-              <li>{%- render 'gs-lesson-card', lesson: lesson, sizes: '(min-width: 1296px) 384px, (min-width: 750px) 31vw, 75vw' -%}</li>
+              <li>{%- render 'gs-lesson-card', lesson: lesson, sizes: card_sizes -%}</li>
             {%- endfor -%}
           {%- endfor -%}
         {%- endpaginate -%}
