@@ -7,7 +7,9 @@
   A page of questions is a FAQPage (DS-162): a page whose text has two or more
   headings that end with a question mark, all at one level (H3, else H2). Each heading is a
   question and the text up to the next heading is its answer, so the FAQ needs no fields of its
-  own. The text is the page's own.
+  own. The text is the page's own. An answer stops at a heading above the questions too, so
+  the page can group its questions under H2 headings ("Visiting", "Buying prints") without the
+  last answer of a group taking the next group's heading with it (DS-196).
 
   A page an artist entry names as its About page (Gordon and Marion, for Gordon Smith) says it
   is about that artist, by the artist's own name for machines.
@@ -65,7 +67,12 @@
         if last_char != '?'
           continue
         endif
-        assign answer = halves[1] | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | replace: ' .', '.' | replace: ' ,', ','
+        # The answer ends where a heading above the questions begins.
+        assign answer_html = halves[1] | split: '<h1' | first
+        if level == 'h3'
+          assign answer_html = answer_html | split: '<h2' | first
+        endif
+        assign answer = answer_html | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | replace: ' .', '.' | replace: ' ,', ','
         if answer == blank
           continue
         endif

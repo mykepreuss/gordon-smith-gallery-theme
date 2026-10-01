@@ -28,6 +28,11 @@
   endcapture
   assign hours = hours | strip | replace: '<br>', ', ' | replace: '<br />', ', '
   assign admission = settings.admission | newline_to_br | strip_newlines | replace: '<br />', ' '
+  # The days the gallery is closed when it would otherwise be open (gs-closures, DS-191).
+  capture closures
+    render 'gs-closures'
+  endcapture
+  assign closures = closures | strip | split: '|' | join: '; '
 -%}
 # {{ name }}
 {% if settings.home_description != blank %}
@@ -38,6 +43,9 @@
 - {{ 'llms.address' | t }}: {{ address }}
 {% if hours != blank -%}
 - {{ 'llms.open' | t }}: {{ hours }}
+{% endif -%}
+{%- if closures != blank and hours != blank -%}
+- {{ 'llms.closed' | t }}: {{ closures }}
 {% endif -%}
 {%- if admission != blank -%}
 - {{ 'llms.admission' | t }}: {{ admission }}

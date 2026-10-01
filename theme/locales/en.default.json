@@ -41,7 +41,9 @@
     "social_x": "X",
     "social_youtube": "YouTube",
     "social_vimeo": "Vimeo",
-    "social_linkedin": "LinkedIn"
+    "social_linkedin": "LinkedIn",
+    "follow_foundation": "The Smith Foundation",
+    "social_foundation": "{{ name }} on"
   },
   "newsletter": {
     "email_label": "Email address",
@@ -235,6 +237,7 @@
     "gallery_hours": "Gallery hours",
     "admission": "Admission",
     "office_hours": "Artists for Kids office hours",
+    "closures": "Closed",
     "directions": "Get directions"
   },
   "open": {
@@ -342,13 +345,14 @@
     "visit": "Visit",
     "address": "Address",
     "open": "Open",
+    "closed": "Closed",
     "admission": "Admission",
     "visit_more": "Getting here, parking and accessibility",
     "hours_note": "Hours can change for holidays. The Plan your visit page has the hours in force.",
     "names": "Four names, four things",
     "names_note": "These share one site and are often confused. Say which one a fact belongs to.",
     "gallery": "The public art gallery at the address above. Often written Gordon Smith Gallery.",
-    "artists_for_kids": "An art education program for children and youth, established in 1989. It publishes the limited editions sold on this site.",
+    "artists_for_kids": "An art education program established in 1989 for children and youth, which takes place in the gallery, in on-site studios, and off-site studios, by engaging Canadian artists and the Artists for Kids’ Permanent Collection. Artists for Kids publishes the limited editions sold on this site.",
     "foundation": "A foundation founded in 2002. It funds visual arts programs for children and presents public programs and exhibitions at the gallery.",
     "artist_name": "Gordon Smith",
     "artist": "The artist Gordon Appelbe Smith, 1919 to 2020, a Canadian Modernist painter. A person, not the gallery.",

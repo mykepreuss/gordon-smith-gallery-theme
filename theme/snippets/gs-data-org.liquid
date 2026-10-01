@@ -14,10 +14,10 @@
   Artists for Kids' and the Foundation's pages are chosen in Theme settings, Gallery details.
 
   The full form also says, from Theme settings and as the site's own pages say it (DS-174):
-  the year each was established; the Foundation's full name and, once it is filled in, its
-  charity registration number; that Artists for Kids is run by the North Vancouver School
-  District and funded by the Foundation; and each one's profiles elsewhere. Artists for Kids
-  shares the gallery's profiles. An empty setting says nothing.
+  the year each was established; the Foundation's full name; each one's charity registration
+  number, once it is filled in (DS-193); that Artists for Kids is run by the North Vancouver
+  School District and funded by the Foundation; and each one's profiles elsewhere. Artists for
+  Kids shares the gallery's profiles. An empty setting says nothing.
 
   @param {string} [programme] - A programme field's value: Gallery, Smith Foundation or Artists for Kids
   @param {boolean} [full] - The full form
@@ -55,12 +55,15 @@
   assign full_name = ''
   assign founded = ''
   assign profile_keys = ''
+  assign charity_number = ''
   case brand
     when 'artists-for-kids'
+      assign charity_number = settings.afk_charity_number | strip
       assign founded = settings.afk_founded | strip
       assign profile_keys = 'social_instagram,social_facebook,social_x,social_youtube,social_vimeo,social_linkedin'
     when 'foundation'
       assign full_name = 'general.site_title.foundation_full' | t
+      assign charity_number = settings.foundation_charity_number | strip
       assign founded = settings.foundation_founded | strip
       assign profile_keys = 'foundation_instagram,foundation_facebook'
   endcase
@@ -112,11 +115,11 @@
       {%- endif -%}
       ,"funder": { "@type": "Organization", "@id": {{ home | append: '#foundation' | json }}, "name": {{ 'general.site_title.foundation' | t | json }} }
     {%- endif -%}
-    {%- if brand == 'foundation' and settings.foundation_charity_number != blank -%}
+    {%- if charity_number != blank -%}
       ,"identifier": {
         "@type": "PropertyValue",
         "propertyID": "Canada Revenue Agency charity registration number",
-        "value": {{ settings.foundation_charity_number | strip | json }}
+        "value": {{ charity_number | json }}
       }
     {%- endif -%}
   {%- endif -%}

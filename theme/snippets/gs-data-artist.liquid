@@ -9,8 +9,10 @@
   - The Person has one name for machines (@id), the same on every work, exhibition and edition
     that names the artist.
   - Life dates are read from "1882 to 1974" and "born 1946"; anything else stays on the page.
-  - The artist's own website is given as the same person elsewhere (sameAs). It is data: the
-    page still shows no link out (DS-63).
+  - The artist's own website is given as the same person elsewhere (sameAs), and so are the
+    addresses in the entry's Described elsewhere field: Wikidata, Wikipedia and the Getty's list
+    of artists, each checked by its years or by the gallery (DS-197). They say which Gordon
+    Smith, or which David Wilson, is meant. It is data: the page still shows no link out (DS-63).
 
   @param {string} [description] - The page's description, as meta-tags works it out
 
@@ -53,6 +55,16 @@
   endif
   assign about_page = artist.about_page.value
   assign site = artist.website.value.url
+  assign same = ''
+  if site != blank
+    assign same = same | append: site | append: '|'
+  endif
+  for address in artist.described_at.value
+    unless same contains address
+      assign same = same | append: address | append: '|'
+    endunless
+  endfor
+  assign same = same | split: '|'
   capture kind
     render 'gs-data-artist-kind', name: artist.name.value
   endcapture
@@ -89,8 +101,8 @@
     {%- if artist.portrait.value != blank -%}
       ,"image": {% render 'gs-data-image', image: artist.portrait.value %}
     {%- endif -%}
-    {%- if site != blank -%}
-      ,"sameAs": [{{ site | json }}]
+    {%- if same.size > 0 -%}
+      ,"sameAs": {{ same | json }}
     {%- endif -%}
     {%- if has_about -%}
       ,"subjectOf": [

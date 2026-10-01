@@ -1,7 +1,8 @@
 {% doc %}
   The Plan your visit page's details (DS-61): first whether the gallery is open today, large, since
   it is open three afternoons a week and that is what most visitors come to check; then the address
-  with a link for directions, the gallery's hours, admission and the Artists for Kids office hours.
+  with a link for directions, the gallery's hours, admission and the Artists for Kids office hours,
+  then the days the gallery is closed, when Theme settings lists any still to come (DS-191).
   All from Theme settings, Gallery details, so they are typed once for this page, the home page,
   the contact page and the footer. The page text below carries how to get here and accessibility.
 
@@ -49,6 +50,20 @@
             <div class="gs-details__item">
               <dt>{{ 'visit.office_hours' | t }}</dt>
               <dd>{{ settings.office_hours | escape | newline_to_br }}</dd>
+            </div>
+          {%- endif -%}
+          {%- capture closures -%}{% render 'gs-closures' %}{%- endcapture -%}
+          {%- assign closures = closures | strip | split: '|' -%}
+          {%- if closures.size > 0 -%}
+            <div class="gs-details__item gs-details__item--wide">
+              <dt>{{ 'visit.closures' | t }}</dt>
+              <dd>
+                <ul class="gs-names">
+                  {%- for closure in closures -%}
+                    <li>{{ closure | escape }}</li>
+                  {%- endfor -%}
+                </ul>
+              </dd>
             </div>
           {%- endif -%}
         </dl>
