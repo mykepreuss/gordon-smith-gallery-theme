@@ -1,0 +1,111 @@
+{% doc %}
+  A class or camp as structured data (P-68), printed with it in its programme page's list: a
+  schema.org Event, as the events are (gs-data-event), so "after school art classes in North
+  Vancouver for grade 4" is a question the site answers by itself. It says what the list says:
+  the name, the first and last day, where, who it is for, the fee and where to register.
+
+  - Where is the class's own place, as typed ("Boundary Elementary, Room 011"): a Place by name.
+  - Whose it is comes from its programme page's programme field; blank is the Gallery. Its
+    picture is its programme page's, as an event without one of its own has (gs-data-event).
+  - The fee is an offer when it holds a number ("$230"), in Canadian dollars, at the class's
+    registration page. Its availability follows the status: Open in stock, Waitlist and Full sold
+    out, Opens soon on sale from its opening day. A Closed class has no offer.
+  - Nothing is printed for a class with no first day.
+
+  @param {object} listing - A class entry
+
+  @example
+  {%- render 'gs-data-class', listing: listing -%}
+{% enddoc %}
+{%- liquid
+  assign programme = listing.programme_page.value
+  assign organiser = programme.metafields.custom.programme.value
+  assign image = programme.metafields.custom.hero_image.value
+  assign first = listing.first_day.value | append: ''
+  assign last = listing.last_day.value | append: ''
+  assign status = listing.status.value | default: 'Open'
+  assign where = listing.location.value | newline_to_br | strip_newlines | replace: '<br />', ', '
+  # The fee's number, when it has one: "$230" is 230; "TBD" has none.
+  assign price = listing.fee.value | remove: '$' | remove: ',' | strip | split: ' ' | first
+  assign price_back = price | plus: 0 | append: ''
+  if price != price_back
+    assign price = ''
+  endif
+  assign availability = 'InStock'
+  case status
+    when 'Full', 'Waitlist'
+      assign availability = 'SoldOut'
+    when 'Opens soon'
+      assign availability = 'PreOrder'
+  endcase
+  capture facts
+    echo listing.when.value | newline_to_br | strip_newlines | replace: '<br />', ' '
+    if listing.time.value != blank
+      echo ', ' | append: listing.time.value
+    endif
+    if listing.for.value != blank
+      echo '. ' | append: listing.for.value
+    endif
+    if listing.teacher.value != blank
+      echo '. ' | append: listing.teacher.value
+    endif
+  endcapture
+  assign description = listing.description.value | newline_to_br | strip_newlines | replace: '<br /><br />', ' ' | replace: '<br />', ' '
+  if facts != blank
+    assign description = facts | strip | append: '. ' | append: description | strip
+  endif
+-%}
+{%- if listing.name.value != blank and first != blank -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "@id": {{ shop.url | append: routes.root_url | append: '#class-' | append: listing.system.handle | json }},
+      "name": {{ listing.name.value | json }},
+      "startDate": {{ first | json }},
+      {%- if last != blank -%}
+        "endDate": {{ last | json }},
+      {%- endif -%}
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      {%- if where != blank -%}
+        "location": { "@type": "Place", "name": {{ where | json }} },
+      {%- else -%}
+        "location": {% render 'gs-data-place' %},
+      {%- endif -%}
+      "organizer": {% render 'gs-data-org', programme: organiser %}
+      {%- if programme != blank -%}
+        ,"url": {{ programme.url | prepend: shop.url | json }}
+      {%- endif -%}
+      {%- if description != blank -%}
+        ,"description": {{ description | json }}
+      {%- endif -%}
+      {%- if image != blank -%}
+        ,"image": {{ image | image_url: width: 1200 | prepend: 'https:' | json }}
+      {%- endif -%}
+      {%- if listing.for.value != blank -%}
+        ,"audience": { "@type": "PeopleAudience", "audienceType": {{ listing.for.value | json }} }
+      {%- endif -%}
+      {%- if listing.teacher.value != blank -%}
+        ,"performer": { "@type": "Person", "name": {{ listing.teacher.value | json }} }
+      {%- endif -%}
+      {%- if listing.places.value != blank -%}
+        ,"maximumAttendeeCapacity": {{ listing.places.value | plus: 0 }}
+      {%- endif -%}
+      {%- if status != 'Closed' and listing.register.value != blank -%}
+        ,"offers": {
+          "@type": "Offer",
+          "url": {{ listing.register.value | json }},
+          {%- if price != blank -%}
+            "price": {{ price | json }},
+            "priceCurrency": "CAD",
+          {%- endif -%}
+          {%- if status == 'Opens soon' and listing.opens_on.value != blank -%}
+            "availabilityStarts": {{ listing.opens_on.value | append: '' | json }},
+          {%- endif -%}
+          "availability": {{ availability | prepend: 'https://schema.org/' | json }}
+        }
+      {%- endif -%}
+    }
+  </script>
+{%- endif -%}

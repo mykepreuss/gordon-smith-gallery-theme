@@ -14,7 +14,9 @@
   A programme page with nothing between its parts (no card groups or lessons) shows its text as one
   part. A long page (text with H2s) whose button leaves the site, with no card groups, shows its
   button again after its text, so the way to act is at the end too (DS-83). A programme
-  in the events switcher has its events between the parts (DS-143), whatever template it has. On
+  in the events switcher has its events between the parts (DS-143), whatever template it has. A
+  programme page with classes has them between the parts, so they follow its opening and come
+  before its notes (P-68). On
   the page chosen as ArtReach videos page, the lessons follow the opening and the cards
   (gs-lesson-list, DS-70): the second part lists them before its text, whatever template the page
   has.
@@ -34,6 +36,15 @@
     assign split = false
     if programme_page contains 'true'
       if page.metafields.custom.card_groups.value != blank or lessons_here
+        assign split = true
+      endif
+    endif
+    # A programme page with classes: they follow its opening (P-68).
+    if programme_page contains 'true'
+      capture class_ids
+        render 'gs-class-index', for_page: page
+      endcapture
+      if class_ids != blank
         assign split = true
       endif
     endif

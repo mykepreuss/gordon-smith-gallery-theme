@@ -197,6 +197,7 @@
 .gs-chip,
 .gs-field__label,
 .gs-details dt,
+.gs-class__facts dt,
 .gs-disclosure > summary,
 .gs-pagination,
 .gs-nav__group-title,
@@ -2048,6 +2049,54 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event { grid-template-columns: var(--_beside); }
   .gs-event--media > .gs-event__text,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event > .gs-event__text { grid-column: 2 / -1; }
+}
+
+/* ---------- Classes and camps (P-68, DS-198) ---------- */
+/* A programme page's classes, each under a rule like an event: its name, its description, its
+   facts as label and value, then what to do (Register, or its status). From 990 px the facts
+   sit in a column of their own beside the name and text, so a parent can scan the times and
+   fees down the page. Groups of classes ("Fall 2026 classes") are a heading gap apart. */
+
+.gs-classes-groups { display: grid; gap: var(--gs-stack-lg); }
+.gs-classes-group { display: grid; gap: var(--gs-space-6); }
+.gs-classes-group > .gs-h2 { margin: 0; }
+.gs-classes { display: grid; gap: var(--gs-space-7); margin: 0; padding: 0; list-style: none; }
+.gs-class {
+  display: grid;
+  align-content: start;
+  gap: var(--gs-space-4) var(--gs-gutter);
+  padding-block-start: var(--gs-space-5);
+  border-block-start: var(--gs-border-strong) solid var(--gs-color-rule);
+}
+.gs-class > .gs-h3 { margin: 0; max-width: var(--gs-measure); }
+.gs-class__text { max-width: var(--gs-measure); }
+.gs-class__text > p { margin: 0; text-wrap: pretty; }
+.gs-class__text > p + p { margin-block-start: 1em; }
+.gs-class__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: var(--gs-space-4) var(--gs-gutter);
+  margin: 0;
+}
+.gs-class__facts > div { display: grid; align-content: start; gap: var(--gs-space-1); }
+.gs-class__facts dd { margin: 0; }
+.gs-class__action { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gs-space-3) var(--gs-space-5); }
+.gs-class__status { margin: 0; font-weight: var(--gs-weight-bold); }
+@media (min-width: 990px) {
+  .gs-class {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-areas: "name facts" "text facts" "action facts";
+    grid-template-rows: auto auto 1fr;
+  }
+  .gs-class > .gs-h3 { grid-area: name; }
+  .gs-class__text { grid-area: text; }
+  .gs-class__action { grid-area: action; align-self: start; }
+  .gs-class__facts { grid-area: facts; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; }
+}
+/* On a phone the button is the width of the column, so it is easy to reach. */
+.gs-class__action > .gs-button { flex: 1 1 100%; }
+@media (min-width: 750px) {
+  .gs-class__action > .gs-button { flex: 0 0 auto; }
 }
 
 /* ---------- Logo cards (DS-50) ---------- */

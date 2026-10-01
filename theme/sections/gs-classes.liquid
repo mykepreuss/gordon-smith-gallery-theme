@@ -1,0 +1,84 @@
+{%- comment -%}
+  Classes and camps (P-68, DS-198): a programme page's classes, from Class entries whose
+  programme page is this page, between the page's opening and its headed sections. On a story
+  page (Paradise Valley) they come first, under the title, before the story. Each group
+  of classes is under its own heading, from the entries' Listed under field ("Fall 2026
+  classes", "Pro D day camps"), in the order of their first classes; a class with none is under
+  "Classes and registration". A class leaves the list after its last day (gs-class-index). A page
+  with no classes shows nothing here, so between terms the page reads as it did before.
+
+  Classes are read back inside a paginate tag, as events are (DS-148).
+{%- endcomment -%}
+{%- capture ids -%}{%- render 'gs-class-index', for_page: page -%}{%- endcapture -%}
+{%- assign ids = ids | strip | split: ',' -%}
+{%- if ids.size > 0 -%}
+  {%- liquid
+    # The groups, in the order of their first classes.
+    assign groups = ''
+    paginate shop.metaobjects.class.values by 250
+      for id in ids
+        assign n = id | plus: 0
+        for listing in shop.metaobjects.class.values offset: n limit: 1
+          assign g = listing.group.value | strip | default: '~'
+          assign marker = '|' | append: g | append: '|'
+          assign have = '|' | append: groups
+          unless have contains marker
+            assign groups = groups | append: g | append: '|'
+          endunless
+        endfor
+      endfor
+    endpaginate
+    assign groups = groups | split: '|'
+  -%}
+  <section class="gs-section gs-surface-paper" id="classes" aria-label="{{ 'classes.heading' | t }}">
+    <div class="gs-container gs-classes-groups">
+      {%- for group in groups -%}
+        {%- liquid
+          assign heading = group
+          if group == '~'
+            assign heading = 'classes.heading' | t
+          endif
+        -%}
+        <div class="gs-classes-group">
+          <h2 class="gs-h2">{{ heading | escape }}</h2>
+          <ul class="gs-classes" role="list">
+            {%- paginate shop.metaobjects.class.values by 250 -%}
+              {%- for id in ids -%}
+                {%- assign n = id | plus: 0 -%}
+                {%- for listing in shop.metaobjects.class.values offset: n limit: 1 -%}
+                  {%- assign g = listing.group.value | strip | default: '~' -%}
+                  {%- if g == group -%}
+                    {%- render 'gs-class', listing: listing -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            {%- endpaginate -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- elsif request.design_mode -%}
+  <p class="gs-editor-warning gs-container">No classes on this page right now. Add them in Content, Metaobjects, Classes, with this page as their Programme page. Until then the page shows its text and button as before.</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Classes and camps",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Classes come from their entries in Content, Metaobjects, Classes. A page lists the classes whose Programme page is this page, and a class leaves the list after its last day."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Classes and camps"
+    }
+  ]
+}
+{% endschema %}

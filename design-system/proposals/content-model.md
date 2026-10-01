@@ -220,6 +220,32 @@ The event entry gained **Keep off the home page** (`keep_off_home`, true or fals
 
 No other new structure: the Artists for Kids pages use page fields, card groups and events. A card whose link is a PDF shows as a document (DS-69), so guides and lesson plans are cards with the PDF's address from Files as their link.
 
+## 9. Classes and camps (P-68, DS-198)
+
+Status: **Decided by Michael, 2026-10-01** (`proposals/class-listings.md`). Created in the store the same day (`proposals/store-writes/classes.py`).
+
+**Class** entry, no page of its own: the class's own registration page on the district's site is its page.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| Name (`name`) | Single line, required | |
+| Programme page (`programme_page`) | Page, required | The page that lists it |
+| Listed under (`group`) | Single line | The H2 it is under: "Fall 2026 classes", "Pro D day camps" |
+| Description (`description`) | Multi-line | The team's words. A blank line starts a paragraph |
+| When (`when`) | Single line | As the team writes it: "8 Tuesdays from Oct. 13 to Dec. 1" |
+| Time (`time`) | Single line | "3:00 - 4:30 pm" |
+| First day, Last day (`first_day`, `last_day`) | Dates | Order the list; the class leaves it the day after its last day |
+| For (`for`) | Single line | Grades or ages |
+| Fee (`fee`) | Single line | "$230", or "TBD" |
+| Teacher (`teacher`) | Single line | |
+| Where (`location`) | Multi-line | One line for each part |
+| Places (`places`) | Integer | Optional |
+| Status (`status`) | Single line, one of Open, Full, Waitlist, Opens soon, Closed | Open shows the Register button |
+| Registration opens (`opens_on`) | Date | Optional, with Opens soon |
+| Registration link (`register`) | URL | The class's own registration page |
+
+Storefront read, publishable. No picture: the district's rows have none.
+
 ## Answers, 2026-09-25
 
 1. All three parts are approved (DS-14, DS-15, DS-16).

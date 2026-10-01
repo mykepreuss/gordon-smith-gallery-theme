@@ -1,0 +1,512 @@
+[
+ {
+  "call": "class: Wonderful Watercolours",
+  "kind": "entry",
+  "at": "2026-10-01T21:12:37+00:00",
+  "variables": {
+   "metaobject": {
+    "type": "class",
+    "handle": "fall-2026-wonderful-watercolours",
+    "fields": [
+     {
+      "key": "name",
+      "value": "Wonderful Watercolours"
+     },
+     {
+      "key": "description",
+      "value": "Welcome to the vibrant world of watercolours! In this class young artists will embark on exciting journey of creativity and self-expression through the medium of watercolours. Using a variety of materials we will spend time using nature as inspiration and students will develop their observation skills, brush techniques, colour mixing and blending."
+     },
+     {
+      "key": "when",
+      "value": "8 Tuesdays from Oct. 13 to Dec. 1"
+     },
+     {
+      "key": "time",
+      "value": "3:00 - 4:30 pm"
+     },
+     {
+      "key": "first_day",
+      "value": "2026-10-13"
+     },
+     {
+      "key": "last_day",
+      "value": "2026-12-01"
+     },
+     {
+      "key": "for",
+      "value": "Grades 3-5"
+     },
+     {
+      "key": "fee",
+      "value": "$230"
+     },
+     {
+      "key": "teacher",
+      "value": "Caroline Falconer"
+     },
+     {
+      "key": "location",
+      "value": "Boundary Elementary\nRoom 011"
+     },
+     {
+      "key": "register",
+      "value": "https://artistsforkids.sd44.ca/learn/after-school-art/wonderful-watercolours/"
+     },
+     {
+      "key": "programme_page",
+      "value": "gid://shopify/Page/165837373737"
+     },
+     {
+      "key": "group",
+      "value": "Fall 2026 classes"
+     },
+     {
+      "key": "status",
+      "value": "Open"
+     }
+    ],
+    "capabilities": {
+     "publishable": {
+      "status": "ACTIVE"
+     }
+    }
+   }
+  },
+  "answer": {
+   "metaobjectCreate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/610832449833",
+     "handle": "fall-2026-wonderful-watercolours",
+     "displayName": "Wonderful Watercolours"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "class: Brushstrokes and Beyond: Art through the Ages",
+  "kind": "entry",
+  "at": "2026-10-01T21:12:38+00:00",
+  "variables": {
+   "metaobject": {
+    "type": "class",
+    "handle": "fall-2026-brushstrokes-and-beyond",
+    "fields": [
+     {
+      "key": "name",
+      "value": "Brushstrokes and Beyond: Art through the Ages"
+     },
+     {
+      "key": "description",
+      "value": "Students will explore artists and art movements through fun and playful mixed media projects. Each week, we use prominent works of art to inspire our own creations, using drawing, painting, and a variety of exciting mediums."
+     },
+     {
+      "key": "when",
+      "value": "8 Tuesdays from Oct. 13 to Dec. 1"
+     },
+     {
+      "key": "time",
+      "value": "2:50 - 4:20 pm"
+     },
+     {
+      "key": "first_day",
+      "value": "2026-10-13"
+     },
+     {
+      "key": "last_day",
+      "value": "2026-12-01"
+     },
+     {
+      "key": "for",
+      "value": "Grades 1-3"
+     },
+     {
+      "key": "fee",
+      "value": "$230"
+     },
+     {
+      "key": "teacher",
+      "value": "Marcel Eugene"
+     },
+     {
+      "key": "location",
+      "value": "Eastview Elementary\nRoom 129"
+     },
+     {
+      "key": "register",
+      "value": "https://artistsforkids.sd44.ca/learn/after-school-art/brushstrokes-and-beyond-art-through-the-ages/"
+     },
+     {
+      "key": "programme_page",
+      "value": "gid://shopify/Page/165837373737"
+     },
+     {
+      "key": "group",
+      "value": "Fall 2026 classes"
+     },
+     {
+      "key": "status",
+      "value": "Open"
+     }
+    ],
+    "capabilities": {
+     "publishable": {
+      "status": "ACTIVE"
+     }
+    }
+   }
+  },
+  "answer": {
+   "metaobjectCreate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/610832482601",
+     "handle": "fall-2026-brushstrokes-and-beyond",
+     "displayName": "Brushstrokes and Beyond: Art through the Ages"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "class: Nature's Fall Wonders",
+  "kind": "entry",
+  "at": "2026-10-01T21:12:39+00:00",
+  "variables": {
+   "metaobject": {
+    "type": "class",
+    "handle": "fall-2026-natures-fall-wonders",
+    "fields": [
+     {
+      "key": "name",
+      "value": "Nature's Fall Wonders"
+     },
+     {
+      "key": "description",
+      "value": "Inspired by the changes in nature, autumnal colours, and natural materials, students will create fun and whimsical projects using a variety of techniques and mediums."
+     },
+     {
+      "key": "when",
+      "value": "8 Tuesdays from Oct. 13 to Dec. 1"
+     },
+     {
+      "key": "time",
+      "value": "3:45 - 5:15 pm"
+     },
+     {
+      "key": "first_day",
+      "value": "2026-10-13"
+     },
+     {
+      "key": "last_day",
+      "value": "2026-12-01"
+     },
+     {
+      "key": "for",
+      "value": "Grades 1-3"
+     },
+     {
+      "key": "fee",
+      "value": "$230"
+     },
+     {
+      "key": "teacher",
+      "value": "Lisa Pedersen"
+     },
+     {
+      "key": "location",
+      "value": "Artists for Kids\nShadbolt Studio"
+     },
+     {
+      "key": "register",
+      "value": "https://artistsforkids.sd44.ca/learn/after-school-art/natures-fall-wonders/"
+     },
+     {
+      "key": "programme_page",
+      "value": "gid://shopify/Page/165837373737"
+     },
+     {
+      "key": "group",
+      "value": "Fall 2026 classes"
+     },
+     {
+      "key": "status",
+      "value": "Open"
+     }
+    ],
+    "capabilities": {
+     "publishable": {
+      "status": "ACTIVE"
+     }
+    }
+   }
+  },
+  "answer": {
+   "metaobjectCreate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/610832548137",
+     "handle": "fall-2026-natures-fall-wonders",
+     "displayName": "Nature's Fall Wonders"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "class: Mural Club",
+  "kind": "entry",
+  "at": "2026-10-01T21:12:41+00:00",
+  "variables": {
+   "metaobject": {
+    "type": "class",
+    "handle": "fall-2026-mural-club",
+    "fields": [
+     {
+      "key": "name",
+      "value": "Mural Club"
+     },
+     {
+      "key": "description",
+      "value": "Plan, design, and create a mural based on a theme (e.g., nature) that you can display at your school or home! We will look at local Vancouver artists to gain inspiration as you go through the design process. Materials will be paint and 2’x4’ plywood canvas."
+     },
+     {
+      "key": "when",
+      "value": "8 Tuesdays from Oct. 13 - Dec. 1"
+     },
+     {
+      "key": "time",
+      "value": "3:00 - 4:30 pm"
+     },
+     {
+      "key": "first_day",
+      "value": "2026-10-13"
+     },
+     {
+      "key": "last_day",
+      "value": "2026-12-01"
+     },
+     {
+      "key": "for",
+      "value": "Grades 4-7"
+     },
+     {
+      "key": "fee",
+      "value": "$230"
+     },
+     {
+      "key": "teacher",
+      "value": "Kaira Pena"
+     },
+     {
+      "key": "location",
+      "value": "Capilano Elementary\nAtrium"
+     },
+     {
+      "key": "register",
+      "value": "https://artistsforkids.sd44.ca/learn/after-school-art/mural-club/"
+     },
+     {
+      "key": "programme_page",
+      "value": "gid://shopify/Page/165837373737"
+     },
+     {
+      "key": "group",
+      "value": "Fall 2026 classes"
+     },
+     {
+      "key": "status",
+      "value": "Open"
+     }
+    ],
+    "capabilities": {
+     "publishable": {
+      "status": "ACTIVE"
+     }
+    }
+   }
+  },
+  "answer": {
+   "metaobjectCreate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/610832580905",
+     "handle": "fall-2026-mural-club",
+     "displayName": "Mural Club"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "class: Print it! Sculpt it!",
+  "kind": "entry",
+  "at": "2026-10-01T21:12:42+00:00",
+  "variables": {
+   "metaobject": {
+    "type": "class",
+    "handle": "fall-2026-print-it-sculpt-it",
+    "fields": [
+     {
+      "key": "name",
+      "value": "Print it! Sculpt it!"
+     },
+     {
+      "key": "description",
+      "value": "In this hands‑on art adventure, students explore how artists turn flat ideas into 3D creations. Young makers will experiment with foam printmaking, then transform everyday “junk” materials into imaginative sculptures. They’ll build with wire, nylon, clay, cardboard, and found objects, discovering how shapes, textures, and patterns can leap off the page."
+     },
+     {
+      "key": "when",
+      "value": "7 Wednesdays from Oct. 14 to Dec. 2 (no class on Nov. 11)"
+     },
+     {
+      "key": "time",
+      "value": "3:00 - 4:30 pm"
+     },
+     {
+      "key": "first_day",
+      "value": "2026-10-14"
+     },
+     {
+      "key": "last_day",
+      "value": "2026-12-02"
+     },
+     {
+      "key": "for",
+      "value": "Grades 2-4"
+     },
+     {
+      "key": "fee",
+      "value": "$200"
+     },
+     {
+      "key": "teacher",
+      "value": "Michelle Phillips"
+     },
+     {
+      "key": "location",
+      "value": "Carisbrooke Elementary\nRoom 207\nArt Studio"
+     },
+     {
+      "key": "register",
+      "value": "https://artistsforkids.sd44.ca/learn/after-school-art/print-it-sculpt-it/"
+     },
+     {
+      "key": "programme_page",
+      "value": "gid://shopify/Page/165837373737"
+     },
+     {
+      "key": "group",
+      "value": "Fall 2026 classes"
+     },
+     {
+      "key": "status",
+      "value": "Open"
+     }
+    ],
+    "capabilities": {
+     "publishable": {
+      "status": "ACTIVE"
+     }
+    }
+   }
+  },
+  "answer": {
+   "metaobjectCreate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/610832613673",
+     "handle": "fall-2026-print-it-sculpt-it",
+     "displayName": "Print it! Sculpt it!"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "class: Clay Sculpture: Inspired by Nature!",
+  "kind": "entry",
+  "at": "2026-10-01T21:12:43+00:00",
+  "variables": {
+   "metaobject": {
+    "type": "class",
+    "handle": "fall-2026-clay-sculpture",
+    "fields": [
+     {
+      "key": "name",
+      "value": "Clay Sculpture: Inspired by Nature!"
+     },
+     {
+      "key": "description",
+      "value": "Students will explore the forms, textures, and patterns found in the natural world to create original clay sculptures. They will develop skills in hand-building, sculpting, and surface design."
+     },
+     {
+      "key": "when",
+      "value": "8 Thursdays from Oct. 15 - Dec. 3"
+     },
+     {
+      "key": "time",
+      "value": "3:45 - 5:15 pm"
+     },
+     {
+      "key": "first_day",
+      "value": "2026-10-15"
+     },
+     {
+      "key": "last_day",
+      "value": "2026-12-03"
+     },
+     {
+      "key": "for",
+      "value": "Grades 4-7"
+     },
+     {
+      "key": "fee",
+      "value": "$230"
+     },
+     {
+      "key": "teacher",
+      "value": "Laurel Newton"
+     },
+     {
+      "key": "location",
+      "value": "Artists for Kids\nShadbolt Studio"
+     },
+     {
+      "key": "register",
+      "value": "https://artistsforkids.sd44.ca/learn/after-school-art/clay-sculpture-inspired-by-nature/"
+     },
+     {
+      "key": "programme_page",
+      "value": "gid://shopify/Page/165837373737"
+     },
+     {
+      "key": "group",
+      "value": "Fall 2026 classes"
+     },
+     {
+      "key": "status",
+      "value": "Open"
+     }
+    ],
+    "capabilities": {
+     "publishable": {
+      "status": "ACTIVE"
+     }
+    }
+   }
+  },
+  "answer": {
+   "metaobjectCreate": {
+    "metaobject": {
+     "id": "gid://shopify/Metaobject/610832646441",
+     "handle": "fall-2026-clay-sculpture",
+     "displayName": "Clay Sculpture: Inspired by Nature!"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

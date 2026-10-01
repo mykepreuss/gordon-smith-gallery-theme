@@ -122,6 +122,24 @@
     "more": "More in {{ programme }}",
     "more_link": "See the program"
   },
+  "classes": {
+    "heading": "Classes and registration",
+    "when": "When",
+    "time": "Time",
+    "for": "For",
+    "fee": "Fee",
+    "teacher": "Teacher",
+    "where": "Where",
+    "places": "Places",
+    "places_count": "Up to {{ count }}",
+    "register": "Register",
+    "full": "Full",
+    "closed": "Registration closed",
+    "opens_on": "Registration opens {{ date }}",
+    "opens_soon": "Registration opens soon",
+    "waitlist": "Full. Waitlist open.",
+    "join_waitlist": "Join the waitlist"
+  },
   "shop": {
     "portfolios": "Portfolios",
     "all_editions": "All editions",

@@ -332,6 +332,19 @@
         "ContactPage",
         "ArtGallery"
       ]
+    },
+    {
+      "n": 33,
+      "question": "What art classes are on this term, and how do I register?",
+      "page": "/pages/after-school-art",
+      "evidence": [
+        "Grades \\d",
+        "Register"
+      ],
+      "data": [
+        "Event"
+      ],
+      "gap": "The class list (P-68, DS-198) is on the review theme and goes live at the next release. Until then the page has no classes and links to the district's page."
     }
   ]
 }

@@ -1139,3 +1139,22 @@ No call returned an error. Each step run again lists nothing. Before values: `sn
 
 **Undo:** `IMPLEMENTATION_PLAN.md`, "The fourth release": the rollback theme first, then the FAQ's text from the snapshot (`pageUpdate`), then the definition (`metafieldDefinitionCreate`: `custom.release_description` on pages, multi-line text, pinned, storefront read) and The Smith Foundation's value (`metafieldsSet`, the words in the snapshot).
 
+## 2026-10-01: classes and camps, the definition and After School Art's fall classes (P-68)
+
+**Why:** Michael, 2026-10-01: "All seven decisions approved, merge #141 and build it" (`proposals/class-listings.md`; decision 7: the agent types in the first classes, from the district's page, word for word).
+
+**Checked first:** the store, and by `shopify theme list` the live theme `184824725801` and the review theme `184856445225` (unpublished); no theme written. No Class definition existed. Neither theme's code reads a Class entry, so nothing a visitor sees could change: a store write of the kind the plan allows ahead of a release. The six classes were read from the district's After School Art page the same day and checked against it field by field: the same words, the same registration links.
+
+| What | Through | IDs |
+| --- | --- | --- |
+| The Class definition: 16 fields (name, programme page, listed under, description, when, time, first and last day, for, fee, teacher, where, places, status, registration opens, registration link), storefront read, publishable | CLI, `classes.py definition`, `metaobjectDefinitionCreate`, 21:12:31 UTC | `gid://shopify/MetaobjectDefinition/23881777449` |
+| After School Art's 6 fall 2026 classes, active, status Open, listed under "Fall 2026 classes" | CLI, `classes.py fall-2026`, `metaobjectCreate`, to 21:12:43 UTC | `fall-2026-wonderful-watercolours`, `fall-2026-brushstrokes-and-beyond`, `fall-2026-natures-fall-wonders`, `fall-2026-mural-club`, `fall-2026-print-it-sculpt-it`, `fall-2026-clay-sculpture` |
+
+No call returned an error; each step run again lists nothing.
+
+**A test, undone.** To see every status rendered on the development theme, four classes were set for a minute to Waitlist, Full, Opens soon (with October 5, 2026) and Closed, then all four back to Open, with Registration opens emptied. Read back: all six Open, none with an opening day.
+
+**Effect on the live site:** none. **On the review theme:** none until it carries the class list.
+
+**Undo:** delete the six entries (`metaobjectDelete`), then the definition (`metaobjectDefinitionDelete` on `gid://shopify/MetaobjectDefinition/23881777449`).
+

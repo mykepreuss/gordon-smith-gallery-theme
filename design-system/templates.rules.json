@@ -49,6 +49,9 @@
     "events": [
       "gs-events"
     ],
+    "classes": [
+      "gs-classes"
+    ],
     "text": [
       "gs-page-body",
       "gs-exhibition-body",
@@ -103,6 +106,7 @@
       "hero": 1,
       "pageHead": 1,
       "switcher": 1,
+      "classes": 1,
       "legacy": 0
     },
     "firstGroups": [

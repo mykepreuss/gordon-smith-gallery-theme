@@ -30,6 +30,9 @@
         "part": "sections"
       }
     },
+    "classes": {
+      "type": "gs-classes"
+    },
     "events": {
       "type": "gs-events"
     },
@@ -41,6 +44,7 @@
     "hero",
     "switcher",
     "body",
+    "classes",
     "events",
     "cards",
     "sections",
