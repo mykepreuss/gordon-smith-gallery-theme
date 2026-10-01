@@ -1,6 +1,6 @@
 # Class and camp listings: each class on the site, with its own Register link
 
-Date: 2026-10-01. Status: **decided by Michael, 2026-10-01** ("All seven decisions approved, merge #141 and build it"; P-68), and **built** the same day: see "Built" at the end. The class list's design is DS-198, decided by Michael the same day. Live only at a release.
+Date: 2026-10-01. Status: **decided by Michael, 2026-10-01** ("All seven decisions approved, merge #141 and build it"; P-68), and **built** the same day: see "Built" at the end. The class list's design is DS-198, decided by Michael the same day. Live since the fifth release, 2026-10-01 at 21:33 UTC.
 
 Asked for by the gallery, in a note on its answers of 2026-10-01 (`proposals/gallery-answers/2026-10-01-answers.md`, last lines), and set aside by Michael as a project of its own (P-67). Michael, 2026-10-01: "Write the class listings proposal".
 

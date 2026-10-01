@@ -1,0 +1,29 @@
+[
+ {
+  "call": "After School Art: custom.cta deleted",
+  "kind": "unset",
+  "at": "2026-10-01T21:33:19+00:00",
+  "variables": {
+   "metafields": [
+    {
+     "ownerId": "gid://shopify/Page/165837373737",
+     "namespace": "custom",
+     "key": "cta"
+    }
+   ]
+  },
+  "answer": {
+   "metafieldsDelete": {
+    "deletedMetafields": [
+     {
+      "ownerId": "gid://shopify/Page/165837373737",
+      "namespace": "custom",
+      "key": "cta"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

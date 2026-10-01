@@ -6,7 +6,10 @@ After School Art's fall 2026 classes, typed from the district's After School Art
 in the first classes; the team takes over from the next term).
 
   python3 proposals/store-writes/classes.py <step> [--go]
-  steps: definition, fall-2026
+  steps: definition, fall-2026, release
+
+  release   At the release that carries the class list (store-changes §9d): After School Art's
+            button to the district's landing page (custom.cta) deleted. Its value is saved first.
 
 Each step reads the store first and sends only what is missing, so a second run lists nothing.
 Without --go it prints each call and changes nothing. With --go it makes them one at a time
@@ -105,6 +108,8 @@ GROUP = "Fall 2026 classes"
 Q = {
     "definition": "mutation($definition: MetaobjectDefinitionCreateInput!) { metaobjectDefinitionCreate(definition: $definition) { "
                   "metaobjectDefinition { id type fieldDefinitions { key } } userErrors { field message } } }",
+    "unset": "mutation($metafields: [MetafieldIdentifierInput!]!) { metafieldsDelete(metafields: $metafields) { "
+             "deletedMetafields { ownerId namespace key } userErrors { field message } } }",
     "entry": "mutation($metaobject: MetaobjectCreateInput!) { metaobjectCreate(metaobject: $metaobject) { "
              "metaobject { id handle displayName } userErrors { field message } } }",
 }
@@ -138,7 +143,20 @@ def step_fall_2026():
     return out
 
 
-STEPS = {"definition": step_definition, "fall-2026": step_fall_2026}
+def step_release():
+    """After School Art's button to the district's landing page goes, once its classes show."""
+    page = read('query($id: ID!) { page(id: $id) { handle cta: metafield(namespace: "custom", key: "cta") { value } } }', {"id": AFTER_SCHOOL_ART})["page"]
+    if not page["cta"]:
+        return []
+    SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
+    SNAPSHOT.write_text(json.dumps({"taken": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+                                    "what": "After School Art's custom.cta before the fifth release deleted it. Undo: metafieldsSet with this value, type link.",
+                                    "ownerId": AFTER_SCHOOL_ART, "namespace": "custom", "key": "cta", "type": "link", "value": page["cta"]["value"]}, ensure_ascii=False, indent=1) + "\n")
+    return [("After School Art: custom.cta deleted", "unset", {"metafields": [{"ownerId": AFTER_SCHOOL_ART, "namespace": "custom", "key": "cta"}]})]
+
+
+SNAPSHOT = HERE / "snapshots" / "after-school-art-cta-before-release.json"
+STEPS = {"definition": step_definition, "fall-2026": step_fall_2026, "release": step_release}
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] not in STEPS:

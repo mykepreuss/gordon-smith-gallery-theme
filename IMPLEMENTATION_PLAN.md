@@ -12,14 +12,14 @@ Keep four change surfaces distinct: **Git owns theme source and project records;
 
 ## Where the project stands (2026-09-29)
 
-- **Released.** The new theme went live on 2026-09-29 at 23:08 UTC (4:08 PM Pacific), with Michael's approval. The record: `verification/2026-09-29-release-gate.md` and `proposals/store-writes/README.md`, "2026-09-29: the release". A second release followed the same evening, at 00:51 UTC on the 30th (5:51 PM Pacific), and a third at 01:19 UTC: "The second release, 2026-09-29" and "The third release" below. The fourth went live on 2026-10-01 at 20:15 UTC: "The fourth release" below.
-- **Live theme:** `184824725801` "Gordon Smith Gallery", published from `main` at 220213c at the fourth release. It was the review theme until then. Only small fixes go to it (`AGENTS.md`).
-- **Rollback theme:** `184824398121` "Gordon Smith Gallery (rollback, third release)", the live theme from the third release to the fourth. Unpublished and unchanged. Nothing is pushed to it.
-- **Earlier rollback themes:** `184823611689` "Gordon Smith Gallery (rollback, second release)", the live theme from the second release to the third, from `main` at 8bcfaa7; and `184767250729` "Gordon Smith Gallery (rollback, 2026-09-29)", the live theme from the first release to the second, from `main` at dee1885. Unpublished and unchanged. Nothing is pushed to it.
+- **Released.** The new theme went live on 2026-09-29 at 23:08 UTC (4:08 PM Pacific), with Michael's approval. The record: `verification/2026-09-29-release-gate.md` and `proposals/store-writes/README.md`, "2026-09-29: the release". A second release followed the same evening, at 00:51 UTC on the 30th (5:51 PM Pacific), and a third at 01:19 UTC: "The second release, 2026-09-29" and "The third release" below. The fourth went live on 2026-10-01 at 20:15 UTC and the fifth at 21:33 UTC: "The fourth release" and "The fifth release" below.
+- **Live theme:** `184856445225` "Gordon Smith Gallery", published from `main` at a03a1e4 at the fifth release. It was the review theme until then. Only small fixes go to it (`AGENTS.md`).
+- **Rollback theme:** `184824725801` "Gordon Smith Gallery (rollback, fourth release)", the live theme from the fourth release to the fifth. Unpublished and unchanged. Nothing is pushed to it.
+- **Earlier rollback themes:** `184824398121` "Gordon Smith Gallery (rollback, third release)", the live theme from the third release to the fourth; `184823611689` "Gordon Smith Gallery (rollback, second release)", the live theme from the second release to the third, from `main` at 8bcfaa7; and `184767250729` "Gordon Smith Gallery (rollback, 2026-09-29)", the live theme from the first release to the second, from `main` at dee1885. Unpublished and unchanged. Nothing is pushed to it.
 - **Old theme:** `183162372393` "Colorblock: NEW WEBSITE", unpublished and unchanged. It was the site before the first release.
-- **Review theme:** `184856445225` "Review theme (do not publish)", made from `main` at 220213c at the fourth release. It follows `main`.
-  - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184856445225
-  - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184856445225/editor
+- **Review theme:** `184857461033` "Review theme (do not publish)", made from `main` at a03a1e4 at the fifth release. It follows `main`.
+  - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184857461033
+  - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184857461033/editor
 - **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.83).
 - **Content:** 45 published pages, 32 exhibitions, 14 events, 27 lessons, and the Permanent Collection's 1,174 works and 171 artists, with the card groups, product labels and menus (`proposals/store-writes/README.md`). The Artists for Kids site and the Smith Foundation's old site are on this one. No text is staged any more: each page's text is its own (DS-39).
 - **Decisions:** every decision that is built is decided (`DECISIONS.md`). DS-70a is Proposed and not built.
@@ -173,7 +173,7 @@ Open while iterating. Add what each review finds; take items off when they merge
 | Send the gallery its questions: values, exhibitions, content checks, brand | Michael | `proposals/gallery-questions.md` collects all of them in one place (2026-09-26) |
 | The Permanent Collection: the gallery checks the review sheets and names, and chooses the featured works | Gallery, then Agent | Built 2026-09-27 (P-26, P-27, P-28, DS-62, DS-63): 1,174 works, 171 artists, 26 groupings, 1,420 images and 118 linked documents in the store (the 39 PDFs over 20 MB as smaller copies, 2026-09-27); the Artists page is the A to Z of every artist, each with a page on the site; the Permanent Collection page searches and browses the collection; Collection in the menu. `proposals/permanent-collection.md` ("Still open"), `proposals/gallery-questions.md` §5. Live since the release |
 | Artists for Kids: the gallery's and the team's answers (text corrections, the missing PDFs, names, "AFK" in body text, the labels), DS-69 to DS-71 decided by Michael 2026-09-29 | Gallery, team, Michael | Built 2026-09-27 (P-30 to P-40): `proposals/artists-for-kids-integration.md`, `proposals/gallery-questions.md` §6. The 18 pages, lessons, cards and events are live since the release, with their text, and open to search engines (P-35). The team still has to cut the old site back to registration (P-30) |
-| Class and camp listings (P-68, decided by Michael 2026-10-01): built the same day, the class list DS-198 decided, merged as #142; After School Art's 6 fall classes in the store. Left: the release, with `store-changes.md` §9d; the team's six questions and a name for who keeps the classes; day camps and Paradise Valley as entries when their registration opens | Michael, then Agent; Artists for Kids team | `proposals/class-listings.md`, with the team's instructions; `proposals/store-writes/classes.py` |
+| Class and camp listings (P-68, decided by Michael 2026-10-01): built the same day, the class list DS-198 decided, merged as #142, live at the fifth release the same day with After School Art's 6 fall classes. Left: the team's six questions and a name for who keeps the classes; day camps and Paradise Valley as entries when their registration opens | Michael, then Agent; Artists for Kids team | `proposals/class-listings.md`, with the team's instructions; `proposals/store-writes/classes.py` |
 
 ### Open after the release
 
@@ -270,6 +270,17 @@ At 20:15 UTC on 2026-10-01 (1:15 PM Pacific), the review theme `184824725801` wa
 - **Store changes at it** (`proposals/store-changes.md` §9c, `gallery_answers.py`): the FAQ's eight visiting questions under "Visiting", with "Buying prints" over the rest; The Smith Foundation's staged description deleted, then the staged field's definition. §8d is finished.
 - **In order:** as the third release, with the store changes after the publish. Both themes downloaded whole and compared with Git (no editor changes); the checks; the store steps' dry runs; publish; renames; the three store steps, each read back; a new review theme, `184856445225`, pushed from `main` with `--unpublished` and read back; the checks on the live site.
 - **Rollback for it:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184824398121`, then the FAQ's text and The Smith Foundation's staged description back from `proposals/store-writes/snapshots/gallery-answers-2026-10-01-before.json` (the definition first: `custom.release_description`, multi-line text, pinned, storefront read). The old theme reads a staged description first, and its FAQ data would let the last visiting answer take the next heading with it, so both matter.
+
+### The fifth release
+
+At 21:33 UTC on 2026-10-01 (2:33 PM Pacific), the review theme `184856445225` was published from `main` at a03a1e4. The record: `PROJECT.md`, rows 4f and 6e.
+
+- **Approval:** Michael: "Merge #143 and do the release".
+- **What went live:** the class list (#142, P-68, DS-198). After School Art lists its six fall classes, each with a Register button straight to its own registration page on the district's site.
+- **Store change at it** (`proposals/store-changes.md` §9d): After School Art's button to the district's landing page (`custom.cta`) deleted, its value saved first (`proposals/store-writes/snapshots/after-school-art-cta-before-release.json`). The answers check's question 33 lost its gap.
+- **In order:** both themes downloaded whole and compared with Git (no editor changes); the checks; the store step's dry run; publish; renames; the store step, read back; a new review theme, `184857461033`, pushed from `main` with `--unpublished` and read back; the checks on the live site.
+- **Rollback for it:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184824725801`, then After School Art's `custom.cta` back from the snapshot (`metafieldsSet`, type link). The six Class entries can stay: the old theme doesn't read them.
+- **For the team:** the district's After School Art landing page can now be cut back to a link to this site (P-30, P-68).
 
 ## Inputs, exclusions, and known limits
 

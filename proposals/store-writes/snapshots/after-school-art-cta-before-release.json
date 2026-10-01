@@ -1,0 +1,9 @@
+{
+ "taken": "2026-10-01T21:33:18+00:00",
+ "what": "After School Art's custom.cta before the fifth release deleted it. Undo: metafieldsSet with this value, type link.",
+ "ownerId": "gid://shopify/Page/165837373737",
+ "namespace": "custom",
+ "key": "cta",
+ "type": "link",
+ "value": "{\"text\":\"Register for classes\",\"url\":\"https://artistsforkids.sd44.ca/learn/after-school-art/\"}"
+}
