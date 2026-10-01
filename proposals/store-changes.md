@@ -1,6 +1,6 @@
 # Proposed store-level changes
 
-**Released 2026-09-29.** Made that day, with Michael's approval: §3 (templates), §5 (addresses), §8 (staged text), §8b and §8c (the new pages shown, Supporters among them), §8e (event pages) and §9 (frames). Still to make, after the gallery's approval: §7 (the print descriptions). §8d (the descriptions in the search engine listings) was made on 2026-10-01, all but its last step; that step and the FAQ's visiting questions wait for the next release (§9c). The log: `proposals/store-writes/README.md`, "2026-09-29: the release". The sections below read as they did before the release.
+**Released 2026-09-29.** Made that day, with Michael's approval: §3 (templates), §5 (addresses), §8 (staged text), §8b and §8c (the new pages shown, Supporters among them), §8e (event pages) and §9 (frames). Still to make, after the gallery's approval: §7 (the print descriptions). §8d (the descriptions in the search engine listings) and §9c (the FAQ's visiting questions) were made on 2026-10-01, the last of them at the fourth release. The log: `proposals/store-writes/README.md`, "2026-09-29: the release". The sections below read as they did before the release.
 
 Changes to Shopify Admin resources that the theme work needs. None of these is made until the gallery approves the structure (approval package) and, for live resources, until release approval. Menus, pages, fields and products are shared by every theme, so a preview theme does not isolate them (`AGENTS.md`). Baseline state: `baseline/store-manifest.md`.
 
@@ -205,7 +205,7 @@ At release, after the gallery approves the words:
 
 Rollback: clear each page's Meta description. The theme falls back to the page's own words.
 
-**Made 2026-10-01,** once the gallery approved the words (`proposals/gallery-answers/`): 41 pages' descriptions are in their search engine listings, and the staged value is deleted on 40. The Smith Foundation keeps its staged value, and the definition stays, until the next release (§9c). The log: `proposals/store-writes/README.md`, "2026-10-01: the gallery's answers".
+**Made 2026-10-01,** once the gallery approved the words (`proposals/gallery-answers/`): 41 pages' descriptions are in their search engine listings, and the staged value is deleted on 40. The Smith Foundation kept its staged value, and the definition stayed, until the fourth release the same day, which deleted both (§9c). The log: `proposals/store-writes/README.md`, "2026-10-01: the gallery's answers".
 
 ## 8e. Event pages at release (DS-176)
 
@@ -232,6 +232,8 @@ This waits for release because the old theme's add-a-frame popup looks frames up
 Rollback: set the 16 back to Active from the snapshot.
 
 ## 9c. At the next release, from the gallery's answers (2026-10-01)
+
+**Made at the fourth release, 2026-10-01** (`proposals/store-writes/README.md`, "2026-10-01: the fourth release"). The plan as written:
 
 Each waits for theme code the live site doesn't have yet. `proposals/store-writes/gallery_answers.py` holds the steps; each needs Michael's go-ahead at the release.
 
