@@ -12,13 +12,14 @@ Keep four change surfaces distinct: **Git owns theme source and project records;
 
 ## Where the project stands (2026-09-29)
 
-- **Released.** The new theme went live on 2026-09-29 at 23:08 UTC (4:08 PM Pacific), with Michael's approval. The record: `verification/2026-09-29-release-gate.md` and `proposals/store-writes/README.md`, "2026-09-29: the release". A second release followed the same evening, at 00:51 UTC on the 30th (5:51 PM Pacific): "The second release, 2026-09-29" below.
-- **Live theme:** `184823611689` "Gordon Smith Gallery", published from `main` at 8bcfaa7 at the second release. It was the review theme until then. Nothing is pushed to it.
-- **Rollback theme:** `184767250729` "Gordon Smith Gallery (rollback, 2026-09-29)", the live theme from the first release to the second, from `main` at dee1885. Unpublished and unchanged. Nothing is pushed to it.
+- **Released.** The new theme went live on 2026-09-29 at 23:08 UTC (4:08 PM Pacific), with Michael's approval. The record: `verification/2026-09-29-release-gate.md` and `proposals/store-writes/README.md`, "2026-09-29: the release". A second release followed the same evening, at 00:51 UTC on the 30th (5:51 PM Pacific), and a third at 01:19 UTC: "The second release, 2026-09-29" and "The third release" below.
+- **Live theme:** `184824398121` "Gordon Smith Gallery", published from `main` at 1168190 at the third release. It was the review theme until then. Only small fixes go to it (`AGENTS.md`).
+- **Rollback theme:** `184823611689` "Gordon Smith Gallery (rollback, second release)", the live theme from the second release to the third, from `main` at 8bcfaa7. Unpublished and unchanged. Nothing is pushed to it.
+- **Earlier rollback theme:** `184767250729` "Gordon Smith Gallery (rollback, 2026-09-29)", the live theme from the first release to the second, from `main` at dee1885. Unpublished and unchanged. Nothing is pushed to it.
 - **Old theme:** `183162372393` "Colorblock: NEW WEBSITE", unpublished and unchanged. It was the site before the first release.
-- **Review theme:** `184824398121` "Review theme (do not publish)", made from `main` at 8bcfaa7 at the second release. It follows `main`.
-  - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184824398121
-  - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184824398121/editor
+- **Review theme:** `184824725801` "Review theme (do not publish)", made from `main` at 1168190 at the third release. It follows `main`.
+  - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184824725801
+  - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184824725801/editor
 - **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.83).
 - **Content:** 45 published pages, 32 exhibitions, 14 events, 27 lessons, and the Permanent Collection's 1,174 works and 171 artists, with the card groups, product labels and menus (`proposals/store-writes/README.md`). The Artists for Kids site and the Smith Foundation's old site are on this one. No text is staged any more: each page's text is its own (DS-39).
 - **Decisions:** every decision that is built is decided (`DECISIONS.md`). DS-70a is Proposed and not built.
@@ -249,6 +250,15 @@ At 00:51 UTC on the 30th (5:51 PM Pacific), the review theme `184823611689` was 
 - **In order:** both themes' editor JSON compared with Git (no editor changes); `main` pushed to the review theme and read back; the checks; publish; the live theme renamed "Gordon Smith Gallery" and the one it replaced "Gordon Smith Gallery (rollback, 2026-09-29)"; a new review theme, `184824398121`, pushed from `main` with `--unpublished` and read back; the checks on the live site (links 1,637 pages, 0 errors; answers 27, 0 errors; structured data 0 errors).
 - **Rollback for it:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184767250729`. There are no store changes to undo.
 - **A release without store changes** takes these steps alone. The package is the commit, the checks and what the release carries.
+
+### The third release
+
+At 01:19 UTC on 2026-09-30 (6:19 PM Pacific on the 29th), the review theme `184824398121` was published from `main` at 1168190. The record: `PROJECT.md`, rows 4d and 6c.
+
+- **Approval:** Michael: "put it live", after seeing the header still scroll away on his phone on the live site.
+- **What went live:** the header stays at the top of the screen on phones and small tablets (#132, DS-190). The only other theme change since the second release, the "Artist for Kids" settings line (#129), was already live (#133). No store changes.
+- **In order:** as the second release. Both themes' editor JSON compared with Git (no editor changes); the review theme downloaded, matching `main` file for file; the checks; publish; renames; a new review theme, `184824725801`, pushed from `main` with `--unpublished` and read back; the checks on the live site (links 1,637 pages, 0 errors; answers 27, 0 errors; structured data 0 errors).
+- **Rollback for it:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184823611689`. There are no store changes to undo.
 
 ## Inputs, exclusions, and known limits
 
