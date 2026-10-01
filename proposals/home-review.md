@@ -1,6 +1,6 @@
 # The home page: how to make it more engaging
 
-Date: 2026-10-01. Status: **a review, for Michael's decisions.** Nothing is built.
+Date: 2026-10-01. Status: **decided by Michael, 2026-10-01** ("h2, h3, h5, h6 approved"): H2, H3, H5 and H6 are built (DS-199 to DS-202); H1, H4 and H7 were not taken up. See "Built" at the end.
 
 Asked for by Michael, 2026-10-01: "let's now review our homepage to ensure it's as engaging as possible", with six sites to learn from: MoMA, The Polygon Gallery, Gagosian, Equinox Gallery, the Vancouver Art Gallery and the Louvre. Home was last designed on 2026-09-26 after MoMA, the Vancouver Art Gallery, Gagosian and David Zwirner (DS-54), then given the collection row (DS-188) and the gallery's sentence (DS-195).
 
@@ -99,3 +99,15 @@ Proposal: What's on shows events in the next eight weeks and exhibitions opening
 | H7 | What's on keeps far-off exhibitions to one line | Optional |
 
 H2 to H7 are built on a branch, against the development theme, with their design decisions recorded as Proposed, as usual.
+
+## Built, 2026-10-01
+
+On the development theme, Home at 1440, 1200, 1024 and 390 px, and 1920 × 1080:
+
+- **H2 (DS-199):** the hero's title box ends with "Open now until 4 PM" and "Plan your visit". On a phone both are inside the first screen (ending at 815 of 844 px), the link a 44 px target.
+- **H3 (DS-200):** Explore + Create's card reads "Saturdays, 1 to 3 PM. Next: October 3" (three upcoming Saturdays). Art in Good Company keeps its date, since only one is entered; with the next months' entered, it would read "Second Thursday of the month, 2 to 4 PM".
+- **H5 (DS-201):** at 1440 × 900 *My Sun* is 864 × 580 px (was 756 × 567); at 1920 × 1080, 928 × 696. Its height cap became the screen less 20rem, so "What's on" still starts on the first screen (820 of 900 px) with the two-line caption (DS-66). Below 1200 px the hero stays 7 to 5, so the button keeps one line.
+- **H6 (DS-202):** "Make art with us" after the Artists for Kids panel, the three newest lessons with the play mark, and "All ArtReach videos". It scrolls sideways on a phone.
+
+Not built: H1 needs photographs, which Michael hasn't asked for yet; H4 and H7 weren't approved.
+

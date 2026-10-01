@@ -2,6 +2,8 @@
   What's on (Home, DS-54): the next exhibitions and events in one row, soonest first, so the home
   page always says what a visitor can come to next. It leaves out the exhibition in the hero and
   shows each event once, at its next date (Explore + Create runs every Saturday). Six at most.
+  A run that repeats says so on its card, with the next date ("Saturdays, 1 to 3 PM. Next:
+  October 3"), worked out from its events (gs-event-pattern, DS-200).
   An event of the hero's exhibition doesn't repeat the hero's picture (DS-95).
   The heading carries today's opening line (gs-open-today) and links to all exhibitions and all
   events. Everything comes from the entries and Theme settings; nothing here is typed by hand.
@@ -36,6 +38,8 @@
   endcapture
   assign ev_ids = ev_ids | strip | split: ','
   assign seen = '|'
+  # Every upcoming event as a row, for the runs that repeat (gs-event-pattern, DS-200).
+  assign rows = ''
   paginate shop.metaobjects.event.values by 250
   for id in ev_ids
     assign n = id | plus: 0
@@ -45,6 +49,17 @@
         continue
       endif
       assign title_key = event.title.value | strip | downcase | prepend: '|' | append: '|'
+      assign row_key = event.title.value | strip | downcase | replace: '|', ' ' | replace: '~', ' '
+      assign ends = ''
+      if event.ends.value != blank
+        assign ends = event.ends.value | date: '%H:%M'
+      endif
+      assign r_secs = event.starts.value | date: '%s'
+      assign r_weekday = event.starts.value | date: '%w'
+      assign r_day = event.starts.value | date: '%-d'
+      assign r_opens = event.starts.value | date: '%H:%M'
+      assign rows = rows | append: row_key | append: '|' | append: r_secs | append: '|' | append: r_weekday
+      assign rows = rows | append: '|' | append: r_day | append: '|' | append: r_opens | append: '|' | append: ends | append: '~~'
       if seen contains title_key
         continue
       endif
@@ -93,7 +108,14 @@
             {%- else -%}
               {%- paginate shop.metaobjects.event.values by 250 -%}
                 {%- for event in shop.metaobjects.event.values offset: n limit: 1 -%}
-                  {%- render 'gs-event-card', event: event, lead: lead_handle -%}
+                  {%- liquid
+                    assign row_key = event.title.value | strip | downcase | replace: '|', ' ' | replace: '~', ' '
+                    capture pattern
+                      render 'gs-event-pattern', rows: rows, key: row_key
+                    endcapture
+                    assign pattern = pattern | strip
+                  -%}
+                  {%- render 'gs-event-card', event: event, lead: lead_handle, pattern: pattern -%}
                 {%- endfor -%}
               {%- endpaginate -%}
             {%- endif -%}

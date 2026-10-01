@@ -1069,6 +1069,8 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
 .gs-hero__box:first-child { margin-block-start: 0; }
 /* An exhibition's summary in its hero box (DS-66): reading size, so the box stays a title box. */
 .gs-hero__summary { margin: 0; max-width: var(--gs-measure); line-height: var(--gs-leading-body); text-wrap: pretty; }
+/* Today's opening line and Plan your visit, under the hero's button (DS-199). */
+.gs-hero__visit { display: grid; justify-items: start; gap: var(--gs-space-2); }
 /* Photo credit or artwork caption under a hero. */
 .gs-hero__caption { margin-block-start: var(--gs-space-3); max-width: var(--gs-measure); }
 .gs-hero__caption > *,
@@ -1146,6 +1148,11 @@ ul.gs-grid { margin: 0; padding: 0; list-style: none; }
   /* No caption: one row, so the box ends level with the work. */
   .gs-hero--artwork:not(:has(> .gs-hero__caption)) { grid-template-rows: auto; }
   .gs-hero--artwork:not(:has(> .gs-hero__caption)) > .gs-hero__box { grid-row: 1; }
+}
+/* From 1200 the work takes two thirds of the width and the title box the rest, which still holds
+   the button on one line (DS-201). */
+@media (min-width: 1200px) {
+  .gs-hero--artwork { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
 }
 
 /* ---------- Cards ---------- */
@@ -2050,6 +2057,23 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
   .gs-event--media > .gs-event__text,
   .gs-events:not(.gs-events--compact):has(> .gs-event--media) > .gs-event > .gs-event__text { grid-column: 2 / -1; }
 }
+
+/* ---------- A lesson card's play mark (DS-202) ---------- */
+/* A lesson's cover is a video's, so its card carries a play mark: an ink disc with a paper
+   triangle, centred on the cover. Decorative: the title link says where it goes. */
+.gs-lesson-card > .gs-media { position: relative; }
+.gs-lesson-card > .gs-media::before,
+.gs-lesson-card > .gs-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: var(--gs-space-8);
+  height: var(--gs-space-8);
+  pointer-events: none;
+}
+.gs-lesson-card > .gs-media::before { border-radius: 50%; background: var(--gs-color-fg); opacity: 0.85; }
+.gs-lesson-card > .gs-media::after { background: var(--gs-color-bg); clip-path: polygon(38% 28%, 38% 72%, 74% 50%); }
 
 /* ---------- Classes and camps (P-68, DS-198) ---------- */
 /* A programme page's classes, each under a rule like an event: its name, its description, its

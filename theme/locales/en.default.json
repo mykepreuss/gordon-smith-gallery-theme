@@ -120,7 +120,12 @@
     "exhibition": "Exhibition",
     "ended": "This event has ended",
     "more": "More in {{ programme }}",
-    "more_link": "See the program"
+    "more_link": "See the program",
+    "weekly": "{{ days }}, {{ times }}",
+    "monthly": "{{ nth }} {{ day }} of the month, {{ times }}",
+    "pattern_next_html": "{{ pattern }}. Next: {{ date }}",
+    "weekdays_plural": "Sundays,Mondays,Tuesdays,Wednesdays,Thursdays,Fridays,Saturdays",
+    "nths": "First,Second,Third,Fourth,Fifth"
   },
   "classes": {
     "heading": "Classes and registration",
@@ -272,7 +277,9 @@
   "home": {
     "all_events": "All events",
     "see_portfolio": "See the portfolio",
-    "see_collection": "Browse the collection"
+    "see_collection": "Browse the collection",
+    "plan_visit": "Plan your visit",
+    "lessons_heading": "Make art with us"
   },
   "collection": {
     "works_heading": "Works in the collection",

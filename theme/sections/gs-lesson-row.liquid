@@ -1,0 +1,66 @@
+{%- comment -%}
+  Make art with us (Home, DS-202): the three newest ArtReach videos (the Lesson entries, DS-70),
+  newest first by their Posted date, as lesson cards with a play mark, after the Artists for Kids
+  panel. A reason to stay on Home that isn't a date, as the Louvre's films and MoMA's magazine
+  are. The heading links to the ArtReach videos page (Theme settings, Artists for Kids). On
+  phones the row scrolls sideways (.gs-rail). Nothing shows without lessons.
+
+  Lessons are read back inside their own paginate tag: a plain loop stops at 50 (DS-152).
+{%- endcomment -%}
+{%- capture ids -%}{%- render 'gs-lesson-index', limit: 3 -%}{%- endcapture -%}
+{%- assign ids = ids | strip | split: ',' -%}
+{%- if ids.size > 0 -%}
+  <section class="gs-section gs-surface-paper" aria-labelledby="{{ section.id }}-heading">
+    <div class="gs-container">
+      <div class="gs-section-head">
+        <div class="gs-section-head__text">
+          <h2 class="gs-h2" id="{{ section.id }}-heading">{{ section.settings.heading | escape }}</h2>
+        </div>
+        {%- if settings.lessons_page != blank -%}
+          <p class="gs-section-head__links">
+            <a class="gs-cta-link gs-cta-link--more" href="{{ settings.lessons_page.url }}">{{ 'lessons.all' | t }}</a>
+          </p>
+        {%- endif -%}
+      </div>
+      <ul class="gs-grid gs-grid--cards gs-rail" role="list">
+        {%- paginate shop.metaobjects.lesson.values by 250 -%}
+          {%- for id in ids -%}
+            {%- assign n = id | plus: 0 -%}
+            {%- for lesson in shop.metaobjects.lesson.values offset: n limit: 1 -%}
+              <li>{%- render 'gs-lesson-card', lesson: lesson, sizes: '(min-width: 1296px) 384px, (min-width: 750px) 31vw, 75vw' -%}</li>
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      </ul>
+    </div>
+  </section>
+{%- elsif request.design_mode -%}
+  <p class="gs-editor-warning gs-container">No lessons yet: add lesson entries in Content, Metaobjects, Lesson. The three newest show here.</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Make art with us",
+  "tag": "div",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "The three newest ArtReach videos, from the Lesson entries, newest first by their Posted date."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Make art with us"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Make art with us"
+    }
+  ]
+}
+{% endschema %}

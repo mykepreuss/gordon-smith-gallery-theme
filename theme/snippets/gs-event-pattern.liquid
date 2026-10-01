@@ -1,0 +1,81 @@
+{% doc %}
+  How a run of events repeats (DS-200), for a card that shows the run once (Home's What's on).
+  Given the upcoming events as rows, it finds the ones with the card's title and prints their
+  pattern, or nothing when there is none:
+
+    Saturdays, 1 to 3 PM                          (every week: each a week after the last)
+    Second Thursday of the month, 2 to 4 PM       (every month: the same weekday, in the same week)
+
+  Every event in the run must start and end at the same time on the same weekday. One event, an
+  event without an end time, or any other spacing prints nothing, so the card keeps its date.
+  Nothing new is typed: the pattern comes from the event entries themselves.
+
+  @param {string} rows - The upcoming events, soonest first, one per row, rows split by "~~" and
+    fields by "|": title key, start in seconds, weekday (0 is Sunday), day of the month, start
+    "HH:MM", end "HH:MM"
+  @param {string} key - The card's title key, as in rows
+
+  @example
+  {%- capture pattern -%}{% render 'gs-event-pattern', rows: rows, key: title_key %}{%- endcapture -%}
+{% enddoc %}
+{%- liquid
+  assign count = 0
+  assign weekly = true
+  assign monthly = true
+  assign last = 0
+  assign weekday = ''
+  assign week = ''
+  assign opens = ''
+  assign closes = ''
+  assign all = rows | split: '~~'
+  for row in all
+    assign f = row | split: '|'
+    if f[0] != key
+      continue
+    endif
+    assign starts = f[1] | plus: 0
+    assign this_week = f[3] | plus: 0 | minus: 1 | divided_by: 7
+    if count == 0
+      assign weekday = f[2]
+      assign week = this_week
+      assign opens = f[4]
+      assign closes = f[5]
+    else
+      if f[2] != weekday or f[4] != opens or f[5] != closes
+        assign weekly = false
+        assign monthly = false
+      endif
+      # Days between this one and the last, rounded, so a change of clocks doesn't count.
+      assign gap = starts | minus: last | plus: 43200 | divided_by: 86400
+      if gap != 7
+        assign weekly = false
+      endif
+      if gap < 28 or gap > 35 or this_week != week
+        assign monthly = false
+      endif
+    endif
+    assign last = starts
+    assign count = count | plus: 1
+  endfor
+  if closes == blank
+    assign weekly = false
+    assign monthly = false
+  endif
+-%}
+{%- if count > 1 and weekly or count > 1 and monthly -%}
+  {%- liquid
+    capture times
+      render 'gs-open-times', opens: opens, closes: closes
+    endcapture
+    assign times = times | strip
+    assign n = weekday | plus: 0
+    if weekly
+      assign days = 'events.weekdays_plural' | t | split: ','
+      echo 'events.weekly' | t: days: days[n], times: times
+    else
+      assign names = 'open.weekdays' | t | split: ','
+      assign nths = 'events.nths' | t | split: ','
+      echo 'events.monthly' | t: nth: nths[week], day: names[n], times: times
+    endif
+  -%}
+{%- endif -%}

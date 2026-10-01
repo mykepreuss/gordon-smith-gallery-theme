@@ -44,6 +44,12 @@
         "link_url": "shopify://pages/explore-create"
       }
     },
+    "lessons": {
+      "type": "gs-lesson-row",
+      "settings": {
+        "heading": "Make art with us"
+      }
+    },
     "editions": {
       "type": "gs-portfolio-row",
       "settings": {
@@ -80,6 +86,7 @@
     "whats_on",
     "collection",
     "programme",
+    "lessons",
     "editions",
     "support",
     "visit"

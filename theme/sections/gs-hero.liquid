@@ -18,6 +18,10 @@
 
   When the exhibition has installation views, the first one leads, as a photo of the art in the
   room, with the installation credit as its caption (DS-54). Until there are some, the key image.
+
+  Under the button, whether the gallery is open today and a link to Plan your visit (DS-199), so
+  the first screen answers "can I go now?" on a phone too, where the header has no room for it.
+  The line knows the closures (DS-191).
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
@@ -58,6 +62,18 @@
     assign has_link = true
   endif
 -%}
+{%- capture visit -%}
+  {%- capture today -%}{%- render 'gs-open-today' -%}{%- endcapture -%}
+  {%- assign today = today | strip -%}
+  {%- if today != blank or settings.visit_page != blank -%}
+    <div class="gs-hero__visit">
+      {{- today -}}
+      {%- if settings.visit_page != blank -%}
+        <a class="gs-cta-link" href="{{ settings.visit_page.url }}">{{ 'home.plan_visit' | t }}</a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
 <div class="gs-section gs-section--lead">
   {%- if lead -%}
     <h1 class="gs-visually-hidden">{{ s.heading | escape }}</h1>
@@ -88,6 +104,7 @@
         <div class="gs-actions">
           <a class="gs-button" href="{{ lead.system.url }}">{{ 'exhibitions.about' | t }}</a>
         </div>
+        {{- visit -}}
       {%- else -%}
         {%- if s.eyebrow != blank -%}
           <p class="gs-eyebrow">{{ s.eyebrow | escape }}</p>
@@ -118,6 +135,7 @@
             {%- endif -%}
           </div>
         {%- endif -%}
+        {{- visit -}}
       {%- endif -%}
     </div>
     {%- if mode != 'artwork' -%}{{ caption }}{%- endif -%}
