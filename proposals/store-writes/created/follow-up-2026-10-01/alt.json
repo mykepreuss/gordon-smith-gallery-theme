@@ -1,0 +1,459 @@
+[
+ {
+  "call": "alt text: a full stop on 25 artwork images",
+  "kind": "files",
+  "at": "2026-10-01T23:21:18+00:00",
+  "variables": {
+   "files": [
+    {
+     "id": "gid://shopify/MediaImage/46348478808361",
+     "alt": "Alistair Bell, From St. Paul's, 1956."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348480086313",
+     "alt": "B.C. Binning, Cast Iron Stove, 1944."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348486574377",
+     "alt": "John K. Essler, Day Approaching Night #2, 1965."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348486672681",
+     "alt": "Jamie Evrard, Untitled [Fruit], N.D. [20--]."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348486705449",
+     "alt": "Jamie Evrard, Untitled [Ghost Print of Fruit], N.D. [20--]."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348494111017",
+     "alt": "J. Carl Heywood, Carpe Diem #2, 2002."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348494143785",
+     "alt": "J. Carl Heywood, Page From My Notebook/Interesting, 2003."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348494176553",
+     "alt": "J. Carl Heywood, The Artist, Pensive, 1993."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348494209321",
+     "alt": "J. Carl Heywood, Flowers With Thorns, 1999."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348494242089",
+     "alt": "J. Carl Heywood, Japan Colle´ with Shamisen, 1987."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348494274857",
+     "alt": "J. Carl Heywood, Memories of Japan, 1999."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348494307625",
+     "alt": "J. Carl Heywood, Carotte & Coeur Brise, 1993."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495257897",
+     "alt": "J. Carl Heywood, Triple Entendre, 1981."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495290665",
+     "alt": "J. Carl Heywood, A Study in Surfaces, 1999."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495323433",
+     "alt": "J. Carl Heywood, Rain Counterpoint, 1989."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495356201",
+     "alt": "J. Carl Heywood, The Schwitters Suite/Monumental, 1999."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495388969",
+     "alt": "J. Carl Heywood, Red Niche, 1983."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495421737",
+     "alt": "J. Carl Heywood, Coloured Bagatelle A, 1990."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495454505",
+     "alt": "J. Carl Heywood, Coloured Bagatelle B, 1990."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495487273",
+     "alt": "J. Carl Heywood, Bouquet for my Mentors... [10.30], N/A."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348495716649",
+     "alt": "E.J. Hughes, The Mill at Mesachie Lake, 1986."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348497879337",
+     "alt": "Patricia Johnston, Untitled [No. 1], July 2010."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348497912105",
+     "alt": "Patricia Johnston, Untitled [No. 2], July 2010."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348497944873",
+     "alt": "Patricia Johnston, Untitled [No. 3], July 2010."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348506497321",
+     "alt": "Greg Murdock, Archipelago No. 01, 2012."
+    }
+   ]
+  },
+  "answer": {
+   "fileUpdate": {
+    "files": [
+     {
+      "id": "gid://shopify/MediaImage/46348478808361",
+      "alt": "Alistair Bell, From St. Paul's, 1956.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348480086313",
+      "alt": "B.C. Binning, Cast Iron Stove, 1944.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348486574377",
+      "alt": "John K. Essler, Day Approaching Night #2, 1965.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348486672681",
+      "alt": "Jamie Evrard, Untitled [Fruit], N.D. [20--].",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348486705449",
+      "alt": "Jamie Evrard, Untitled [Ghost Print of Fruit], N.D. [20--].",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348494111017",
+      "alt": "J. Carl Heywood, Carpe Diem #2, 2002.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348494143785",
+      "alt": "J. Carl Heywood, Page From My Notebook/Interesting, 2003.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348494176553",
+      "alt": "J. Carl Heywood, The Artist, Pensive, 1993.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348494209321",
+      "alt": "J. Carl Heywood, Flowers With Thorns, 1999.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348494242089",
+      "alt": "J. Carl Heywood, Japan Colle´ with Shamisen, 1987.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348494274857",
+      "alt": "J. Carl Heywood, Memories of Japan, 1999.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348494307625",
+      "alt": "J. Carl Heywood, Carotte & Coeur Brise, 1993.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495257897",
+      "alt": "J. Carl Heywood, Triple Entendre, 1981.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495290665",
+      "alt": "J. Carl Heywood, A Study in Surfaces, 1999.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495323433",
+      "alt": "J. Carl Heywood, Rain Counterpoint, 1989.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495356201",
+      "alt": "J. Carl Heywood, The Schwitters Suite/Monumental, 1999.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495388969",
+      "alt": "J. Carl Heywood, Red Niche, 1983.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495421737",
+      "alt": "J. Carl Heywood, Coloured Bagatelle A, 1990.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495454505",
+      "alt": "J. Carl Heywood, Coloured Bagatelle B, 1990.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495487273",
+      "alt": "J. Carl Heywood, Bouquet for my Mentors... [10.30], N/A.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348495716649",
+      "alt": "E.J. Hughes, The Mill at Mesachie Lake, 1986.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348497879337",
+      "alt": "Patricia Johnston, Untitled [No. 1], July 2010.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348497912105",
+      "alt": "Patricia Johnston, Untitled [No. 2], July 2010.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348497944873",
+      "alt": "Patricia Johnston, Untitled [No. 3], July 2010.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348506497321",
+      "alt": "Greg Murdock, Archipelago No. 01, 2012.",
+      "fileStatus": "READY"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "call": "alt text: a full stop on 22 artwork images",
+  "kind": "files",
+  "at": "2026-10-01T23:21:20+00:00",
+  "variables": {
+   "files": [
+    {
+     "id": "gid://shopify/MediaImage/46348506595625",
+     "alt": "Greg Murdock, Archipelago No. 04, 2012."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348508660009",
+     "alt": "Toni Onley, Water Hook, Salt Spring, Is. Nay, 1995."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348518588713",
+     "alt": "Jeremy Shaw, 80. Operation: Fuck Up, 2003."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348521505065",
+     "alt": "Gordon Smith, Untitled [No. 1], 2007."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348521537833",
+     "alt": "Gordon Smith, Untitled [No. 2, AP], 2007."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348529500457",
+     "alt": "Charlene Vickers, Fish in Astral - Colour Palette No. 1, 2022."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348529533225",
+     "alt": "Charlene Vickers, Fish in Astral - Colour Pallette No. 2, 2022."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348529729833",
+     "alt": "Charlene Vickers, Fish Astral - Print Processing [Ed. SPII], 2022."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348533268777",
+     "alt": "Irene F. Whittome, India Song AP, 2002."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348533301545",
+     "alt": "Irene F. Whittome, Untitled A, 1990."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348533334313",
+     "alt": "Irene F. Whittome, Untitled B, 1990."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534153513",
+     "alt": "Irene F. Whittome, Oceana exhibition poster, 1999."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534186281",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534219049",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534251817",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534284585",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534317353",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534350121",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534382889",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534415657",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348534448425",
+     "alt": "Irene F. Whittome, Oceana, 1998."
+    },
+    {
+     "id": "gid://shopify/MediaImage/46348542181673",
+     "alt": "Mary H. Filer, Little School Girl, Dunham, PQ, 1947."
+    }
+   ]
+  },
+  "answer": {
+   "fileUpdate": {
+    "files": [
+     {
+      "id": "gid://shopify/MediaImage/46348506595625",
+      "alt": "Greg Murdock, Archipelago No. 04, 2012.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348508660009",
+      "alt": "Toni Onley, Water Hook, Salt Spring, Is. Nay, 1995.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348518588713",
+      "alt": "Jeremy Shaw, 80. Operation: Fuck Up, 2003.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348521505065",
+      "alt": "Gordon Smith, Untitled [No. 1], 2007.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348521537833",
+      "alt": "Gordon Smith, Untitled [No. 2, AP], 2007.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348529500457",
+      "alt": "Charlene Vickers, Fish in Astral - Colour Palette No. 1, 2022.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348529533225",
+      "alt": "Charlene Vickers, Fish in Astral - Colour Pallette No. 2, 2022.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348529729833",
+      "alt": "Charlene Vickers, Fish Astral - Print Processing [Ed. SPII], 2022.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348533268777",
+      "alt": "Irene F. Whittome, India Song AP, 2002.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348533301545",
+      "alt": "Irene F. Whittome, Untitled A, 1990.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348533334313",
+      "alt": "Irene F. Whittome, Untitled B, 1990.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534153513",
+      "alt": "Irene F. Whittome, Oceana exhibition poster, 1999.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534186281",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534219049",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534251817",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534284585",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534317353",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534350121",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534382889",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534415657",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348534448425",
+      "alt": "Irene F. Whittome, Oceana, 1998.",
+      "fileStatus": "READY"
+     },
+     {
+      "id": "gid://shopify/MediaImage/46348542181673",
+      "alt": "Mary H. Filer, Little School Girl, Dunham, PQ, 1947.",
+      "fileStatus": "READY"
+     }
+    ],
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
