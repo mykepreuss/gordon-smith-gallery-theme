@@ -1,0 +1,820 @@
+{
+ "taken": "2026-10-01",
+ "what": "The ten pages hidden at the release and the three old menus, whole, read through the CLI just before they were deleted (P-70). To rebuild one: pageCreate with its title, handle, body, templateSuffix and metafields (unpublished, and delete the redirect from its address first); menuCreate with its title, handle and items.",
+ "pages": [
+  {
+   "id": "gid://shopify/Page/141077479721",
+   "handle": "about",
+   "title": "About",
+   "isPublished": false,
+   "templateSuffix": "",
+   "createdAt": "2024-10-10T16:54:50Z",
+   "updatedAt": "2026-09-29T23:09:51Z",
+   "publishedAt": null,
+   "body": "<div data-mce-fragment=\"1\">\n<div class=\"x_elementToProof\" data-olk-copy-source=\"MessageBody\" data-mce-fragment=\"1\">Artists for Kids was founded in 1989 with the singular intent to support art education, for all. </div>\n<div aria-hidden=\"true\" data-mce-fragment=\"1\"> </div>\n<div class=\"x_elementToProof\" data-mce-fragment=\"1\">In 1990, with the support of art educators and artist patrons Bill Reid, Jack Shadbolt, and Gordon Smith, the first Artists for Kids Limited Edition Portfolio print, <em>Xhuwaji / Haida Grizzly</em> was published - marking the beginning of an extraordinary partnership between Canadian artists and Artists for Kids.</div>\n<div class=\"x_elementToProof\" data-mce-fragment=\"1\"> </div>\n<div class=\"x_elementToProof\" data-mce-fragment=\"1\">Entering its 37th year, Artists for Kids continues to work with renowned Canadian artists and print studios across Canada to publish contemporary limited editions; its portfolio is now revered as one of the most significant limited edition collections in Canada.</div>\n<div aria-hidden=\"true\" data-mce-fragment=\"1\"> </div>\n<div class=\"x_elementToProof\" data-mce-fragment=\"1\">The Artists for Kids Limited Edition Portfolio program funds educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for the Artists for Kids and the Gordon Smith Gallery Permanent Collection. </div>\n<div class=\"x_elementToProof\" data-mce-fragment=\"1\">  </div>\n<div class=\"x_elementToProof\" data-mce-fragment=\"1\"><br></div>\n<div class=\"x_elementToProof\" data-mce-fragment=\"1\"><br></div>\n<span data-ccp-props='{\"201341983\":0,\"335559740\":276}' data-mce-fragment=\"1\"><img height=\"379\" width=\"375\" src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Reid_REID002_Xhuwaji_HaidaGrizzly_480x480.jpg?v=1728074721\" alt=\"\" style=\"display: block; margin-left: auto; margin-right: auto;\" data-mce-fragment=\"1\"></span>\n</div>\n<h5 data-mce-fragment=\"1\" style=\"text-align: center;\">\n<span data-ccp-props='{\"201341983\":0,\"335559740\":276}' data-mce-fragment=\"1\"> </span><span id=\"DeltaPlaceHolderMain\" data-mce-fragment=\"1\"><span class=\"ms-rteThemeFontFace-1\" data-mce-fragment=\"1\">Bill Reid, (Canadian, 1920 – 1998) XHUWAJI/Haida Grizzly Bear</span></span>\n</h5>",
+   "bodySummary": "Artists for Kids was founded in 1989 with the singular intent to support art education, for all. In 1990, with the support of art educators and art...",
+   "metafields": {
+    "nodes": [
+     {
+      "namespace": "custom",
+      "key": "hero_image",
+      "type": "file_reference",
+      "value": "gid://shopify/MediaImage/40274179096873"
+     },
+     {
+      "namespace": "custom",
+      "key": "programme",
+      "type": "single_line_text_field",
+      "value": "Artists for Kids"
+     },
+     {
+      "namespace": "custom",
+      "key": "hero_is_artwork",
+      "type": "boolean",
+      "value": "true"
+     },
+     {
+      "namespace": "custom",
+      "key": "hero_caption",
+      "type": "single_line_text_field",
+      "value": "Bill Reid, (Canadian, 1920 – 1998) XHUWAJI/Haida Grizzly Bear"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155703312681",
+   "handle": "our-story",
+   "title": "Our Story",
+   "isPublished": false,
+   "templateSuffix": "shop",
+   "createdAt": "2026-07-23T18:25:44Z",
+   "updatedAt": "2026-09-29T23:10:00Z",
+   "publishedAt": null,
+   "body": "<p>Established in 1989 by renowned BC artist-patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists for Kids was founded with the singular intent to support children, their art education and their future.</p>\n<p>Through art specialists, Artists for Kids provides enriching art-making experiences for thousands of students each year across Canada, as well as professional development opportunities for educators.</p>\n<p><span style=\"color: #666666; font-size: 16pt; font-family: Poppins,sans-serif;\"><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/Reid_REID002_Xhuwaji_HaidaGrizzly.jpg?v=1728074721\" alt=\"\" width=\"427\" height=\"432\" style=\"display: block; margin-left: auto; margin-right: auto;\"></span></p>\n<h5 style=\"text-align: center;\">\n<span> </span><span id=\"DeltaPlaceHolderMain\"><span class=\"ms-rteThemeFontFace-1\">Bill Reid, (Canadian, 1920 – 1998)<em> XHUWAJI/Haida Grizzly Bear, </em>(1990) Serigraph, 22 in x 22 in. </span></span>\n</h5>\n<div>In 1990, the group published the first Artists for Kids Limited Edition Portfolio print, <i>Xhuwaji / Haida Grizzly Bear.</i> This print by Bill Reid, based on a ceremonial drum, marked the beginning of an extraordinary partnership with now more than 100 Canadian artists - from Kenojuak Ashevak to Ian Wallace - that has produced one of the most significant limited edition collections in the country.</div>\n<div></div>\n<div>Proceeds from the sale of prints fund educational programs, artist residencies, art camps, scholarships, bursaries, and future acquisitions for Artists for Kids and the Gordon Smith Gallery Permanent Collection.</div>\n<div></div>\n<div>Artists for Kids brings together educators and the community at large, to provide inspiring, highly relevant educational experiences and enrichment, for thousands of young people annually, while encouraging students to pursue and share their own artistic voice and narrative.</div>\n<div></div>\n<div>Through the Gordon Smith Gallery of Canadian Art, established as Canada's first public art gallery for young audiences, Artists for Kids has created a space for young audiences and our community to experience the narrative of Canadian Art through a significant collection of visual art. As a visual arts catalyst in the community, Artists for Kids is proud to contribute to the development of a rich cultural aesthetic.</div>\n<div></div>\n<div>The continued growth and development of our acclaimed program in North Vancouver during the past three decades, provides substantial documentation that intentional art education in schools led by art specialists, can significantly transform young lives, inform programming in schools and ultimately shape a community in ways once thought unimaginable. We see clearly what can be accomplished and possible in education with intentional commitment, understanding and engagement.</div>",
+   "bodySummary": "Established in 1989 by renowned BC artist-patrons Gordon Smith, Jack Shadbolt and Bill Reid, Artists for Kids was founded with the singular intent ...",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155718615337",
+   "handle": "engage",
+   "title": "Engage",
+   "isPublished": false,
+   "templateSuffix": "page",
+   "createdAt": "2026-07-24T19:26:17Z",
+   "updatedAt": "2026-09-29T23:09:52Z",
+   "publishedAt": null,
+   "body": "<p><span style=\"color: #2b2b2b; background-color: #ffffff; font-size: 13.999999999999998pt; font-family: Poppins,sans-serif;\">Paired with our dedication to curation is our unique approach to stimulating public engagement with the arts. We believe that exhibitions and programming go hand in hand, and we work to provide interdisciplinary visual arts experiences for our audience. These might take the form of panel discussions, artist talks, workshops, family days, children’s art workshops, musical performances, and docent tours. We are dedicated to supporting art enrichment for the community that has an impact long after the exhibition ends.</span><span style=\"color: #666666; font-size: 13.999999999999998pt; font-family: Poppins,sans-serif;\"> </span></p>",
+   "bodySummary": "Paired with our dedication to curation is our unique approach to stimulating public engagement with the arts. We believe that exhibitions and progr...",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155759378729",
+   "handle": "exhibitions-1",
+   "title": "Exhibitions",
+   "isPublished": false,
+   "templateSuffix": "exhibitions-overview",
+   "createdAt": "2026-07-27T19:42:14Z",
+   "updatedAt": "2026-09-29T23:09:59Z",
+   "publishedAt": null,
+   "body": "<p><strong><span style=\"color: #ff9900; font-size: 16pt; font-family: Poppins,sans-serif;\">Artists For Kids Exhibitions<br></span></strong><span>Opening each Fall during the school year, selections from the Artists For Kids </span><span>Teaching Collection are exhibited for school groups, families and the general public at the Gordon Smith Gallery. Selected works share a unifying theme and engage with important art historical, social, cultural, political or environmental issues, presented in an accessible way that invites and encourages meaningful engagement with Canadian art.<br><br></span><strong><span style=\"color: #b8bc49; font-size: 16pt; font-family: Poppins,sans-serif;\">Smith Foundation Exhibitions</span></strong> <br><span>During the spring and summer months, the Gordon and Marion Smith Foundation presents professionally curated exhibitions that represent the range of advanced practice in visual arts; publications that provide in-depth explorations of contemporary art; lectures and symposia with leading artists and curators who encourage debate and further understanding; interpretative tools that invite visitors to question, explore and reflect upon their experiences; and programming that incorporates other areas of culture at their intersection with visual art.<br></span></p>\n<p class=\"\"><span>Beginning in 2025, The Curatorial Fellowship at the Gordon Smith Gallery is a unique opportunity for an early-career curator to gain hands-on experience in contemporary art curation, with a particular focus on how exhibitions can intersect with art education, providing a platform for individual career growth and furthering sustainable sector development. The fellow works closely with a curator mentor to design and deliver an exhibition in the Spring that showcases Canadian contemporary artists and creates meaningful connections with both young audiences and the broader public. Additionally, they support ongoing projects and help develop accessible opportunities connected to the exhibitions and educational programs. </span></p>",
+   "bodySummary": "Artists For Kids ExhibitionsOpening each Fall during the school year, selections from the Artists For Kids Teaching Collection are exhibited for sc...",
+   "metafields": {
+    "nodes": [
+     {
+      "namespace": "custom",
+      "key": "hero_image",
+      "type": "file_reference",
+      "value": "gid://shopify/MediaImage/45566339481897"
+     },
+     {
+      "namespace": "custom",
+      "key": "hero_caption",
+      "type": "single_line_text_field",
+      "value": "Photography by Rachel Topham"
+     }
+    ]
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155776450857",
+   "handle": "exhibition-one-hundred-artists-deep",
+   "title": "Exhibition: One Hundred Artists Deep",
+   "isPublished": false,
+   "templateSuffix": "exhibition-ohad-2026",
+   "createdAt": "2026-07-28T21:29:32Z",
+   "updatedAt": "2026-09-29T23:09:54Z",
+   "publishedAt": null,
+   "body": "<h2><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">April 11 - June 20, 2026<br>Curated by Andrea Valentine-Lewis</span></h2>\n<p>Founding Artists: <br>Bill Reid, Jack Shadbolt, Gordon Smith<br><br>Artists: <br>Corey Bulpitt, Andrew Dadson, Alex Gibson, Chantal Gibson, Tiziana La Melia, veto monteiro, Manuel Axel Strain, and Isabel Wynn</p>\n<p><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">In </span><em><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">One Hundred Artists Deep</span></em><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">, eight local artists were invited to create new work in response to artworks from the Artists for Kids and Gordon Smith Gallery Permanent Collection by founders Bill Reid (1920–1998), Jack Shadbolt (1909–1998), and Gordon Smith (1919–2020). Each of these founding artists left an enduring legacy, not only through their artistic practices but through their deep commitment to arts education.</span></p>\n<p><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">Over the course of their lives, Reid, Shadbolt, and Smith taught and mentored thousands of young artists and apprentices. Their ideas, values, and approaches to making continue to circulate—sometimes visibly, sometimes quietly—through subsequent generations of artists.</span></p>\n<p><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">The eight participating artists were selected for the strength and diversity of their practices, as well as for their sensitive and intuitive approaches to art-making. They were invited to respond to works by Reid, Shadbolt, and Smith from the Artists For Kids and Gordon Smith Gallery Permanent Collection, with full freedom in how that response took shape. The historical works and the contemporary responses are presented together in the gallery, creating a space for conversation across time.</span></p>\n<p><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">The exhibition’s title is drawn from a phrase that Smith often used, saying he was “a hundred artists deep” and stood “on the shoulders” of artists past and present. Every artist emerges from a layered history of influence—artistic, personal, familial, educational, and cultural. </span><em><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\">One Hundred Artists Deep</span></em><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\"> reflects on this accumulated inheritance and the many ways artistic knowledge is carried forward.</span></p>",
+   "bodySummary": "April 11 - June 20, 2026Curated by Andrea Valentine-Lewis Founding Artists: Bill Reid, Jack Shadbolt, Gordon SmithArtists: Corey Bulpitt, Andrew Da...",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155806335273",
+   "handle": "exhibition-from-the-ground",
+   "title": "Exhibition: From The Ground",
+   "isPublished": false,
+   "templateSuffix": "exhibition-ftg",
+   "createdAt": "2026-07-30T20:20:53Z",
+   "updatedAt": "2026-09-29T23:09:53Z",
+   "publishedAt": null,
+   "body": "<h3 class=\"fusion-responsive-typography-calculated\">September 19, 2025 – February 26, 2026</h3>\n<p><em>From the Ground</em><span> </span>explores the interconnectedness of the natural world and our reciprocal relationship with the ecosystems in which we are embedded – expanding our awareness of both the visible and invisible in our environments and broadening our sense of time. The exhibition is rooted in the learning principle articulated by the First Nations Education Steering Committee, which emphasizes \"connectedness, reciprocal relationships, and a sense of place.\" Within the urgency of the climate crisis,<span> </span><em>From the Ground<span> </span></em>invites shared dialogue and connection through creative and educational practices.</p>\n<p>Curated by Holly Schmidt and Amelia Epp,<span> </span><em>From the Ground</em><span> </span>brings together drawings, sculptures, prints, and photographs representing the natural world through stories, materials, time, and natural processes. Works by contemporary Canadian artists Amelia Butcher, Xinwei Che, and Genevieve Robertson are shown alongside selections from the Artists for Kids and the Gordon Smith Gallery's Permanent Collection which include, Lauren Brevner, James Nexw'Kalus-Xwalacktun Harry, Karin Bubaš, Edward Burtynsky, Victor Cicansky, Anna Binta Diallo, Toni Onley, Gordon Smith, and Charlene Vickers.</p>\n<p>This exhibition is presented by Artists For Kids in partnership with The Gordon and Marion Smith Foundation for Young Artists, and supported by the North Vancouver School District and North Van Recreation and Culture, as well as The Tuey Charitable Foundation and The Christopher Foundation.</p>\n<p><span>To learn more about FNESC and the First Peoples Principles of Learning, visit <a href=\"https://www.fnesc.ca/\">www.fnesc.ca</a></span><span style=\"color: #666666; font-size: 13.5pt; font-family: Poppins,sans-serif;\"></span></p>",
+   "bodySummary": "September 19, 2025 – February 26, 2026 From the Ground explores the interconnectedness of the natural world and our reciprocal relationship with th...",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155806466345",
+   "handle": "exhibition-stitched-merging-photography-and-textile-practices",
+   "title": "Exhibition: Stitched: Merging Photography and Textile Practices",
+   "isPublished": false,
+   "templateSuffix": "exhibition-stitched",
+   "createdAt": "2026-07-30T20:34:42Z",
+   "updatedAt": "2026-09-29T23:09:57Z",
+   "publishedAt": null,
+   "body": "<h3 class=\"fusion-responsive-typography-calculated\">April 3, 2025 – June 21, 2025</h3>\n<h5><span>Co-curated by Emmy Lee Wall, Executive Director and Chief Curator, Capture Photography Festival, and Chelsea Yuill, Assistant Curator, Capture Photography Festival</span></h5>\n<h5><span>Artists: <br>Simranpreet Kaur Anand, Barbara Astman, Maya Beaudry, Dana Claxton, Liz Ikiriko, Jayce Salloum, Michaëlle Sergile, Michelle Sound, Lan “Florence” Yee</span></h5>\n<main id=\"main\" class=\"clearfix width-100\">\n<div class=\"fusion-row\">\n<section id=\"content\" class=\"portfolio-full\">\n<article id=\"post-5432\" class=\"post-5432 avada_portfolio type-avada_portfolio status-publish format-standard has-post-thumbnail hentry portfolio_category-past\">\n<div class=\"project-content\">\n<div class=\"project-description post-content\">\n<div class=\"fusion-fullwidth fullwidth-box fusion-builder-row-2 fusion-flex-container nonhundred-percent-fullwidth non-hundred-percent-height-scrolling\">\n<div class=\"fusion-builder-row fusion-row fusion-flex-align-items-flex-start fusion-flex-content-wrap\">\n<div class=\"fusion-layout-column fusion_builder_column fusion-builder-column-1 fusion_builder_column_1_1 1_1 fusion-flex-column\">\n<div class=\"fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column\">\n<div class=\"fusion-text fusion-text-1\">\n<p><span>Photography and textiles are ubiquitous; we continuously add to our personal diary of photographs on our smart phones and are wrapped in and clothed by fabric. This exhibition explores the intrinsic relationship between textiles and photography. Photography, with its many uses for personal snapshots, evidence, surveillance, advertising, storytelling, and art, is a relatively new medium. Textiles have traditionally been dismissed as craft in part because of the gendered norms embedded within these historically domestic practices, which include sewing, beading, embroidery, knitting, lacemaking, weaving, and dyeing. Although obvious distinctions exist, there are many threads of connection between the materials and processes used in the two mediums: the natural and synthetic fibres that compose paper and thread and the chemical process of creating a photograph or dyeing fabric.</span></p>\n<p>The artists in this exhibition proudly collapse the divisions and hierarchies of these two mediums to reclaim and integrate methods of image-making into their critical practices, forming new approaches to lens-based and textile art forms. Including emerging and established artists, the artworks in this exhibition explore ritual, memory, aesthetic inheritance, technology, immigration, and colonial and embodied archives. In a cultural landscape that continues to become more and more digitized, their work asks what it means to create images that evoke the desire to touch and feel? By disrupting traditions that limit experimentation, the unexpected methods and hybridity of approaches chart new territories of what is possible in today’s overwhelmingly saturated image culture.<br><br></p>\n<p class=\"fusion-responsive-typography-calculated\"><i><span>Stitched: Merging Photography and Textile Practices</span></i><span> is co-presented by The Gordon Smith Gallery of Canadian Art and</span><span> </span><a href=\"https://capturephotofest.com/\">Capture Photography Festival</a><span>. It is sponsored by </span><a href=\"https://parcliving.ca/\">Parc Retirement Living</a><span> </span><span>and is generously supported by </span><span>the </span><a href=\"https://audainfoundation.com/\">Audain Foundation</a><span>, </span><span>the Timothy A. Young Family Foundation, </span><span>the <a href=\"https://www.cnv.org/\">City of North Vancouver</a>, the <a href=\"https://www.dnv.org/\">District of North Vancouver</a> through the Arts &amp; Culture Grants Program of </span><span>the </span><a href=\"https://www.nvrc.ca/\">North Vancouver Recreation and Culture Commission</a><span>, </span><a href=\"https://www.sd44.ca/school/artistsforkids/Pages/default.aspx#/=\">Artists For Kids</a><span>, the <a href=\"https://smithfoundation.co/exhibitions-items/stitched-merging-photography-and-textile-practices/smithfoundation.ca\">Gordon and Marion Smith Foundation for Young Artists</a> and the </span><a href=\"https://www.sd44.ca/Pages/default.aspx#/=\">North Vancouver School District</a><span>.</span></p>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</article>\n</section>\n</div>\n</main>",
+   "bodySummary": "April 3, 2025 – June 21, 2025 Co-curated by Emmy Lee Wall, Executive Director and Chief Curator, Capture Photography Festival, and Chelsea Yuill, A...",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155807351081",
+   "handle": "exhibition-playhouse",
+   "title": "Exhibition: Playhouse",
+   "isPublished": false,
+   "templateSuffix": "exhibition-playhouse",
+   "createdAt": "2026-07-30T22:30:46Z",
+   "updatedAt": "2026-09-29T23:09:55Z",
+   "publishedAt": null,
+   "body": "<h3 class=\"fusion-responsive-typography-calculated\">September 20, 2024 - February 27, 2025</h3>\n<h5><span>Curated by Annie Canto and Amelia Epp</span></h5>\n<h5><span>Artists: <br>Anne Meredith Barry, Karin Bubaš, Annie Canto, Victor Cicansky, Leonhard Epp, Gathie Falk, Geoffrey Farmer, Whess Harman, Guná Jensen, Hannah Jickling and Reed H. Reed, Sandeep Johal, Helen Kalvak, Sara Khan, Roz Marshall, Cindy Mochizuki, Parvin Peivandi, Setsuko Piroche, Jane Ash Poitras, Jack Shadbolt, Sylvia Tait, Tukuki, Vancouver School Collective, Etienne Zack, Barbara Zeigler and Joan Smith</span></h5>\n<main id=\"main\" class=\"clearfix width-100\">\n<div class=\"fusion-row\">\n<section id=\"content\" class=\"portfolio-full\">\n<article id=\"post-5432\" class=\"post-5432 avada_portfolio type-avada_portfolio status-publish format-standard has-post-thumbnail hentry portfolio_category-past\">\n<div class=\"project-content\">\n<div class=\"project-description post-content\">\n<div class=\"fusion-fullwidth fullwidth-box fusion-builder-row-2 fusion-flex-container nonhundred-percent-fullwidth non-hundred-percent-height-scrolling\">\n<div class=\"fusion-builder-row fusion-row fusion-flex-align-items-flex-start fusion-flex-content-wrap\">\n<div class=\"fusion-layout-column fusion_builder_column fusion-builder-column-1 fusion_builder_column_1_1 1_1 fusion-flex-column\">\n<div class=\"fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column\">\n<div class=\"fusion-text fusion-text-1\">\n<p><em>Playhouse </em>features artworks from over 20 Canadian artists and presents the Gordon Smith Gallery as a place to experience stories, meet characters, and transform the spaces we inhabit in order to unveil unseen narratives. The exhibition sets the stage for us to consider ways in which the physical, social, cultural, and imagined qualities of a place are intertwined.<br><br><em>Playhouse</em> is inspired by comics, broadly interpreted as characters acting in frames, asserting control over their own narratives. Comics are accessible forms of sequential storytelling where the reader builds a relationship with characters over time. Throughout the exhibition we encounter sculptures, animation, paintings, and textiles containing active forms and figures performing within their panels and waiting to be interpreted by viewers of all ages.<br><br>The works of contemporary Canadian artists Whess Harman, Hannah Jickling and Reed H. Reed, Guná Jensen, and Cindy Mochizuki are shown alongside works from the Artists for Kids’ Permanent Collection. The perspectives of elementary and secondary students across the Lower Mainland are featured through textile artworks and zines.<br><br>This exhibition is presented by Artists For Kids and the Gordon Smith Gallery of Canadian Art in partnership with the Gordon and Marion Smith Foundation for Young Artists, the North Vancouver School District, the North Vancouver Recreation and Culture Commission, and is supported by the Canada Council for the Arts.</p>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</article>\n</section>\n</div>\n</main>",
+   "bodySummary": "September 20, 2024 - February 27, 2025 Curated by Annie Canto and Amelia Epp Artists: Anne Meredith Barry, Karin Bubaš, Annie Canto, Victor Cicansk...",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155807383849",
+   "handle": "exhibition-prevailing-landscapes",
+   "title": "Exhibition: Prevailing Landscapes",
+   "isPublished": false,
+   "templateSuffix": "exhibition-prevailing",
+   "createdAt": "2026-07-30T22:37:43Z",
+   "updatedAt": "2026-09-29T23:09:56Z",
+   "publishedAt": null,
+   "body": "<h3 class=\"fusion-responsive-typography-calculated\">April 12, 2024 - June 22, 2024</h3>\n<h5><span>Curated by Jackie Wong</span></h5>\n<h5><span>Artists: <br>Kim Dorland, Stan Douglas, Tim Gardner, Cameron Kerr, Krystle Silverfox, Ian Wallace, Jin-Me Yoon and Karen Zalamea</span></h5>\n<main id=\"main\" class=\"clearfix width-100\">\n<div class=\"fusion-row\">\n<section id=\"content\" class=\"portfolio-full\">\n<article id=\"post-5432\" class=\"post-5432 avada_portfolio type-avada_portfolio status-publish format-standard has-post-thumbnail hentry portfolio_category-past\">\n<div class=\"project-content\">\n<div class=\"project-description post-content\">\n<div class=\"fusion-fullwidth fullwidth-box fusion-builder-row-2 fusion-flex-container nonhundred-percent-fullwidth non-hundred-percent-height-scrolling\">\n<div class=\"fusion-builder-row fusion-row fusion-flex-align-items-flex-start fusion-flex-content-wrap\">\n<div class=\"fusion-layout-column fusion_builder_column fusion-builder-column-1 fusion_builder_column_1_1 1_1 fusion-flex-column\">\n<div class=\"fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column\">\n<div class=\"fusion-text fusion-text-1\">\n<p><em>Prevailing Landscapes</em> addresses the ways in which the Canadian landscape prevails in contemporary conceptual artistic practices and how the narrative or predominant theme of the work is affected when it includes a Canadian landscape as a background. The subject and background become interwoven. This can cause tension and/or conflict, but it can also create strength and harmony.<br><br>The iconic Canadian Landscape has historically been a dominant theme in our country’s visual artworks, and it remains a current area of inquiry for contemporary artists. As a subject, it is physically vast and offers a visual backdrop for art throughout different periods and genres. Historically, we have engaged with the Canadian landscape through the male gaze – a romanticised colonial perspective of the great Canadian wilderness. <em>Prevailing Landscapes</em> considers how contemporary conceptual artworks have challenged the colonial, male gaze that has shaped the discourse in the genre.</p>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</article>\n</section>\n</div>\n</main>",
+   "bodySummary": "April 12, 2024 - June 22, 2024 Curated by Jackie Wong Artists: Kim Dorland, Stan Douglas, Tim Gardner, Cameron Kerr, Krystle Silverfox, Ian Wallace...",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155807711529",
+   "handle": "exhibition-the-art-of-conversation",
+   "title": "Exhibition: The Art of Conversation",
+   "isPublished": false,
+   "templateSuffix": "exhibition-taoc",
+   "createdAt": "2026-07-30T22:49:33Z",
+   "updatedAt": "2026-09-29T23:09:58Z",
+   "publishedAt": null,
+   "body": "<h3 class=\"fusion-responsive-typography-calculated\">September 23, 2023 - February 22, 2024</h3>\n<h5><span>Curated by Janet Wang and Amelia Epp</span></h5>\n<main id=\"main\" class=\"clearfix width-100\">\n<div class=\"fusion-row\">\n<section id=\"content\" class=\"portfolio-full\">\n<article id=\"post-5432\" class=\"post-5432 avada_portfolio type-avada_portfolio status-publish format-standard has-post-thumbnail hentry portfolio_category-past\">\n<div class=\"project-content\">\n<div class=\"project-description post-content\">\n<div class=\"fusion-fullwidth fullwidth-box fusion-builder-row-2 fusion-flex-container nonhundred-percent-fullwidth non-hundred-percent-height-scrolling\">\n<div class=\"fusion-builder-row fusion-row fusion-flex-align-items-flex-start fusion-flex-content-wrap\">\n<div class=\"fusion-layout-column fusion_builder_column fusion-builder-column-1 fusion_builder_column_1_1 1_1 fusion-flex-column\">\n<div class=\"fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column\">\n<div class=\"fusion-text fusion-text-1\">\n<p><em>The Art of Conversation</em><span> features artwork by over 20 Canadian artists, exploring the role of art as a platform for communication. The Art of Conversation draws conversational threads between the works in the gallery, highlighting art’s potential to facilitate and provoke dialogue. The perspectives and artistic conversations of elementary and secondary school students are featured through original writing and art.<br><br></span><span><span class=\"ms-rteFontSize-2\">Artists for Kids acknowledges the support of the Canada Council for the Arts</span></span></p>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</article>\n</section>\n</div>\n</main>",
+   "bodySummary": "September 23, 2023 - February 22, 2024 Curated by Janet Wang and Amelia Epp The Art of Conversation features artwork by over 20 Canadian artists, e...",
+   "metafields": {
+    "nodes": []
+   }
+  }
+ ],
+ "menus": [
+  {
+   "id": "gid://shopify/Menu/303965929769",
+   "handle": "new-website-menu-1",
+   "title": "NEW WEBSITE MENU",
+   "isDefault": false,
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/762068730153",
+     "title": "About",
+     "url": "/pages/about",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/141077479721",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/762068762921",
+       "title": "About Us",
+       "url": "/pages/about-us",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155687813417",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762068828457",
+       "title": "Contact",
+       "url": "/pages/contact",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/140660572457",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/763162951977",
+       "title": "Volunteer",
+       "url": "/pages/volunteer",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155902738729",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762306953513",
+       "title": "Permanent Collection",
+       "url": "/pages/permanent-collection",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155720548649",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762068795689",
+       "title": "Plan Your Visit",
+       "url": "/pages/plan-your-visit",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155670151465",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/762069090601",
+     "title": "Exhibitions",
+     "url": "/pages/exhibitions-1",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155759378729",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/762069123369",
+       "title": "On Now",
+       "url": "/pages/on-now",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155763999017",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762069188905",
+       "title": "Past Exhibitions",
+       "url": "/pages/past-exhibitions",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155763736873",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/762307215657",
+     "title": "Artists For Kids",
+     "url": "/pages/artists-for-kids",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155720810793",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/762304364841",
+     "title": "Programs",
+     "url": "/pages/public-programs-1",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155718943017",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/764215066921",
+       "title": "Public Programs",
+       "url": "/pages/public-programs-1",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155718943017",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762304397609",
+       "title": "Speaker Series",
+       "url": "/pages/speaker-series",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155719434537",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762304430377",
+       "title": "Music At The Smith",
+       "url": "/pages/music-at-the-smith",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155719696681",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762305315113",
+       "title": "Explore + Create",
+       "url": "/pages/explore-create",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155720089897",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762306920745",
+       "title": "Art In Good Company",
+       "url": "/pages/art-in-good-company",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155720253737",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/762212450601",
+     "title": "Smith Foundation",
+     "url": "/pages/the-smith-foundation",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155705409833",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/764215034153",
+       "title": "Smith Foundation",
+       "url": "/pages/the-smith-foundation",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155705409833",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762145800489",
+       "title": "Gordon and Marion",
+       "url": "/pages/gordon-and-marion",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155692957993",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/763077984553",
+       "title": "Donate",
+       "url": "/pages/donate",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155885863209",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/762069057833",
+     "title": "Shop",
+     "url": "/collections",
+     "type": "COLLECTIONS",
+     "resourceId": null,
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/762068861225",
+       "title": "Our Story",
+       "url": "/pages/our-story",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155703312681",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/766915313961",
+       "title": "2026 Fall Portfolio",
+       "url": "/collections/2026-fall-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/505736429865",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762068893993",
+       "title": "2026 Spring Portfolio ",
+       "url": "/collections/2026-spring-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/501485797673",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762068926761",
+       "title": "2025 Fall Portfolio",
+       "url": "https://ed35ee-ea.myshopify.com/collections/2025-fall-portfolio",
+       "type": "HTTP",
+       "resourceId": null,
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762068959529",
+       "title": "2025 Spring Portfolio",
+       "url": "/collections/2025-spring-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/484250386729",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762068992297",
+       "title": "2024 Fall Portfolio",
+       "url": "/collections/2024-fall-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/479152668969",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/762069025065",
+       "title": "Artists",
+       "url": "/pages/artists",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/140886573353",
+       "items": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Menu/305860739369",
+   "handle": "new-theme-main",
+   "title": "Main menu (new theme)",
+   "isDefault": false,
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767489311017",
+     "title": "Exhibitions",
+     "url": "/pages/on-now",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155763999017",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/767489343785",
+       "title": "On now",
+       "url": "/pages/on-now",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155763999017",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489376553",
+       "title": "Upcoming",
+       "url": "/pages/upcoming-exhibitions",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155763376425",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489409321",
+       "title": "Past exhibitions",
+       "url": "/pages/past-exhibitions",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155763736873",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/767633785129",
+     "title": "Collection",
+     "url": "/pages/permanent-collection",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155720548649",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/767633817897",
+       "title": "The collection",
+       "url": "/pages/permanent-collection",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155720548649",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767633850665",
+       "title": "Artists",
+       "url": "/pages/artists",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/140886573353",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489638697",
+     "title": "Programs",
+     "url": "/pages/public-programs-1",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155718943017",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/767489671465",
+       "title": "Public programs",
+       "url": "/pages/public-programs-1",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155718943017",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767674155305",
+       "title": "Upcoming events",
+       "url": "/pages/upcoming-events",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155669168425",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489704233",
+       "title": "Speaker series",
+       "url": "/pages/speaker-series",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155719434537",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489737001",
+       "title": "Music at the Smith",
+       "url": "/pages/music-at-the-smith",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155719696681",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489769769",
+       "title": "Explore + Create",
+       "url": "/pages/explore-create",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155720089897",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489802537",
+       "title": "Art in Good Company",
+       "url": "/pages/art-in-good-company",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155720253737",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489442089",
+     "title": "About",
+     "url": "/pages/about-us",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155687813417",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/767489474857",
+       "title": "About the gallery",
+       "url": "/pages/about-us",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155687813417",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489507625",
+       "title": "Plan your visit",
+       "url": "/pages/plan-your-visit",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155670151465",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489573161",
+       "title": "Volunteer",
+       "url": "/pages/volunteer",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155902738729",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489605929",
+     "title": "Artists for Kids",
+     "url": "/pages/artists-for-kids",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155720810793",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/767644205353",
+       "title": "About Artists for Kids",
+       "url": "/pages/artists-for-kids",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155720810793",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767644238121",
+       "title": "Classes and camps",
+       "url": "/pages/classes-and-camps",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/165837734185",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767644270889",
+       "title": "Schools and teachers",
+       "url": "/pages/schools-and-teachers",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/165837766953",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767644303657",
+       "title": "Awards and scholarships",
+       "url": "/pages/awards-and-scholarships",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/165838225705",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767644336425",
+       "title": "Support Artists for Kids",
+       "url": "/pages/support-artists-for-kids",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/165838258473",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489835305",
+     "title": "Smith Foundation",
+     "url": "/pages/the-smith-foundation",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155705409833",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/767489868073",
+       "title": "About the Foundation",
+       "url": "/pages/the-smith-foundation",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155705409833",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489900841",
+       "title": "Gordon and Marion",
+       "url": "/pages/gordon-and-marion",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155692957993",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767489933609",
+       "title": "Donate",
+       "url": "/pages/donate",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155885863209",
+       "items": []
+      }
+     ]
+    },
+    {
+     "id": "gid://shopify/MenuItem/767489966377",
+     "title": "Shop",
+     "url": "/pages/shop",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155762786601",
+     "items": [
+      {
+       "id": "gid://shopify/MenuItem/767489999145",
+       "title": "Limited editions",
+       "url": "/pages/shop",
+       "type": "PAGE",
+       "resourceId": "gid://shopify/Page/155762786601",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767490031913",
+       "title": "2026 Fall Portfolio",
+       "url": "/collections/2026-fall-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/505736429865",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767490064681",
+       "title": "2026 Spring Portfolio",
+       "url": "/collections/2026-spring-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/501485797673",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767490097449",
+       "title": "2025 Fall Portfolio",
+       "url": "/collections/2025-fall-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/495640445225",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767490130217",
+       "title": "2025 Spring Portfolio",
+       "url": "/collections/2025-spring-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/484250386729",
+       "items": []
+      },
+      {
+       "id": "gid://shopify/MenuItem/767490162985",
+       "title": "2024 Fall Portfolio",
+       "url": "/collections/2024-fall-portfolio",
+       "type": "COLLECTION",
+       "resourceId": "gid://shopify/Collection/479152668969",
+       "items": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/Menu/305860935977",
+   "handle": "new-theme-explore",
+   "title": "Footer: Explore (new theme)",
+   "isDefault": false,
+   "items": [
+    {
+     "id": "gid://shopify/MenuItem/767490261289",
+     "title": "Exhibitions",
+     "url": "/pages/on-now",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155763999017",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490294057",
+     "title": "Limited editions",
+     "url": "/pages/shop",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155762786601",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490326825",
+     "title": "Artists for Kids",
+     "url": "/pages/artists-for-kids",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/155720810793",
+     "items": []
+    },
+    {
+     "id": "gid://shopify/MenuItem/767490359593",
+     "title": "Frequently asked questions",
+     "url": "/pages/frequently-asked-questions",
+     "type": "PAGE",
+     "resourceId": "gid://shopify/Page/154942865705",
+     "items": []
+    }
+   ]
+  }
+ ],
+ "redirects_from_pages": [
+  {
+   "id": "gid://shopify/UrlRedirect/688266314025",
+   "path": "/pages/exhibition-one-hundred-artists-deep",
+   "target": "/pages/exhibitions/one-hundred-artists-deep"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266346793",
+   "path": "/pages/exhibition-from-the-ground",
+   "target": "/pages/exhibitions/from-the-ground"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266379561",
+   "path": "/pages/exhibition-stitched-merging-photography-and-textile-practices",
+   "target": "/pages/exhibitions/stitched"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266412329",
+   "path": "/pages/exhibition-playhouse",
+   "target": "/pages/exhibitions/playhouse"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266445097",
+   "path": "/pages/exhibition-prevailing-landscapes",
+   "target": "/pages/exhibitions/prevailing-landscapes"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266477865",
+   "path": "/pages/exhibition-the-art-of-conversation",
+   "target": "/pages/exhibitions/the-art-of-conversation"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266510633",
+   "path": "/pages/exhibitions-1",
+   "target": "/pages/on-now"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266543401",
+   "path": "/pages/about",
+   "target": "/pages/about-us"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266576169",
+   "path": "/pages/our-story",
+   "target": "/pages/artists-for-kids"
+  },
+  {
+   "id": "gid://shopify/UrlRedirect/688266608937",
+   "path": "/pages/engage",
+   "target": "/pages/public-programs-1"
+  }
+ ]
+}
