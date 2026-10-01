@@ -82,14 +82,16 @@
     {%- capture caption -%}
       {%- if room_view -%}
         {%- if lead.installation_credit.value != blank -%}
-          <p class="gs-hero__caption gs-caption">{{ lead.installation_credit.value | escape }}</p>
+          {%- capture credit -%}{{ lead.installation_credit.value | escape }}{%- endcapture -%}
+          <p class="gs-hero__caption gs-caption">{%- render 'gs-keep-credit', html: credit -%}</p>
         {%- endif -%}
       {%- elsif lead -%}
         {%- if lead.key_image_caption.value != blank -%}
-          <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ lead.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+          <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ lead.key_image_caption | metafield_tag }}{%- endcapture -%}{%- capture html -%}{%- render 'gs-rich-text', html: html -%}{%- endcapture -%}{%- render 'gs-keep-credit', html: html -%}</div>
         {%- endif -%}
       {%- elsif s.caption != blank -%}
-        <p class="gs-hero__caption gs-caption">{{ s.caption | escape }}</p>
+        {%- capture credit -%}{{ s.caption | escape }}{%- endcapture -%}
+        <p class="gs-hero__caption gs-caption">{%- render 'gs-keep-credit', html: credit -%}</p>
       {%- endif -%}
     {%- endcapture -%}
     {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}

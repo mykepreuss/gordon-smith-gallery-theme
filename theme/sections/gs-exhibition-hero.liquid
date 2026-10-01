@@ -37,7 +37,7 @@
   <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
     {%- capture caption -%}
       {%- if entry.key_image_caption.value != blank -%}
-        <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ entry.key_image_caption | metafield_tag }}{%- endcapture -%}{%- render 'gs-rich-text', html: html -%}</div>
+        <div class="gs-hero__caption gs-caption">{%- capture html -%}{{ entry.key_image_caption | metafield_tag }}{%- endcapture -%}{%- capture html -%}{%- render 'gs-rich-text', html: html -%}{%- endcapture -%}{%- render 'gs-keep-credit', html: html -%}</div>
       {%- endif -%}
     {%- endcapture -%}
     {%- render 'gs-media', image: entry.key_image.value, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}

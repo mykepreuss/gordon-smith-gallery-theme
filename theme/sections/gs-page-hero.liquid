@@ -53,7 +53,8 @@
     <div class="gs-hero{% if mode == 'artwork' %} gs-hero--artwork{% endif %}"{% if mode == 'artwork' and image.aspect_ratio %} style="--gs-art-ratio: {{ image.aspect_ratio }}"{% endif %}>
       {%- capture caption -%}
         {%- if f.hero_caption.value != blank -%}
-          <p class="gs-hero__caption gs-caption">{{ f.hero_caption.value | escape }}</p>
+          {%- capture credit -%}{{ f.hero_caption.value | escape }}{%- endcapture -%}
+          <p class="gs-hero__caption gs-caption">{%- render 'gs-keep-credit', html: credit -%}</p>
         {%- endif -%}
       {%- endcapture -%}
       {%- render 'gs-media', image: image, preset: 'hero', mode: mode, shape: 'lg', class: 'gs-hero__media' -%}
