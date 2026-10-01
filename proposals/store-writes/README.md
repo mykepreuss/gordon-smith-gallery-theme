@@ -1198,6 +1198,23 @@ Not in Git, and gone with their deletion, as Michael was told: `171407442217` "O
 
 **Undo:** none for the five drafts. For a rollback or Colorblock: `shopify theme push --unpublished --strict` from its commit (`theme/`, or `baseline/theme/` for Colorblock) in a checkout of that commit.
 
+## 2026-10-01: the old pages and menus deleted (P-70)
+
+**Why:** Michael, 2026-10-01: "Yes, clean them up", of the plan's tidy-up item: the ten pages hidden at the release and the three old menus.
+
+**Checked first:** the store read through the CLI: 59 pages, 13 hidden. The ten in the plan are the ones the release hid, each with a redirect from its address to its new page; the other three hidden pages predate the project and were left. Nothing pointed at the ten or the three menus: no file of the theme, no kept menu, no published page's text or fields, no entry of any type. Before-snapshot, whole: `snapshots/tidy-pages-menus-2026-10-01.json` (each page's title, handle, text, template and fields; each menu's items; the ten redirects).
+
+| Deleted, 22:02:04 to 22:02:24 UTC | Through |
+| --- | --- |
+| Pages `about`, `our-story`, `engage`, `exhibitions-1` and the six `exhibition-…` pages (One Hundred Artists Deep, From The Ground, Stitched, Playhouse, Prevailing Landscapes, The Art of Conversation) | CLI, `pageDelete`, one at a time |
+| Menus `new-website-menu-1`, `new-theme-main`, `new-theme-explore` | CLI, `menuDelete`, one at a time |
+
+No call returned an error (`created/tidy-2026-10-01/deleted.json`).
+
+**Checked after:** each of the ten old addresses still answers 301 to its new page. The store holds 49 pages (3 hidden) and the menus `main-menu`, `footer`, `customer-account-main-menu`, `footer-menu-copy`, `new-theme-legal`, `new-theme-main-2`, `new-theme-explore-2`, `new-theme-programmes`. Home, About Us, On now and Artists for Kids answer 200 with no Liquid error. `check_links.py` on the live site: 0 errors, 4 notes, as before.
+
+**Undo:** from the snapshot: `pageCreate` (unpublished, delete its redirect first) or `menuCreate`.
+
 ## 2026-10-01: the sixth release
 
 **Why:** Michael, 2026-10-01: "Merge #151 and do the release". The release carried #150, the home page (DS-199 to DS-204). No store resource changed. Its record: `PROJECT.md`, row 6f; `IMPLEMENTATION_PLAN.md`, "The sixth release".
