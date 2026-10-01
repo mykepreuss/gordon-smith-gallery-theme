@@ -161,6 +161,6 @@ What the gallery's answers left open. None holds anything up.
 | 13.2 | Canada Day, July 1, 2027, is a Thursday and is not on the closures list. Is the gallery open that day? | Open |
 | 13.3 | *Unfixed* and the picture's file name Laurie Kang; the gallery's image description says Lotus Kang, as the artist is now known. Should the exhibition's page say Lotus L. Kang? | The page as written; the image description says Lotus Kang |
 | 13.4 | The Gallery Program's description now says K-12 classes. Its page and button say Grade 5 for the guided program, and K-12 for self-guided tours. Which should the page say? | The page as written |
-| 13.5 | A class visit "is booked through the registration link". Who is it for, what happens on the day and what does it cost? Schools and teachers still answers none of these itself | Not stated |
+| 13.5 | A class visit "is booked through the registration link", and Schools and teachers now says so. Who is it for, what happens on the day and what does it cost? The page answers none of these itself | How to book only |
 | 13.6 | Does the gallery have its own entry on Wikipedia or Wikidata? Not answered; we can look it up | Not linked |
 | 13.7 | The gallery's note on the document: each class and camp listed on the site with its times, teacher, theme and ages, linking straight to its registration page. It ties to 6.9 to 6.12: who keeps the list up to date each term, and do the registration addresses change? | A project of its own (Michael, 2026-10-01). The buttons go to the old site's pages |

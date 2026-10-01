@@ -1093,10 +1093,28 @@ Each step reads the store, sends only what differs, stops at the first error and
 
 **Checked after:** each step read back from the store. On gordonsmithgallery.com, 42 pages before and after: the only differences are the words above; every title the same but Artists for Kids'; no Liquid error. All 42 descriptions (41 pages and Home) read the same after `descriptions`, after `listing` and after `unstage`. The four artist pages show their biographies; Artists A to Z lists the four new spellings and none of the old. `check_answers.py` on the live site: 28 answered, 4 known gaps, 0 errors (the shipping question is answered now, so its gap is out of `answers.json`). `check_structured_data.py` on 8 live pages: 0 errors. `check_links.py` on the live site: 1,637 pages read, 0 errors, 4 notes, as before.
 
-**Not written.** The shipping policy (the note about calculating) and the contact information policy (office hours): the connector and the CLI may read policies but not write them (`write_legal_policies`). The texts before and after are in `snapshots/policies-2026-10-01.json`; Michael makes the two changes in the admin, Settings, Policies. Four additions to page text wait for his go-ahead (`proposals/gallery-answers/README.md`, "Left for Michael").
+**Not written.** The shipping policy (the note about calculating) and the contact information policy (office hours): the connector and the CLI may read policies but not write them (`write_legal_policies`). The texts before and after are in `snapshots/policies-2026-10-01.json`; Michael makes the two changes in the admin, Settings, Policies. Four additions to page text waited for his go-ahead and were written later the same day: "Four additions to page text", below.
 
 **Effect on the live site:** the words above, at once. The descriptions show in search results and link previews as engines read the pages again. The "Described elsewhere" field shows nowhere until the theme reads it.
 
 **Effect on the review theme:** the same, since pages, entries and files are shared.
 
 **Undo:** each call's old values are in the snapshot, under its step. Text: `pageUpdate`, `metafieldsSet` or `metaobjectUpdate` with the `before` values. Artists: `metaobjectUpdate` with the old name, sort name, dates and handle (and delete the four redirects), or an empty biography. Alt text: `fileUpdate` with the old words. Descriptions: `metafieldsSet` on `custom.release_description` with the snapshot's words (the theme reads it first), and `metafieldsDelete` on `global.description_tag`. Artist links: `metaobjectDefinitionUpdate` deleting the field `described_at`, which removes its values.
+
+### Four additions to page text (step `pages`)
+
+**Why:** each puts a new sentence on a page, so each waited for its own yes. The words were set out in `proposals/gallery-answers/README.md`. Michael, 2026-10-01: "Yes to all four page text additions, proceed".
+
+**Checked first:** the store, and by `shopify theme list` the live theme `184824398121` and the review theme `184824725801` (unpublished); no theme written. The step read each page just before: About Us and Schools and teachers had no text, Gordon and Marion had its sentence about Marion Smith once, the FAQ started with its first question once. Before values: `snapshots/gallery-answers-2026-10-01-before.json`, under `pages`. The four live pages were read before and after.
+
+| Page | What | Through |
+| --- | --- | --- |
+| About Us (`gid://shopify/Page/155687813417`) | Its text, four paragraphs, where it had none: the gallery's five sentences on what it is (2.3), then "The Gallery opened in 2012. It is owned by the North Vancouver School District, activated jointly by Artists for Kids and the Smith Foundation, and funded jointly through the school district and the Smith Foundation." (2.1, 2.2) | CLI, `pageUpdate`, 19:56:10 to 19:56:13 UTC, four calls, no error |
+| Schools and teachers (`gid://shopify/Page/165837766953`) | Its text, one line, where it had none: "To book a class visit, use the registration link on the Gallery Program page.", the page's name a link (4.1) | The same |
+| Gordon and Marion (`gid://shopify/Page/155692957993`) | "His late wife, Marion Smith (1941 to 2018), was said to have two careers" (3.7). Published accounts give 1941 as the year the Smiths married and 2009 as the year she died; Michael chose to trust the gallery's document | The same |
+| FAQ (`gid://shopify/Page/154942865705`) | A first question, "What does the gallery sell?", answered "The Gallery sells limited edition prints from renowned Canadian Artists that were gifted directly to Artists for Kids to directly fund Art Education programming." (2.5) | The same |
+
+**Checked after:** the step run again lists nothing; the `faq` step for the release still finds its place. On gordonsmithgallery.com the four pages differ from before by these words alone: same titles and descriptions, no Liquid error. About Us shows its text under the hero and above the three organisations' cards, at the reading width, with "Artists for Kids", "permanent collection" and "Smith Foundation" linked once each by the theme (DS-175); Schools and teachers shows its line under the title, above School programs; no sideways scroll at 390 px. The FAQ's data holds 10 questions, the new one first. `check_structured_data.py` on the four pages: 0 errors. `check_answers.py` on the live site: 32 answered, 0 known gaps, 0 errors; the four gaps these words close are out of `answers.json`, and question 27 now looks for "sells limited edition prints".
+
+**Undo:** `pageUpdate` with each page's `before` body from the snapshot: an empty text for About Us and Schools and teachers.
+
