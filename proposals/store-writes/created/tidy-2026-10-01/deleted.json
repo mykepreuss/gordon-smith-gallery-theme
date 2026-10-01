@@ -1,0 +1,158 @@
+[
+ {
+  "what": "page about",
+  "id": "gid://shopify/Page/141077479721",
+  "at": "2026-10-01T22:02:04+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/141077479721",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page our-story",
+  "id": "gid://shopify/Page/155703312681",
+  "at": "2026-10-01T22:02:05+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155703312681",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page engage",
+  "id": "gid://shopify/Page/155718615337",
+  "at": "2026-10-01T22:02:06+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155718615337",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page exhibitions-1",
+  "id": "gid://shopify/Page/155759378729",
+  "at": "2026-10-01T22:02:07+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155759378729",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page exhibition-one-hundred-artists-deep",
+  "id": "gid://shopify/Page/155776450857",
+  "at": "2026-10-01T22:02:08+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155776450857",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page exhibition-from-the-ground",
+  "id": "gid://shopify/Page/155806335273",
+  "at": "2026-10-01T22:02:09+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155806335273",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page exhibition-stitched-merging-photography-and-textile-practices",
+  "id": "gid://shopify/Page/155806466345",
+  "at": "2026-10-01T22:02:10+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155806466345",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page exhibition-playhouse",
+  "id": "gid://shopify/Page/155807351081",
+  "at": "2026-10-01T22:02:11+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155807351081",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page exhibition-prevailing-landscapes",
+  "id": "gid://shopify/Page/155807383849",
+  "at": "2026-10-01T22:02:13+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155807383849",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "page exhibition-the-art-of-conversation",
+  "id": "gid://shopify/Page/155807711529",
+  "at": "2026-10-01T22:02:16+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155807711529",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "menu new-website-menu-1",
+  "id": "gid://shopify/Menu/303965929769",
+  "at": "2026-10-01T22:02:18+00:00",
+  "answer": {
+   "menuDelete": {
+    "deletedMenuId": "gid://shopify/Menu/303965929769",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "menu new-theme-main",
+  "id": "gid://shopify/Menu/305860739369",
+  "at": "2026-10-01T22:02:22+00:00",
+  "answer": {
+   "menuDelete": {
+    "deletedMenuId": "gid://shopify/Menu/305860739369",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "what": "menu new-theme-explore",
+  "id": "gid://shopify/Menu/305860935977",
+  "at": "2026-10-01T22:02:24+00:00",
+  "answer": {
+   "menuDelete": {
+    "deletedMenuId": "gid://shopify/Menu/305860935977",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
