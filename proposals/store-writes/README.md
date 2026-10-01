@@ -1175,3 +1175,26 @@ No error; the step run again lists nothing.
 
 **Undo:** `IMPLEMENTATION_PLAN.md`, "The fifth release": the rollback theme, then `metafieldsSet` with the snapshot's value (type link).
 
+## 2026-10-01: the old themes deleted (P-69)
+
+**Why:** Michael, 2026-10-01: "Tidy the store's old themes now", then, on the list of 18 themes with a recommendation for each, "All 14 as listed". The plan's tidy-up item ("Open after the release"); the menus and hidden pages in it are left.
+
+**Checked first:** by `shopify theme list`, 18 themes, `184856445225` live and none of the 14 live. The three earlier rollbacks and Colorblock downloaded whole and compared with Git, so each can be made again:
+
+| Theme | Compared with | Result |
+| --- | --- | --- |
+| `184767250729` rollback, first release | `main` at dee1885 | 180 files, the same apart from the empty settings Shopify adds |
+| `184823611689` rollback, second release | `main` at c48901c (#133) | 184 files, the same; its settings matched c48901c byte for byte |
+| `184824398121` rollback, third release | `main` at 1f7d899 | 184 files, the same apart from the empty settings Shopify adds |
+| `183162372393` Colorblock: NEW WEBSITE | `baseline/theme/` | 402 files, the same apart from the empty settings Shopify adds |
+
+Not in Git, and gone with their deletion, as Michael was told: `171407442217` "Old- 06-04-26 Dawn", `171508039977` "Studio", `181481079081` "Copy of Dawn", `182550266153` "Updated copy of Dawn", `182990274857` "July 7 - OLD Updated copy of Dawn". All five predate this project.
+
+| Deleted, 21:4x UTC | Through |
+| --- | --- |
+| The four above; the five drafts; the development themes `184755814697`, `184804704553` ("programs-switcher"), `184804901161` ("event-list-limit"), `184805523753`, `184805556521` ("schema-seo") | `shopify theme delete --theme <id> --force`, one at a time; each answered "deleted" |
+
+**Checked after:** `shopify theme list`: `184856445225` live, `184824725801` "Gordon Smith Gallery (rollback, fourth release)", `184857461033` "Review theme (do not publish)", `184806277417` development. gordonsmithgallery.com answers 200.
+
+**Undo:** none for the five drafts. For a rollback or Colorblock: `shopify theme push --unpublished --strict` from its commit (`theme/`, or `baseline/theme/` for Colorblock) in a checkout of that commit.
+
