@@ -11,6 +11,13 @@
     map position is in Theme settings, Gallery details: it is the store's own address record.
   - The full form also says that anyone can come in without paying, when Theme settings says
     so, and what makes the building easy to get into (DS-171). Both repeat Plan your visit.
+  - The full form gives the days the gallery is closed when it would otherwise be open, from the
+    same Closures setting as the "open today" line (gs-closures, DS-191): each as special opening
+    hours that open and close at 00:00, which is how a closed day is written.
+  - The full form says when the gallery opened, who it belongs to and who funds it, from Theme
+    settings, as the gallery gave them on 2026-10-01 (DS-193): the school district as its parent
+    organisation, and the district and the Foundation as its funders. An empty setting says
+    nothing.
   - With a room, the place is that room as part of the gallery ("Main Floor"): a Place with the
     gallery's address, inside the gallery.
 
@@ -70,6 +77,16 @@
     endif
   endfor
   assign access = access | split: '|'
+
+  # The days it is closed, as "first/last" pairs (DS-191).
+  capture closed
+    render 'gs-closures', part: 'data'
+  endcapture
+  assign closed = closed | strip | split: ','
+
+  # The year it opened is given only when it is a year (DS-193).
+  assign founded = settings.gallery_founded | strip
+  assign founded_back = founded | plus: 0 | append: ''
 -%}
 {
   {%- if room != blank -%}
@@ -122,8 +139,29 @@
         "closes": {{ settings.closes_at | json }}
       }
     {%- endif -%}
+    {%- if closed.size > 0 and open_days.size > 0 -%}
+      ,"specialOpeningHoursSpecification": [
+        {%- for closure in closed -%}
+          {%- assign ends = closure | split: '/' -%}
+          { "@type": "OpeningHoursSpecification", "validFrom": {{ ends.first | json }}, "validThrough": {{ ends.last | json }}, "opens": "00:00", "closes": "00:00" }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    {%- endif -%}
     {%- if profiles.size > 0 -%}
       ,"sameAs": {{ profiles | json }}
+    {%- endif -%}
+    {%- if founded.size == 4 and founded_back == founded -%}
+      ,"foundingDate": {{ founded | json }}
+    {%- endif -%}
+    {%- if settings.gallery_owner != blank -%}
+      {%- capture owner -%}
+        { "@type": "Organization", "name": {{ settings.gallery_owner | json }}{% if settings.gallery_owner_url != blank %}, "url": {{ settings.gallery_owner_url | json }}{% endif %} }
+      {%- endcapture -%}
+      ,"parentOrganization": {{ owner | strip }}
+      ,"funder": [
+        {{ owner | strip }},
+        { "@type": "Organization", "@id": {{ home | append: '#foundation' | json }}, "name": {{ 'general.site_title.foundation' | t | json }} }
+      ]
     {%- endif -%}
     ,"logo": {{ 'gs-logo-gallery.svg' | asset_url | prepend: 'https:' | json }}
     {%- if settings.latitude != blank and settings.longitude != blank -%}

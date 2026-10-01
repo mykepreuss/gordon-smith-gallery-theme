@@ -3,7 +3,9 @@
   logos, the Gallery first, the three at one letter size on one baseline (DS-59), beside the land
   acknowledgement that names them; then
   Visit, Contact, Explore and Follow columns, which keep their places whether or not Follow
-  shows; then the legal line (DS-57). Addresses, hours, contact details, social links and the
+  shows; then the legal line (DS-57). Follow lists the gallery's accounts, which Artists for
+  Kids shares, then the Foundation's own under its name. A screen reader hears whose each of
+  those is ("The Smith Foundation on Instagram"), so no two links read the same (DS-192). Addresses, hours, contact details, social links and the
   land acknowledgement are theme settings (Gallery details, Social links), so they're the same on
   every page.
 {%- endcomment -%}
@@ -16,6 +18,24 @@
       <li>
         <a class="gs-link--external" href="{{ settings[setting_id] }}">
           {{- label_key | t -}}
+          <span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign foundation_name = 'footer.follow_foundation' | t -%}
+{%- capture foundation_items -%}
+  {%- assign foundation_socials = 'instagram,facebook' | split: ',' -%}
+  {%- for key in foundation_socials -%}
+    {%- assign setting_id = 'foundation_' | append: key -%}
+    {%- if settings[setting_id] != blank -%}
+      {%- assign label_key = 'footer.social_' | append: key -%}
+      {%- assign network = label_key | t -%}
+      <li>
+        <a class="gs-link--external" href="{{ settings[setting_id] }}">
+          <span class="gs-visually-hidden">{{ 'footer.social_foundation' | t: name: foundation_name }} </span>
+          {{- network -}}
           <span class="gs-visually-hidden"> {{ 'general.external_site' | t }}</span>
         </a>
       </li>
@@ -81,12 +101,20 @@
         </nav>
       {%- endif -%}
 
-      {%- if social_items != blank -%}
+      {%- if social_items != blank or foundation_items != blank -%}
         <div>
           <h2 class="gs-label">{{ 'footer.follow' | t }}</h2>
-          <ul>
-            {{- social_items -}}
-          </ul>
+          {%- if social_items != blank -%}
+            <ul>
+              {{- social_items -}}
+            </ul>
+          {%- endif -%}
+          {%- if foundation_items != blank -%}
+            <h3 class="gs-label">{{ foundation_name }}</h3>
+            <ul>
+              {{- foundation_items -}}
+            </ul>
+          {%- endif -%}
         </div>
       {%- elsif request.design_mode -%}
         <p class="gs-editor-warning">Add the gallery's social links in Theme settings, Social links (ACCESS-03).</p>

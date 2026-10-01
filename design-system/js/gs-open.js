@@ -11,6 +11,11 @@
  *   open day, after closing    Closed now. Open Friday, 12 to 4 PM   ("tomorrow" when it is)
  *   closed day                 Closed today. Open Thursday, 12 to 4 PM
  *
+ * A closure from Theme settings (data-closed, "2026-12-21/2027-01-01,…", DS-191) makes its days
+ * closed days, and the next open day skips them. More than a week away, that day carries its date:
+ *
+ *   during a closure           Closed today. Open Thursday, January 7, 12 to 4 PM
+ *
  * Wording comes from the theme's locale file through data attributes. It runs once, on load.
  */
 (() => {
@@ -47,6 +52,7 @@
       now = Object.fromEntries(
         new Intl.DateTimeFormat('en-CA', {
           timeZone: d.tz, weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23',
+          year: 'numeric', month: '2-digit', day: '2-digit',
         }).formatToParts(new Date()).map((p) => [p.type, p.value]),
       );
     } catch (e) {
@@ -58,23 +64,36 @@
     const closes = minutes(d.closes);
     const times = range(opens, closes, d.to);
     const names = d.weekdays.split(',');
+    // Closures, as first and last days (YYYY-MM-DD), which compare as text.
+    const closures = (d.closed || '').split(',').filter(Boolean).map((c) => c.split('/'));
+    const closedOn = (iso) => closures.some(([from, until]) => iso >= from && iso <= (until || from));
+    // The gallery's date today, counted in UTC so a day is always 24 hours.
+    const start = Date.UTC(Number(now.year), Number(now.month) - 1, Number(now.day));
+    const openToday = days.includes(today) && !closedOn(new Date(start).toISOString().slice(0, 10));
     const next = () => {
-      for (let i = 1; i <= 7; i += 1) {
-        const day = (today + i) % 7;
-        if (days.includes(day)) return i === 1 ? d.tomorrow : names[day];
+      for (let i = 1; i <= 370; i += 1) {
+        const date = new Date(start + i * 86400000);
+        const day = date.getUTCDay();
+        if (!days.includes(day) || closedOn(date.toISOString().slice(0, 10))) continue;
+        if (i === 1) return d.tomorrow;
+        if (i <= 7) return names[day];
+        const dated = new Intl.DateTimeFormat('en-CA', { timeZone: 'UTC', month: 'long', day: 'numeric' }).format(date);
+        return `${names[day]}, ${dated}`;
       }
       return '';
     };
 
     let text;
-    if (days.includes(today) && at < opens) {
+    if (openToday && at < opens) {
       text = d.today.replace('%times%', times);
-    } else if (days.includes(today) && at < closes) {
+    } else if (openToday && at < closes) {
       const until = clock(closes);
       text = d.now.replace('%time%', `${until.text}\u00a0${until.period}`);
     } else {
-      const template = days.includes(today) ? d.closedNow : d.closedToday;
-      text = template.replace('%day%', next()).replace('%times%', times);
+      const opensNext = next();
+      if (!opensNext) return; // No open day in the year ahead: keep the week's line.
+      const template = openToday ? d.closedNow : d.closedToday;
+      text = template.replace('%day%', opensNext).replace('%times%', times);
     }
     el.textContent = text;
     el.dataset.gsOpenDone = '';

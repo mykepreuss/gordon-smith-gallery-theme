@@ -70,7 +70,8 @@
       "type": "gs-visit",
       "settings": {
         "image": "shopify://shop_images/23-8.jpg",
-        "heading": "Visit"
+        "heading": "Visit",
+        "text": "<p>The Gordon Smith Gallery is open to the entire community through admission by donation, with engaged Art Education programs and experiences integrated into every exhibition through Artists for Kids.</p><p><a href=\"shopify://pages/about-us\">About the gallery</a></p>"
       }
     }
   },

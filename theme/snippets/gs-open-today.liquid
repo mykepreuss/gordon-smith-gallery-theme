@@ -5,7 +5,9 @@
   today. Open Thursday, 12 to 4 PM". The script works in the gallery's own time (Vancouver),
   whatever the visitor's clock says. Without it, the week's line stays. With no open days set, it
   shows nothing. The days come from gs-open-hours, the one source for the gallery's hours (DS-96).
-  Holidays and one-off closures aren't known here: the Plan your visit page carries those.
+  A day in Theme settings, Gallery details, Closures (gs-closures, DS-191) is a closed day: the
+  line says "Closed today" and names the next day the gallery opens, with its date when that is
+  more than a week away ("Open Thursday, January 7, 12 to 4 PM").
 
   @param {string} [class] - Extra classes for the line
   @param {string} [tag] - 'p' (default) or 'span', for a line inside a link: the header's utility
@@ -31,6 +33,10 @@
     endcapture
     assign times = times | strip
     assign to_word = 'open.to' | t
+    capture closed
+      render 'gs-closures', part: 'data'
+    endcapture
+    assign closed = closed | strip
   -%}
   {%- liquid
     assign tag = tag | default: 'p'
@@ -40,6 +46,7 @@
   -%}
   <{{ tag }} class="gs-open{% if class != blank %} {{ class }}{% endif %}" data-gs-open data-tz="America/Vancouver"
     data-days="{{ open }}" data-opens="{{ settings.opens_at }}" data-closes="{{ settings.closes_at }}"
+    {%- if closed != blank %} data-closed="{{ closed }}"{% endif %}
     data-now="{{ 'open.now' | t: time: '%time%' | escape }}"
     data-today="{{ 'open.today' | t: times: '%times%' | escape }}"
     data-closed-today="{{ 'open.closed_today' | t: day: '%day%', times: '%times%' | escape }}"

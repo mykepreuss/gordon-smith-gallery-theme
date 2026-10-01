@@ -1,0 +1,60 @@
+{% doc %}
+  The days the gallery is closed when it would otherwise be open (DS-191): holidays and the
+  school breaks. From Theme settings, Gallery details, Closures, one to a line: a date
+  ("October 12, 2026") or two dates with "to" between them ("December 21, 2026 to
+  January 1, 2027"). So the "open today" line, Plan your visit, the gallery's structured data and
+  /llms.txt all read one list.
+
+  A closure that has ended is left out, so last year's lines can stay in the setting. A line
+  that isn't a date is left out too. Today is the store's own day (Vancouver).
+
+  By default it prints the closures as words, in the form of the setting, with a bar between
+  them: "October 12, 2026|December 21, 2026 to January 1, 2027". Captured output starts with a
+  line break, so strip it.
+
+  @param {string} [part] - 'data' prints them for machines instead, first and last day, with a
+    comma between closures: "2026-10-12/2026-10-12,2026-12-21/2027-01-01" (gs-open.js,
+    gs-data-place)
+
+  @example
+  {%- capture closures -%}{% render 'gs-closures' %}{%- endcapture -%}
+  {%- assign closures = closures | strip | split: '|' -%}
+{% enddoc %}
+{%- liquid
+  assign today = 'now' | date: '%Y%m%d' | plus: 0
+  assign to_word = 'open.to' | t
+  assign splitter = ' ' | append: to_word | append: ' '
+  assign lines = settings.closures | newline_to_br | strip_newlines | split: '<br />'
+  assign words = ''
+  assign data = ''
+  for line in lines
+    assign text = line | strip
+    if text == blank
+      continue
+    endif
+    assign ends = text | split: splitter
+    assign from = ends.first | strip | date: '%Y-%m-%d'
+    assign until = ends.last | strip | date: '%Y-%m-%d'
+    # The date filter hands back what it can't read. A date it can read is ten characters and a number.
+    assign from_number = from | remove: '-' | plus: 0
+    assign until_number = until | remove: '-' | plus: 0
+    if from.size != 10 or until.size != 10 or from_number < 19000101 or until_number < from_number
+      continue
+    endif
+    if until_number < today
+      continue
+    endif
+    assign said = from | date: '%B %-d, %Y'
+    if until != from
+      assign said_until = until | date: '%B %-d, %Y'
+      assign said = said | append: splitter | append: said_until
+    endif
+    assign words = words | append: said | append: '|'
+    assign data = data | append: from | append: '/' | append: until | append: ','
+  endfor
+  if part == 'data'
+    echo data | split: ',' | join: ','
+  else
+    echo words | split: '|' | join: '|'
+  endif
+-%}

@@ -1916,6 +1916,8 @@ a.gs-nav__group-title:not(.gs-link--external)::after,
 }
 .gs-footer__cols > * { display: grid; align-content: start; gap: var(--gs-space-3); }
 .gs-footer__cols p { margin: 0; }
+/* A second list under its own label in a column: the Foundation's accounts in Follow (DS-192). */
+.gs-footer__cols ul + .gs-label { margin-block-start: var(--gs-space-3); }
 .gs-footer__cols ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--gs-space-2); }
 .gs-footer__cols a { color: inherit; }
 .gs-footer__legal { display: flex; flex-wrap: wrap; gap: var(--gs-space-2) var(--gs-space-5); margin: 0; padding: 0; list-style: none; color: var(--gs-color-fg-muted); font-size: var(--gs-text-caption); line-height: var(--gs-leading-caption); }
@@ -2430,6 +2432,9 @@ textarea.gs-input { min-height: 10rem; padding-block: var(--gs-space-3); resize:
   .gs-visit-info__facts .gs-details__item { grid-row: span 2; grid-template-rows: subgrid; }
 }
 .gs-visit-info__facts dd { display: grid; justify-items: start; gap: var(--gs-space-3); }
+/* The days the gallery is closed (DS-191): a row of its own under the four facts, its dates in
+   columns across the box, as an exhibition's long list of names runs. */
+.gs-visit-info__facts .gs-details__item--wide dd { justify-items: stretch; }
 .gs-visit-info address { font-style: normal; }
 /* Whether the gallery is open today (snippets/gs-open-today.liquid, js/gs-open.js). */
 .gs-open { margin: 0; font-weight: var(--gs-weight-bold); text-wrap: balance; }

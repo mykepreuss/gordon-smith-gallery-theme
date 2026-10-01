@@ -196,8 +196,11 @@
   assign stored = page_description | replace: '&#39;', "'" | replace: '&quot;', '"' | replace: '&amp;', '&'
   if stored != blank and made_from != blank
     assign nb = ' '
-    assign a = stored | strip_newlines | remove: ' ' | remove: nb | remove: '&amp;' | remove: '&' | slice: 0, 40
-    assign b = made_from | strip_html | strip_newlines | remove: ' ' | remove: nb | remove: '&amp;' | remove: '&nbsp;' | remove: '&' | slice: 0, 40
+    # Compared over 120 letters, or the whole description when it is shorter. Over 40, a written
+    # description that opens with the page's own first words, as The Smith Foundation's does with
+    # its full name, was taken for Shopify's and dropped (DS-196).
+    assign a = stored | strip_newlines | remove: ' ' | remove: nb | remove: '&amp;' | remove: '&' | slice: 0, 120
+    assign b = made_from | strip_html | strip_newlines | remove: ' ' | remove: nb | remove: '&amp;' | remove: '&nbsp;' | remove: '&' | slice: 0, a.size
     if a == b
       assign stored = ''
     endif
