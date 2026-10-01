@@ -1198,3 +1198,20 @@ Not in Git, and gone with their deletion, as Michael was told: `171407442217` "O
 
 **Undo:** none for the five drafts. For a rollback or Colorblock: `shopify theme push --unpublished --strict` from its commit (`theme/`, or `baseline/theme/` for Colorblock) in a checkout of that commit.
 
+## 2026-10-01: the sixth release
+
+**Why:** Michael, 2026-10-01: "Merge #151 and do the release". The release carried #150, the home page (DS-199 to DS-204). No store resource changed. Its record: `PROJECT.md`, row 6f; `IMPLEMENTATION_PLAN.md`, "The sixth release".
+
+**Checked first:** `shopify theme list`: `184856445225` live, `184857461033` the review theme, unpublished. Both downloaded whole and compared with Git: no theme editor changes. The checks on `main` passed.
+
+| Step, UTC | What | Through |
+| --- | --- | --- |
+| 22:54 | `184857461033` published | `shopify theme publish --theme 184857461033 --force` |
+| Right after | Renamed: `184857461033` "Gordon Smith Gallery", `184856445225` "Gordon Smith Gallery (rollback, fifth release)" | `shopify theme rename` |
+| After | New review theme `184858575145` from `main` at 6204cb1, read back: 192 files, the same as `main` | `shopify theme push --unpublished --strict` |
+| After the live checks | `184824725801` "Gordon Smith Gallery (rollback, fourth release)" deleted (P-69), after it matched `main` at 220213c file for file (185 files) | `shopify theme delete --theme 184824725801 --force` |
+
+**Checked after:** on gordonsmithgallery.com: Home, answers, structured data and links, as `PROJECT.md` row 6f lists. `shopify theme list`: `184857461033` live, `184856445225` rollback, `184858575145` review, `184806277417` and `184858345769` development.
+
+**Undo:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184856445225`. The fourth release's rollback can be made again with `shopify theme push --unpublished --strict` from 220213c.
+
