@@ -119,7 +119,7 @@ Asked for by Michael: "Review the design of the homepage, ensure consistency …
 
 | Severity | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
-| Medium | `sections/gs-whats-on.liquid` | Today's line under "What's on", about 60 px under the same line in the hero (DS-199): twice on a laptop's first screen | Gone from What's on; the hero, the header (desktop) and Visit keep theirs (DS-204, **Proposed**) | One fact, said once per screen |
+| Medium | `sections/gs-whats-on.liquid` | Today's line under "What's on", about 60 px under the same line in the hero (DS-199): twice on a laptop's first screen | Gone from What's on; the hero, the header (desktop) and Visit keep theirs (DS-204, decided by Michael, 2026-10-01) | One fact, said once per screen |
 | Medium | `sections/gs-lesson-row.liquid`, `sections/gs-whats-on.liquid` | Home's two rows of cards skipped the count rule: at 750 to 989 px the third ArtReach video sat alone on a row; What's on with four or five cards would have too | Both use `gs-grid-modifiers` and `gs-grid-sizes`, as every other grid of cards does (DS-52) | Consistency with the rest of the site |
 | Low | `components.css`, `.gs-hero__visit` | On phones Plan your visit grew to its 44 px target, so it sat 25 px from today's line, further than the line sat from the button (19 px): the two didn't read as a pair | The link gives the growth back in its margins, as the crumb does: 11 px from the line; the target stays 44 px | Grouping by nearness |
 
