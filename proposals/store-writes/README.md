@@ -1274,3 +1274,19 @@ No call returned an error. The calls and the store's answers: `created/follow-up
 **Checked after:** on gordonsmithgallery.com: Plan your visit's header line plain, the consent line and both labels kept, answers, structured data and links, as `PROJECT.md` row 6g lists. `shopify theme list`: `184858575145` live, `184857461033` rollback, `184859001129` review, `184806277417` and `184858345769` development.
 
 **Undo:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184857461033`. The fifth release's rollback can be made again with `shopify theme push --unpublished --strict` from a03a1e4.
+
+## 2026-10-01: the three older hidden pages deleted
+
+**Why:** Michael, 2026-10-01: "Delete the three older hidden pages". They predated the project and were left out of P-70.
+
+**Checked first:** the store read through the CLI: 49 pages, 3 hidden: `2025-spring-portfolio` (no text, made 2025-03-12), `public-programs` (197 characters, made 2026-07-20) and `exhibition-tours` (no text, made 2026-08-13). Nothing pointed at them: no theme file, menu, redirect, page, page field or entry. The theme setting and the old `main-menu` item named `2025-spring-portfolio` are the collection of that name, not this page, and stay. Before-snapshot, whole: `snapshots/older-hidden-pages-2026-10-01.json`.
+
+| Deleted, 23:52:31 to 23:52:33 UTC | Through |
+| --- | --- |
+| Pages `2025-spring-portfolio`, `public-programs`, `exhibition-tours` | CLI, `pageDelete`, one at a time |
+
+No call returned an error (`created/older-hidden-pages-2026-10-01.json`).
+
+**Checked after:** the store holds 46 pages, none hidden. The three addresses answer 404, as they did while hidden; `/collections/2025-spring-portfolio`, Public programs (`/pages/public-programs-1`) and Home answer 200. `check_links.py` on the live site: 0 errors, 4 notes, as before.
+
+**Undo:** from the snapshot: `pageCreate` with its title, handle, body and template, unpublished.
