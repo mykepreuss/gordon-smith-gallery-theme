@@ -121,9 +121,9 @@ ARTISTS = {
 }
 # The Smith Foundation's description starts as its page text does, for 40 letters. The live theme
 # takes such a search listing for one Shopify made from the text, and drops it (meta-tags, DS-160).
-# So its staged description stays until the release that compares more of the two (DS-196); then
-# `unstage` deletes it and `definition` deletes the field.
-KEEP_STAGED = {"the-smith-foundation"}
+# So its staged description stayed until the release that compares more of the two (DS-196): the
+# fourth release, 2026-10-01, after which `unstage` deleted it and `definition` the field.
+KEEP_STAGED = set()
 # Four additions to page text (proposals/gallery-answers/README.md, "Left for Michael"), each the
 # gallery's own answer with its typing mistakes fixed.
 # About Us had no text: the gallery's five sentences on what it is (2.3), then who owns it and

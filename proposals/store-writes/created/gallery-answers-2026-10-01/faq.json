@@ -1,0 +1,25 @@
+[
+ {
+  "call": "page frequently-asked-questions body: visiting questions",
+  "kind": "page",
+  "at": "2026-10-01T20:16:08+00:00",
+  "variables": {
+   "id": "gid://shopify/Page/154942865705",
+   "page": {
+    "body": "<h2>Visiting</h2>\n<h3>When is the gallery open?</h3>\n<p>Thursday to Saturday, 12 to 4 PM.</p>\n<h3>How much is admission?</h3>\n<p>Admission to the Gordon Smith Gallery is by donation.</p>\n<h3>Where is the gallery?</h3>\n<p>2121 Lonsdale Avenue, North Vancouver, on the west side of Lonsdale Avenue, three blocks south of Exit 18 off the Trans Canada Highway.</p>\n<h3>How do I get there by public transport?</h3>\n<p>From downtown Vancouver, take the SeaBus to Lonsdale Quay, then the 229 or 230 bus towards Upper Lonsdale. The stop at 21st and Lonsdale is across the street from the gallery.</p>\n<h3>Where can I park?</h3>\n<p>One-hour street parking surrounds the gallery, and pay parking is on Lonsdale Avenue. There are a few underground spaces on P1 and P2, except on weekends and holidays.</p>\n<h3>Is the gallery wheelchair accessible?</h3>\n<p>Yes. There are accessible washrooms, an elevator from the underground parking, accessible parking on P1 and P2, and a ramp to the south entrance from Lonsdale Avenue.</p>\n<h3>Are assistance dogs welcome?</h3>\n<p>Yes. A water bowl is available on request.</p>\n<h3>What can families do at the gallery?</h3>\n<p>Explore + Create is a drop-in art program for families with children ages 5 to 12, Saturdays from 1 to 3 PM.</p>\n<h2>Buying prints</h2>\n<h3>What does the gallery sell?</h3>\n<p>The Gallery sells limited edition prints from renowned Canadian Artists that were gifted directly to Artists for Kids to directly fund Art Education programming.</p>\n<h3>Are all prints limited edition?</h3>\n<p>Yes. All prints offered through Artists for Kids are limited editions created in collaboration with Canadian artists and printmakers. The first edition of a limited edition series is archived in the Artists for Kids and the Gordon Smith Gallery Permanent Collection.</p>\n<h3>Will the artwork look exactly like the images online?</h3>\n<p>We make every effort to display artwork accurately. However, colours may vary slightly depending on your screen or device.</p>\n<h3>What payment methods do you accept?</h3>\n<p>Payments are processed securely through Shopify Payments. Accepted methods may include major credit cards and other options presented at checkout.</p>\n<h3>How long does shipping take?</h3>\n<p>Unframed prints are typically shipped within 3–5 business days. Delivery time will depend on your location.</p>\n<h3>How much is shipping?</h3>\n<p>Shipping is a flat rate of $20 within Canada.</p>\n<h3>Do you ship outside Canada?</h3>\n<p>Not at this time. We ship within Canada only.</p>\n<h3>Do you ship framed prints?</h3>\n<p>Framed prints are available for pickup only. Arranged courier delivery can be arranged at the customer's expense.</p>\n<h3>Do you offer in-store pickup?</h3>\n<p>Yes! We offer free in-store pickup.</p>\n<h3>How long does pickup take?</h3>\n<p>Unframed prints: ready in 1–2 business days. Framed prints: ready in 2–3 weeks.</p>\n<p>We will contact you when your order is ready!</p>"
+   }
+  },
+  "answer": {
+   "pageUpdate": {
+    "page": {
+     "id": "gid://shopify/Page/154942865705",
+     "handle": "frequently-asked-questions",
+     "title": "Frequently Asked Questions",
+     "updatedAt": "2026-10-01T20:16:08Z"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]

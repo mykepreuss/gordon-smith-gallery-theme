@@ -1120,3 +1120,22 @@ Each step reads the store, sends only what differs, stops at the first error and
 
 **Undo:** `pageUpdate` with each page's `before` body from the snapshot: an empty text for About Us and Schools and teachers. Gordon and Marion has two entries: the later one puts "His late wife" back, the earlier one takes the years out as well.
 
+## 2026-10-01: the fourth release
+
+**Why:** Michael, 2026-10-01: "can we do our release now?". The release carried #138 (DS-191 to DS-197), and with it the three store changes `proposals/store-changes.md` §9c held for it. Its record: `PROJECT.md`, row 6d; `IMPLEMENTATION_PLAN.md`, "The fourth release".
+
+**Checked first:** store `ed35ee-ea.myshopify.com`; by `shopify theme list`, `184824398121` live and `184824725801` the review theme, unpublished; both downloaded whole and matching Git, so no theme editor changes. The three steps dry-run before the publish. Michael finished the two policy edits in the admin before asking for the release: the live shipping policy no longer has the note about calculating, and the contact information policy reads "Monday to Friday 8:00am - 3:00pm".
+
+| When (UTC) | What | Through |
+| --- | --- | --- |
+| 20:15:51 | `184824725801` published; `184824398121` unpublished and kept for rollback. Renamed: "Gordon Smith Gallery", and "Gordon Smith Gallery (rollback, third release)" | `shopify theme publish --force`, `shopify theme rename` |
+| 20:16:08 | The FAQ: a heading "Visiting" over its eight visiting questions, from Plan your visit's words, and "Buying prints" in place of the heading that repeated the page's title (`gid://shopify/Page/154942865705`) | `gallery_answers.py faq`, `pageUpdate` |
+| 20:16:21 | The Smith Foundation's staged description deleted (`gid://shopify/Page/155705409833`, `custom.release_description`). Its search listing holds the same words | `gallery_answers.py unstage`, `metafieldsDelete` |
+| 20:16:59 | The staged field's definition deleted (`gid://shopify/MetafieldDefinition/273366122793`). No page held a value | `gallery_answers.py definition`, `metafieldDefinitionDelete` |
+
+No call returned an error. Each step run again lists nothing. Before values: `snapshots/gallery-answers-2026-10-01-before.json`, under `faq`, `unstage` and `definition`. `gallery_answers.py` no longer holds The Smith Foundation back (`KEEP_STAGED` is empty).
+
+**Checked after:** the live FAQ shows "Visiting" and "Buying prints"; its data holds 18 questions, and the last visiting answer ends at "1 to 3 PM.", not at the next heading. All 42 descriptions on the live site read as approved, after the staged description went and again after the definition went. The page fields the store holds now: hero image, artwork hero, hero caption, eyebrow, intro, button, programme, card groups, gallery images. `check_answers.py`, `check_structured_data.py` and `check_links.py` on the live site: `PROJECT.md`, row 6d.
+
+**Undo:** `IMPLEMENTATION_PLAN.md`, "The fourth release": the rollback theme first, then the FAQ's text from the snapshot (`pageUpdate`), then the definition (`metafieldDefinitionCreate`: `custom.release_description` on pages, multi-line text, pinned, storefront read) and The Smith Foundation's value (`metafieldsSet`, the words in the snapshot).
+
