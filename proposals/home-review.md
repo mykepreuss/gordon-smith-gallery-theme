@@ -110,4 +110,3 @@ On the development theme, Home at 1440, 1200, 1024 and 390 px, and 1920 × 1080:
 - **H6 (DS-202):** "Make art with us" after the Artists for Kids panel, the three newest lessons with the play mark, and "All ArtReach videos". It scrolls sideways on a phone.
 
 Not built: H1 needs photographs, which Michael hasn't asked for yet; H4 and H7 weren't approved.
-
