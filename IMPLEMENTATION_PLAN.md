@@ -12,13 +12,13 @@ Keep four change surfaces distinct: **Git owns theme source and project records;
 
 ## Where the project stands (2026-09-29)
 
-- **Released.** The new theme went live on 2026-09-29 at 23:08 UTC (4:08 PM Pacific), with Michael's approval. The record: `verification/2026-09-29-release-gate.md` and `proposals/store-writes/README.md`, "2026-09-29: the release". A second release followed the same evening, at 00:51 UTC on the 30th (5:51 PM Pacific), and a third at 01:19 UTC: "The second release, 2026-09-29" and "The third release" below. The fourth went live on 2026-10-01 at 20:15 UTC, the fifth at 21:33 UTC and the sixth at 22:54 UTC: "The fourth release", "The fifth release" and "The sixth release" below.
-- **Live theme:** `184857461033` "Gordon Smith Gallery", published from `main` at 0f91be7 at the sixth release. It was the review theme until then. Only small fixes go to it (`AGENTS.md`).
-- **Rollback theme:** `184856445225` "Gordon Smith Gallery (rollback, fifth release)", the live theme from the fifth release to the sixth. Unpublished and unchanged. Nothing is pushed to it.
-- **Older themes:** none. Deleted 2026-10-01 at Michael's request (P-69): the three earlier rollbacks, Colorblock, the five pre-project drafts and five old development themes. The fourth release's rollback, `184824725801`, followed at the sixth release. Each rollback matched a commit in Git when it was deleted (first release dee1885, second c48901c, third 1f7d899, fourth 220213c) and Colorblock matched `baseline/theme/` file for file, so any of them can be pushed again as a new unpublished theme from that commit. The rollback steps for the first four releases below name themes that are gone: to use one, push its commit as a new unpublished theme and publish that.
-- **Review theme:** `184858575145` "Review theme (do not publish)", made from `main` at 6204cb1 at the sixth release. It follows `main`.
-  - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184858575145
-  - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184858575145/editor
+- **Released.** The new theme went live on 2026-09-29 at 23:08 UTC (4:08 PM Pacific), with Michael's approval. The record: `verification/2026-09-29-release-gate.md` and `proposals/store-writes/README.md`, "2026-09-29: the release". A second release followed the same evening, at 00:51 UTC on the 30th (5:51 PM Pacific), and a third at 01:19 UTC: "The second release, 2026-09-29" and "The third release" below. The fourth went live on 2026-10-01 at 20:15 UTC, the fifth at 21:33 UTC, the sixth at 22:54 UTC and the seventh at 23:37 UTC: "The fourth release" to "The seventh release" below.
+- **Live theme:** `184858575145` "Gordon Smith Gallery", published from `main` at a6f2a6c at the seventh release. It was the review theme until then. Only small fixes go to it (`AGENTS.md`).
+- **Rollback theme:** `184857461033` "Gordon Smith Gallery (rollback, sixth release)", the live theme from the sixth release to the seventh. Unpublished and unchanged. Nothing is pushed to it.
+- **Older themes:** none. Deleted 2026-10-01 at Michael's request (P-69): the three earlier rollbacks, Colorblock, the five pre-project drafts and five old development themes. The fourth release's rollback, `184824725801`, followed at the sixth release, and the fifth's, `184856445225`, at the seventh. Each rollback matched a commit in Git when it was deleted (first release dee1885, second c48901c, third 1f7d899, fourth 220213c, fifth a03a1e4) and Colorblock matched `baseline/theme/` file for file, so any of them can be pushed again as a new unpublished theme from that commit. The rollback steps for the first five releases below name themes that are gone: to use one, push its commit as a new unpublished theme and publish that.
+- **Review theme:** `184859001129` "Review theme (do not publish)", made from `main` at a6f2a6c at the seventh release. It follows `main`.
+  - Preview: https://ed35ee-ea.myshopify.com?preview_theme_id=184859001129
+  - Editor: https://ed35ee-ea.myshopify.com/admin/themes/184859001129/editor
 - **Built:** the new theme on Shopify's Skeleton theme, every template, the header, footer and newsletter band (`theme/`, `design-system/DESIGN.md` 0.6.83).
 - **Content:** 45 published pages, 32 exhibitions, 14 events, 27 lessons, and the Permanent Collection's 1,174 works and 171 artists, with the card groups, product labels and menus (`proposals/store-writes/README.md`). The Artists for Kids site and the Smith Foundation's old site are on this one. No text is staged any more: each page's text is its own (DS-39).
 - **Decisions:** every decision that is built is decided (`DECISIONS.md`). DS-70a is Proposed and not built.
@@ -289,7 +289,17 @@ At 22:54 UTC on 2026-10-01 (3:54 PM Pacific), the review theme `184857461033` wa
 - **What went live:** the home page (#150, DS-199 to DS-204, `proposals/home-review.md`): today's opening line and Plan your visit in the hero; a run that repeats says its pattern and next date ("Saturdays, 1 to 3 PM. Next: October 3"); a wider artwork hero from 1200 px; "Make art with us", the three newest ArtReach videos; photo credits kept on one line; What's on without a second today's line; Home's rows follow the count rule.
 - **No store change at it.**
 - **In order:** both themes downloaded whole and compared with Git (no editor changes); the checks; publish; renames; a new review theme, `184858575145`, pushed from `main` with `--unpublished` and read back; the checks on the live site; then the fourth release's rollback, `184824725801`, deleted (P-69), after it matched 220213c file for file.
-- **Rollback for it:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184856445225`. Nothing in the store to undo.
+- **Rollback for it:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184856445225`. Nothing in the store to undo. (That theme was deleted at the seventh release; push a03a1e4 as a new unpublished theme instead.)
+
+### The seventh release
+
+At 23:37 UTC on 2026-10-01 (4:37 PM Pacific), the review theme `184858575145` was published from `main` at a6f2a6c. The record: `PROJECT.md`, rows 4h and 6g.
+
+- **Approval:** Michael: "Merge #154 and do the release".
+- **What went live:** the header's opening line is plain text on Plan your visit (#154, DS-205). The four small fixes made on the live theme earlier that evening (P-66, P-71: linked names, the consent line, "Send a message", "More from this portfolio") came into `main` first (#155), so the release kept them.
+- **No store change at it.**
+- **In order:** #154 merged; the four live settings files into `main` (#155); both themes downloaded whole and compared with Git (the live theme matched `main` but for #154's two files; the review theme had no editor changes); the checks; `main` pushed to the review theme and read back; publish; renames; a new review theme, `184859001129`, pushed from `main` with `--unpublished` and read back; the checks on the live site; then the fifth release's rollback, `184856445225`, deleted (P-69), after it matched a03a1e4 file for file.
+- **Rollback for it:** `shopify theme publish --store ed35ee-ea.myshopify.com --theme 184857461033`. Nothing in the store to undo.
 
 ## Inputs, exclusions, and known limits
 
