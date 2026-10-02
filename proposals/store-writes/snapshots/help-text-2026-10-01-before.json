@@ -1,0 +1,13 @@
+{
+ "taken": "2026-10-01",
+ "what": "Field help text before help_text.py replaced it. Undo: send each back with the same mutation.",
+ "fields": {
+  "exhibition.curator_credit": "The whole line as it should read, for example: Curated by Amelia Epp with support from the Artists For Kids team.",
+  "artwork.year": "As the work is dated, for example: 1994, or N.D.",
+  "artwork.edition": "For example: 30/40, or A/P.",
+  "artist.website": "Kept from the old Artists page's links. The site doesn't show it (DS-63).",
+  "PAGE custom.cta": "One button under the title, for example: Artists For Kids Website.",
+  "COLLECTION custom.photo_credit": "Credit for the collection's image, for example: Photography by Rachel Topham.",
+  "PRODUCT custom.featured_frame": "Frame Add On "
+ }
+}

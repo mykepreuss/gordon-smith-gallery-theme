@@ -1,0 +1,99 @@
+[
+ {
+  "field": "exhibition.curator_credit",
+  "at": "2026-10-02T00:16:48+00:00",
+  "answer": {
+   "metaobjectDefinitionUpdate": {
+    "metaobjectDefinition": {
+     "type": "exhibition"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "field": "artwork.year",
+  "at": "2026-10-02T00:16:49+00:00",
+  "answer": {
+   "metaobjectDefinitionUpdate": {
+    "metaobjectDefinition": {
+     "type": "artwork"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "field": "artwork.edition",
+  "at": "2026-10-02T00:16:50+00:00",
+  "answer": {
+   "metaobjectDefinitionUpdate": {
+    "metaobjectDefinition": {
+     "type": "artwork"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "field": "artist.website",
+  "at": "2026-10-02T00:16:51+00:00",
+  "answer": {
+   "metaobjectDefinitionUpdate": {
+    "metaobjectDefinition": {
+     "type": "artist"
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "field": "PAGE custom.cta",
+  "at": "2026-10-02T00:16:53+00:00",
+  "answer": {
+   "metafieldDefinitionUpdate": {
+    "updatedDefinition": {
+     "namespace": "custom",
+     "key": "cta",
+     "description": "One button under the title. Its label says what happens, for example: Register a Grade 5 class."
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "field": "COLLECTION custom.photo_credit",
+  "at": "2026-10-02T00:16:54+00:00",
+  "answer": {
+   "metafieldDefinitionUpdate": {
+    "updatedDefinition": {
+     "namespace": "custom",
+     "key": "photo_credit",
+     "description": "Credit for the collection's image, for example: Photo by Rachel Topham."
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "field": "PRODUCT custom.featured_frame",
+  "at": "2026-10-02T00:16:55+00:00",
+  "answer": {
+   "metafieldDefinitionUpdate": {
+    "updatedDefinition": {
+     "namespace": "custom",
+     "key": "featured_frame",
+     "description": "The print's frame, offered on the print's page as Framed. The frame is its own product: product type Frame, status Unlisted."
+    },
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
