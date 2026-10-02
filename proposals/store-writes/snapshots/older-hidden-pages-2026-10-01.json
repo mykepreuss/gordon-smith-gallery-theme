@@ -1,0 +1,45 @@
+{
+ "taken": "2026-10-01",
+ "what": "The three hidden pages that predate the project, whole, read through the CLI just before they were deleted (Michael, 2026-10-01: \"Delete the three older hidden pages\"). Nothing pointed at them: no theme file, menu, redirect, page, field or entry (the theme setting and menu item named 2025-spring-portfolio are the collection, not this page). To rebuild one: pageCreate with its title, handle, body and templateSuffix, unpublished.",
+ "pages": [
+  {
+   "id": "gid://shopify/Page/146249154857",
+   "handle": "2025-spring-portfolio",
+   "title": "2025 Spring Portfolio",
+   "isPublished": false,
+   "templateSuffix": "page",
+   "createdAt": "2025-03-12T21:39:34Z",
+   "updatedAt": "2025-03-12T21:39:34Z",
+   "body": "",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/155654586665",
+   "handle": "public-programs",
+   "title": "Public Programs",
+   "isPublished": false,
+   "templateSuffix": "page",
+   "createdAt": "2026-07-20T20:16:13Z",
+   "updatedAt": "2026-10-01T23:20:15Z",
+   "body": "<p>Art in Good Company</p>\n<p><img src=\"https://cdn.shopify.com/s/files/1/0895/9580/5993/files/IMG_7208_JPG.jpg?v=1784578621\" alt=\"\"></p>\n<p>Explore + Create </p>\n<p>Music at the Smith</p>\n<p> </p>",
+   "metafields": {
+    "nodes": []
+   }
+  },
+  {
+   "id": "gid://shopify/Page/156066480425",
+   "handle": "exhibition-tours",
+   "title": "Exhibition Tours",
+   "isPublished": false,
+   "templateSuffix": "page",
+   "createdAt": "2026-08-13T23:05:39Z",
+   "updatedAt": "2026-08-13T23:05:39Z",
+   "body": "",
+   "metafields": {
+    "nodes": []
+   }
+  }
+ ]
+}

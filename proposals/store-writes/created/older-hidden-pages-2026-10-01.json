@@ -1,0 +1,38 @@
+[
+ {
+  "page": "2025-spring-portfolio",
+  "id": "gid://shopify/Page/146249154857",
+  "at": "2026-10-01T23:52:31+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/146249154857",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "page": "public-programs",
+  "id": "gid://shopify/Page/155654586665",
+  "at": "2026-10-01T23:52:32+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/155654586665",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ },
+ {
+  "page": "exhibition-tours",
+  "id": "gid://shopify/Page/156066480425",
+  "at": "2026-10-01T23:52:33+00:00",
+  "answer": {
+   "pageDelete": {
+    "deletedPageId": "gid://shopify/Page/156066480425",
+    "userErrors": []
+   }
+  },
+  "errors": []
+ }
+]
