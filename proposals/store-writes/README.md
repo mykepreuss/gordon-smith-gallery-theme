@@ -1290,3 +1290,21 @@ No call returned an error (`created/older-hidden-pages-2026-10-01.json`).
 **Checked after:** the store holds 46 pages, none hidden. The three addresses answer 404, as they did while hidden; `/collections/2025-spring-portfolio`, Public programs (`/pages/public-programs-1`) and Home answer 200. `check_links.py` on the live site: 0 errors, 4 notes, as before.
 
 **Undo:** from the snapshot: `pageCreate` with its title, handle, body and template, unpublished.
+
+## 2026-10-01: the admin's help text
+
+**Why:** Michael, 2026-10-01: "Yes, update the help text", after the staff handbook (https://claude.ai/code/artifact/0691ce7c-ca89-48e9-bd0c-591f6583d49a) showed some field help text contradicting the site's style. Staff see it under the fields in the admin; visitors don't.
+
+| Field | Before | After |
+| --- | --- | --- |
+| Exhibition, Curator credit | "…the Artists For Kids team." | "…the Artists for Kids team." |
+| Artwork, Year | "…1994, or N.D." | "…1994, or circa 1960s. Undated: n.d." |
+| Artwork, Edition | "30/40, or A/P." | "30/40, or AP for an artist's proof." |
+| Artist, Website (not shown) | "…doesn't show it (DS-63)." | "…doesn't show it." |
+| Page, Call to action | "…for example: Artists For Kids Website." | "One button under the title. Its label says what happens, for example: Register a Grade 5 class." |
+| Collection, Photo credit | "Photography by Rachel Topham." | "Photo by Rachel Topham." |
+| Product, Featured Frame | "Frame Add On" | "The print's frame, offered on the print's page as Framed. The frame is its own product: product type Frame, status Unlisted." |
+
+Through `help_text.py --go`, 7 calls, no error (`created/help-text-2026-10-01.json`); run again, it lists nothing left. Before: `snapshots/help-text-2026-10-01-before.json`.
+
+**Undo:** each field's description back from the snapshot, with `metaobjectDefinitionUpdate` or `metafieldDefinitionUpdate`.
